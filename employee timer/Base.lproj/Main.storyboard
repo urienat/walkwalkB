@@ -880,7 +880,7 @@
                                         <rect key="frame" x="0.0" y="28" width="280" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" tableViewCell="QGB-yS-WGW" id="i8b-rx-fpw">
-                                            <rect key="frame" x="0.0" y="0.0" width="280" height="74"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="73.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="86m-f8-5r4" userLabel="DogImage">
@@ -1755,14 +1755,24 @@
                                     <action selector="signin:" destination="QwA-1e-1p4" eventType="touchUpInside" id="fKb-l8-it8"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUz-XO-S72">
+                                <rect key="frame" x="90" y="20" width="140" height="30"/>
+                                <state key="normal" title="facebook"/>
+                                <connections>
+                                    <action selector="facebookLogin:" destination="QwA-1e-1p4" eventType="touchUpInside" id="tj5-Mu-4zo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="wuq-GZ-v5C" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" constant="22" id="2Pt-u5-JMw"/>
+                            <constraint firstItem="vUz-XO-S72" firstAttribute="leading" secondItem="Rnh-XI-hKH" secondAttribute="leading" id="69V-l0-hcc"/>
                             <constraint firstItem="Rnh-XI-hKH" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="8PZ-Ro-ehs"/>
                             <constraint firstItem="NiB-Rc-LZj" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="9MS-Au-efd"/>
+                            <constraint firstItem="vUz-XO-S72" firstAttribute="trailing" secondItem="Rnh-XI-hKH" secondAttribute="trailing" id="C11-Ag-qwv"/>
                             <constraint firstItem="wuq-GZ-v5C" firstAttribute="leading" secondItem="apK-xN-ZsM" secondAttribute="trailing" constant="4" id="ESa-wP-MZX"/>
                             <constraint firstItem="Pog-dx-X7C" firstAttribute="top" secondItem="Rnh-XI-hKH" secondAttribute="bottom" constant="14" id="Fuo-v7-hxX"/>
                             <constraint firstItem="NTs-3R-g9p" firstAttribute="centerY" secondItem="Pog-dx-X7C" secondAttribute="centerY" id="JEZ-9v-zOY"/>
+                            <constraint firstItem="vUz-XO-S72" firstAttribute="height" secondItem="Rnh-XI-hKH" secondAttribute="height" id="PB8-1c-u8K"/>
                             <constraint firstItem="Jpb-a2-c4I" firstAttribute="top" secondItem="NiB-Rc-LZj" secondAttribute="bottom" constant="50" id="VJz-JO-2S5"/>
                             <constraint firstItem="apK-xN-ZsM" firstAttribute="centerY" secondItem="wuq-GZ-v5C" secondAttribute="centerY" id="VX9-zI-q9V"/>
                             <constraint firstItem="NiB-Rc-LZj" firstAttribute="top" secondItem="wuq-GZ-v5C" secondAttribute="bottom" constant="12" id="Y5c-JQ-EuC"/>
@@ -1772,7 +1782,9 @@
                             <constraint firstItem="Jpb-a2-c4I" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="i0q-OP-KW4"/>
                             <constraint firstItem="apK-xN-ZsM" firstAttribute="leading" secondItem="Pog-dx-X7C" secondAttribute="leading" id="m6s-3L-GxS"/>
                             <constraint firstItem="SW0-cP-SJB" firstAttribute="top" secondItem="NiB-Rc-LZj" secondAttribute="bottom" constant="5" id="nCK-Cq-Zxp"/>
+                            <constraint firstItem="vUz-XO-S72" firstAttribute="centerY" secondItem="4Aa-sb-LQD" secondAttribute="centerY" id="oAl-bI-IZr"/>
                             <constraint firstItem="SW0-cP-SJB" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="u0U-IH-U2n"/>
+                            <constraint firstItem="Rnh-XI-hKH" firstAttribute="top" secondItem="vUz-XO-S72" secondAttribute="bottom" constant="15" id="v3x-2F-3jb"/>
                             <constraint firstItem="Pog-dx-X7C" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="zfg-t6-OgU"/>
                         </constraints>
                     </view>
@@ -1781,6 +1793,7 @@
                         <outlet property="create" destination="SW0-cP-SJB" id="ZyJ-YW-fLG"/>
                         <outlet property="dog" destination="Jpb-a2-c4I" id="O4u-sI-4nU"/>
                         <outlet property="email" destination="Rnh-XI-hKH" id="xKi-X4-Las"/>
+                        <outlet property="facebookLogin" destination="vUz-XO-S72" id="rxg-xD-Sd5"/>
                         <outlet property="forgot" destination="NiB-Rc-LZj" id="YvM-Qd-aWF"/>
                         <outlet property="password" destination="Pog-dx-X7C" id="DPt-6s-xTU"/>
                         <outlet property="signIn" destination="NTs-3R-g9p" id="icG-yh-2Fe"/>
@@ -1812,7 +1825,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oUk-dv-frm" id="8pP-cp-jw0">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Rlo-ls-wai">
@@ -2039,7 +2052,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="47"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AQP-Fh-lfh" id="2zf-Oo-Imi">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="46.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGK-if-uRa">
@@ -2437,6 +2450,7 @@
                 <navigationController storyboardIdentifier="homeScreen" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="currentContext" id="H8h-Dv-TZT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3T4-MP-mlr">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
