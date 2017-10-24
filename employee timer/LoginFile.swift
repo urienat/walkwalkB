@@ -22,7 +22,7 @@ class LoginFile: UIViewController, UITextFieldDelegate {
     let mydateFormat = DateFormatter()
     let mydateFormat5 = DateFormatter()
 
-    let loginButton =  FBSDKLoginButton()
+  //  let loginButton =  FBSDKLoginButton()
 
 
     var textForError:String?
@@ -118,12 +118,7 @@ class LoginFile: UIViewController, UITextFieldDelegate {
     */
     }//end of create action
     
-    @IBOutlet weak var facebookLogin: UIButton!
-    
-    @IBAction func facebookLogin(_ sender: Any) {
-        
-        
-    }
+   
 
  
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -137,7 +132,7 @@ class LoginFile: UIViewController, UITextFieldDelegate {
         dog.layer.cornerRadius = 110
         
 
-        self.loginButton.delegate = self
+        //self.loginButton.delegate = self
 
     
         super.viewDidLoad()
@@ -336,29 +331,7 @@ class LoginFile: UIViewController, UITextFieldDelegate {
     
    
 
-    
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!,  error: NSError!) {
-        print("User Logged In")
-        if ((error) != nil)
-        {
-            // Process error
-        }
-        else if result.isCancelled {
-            // Handle cancellations
-        }
-        else {
-            // If you ask for multiple permissions at once, you
-            // should check if specific permissions missing
-            if result.grantedPermissions.contains("email")
-            {
-                // Do work
-            }
-        }
-    }
-    
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        print("User Logged Out")
-    }
+  
    // alerts///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // alert
     // ("Valid mail and password requiered. Please correct accordingly.")
