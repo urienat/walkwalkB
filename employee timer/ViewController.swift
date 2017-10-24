@@ -1099,7 +1099,7 @@ print ("started view did load")
         startBarButtonFadeIn()
         
         self.petFile.isEnabled = true; 
-        print("qzjq")
+        print("qzhhjq")
         //self.dogFileLbl.isHidden = false
        // self.fileLbl.isHidden = false
         self.chooseEmployer.isUserInteractionEnabled = true
