@@ -3,28 +3,20 @@
 <plist version="1.0">
 <dict>
     
-    <key>CFBundleURLTypes</key>
-<array>
-    <dict>
-        <key>CFBundleURLSchemes</key>
-        <array>
-            <string>fb280821099095469</string>
-        </array>
-    </dict>
-</array>
-<key>280821099095469</key>
-<string>280821099095469</string>
-<key>WalkWalk</key>
-<string>WalkWalk</string>
-<key>LSApplicationQueriesSchemes</key>
-<array>
-    <string>fbapi</string>
-    <string>fb-messenger-api</string>
-    <string>fbauth2</string>
-    <string>fbshareextension</string>
-</array>
-<key>NSPhotoLibraryUsageDescription</key>
-<string>{human-readable reason for photo access}</string>
+ 
+ <key>CFBundleURLTypes</key>
+ <array>
+     <dict>
+         <key>CFBundleURLSchemes</key>
+         <array>
+             <string>fb280821099095469</string>
+         </array>
+     </dict>
+ </array>
+ <key>FacebookAppID</key>
+ <string>280821099095469</string>
+ <key>FacebookDisplayName</key>
+ <string>WalkWalk</string>
     
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en_US</string>
