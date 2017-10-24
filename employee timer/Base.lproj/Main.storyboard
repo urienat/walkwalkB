@@ -2437,7 +2437,6 @@
                 <navigationController storyboardIdentifier="homeScreen" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="currentContext" id="H8h-Dv-TZT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3T4-MP-mlr">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2466,7 +2465,6 @@
         <image name="walkerProfile" width="55" height="55"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="djG-dA-RhY"/>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="RQi-YY-5wb"/>
         <segue reference="x0P-Ew-8Ag"/>
