@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11224.2" systemVersion="15G31" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="EmployeeMaster" syncable="YES">
+        <attribute name="cell" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toEmployer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Employer" inverseName="toEmployeeMaster" inverseEntity="Employer" syncable="YES"/>
+        <relationship name="toPayCycle" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PayCycle" inverseName="toEmplyeeMaster" inverseEntity="PayCycle" syncable="YES"/>
+        <relationship name="toRecords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Record" syncable="YES"/>
+    </entity>
+    <entity name="Employer" syncable="YES">
+        <attribute name="gps1" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="gps2" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toEmployeeMaster" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EmployeeMaster" inverseName="toEmployer" inverseEntity="EmployeeMaster" syncable="YES"/>
+        <relationship name="toPayCycle" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PayCycle" inverseName="toEmployer" inverseEntity="PayCycle" syncable="YES"/>
+        <relationship name="toRecords" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Record" inverseName="toEmPloyer" inverseEntity="Record" syncable="YES"/>
+    </entity>
+    <entity name="PayCycle" syncable="YES">
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="toEmployer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Employer" inverseName="toPayCycle" inverseEntity="Employer" syncable="YES"/>
+        <relationship name="toEmplyeeMaster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmployeeMaster" inverseName="toPayCycle" inverseEntity="EmployeeMaster" syncable="YES"/>
+        <relationship name="toRecords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Record" inverseName="toPayCycle" inverseEntity="Record" syncable="YES"/>
+    </entity>
+    <entity name="Record" syncable="YES">
+        <attribute name="confirmed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="timeIN" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timeOut" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="toEmPloyer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Employer" inverseName="toRecords" inverseEntity="Employer" syncable="YES"/>
+        <relationship name="toPayCycle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PayCycle" inverseName="toRecords" inverseEntity="PayCycle" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Employer" positionX="-270" positionY="-48" width="128" height="133"/>
+        <element name="PayCycle" positionX="918" positionY="81" width="128" height="103"/>
+        <element name="Record" positionX="655" positionY="-432" width="128" height="133"/>
+        <element name="EmployeeMaster" positionX="261" positionY="-675" width="128" height="118"/>
+    </elements>
+</model>

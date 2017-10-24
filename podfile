@@ -1,0 +1,50 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'employee timer' do
+  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for employee timer
+
+   pod 'Firebase'
+   pod 'Firebase/Database'
+   pod 'Firebase/Auth'
+  pod 'Firebase/Messaging'
+pod 'Firebase/Crash'
+
+   pod 'Firebase/Storage'
+pod 'Protobuf'
+
+# Uncomment this line to define a global platform for your project
+# platform :ios, '9.0'
+
+# target 'employee timer' do
+  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for SwiftySubscriptions
+  pod 'SwiftyStoreKit', :git => 'https://github.com/bizz84/SwiftyStoreKit.git', :tag => '0.5.1'
+  pod 'KeychainAccess', :git => 'https://github.com/kishikawakatsumi/KeychainAccess.git', :tag => 'v3.0.0'
+  
+  post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['SWIFT_VERSION'] = '3.0'
+      end
+    end
+  end
+
+end
+
+
+
+
+
+
+
+
+
+
+
+#end

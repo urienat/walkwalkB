@@ -1,0 +1,663 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		16B84D498A805FB432B20225 /* Pods_employee_timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51721653C0D897F3BFD9BAB0 /* Pods_employee_timer.framework */; };
+		AE0213491DCF8130006F927F /* setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0213481DCF8130006F927F /* setting.swift */; };
+		AE0B0A7F1E62D461000E539C /* billView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0B0A7E1E62D461000E539C /* billView.swift */; };
+		AE1B3DB11DF824E100BB507F /* employerCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1B3DB01DF824E100BB507F /* employerCellTableViewCell.swift */; };
+		AE2185D51E2CA2F80017B958 /* dogBark.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE2185D41E2CA2F80017B958 /* dogBark.wav */; };
+		AE26E0981E59FA400044C76B /* billerTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE26E0971E59FA400044C76B /* billerTable.swift */; };
+		AE26E09A1E5A02180044C76B /* billerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE26E0991E5A02180044C76B /* billerCell.swift */; };
+		AE2928BE1D943D1D00EB493B /* recordsStructre.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2928BD1D943D1D00EB493B /* recordsStructre.swift */; };
+		AE29BE9D1D972A910066214D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE29BE9C1D972A910066214D /* UIKit.framework */; };
+		AE29BEA01D973CBB0066214D /* UIControl.h in Headers */ = {isa = PBXBuildFile; fileRef = AE29BE9F1D973CBB0066214D /* UIControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AE4159D71DD339F1008C5DE6 /* dogFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4159D61DD339F1008C5DE6 /* dogFile.swift */; };
+		AE4B0FEC1E82B82F00188B79 /* subs.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B0FEB1E82B82F00188B79 /* subs.swift */; };
+		AE4CDC0D1D96430400FE2BB5 /* fetchRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4CDC0C1D96430400FE2BB5 /* fetchRecords.swift */; };
+		AE504B651DC4F5C3008C91A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE504B641DC4F5C3008C91A8 /* GoogleService-Info.plist */; };
+		AE7F91851DF53E11000BC8C7 /* tableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F91841DF53E11000BC8C7 /* tableExt.swift */; };
+		AE84DE8D1E7E638700F08945 /* CHANGE LOG.rtf in Resources */ = {isa = PBXBuildFile; fileRef = AE84DE8A1E7E638700F08945 /* CHANGE LOG.rtf */; };
+		AE84DE8E1E7E638700F08945 /* RebeloperStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE84DE8B1E7E638700F08945 /* RebeloperStore.swift */; };
+		AE84DE8F1E7E638700F08945 /* RebeloperStoreSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE84DE8C1E7E638700F08945 /* RebeloperStoreSetup.swift */; };
+		AE854B671E3A388B00C68CFB /* internetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE854B661E3A388A00C68CFB /* internetConnection.swift */; };
+		AE99D97C1D8FDDF800061B95 /* GoogleService-Infoold.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE99D97B1D8FDDF800061B95 /* GoogleService-Infoold.plist */; };
+		AEB16BA71DA03986004A6037 /* newVCTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB16BA61DA03986004A6037 /* newVCTable.swift */; };
+		AEC3A7731D7DE20E005E3F1F /* datePicker2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC3A7721D7DE20E005E3F1F /* datePicker2.swift */; };
+		AEC3A7751D7DE22B005E3F1F /* datePicker2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEC3A7741D7DE22B005E3F1F /* datePicker2.storyboard */; };
+		AEC752A11E7ECDB300297B84 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEC752A01E7ECDB300297B84 /* StoreKit.framework */; };
+		AECEC1C81D8A8E0B007C1D14 /* newRecordsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECEC1C71D8A8E0B007C1D14 /* newRecordsTable.swift */; };
+		AECEC1CA1D8A8E8E007C1D14 /* newTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECEC1C91D8A8E8E007C1D14 /* newTableCell.swift */; };
+		AECF31DD1E1246B80072547C /* MaxLengthField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECF31DC1E1246B80072547C /* MaxLengthField.swift */; };
+		AECF31DF1E1248660072547C /* AllowedCharsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECF31DE1E1248660072547C /* AllowedCharsTextField.swift */; };
+		AED6564B1E0140A4001691D1 /* cacheImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED6564A1E0140A4001691D1 /* cacheImages.swift */; };
+		AEDF47AD1DC22EA0005DB21A /* LoginFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDF47AC1DC22EA0005DB21A /* LoginFile.swift */; };
+		AEE95E461D7B092A00093B51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE95E451D7B092A00093B51 /* AppDelegate.swift */; };
+		AEE95E481D7B092A00093B51 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE95E471D7B092A00093B51 /* ViewController.swift */; };
+		AEE95E4B1D7B092A00093B51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE95E491D7B092A00093B51 /* Main.storyboard */; };
+		AEE95E4D1D7B092A00093B51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEE95E4C1D7B092A00093B51 /* Assets.xcassets */; };
+		AEE95E501D7B092A00093B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE95E4E1D7B092A00093B51 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AE1259B41D8C2E4100AAF470 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		51721653C0D897F3BFD9BAB0 /* Pods_employee_timer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_employee_timer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE0213481DCF8130006F927F /* setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setting.swift; sourceTree = "<group>"; };
+		AE0B0A7E1E62D461000E539C /* billView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = billView.swift; sourceTree = "<group>"; };
+		AE1B3DB01DF824E100BB507F /* employerCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = employerCellTableViewCell.swift; sourceTree = "<group>"; };
+		AE2185D41E2CA2F80017B958 /* dogBark.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dogBark.wav; sourceTree = "<group>"; };
+		AE26E0971E59FA400044C76B /* billerTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = billerTable.swift; sourceTree = "<group>"; };
+		AE26E0991E5A02180044C76B /* billerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = billerCell.swift; sourceTree = "<group>"; };
+		AE2928BC1D943C0B00EB493B /* employee timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "employee timer.entitlements"; sourceTree = "<group>"; };
+		AE2928BD1D943D1D00EB493B /* recordsStructre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = recordsStructre.swift; path = ../recordsStructre.swift; sourceTree = "<group>"; };
+		AE29BE9C1D972A910066214D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AE29BE9F1D973CBB0066214D /* UIControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIControl.h; sourceTree = "<group>"; };
+		AE4159D61DD339F1008C5DE6 /* dogFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dogFile.swift; sourceTree = "<group>"; };
+		AE4B0FEB1E82B82F00188B79 /* subs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = subs.swift; sourceTree = "<group>"; };
+		AE4CDC0C1D96430400FE2BB5 /* fetchRecords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fetchRecords.swift; sourceTree = "<group>"; };
+		AE504B641DC4F5C3008C91A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AE7F91841DF53E11000BC8C7 /* tableExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableExt.swift; sourceTree = "<group>"; };
+		AE84DE8A1E7E638700F08945 /* CHANGE LOG.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "CHANGE LOG.rtf"; sourceTree = "<group>"; };
+		AE84DE8B1E7E638700F08945 /* RebeloperStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RebeloperStore.swift; sourceTree = "<group>"; };
+		AE84DE8C1E7E638700F08945 /* RebeloperStoreSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RebeloperStoreSetup.swift; sourceTree = "<group>"; };
+		AE854B661E3A388A00C68CFB /* internetConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = internetConnection.swift; sourceTree = "<group>"; };
+		AE99D97B1D8FDDF800061B95 /* GoogleService-Infoold.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Infoold.plist"; sourceTree = "<group>"; };
+		AEB16BA61DA03986004A6037 /* newVCTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newVCTable.swift; sourceTree = "<group>"; };
+		AEC3A7721D7DE20E005E3F1F /* datePicker2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = datePicker2.swift; sourceTree = "<group>"; };
+		AEC3A7741D7DE22B005E3F1F /* datePicker2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = datePicker2.storyboard; sourceTree = "<group>"; };
+		AEC752A01E7ECDB300297B84 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		AECEC1C71D8A8E0B007C1D14 /* newRecordsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = newRecordsTable.swift; path = ../newRecordsTable.swift; sourceTree = "<group>"; };
+		AECEC1C91D8A8E8E007C1D14 /* newTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newTableCell.swift; sourceTree = "<group>"; };
+		AECF31DC1E1246B80072547C /* MaxLengthField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaxLengthField.swift; sourceTree = "<group>"; };
+		AECF31DE1E1248660072547C /* AllowedCharsTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllowedCharsTextField.swift; sourceTree = "<group>"; };
+		AED6564A1E0140A4001691D1 /* cacheImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cacheImages.swift; sourceTree = "<group>"; };
+		AEDF47AC1DC22EA0005DB21A /* LoginFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFile.swift; sourceTree = "<group>"; };
+		AEE95E421D7B092A00093B51 /* employee timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "employee timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEE95E451D7B092A00093B51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AEE95E471D7B092A00093B51 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AEE95E4A1D7B092A00093B51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AEE95E4C1D7B092A00093B51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AEE95E4F1D7B092A00093B51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AEE95E511D7B092A00093B51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C85FED60A567714D97C14E2F /* Pods-employee timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-employee timer.release.xcconfig"; path = "Pods/Target Support Files/Pods-employee timer/Pods-employee timer.release.xcconfig"; sourceTree = "<group>"; };
+		CA959FB061F7DAB537A0F036 /* Pods-employee timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-employee timer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-employee timer/Pods-employee timer.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AEE95E3F1D7B092A00093B51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEC752A11E7ECDB300297B84 /* StoreKit.framework in Frameworks */,
+				AE29BE9D1D972A910066214D /* UIKit.framework in Frameworks */,
+				16B84D498A805FB432B20225 /* Pods_employee_timer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6D4BA4C9119C004ED1F3B7F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AEC752A01E7ECDB300297B84 /* StoreKit.framework */,
+				AE29BE9C1D972A910066214D /* UIKit.framework */,
+				51721653C0D897F3BFD9BAB0 /* Pods_employee_timer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		777F6928BA199F80D8F8319E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CA959FB061F7DAB537A0F036 /* Pods-employee timer.debug.xcconfig */,
+				C85FED60A567714D97C14E2F /* Pods-employee timer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AE29E6221E59BFDC00797267 /* bill */ = {
+			isa = PBXGroup;
+			children = (
+				AE26E0991E5A02180044C76B /* billerCell.swift */,
+				AE26E0971E59FA400044C76B /* billerTable.swift */,
+				AE0B0A7E1E62D461000E539C /* billView.swift */,
+			);
+			name = bill;
+			sourceTree = "<group>";
+		};
+		AE5548DC1DA51281009D7085 /* history */ = {
+			isa = PBXGroup;
+			children = (
+				AECEC1C71D8A8E0B007C1D14 /* newRecordsTable.swift */,
+				AE4CDC0C1D96430400FE2BB5 /* fetchRecords.swift */,
+			);
+			name = history;
+			sourceTree = "<group>";
+		};
+		AE577AD31DF9417E00EBE62B /* The Root Program */ = {
+			isa = PBXGroup;
+			children = (
+				AE7F91841DF53E11000BC8C7 /* tableExt.swift */,
+				AE1B3DB01DF824E100BB507F /* employerCellTableViewCell.swift */,
+				AEE95E471D7B092A00093B51 /* ViewController.swift */,
+			);
+			name = "The Root Program";
+			sourceTree = "<group>";
+		};
+		AE577AD41DF941C800EBE62B /* Side programs */ = {
+			isa = PBXGroup;
+			children = (
+				AE0213481DCF8130006F927F /* setting.swift */,
+				AEDF47AC1DC22EA0005DB21A /* LoginFile.swift */,
+				AE4159D61DD339F1008C5DE6 /* dogFile.swift */,
+				AE4B0FEB1E82B82F00188B79 /* subs.swift */,
+			);
+			name = "Side programs";
+			sourceTree = "<group>";
+		};
+		AE6AA8531DEFFB9000E424FF /* recordsTable */ = {
+			isa = PBXGroup;
+			children = (
+				AEB16BA61DA03986004A6037 /* newVCTable.swift */,
+				AECEC1C91D8A8E8E007C1D14 /* newTableCell.swift */,
+			);
+			name = recordsTable;
+			sourceTree = "<group>";
+		};
+		AE84DE891E7E638700F08945 /* RebeloperStore */ = {
+			isa = PBXGroup;
+			children = (
+				AE84DE8A1E7E638700F08945 /* CHANGE LOG.rtf */,
+				AE84DE8B1E7E638700F08945 /* RebeloperStore.swift */,
+				AE84DE8C1E7E638700F08945 /* RebeloperStoreSetup.swift */,
+			);
+			path = RebeloperStore;
+			sourceTree = "<group>";
+		};
+		AEC3A7711D7DE1C7005E3F1F /* datePicker */ = {
+			isa = PBXGroup;
+			children = (
+				AEC3A7721D7DE20E005E3F1F /* datePicker2.swift */,
+				AEC3A7741D7DE22B005E3F1F /* datePicker2.storyboard */,
+			);
+			name = datePicker;
+			sourceTree = "<group>";
+		};
+		AECF31E01E12496C0072547C /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AE854B661E3A388A00C68CFB /* internetConnection.swift */,
+				AE2185D41E2CA2F80017B958 /* dogBark.wav */,
+				AECF31DE1E1248660072547C /* AllowedCharsTextField.swift */,
+				AECF31DC1E1246B80072547C /* MaxLengthField.swift */,
+				AED6564A1E0140A4001691D1 /* cacheImages.swift */,
+			);
+			name = helpers;
+			sourceTree = "<group>";
+		};
+		AEE95E391D7B092A00093B51 = {
+			isa = PBXGroup;
+			children = (
+				AE29BE9F1D973CBB0066214D /* UIControl.h */,
+				AEE95E441D7B092A00093B51 /* employee timer */,
+				AEE95E431D7B092A00093B51 /* Products */,
+				6D4BA4C9119C004ED1F3B7F1 /* Frameworks */,
+				777F6928BA199F80D8F8319E /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		AEE95E431D7B092A00093B51 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AEE95E421D7B092A00093B51 /* employee timer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AEE95E441D7B092A00093B51 /* employee timer */ = {
+			isa = PBXGroup;
+			children = (
+				AE2928BD1D943D1D00EB493B /* recordsStructre.swift */,
+				AE2928BC1D943C0B00EB493B /* employee timer.entitlements */,
+				AE99D97B1D8FDDF800061B95 /* GoogleService-Infoold.plist */,
+				AE504B641DC4F5C3008C91A8 /* GoogleService-Info.plist */,
+				AEE95E451D7B092A00093B51 /* AppDelegate.swift */,
+				AE84DE891E7E638700F08945 /* RebeloperStore */,
+				AEC3A7711D7DE1C7005E3F1F /* datePicker */,
+				AE5548DC1DA51281009D7085 /* history */,
+				AEE95E491D7B092A00093B51 /* Main.storyboard */,
+				AECF31E01E12496C0072547C /* helpers */,
+				AE577AD31DF9417E00EBE62B /* The Root Program */,
+				AE29E6221E59BFDC00797267 /* bill */,
+				AE6AA8531DEFFB9000E424FF /* recordsTable */,
+				AE577AD41DF941C800EBE62B /* Side programs */,
+				AEE95E4C1D7B092A00093B51 /* Assets.xcassets */,
+				AEE95E4E1D7B092A00093B51 /* LaunchScreen.storyboard */,
+				AEE95E511D7B092A00093B51 /* Info.plist */,
+			);
+			path = "employee timer";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		AE29BE9E1D972B870066214D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE29BEA01D973CBB0066214D /* UIControl.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		AEE95E411D7B092A00093B51 /* employee timer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEE95E541D7B092A00093B51 /* Build configuration list for PBXNativeTarget "employee timer" */;
+			buildPhases = (
+				DCF47AF918A71A5ED53CDE22 /* [CP] Check Pods Manifest.lock */,
+				AEE95E3E1D7B092A00093B51 /* Sources */,
+				AEE95E3F1D7B092A00093B51 /* Frameworks */,
+				AEE95E401D7B092A00093B51 /* Resources */,
+				AE1259B41D8C2E4100AAF470 /* Embed Frameworks */,
+				AE1259B51D8C2E4F00AAF470 /* Run Script */,
+				440DDD19FF12039B5EA2739A /* [CP] Embed Pods Frameworks */,
+				57B37AFD86DF6AD0EA9CB931 /* [CP] Copy Pods Resources */,
+				AE29BE9E1D972B870066214D /* Headers */,
+				AECF31E11E12A22A0072547C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "employee timer";
+			productName = "employee timer";
+			productReference = AEE95E421D7B092A00093B51 /* employee timer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AEE95E3A1D7B092A00093B51 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "אורי עינת";
+				TargetAttributes = {
+					AEE95E411D7B092A00093B51 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = WMAL4VEAR5;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = AEE95E3D1D7B092A00093B51 /* Build configuration list for PBXProject "employee timer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AEE95E391D7B092A00093B51;
+			productRefGroup = AEE95E431D7B092A00093B51 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AEE95E411D7B092A00093B51 /* employee timer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AEE95E401D7B092A00093B51 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE84DE8D1E7E638700F08945 /* CHANGE LOG.rtf in Resources */,
+				AEE95E501D7B092A00093B51 /* LaunchScreen.storyboard in Resources */,
+				AEE95E4D1D7B092A00093B51 /* Assets.xcassets in Resources */,
+				AE504B651DC4F5C3008C91A8 /* GoogleService-Info.plist in Resources */,
+				AE99D97C1D8FDDF800061B95 /* GoogleService-Infoold.plist in Resources */,
+				AEE95E4B1D7B092A00093B51 /* Main.storyboard in Resources */,
+				AE2185D51E2CA2F80017B958 /* dogBark.wav in Resources */,
+				AEC3A7751D7DE22B005E3F1F /* datePicker2.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		440DDD19FF12039B5EA2739A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-employee timer/Pods-employee timer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		57B37AFD86DF6AD0EA9CB931 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-employee timer/Pods-employee timer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE1259B51D8C2E4F00AAF470 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+		AECF31E11E12A22A0072547C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "GOOGLE_APP_ID=1:521645407261:ios:ee64943a4a0dd9b5\n//\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"/Users/wryynt/Desktop/employee timer/ServiceAccount.json\"\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"/Users/wryynt/Desktop/employee timer/ServiceAccount.json\"\n//\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"/Users/urienat/Downloads/ServiceAccount.json\"\n";
+		};
+		DCF47AF918A71A5ED53CDE22 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AEE95E3E1D7B092A00093B51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE854B671E3A388B00C68CFB /* internetConnection.swift in Sources */,
+				AE1B3DB11DF824E100BB507F /* employerCellTableViewCell.swift in Sources */,
+				AE84DE8F1E7E638700F08945 /* RebeloperStoreSetup.swift in Sources */,
+				AE26E0981E59FA400044C76B /* billerTable.swift in Sources */,
+				AE7F91851DF53E11000BC8C7 /* tableExt.swift in Sources */,
+				AEE95E481D7B092A00093B51 /* ViewController.swift in Sources */,
+				AE4CDC0D1D96430400FE2BB5 /* fetchRecords.swift in Sources */,
+				AE4B0FEC1E82B82F00188B79 /* subs.swift in Sources */,
+				AECF31DD1E1246B80072547C /* MaxLengthField.swift in Sources */,
+				AEE95E461D7B092A00093B51 /* AppDelegate.swift in Sources */,
+				AECEC1C81D8A8E0B007C1D14 /* newRecordsTable.swift in Sources */,
+				AEC3A7731D7DE20E005E3F1F /* datePicker2.swift in Sources */,
+				AECF31DF1E1248660072547C /* AllowedCharsTextField.swift in Sources */,
+				AE2928BE1D943D1D00EB493B /* recordsStructre.swift in Sources */,
+				AE26E09A1E5A02180044C76B /* billerCell.swift in Sources */,
+				AE0213491DCF8130006F927F /* setting.swift in Sources */,
+				AEDF47AD1DC22EA0005DB21A /* LoginFile.swift in Sources */,
+				AE84DE8E1E7E638700F08945 /* RebeloperStore.swift in Sources */,
+				AE0B0A7F1E62D461000E539C /* billView.swift in Sources */,
+				AE4159D71DD339F1008C5DE6 /* dogFile.swift in Sources */,
+				AED6564B1E0140A4001691D1 /* cacheImages.swift in Sources */,
+				AEB16BA71DA03986004A6037 /* newVCTable.swift in Sources */,
+				AECEC1CA1D8A8E8E007C1D14 /* newTableCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AEE95E491D7B092A00093B51 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AEE95E4A1D7B092A00093B51 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AEE95E4E1D7B092A00093B51 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AEE95E4F1D7B092A00093B51 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AEE95E521D7B092A00093B51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AEE95E531D7B092A00093B51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AEE95E551D7B092A00093B51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA959FB061F7DAB537A0F036 /* Pods-employee timer.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				DEVELOPMENT_TEAM = WMAL4VEAR5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "employee timer/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "HomePloyer.employee-timer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AEE95E561D7B092A00093B51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C85FED60A567714D97C14E2F /* Pods-employee timer.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				DEVELOPMENT_TEAM = WMAL4VEAR5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "employee timer/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "HomePloyer.employee-timer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AEE95E3D1D7B092A00093B51 /* Build configuration list for PBXProject "employee timer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEE95E521D7B092A00093B51 /* Debug */,
+				AEE95E531D7B092A00093B51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AEE95E541D7B092A00093B51 /* Build configuration list for PBXNativeTarget "employee timer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEE95E551D7B092A00093B51 /* Debug */,
+				AEE95E561D7B092A00093B51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AEE95E3A1D7B092A00093B51 /* Project object */;
+}
