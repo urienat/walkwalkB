@@ -34,7 +34,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             
         }
         else { print ("facebook login succesfuly")
-            FBSDKGraphRequest(graphPath: "/me", parameters: ["fields" : "id,name, email"]).start{
+            FBSDKGraphRequest(graphPath: "/me", parameters: ["fields" : "id, name, email, last_name, first_name"]).start{
             (connection,result,err) in
                 print ("123")
                 if error != nil {
@@ -155,7 +155,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         view.addSubview(loginButton)
         loginButton.frame = CGRect(x: 16, y: 50, width: view.frame.width-32, height: 50)
         loginButton.delegate = self
-        loginButton.readPermissions = ["email"]
+        loginButton.readPermissions = ["email","public_profile"]
 
     
         super.viewDidLoad()
