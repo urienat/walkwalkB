@@ -259,8 +259,18 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         //delgate to hide keyboard
         self.email.delegate = self
         self.password.delegate = self
+print ( FBSDKAccessToken.current())
+        if LoginFile.logoutchosen == true{let loginManager = FBSDKLoginManager()
+            loginManager.logOut() 
+ //logout from face book
+            
+        }
 
-
+        
+        if FBSDKAccessToken.current() != nil { self.performSegue(withIdentifier: "signIn", sender: Any?.self)
+}
+        
+        
 
     } ///end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////////////
    

@@ -113,6 +113,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBAction func logout(_ sender: Any) {
         LoginFile.logoutchosen = true
         try! FIRAuth.auth()?.signOut()
+        
         self.present((storyboard?.instantiateViewController(withIdentifier: "loginScreen"))!, animated: true, completion: nil)
     }
     
