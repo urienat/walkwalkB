@@ -15,7 +15,7 @@ import FBSDKLoginKit
 
 
 
-class LoginFile: UIViewController, UITextFieldDelegate {
+class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate {
 
     let dbRef = FIRDatabase.database().reference()
     let dbRefUser = FIRDatabase.database().reference().child("fEmployees")
@@ -23,9 +23,19 @@ class LoginFile: UIViewController, UITextFieldDelegate {
     let mydateFormat = DateFormatter()
     let mydateFormat5 = DateFormatter()
 
-  //  let loginButton =  FBSDKLoginButton()
-
-
+   let loginButton =  FBSDKLoginButton()
+   
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print ("logout from face book")
+    }
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if error != nil { print ("facebook login error:\(error)")
+        return
+            
+        }
+        else { print ("facebook login succesfuly")}
+    }
+    
     var textForError:String?
 
     let Vimage = UIImage(named: "V")
@@ -132,8 +142,9 @@ class LoginFile: UIViewController, UITextFieldDelegate {
         dog.clipsToBounds = true
         dog.layer.cornerRadius = 110
         
-
-        //self.loginButton.delegate = self
+        view.addSubview(loginButton)
+        loginButton.frame = CGRect(x: 16, y: 50, width: view.frame.width-32, height: 50)
+        loginButton.delegate = self
 
     
         super.viewDidLoad()

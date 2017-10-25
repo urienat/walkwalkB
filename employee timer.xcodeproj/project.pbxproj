@@ -313,7 +313,7 @@
 								enabled = 1;
 							};
 							com.apple.Keychain = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Push = {
 								enabled = 0;
@@ -626,6 +626,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				CODE_SIGN_ENTITLEMENTS = "employee timer/employee timer.entitlements";
 				DEVELOPMENT_TEAM = WMAL4VEAR5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)",
@@ -646,6 +647,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				CODE_SIGN_ENTITLEMENTS = "employee timer/employee timer.entitlements";
 				DEVELOPMENT_TEAM = WMAL4VEAR5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)",
