@@ -45,8 +45,9 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
                 print (result)
                 let accessToken = FBSDKAccessToken.current()
                 guard let accessTokenString = accessToken?.tokenString else {return}
-                let credentials = FIRAuth.auth()?.signIn(with: credentials, completion: { (user, error) in
-                    if error != nil {print(" error with Fb FB connection", error) return} print ("suucesfully loggoed in with facebook", user)
+                let credentials = FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+                    if error != nil {print(" error with Fb FB connection", error); return}
+                    print ("suucesfully loggoed in with facebook", user)
                 })
 
             }
