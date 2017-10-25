@@ -33,7 +33,17 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         return
             
         }
-        else { print ("facebook login succesfuly")}
+        else { print ("facebook login succesfuly")
+            FBSDKGraphRequest(graphPath: "/me", parameters: ["fields" : "id,name, email"]).start{
+            (connection,result,err) in
+                print ("123")
+                if error != nil {
+                    print ("facebook error in request",err)
+                    return
+                }
+                print (result)
+            }
+            }
     }
     
     var textForError:String?
@@ -145,6 +155,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         view.addSubview(loginButton)
         loginButton.frame = CGRect(x: 16, y: 50, width: view.frame.width-32, height: 50)
         loginButton.delegate = self
+        loginButton.readPermissions = ["email"]
 
     
         super.viewDidLoad()
