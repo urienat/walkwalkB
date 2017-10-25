@@ -11,6 +11,7 @@ target 'employee timer' do
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'FacebookCore'
+  pod 'FBSDKShareKit'
 
 
   # Pods for employee timer
