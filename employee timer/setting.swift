@@ -26,6 +26,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     var wrongField: String?
     var profileImageUrl:String?
     
+    
     var created: String?
     let mydateFormat = DateFormatter()
     let mydateFormat5 = DateFormatter()

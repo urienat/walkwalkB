@@ -12,6 +12,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import FBSDKLoginKit
+import FacebookCore
 
 
 
@@ -19,13 +20,21 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
 
     let dbRef = FIRDatabase.database().reference()
     let dbRefUser = FIRDatabase.database().reference().child("fEmployees")
-    
+    let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
+
     let mydateFormat = DateFormatter()
     let mydateFormat5 = DateFormatter()
 
    let loginButton =  FBSDKLoginButton()
-
+    var employeeRefUpdate:String?
     
+    var fbNname: String?
+    var fbLastName: String?
+    var fbEmail: String?
+    
+    var pickedImage:UIImage?
+    let picture = UIImage(named: "dogwalkerimage")
+
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print ("logout from face book")
     }
@@ -35,6 +44,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             
         }
         else { print ("facebook login succesfuly")
+            
             FBSDKGraphRequest(graphPath: "/me", parameters: ["fields" : "id, name, email, last_name, first_name"]).start{
             (connection,result,err) in
                 print ("123")
@@ -43,17 +53,32 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
                     return
                 }
                 print (result)
+                
+                if let result = result as? [String:Any]{
+                    self.fbEmail = result["email"] as! String
+                    self.fbNname = result["first_name"] as! String
+                    self.fbLastName = result["last_name"] as! String
+                }
+              
+                //}
                 let accessToken = FBSDKAccessToken.current()
                 guard let accessTokenString = accessToken?.tokenString else {return}
                 let credentials = FIRFacebookAuthProvider.credential(withAccessToken: accessTokenString)
                      FIRAuth.auth()?.signIn(with: credentials , completion: { (user, error) in
                     if error != nil {print(" error with Fb FB connection", error); return}
-                    print ("suucesfully loggoed in with facebook", user)
+                    print ("suucesfully loggoed in with facebook", user!)
+                        print (user?.uid)
+                        self.employeeRefUpdate = user?.uid
+                    
+                        self.accounCreation()
+                        self.performSegue(withIdentifier: "signIn", sender: Any?.self)
+
                 })
 
-            }
-            }
-    }
+            }//end fbsdkrequest
+            
+            }//end of else
+    }//end of func login button
     
     var textForError:String?
 
@@ -265,7 +290,6 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         else if  (segue.identifier == "signIn") {third.newRegister = "NO"}
         else {//do nothing}
         }
-        print("reg\(third.newRegister)")
         }
     
     //image background rotation
@@ -361,7 +385,43 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         //}//end of else
     }//end of func
     
-   
+    func accounCreation() {
+        if let user = FIRAuth.auth()?.currentUser {
+            self.employeeRefUpdate =  user.uid}
+        
+        print (employeeRefUpdate)
+        
+                
+        self.dbRefEmployees.child((employeeRefUpdate)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : fbNname, "fLastName": fbLastName, "femail" : fbEmail, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage":"0" ,"fTaxName":"",  "fSwitcher": "No"])
+                
+                
+        self.dbRefEmployees.child(employeeRefUpdate!).child("programHistory").setValue([ self.mydateFormat5.string(from: Date()):"0"])
+        self.dbRefEmployees.child(employeeRefUpdate!).child("myEmployers").setValue(["New Dog":0])//add employer to my employers of employee
+                
+                //storage of pictures
+                //in cache under employeeID
+                MyImageCache.sharedCache.setObject(self.pickedImage as AnyObject, forKey: self.employeeRefUpdate as AnyObject)
+                
+                
+                //in firebase under url
+        let dbStorageRef = FIRStorage.storage().reference().child("employeeImages").child(self.employeeRefUpdate!)
+        if let uploadTask = UIImageJPEGRepresentation(self.picture!, CGFloat(0.1)){
+                    dbStorageRef.put(uploadTask, metadata: nil, completion: { (metadata, error) in
+                        if error != nil {
+                            print (error as Any)
+                            return
+                        }
+                        self.dbRefEmployees.child(self.employeeRefUpdate!).updateChildValues(["fImageRef":(metadata?.downloadURL()?.absoluteString)! as Any ])
+                    }) //end of dbref
+                }//end of uploadtask
+        
+            }//end of else
+      //  }) // end of auth
+    
+
+       
+        
+  //  }//end of account creation
 
   
    // alerts///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
