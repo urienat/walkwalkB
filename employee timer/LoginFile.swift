@@ -69,8 +69,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
                     print ("suucesfully loggoed in with facebook", user!)
                         print (user?.uid)
                         self.employeeRefUpdate = user?.uid
-                    
-                        self.accounCreation()
+                        if new {self.accounCreation()}
                         self.performSegue(withIdentifier: "signIn", sender: Any?.self)
 
                 })
@@ -261,7 +260,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         self.password.delegate = self
 print ( FBSDKAccessToken.current())
         if LoginFile.logoutchosen == true{let loginManager = FBSDKLoginManager()
-            loginManager.logOut() 
+            loginManager.logOut()
  //logout from face book
             
         }
