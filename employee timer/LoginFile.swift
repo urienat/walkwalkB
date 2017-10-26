@@ -69,12 +69,15 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
                     print ("suucesfully loggoed in with facebook", user!)
                         print (user?.uid)
                         self.employeeRefUpdate = user?.uid
-                        if new {self.accounCreation()}
+                     //   if new {self.accounCreation()}
                         self.performSegue(withIdentifier: "signIn", sender: Any?.self)
 
                 })
 
             }//end fbsdkrequest
+            
+            //  if new {self.accounCreation()}
+
             
             }//end of else
     }//end of func login button
