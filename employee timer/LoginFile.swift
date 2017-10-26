@@ -290,7 +290,7 @@ print ( FBSDKAccessToken.current())
         }
 
         
-        if FBSDKAccessToken.current() != nil { self.performSegue(withIdentifier: "signIn", sender: Any?.self)
+      if FBSDKAccessToken.current() != nil { self.performSegue(withIdentifier: "signIn", sender: Any?.self)
 }
         
         
