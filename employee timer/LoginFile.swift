@@ -69,15 +69,35 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
                     print ("suucesfully loggoed in with facebook", user!)
                         print (user?.uid)
                         self.employeeRefUpdate = user?.uid
-                   
+                        print ("employeerefupdateafter facebook connected:\(self.employeeRefUpdate)")
+
+                        print ("employeerefupdate:\(String(describing: self.employeeRefUpdate))")
+                        print ("employeerefupdate:\(self.employeeRefUpdate!)")
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() ) {
+
+                        self.dbRefEmployees.child(self.employeeRefUpdate!).observeSingleEvent(of: .value, with: { (snapshot) in
+                            if snapshot.hasChild("fCounter"){
+                                print("exist")
+                                self.performSegue(withIdentifier: "signIn", sender: Any?.self)
+                            }else{
+                                print("fdoesn't exist")
+                                
+                                self.accounCreation()
+                                
+                                self.performSegue(withIdentifier: "signIn", sender: Any?.self)
+                            }
+                        })
+                        }//end of dispatch
+
+                        
+                        
 
                 })
 
             }//end fbsdkrequest
             
-            //  if new {self.accounCreation()}
-
-            self.performSegue(withIdentifier: "signIn", sender: Any?.self)
+       
 
             }//end of else
 
