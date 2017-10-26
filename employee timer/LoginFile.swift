@@ -39,6 +39,9 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         print ("logout from face book")
     }
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        thinking.startAnimating()
+
+        
         if error != nil { print ("facebook login error:\(error)")
         return
             
@@ -83,12 +86,15 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
                         self.dbRefEmployees.child(self.employeeRefUpdate!).observeSingleEvent(of: .value, with: { (snapshot) in
                             if snapshot.hasChild("fCounter"){
                                 print("exist")
+                                self.thinking.stopAnimating()
+
                                 self.performSegue(withIdentifier: "signIn", sender: Any?.self)
                             }else{
                                 print("fdoesn't exist")
                                 
                                 self.accounCreation()
-                                
+                                self.thinking.stopAnimating()
+
                                 self.performSegue(withIdentifier: "signIn", sender: Any?.self)
                             }
                         })
@@ -169,6 +175,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     }//end of forgot action
     
     
+    @IBOutlet weak var thinking: UIActivityIndicatorView!
     @IBOutlet weak var signIn: UIButton! // section for signin
     @IBAction func signin(_ sender: Any) {
         signIn.isEnabled = false
@@ -296,10 +303,14 @@ print ( FBSDKAccessToken.current())
         
       if FBSDKAccessToken.current() != nil { self.performSegue(withIdentifier: "signIn", sender: Any?.self)
 }
+       
+        thinking.hidesWhenStopped = true
         
         
 
     } ///end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   
+    
    
     
     override func didReceiveMemoryWarning() {

@@ -1714,7 +1714,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="164" id="HVT-ZX-6pm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
-                                <state key="normal" title="New Account">
+                                <state key="normal" title="Set Account">
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
                                 <connections>
@@ -1755,9 +1755,18 @@
                                     <action selector="signin:" destination="QwA-1e-1p4" eventType="touchUpInside" id="fKb-l8-it8"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="AiQ-AU-mU3" userLabel="thinking2">
+                                <rect key="frame" x="150" y="230" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="ILD-Xn-vcA"/>
+                                    <constraint firstAttribute="height" constant="20" id="vqT-x9-6P1"/>
+                                </constraints>
+                                <color key="color" red="0.12558225109999999" green="0.58808092950000002" blue="0.095813386410000007" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="wuq-GZ-v5C" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" constant="22" id="2Pt-u5-JMw"/>
+                            <constraint firstItem="AiQ-AU-mU3" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="89C-61-Olo"/>
                             <constraint firstItem="Rnh-XI-hKH" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="8PZ-Ro-ehs"/>
                             <constraint firstItem="NiB-Rc-LZj" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="9MS-Au-efd"/>
                             <constraint firstItem="wuq-GZ-v5C" firstAttribute="leading" secondItem="apK-xN-ZsM" secondAttribute="trailing" constant="4" id="ESa-wP-MZX"/>
@@ -1772,6 +1781,7 @@
                             <constraint firstItem="Jpb-a2-c4I" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="i0q-OP-KW4"/>
                             <constraint firstItem="apK-xN-ZsM" firstAttribute="leading" secondItem="Pog-dx-X7C" secondAttribute="leading" id="m6s-3L-GxS"/>
                             <constraint firstItem="SW0-cP-SJB" firstAttribute="top" secondItem="NiB-Rc-LZj" secondAttribute="bottom" constant="5" id="nCK-Cq-Zxp"/>
+                            <constraint firstItem="AiQ-AU-mU3" firstAttribute="centerY" secondItem="4Aa-sb-LQD" secondAttribute="centerY" id="oir-gl-WYq"/>
                             <constraint firstItem="SW0-cP-SJB" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="u0U-IH-U2n"/>
                             <constraint firstItem="Pog-dx-X7C" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="zfg-t6-OgU"/>
                         </constraints>
@@ -1784,6 +1794,7 @@
                         <outlet property="forgot" destination="NiB-Rc-LZj" id="YvM-Qd-aWF"/>
                         <outlet property="password" destination="Pog-dx-X7C" id="DPt-6s-xTU"/>
                         <outlet property="signIn" destination="NTs-3R-g9p" id="icG-yh-2Fe"/>
+                        <outlet property="thinking" destination="AiQ-AU-mU3" id="XoA-hO-Av1"/>
                         <segue destination="H8h-Dv-TZT" kind="show" identifier="signIn" animates="NO" id="8Bf-Vi-arA"/>
                         <segue destination="H8h-Dv-TZT" kind="show" identifier="create" id="UPU-lN-oqU"/>
                     </connections>
