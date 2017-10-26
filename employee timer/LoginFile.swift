@@ -44,7 +44,11 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             
         }
         else { print ("facebook login succesfuly")
-            
+            rememberMe = 0
+            keeper.set(0, forKey: "remember")
+            keeper.set("", forKey: "userKept")
+            keeper.set("", forKey: "passwordKept")
+
             FBSDKGraphRequest(graphPath: "/me", parameters: ["fields" : "id, name, email, last_name, first_name"]).start{
             (connection,result,err) in
                 print ("123")
