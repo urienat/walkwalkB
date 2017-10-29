@@ -35,6 +35,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     var emailForPasscode = ""
 
+    @IBOutlet weak var passwordTitle: UILabel!
     @IBOutlet weak var thinking: UIActivityIndicatorView!
     @IBOutlet weak var settingScroller: UIScrollView!
     
@@ -169,6 +170,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             alert50()
         }
         
+        print        ( LoginFile.provider)
 
 
             let currentUser = FIRAuth.auth()?.currentUser
@@ -192,7 +194,8 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             taxerTitle.isHidden = false
             currencyTitle.isHidden = false
             taxinfoSign.isHidden = false
-            reset.isHidden = false
+            if LoginFile.provider == "facebook" {passwordTitle.isHidden = true; reset.isHidden=true} else {
+                passwordTitle.isHidden = false;  reset.isHidden = false}
             passWord.isHidden = true
             subscriptionBtn.isHidden = false
             subscriptionLbl.isHidden = false

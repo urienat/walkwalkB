@@ -25,8 +25,9 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     let mydateFormat = DateFormatter()
     let mydateFormat5 = DateFormatter()
 
-   let loginButton =  FBSDKLoginButton()
+    let loginButton =  FBSDKLoginButton()
     var employeeRefUpdate:String?
+    static var provider: String?
     
     var fbNname: String?
     var fbLastName: String?
@@ -37,6 +38,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
 
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print ("logout from face book")
+        LoginFile.provider = "normal"
     }
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         thinking.startAnimating()
@@ -87,11 +89,12 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
                             if snapshot.hasChild("fCounter"){
                                 print("exist")
                                 self.thinking.stopAnimating()
-
+                                LoginFile.provider = "facebook"
                                 self.performSegue(withIdentifier: "signIn", sender: Any?.self)
                             }else{
                                 print("fdoesn't exist")
-                                
+                                LoginFile.provider = "facebook"
+
                                 self.accounCreation()
                                 self.thinking.stopAnimating()
 
@@ -219,6 +222,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         
         dog.clipsToBounds = true
         dog.layer.cornerRadius = 110
+        LoginFile.provider = "normal"
+
         
         view.addSubview(loginButton)
         loginButton.frame = CGRect(x: 16, y: 50, width: view.frame.width-32, height: 50)
@@ -262,7 +267,9 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             }
         email.text = savedUser
         password.text = savedPassword
-        if LoginFile.logoutchosen == false {
+        if LoginFile.logoutchosen == true {
+            LoginFile.provider = "normal"
+
             print ("quickin")
 
 
@@ -293,17 +300,25 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         //delgate to hide keyboard
         self.email.delegate = self
         self.password.delegate = self
-print ( FBSDKAccessToken.current())
+        
+print ("FBSDKAccessToken.curren\( FBSDKAccessToken.current())")
+        print ("logoutchosen\( LoginFile.logoutchosen)")
+
         if LoginFile.logoutchosen == true{let loginManager = FBSDKLoginManager()
             loginManager.logOut()
  //logout from face book
             
         }
+        thinking.hidesWhenStopped = true
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() ) {
 
         
-      if FBSDKAccessToken.current() != nil { self.performSegue(withIdentifier: "signIn", sender: Any?.self)
+        if FBSDKAccessToken.current() != nil {        LoginFile.provider = "facebook"
+ self.performSegue(withIdentifier: "signIn", sender: Any?.self)
 }
-       
+        }
         thinking.hidesWhenStopped = true
         
         

@@ -53,7 +53,7 @@
                                 </items>
                             </toolbar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="scrollerView" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIG-Rt-2a2">
-                                <rect key="frame" x="0.0" y="64" width="320" height="330"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="330"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="330" id="8Ci-Oi-kuE"/>
                                 </constraints>
@@ -782,7 +782,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqn-dL-iFO">
-                                <rect key="frame" x="145" y="109" width="30" height="53"/>
+                                <rect key="frame" x="145" y="65" width="30" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="MHf-8d-wBY"/>
                                 </constraints>
@@ -795,7 +795,7 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FxU-Wn-hMn" userLabel="add a button view">
-                                <rect key="frame" x="0.0" y="394" width="316" height="70"/>
+                                <rect key="frame" x="0.0" y="350" width="316" height="70"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencilImage" translatesAutoresizingMaskIntoConstraints="NO" id="fJW-rO-BL2" userLabel="pencil">
                                         <rect key="frame" x="197" y="20" width="30" height="30"/>
@@ -835,7 +835,7 @@
                                 </items>
                             </navigationBar>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iC3-6e-xAj" userLabel="stopBackground">
-                                <rect key="frame" x="0.0" y="274" width="320" height="76"/>
+                                <rect key="frame" x="0.0" y="230" width="320" height="76"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3X-s5-1Iu">
                                         <rect key="frame" x="119.5" y="0.0" width="81" height="76"/>
@@ -864,7 +864,7 @@
                                 </constraints>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wkx-Tt-3io" userLabel="DateIn">
-                                <rect key="frame" x="0.0" y="350" width="320" height="22"/>
+                                <rect key="frame" x="0.0" y="306" width="320" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="EB2-xY-uTN"/>
                                 </constraints>
@@ -929,7 +929,7 @@
                                 </prototypes>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45C-VX-M18" userLabel="startBackground">
-                                <rect key="frame" x="0.0" y="274" width="320" height="76"/>
+                                <rect key="frame" x="0.0" y="230" width="320" height="76"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cq4-SE-U6N">
                                         <rect key="frame" x="97.5" y="0.0" width="95" height="76"/>
@@ -959,7 +959,7 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K9m-63-7gA" userLabel="timeBackground">
-                                <rect key="frame" x="0.0" y="188" width="320" height="38"/>
+                                <rect key="frame" x="0.0" y="144" width="320" height="38"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2O-9u-XxV" userLabel="Show Time h">
                                         <rect key="frame" x="95" y="0.0" width="60" height="38"/>
@@ -1020,7 +1020,7 @@
                                 </constraints>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Worked for" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXg-VA-EDp">
-                                <rect key="frame" x="0.0" y="380" width="320" height="25"/>
+                                <rect key="frame" x="0.0" y="336" width="320" height="25"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="23"/>
                                 <color key="textColor" red="0.12558225109999999" green="0.58808092950000002" blue="0.095813386410000007" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1046,7 +1046,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqu-UG-4qJ" userLabel="pooBackground">
-                                <rect key="frame" x="60" y="244" width="200" height="30"/>
+                                <rect key="frame" x="60" y="200" width="200" height="30"/>
                                 <subviews>
                                     <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="💩" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EXT-H4-arO">
                                         <rect key="frame" x="124" y="0.0" width="26" height="30"/>
@@ -1266,7 +1266,7 @@
                                 </items>
                             </toolbar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcj-3g-ZF0" userLabel="setting scroller">
-                                <rect key="frame" x="0.0" y="67" width="320" height="272"/>
+                                <rect key="frame" x="0.0" y="23" width="320" height="272"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MGW-Fk-kb6">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="330"/>
@@ -1634,6 +1634,7 @@
                         <outlet property="lastName" destination="Ktd-Fm-ugk" id="jbU-ah-Egq"/>
                         <outlet property="name" destination="abz-bh-Dk7" id="V8N-SO-u8S"/>
                         <outlet property="passWord" destination="03V-OC-j7W" id="rW8-xH-YQA"/>
+                        <outlet property="passwordTitle" destination="k7K-bJ-hKl" id="l9i-Iv-EME"/>
                         <outlet property="picture" destination="3je-Hd-SEg" id="ac5-tx-cBh"/>
                         <outlet property="precentage" destination="NdQ-LL-HGn" id="Qa6-2q-ylH"/>
                         <outlet property="reset" destination="Gfv-7f-bWL" id="EG7-M1-oKt"/>
@@ -1756,7 +1757,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="AiQ-AU-mU3" userLabel="thinking2">
-                                <rect key="frame" x="150" y="230" width="20" height="20"/>
+                                <rect key="frame" x="248" y="125" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="ILD-Xn-vcA"/>
                                     <constraint firstAttribute="height" constant="20" id="vqT-x9-6P1"/>
@@ -1766,7 +1767,6 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="wuq-GZ-v5C" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" constant="22" id="2Pt-u5-JMw"/>
-                            <constraint firstItem="AiQ-AU-mU3" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="89C-61-Olo"/>
                             <constraint firstItem="Rnh-XI-hKH" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="8PZ-Ro-ehs"/>
                             <constraint firstItem="NiB-Rc-LZj" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="9MS-Au-efd"/>
                             <constraint firstItem="wuq-GZ-v5C" firstAttribute="leading" secondItem="apK-xN-ZsM" secondAttribute="trailing" constant="4" id="ESa-wP-MZX"/>
@@ -1774,14 +1774,15 @@
                             <constraint firstItem="NTs-3R-g9p" firstAttribute="centerY" secondItem="Pog-dx-X7C" secondAttribute="centerY" id="JEZ-9v-zOY"/>
                             <constraint firstItem="Jpb-a2-c4I" firstAttribute="top" secondItem="NiB-Rc-LZj" secondAttribute="bottom" constant="50" id="VJz-JO-2S5"/>
                             <constraint firstItem="apK-xN-ZsM" firstAttribute="centerY" secondItem="wuq-GZ-v5C" secondAttribute="centerY" id="VX9-zI-q9V"/>
+                            <constraint firstItem="AiQ-AU-mU3" firstAttribute="leading" secondItem="Rnh-XI-hKH" secondAttribute="trailing" constant="18" id="VqP-lH-8B3"/>
                             <constraint firstItem="NiB-Rc-LZj" firstAttribute="top" secondItem="wuq-GZ-v5C" secondAttribute="bottom" constant="12" id="Y5c-JQ-EuC"/>
                             <constraint firstItem="Rnh-XI-hKH" firstAttribute="top" secondItem="mjZ-vC-Fuk" secondAttribute="bottom" constant="100" id="ZiZ-qp-GIK"/>
                             <constraint firstItem="NTs-3R-g9p" firstAttribute="leading" secondItem="Pog-dx-X7C" secondAttribute="trailing" constant="8" id="Zwv-zE-YhU"/>
+                            <constraint firstItem="AiQ-AU-mU3" firstAttribute="centerY" secondItem="Rnh-XI-hKH" secondAttribute="centerY" id="auk-NJ-9c5"/>
                             <constraint firstItem="wuq-GZ-v5C" firstAttribute="top" secondItem="Pog-dx-X7C" secondAttribute="bottom" constant="14" id="dnL-lo-N7x"/>
                             <constraint firstItem="Jpb-a2-c4I" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="i0q-OP-KW4"/>
                             <constraint firstItem="apK-xN-ZsM" firstAttribute="leading" secondItem="Pog-dx-X7C" secondAttribute="leading" id="m6s-3L-GxS"/>
                             <constraint firstItem="SW0-cP-SJB" firstAttribute="top" secondItem="NiB-Rc-LZj" secondAttribute="bottom" constant="5" id="nCK-Cq-Zxp"/>
-                            <constraint firstItem="AiQ-AU-mU3" firstAttribute="centerY" secondItem="4Aa-sb-LQD" secondAttribute="centerY" id="oir-gl-WYq"/>
                             <constraint firstItem="SW0-cP-SJB" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="u0U-IH-U2n"/>
                             <constraint firstItem="Pog-dx-X7C" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="zfg-t6-OgU"/>
                         </constraints>
@@ -1816,7 +1817,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fgv-lZ-OY1">
-                                <rect key="frame" x="0.0" y="142" width="320" height="48"/>
+                                <rect key="frame" x="0.0" y="98" width="320" height="92"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="billerId" id="oUk-dv-frm" customClass="billerCell" customModule="employee_timer" customModuleProvider="target">
@@ -1926,7 +1927,7 @@
                                 </constraints>
                             </activityIndicatorView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dos-vv-upu">
-                                <rect key="frame" x="100" y="84" width="120" height="29"/>
+                                <rect key="frame" x="100" y="40" width="120" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="Tb8-5E-iP3"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="ayt-DN-y47"/>
@@ -1942,7 +1943,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="5YM-uj-HSp">
-                                <rect key="frame" x="109" y="120" width="101" height="29"/>
+                                <rect key="frame" x="109" y="76" width="101" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="Z1w-fn-lCo"/>
                                 </constraints>
@@ -1999,7 +2000,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7i1-XX-uWr">
-                                <rect key="frame" x="8" y="76" width="250" height="29"/>
+                                <rect key="frame" x="8" y="32" width="250" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="X8j-zQ-Ayu"/>
                                 </constraints>
@@ -2026,7 +2027,7 @@
                                 </items>
                             </toolbar>
                             <segmentedControl hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="4" translatesAutoresizingMaskIntoConstraints="NO" id="eCO-la-3hV">
-                                <rect key="frame" x="-14" y="116" width="348" height="29"/>
+                                <rect key="frame" x="-14" y="72" width="348" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="310" id="hJ8-Lx-yEf"/>
                                 </constraints>
@@ -2043,7 +2044,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="47" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G8b-SK-75d">
-                                <rect key="frame" x="0.0" y="72" width="320" height="314"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="358"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellId" rowHeight="47" id="AQP-Fh-lfh" customClass="newTableCell" customModule="employee_timer" customModuleProvider="target">
@@ -2480,7 +2481,7 @@
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="RQi-YY-5wb"/>
         <segue reference="x0P-Ew-8Ag"/>
-        <segue reference="COZ-mk-Xid"/>
+        <segue reference="8s0-fg-N01"/>
         <segue reference="1k4-P4-HYk"/>
     </inferredMetricsTieBreakers>
 </document>
