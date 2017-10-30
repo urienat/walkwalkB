@@ -14,7 +14,6 @@
 		AE2185D51E2CA2F80017B958 /* dogBark.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE2185D41E2CA2F80017B958 /* dogBark.wav */; };
 		AE26E0981E59FA400044C76B /* billerTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE26E0971E59FA400044C76B /* billerTable.swift */; };
 		AE26E09A1E5A02180044C76B /* billerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE26E0991E5A02180044C76B /* billerCell.swift */; };
-		AE2928BE1D943D1D00EB493B /* recordsStructre.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2928BD1D943D1D00EB493B /* recordsStructre.swift */; };
 		AE29BE9D1D972A910066214D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE29BE9C1D972A910066214D /* UIKit.framework */; };
 		AE29BEA01D973CBB0066214D /* UIControl.h in Headers */ = {isa = PBXBuildFile; fileRef = AE29BE9F1D973CBB0066214D /* UIControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE4159D71DD339F1008C5DE6 /* dogFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4159D61DD339F1008C5DE6 /* dogFile.swift */; };
@@ -42,6 +41,7 @@
 		AEE95E4B1D7B092A00093B51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE95E491D7B092A00093B51 /* Main.storyboard */; };
 		AEE95E4D1D7B092A00093B51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEE95E4C1D7B092A00093B51 /* Assets.xcassets */; };
 		AEE95E501D7B092A00093B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE95E4E1D7B092A00093B51 /* LaunchScreen.storyboard */; };
+		F42F85D41FA7500600B143F2 /* recordsStructre.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F85D31FA7500600B143F2 /* recordsStructre.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,7 +66,6 @@
 		AE26E0971E59FA400044C76B /* billerTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = billerTable.swift; sourceTree = "<group>"; };
 		AE26E0991E5A02180044C76B /* billerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = billerCell.swift; sourceTree = "<group>"; };
 		AE2928BC1D943C0B00EB493B /* employee timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "employee timer.entitlements"; sourceTree = "<group>"; };
-		AE2928BD1D943D1D00EB493B /* recordsStructre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = recordsStructre.swift; path = ../recordsStructre.swift; sourceTree = "<group>"; };
 		AE29BE9C1D972A910066214D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AE29BE9F1D973CBB0066214D /* UIControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIControl.h; sourceTree = "<group>"; };
 		AE4159D61DD339F1008C5DE6 /* dogFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dogFile.swift; sourceTree = "<group>"; };
@@ -98,6 +97,7 @@
 		AEE95E511D7B092A00093B51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C85FED60A567714D97C14E2F /* Pods-employee timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-employee timer.release.xcconfig"; path = "Pods/Target Support Files/Pods-employee timer/Pods-employee timer.release.xcconfig"; sourceTree = "<group>"; };
 		CA959FB061F7DAB537A0F036 /* Pods-employee timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-employee timer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-employee timer/Pods-employee timer.debug.xcconfig"; sourceTree = "<group>"; };
+		F42F85D31FA7500600B143F2 /* recordsStructre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = recordsStructre.swift; path = "../../../Library/Containers/com.apple.mail/Data/Library/Mail Downloads/DE964375-69C3-450E-8C7F-67A471F175F2/recordsStructre.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +165,7 @@
 		AE577AD41DF941C800EBE62B /* Side programs */ = {
 			isa = PBXGroup;
 			children = (
+				AEE95E4C1D7B092A00093B51 /* Assets.xcassets */,
 				AE0213481DCF8130006F927F /* setting.swift */,
 				AEDF47AC1DC22EA0005DB21A /* LoginFile.swift */,
 				AE4159D61DD339F1008C5DE6 /* dogFile.swift */,
@@ -235,7 +236,7 @@
 		AEE95E441D7B092A00093B51 /* employee timer */ = {
 			isa = PBXGroup;
 			children = (
-				AE2928BD1D943D1D00EB493B /* recordsStructre.swift */,
+				F42F85D31FA7500600B143F2 /* recordsStructre.swift */,
 				AE2928BC1D943C0B00EB493B /* employee timer.entitlements */,
 				AE99D97B1D8FDDF800061B95 /* GoogleService-Infoold.plist */,
 				AE504B641DC4F5C3008C91A8 /* GoogleService-Info.plist */,
@@ -249,7 +250,6 @@
 				AE29E6221E59BFDC00797267 /* bill */,
 				AE6AA8531DEFFB9000E424FF /* recordsTable */,
 				AE577AD41DF941C800EBE62B /* Side programs */,
-				AEE95E4C1D7B092A00093B51 /* Assets.xcassets */,
 				AEE95E4E1D7B092A00093B51 /* LaunchScreen.storyboard */,
 				AEE95E511D7B092A00093B51 /* Info.plist */,
 			);
@@ -364,7 +364,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		440DDD19FF12039B5EA2739A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -436,7 +436,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "GOOGLE_APP_ID=1:521645407261:ios:ee64943a4a0dd9b5\n//\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"/Users/wryynt/Desktop/employee timer/ServiceAccount.json\"\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"/Users/wryynt/Desktop/employee timer/ServiceAccount.json\"\n//\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"/Users/urienat/Downloads/ServiceAccount.json\"\n";
+			shellScript = "GOOGLE_APP_ID=1:521645407261:ios:ee64943a4a0dd9b5\n//\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"/Users/wryynt/Desktop/employee timer/ServiceAccount.json\"\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"/Users/homeUriEnat/Documents/walkwalkOct2017/employeetimer-firebase-crashreporting-ofw72-18dece3a56.json\"\n//\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"/Users/urienat/Downloads/ServiceAccount.json\"\n";
 		};
 		DCF47AF918A71A5ED53CDE22 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -476,7 +476,7 @@
 				AECEC1C81D8A8E0B007C1D14 /* newRecordsTable.swift in Sources */,
 				AEC3A7731D7DE20E005E3F1F /* datePicker2.swift in Sources */,
 				AECF31DF1E1248660072547C /* AllowedCharsTextField.swift in Sources */,
-				AE2928BE1D943D1D00EB493B /* recordsStructre.swift in Sources */,
+				F42F85D41FA7500600B143F2 /* recordsStructre.swift in Sources */,
 				AE26E09A1E5A02180044C76B /* billerCell.swift in Sources */,
 				AE0213491DCF8130006F927F /* setting.swift in Sources */,
 				AEDF47AD1DC22EA0005DB21A /* LoginFile.swift in Sources */,
@@ -631,6 +631,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "employee timer/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "HomePloyer.employee-timer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -652,6 +653,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "employee timer/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "HomePloyer.employee-timer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
