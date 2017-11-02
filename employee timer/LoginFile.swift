@@ -44,7 +44,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         thinking.startAnimating()
 
         
-        if error != nil { print ("facebook login error:\(error)")
+        if error != nil { print ("facebook login error:\(error)");thinking.stopAnimating()
         return
             
         }
@@ -226,7 +226,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
 
         
         view.addSubview(loginButton)
-        loginButton.frame = CGRect(x: 16, y: 50, width: view.frame.width-32, height: 50)
+        loginButton.frame = CGRect(x: view.frame.width/2-100, y: 50, width: 200, height: 45)
         loginButton.delegate = self
         loginButton.readPermissions = ["email","public_profile"]
 

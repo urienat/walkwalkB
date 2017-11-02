@@ -325,7 +325,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AEE95E3D1D7B092A00093B51 /* Build configuration list for PBXProject "employee timer" */;
+			buildConfigurationList = AEE95E3D1D7B092A00093B51 /* Build configuration list for PBXProject "WalkWalk" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -676,7 +676,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AEE95E3D1D7B092A00093B51 /* Build configuration list for PBXProject "employee timer" */ = {
+		AEE95E3D1D7B092A00093B51 /* Build configuration list for PBXProject "WalkWalk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AEE95E521D7B092A00093B51 /* Debug */,
