@@ -15,7 +15,6 @@
 		AE26E0981E59FA400044C76B /* billerTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE26E0971E59FA400044C76B /* billerTable.swift */; };
 		AE26E09A1E5A02180044C76B /* billerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE26E0991E5A02180044C76B /* billerCell.swift */; };
 		AE29BE9D1D972A910066214D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE29BE9C1D972A910066214D /* UIKit.framework */; };
-		AE29BEA01D973CBB0066214D /* UIControl.h in Headers */ = {isa = PBXBuildFile; fileRef = AE29BE9F1D973CBB0066214D /* UIControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE4159D71DD339F1008C5DE6 /* dogFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4159D61DD339F1008C5DE6 /* dogFile.swift */; };
 		AE4B0FEC1E82B82F00188B79 /* subs.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B0FEB1E82B82F00188B79 /* subs.swift */; };
 		AE4CDC0D1D96430400FE2BB5 /* fetchRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4CDC0C1D96430400FE2BB5 /* fetchRecords.swift */; };
@@ -67,7 +66,6 @@
 		AE26E0991E5A02180044C76B /* billerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = billerCell.swift; sourceTree = "<group>"; };
 		AE2928BC1D943C0B00EB493B /* employee timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "employee timer.entitlements"; sourceTree = "<group>"; };
 		AE29BE9C1D972A910066214D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		AE29BE9F1D973CBB0066214D /* UIControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIControl.h; sourceTree = "<group>"; };
 		AE4159D61DD339F1008C5DE6 /* dogFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dogFile.swift; sourceTree = "<group>"; };
 		AE4B0FEB1E82B82F00188B79 /* subs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = subs.swift; sourceTree = "<group>"; };
 		AE4CDC0C1D96430400FE2BB5 /* fetchRecords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fetchRecords.swift; sourceTree = "<group>"; };
@@ -217,7 +215,6 @@
 		AEE95E391D7B092A00093B51 = {
 			isa = PBXGroup;
 			children = (
-				AE29BE9F1D973CBB0066214D /* UIControl.h */,
 				AEE95E441D7B092A00093B51 /* employee timer */,
 				AEE95E431D7B092A00093B51 /* Products */,
 				6D4BA4C9119C004ED1F3B7F1 /* Frameworks */,
@@ -263,7 +260,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE29BEA01D973CBB0066214D /* UIControl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
