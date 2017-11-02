@@ -87,7 +87,7 @@
 		AECF31DE1E1248660072547C /* AllowedCharsTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllowedCharsTextField.swift; sourceTree = "<group>"; };
 		AED6564A1E0140A4001691D1 /* cacheImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cacheImages.swift; sourceTree = "<group>"; };
 		AEDF47AC1DC22EA0005DB21A /* LoginFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFile.swift; sourceTree = "<group>"; };
-		AEE95E421D7B092A00093B51 /* WalkWalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkWalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEE95E421D7B092A00093B51 /* employee timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "employee timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE95E451D7B092A00093B51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEE95E471D7B092A00093B51 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AEE95E4A1D7B092A00093B51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -228,7 +228,7 @@
 		AEE95E431D7B092A00093B51 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AEE95E421D7B092A00093B51 /* WalkWalk.app */,
+				AEE95E421D7B092A00093B51 /* employee timer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -270,9 +270,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		AEE95E411D7B092A00093B51 /* WalkWalk */ = {
+		AEE95E411D7B092A00093B51 /* employee timer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AEE95E541D7B092A00093B51 /* Build configuration list for PBXNativeTarget "WalkWalk" */;
+			buildConfigurationList = AEE95E541D7B092A00093B51 /* Build configuration list for PBXNativeTarget "employee timer" */;
 			buildPhases = (
 				DCF47AF918A71A5ED53CDE22 /* [CP] Check Pods Manifest.lock */,
 				AEE95E3E1D7B092A00093B51 /* Sources */,
@@ -288,9 +288,9 @@
 			);
 			dependencies = (
 			);
-			name = WalkWalk;
+			name = "employee timer";
 			productName = "employee timer";
-			productReference = AEE95E421D7B092A00093B51 /* WalkWalk.app */;
+			productReference = AEE95E421D7B092A00093B51 /* employee timer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -337,7 +337,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AEE95E411D7B092A00093B51 /* WalkWalk */,
+				AEE95E411D7B092A00093B51 /* employee timer */,
 			);
 		};
 /* End PBXProject section */
@@ -671,7 +671,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AEE95E541D7B092A00093B51 /* Build configuration list for PBXNativeTarget "WalkWalk" */ = {
+		AEE95E541D7B092A00093B51 /* Build configuration list for PBXNativeTarget "employee timer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AEE95E551D7B092A00093B51 /* Debug */,
