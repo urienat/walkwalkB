@@ -40,6 +40,7 @@
 		AEE95E4D1D7B092A00093B51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEE95E4C1D7B092A00093B51 /* Assets.xcassets */; };
 		AEE95E501D7B092A00093B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE95E4E1D7B092A00093B51 /* LaunchScreen.storyboard */; };
 		F42F85D41FA7500600B143F2 /* recordsStructre.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F85D31FA7500600B143F2 /* recordsStructre.swift */; };
+		F44CF4041FAB67FA00093950 /* UIControl.h in Headers */ = {isa = PBXBuildFile; fileRef = F44CF4031FAB67FA00093950 /* UIControl.h */; };
 		F4D0683C1FA9C5920079CA88 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D0683B1FA9C5920079CA88 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,7 @@
 		C85FED60A567714D97C14E2F /* Pods-employee timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-employee timer.release.xcconfig"; path = "Pods/Target Support Files/Pods-employee timer/Pods-employee timer.release.xcconfig"; sourceTree = "<group>"; };
 		CA959FB061F7DAB537A0F036 /* Pods-employee timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-employee timer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-employee timer/Pods-employee timer.debug.xcconfig"; sourceTree = "<group>"; };
 		F42F85D31FA7500600B143F2 /* recordsStructre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = recordsStructre.swift; path = "../../../Library/Containers/com.apple.mail/Data/Library/Mail Downloads/DE964375-69C3-450E-8C7F-67A471F175F2/recordsStructre.swift"; sourceTree = "<group>"; };
+		F44CF4031FAB67FA00093950 /* UIControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIControl.h; sourceTree = "<group>"; };
 		F4D0683B1FA9C5920079CA88 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -215,6 +217,7 @@
 		AEE95E391D7B092A00093B51 = {
 			isa = PBXGroup;
 			children = (
+				F44CF4031FAB67FA00093950 /* UIControl.h */,
 				AEE95E441D7B092A00093B51 /* employee timer */,
 				AEE95E431D7B092A00093B51 /* Products */,
 				6D4BA4C9119C004ED1F3B7F1 /* Frameworks */,
@@ -260,6 +263,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F44CF4041FAB67FA00093950 /* UIControl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
