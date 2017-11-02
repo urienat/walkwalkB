@@ -10,12 +10,11 @@
 import UIKit
 import FirebaseDatabase
 import Firebase
-
 class newRecordsTable: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var newDataTable: UITableView!
     @IBOutlet weak var newTimeLabel: UILabel!
-    
+    print("ddd")
     let recordsdates = ["2.6.16", "9.6.16", "16.6.16", "19.6.16"]
     let recordsTime = ["4h22m", "6h13m", "5h34m", "3h33m"]
     let ref = FIRDatabase.database().reference()
