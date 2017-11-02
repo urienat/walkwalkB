@@ -283,7 +283,6 @@
 				440DDD19FF12039B5EA2739A /* [CP] Embed Pods Frameworks */,
 				57B37AFD86DF6AD0EA9CB931 /* [CP] Copy Pods Resources */,
 				AE29BE9E1D972B870066214D /* Headers */,
-				AECF31E11E12A22A0072547C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -426,19 +425,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "";
-		};
-		AECF31E11E12A22A0072547C /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "GOOGLE_APP_ID=1:521645407261:ios:ee64943a4a0dd9b5\n//\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"/Users/wryynt/Desktop/employee timer/ServiceAccount.json\"\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"/Users/homeUriEnat/Documents/walkwalkOct2017/employeetimer-firebase-crashreporting-ofw72-18dece3a56.json\"\n//\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"/Users/urienat/Downloads/ServiceAccount.json\"\n";
 		};
 		DCF47AF918A71A5ED53CDE22 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
