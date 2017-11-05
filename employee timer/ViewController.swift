@@ -121,6 +121,9 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
     @IBOutlet weak var thinking2: UIActivityIndicatorView!
     @IBOutlet weak var employerList: UITableView!
     @IBOutlet weak var employerListTop: NSLayoutConstraint!
+    
+    @IBOutlet weak var emoloyerListBottom: NSLayoutConstraint!
+    @IBOutlet weak var employerListHeiget: NSLayoutConstraint!
     @IBOutlet weak var employerListBottom: NSLayoutConstraint!
     
     var listOfEmployers = [String:Int]()
@@ -467,22 +470,22 @@ print ("started view did load")
         self.thinking2.startAnimating()
         
         btn1.setImage(leashImage, for: .normal)
-        btn1.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        btn1.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
         btn1.addTarget(self, action:#selector(recordsClicked), for: UIControlEvents.touchDown)
         records.customView = btn1
         
         btn2.setImage(meluna, for: .normal)
-        btn2.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        btn2.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
         btn2.addTarget(self, action:#selector(petFileClicked), for: UIControlEvents.touchDown)
         petFile.customView = btn2
         
         btn3.setImage(billsIcon, for: .normal)
-        btn3.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        btn3.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
         btn3.addTarget(self, action:#selector(billsClicked), for: UIControlEvents.touchDown)
         bills.customView = btn3
         
         btn4.setImage(walkerProfile, for: .normal)
-        btn4.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        btn4.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
         btn4.addTarget(self, action:#selector(profileClicked), for: UIControlEvents.touchDown)
         profile.customView = btn4
 
@@ -1058,7 +1061,7 @@ print ("started view did load")
                         self.thinking2.stopAnimating()
 
                         self.employerList.isUserInteractionEnabled = true
-                        if self.employerIdArray2.count < 5 { self.employerListTop.constant = 100.0} else {self.employerListTop.constant = 20.0}
+                        if self.employerIdArray2.count < 5 {self.employerListHeiget.priority = 1000 ;self.employerListBottom.priority = 750;self.employerListTop.constant = 60.0; self.employerListHeiget.constant >= 265;self.employerListBottom.constant = 285} else {self.employerListBottom.priority = 750; self.employerListHeiget.priority = 1000;self.employerListTop.constant = 30.0;self.employerListHeiget.constant >= 315;self.employerListBottom.constant = 285 }
                         self.employerList.reloadData()
                        // print (self.employerIdArray2.count)
                       self.checkSubs()
