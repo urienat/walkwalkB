@@ -68,7 +68,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     /////////////////////////////////////////////////////////////////  view did load starts///////////////////////
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print ("fff")
         //connectivity
         if Reachability.isConnectedToNetwork() == true
         {
