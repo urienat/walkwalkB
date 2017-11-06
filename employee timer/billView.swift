@@ -111,7 +111,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         self.dbRefEmployee.child(employeeID).child("myBills").child(billToHandle).observeSingleEvent(of: .value,with: { (snapshot) in
             
             self.recoveredBill = (snapshot.childSnapshot(forPath: "fBillMailSaver").value! as? String)!
-            print("recovered234")
+            print("recovered23456")
             print(self.recoveredBill)
             self.mailText.text = self.recoveredBill
             self.recoveredStatus = (snapshot.childSnapshot(forPath: "fBillStatus").value! as? String)!
