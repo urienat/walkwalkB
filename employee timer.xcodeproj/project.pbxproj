@@ -39,7 +39,7 @@
 		AEE95E4B1D7B092A00093B51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE95E491D7B092A00093B51 /* Main.storyboard */; };
 		AEE95E4D1D7B092A00093B51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEE95E4C1D7B092A00093B51 /* Assets.xcassets */; };
 		AEE95E501D7B092A00093B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE95E4E1D7B092A00093B51 /* LaunchScreen.storyboard */; };
-		F42F85D41FA7500600B143F2 /* recordsStructre.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F85D31FA7500600B143F2 /* recordsStructre.swift */; };
+		F42DD2991FB03E6A00BBAE75 /* recordsStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42DD2981FB03E6A00BBAE75 /* recordsStructure.swift */; };
 		F44CF4041FAB67FA00093950 /* UIControl.h in Headers */ = {isa = PBXBuildFile; fileRef = F44CF4031FAB67FA00093950 /* UIControl.h */; };
 		F4D0683C1FA9C5920079CA88 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D0683B1FA9C5920079CA88 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
@@ -86,7 +86,7 @@
 		AECF31DE1E1248660072547C /* AllowedCharsTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllowedCharsTextField.swift; sourceTree = "<group>"; };
 		AED6564A1E0140A4001691D1 /* cacheImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cacheImages.swift; sourceTree = "<group>"; };
 		AEDF47AC1DC22EA0005DB21A /* LoginFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFile.swift; sourceTree = "<group>"; };
-		AEE95E421D7B092A00093B51 /* employee timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "employee timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEE95E421D7B092A00093B51 /* WalkWalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkWalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE95E451D7B092A00093B51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEE95E471D7B092A00093B51 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AEE95E4A1D7B092A00093B51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 		AEE95E511D7B092A00093B51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C85FED60A567714D97C14E2F /* Pods-employee timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-employee timer.release.xcconfig"; path = "Pods/Target Support Files/Pods-employee timer/Pods-employee timer.release.xcconfig"; sourceTree = "<group>"; };
 		CA959FB061F7DAB537A0F036 /* Pods-employee timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-employee timer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-employee timer/Pods-employee timer.debug.xcconfig"; sourceTree = "<group>"; };
-		F42F85D31FA7500600B143F2 /* recordsStructre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = recordsStructre.swift; path = "../../../Library/Containers/com.apple.mail/Data/Library/Mail Downloads/DE964375-69C3-450E-8C7F-67A471F175F2/recordsStructre.swift"; sourceTree = "<group>"; };
+		F42DD2981FB03E6A00BBAE75 /* recordsStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recordsStructure.swift; sourceTree = "<group>"; };
 		F44CF4031FAB67FA00093950 /* UIControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIControl.h; sourceTree = "<group>"; };
 		F4D0683B1FA9C5920079CA88 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -228,7 +228,7 @@
 		AEE95E431D7B092A00093B51 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AEE95E421D7B092A00093B51 /* employee timer.app */,
+				AEE95E421D7B092A00093B51 /* WalkWalk.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -236,7 +236,7 @@
 		AEE95E441D7B092A00093B51 /* employee timer */ = {
 			isa = PBXGroup;
 			children = (
-				F42F85D31FA7500600B143F2 /* recordsStructre.swift */,
+				F42DD2981FB03E6A00BBAE75 /* recordsStructure.swift */,
 				AE2928BC1D943C0B00EB493B /* employee timer.entitlements */,
 				AE99D97B1D8FDDF800061B95 /* GoogleService-Infoold.plist */,
 				AE504B641DC4F5C3008C91A8 /* GoogleService-Info.plist */,
@@ -270,9 +270,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		AEE95E411D7B092A00093B51 /* employee timer */ = {
+		AEE95E411D7B092A00093B51 /* WalkWalk */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AEE95E541D7B092A00093B51 /* Build configuration list for PBXNativeTarget "employee timer" */;
+			buildConfigurationList = AEE95E541D7B092A00093B51 /* Build configuration list for PBXNativeTarget "WalkWalk" */;
 			buildPhases = (
 				DCF47AF918A71A5ED53CDE22 /* [CP] Check Pods Manifest.lock */,
 				AEE95E3E1D7B092A00093B51 /* Sources */,
@@ -288,9 +288,9 @@
 			);
 			dependencies = (
 			);
-			name = "employee timer";
+			name = WalkWalk;
 			productName = "employee timer";
-			productReference = AEE95E421D7B092A00093B51 /* employee timer.app */;
+			productReference = AEE95E421D7B092A00093B51 /* WalkWalk.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -337,7 +337,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AEE95E411D7B092A00093B51 /* employee timer */,
+				AEE95E411D7B092A00093B51 /* WalkWalk */,
 			);
 		};
 /* End PBXProject section */
@@ -464,8 +464,8 @@
 				AECEC1C81D8A8E0B007C1D14 /* newRecordsTable.swift in Sources */,
 				AEC3A7731D7DE20E005E3F1F /* datePicker2.swift in Sources */,
 				AECF31DF1E1248660072547C /* AllowedCharsTextField.swift in Sources */,
-				F42F85D41FA7500600B143F2 /* recordsStructre.swift in Sources */,
 				AE26E09A1E5A02180044C76B /* billerCell.swift in Sources */,
+				F42DD2991FB03E6A00BBAE75 /* recordsStructure.swift in Sources */,
 				AE0213491DCF8130006F927F /* setting.swift in Sources */,
 				AEDF47AD1DC22EA0005DB21A /* LoginFile.swift in Sources */,
 				AE84DE8E1E7E638700F08945 /* RebeloperStore.swift in Sources */,
@@ -671,7 +671,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AEE95E541D7B092A00093B51 /* Build configuration list for PBXNativeTarget "employee timer" */ = {
+		AEE95E541D7B092A00093B51 /* Build configuration list for PBXNativeTarget "WalkWalk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AEE95E551D7B092A00093B51 /* Debug */,
