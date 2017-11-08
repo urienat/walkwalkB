@@ -1050,10 +1050,13 @@ print ("started view did load")
 
                 self.activeItem = String(describing: snapshot.childSnapshot(forPath: "fActive").value!) as String!
                     self.activeData.append(String(describing: self.activeItem) )
-
-                self.profileImageUrl = snapshot.childSnapshot(forPath: "fImageRef").value as! String!
+print (snapshot.childSnapshot(forPath: "fImageRef").value!)
+                        
+                        
+                          self.profileImageUrl = snapshot.childSnapshot(forPath: "fImageRef").value as! String!
+                          //  self.profileImageUrl = "https://firebasestorage.googleapis.com/v0/b/persession-45987.appspot.com/o/Myprofile.png?alt=media&token=263c8fdb-9cca-4256-9d3b-b794774bf4e1"
                     self.imageArray.append(self.profileImageUrl)
-                    
+                        
                        // self.employerList.reloadData()
 
                     if iIndex == (self.employerIdArray2.count-1) {
