@@ -29,7 +29,7 @@ import SwiftyStoreKit
 import KeychainAccess
 
 
-let AppBundleId = "HomePloyer.employeetimer"// Bundle.main.bundleIdentifier!
+let AppBundleId = "HomePloyer.perSession"// Bundle.main.bundleIdentifier!
 
 let mydateFormat = DateFormatter()
 

@@ -4,7 +4,7 @@
 <dict>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)HomePloyer.employee-timer</string>
+		<string>$(AppIdentifierPrefix)HomePloyer.perSession</string>
 	</array>
 </dict>
 </plist>

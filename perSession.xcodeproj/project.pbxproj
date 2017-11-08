@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		16B84D498A805FB432B20225 /* Pods_employee_timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51721653C0D897F3BFD9BAB0 /* Pods_employee_timer.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		A5477C30FB203FB18A603B86 /* Pods_WalkWalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78483BA89D55572F0F7EF9C /* Pods_WalkWalk.framework */; };
 		AE0213491DCF8130006F927F /* setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0213481DCF8130006F927F /* setting.swift */; };
 		AE0B0A7F1E62D461000E539C /* billView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0B0A7E1E62D461000E539C /* billView.swift */; };
 		AE1B3DB11DF824E100BB507F /* employerCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1B3DB01DF824E100BB507F /* employerCellTableViewCell.swift */; };
@@ -19,13 +17,11 @@
 		AE4159D71DD339F1008C5DE6 /* dogFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4159D61DD339F1008C5DE6 /* dogFile.swift */; };
 		AE4B0FEC1E82B82F00188B79 /* subs.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B0FEB1E82B82F00188B79 /* subs.swift */; };
 		AE4CDC0D1D96430400FE2BB5 /* fetchRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4CDC0C1D96430400FE2BB5 /* fetchRecords.swift */; };
-		AE504B651DC4F5C3008C91A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE504B641DC4F5C3008C91A8 /* GoogleService-Info.plist */; };
 		AE7F91851DF53E11000BC8C7 /* tableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F91841DF53E11000BC8C7 /* tableExt.swift */; };
 		AE84DE8D1E7E638700F08945 /* CHANGE LOG.rtf in Resources */ = {isa = PBXBuildFile; fileRef = AE84DE8A1E7E638700F08945 /* CHANGE LOG.rtf */; };
 		AE84DE8E1E7E638700F08945 /* RebeloperStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE84DE8B1E7E638700F08945 /* RebeloperStore.swift */; };
 		AE84DE8F1E7E638700F08945 /* RebeloperStoreSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE84DE8C1E7E638700F08945 /* RebeloperStoreSetup.swift */; };
 		AE854B671E3A388B00C68CFB /* internetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE854B661E3A388A00C68CFB /* internetConnection.swift */; };
-		AE99D97C1D8FDDF800061B95 /* GoogleService-Infoold.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE99D97B1D8FDDF800061B95 /* GoogleService-Infoold.plist */; };
 		AEB16BA71DA03986004A6037 /* newVCTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB16BA61DA03986004A6037 /* newVCTable.swift */; };
 		AEC3A7731D7DE20E005E3F1F /* datePicker2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC3A7721D7DE20E005E3F1F /* datePicker2.swift */; };
 		AEC3A7751D7DE22B005E3F1F /* datePicker2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEC3A7741D7DE22B005E3F1F /* datePicker2.storyboard */; };
@@ -40,9 +36,11 @@
 		AEE95E4B1D7B092A00093B51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE95E491D7B092A00093B51 /* Main.storyboard */; };
 		AEE95E4D1D7B092A00093B51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEE95E4C1D7B092A00093B51 /* Assets.xcassets */; };
 		AEE95E501D7B092A00093B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE95E4E1D7B092A00093B51 /* LaunchScreen.storyboard */; };
+		D9B8D157DDFF14DC45CE3731 /* Pods_perSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B72E3797530AE77A04075BB /* Pods_perSession.framework */; };
 		F42DD2991FB03E6A00BBAE75 /* recordsStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42DD2981FB03E6A00BBAE75 /* recordsStructure.swift */; };
 		F44CF4041FAB67FA00093950 /* UIControl.h in Headers */ = {isa = PBXBuildFile; fileRef = F44CF4031FAB67FA00093950 /* UIControl.h */; };
 		F4D0683C1FA9C5920079CA88 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D0683B1FA9C5920079CA88 /* StoreKit.framework */; };
+		F4DDD6341FB1C92B00A327D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4DDD6331FB1C92B00A327D7 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -59,9 +57,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1667B5A4CBB25A1ECA3B1E5E /* Pods-WalkWalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalkWalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WalkWalk/Pods-WalkWalk.debug.xcconfig"; sourceTree = "<group>"; };
-		3AEA15E2A3CCF78E0395E7AB /* Pods-WalkWalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalkWalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-WalkWalk/Pods-WalkWalk.release.xcconfig"; sourceTree = "<group>"; };
-		51721653C0D897F3BFD9BAB0 /* Pods_employee_timer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_employee_timer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3524438E11FB26ADA3170CED /* Pods-perSession.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-perSession.release.xcconfig"; path = "Pods/Target Support Files/Pods-perSession/Pods-perSession.release.xcconfig"; sourceTree = "<group>"; };
+		5B72E3797530AE77A04075BB /* Pods_perSession.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_perSession.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE0213481DCF8130006F927F /* setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setting.swift; sourceTree = "<group>"; };
 		AE0B0A7E1E62D461000E539C /* billView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = billView.swift; sourceTree = "<group>"; };
 		AE1B3DB01DF824E100BB507F /* employerCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = employerCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -73,13 +70,11 @@
 		AE4159D61DD339F1008C5DE6 /* dogFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dogFile.swift; sourceTree = "<group>"; };
 		AE4B0FEB1E82B82F00188B79 /* subs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = subs.swift; sourceTree = "<group>"; };
 		AE4CDC0C1D96430400FE2BB5 /* fetchRecords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fetchRecords.swift; sourceTree = "<group>"; };
-		AE504B641DC4F5C3008C91A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AE7F91841DF53E11000BC8C7 /* tableExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableExt.swift; sourceTree = "<group>"; };
 		AE84DE8A1E7E638700F08945 /* CHANGE LOG.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "CHANGE LOG.rtf"; sourceTree = "<group>"; };
 		AE84DE8B1E7E638700F08945 /* RebeloperStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RebeloperStore.swift; sourceTree = "<group>"; };
 		AE84DE8C1E7E638700F08945 /* RebeloperStoreSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RebeloperStoreSetup.swift; sourceTree = "<group>"; };
 		AE854B661E3A388A00C68CFB /* internetConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = internetConnection.swift; sourceTree = "<group>"; };
-		AE99D97B1D8FDDF800061B95 /* GoogleService-Infoold.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Infoold.plist"; sourceTree = "<group>"; };
 		AEB16BA61DA03986004A6037 /* newVCTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newVCTable.swift; sourceTree = "<group>"; };
 		AEC3A7721D7DE20E005E3F1F /* datePicker2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = datePicker2.swift; sourceTree = "<group>"; };
 		AEC3A7741D7DE22B005E3F1F /* datePicker2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = datePicker2.storyboard; sourceTree = "<group>"; };
@@ -89,19 +84,18 @@
 		AECF31DE1E1248660072547C /* AllowedCharsTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllowedCharsTextField.swift; sourceTree = "<group>"; };
 		AED6564A1E0140A4001691D1 /* cacheImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cacheImages.swift; sourceTree = "<group>"; };
 		AEDF47AC1DC22EA0005DB21A /* LoginFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFile.swift; sourceTree = "<group>"; };
-		AEE95E421D7B092A00093B51 /* WalkWalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkWalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEE95E421D7B092A00093B51 /* perSession.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = perSession.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE95E451D7B092A00093B51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEE95E471D7B092A00093B51 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AEE95E4A1D7B092A00093B51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AEE95E4C1D7B092A00093B51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AEE95E4F1D7B092A00093B51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AEE95E511D7B092A00093B51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C85FED60A567714D97C14E2F /* Pods-employee timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-employee timer.release.xcconfig"; path = "Pods/Target Support Files/Pods-employee timer/Pods-employee timer.release.xcconfig"; sourceTree = "<group>"; };
-		CA959FB061F7DAB537A0F036 /* Pods-employee timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-employee timer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-employee timer/Pods-employee timer.debug.xcconfig"; sourceTree = "<group>"; };
-		E78483BA89D55572F0F7EF9C /* Pods_WalkWalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WalkWalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D36D34D1D194F34A2C696A4C /* Pods-perSession.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-perSession.debug.xcconfig"; path = "Pods/Target Support Files/Pods-perSession/Pods-perSession.debug.xcconfig"; sourceTree = "<group>"; };
 		F42DD2981FB03E6A00BBAE75 /* recordsStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recordsStructure.swift; sourceTree = "<group>"; };
 		F44CF4031FAB67FA00093950 /* UIControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIControl.h; sourceTree = "<group>"; };
 		F4D0683B1FA9C5920079CA88 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		F4DDD6331FB1C92B00A327D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,34 +105,30 @@
 			files = (
 				F4D0683C1FA9C5920079CA88 /* StoreKit.framework in Frameworks */,
 				AE29BE9D1D972A910066214D /* UIKit.framework in Frameworks */,
-				16B84D498A805FB432B20225 /* Pods_employee_timer.framework in Frameworks */,
-				A5477C30FB203FB18A603B86 /* Pods_WalkWalk.framework in Frameworks */,
+				D9B8D157DDFF14DC45CE3731 /* Pods_perSession.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B50FB26DF20243404BD0B64 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D36D34D1D194F34A2C696A4C /* Pods-perSession.debug.xcconfig */,
+				3524438E11FB26ADA3170CED /* Pods-perSession.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6D4BA4C9119C004ED1F3B7F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				F4D0683B1FA9C5920079CA88 /* StoreKit.framework */,
 				AE29BE9C1D972A910066214D /* UIKit.framework */,
-				51721653C0D897F3BFD9BAB0 /* Pods_employee_timer.framework */,
-				E78483BA89D55572F0F7EF9C /* Pods_WalkWalk.framework */,
+				5B72E3797530AE77A04075BB /* Pods_perSession.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		777F6928BA199F80D8F8319E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CA959FB061F7DAB537A0F036 /* Pods-employee timer.debug.xcconfig */,
-				C85FED60A567714D97C14E2F /* Pods-employee timer.release.xcconfig */,
-				1667B5A4CBB25A1ECA3B1E5E /* Pods-WalkWalk.debug.xcconfig */,
-				3AEA15E2A3CCF78E0395E7AB /* Pods-WalkWalk.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		AE29E6221E59BFDC00797267 /* bill */ = {
@@ -229,14 +219,14 @@
 				AEE95E441D7B092A00093B51 /* employee timer */,
 				AEE95E431D7B092A00093B51 /* Products */,
 				6D4BA4C9119C004ED1F3B7F1 /* Frameworks */,
-				777F6928BA199F80D8F8319E /* Pods */,
+				3B50FB26DF20243404BD0B64 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
 		AEE95E431D7B092A00093B51 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AEE95E421D7B092A00093B51 /* WalkWalk.app */,
+				AEE95E421D7B092A00093B51 /* perSession.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -246,8 +236,6 @@
 			children = (
 				F42DD2981FB03E6A00BBAE75 /* recordsStructure.swift */,
 				AE2928BC1D943C0B00EB493B /* employee timer.entitlements */,
-				AE99D97B1D8FDDF800061B95 /* GoogleService-Infoold.plist */,
-				AE504B641DC4F5C3008C91A8 /* GoogleService-Info.plist */,
 				AEE95E451D7B092A00093B51 /* AppDelegate.swift */,
 				AE84DE891E7E638700F08945 /* RebeloperStore */,
 				AEC3A7711D7DE1C7005E3F1F /* datePicker */,
@@ -259,6 +247,7 @@
 				AE6AA8531DEFFB9000E424FF /* recordsTable */,
 				AE577AD41DF941C800EBE62B /* Side programs */,
 				AEE95E4E1D7B092A00093B51 /* LaunchScreen.storyboard */,
+				F4DDD6331FB1C92B00A327D7 /* GoogleService-Info.plist */,
 				AEE95E511D7B092A00093B51 /* Info.plist */,
 			);
 			path = "employee timer";
@@ -278,9 +267,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		AEE95E411D7B092A00093B51 /* WalkWalk */ = {
+		AEE95E411D7B092A00093B51 /* perSession */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AEE95E541D7B092A00093B51 /* Build configuration list for PBXNativeTarget "WalkWalk" */;
+			buildConfigurationList = AEE95E541D7B092A00093B51 /* Build configuration list for PBXNativeTarget "perSession" */;
 			buildPhases = (
 				DCF47AF918A71A5ED53CDE22 /* [CP] Check Pods Manifest.lock */,
 				AEE95E3E1D7B092A00093B51 /* Sources */,
@@ -296,9 +285,9 @@
 			);
 			dependencies = (
 			);
-			name = WalkWalk;
+			name = perSession;
 			productName = "employee timer";
-			productReference = AEE95E421D7B092A00093B51 /* WalkWalk.app */;
+			productReference = AEE95E421D7B092A00093B51 /* perSession.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -332,7 +321,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AEE95E3D1D7B092A00093B51 /* Build configuration list for PBXProject "employee timer" */;
+			buildConfigurationList = AEE95E3D1D7B092A00093B51 /* Build configuration list for PBXProject "perSession" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -345,7 +334,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AEE95E411D7B092A00093B51 /* WalkWalk */,
+				AEE95E411D7B092A00093B51 /* perSession */,
 			);
 		};
 /* End PBXProject section */
@@ -358,8 +347,7 @@
 				AE84DE8D1E7E638700F08945 /* CHANGE LOG.rtf in Resources */,
 				AEE95E501D7B092A00093B51 /* LaunchScreen.storyboard in Resources */,
 				AEE95E4D1D7B092A00093B51 /* Assets.xcassets in Resources */,
-				AE504B651DC4F5C3008C91A8 /* GoogleService-Info.plist in Resources */,
-				AE99D97C1D8FDDF800061B95 /* GoogleService-Infoold.plist in Resources */,
+				F4DDD6341FB1C92B00A327D7 /* GoogleService-Info.plist in Resources */,
 				AEE95E4B1D7B092A00093B51 /* Main.storyboard in Resources */,
 				AE2185D51E2CA2F80017B958 /* dogBark.wav in Resources */,
 				AEC3A7751D7DE22B005E3F1F /* datePicker2.storyboard in Resources */,
@@ -375,7 +363,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-WalkWalk/Pods-WalkWalk-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-perSession/Pods-perSession-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -402,7 +390,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WalkWalk/Pods-WalkWalk-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-perSession/Pods-perSession-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		57B37AFD86DF6AD0EA9CB931 /* [CP] Copy Pods Resources */ = {
@@ -417,7 +405,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WalkWalk/Pods-WalkWalk-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-perSession/Pods-perSession-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AE1259B51D8C2E4F00AAF470 /* Run Script */ = {
@@ -445,7 +433,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WalkWalk-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-perSession-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -619,7 +607,7 @@
 		};
 		AEE95E551D7B092A00093B51 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1667B5A4CBB25A1ECA3B1E5E /* Pods-WalkWalk.debug.xcconfig */;
+			baseConfigurationReference = D36D34D1D194F34A2C696A4C /* Pods-perSession.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
@@ -634,9 +622,10 @@
 				INFOPLIST_FILE = "employee timer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "HomePloyer.employee-timer";
+				PRODUCT_BUNDLE_IDENTIFIER = HomePloyer.perSession;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_REFLECTION_METADATA_LEVEL = all;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -644,7 +633,7 @@
 		};
 		AEE95E561D7B092A00093B51 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3AEA15E2A3CCF78E0395E7AB /* Pods-WalkWalk.release.xcconfig */;
+			baseConfigurationReference = 3524438E11FB26ADA3170CED /* Pods-perSession.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
@@ -659,9 +648,10 @@
 				INFOPLIST_FILE = "employee timer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "HomePloyer.employee-timer";
+				PRODUCT_BUNDLE_IDENTIFIER = HomePloyer.perSession;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_REFLECTION_METADATA_LEVEL = all;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -670,7 +660,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AEE95E3D1D7B092A00093B51 /* Build configuration list for PBXProject "employee timer" */ = {
+		AEE95E3D1D7B092A00093B51 /* Build configuration list for PBXProject "perSession" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AEE95E521D7B092A00093B51 /* Debug */,
@@ -679,7 +669,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AEE95E541D7B092A00093B51 /* Build configuration list for PBXNativeTarget "WalkWalk" */ = {
+		AEE95E541D7B092A00093B51 /* Build configuration list for PBXNativeTarget "perSession" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AEE95E551D7B092A00093B51 /* Debug */,
