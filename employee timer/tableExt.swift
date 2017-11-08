@@ -115,7 +115,7 @@ extension(ViewController){
             cell2.employerName?.text = "\(pickerData[indexPath.row])" ;cell2.employerDog.isHidden = false} else
             //{cell2.employerName.textColor = blueColor;cell2.employerName?.text = "\(pickerData[indexPath.row]) ✚" ;cell2.employerDog.isHidden = true}
             //change add dof to account
-             //{cell2.employerName.textColor = blueColor;cell2.employerName?.text = "New Account ✚" ;cell2.employerDog.isHidden = true}
+             {cell2.employerName.textColor = blueColor;cell2.employerName?.text = "New Account ✚" ;cell2.employerDog.isHidden = true}
             
 
         if pickerIP[indexPath.row] != "" { activeSign = " walks..." ;cell2.employerDog.textColor = redColor}
