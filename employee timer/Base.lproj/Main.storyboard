@@ -1701,6 +1701,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grass12" translatesAutoresizingMaskIntoConstraints="NO" id="w4u-LS-tBE">
+                                <rect key="frame" x="16" y="20" width="288" height="460"/>
+                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rnh-XI-hKH">
                                 <rect key="frame" x="90" y="120" width="140" height="30"/>
                                 <constraints>
@@ -1721,7 +1724,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dogwalkerimage" translatesAutoresizingMaskIntoConstraints="NO" id="Jpb-a2-c4I">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perSessionImage" translatesAutoresizingMaskIntoConstraints="NO" id="Jpb-a2-c4I">
                                 <rect key="frame" x="60" y="317" width="200" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="EOC-dQ-jO6"/>
@@ -1807,6 +1810,9 @@
                             <constraint firstItem="wuq-GZ-v5C" firstAttribute="leading" secondItem="apK-xN-ZsM" secondAttribute="trailing" constant="4" id="ESa-wP-MZX"/>
                             <constraint firstItem="Pog-dx-X7C" firstAttribute="top" secondItem="Rnh-XI-hKH" secondAttribute="bottom" constant="14" id="Fuo-v7-hxX"/>
                             <constraint firstItem="NTs-3R-g9p" firstAttribute="centerY" secondItem="Pog-dx-X7C" secondAttribute="centerY" id="JEZ-9v-zOY"/>
+                            <constraint firstItem="w4u-LS-tBE" firstAttribute="top" secondItem="mjZ-vC-Fuk" secondAttribute="bottom" id="MjT-Tl-ysH"/>
+                            <constraint firstItem="w4u-LS-tBE" firstAttribute="leading" secondItem="4Aa-sb-LQD" secondAttribute="leadingMargin" id="NvU-ZM-XQx"/>
+                            <constraint firstItem="xTB-W2-ZGQ" firstAttribute="top" secondItem="w4u-LS-tBE" secondAttribute="bottom" id="RJu-v6-Epn"/>
                             <constraint firstItem="Jpb-a2-c4I" firstAttribute="top" secondItem="NiB-Rc-LZj" secondAttribute="bottom" constant="50" id="VJz-JO-2S5"/>
                             <constraint firstItem="apK-xN-ZsM" firstAttribute="centerY" secondItem="wuq-GZ-v5C" secondAttribute="centerY" id="VX9-zI-q9V"/>
                             <constraint firstItem="AiQ-AU-mU3" firstAttribute="leading" secondItem="Rnh-XI-hKH" secondAttribute="trailing" constant="18" id="VqP-lH-8B3"/>
@@ -1814,6 +1820,7 @@
                             <constraint firstItem="Rnh-XI-hKH" firstAttribute="top" secondItem="mjZ-vC-Fuk" secondAttribute="bottom" constant="100" id="ZiZ-qp-GIK"/>
                             <constraint firstItem="NTs-3R-g9p" firstAttribute="leading" secondItem="Pog-dx-X7C" secondAttribute="trailing" constant="8" id="Zwv-zE-YhU"/>
                             <constraint firstItem="AiQ-AU-mU3" firstAttribute="centerY" secondItem="Rnh-XI-hKH" secondAttribute="centerY" id="auk-NJ-9c5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="w4u-LS-tBE" secondAttribute="trailing" id="diQ-rh-Jk4"/>
                             <constraint firstItem="wuq-GZ-v5C" firstAttribute="top" secondItem="Pog-dx-X7C" secondAttribute="bottom" constant="14" id="dnL-lo-N7x"/>
                             <constraint firstItem="Jpb-a2-c4I" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="i0q-OP-KW4"/>
                             <constraint firstItem="apK-xN-ZsM" firstAttribute="leading" secondItem="Pog-dx-X7C" secondAttribute="leading" id="m6s-3L-GxS"/>
@@ -1837,7 +1844,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="115-Oe-E6l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-8097" y="-1193"/>
+            <point key="canvasLocation" x="-8098.125" y="-1193.75"/>
         </scene>
         <!--billerView-->
         <scene sceneID="1lX-oS-zgj">
@@ -1851,6 +1858,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grass12" translatesAutoresizingMaskIntoConstraints="NO" id="cAA-bj-x4q">
+                                <rect key="frame" x="16" y="104" width="288" height="326"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fgv-lZ-OY1">
                                 <rect key="frame" x="0.0" y="98" width="320" height="92"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1992,9 +2002,6 @@
                                     <action selector="PeriodChosen:" destination="KQc-zY-Jl3" eventType="valueChanged" id="fhL-ti-23U"/>
                                 </connections>
                             </segmentedControl>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grass12" translatesAutoresizingMaskIntoConstraints="NO" id="cAA-bj-x4q">
-                                <rect key="frame" x="16" y="104" width="288" height="326"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2523,6 +2530,7 @@
         <image name="meluna" width="55" height="55"/>
         <image name="noSign" width="225" height="225"/>
         <image name="pencilImage" width="100" height="100"/>
+        <image name="perSessionImage" width="234" height="225"/>
         <image name="sandWatchBig" width="100" height="100"/>
         <image name="sandWatchStop" width="257" height="261"/>
         <image name="sendBillIcon" width="55" height="55"/>
@@ -2533,6 +2541,6 @@
         <segue reference="kfH-wV-ZNk"/>
         <segue reference="J3o-R7-qWW"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="gfT-By-X34"/>
+        <segue reference="1k4-P4-HYk"/>
     </inferredMetricsTieBreakers>
 </document>
