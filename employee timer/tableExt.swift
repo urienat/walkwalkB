@@ -168,7 +168,7 @@ print (imageArray)
                 } else if self.paymentUpdate == "Round" {
                     
                 }
-                if   self.paymentUpdate == "Normal" {self.startButton.setTitle("Start", for: .normal);self.startImage.image = self.sandwtchImageBig} else {self.startButton.setTitle("Walk", for: .normal);self.startImage.image = self.roundImageBig}
+                if   self.paymentUpdate == "Normal" {self.startButton.setTitle("Start", for: .normal);self.startImage.image = self.sandwtchImageBig} else {self.startButton.setTitle("Session", for: .normal);self.startImage.image = self.roundImageBig}
 
                 
                 self.RateUpdate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)
