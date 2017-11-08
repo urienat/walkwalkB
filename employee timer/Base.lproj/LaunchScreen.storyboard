@@ -27,11 +27,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grass5" translatesAutoresizingMaskIntoConstraints="NO" id="yQl-rP-to7">
-                                <rect key="frame" x="0.0" y="167" width="375" height="500"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="500" id="EL5-qq-yYp"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grass12" translatesAutoresizingMaskIntoConstraints="NO" id="7SV-uP-hHf" userLabel="background">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perSession" translatesAutoresizingMaskIntoConstraints="NO" id="Sv0-L9-SUd">
                                 <rect key="frame" x="66" y="327" width="243" height="200"/>
@@ -53,13 +50,14 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Sv0-L9-SUd" secondAttribute="bottom" constant="140" id="FAB-DL-rGM"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="7SV-uP-hHf" secondAttribute="bottom" id="LME-3A-9E2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Sv0-L9-SUd" secondAttribute="trailing" constant="50" id="UiG-sK-ngb"/>
                             <constraint firstItem="Sv0-L9-SUd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="50" id="XaX-jA-wko"/>
+                            <constraint firstItem="7SV-uP-hHf" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Xkl-H2-Gn8"/>
                             <constraint firstItem="StO-8g-Zzw" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="cvm-SF-5C6"/>
+                            <constraint firstAttribute="trailing" secondItem="7SV-uP-hHf" secondAttribute="trailing" id="hhb-Uo-sB9"/>
+                            <constraint firstItem="7SV-uP-hHf" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="kXO-hO-0bQ"/>
                             <constraint firstItem="StO-8g-Zzw" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="90" id="lc0-oE-gf5"/>
-                            <constraint firstAttribute="trailing" secondItem="yQl-rP-to7" secondAttribute="trailing" id="pqn-2a-OAc"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="yQl-rP-to7" secondAttribute="bottom" id="zDx-e0-iPT"/>
-                            <constraint firstItem="yQl-rP-to7" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="zn2-tI-4Np"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -69,7 +67,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Grass5" width="1254" height="741"/>
+        <image name="Grass12" width="512" height="512"/>
         <image name="perSession" width="225" height="225"/>
     </resources>
 </document>

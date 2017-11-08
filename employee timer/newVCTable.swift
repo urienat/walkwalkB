@@ -248,7 +248,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         override func viewDidLoad() {
         super.viewDidLoad()
         
-      backgroundImage.image = UIImage(named: "Grass5")
+     // backgroundImage.image = UIImage(named: "Grass12")
             print (ViewController.fixedCurrency)
             print (ViewController.fixedName)
             print (ViewController.fixedemail)

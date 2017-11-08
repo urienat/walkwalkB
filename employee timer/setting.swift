@@ -156,8 +156,8 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         picture.clipsToBounds = true
         picture.layer.cornerRadius = 20
         
-        backgroundImage.image = UIImage(named: "Grass12")
-        self.view.insertSubview(backgroundImage, at: 0)
+       // self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Grass12")!)
+        //self.view.insertSubview(backgroundImage, at: 0)
         
         //connectivity
         if Reachability.isConnectedToNetwork() == true

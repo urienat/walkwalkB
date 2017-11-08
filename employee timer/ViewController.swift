@@ -423,11 +423,11 @@ print ("started view did load")
             
     
         
-        backgroundImage.image = UIImage(named: "Grass5")
-        self.view.insertSubview(backgroundImage, at: 0)
-        if(UIApplication.shared.statusBarOrientation.isLandscape)
-        {self.view.insertSubview(backgroundImage, at: 30)
-        backgroundImage.frame = self.view.bounds}
+          //  self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Grass12")!)
+       // self.view.insertSubview(backgroundImage, at: 0)
+       // if(UIApplication.shared.statusBarOrientation.isLandscape)
+      //  {self.view.insertSubview(backgroundImage, at: 30)
+      //  backgroundImage.frame = self.view.bounds}
         
         if poo == "No" {PooSwitch.setOn(false, animated: true)} else {PooSwitch.setOn(true, animated: true)}
         if pee == "No" {peeSwitch.setOn(false, animated: true)} else {peeSwitch.setOn(true, animated: true)}

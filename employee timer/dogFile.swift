@@ -315,8 +315,8 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         pDogImage.layer.cornerRadius = 32
         
         
-        backgroundImage.image = UIImage(named: "Grass8")
-        self.view.insertSubview(backgroundImage, at: 0)
+       // self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Grass12")!)
+       // self.view.insertSubview(backgroundImage, at: 0)
         
       
         

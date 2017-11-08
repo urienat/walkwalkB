@@ -27,6 +27,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grass12" translatesAutoresizingMaskIntoConstraints="NO" id="Ohp-4N-8Ys">
+                                <rect key="frame" x="16" y="0.0" width="288" height="480"/>
+                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Total" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="onX-IQ-7h2" userLabel="Total">
                                 <rect key="frame" x="105" y="188" width="110" height="30"/>
                                 <constraints>
@@ -323,6 +326,8 @@
                             <constraint firstItem="a1i-tg-2qU" firstAttribute="centerX" secondItem="mK9-6d-CXh" secondAttribute="centerX" id="8wy-ui-bQI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Gb0-Kz-szO" secondAttribute="trailing" constant="8" id="98S-vg-QH0"/>
                             <constraint firstItem="wRl-Bm-jHt" firstAttribute="centerX" secondItem="Znj-aX-FL2" secondAttribute="centerX" id="CDO-ew-B1j"/>
+                            <constraint firstItem="Ohp-4N-8Ys" firstAttribute="top" secondItem="Znj-aX-FL2" secondAttribute="top" id="EZ8-lg-b3J"/>
+                            <constraint firstItem="1xg-Ig-RaM" firstAttribute="top" secondItem="Ohp-4N-8Ys" secondAttribute="bottom" id="EwO-9c-Rbm"/>
                             <constraint firstItem="Ydt-wR-B8B" firstAttribute="centerY" secondItem="a1i-tg-2qU" secondAttribute="centerY" id="FGj-s1-dMq"/>
                             <constraint firstItem="SVh-me-uB2" firstAttribute="centerX" secondItem="Znj-aX-FL2" secondAttribute="centerX" id="Fc5-l5-iqB"/>
                             <constraint firstItem="TwU-Ef-nz8" firstAttribute="leading" secondItem="Znj-aX-FL2" secondAttribute="leadingMargin" constant="8" id="HUJ-9Y-vrc"/>
@@ -331,6 +336,8 @@
                             <constraint firstItem="onX-IQ-7h2" firstAttribute="centerX" secondItem="Znj-aX-FL2" secondAttribute="centerX" id="SPP-Zw-PSm"/>
                             <constraint firstAttribute="trailing" secondItem="eic-ue-SnJ" secondAttribute="trailing" id="Sk8-Db-Fyh"/>
                             <constraint firstItem="Sfr-6v-HXX" firstAttribute="width" secondItem="0Mh-GW-9vW" secondAttribute="width" id="Vja-9O-cC2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ohp-4N-8Ys" secondAttribute="trailing" id="WcF-bj-frc"/>
+                            <constraint firstItem="Ohp-4N-8Ys" firstAttribute="leading" secondItem="Znj-aX-FL2" secondAttribute="leadingMargin" id="Y6r-i1-ctP"/>
                             <constraint firstItem="Ocl-iC-Ud2" firstAttribute="centerY" secondItem="a1i-tg-2qU" secondAttribute="centerY" id="YPD-eR-Q0r"/>
                             <constraint firstAttribute="trailing" secondItem="V2L-Iv-IDI" secondAttribute="trailing" id="YbN-Ol-6Ih"/>
                             <constraint firstItem="Ocl-iC-Ud2" firstAttribute="leading" secondItem="Znj-aX-FL2" secondAttribute="leadingMargin" constant="8" id="ZVQ-SG-MuZ"/>
@@ -382,7 +389,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4CN-ka-c4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-720.28985507246387" y="8.9673913043478262"/>
+            <point key="canvasLocation" x="-721.875" y="8.75"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Grass12" width="512" height="512"/>
+    </resources>
 </document>

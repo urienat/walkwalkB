@@ -217,8 +217,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     
     override func viewDidLoad() {
         
-        backgroundImage.image = UIImage(named: "Grass5")
-        self.view.insertSubview(backgroundImage, at: 0)
+       // self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Grass12")!)
+       // self.view.insertSubview(backgroundImage, at: 0)
         
         dog.clipsToBounds = true
         dog.layer.cornerRadius = 110

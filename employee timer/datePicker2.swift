@@ -189,8 +189,8 @@ class datePicker2: UIViewController {
             alert50()
         }
         
-        backgroundImage.image = UIImage(named: "Grass3")
-        self.view.insertSubview(backgroundImage, at: 0)
+       // self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Grass12")!)
+        //self.view.insertSubview(backgroundImage, at: 0)
         pooBackground.isHidden = true
         pooSwitch.setOn(false, animated: true)
         peeSwitch.setOn(false, animated: true)

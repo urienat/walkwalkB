@@ -70,8 +70,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
        
         super.viewDidLoad()
         
-        backgroundImage.image = UIImage(named: "Grass5")
-        
+   //     self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Grass12")!)
+
         if employerID != "" {  titleLbl = "\(employerFromMain)'s bills" } else {titleLbl = "Bills"}
         
         self.title = titleLbl

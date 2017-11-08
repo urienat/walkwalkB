@@ -87,8 +87,8 @@ class subs: UIViewController {
 
         
         self.thinking.startAnimating()
-        backgroundImage.image = UIImage(named: "Grass12")
-        self.view.insertSubview(backgroundImage, at: 0)
+     //   self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Grass12")!)
+        //self.view.insertSubview(backgroundImage, at: 0)
         
          updateUI()
     

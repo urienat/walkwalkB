@@ -85,7 +85,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         navigationItem.leftBarButtonItem = deleteBill
         deleteBill?.isEnabled = false
         
-        backgroundImage.image = UIImage(named: "Grass5")
+     //   self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Grass12")!)
         self.view.insertSubview(backgroundImage, at: 0)
         self.titleLbl = "Bill"
         self.title = self.titleLbl
