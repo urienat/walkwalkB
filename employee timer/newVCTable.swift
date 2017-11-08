@@ -301,7 +301,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                 
             })
   
-            self.thinking.color = self.greenColor
+            self.thinking.color = self.blueColor
             self.thinking.isHidden = false
             self.thinking.startAnimating()
             StatusChosen.isEnabled = false
@@ -393,7 +393,7 @@ print (mailVisit)
     
         @IBOutlet weak var periodChosen: UISegmentedControl!
     @IBAction func PeriodChosen(_ sender: AnyObject) {saveToFB()
-        totalBackground.backgroundColor = greenColor
+        totalBackground.backgroundColor = blueColor
 
         noSign.isHidden = true
 

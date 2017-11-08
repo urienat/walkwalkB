@@ -22,7 +22,8 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     let greenColor = UIColor(red :32.0/255.0, green: 150.0/255.0, blue: 24.0/255.0, alpha: 1.0)
     let blackColor = UIColor(red :24.0/255.0, green: 25.0/255.0, blue: 27.0/255.0, alpha: 1.0)
-    
+    var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
+
 
     @IBOutlet weak var scrollerView: UIScrollView!
     
@@ -234,7 +235,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         
         
 
-        connect.onTintColor =  greenColor
+        connect.onTintColor =  blueColor
 
     
         
@@ -755,7 +756,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     }//end of caninvite
     
     func isConnected() {
-        if connectSetter == "Yes" && cEmployerRef != "" {print("connection is OK");invite.setTitleColor(greenColor, for: .normal); invite.setTitle("Paired", for: .normal);invite.isHidden = true;//change hinvite is hidden upon connect.
+        if connectSetter == "Yes" && cEmployerRef != "" {print("connection is OK");invite.setTitleColor(blueColor, for: .normal); invite.setTitle("Paired", for: .normal);invite.isHidden = true;//change hinvite is hidden upon connect.
             invite.isEnabled = false;message3 = "'Connect' enables you share information. Left fields above,  updated (if filled by pet's family). In addition , Pet's records can be seen but not updated by pet's family."} else {print ("no connection"); invite.setTitle("(Invite)", for: .normal); invite.isEnabled = true}
         if connectSetter == "No" && cEmployerRef != "" {print ("paired but not connected"); invite.isHidden = true;message3 = "When you would set 'connect' to 'On' -  Left fields above, would be updated (if filled by pet's family). In addition , Pet's records would be seen but not updated by pet's family."}
 
