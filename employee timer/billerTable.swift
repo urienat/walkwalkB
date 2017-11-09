@@ -160,7 +160,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         
         
         let billItem = billItems[indexPath.row]
-        
+        cell.backgroundColor = UIColor.clear
+
 
         cell.l1.text = ("Bill-\(billItem.fBill!) - \(billItem.fBillEmployerName!)")
         print ("fuf\(billItem.fBillTotalTotal!)" )

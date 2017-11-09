@@ -160,7 +160,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             
         case 1:
         paymentUpdate = "Round"
-        rateTitle.text = "Walk rate"
+        rateTitle.text = "Session rate"
 
         infoPayment.isHidden = false
         if paymentchanged == false {} else { alert512()}
@@ -323,7 +323,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveToDB(_:)))
             navigationItem.rightBarButtonItem = saveRecord
         
-        if self.paymentUpdate == "Normal" {rateTitle.text = "Hour rate"} else if self.paymentUpdate == "Round" {  rateTitle.text = "Walk rate"}
+        if self.paymentUpdate == "Normal" {rateTitle.text = "Hour rate"} else if self.paymentUpdate == "Round" {  rateTitle.text = "Session rate"}
         if ViewController.fixedCurrency != nil {currencySign.text = (ViewController.fixedCurrency!)} else {currencySign.text = ""}
         self.pEmail.addTarget(self, action: #selector(canInvite), for: .editingDidEnd)
         
@@ -361,7 +361,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         print("rateeeee\(RateUpdate)")
        
         if self.imageGps.image == self.emptyVimage { messageInstruction = " If you would set pet's home GPS location, you would enjoy validation of In/Out records.";}
-        if self.paymentUpdate == "" { messageInstruction = " If you would set rate per walk/hour , you would enjoy records' bill calculation."}
+        if self.paymentUpdate == "" { messageInstruction = " If you would set rate per Session/hour , you would enjoy records' bill calculation."}
         if self.imageGps.image == self.emptyVimage || self.paymentUpdate == "" {titleInstruction = "Save Anyway"} else {titleInstruction = "Yes"}
             
         if self.pLastName.text != "" { // this check that last name is filled and it is filled
@@ -537,7 +537,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         func  configuredMailComposeViewController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
-        mailComposerVC.setSubject("WalkWalk mail")
+        mailComposerVC.setSubject("PerSession mail")
         mailComposerVC.setMessageBody("Hello", isHTML: false)
         mailComposerVC.setToRecipients([emailUpdate])
         return mailComposerVC
@@ -547,7 +547,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         mailComposerVC.setSubject("Invitation to connect through my pet care app.")
-        mailComposerVC.setMessageBody("Hello,\r\n I am using WalkWalk app to support my pet care activity . You are invited to use it as well, so we can connect and see the same picture. Currently , it is avilable in Apple app-store and soon it would be avilable in Android as well. I attached a download link. .\r\n Bye\(ViewController.fixedName!) \(ViewController.fixedLastName!).", isHTML: false)
+        mailComposerVC.setMessageBody("Hello,\r\n I am using PerSession app to support my pet care activity . You are invited to use it as well, so we can connect and see the same picture. Currently , it is avilable in Apple app-store and soon it would be avilable in Android as well. I attached a download link. .\r\n Bye\(ViewController.fixedName!) \(ViewController.fixedLastName!).", isHTML: false)
         mailComposerVC.setToRecipients([pEmail.text!])
         return mailComposerVC
     }//end of configure
@@ -566,7 +566,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         //sms
         func sendMessage() {
         let messageVC = MFMessageComposeViewController()
-        messageVC.body = "Hi,\r\n I am using WalkWalk app to manage my pet care activity . \r\n You are invited to use it as well, so we can connect and see the same picture. \r\n Currently , it is avilable in Apple app-store and soon it would be avilable in Android as well. I am sending a download link . Bye. \(ViewController.fixedName!) \(ViewController.fixedLastName!) "
+        messageVC.body = "Hi,\r\n I am using PerSession app to manage my pet care activity . \r\n You are invited to use it as well, so we can connect and see the same picture. \r\n Currently , it is avilable in Apple app-store and soon it would be avilable in Android as well. I am sending a download link . Bye. \(ViewController.fixedName!) \(ViewController.fixedLastName!) "
         messageVC.recipients = [pCell.text!]
         messageVC.messageComposeDelegate = self
         present(messageVC, animated: true, completion: nil)
@@ -894,7 +894,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     }
     
     func alert8(){
-        let alertController4 = UIAlertController(title: ("Payment methood") , message: "Set per hour/walk to affect calculation.", preferredStyle: .alert)
+        let alertController4 = UIAlertController(title: ("Payment methood") , message: "Set per hour/Session to affect calculation.", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
         }
         
@@ -927,7 +927,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     }
     
     func alert512(){
-        let alertController512 = UIAlertController(title: ("Change payment methood") , message: "Important! Did you check that there are no unbilled walks for that dog before you change payment methood? ", preferredStyle: .alert)
+        let alertController512 = UIAlertController(title: ("Change payment methood") , message: "Important! Did you check that there are no unbilled sessions for that dog before you change payment methood? ", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Yes", style: .default) { (UIAlertAction) in
         }
         let noAction = UIAlertAction(title: "No", style: .default) { (UIAlertAction) in

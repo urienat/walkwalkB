@@ -408,7 +408,7 @@ print ("FBSDKAccessToken.curren\( FBSDKAccessToken.current())")
                         self.alert2()
 
                     case .errorCodeUserDisabled:
-                        self.textForError = ("This user is disabled. Please check with our walkwalk support at wwww.homeployer.com." )
+                        self.textForError = ("This user is disabled. Please check with our PerSession support at wwww.homeployer.com." )
                         self.alert2()
                         
                     default:

@@ -553,7 +553,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     //sms
         func sendMessage() {
         let messageVC = MFMessageComposeViewController()
-        messageVC.body = " Hi \(self.nameUpdate), I am sending you a link for WalkWalk application. This way we'll be in touch over my pet care responsibilites."
+        messageVC.body = " Hi \(self.nameUpdate), I am sending you a link for PerSession application. This way we'll be in touch over my pet care responsibilites."
        // messageVC.recipients = [self.cellUpdate]
         messageVC.messageComposeDelegate = self
         present(messageVC, animated: true, completion: nil)
@@ -704,7 +704,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     // alert1
     func alert1 () {
-        let alertCotroller1 = UIAlertController(title: ("Password alert") , message: ("An email with password instructions was sent to the email you signed into WalkWalk"), preferredStyle: .alert)
+        let alertCotroller1 = UIAlertController(title: ("Password alert") , message: ("An email with password instructions was sent to the email you signed into PerSession"), preferredStyle: .alert)
         let okAction1 = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in
             //
         }
