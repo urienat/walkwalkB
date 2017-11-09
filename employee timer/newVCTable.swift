@@ -256,8 +256,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
   
             
-        self.view.insertSubview(backgroundImage, at: 0)
-        
+tableConnect.backgroundColor = UIColor.clear
         
         let titleLbl = employerFromMain! + "'s walks"
         self.title = titleLbl
@@ -372,7 +371,6 @@ print (mailVisit)
         @IBAction func StatusChosen(_ sender: AnyObject) {
             
             print("pressed")
-           // totalBackground.backgroundColor = whiteColor
             noSign.isHidden = true
             generalApproval.isEnabled = false
             saveToFB() //check why is it here?

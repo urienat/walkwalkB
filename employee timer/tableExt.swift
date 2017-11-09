@@ -111,11 +111,13 @@ extension(ViewController){
             print (pickerData[indexPath.row])
 
     
-         if pickerData[indexPath.row] != "Add new dog" {cell2.employerName.textColor = blueColor;
+            if pickerData[indexPath.row] != "Add new dog" {cell2.employerName.textColor = blueColor;            cell2.backgroundColor = UIColor.clear
+                
+
             cell2.employerName?.text = "\(pickerData[indexPath.row])" ;cell2.employerDog.isHidden = false} else
-            //{cell2.employerName.textColor = blueColor;cell2.employerName?.text = "\(pickerData[indexPath.row]) ✚" ;cell2.employerDog.isHidden = true}
             //change add dof to account
-             {cell2.employerName.textColor = blueColor;cell2.employerName?.text = "New Account ✚" ;cell2.employerDog.isHidden = true}
+            {cell2.employerName.textColor = blueColor;cell2.employerName?.text = "New Account ✚" ;cell2.employerDog.isHidden = true;            cell2.backgroundColor = UIColor.clear
+}
             
 
         if pickerIP[indexPath.row] != "" { activeSign = " walks..." ;cell2.employerDog.textColor = redColor}
@@ -125,7 +127,7 @@ extension(ViewController){
           
             cell2.employerDog?.text =  dogData[indexPath.row] + activeSign
 
-        
+            
         cell2.dogImage.clipsToBounds = true
         cell2.dogImage.layer.cornerRadius = CGFloat(25)
         cell2.dogImage.contentMode = .scaleAspectFill

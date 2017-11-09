@@ -397,6 +397,7 @@ print ("started view did load")
             alert50()
         }
         
+        employerList.backgroundColor = UIColor.clear
         
         
         //application did become active

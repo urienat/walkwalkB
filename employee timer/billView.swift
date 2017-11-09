@@ -80,6 +80,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             alert50()
         }
         
+        
+        
       //  deleteBill = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(deleteAlert))
         
         navigationItem.leftBarButtonItem = deleteBill
