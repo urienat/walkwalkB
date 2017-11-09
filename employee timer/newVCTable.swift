@@ -19,7 +19,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
     @IBOutlet weak var tableConnect: UITableView!
    
-    let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+ //   let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
     let Vimage = UIImage(named: "due")
     let nonVimage = UIImage(named: "emptyV")
     let paidImage = UIImage(named: "paid")
@@ -431,6 +431,7 @@ print (mailVisit)
         if let recordToInt = Double(record.fTotal!) {
         let (h,m) = secondsTo(seconds: (recordToInt))
             print (self.spesificToInt)
+            cell.backgroundColor = UIColor.clear
             
             if record.fTotal != "-1" { cell.l3.text = String(Int(h)) + "h:" + String (Int(m)) + "m"} }
         else {cell.l3.text = "  "}
@@ -705,10 +706,10 @@ print (mailVisit)
     func thisWeek() {}
     
     //image background rotation
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-    if(UIApplication.shared.statusBarOrientation.isLandscape)
-    {backgroundImage.frame = self.view.bounds} else   {backgroundImage.frame = self.view.bounds}
-    }
+   // override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+   // if(UIApplication.shared.statusBarOrientation.isLandscape)
+   // {backgroundImage.frame = self.view.bounds} else   {backgroundImage.frame = self.view.bounds}
+   // }
     
     
     // button on table clicked
