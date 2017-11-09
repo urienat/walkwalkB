@@ -258,7 +258,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             
 tableConnect.backgroundColor = UIColor.clear
         
-        let titleLbl = employerFromMain! + "'s walks"
+        let titleLbl = employerFromMain! + "'s Sessions"
         self.title = titleLbl
    
             //connectivity
@@ -579,7 +579,7 @@ print (mailVisit)
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         mailComposerVC.setSubject("csv file from your app")
-        mailComposerVC.setMessageBody("\(mydateFormat3.string(from: Date()))  \r\n\r\n\r\n Hi, \r\n \r\n These are records for  period chosen (csv file is attached as well):\r\n\(htmlReport!)\r\n Number of walks:\(self.eventCounter)\r\n Total time: \(totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\nTotal (\(ViewController.fixedCurrency!)): \(self.amount.text!)\r\n\r\n\r\n Regards WalkWalk app )", isHTML: false)
+        mailComposerVC.setMessageBody("\(mydateFormat3.string(from: Date()))  \r\n\r\n\r\n Hi, \r\n \r\n These are records for  period chosen (csv file is attached as well):\r\n\(htmlReport!)\r\n Number of sessions:\(self.eventCounter)\r\n Total time: \(totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\nTotal (\(ViewController.fixedCurrency!)): \(self.amount.text!)\r\n\r\n\r\n Regards PerSession app )", isHTML: false)
         
         mailComposerVC.setToRecipients([ViewController.fixedemail])
         mailComposerVC.addAttachmentData(csvReport!, mimeType: "text/csv", fileName: "Your pets' records")//the csv attachement through here
@@ -590,11 +590,11 @@ print (mailVisit)
     func  configuredMailComposeViewController2() -> MFMailComposeViewController {
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
-        mailComposerVC2.setSubject("WalkWalk - \(counterForMail2!)")
-        mailComposerVC2.setMessageBody("\(mydateFormat3.string(from: Date()))\r\n ref#: \(counterForMail2!)\r\n Family: \(employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the walks,  we had together:\r\n\(htmlReport!)\r\n Total Number of walks: \(self.eventCounter) -  \(totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\n Total (\(ViewController.fixedCurrency!)): \(self.amount.text!)\r\n \(taxationBlock)\r\n\r\n\r\n Regards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by WalkWalk app. ", isHTML: false)
+        mailComposerVC2.setSubject("PerSession - \(counterForMail2!)")
+        mailComposerVC2.setMessageBody("\(mydateFormat3.string(from: Date()))\r\n ref#: \(counterForMail2!)\r\n Family: \(employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(htmlReport!)\r\n Total Number of Sessions: \(self.eventCounter) -  \(totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\n Total (\(ViewController.fixedCurrency!)): \(self.amount.text!)\r\n \(taxationBlock)\r\n\r\n\r\n Regards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by PerSession app. ", isHTML: false)
         mailComposerVC2.setToRecipients([employerMail])
         mailComposerVC2.setCcRecipients([ViewController.fixedemail])
-        mailSaver = "\(mydateFormat3.string(from: Date()))\r\n ref#: \(counterForMail2!)\r\n Family: \(employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the walks,  we had together:\r\n\(htmlReport!)\r\n Total Number of walks: \(self.eventCounter) -  \(totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\n Total due(\(ViewController.fixedCurrency!)): \(self.amount.text!)\r\n \(taxationBlock)\r\n\r\n\r\n Regards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by WalkWalk app. "
+        mailSaver = "\(mydateFormat3.string(from: Date()))\r\n ref#: \(counterForMail2!)\r\n Family: \(employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) -  \(totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\n Total due(\(ViewController.fixedCurrency!)): \(self.amount.text!)\r\n \(taxationBlock)\r\n\r\n\r\n Regards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by PerSession app. "
         
         DispatchQueue.main.asyncAfter(deadline: .now()+2){
 
@@ -1115,7 +1115,7 @@ print (mailVisit)
             if self.payment=="Normal" {   self.calc = Double(Int(hForTotal))*(self.Employerrate)+Double(Int(mForTotal))*(self.Employerrate)/60} else if self.payment == "Round" {   self.calc = (Double(self.eventCounter))*(self.Employerrate)} else    {self.calc = 0.0}
             
             
-            if self.payment=="Normal" {   self.perEvents.text = "" ;self.perHour.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /hour") } else if self.payment == "Round" {  self.perEvents.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /walk") ;self.perHour.text =  ""   } else    {self.perEvents.text = ""; self.perHour.text = ""}
+            if self.payment=="Normal" {   self.perEvents.text = "" ;self.perHour.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /hour") } else if self.payment == "Round" {  self.perEvents.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /session") ;self.perHour.text =  ""   } else    {self.perEvents.text = ""; self.perHour.text = ""}
             
             self.amount.text =  String(Double(self.calc).roundTo(places: 2))
             self.currencySymbol.text = ViewController.fixedCurrency!
@@ -1173,7 +1173,7 @@ print (mailVisit)
         self.taxationBlock = ("\(self.taxForBlock)(\(ViewController.fixedCurrency!))):\(self.midCalc)\r\nTotal(w/\(self.taxForBlock)(\(ViewController.fixedCurrency!))):\(self.midCalc2)\r\n")
              } else {self.taxationBlock = ""}
             
-            if self.gpsBlock != "0" { self.gpsLegend = "\r\n\r\n\r\n     WALKS' LEGEND \r\n     Manual - Walk recorded manually\r\n     Gps - Walk recorded by Gps\r\n        🏳 - onsite \r\n        🚩 - offsite"} else {self.gpsLegend = ""}
+            if self.gpsBlock != "0" { self.gpsLegend = "\r\n\r\n\r\n     Sessions' LEGEND \r\n     Manual - Session recorded manually\r\n     Gps - Session recorded by Gps\r\n        🏳 - onsite \r\n        🚩 - offsite"} else {self.gpsLegend = ""}
     print (self.taxationBlock)
    
         print("guygug\(counterForMail)")
@@ -1231,7 +1231,7 @@ print (mailVisit)
     }
     
     func alert90(){
-        let alertController90 = UIAlertController(title: ("Preapre Due Records") , message: "You can mark your walk as 'Due' by touching the empty square.", preferredStyle: .alert)
+        let alertController90 = UIAlertController(title: ("Preapre Due Records") , message: "You can mark your Sessions as 'Due' by touching the empty square.", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
             self.keeper.set(1, forKey: "dueInstruction")
             self.rememberMe1 = 1
@@ -1292,7 +1292,7 @@ print (mailVisit)
             self.billSender.isEnabled = false}
        
         
-            let alertController19 = UIAlertController(title: ("Bill records") , message: "Mail with bill of walks marked as 'due' is prepared. Sending or saving the mail, would set walks to final status of 'Billed'." , preferredStyle: .alert)
+            let alertController19 = UIAlertController(title: ("Bill records") , message: "Mail with bill of sessions marked as 'due' is prepared. Sending or saving the mail, would set sessions to final status of 'Billed'." , preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
                 self.thinking.startAnimating()
                     self.billing()
@@ -1342,7 +1342,7 @@ print (mailVisit)
 
                 self.billSender.isEnabled = false}
 
-        let alertController27 = UIAlertController(title: ("Bill records") , message:" There are no  walks with 'Due' status. Please mark walks that you would like to bill by touching the empty square or create new 'walks'." , preferredStyle: .alert)
+        let alertController27 = UIAlertController(title: ("Bill records") , message:" There are no  sessions with 'Due' status. Please mark sessions that you would like to bill by touching the empty square or create new 'sessions'." , preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
             //DispatchQueue.main.asyncAfter(deadline: .now()+1){
                 

@@ -30,7 +30,7 @@ extension(ViewController){
         chooseEmployer.titleLabel?.textAlignment = NSTextAlignment.center
         chooseEmployer.setTitle( dogData[indexPath.row] + " " + pickerData[indexPath.row] + " ▽", for: UIControlState.normal)
         petFile.title = "\(pickerData[indexPath.row])'s file"
-        records.title =  "\(pickerData[indexPath.row])'s walks"
+        records.title =  "\(pickerData[indexPath.row])'s Sessions"
 
         
         employerToS = pickerData[indexPath.row]
@@ -120,7 +120,7 @@ extension(ViewController){
 }
             
 
-        if pickerIP[indexPath.row] != "" { activeSign = " walks..." ;cell2.employerDog.textColor = redColor}
+        if pickerIP[indexPath.row] != "" { activeSign = " In session..." ;cell2.employerDog.textColor = redColor}
         else {activeSign = ""; cell2.employerDog.textColor = blueColor}
             
        if activeData[indexPath.row] == "0" { cell2.employerName.alpha = 0.4;cell2.employerDog.alpha = 0.4} else{ cell2.employerName.alpha = 1; cell2.employerDog.alpha = 1}

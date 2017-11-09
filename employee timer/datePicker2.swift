@@ -225,7 +225,7 @@ class datePicker2: UIViewController {
                 saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveAlert));saveRecord?.isEnabled = false
             }
             
-            else {TimeOut.isHidden = true;date2Button.isHidden = true;date2Button.isEnabled = false;TimeOut.isHidden = true;Total.isHidden = true;totalLabel.isHidden = true;stopLbl.isHidden = true;startLbl.text = "Walk";extendedDate2Button.isHidden = true;extendedDate2Button.isEnabled = false;topOfStart.constant = 60;
+            else {TimeOut.isHidden = true;date2Button.isHidden = true;date2Button.isEnabled = false;TimeOut.isHidden = true;Total.isHidden = true;totalLabel.isHidden = true;stopLbl.isHidden = true;startLbl.text = "Session";extendedDate2Button.isHidden = true;extendedDate2Button.isEnabled = false;topOfStart.constant = 60;
                 
                 saveRecord?.isEnabled = true;        saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveToDB2))
                 self.roundIndicator = "-1"
