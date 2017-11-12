@@ -31,6 +31,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let roundImageRed = UIImage(named: "roundImageRed")
     let roundImageGreen = UIImage(named: "roundImageGreen")
     let pencilImage = UIImage(named: "pencilImage")
+    let roundImageNormal = UIImage(named: "roundImageNormal")
 
     var mailVisit = false
     var mailSaver : String?
@@ -446,8 +447,8 @@ print (mailVisit)
        // cell.l4.text = ("\(record.fIndication!) \(record.fIndication3!) \(record.fIndication2!)")//cancelled tull for round version
             
             if record.fIndication3 == "✏️"||record.fIndication3 == "Manual" { cell.l8.image = pencilImage}
-            if record.fIndication3 == "↺" && record.fIndication == "🚩" {  cell.l8.image = roundImageRed}
-            if record.fIndication3 == "↺" && record.fIndication == "🏳" {  cell.l8.image = roundImageGreen }
+            if record.fIndication3 == "↺" && record.fIndication == "🚩" {  cell.l8.image = roundImageNormal}
+            if record.fIndication3 == "↺" && record.fIndication == "🏳" {  cell.l8.image = roundImageNormal }
             if record.fIndication3 == "⏳"  && record.fIndication == "🚩"  || record.fIndication3 == "⏳" && record.fIndication2 == "🚩"{  cell.l8.image = sandwatchImageRed}
             if record.fIndication3 == "⏳" && record.fIndication == "🏳" && record.fIndication2 == "🏳" {  cell.l8.image = sandwatchImageGreen}
             if record.fIndication3 == "GPS" {  cell.l8.image = sandwatchImageGreen}

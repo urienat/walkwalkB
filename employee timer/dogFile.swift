@@ -160,7 +160,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             
         case 1:
         paymentUpdate = "Round"
-        rateTitle.text = "Session rate"
+        rateTitle.text = "Rate"
 
         infoPayment.isHidden = false
         if paymentchanged == false {} else { alert512()}
@@ -312,7 +312,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         
         
         pDogImage.clipsToBounds = true
-        pDogImage.layer.cornerRadius = 32
+        pDogImage.layer.cornerRadius = 30
         
         
        // self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Grass12")!)
@@ -323,7 +323,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveToDB(_:)))
             navigationItem.rightBarButtonItem = saveRecord
         
-        if self.paymentUpdate == "Normal" {rateTitle.text = "Hour rate"} else if self.paymentUpdate == "Round" {  rateTitle.text = "Session rate"}
+        if self.paymentUpdate == "Normal" {rateTitle.text = "Hour rate"} else if self.paymentUpdate == "Round" {  rateTitle.text = "Rate"}
         if ViewController.fixedCurrency != nil {currencySign.text = (ViewController.fixedCurrency!)} else {currencySign.text = ""}
         self.pEmail.addTarget(self, action: #selector(canInvite), for: .editingDidEnd)
         
