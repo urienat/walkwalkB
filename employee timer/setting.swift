@@ -15,24 +15,19 @@ import MessageUI
 
 class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate, MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate {
     
-    
     //keepקר variables
     let keeper = UserDefaults.standard
-    
-
     
     var window: UIWindow?
     static var newEmployee:String?
     var wrongField: String?
     var profileImageUrl:String?
     
-    
     var created: String?
     let mydateFormat = DateFormatter()
     let mydateFormat5 = DateFormatter()
 
     var textForError:String?
-    
     var emailForPasscode = ""
 
     @IBOutlet weak var passwordTitle: UILabel!
@@ -42,7 +37,6 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     let dbRef = FIRDatabase.database().reference()
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
 
-    let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
     var pickedImage:UIImage?
     
     @IBOutlet var viewForMove: UIView!
@@ -54,8 +48,6 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
    
     @IBOutlet weak var email: UITextField!
     var emailUpdate = ""
-    
-    
 
     @IBOutlet weak var reset: UIButton!
     
@@ -67,7 +59,6 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBOutlet weak var picture: UIImageView!
     var imagePicker2: UIImagePickerController!
 
-    
     @IBOutlet weak var currencyTitle: UILabel!
     @IBOutlet weak var currency: UITextField!
     var currencyUpdate = ""
@@ -86,12 +77,8 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     @IBOutlet weak var taxSwitch: UISwitch!
     @IBAction func taxSwitch(_ sender: Any) {
-        if self.taxSwitchTemp == "No" {self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true; taxName.isHidden = true; signer.isHidden = true;taxSwitchTemp = "Yes";taxSwitcherUpdate = "No";taxPrecentageUpdate = "0";precentage.text = taxPrecentageUpdate; taxNamerUpdate = ""; taxName.text = taxNamerUpdate } else {self.taxSwitch.setOn(true, animated: true);self.precentage.isHidden = false; taxName.isHidden = false; signer.isHidden = false;taxSwitchTemp = "No";taxSwitcherUpdate = "Yes";alert17()}   }
+    if self.taxSwitchTemp == "No" {self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true; taxName.isHidden = true; signer.isHidden = true;taxSwitchTemp = "Yes";taxSwitcherUpdate = "No";taxPrecentageUpdate = "0";precentage.text = taxPrecentageUpdate; taxNamerUpdate = ""; taxName.text = taxNamerUpdate } else {self.taxSwitch.setOn(true, animated: true);self.precentage.isHidden = false; taxName.isHidden = false; signer.isHidden = false;taxSwitchTemp = "No";taxSwitcherUpdate = "Yes";alert17()}   }
     
-    
-   
-    
-   
     
     @IBAction func taxationInfo(_ sender: Any) {
         alert17()
@@ -125,29 +112,22 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         RebeloperStore.shared.purchaseRenewable(.autoRenewableSubscription1)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-            
             self.bark.isEnabled = true
             self.bark.alpha = 1
-
         }
-
     }
     
-
-        
     @IBOutlet weak var bark2: UIButton!
     @IBAction func bark2(_ sender: Any) {
         bark2.isEnabled = false
         bark2.alpha = 0.5
-        //RebeloperStore.shared.purchaseRenewable(.autoRenewableSubscription2)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-            
             self.bark2.isEnabled = true
             self.bark2.alpha = 1
-            
         }
     }
+   
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     override func viewDidLoad() {
@@ -156,23 +136,14 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         picture.clipsToBounds = true
         picture.layer.cornerRadius = 20
         
-       // self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Grass12")!)
-        //self.view.insertSubview(backgroundImage, at: 0)
-        
         //connectivity
         if Reachability.isConnectedToNetwork() == true
-        {
-            print("Internet Connection Available!")
-        }
-        else
-        {
-            print("Internet Connection not Available!")
-            alert50()
+        { print("Internet Connection Available!")
+        } else {
+        print("Internet Connection not Available!")
+        alert50()
         }
         
-        print        ( LoginFile.provider)
-
-
             let currentUser = FIRAuth.auth()?.currentUser
             if (currentUser != nil) {
                 
@@ -189,22 +160,18 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             currency.isHidden = false
             taxSwitch.isHidden = false
             precentage.isHidden = false
-             taxName.isHidden = false;
+            taxName.isHidden = false;
             signer.isHidden = false
             taxerTitle.isHidden = false
             currencyTitle.isHidden = false
             taxinfoSign.isHidden = false
             if LoginFile.provider == "facebook" {passwordTitle.isHidden = true; reset.isHidden=true} else {
-                passwordTitle.isHidden = false;  reset.isHidden = false}
+            passwordTitle.isHidden = false;  reset.isHidden = false}
             passWord.isHidden = true
             subscriptionBtn.isHidden = false
             subscriptionLbl.isHidden = false
-            
             navigationItem.hidesBackButton = false // set pet list as enable
 
-            
-            
-            
             passWord.delegate = self
             
         //user is signed in
@@ -214,7 +181,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveToDB(_:)))
             navigationItem.rightBarButtonItem = saveRecord
                 
-        self.dbRefEmployees.queryOrderedByKey().queryEqual(toValue: user.uid).observeSingleEvent(of: .childAdded, with: { (snapshot) in
+            self.dbRefEmployees.queryOrderedByKey().queryEqual(toValue: user.uid).observeSingleEvent(of: .childAdded, with: { (snapshot) in
             self.nameUpdate = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
             self.name.text = self.nameUpdate
                     
@@ -227,7 +194,6 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             
             
             self.created = (snapshot.childSnapshot(forPath: "fCreated").value as! String)
-            //if created > 3M { //disable the 3Mfree} else (enable 3M free)
             
             self.taxSwitchTemp = snapshot.childSnapshot(forPath: "fSwitcher").value as! String
             if self.taxSwitchTemp == "No" {self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true; self.taxName.isHidden = true; self.signer.isHidden = true;self.taxSwitchTemp = "Yes";self.taxSwitcherUpdate = "No"} else {self.taxSwitch.setOn(true, animated: true);self.precentage.isHidden = false; self.taxName.isHidden = false; self.signer.isHidden = false;self.taxSwitchTemp = "No";self.taxSwitcherUpdate = "Yes"}
@@ -243,7 +209,6 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if let cachedImage = MyImageCache.sharedCache.object(forKey: self.employeeRefUpdate as AnyObject) as? UIImage//bring from cache
           
         {
-           print (cachedImage)
         DispatchQueue.main.async {
         print("employeeref\(String(describing: self.picture.image))")
         self.picture.image = cachedImage
@@ -271,7 +236,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         } //end of if lf let profile
         }//end of else
         }) {(error) in
-            print("error form FB\(error.localizedDescription)")}//end of dbref
+        print("error form FB\(error.localizedDescription)")}//end of dbref
         }//end of if let current user
         }//end of if current user !=nil
         
@@ -301,18 +266,11 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             navigationItem.hidesBackButton = true  // set pet list as disable
 
             
-            
-            
-            
-            
             let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(accounCreation))
             navigationItem.rightBarButtonItem = saveRecord
 
-     
-
             setting.newEmployee = "NO"
         }
-        
         
         mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale: nil)!
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
@@ -321,18 +279,10 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         picture.clipsToBounds = true
         picture.layer.cornerRadius = 30
         
-       // self.email.addTarget(self, action: #selector(alert4), for: .editingDidEnd)
-
-        //self.precentage.addTarget(self, action: #selector(alert17), for: .editingDidEnd)
-        
         //keyboard adjustment
         NotificationCenter.default.addObserver(self, selector: #selector(self.KeyboardNotificationwillShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: self.view.window)
         NotificationCenter.default.addObserver(self, selector: #selector(self.KeyboardNotificationwillHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: self.view.window)
-        
    
-       
-
-        
         NotificationCenter.default.addObserver(forName: NSNotification.Name(iAPStatusChanged), object: nil, queue:OperationQueue.main) { (Notification) in
             //{(note)-> void in
             }
@@ -346,65 +296,50 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         // Dispose of any resources that can be recreated.
         }
     
-    @IBAction func reset(_ sender: Any) {
+        @IBAction func reset(_ sender: Any) {
         reset.isEnabled = false
         reset.alpha = 0.5
         FIRAuth.auth()?.sendPasswordReset(withEmail:emailForPasscode ) { (error) in
-            
             if error != nil { print ("erorrr!!!!")
-                self.alert40()
-                
+            self.alert40()
             }
             else {
-                self.alert1()}
-        }
+            self.alert1()}
+            }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-            
             self.reset.isEnabled = true
             self.reset.alpha = 1
-
         }
-        
-    }
-    
-   
+        }
     
     func accounCreation() {
         navigationItem.rightBarButtonItem?.isEnabled = false
         emailUpdate = self.email.text!
         passwordUpdate = self.passWord.text!
-     
         if emailUpdate == ""  {self.textForError = ("Missing mail. Please fill in" )
-            
             alert2()
         }
         FIRAuth.auth()?.createUser(withEmail: emailUpdate, password: passwordUpdate, completion: { (user, error ) in
-            if error != nil
-            {print ("something went wrong")
-                
-                print(error!)
-                if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
+        if error != nil
+        {print ("something went wrong")
+        print(error!)
+        if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
                     
-                    switch errCode {
-                    case .errorCodeInvalidEmail:
-                        self.textForError = ("This is invalid mail. please correct." )
-                        self.alert2()
-                        
-                        print("invalid email")
-                    case .errorCodeEmailAlreadyInUse:
-                        self.textForError = ("This is mail is alrady in use. Use sign-In or create a different email to create new account." )
-                        self.alert2()
-                        print("in use")
-                        
-                    case .errorCodeWeakPassword:
-                        self.textForError = ("6-10 characters password  requiered. Please correct accordingly." )
-                        self.alert2()
-                        
-                        
-                        
-                    default:
-                        print("Create User Error: \(String(describing: error))")
+        switch errCode {
+        case .errorCodeInvalidEmail:
+        self.textForError = ("This is invalid mail. please correct." )
+        self.alert2()
+        print("invalid email")
+        case .errorCodeEmailAlreadyInUse:
+        self.textForError = ("This is mail is alrady in use. Use sign-In or create a different email to create new account." )
+        self.alert2()
+        print("in use")
+        case .errorCodeWeakPassword:
+        self.textForError = ("6-10 characters password  requiered. Please correct accordingly." )
+        self.alert2()
+        default:
+        print("Create User Error: \(String(describing: error))")
                     }
                 }//end of if let
                 
@@ -574,90 +509,68 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         controller.dismiss(animated: true, completion: nil)
         }//end of func  message compose
     
-        //image background rotation
-        override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        if(UIApplication.shared.statusBarOrientation.isLandscape)
-        {backgroundImage.frame = self.view.bounds} else   {backgroundImage.frame = self.view.bounds}
-        }
-    
-    //validation
-    //email
-    func isValidEmail(testStr:String) -> Bool {
-        // print("validate calendar: \(testStr)")
+        //validation
+        //email
+        func isValidEmail(testStr:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
-    }
-    //phone Validation
-    func validate(value: String) -> Bool {
+        }
+    
+        //phone Validation
+        func validate(value: String) -> Bool {
         let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
         let result =  phoneTest.evaluate(with: value)
         return result
-    }
+        }
     
-    func updateEmail(){
-    FIRAuth.auth()?.currentUser?.updateEmail(email.text! , completion: { (error) in
+        func updateEmail(){
+            FIRAuth.auth()?.currentUser?.updateEmail(email.text! , completion: { (error) in
    
-    if error != nil {
-    print("There was an error processing the request")
-    // There was an error processing the request
-    } else {
+                if error != nil {
+                print("There was an error processing the request")
+                } else {
     
-    print("Email changed successfully")
-    // Email changed successfully
-    }
-    })
-    }//end of func
+                print("Email changed successfully")
+                }
+            })
+        }//end of func
 
-    //adjustkeyboard
-    func KeyboardNotificationwillShow(notification: NSNotification){
+        //adjustkeyboard
+        func KeyboardNotificationwillShow(notification: NSNotification){
         if precentage.isEditing || taxName.isEditing || currency.isEditing
         {
             UIView.animate(withDuration: 0.8, animations: {Void in
-                
-                //   scroller
+            //   scroller
                 self.settingScroller.contentOffset.y = 150
             })
         }
         
-    }//end of func keyboard notification
+        }//end of func keyboard notification
     
-    func KeyboardNotificationwillHide(notification: NSNotification){
+        func KeyboardNotificationwillHide(notification: NSNotification){
         UIView.animate(withDuration: 0.4, animations: {Void in
             self.settingScroller.contentOffset.y = 0
         })
-    }//end of willhide
+        }//end of willhide
     
-///alerts
+    ///alerts
     
     func alert20(){
     let alertController2 = UIAlertController(title: ("Missing fields ") , message: ("Last name is a requiered field."), preferredStyle: .alert)
-    
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
     }
-    
     alertController2.addAction(OKAction)
     self.present(alertController2, animated: true, completion: nil)
     }
     
-    /*func alert3(){
-        let alertController3 = UIAlertController(title: ("Not valid") , message: ("\(wrongField!) is not valid. Please update."), preferredStyle: .alert)
-        
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-        }
-        
-        alertController3.addAction(OKAction)
-        self.present(alertController3, animated: true, completion: nil)
-    }*/
-
     func alert4(){
         let alertController4 = UIAlertController(title: ("email") , message: "email is also your user name. ", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-         
             if self.reset.isHidden == true {
-                self.passWord.becomeFirstResponder()  }  else {self.email.becomeFirstResponder()   }
+            self.passWord.becomeFirstResponder()  }  else {self.email.becomeFirstResponder()   }
         }
         alertController4.addAction(OKAction)
         self.present(alertController4, animated: true, completion: nil)
@@ -667,36 +580,30 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     let alertController16 = UIAlertController(title: ("Program") , message: "Intially you would enroll into a three months free trial program. Then you can choose to enroll into a monthly subscription of $2.99 per month.", preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
     }
-    
     alertController16.addAction(OKAction)
     self.present(alertController16, animated: true, completion: nil)
-        
-}
+    }
     
     func alert17(){
-        let alertController17 = UIAlertController(title: ("Taxation") , message: "The precentage of tax you chose would add on top of your pet's bill. ", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-        }
-        
-        alertController17.addAction(OKAction)
-        self.present(alertController17, animated: true, completion: nil)
-        
+    let alertController17 = UIAlertController(title: ("Taxation") , message: "The precentage of tax you chose would add on top of your pet's bill. ", preferredStyle: .alert)
+    let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
     }
+    alertController17.addAction(OKAction)
+    self.present(alertController17, animated: true, completion: nil)
+    }
+    
     func alert50(){
-        let alertController50 = UIAlertController(title: ("Internet Connection") , message: " There is no internet - Check communication avilability.", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-        }
-        
-        alertController50.addAction(OKAction)
-        self.present(alertController50, animated: true, completion: nil)
+    let alertController50 = UIAlertController(title: ("Internet Connection") , message: " There is no internet - Check communication avilability.", preferredStyle: .alert)
+    let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+    }
+    alertController50.addAction(OKAction)
+    self.present(alertController50, animated: true, completion: nil)
     }
     
     // alert2
     func alert2 () {
-
         let alertController2 = UIAlertController(title: ("Login alert") , message: textForError, preferredStyle: .alert)
         let okAction2 = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in
-            //
         }
         alertController2.addAction(okAction2)
         present(alertController2, animated: true, completion: nil)
@@ -704,36 +611,29 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     // alert1
     func alert1 () {
-        let alertCotroller1 = UIAlertController(title: ("Password alert") , message: ("An email with password instructions was sent to the email you signed into PerSession"), preferredStyle: .alert)
-        let okAction1 = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in
-            //
-        }
-        alertCotroller1.addAction(okAction1)
-        present(alertCotroller1, animated: true, completion: nil)
+    let alertCotroller1 = UIAlertController(title: ("Password alert") , message: ("An email with password instructions was sent to the email you signed into PerSession"), preferredStyle: .alert)
+    let okAction1 = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in
+    }
+    alertCotroller1.addAction(okAction1)
+    present(alertCotroller1, animated: true, completion: nil)
     }//alert end
-    
     
     // alert4
     func alert40 () {
-        let alertCotroller4 = UIAlertController(title: ("email alert") , message: ("Sorry. This email is not registered as valid in our records"), preferredStyle: .alert)
-        let okAction1 = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in
-            //
-        }
-        alertCotroller4.addAction(okAction1)
-        present(alertCotroller4, animated: true, completion: nil)
+    let alertCotroller4 = UIAlertController(title: ("email alert") , message: ("Sorry. This email is not registered as valid in our records"), preferredStyle: .alert)
+    let okAction1 = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in
+    }
+    alertCotroller4.addAction(okAction1)
+    present(alertCotroller4, animated: true, completion: nil)
     }//alert end
     
     // alert70
     func alert70 () {
-
         let alertCotroller70 = UIAlertController(title: ("Welcome on Board") , message: ("You can login and add your first dog. Woof!"), preferredStyle: .alert)
         let okAction1 = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            self.present((storyboard.instantiateViewController(withIdentifier: "loginScreen")), animated: true, completion: nil)
-            
-            //send welcome email with video
-            
-            
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        self.present((storyboard.instantiateViewController(withIdentifier: "loginScreen")), animated: true, completion: nil)
+        //send welcome email with video
         }
         alertCotroller70.addAction(okAction1)
         present(alertCotroller70, animated: true, completion: nil)
