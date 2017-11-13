@@ -86,8 +86,12 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }//end of switch
     }
     
+    var connectUpdate: String?
     @IBOutlet weak var connect: UISwitch!
     @IBAction func connect(_ sender: Any) {
+        
+        if connect.isOn == true {connectUpdate = "On" }
+        else {connectUpdate = "Off"}
     }
     
     var taxCalacUpdate:String?
@@ -240,6 +244,8 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
                 self.dateTimeUpdate = (snapshot.childSnapshot(forPath: "fDateTime").value as! String)
                 if self.dateTimeUpdate == "Date"{self.dateTimeFormat.selectedSegmentIndex = 1} else {self.dateTimeFormat.selectedSegmentIndex = 0}
 
+                self.connectUpdate = (snapshot.childSnapshot(forPath: "fConnect").value as! String)
+                if self.connectUpdate == "On"{self.connect.setOn(true, animated: true)} else {self.connect.setOn(false, animated: true)}
             
                 self.taxCalacUpdate = (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String)
                 
@@ -404,7 +410,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
 
                 //self.dbRefEmployees.child(user!.uid).setValue(["femail" :emailUpdate, "fCreated"  : self.mydateFormat.string(from: Date()), "fName": "" , "fLastName": "", "fCell": "", "fCounter": "1000","fCurrency": self.cu!,  "fImageRef":"","fProgram":"0", "fSwitcher": "No","fTaxPrecentage":"0.0"])
                 
-            self.dbRefEmployees.child((user?.uid)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage": self.taxPrecentageUpdate,"fTaxName": self.taxNamerUpdate,  "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : "Over", "fDateTime": "DateTime"])
+            self.dbRefEmployees.child((user?.uid)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage": self.taxPrecentageUpdate,"fTaxName": self.taxNamerUpdate,  "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : "Over", "fDateTime": "DateTime","fConnect": "Off"])
 
                 
                 self.dbRefEmployees.child(user!.uid).child("programHistory").setValue([ self.mydateFormat5.string(from: Date()):"0"])
@@ -454,7 +460,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
        
         print ("jhgdjhg\(self.taxCalacUpdate)")
         
-            self.dbRefEmployees.child(self.employeeRefUpdate).updateChildValues(["fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": self.currency.text!, "fProgram": "0","fTaxPrecentage": self.precentage.text!,"fTaxName": self.taxName.text!, "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : self.taxCalacUpdate, "fDateTime": self.dateTimeUpdate]) //check email update with regard to auth
+            self.dbRefEmployees.child(self.employeeRefUpdate).updateChildValues(["fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": self.currency.text!, "fProgram": "0","fTaxPrecentage": self.precentage.text!,"fTaxName": self.taxName.text!, "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : self.taxCalacUpdate, "fDateTime": self.dateTimeUpdate, "fConnect" : self.connectUpdate]) //check email update with regard to auth
            
             
           self.updateEmail()
