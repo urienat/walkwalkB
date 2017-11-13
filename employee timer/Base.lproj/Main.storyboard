@@ -1307,8 +1307,8 @@
                                                     <constraint firstAttribute="height" constant="1" id="QqV-dz-JeQ"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vFb-TQ-AMp" userLabel="seperation line">
-                                                <rect key="frame" x="20" y="299" width="280" height="1"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFb-TQ-AMp" userLabel="seperation line">
+                                                <rect key="frame" x="20" y="294" width="280" height="1"/>
                                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="SHt-15-XLT"/>
@@ -1586,10 +1586,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Date/Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGz-6p-JzI">
-                                                <rect key="frame" x="8" y="299" width="90" height="30"/>
+                                                <rect key="frame" x="8" y="299" width="90" height="46"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="74" id="9q7-oD-fgU"/>
-                                                    <constraint firstAttribute="height" constant="30" id="M2b-da-jGu"/>
+                                                    <constraint firstAttribute="height" constant="46" id="M2b-da-jGu"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="19"/>
                                                 <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1632,6 +1632,7 @@
                                             <constraint firstAttribute="trailing" secondItem="gxx-Xl-cZH" secondAttribute="trailing" constant="20" id="3lp-NT-1tr"/>
                                             <constraint firstItem="iq6-6K-0xo" firstAttribute="leading" secondItem="eRi-ta-mdX" secondAttribute="leading" id="5YA-Oi-F5y"/>
                                             <constraint firstItem="Zoe-u1-fd0" firstAttribute="leading" secondItem="Ft4-Fz-x53" secondAttribute="leading" id="6Oh-3R-9iK"/>
+                                            <constraint firstItem="oGz-6p-JzI" firstAttribute="top" secondItem="d3p-Mh-USA" secondAttribute="bottom" constant="69" id="70m-bP-JHA"/>
                                             <constraint firstItem="dce-An-tH6" firstAttribute="leading" secondItem="voQ-tU-PFp" secondAttribute="leading" id="ARC-zB-qR6"/>
                                             <constraint firstAttribute="trailing" secondItem="03V-OC-j7W" secondAttribute="trailing" constant="14" id="Asw-Lm-gZu"/>
                                             <constraint firstAttribute="trailing" secondItem="gOi-9a-Efz" secondAttribute="trailing" constant="8" id="CIJ-n6-GxJ"/>
