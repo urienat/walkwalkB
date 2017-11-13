@@ -59,9 +59,9 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         return}
             
         if let result = result as? [String:Any]{
-        self.fbEmail = result["email"] as! String
-        self.fbNname = result["first_name"] as! String
-        self.fbLastName = result["last_name"] as! String
+            self.fbEmail = (result["email"] as! String)
+            self.fbNname = (result["first_name"] as! String)
+            self.fbLastName = (result["last_name"] as! String)
         }//end of if let
               
         let accessToken = FBSDKAccessToken.current()
