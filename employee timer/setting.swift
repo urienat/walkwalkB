@@ -24,12 +24,16 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     var profileImageUrl:String?
     
     var created: String?
+    
     let mydateFormat = DateFormatter()
     let mydateFormat5 = DateFormatter()
 
     var textForError:String?
     var emailForPasscode = ""
 
+    @IBOutlet weak var pDogImage: UIImageView!
+
+    
     @IBOutlet weak var passwordTitle: UILabel!
     @IBOutlet weak var thinking: UIActivityIndicatorView!
     @IBOutlet weak var settingScroller: UIScrollView!
@@ -67,6 +71,41 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBOutlet weak var precentage: UITextField!
     var taxPrecentageUpdate = "0"
     
+    var dateTimeUpdate:String?
+    @IBOutlet weak var dateTimeFormat: UISegmentedControl!
+    @IBAction func dateTimeFormat(_ sender: Any) {
+        switch dateTimeFormat.selectedSegmentIndex {
+        case 0:
+            dateTimeUpdate = "DateTime"
+           
+        case 1:
+            dateTimeUpdate = "Date"
+            
+        default:
+            print("nothing")
+        }//end of switch
+    }
+    
+    @IBOutlet weak var connect: UISwitch!
+    @IBAction func connect(_ sender: Any) {
+    }
+    
+    var taxCalacUpdate:String?
+    
+    @IBOutlet weak var taxCalac: UISegmentedControl!
+    @IBAction func taxCalc(_ sender: Any) {
+        switch taxCalac.selectedSegmentIndex {
+        case 0:
+            taxCalacUpdate = "Included"
+            
+        case 1:
+            taxCalacUpdate = "Over"
+            
+        default:
+            print("nothing")
+        }//end of switch
+    }
+    
     @IBOutlet weak var taxinfoSign: UIButton!
     @IBOutlet weak var taxerTitle: UILabel!
     var taxSwitcherUpdate = "No"
@@ -77,7 +116,10 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     @IBOutlet weak var taxSwitch: UISwitch!
     @IBAction func taxSwitch(_ sender: Any) {
-    if self.taxSwitchTemp == "No" {self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true; taxName.isHidden = true; signer.isHidden = true;taxSwitchTemp = "Yes";taxSwitcherUpdate = "No";taxPrecentageUpdate = "0";precentage.text = taxPrecentageUpdate; taxNamerUpdate = ""; taxName.text = taxNamerUpdate } else {self.taxSwitch.setOn(true, animated: true);self.precentage.isHidden = false; taxName.isHidden = false; signer.isHidden = false;taxSwitchTemp = "No";taxSwitcherUpdate = "Yes";alert17()}   }
+        if self.taxSwitchTemp == "No" {taxCalac.isHidden = true; self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true; taxName.isHidden = true; signer.isHidden = true;taxSwitchTemp = "Yes";taxSwitcherUpdate = "No";taxPrecentageUpdate = "0";precentage.text = taxPrecentageUpdate; taxNamerUpdate = ""; taxName.text = taxNamerUpdate
+        
+    } else {
+            self.taxSwitch.setOn(true, animated: true);taxCalac.isHidden = false;self.precentage.isHidden = false; taxName.isHidden = false; signer.isHidden = false;taxSwitchTemp = "No";taxSwitcherUpdate = "Yes";alert17();if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0}}   }
     
     
     @IBAction func taxationInfo(_ sender: Any) {
@@ -194,9 +236,18 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             
             
             self.created = (snapshot.childSnapshot(forPath: "fCreated").value as! String)
+                
+                self.dateTimeUpdate = (snapshot.childSnapshot(forPath: "fDateTime").value as! String)
+                if self.dateTimeUpdate == "Date"{self.dateTimeFormat.selectedSegmentIndex = 1} else {self.dateTimeFormat.selectedSegmentIndex = 0}
+
             
+                self.taxCalacUpdate = (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String)
+                
             self.taxSwitchTemp = snapshot.childSnapshot(forPath: "fSwitcher").value as! String
-            if self.taxSwitchTemp == "No" {self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true; self.taxName.isHidden = true; self.signer.isHidden = true;self.taxSwitchTemp = "Yes";self.taxSwitcherUpdate = "No"} else {self.taxSwitch.setOn(true, animated: true);self.precentage.isHidden = false; self.taxName.isHidden = false; self.signer.isHidden = false;self.taxSwitchTemp = "No";self.taxSwitcherUpdate = "Yes"}
+                if self.taxSwitchTemp == "No" {self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true; self.taxCalac.isHidden = true; self.taxName.isHidden = true; self.signer.isHidden = true;self.taxSwitchTemp = "Yes";
+                    
+                } else {
+                    self.taxSwitch.setOn(true, animated: true);self.taxCalac.isHidden = false; self.precentage.isHidden = false; self.taxName.isHidden = false; self.signer.isHidden = false;self.taxSwitchTemp = "No";self.taxSwitcherUpdate = "Yes"; if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0} }
 
             self.taxPrecentageUpdate  = snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String
             self.precentage.text = self.taxPrecentageUpdate
@@ -226,7 +277,8 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         print (error as Any)
         }
         DispatchQueue.main.async {
-        self.picture.image = UIImage(data: Data!)!
+            if self.picture.image == nil {self.picture.image = self.pDogImage.image } else{
+                self.picture.image = UIImage(data: Data!)!}
         }
         //  upload to cache
         MyImageCache.sharedCache.setObject(UIImage(data: Data!)!, forKey: self.employeeRefUpdate as AnyObject , cost: (Data?.count)!) // upload to cache
@@ -352,7 +404,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
 
                 //self.dbRefEmployees.child(user!.uid).setValue(["femail" :emailUpdate, "fCreated"  : self.mydateFormat.string(from: Date()), "fName": "" , "fLastName": "", "fCell": "", "fCounter": "1000","fCurrency": self.cu!,  "fImageRef":"","fProgram":"0", "fSwitcher": "No","fTaxPrecentage":"0.0"])
                 
-                self.dbRefEmployees.child((user?.uid)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage": self.taxPrecentageUpdate,"fTaxName": self.taxNamerUpdate,  "fSwitcher": self.taxSwitcherUpdate])
+            self.dbRefEmployees.child((user?.uid)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage": self.taxPrecentageUpdate,"fTaxName": self.taxNamerUpdate,  "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : "Over", "fDateTime": "DateTime"])
 
                 
                 self.dbRefEmployees.child(user!.uid).child("programHistory").setValue([ self.mydateFormat5.string(from: Date()):"0"])
@@ -400,9 +452,9 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
         let updateDBAction = UIAlertAction(title: "Yes", style: .default) { (UIAlertAction) in
        
+        print ("jhgdjhg\(self.taxCalacUpdate)")
         
-        
-            self.dbRefEmployees.child(self.employeeRefUpdate).updateChildValues(["fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": self.currency.text!, "fProgram": "0","fTaxPrecentage": self.precentage.text!,"fTaxName": self.taxName.text!, "fSwitcher": self.taxSwitcherUpdate]) //check email update with regard to auth
+            self.dbRefEmployees.child(self.employeeRefUpdate).updateChildValues(["fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": self.currency.text!, "fProgram": "0","fTaxPrecentage": self.precentage.text!,"fTaxName": self.taxName.text!, "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : self.taxCalacUpdate, "fDateTime": self.dateTimeUpdate]) //check email update with regard to auth
            
             
           self.updateEmail()
@@ -585,7 +637,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     }
     
     func alert17(){
-    let alertController17 = UIAlertController(title: ("Taxation") , message: "The precentage of tax you chose would add on top of your pet's bill. ", preferredStyle: .alert)
+    let alertController17 = UIAlertController(title: ("Taxation") , message: "The precentage of tax you chose would add on top of your pet's bill for 'Over' and would be deducted from your rate for 'Included'. ", preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
     }
     alertController17.addAction(OKAction)

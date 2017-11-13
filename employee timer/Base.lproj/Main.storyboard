@@ -1383,7 +1383,7 @@
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eRi-ta-mdX" userLabel="taxSwitch">
                                                 <rect key="frame" x="112" y="204" width="51" height="31"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="31" id="fAI-Q6-cr0"/>
+                                                    <constraint firstAttribute="height" constant="25" id="fAI-Q6-cr0"/>
                                                     <constraint firstAttribute="width" constant="49" id="wo5-5f-XvO"/>
                                                 </constraints>
                                                 <color key="tintColor" red="0.2145790309" green="0.45587304229999998" blue="0.84711945060000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1400,6 +1400,9 @@
                                                 </constraints>
                                                 <color key="tintColor" red="0.2145790309" green="0.45587304229999998" blue="0.84711945060000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="onTintColor" red="0.2145790309" green="0.45587304229999998" blue="0.84711945060000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <connections>
+                                                    <action selector="connect:" destination="bu7-cQ-GBV" eventType="valueChanged" id="tvq-iL-QDe"/>
+                                                </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7K-bJ-hKl" userLabel="Password">
                                                 <rect key="frame" x="8" y="124" width="73" height="30"/>
@@ -1493,7 +1496,7 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NdQ-LL-HGn" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="166" y="204.5" width="44" height="30"/>
+                                                <rect key="frame" x="166" y="204" width="44" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="3at-M6-7IN"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="aRm-6u-KKU"/>
@@ -1509,7 +1512,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="%" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iho-r5-Jit" userLabel="%sign">
-                                                <rect key="frame" x="214" y="211" width="15" height="17"/>
+                                                <rect key="frame" x="214" y="210.5" width="15" height="17"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                                 </accessibility>
@@ -1521,7 +1524,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tax name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="no1-5P-gIF" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="235" y="204" width="78.5" height="30"/>
+                                                <rect key="frame" x="235" y="203.5" width="78.5" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="74" id="geJ-HM-p72"/>
                                                     <constraint firstAttribute="height" constant="30" id="nlM-qh-ro2"/>
@@ -1574,14 +1577,17 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iq6-6K-0xo">
-                                                <rect key="frame" x="112" y="242" width="201.5" height="29"/>
+                                                <rect key="frame" x="112" y="247" width="201.5" height="26"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="28" id="0ul-wO-y3M"/>
+                                                    <constraint firstAttribute="height" constant="25" id="0ul-wO-y3M"/>
                                                 </constraints>
                                                 <segments>
                                                     <segment title="Included"/>
                                                     <segment title="Over"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="taxCalc:" destination="bu7-cQ-GBV" eventType="valueChanged" id="pwW-Uo-RcF"/>
+                                                </connections>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taxation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3p-Mh-USA">
                                                 <rect key="frame" x="8" y="204" width="74" height="30"/>
@@ -1620,14 +1626,17 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="25j-eK-VXl" userLabel="date&amp;Time">
-                                                <rect key="frame" x="112" y="285" width="201.5" height="29"/>
+                                                <rect key="frame" x="112" y="286.5" width="201.5" height="26"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="28" id="I9F-ag-OH2"/>
+                                                    <constraint firstAttribute="height" constant="25" id="I9F-ag-OH2"/>
                                                 </constraints>
                                                 <segments>
                                                     <segment title="Date &amp; Time"/>
                                                     <segment title="Date only"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="dateTimeFormat:" destination="bu7-cQ-GBV" eventType="valueChanged" id="NS3-PU-8MO"/>
+                                                </connections>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rB-9Y-VTh" userLabel="Connectivity">
                                                 <rect key="frame" x="8" y="326" width="90" height="30"/>
@@ -1675,11 +1684,11 @@
                                             <constraint firstItem="d3p-Mh-USA" firstAttribute="leading" secondItem="oGz-6p-JzI" secondAttribute="leading" id="NSE-P1-P9d"/>
                                             <constraint firstItem="WuQ-ku-qG9" firstAttribute="centerY" secondItem="gOi-9a-Efz" secondAttribute="centerY" id="NaO-pv-Ve2"/>
                                             <constraint firstItem="vFb-TQ-AMp" firstAttribute="leading" secondItem="MGW-Fk-kb6" secondAttribute="leading" constant="20" id="ONx-7B-mMN"/>
-                                            <constraint firstAttribute="bottom" secondItem="eRi-ta-mdX" secondAttribute="bottom" constant="369" id="PYC-Od-aYQ"/>
                                             <constraint firstItem="abz-bh-Dk7" firstAttribute="width" secondItem="Ktd-Fm-ugk" secondAttribute="width" id="QPP-p4-e0z"/>
                                             <constraint firstItem="Ktd-Fm-ugk" firstAttribute="leading" secondItem="Ft4-Fz-x53" secondAttribute="trailing" constant="12" id="R3c-px-Dh2"/>
                                             <constraint firstItem="TBg-ht-L1l" firstAttribute="leading" secondItem="k7K-bJ-hKl" secondAttribute="leading" id="RSY-AY-0pM"/>
                                             <constraint firstItem="Zoe-u1-fd0" firstAttribute="top" secondItem="Ft4-Fz-x53" secondAttribute="bottom" constant="8" id="S0E-qO-PAV"/>
+                                            <constraint firstItem="eRi-ta-mdX" firstAttribute="top" secondItem="dce-An-tH6" secondAttribute="bottom" constant="8" id="SWa-mT-4Rr"/>
                                             <constraint firstItem="no1-5P-gIF" firstAttribute="centerY" secondItem="iho-r5-Jit" secondAttribute="centerY" id="T5p-ie-gEF"/>
                                             <constraint firstItem="k7K-bJ-hKl" firstAttribute="leading" secondItem="jGY-Rx-J7r" secondAttribute="leading" id="U9W-F9-5Be"/>
                                             <constraint firstAttribute="trailing" secondItem="vFb-TQ-AMp" secondAttribute="trailing" constant="20" id="Ub8-Ie-yvJ"/>
@@ -1718,7 +1727,7 @@
                                             <constraint firstItem="03V-OC-j7W" firstAttribute="leading" secondItem="voQ-tU-PFp" secondAttribute="leading" id="nhZ-pT-KbQ"/>
                                             <constraint firstItem="Gfv-7f-bWL" firstAttribute="centerY" secondItem="k7K-bJ-hKl" secondAttribute="centerY" id="nkp-gS-xvJ"/>
                                             <constraint firstAttribute="trailing" secondItem="Gfv-7f-bWL" secondAttribute="trailing" constant="14" id="oog-ni-0Zc"/>
-                                            <constraint firstItem="iq6-6K-0xo" firstAttribute="top" secondItem="eRi-ta-mdX" secondAttribute="bottom" constant="7" id="pcC-8K-5cg"/>
+                                            <constraint firstItem="iq6-6K-0xo" firstAttribute="top" secondItem="eRi-ta-mdX" secondAttribute="bottom" constant="12" id="pcC-8K-5cg"/>
                                             <constraint firstItem="iq6-6K-0xo" firstAttribute="trailing" secondItem="no1-5P-gIF" secondAttribute="trailing" id="qGC-lU-45H"/>
                                             <constraint firstItem="TBg-ht-L1l" firstAttribute="top" secondItem="k7K-bJ-hKl" secondAttribute="bottom" constant="12" id="qJm-V8-a4h"/>
                                             <constraint firstItem="gxx-Xl-cZH" firstAttribute="leading" secondItem="MGW-Fk-kb6" secondAttribute="leading" constant="20" id="qti-c5-SvP"/>
@@ -1763,8 +1772,10 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="550"/>
                     <connections>
+                        <outlet property="connect" destination="5EF-8h-CHC" id="60H-E5-cYa"/>
                         <outlet property="currency" destination="dce-An-tH6" id="qub-gp-JjB"/>
                         <outlet property="currencyTitle" destination="TBg-ht-L1l" id="8cx-iL-u71"/>
+                        <outlet property="dateTimeFormat" destination="25j-eK-VXl" id="JF2-cL-ydW"/>
                         <outlet property="email" destination="voQ-tU-PFp" id="KQO-dY-XZT"/>
                         <outlet property="lastName" destination="Ktd-Fm-ugk" id="jbU-ah-Egq"/>
                         <outlet property="name" destination="abz-bh-Dk7" id="V8N-SO-u8S"/>
@@ -1777,6 +1788,7 @@
                         <outlet property="signer" destination="iho-r5-Jit" id="oCn-S9-mpK"/>
                         <outlet property="subscriptionBtn" destination="XE2-sS-i4C" id="zYI-bq-tBk"/>
                         <outlet property="subscriptionLbl" destination="zSX-a2-krK" id="HAe-6t-fl3"/>
+                        <outlet property="taxCalac" destination="iq6-6K-0xo" id="qB6-Co-P7r"/>
                         <outlet property="taxName" destination="no1-5P-gIF" id="nO2-1Y-YD7"/>
                         <outlet property="taxSwitch" destination="eRi-ta-mdX" id="pL3-Pf-y7B"/>
                         <outlet property="taxerTitle" destination="d3p-Mh-USA" id="Ohv-yR-tgU"/>
