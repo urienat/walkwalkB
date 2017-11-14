@@ -232,7 +232,7 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
             employeeCounter = 0
             
             //sound for start
-            playSound()
+           // playSound()
         self.timeBackground.alpha = 1
             
         self.animationImage.alpha = 1
@@ -276,7 +276,7 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
                 
                 print ("ffff")
                 //sound for start
-                playSound()
+               // playSound()
                  self.DateIn.text = "Walking...\(self.dIn2)"
                 self.postRoundView()
 
