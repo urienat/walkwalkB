@@ -220,12 +220,15 @@ class datePicker2: UIViewController {
 
         if recordToHandle == "" {
             TimeIN.text = mydateFormat.string(from: Date())//brings the a date as a string
+            
+            
             pooBackground.isHidden = true
             titleLbl = "Add for " + employerFromMain!
             
             print(paymentMethood)
             if paymentMethood == "Normal" {TimeOut.isHidden = false; date2Button.isHidden = false; date2Button.isEnabled = true;TimeOut.isHidden = false;Total.isHidden = false;totalLabel.isHidden = false;stopLbl.isHidden = false;startLbl.text = "Start";extendedDate2Button.isHidden = false;extendedDate2Button.isEnabled = true;topOfStart.constant = 40
                 TimeOut.text = mydateFormat.string(from: Date());
+                
                 
                 saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveAlert));saveRecord?.isEnabled = false
             }
@@ -263,7 +266,8 @@ class datePicker2: UIViewController {
 
         datePickerbBackground .isHidden = true
         datePickerBackground2.isHidden = true
-        TimeIN.text = mydateFormat.string(from: DatePicker.date) //brings the a date as a string
+        //TimeIN.text = mydateFormat.string(from: DatePicker.date) //brings the a date as a string
+         if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat.string(from: DatePicker.date) } else {self.TimeIN.text = mydateFormat6.string(from: DatePicker.date) }
         
         print("in as a date:")
         print( calcTimeIn)
