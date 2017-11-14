@@ -1280,6 +1280,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grass12" translatesAutoresizingMaskIntoConstraints="NO" id="P6K-YO-0Fy">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="820"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAK-kc-O8k">
                                 <rect key="frame" x="0.0" y="770" width="320" height="50"/>
