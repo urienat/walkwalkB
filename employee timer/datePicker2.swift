@@ -149,8 +149,15 @@ class datePicker2: UIViewController {
         if self.poo == "Yes" { self.pooSwitch.setOn(true, animated: true)}
         else {self.pooSwitch.setOn(false, animated: true)}
         
-        self.TimeIN.text = self.mydateFormat.string(from: self.mydateFormat5.date(from: record.fIn!)!)
+        print(record.fIn!)
+        print(self.mydateFormat6.string(from: self.mydateFormat5.date(from: record.fIn!)!))
+
+        if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = self.mydateFormat.string(from: self.mydateFormat5.date(from: record.fIn!)!)} else {self.TimeIN.text = self.mydateFormat6.string(from: self.mydateFormat5.date(from: record.fIn!)!) }
+        //self.TimeIN.text = self.mydateFormat.string(from: self.mydateFormat5.date(from: record.fIn!)!)
         self.inDate = record.fIn!
+        
+        if ViewController.dateTimeFormat == "DateTime" {self.DatePicker.datePickerMode = .dateAndTime } else { self.DatePicker.datePickerMode = .date}
+        
         self.DatePicker.setDate( self.mydateFormat5.date(from: record.fIn!)!  , animated: true)
 
         self.TimeOut.text = self.mydateFormat.string(from:   self.mydateFormat5.date(from: record.fOut!)!)
@@ -208,12 +215,8 @@ class datePicker2: UIViewController {
 , options: 0, locale: nil)!
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
             ,options: 0, locale: nil)!
-    
-        //saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveAlert))
-    
-     //   saveRecord?.isEnabled = false
-       // navigationItem.rightBarButtonItem = saveRecord
-
+        mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy"
+            ,options: 0, locale: nil)!
 
         if recordToHandle == "" {
             TimeIN.text = mydateFormat.string(from: Date())//brings the a date as a string
@@ -256,11 +259,7 @@ class datePicker2: UIViewController {
   //  }
     
     func datePickerChanged(DatePicker:UIDatePicker) {
-        //format setting
-        //inDate = mydateFormat.string(from: DatePicker.date) //brings the a date as a string
-      
-        //print ("date in fromchange\(self.inDate)")
-        //print ("date out fromchange\(self.outDate)")
+        
 
         datePickerbBackground .isHidden = true
         datePickerBackground2.isHidden = true

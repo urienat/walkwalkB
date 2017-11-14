@@ -455,9 +455,6 @@ print (mailVisit)
             else { cell.l1.text = "N/A"}
             
      
-       // cell.l2.text = "Till " + mydateFormat2.string(from: mydateFormat5.date(from: record.fOut!)!) //cancelled tull for round version
-       // cell.l4.text = ("\(record.fIndication!) \(record.fIndication3!) \(record.fIndication2!)")//cancelled tull for round version
-            
             if record.fIndication3 == "✏️"||record.fIndication3 == "Manual" { cell.l8.image = pencilImage}
             if record.fIndication3 == "↺" && record.fIndication == "🚩" {  cell.l8.image = roundImageNormal}
             if record.fIndication3 == "↺" && record.fIndication == "🏳" {  cell.l8.image = roundImageNormal }
