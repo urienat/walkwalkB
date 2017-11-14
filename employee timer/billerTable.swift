@@ -59,6 +59,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let mydateFormat2 = DateFormatter()
     let mydateFormat3 = DateFormatter()
     let mydateFormat5 = DateFormatter()
+    let mydateFormat6 = DateFormatter()
 
     
     let dbRef = FIRDatabase.database().reference().child("fRecords")
@@ -107,6 +108,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             , options: 0, locale: nil)!
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
             ,options: 0, locale: nil)!
+        mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale: nil)!
+
         
         
 

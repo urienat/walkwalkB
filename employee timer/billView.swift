@@ -30,6 +30,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     var employeeID = ""
     let mydateFormat = DateFormatter()
     let mydateFormat5 = DateFormatter()
+    let mydateFormat6 = DateFormatter()
 
     var deleteBill : UIBarButtonItem?
     
@@ -97,6 +98,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             ,options: 0, locale: nil)!
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
             ,options: 0, locale: nil)!
+        mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale: nil)!
+
         
         reBill()
         

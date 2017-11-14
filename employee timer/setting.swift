@@ -412,7 +412,8 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
                 
             self.dbRefEmployees.child((user?.uid)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage": self.taxPrecentageUpdate,"fTaxName": self.taxNamerUpdate,  "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : "Over", "fDateTime": "DateTime","fConnect": "Off"])
 
-                
+                ViewController.dateTimeFormat = self.dateTimeUpdate
+
                 self.dbRefEmployees.child(user!.uid).child("programHistory").setValue([ self.mydateFormat5.string(from: Date()):"0"])
                 self.dbRefEmployees.child(user!.uid).child("myEmployers").setValue(["New Dog":0])//add employer to my employers of employee
                 
@@ -453,12 +454,13 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     }//end of account creation
 
         func saveToDB(_ sender: AnyObject) {
+        ViewController.dateTimeFormat = self.dateTimeUpdate
         let alertController = UIAlertController(title: ("Save Setting") , message: ("Are You Sure?"), preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
         }
         let updateDBAction = UIAlertAction(title: "Yes", style: .default) { (UIAlertAction) in
        
-        print ("jhgdjhg\(self.taxCalacUpdate)")
+        print ("jhgdjhg\(self.dateTimeUpdate)")
         
             self.dbRefEmployees.child(self.employeeRefUpdate).updateChildValues(["fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": self.currency.text!, "fProgram": "0","fTaxPrecentage": self.precentage.text!,"fTaxName": self.taxName.text!, "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : self.taxCalacUpdate, "fDateTime": self.dateTimeUpdate, "fConnect" : self.connectUpdate]) //check email update with regard to auth
            

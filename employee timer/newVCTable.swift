@@ -49,6 +49,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     var taxationBlock = ""
     
+    
+    
     let queue1 = DispatchQueue(label: "queue for solution")
     
      let keeper = UserDefaults.standard
@@ -116,6 +118,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let mydateFormat3 = DateFormatter()
     let mydateFormat4 = DateFormatter()
     let mydateFormat5 = DateFormatter()
+    let mydateFormat6 = DateFormatter()
 
 
     var counterForMail2: String?
@@ -299,6 +302,8 @@ tableConnect.backgroundColor = UIColor.clear
                 , options: 0, locale: nil)!
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
                 ,options: 0, locale: nil)!
+        mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy", options: 0, locale: nil)!
+
             
             dbRefEmployers.child(self.employerID).observeSingleEvent(of:.value, with: {(snapshot) in
                 self.employerMail = String(describing: snapshot.childSnapshot(forPath: "fMail").value!) as String!
@@ -439,13 +444,15 @@ print (mailVisit)
             print (self.spesificToInt)
             cell.backgroundColor = UIColor.clear
             
-            if record.fTotal != "-1" { cell.l3.text = String(Int(h)) + "h:" + String (Int(m)) + "m"} }
+            if record.fTotal != "-1" {  cell.l3.text = String(Int(h)) + "h:" + String (Int(m)) + "m"} }
         else {cell.l3.text = "  "}
                
         //changing the dates for prentation
         if let fInToDate = record.fIn {
-        cell.l1.text = mydateFormat.string(from: mydateFormat5.date(from: fInToDate)!)}
-        else { cell.l1.text = "N/A"}
+            print (fInToDate)
+            
+            if ViewController.dateTimeFormat == "DateTime" { cell.l1.text = mydateFormat.string(from: mydateFormat5.date(from: fInToDate)!)} else {cell.l1.text = mydateFormat6.string(from: mydateFormat5.date(from: fInToDate)!) } }
+            else { cell.l1.text = "N/A"}
             
      
        // cell.l2.text = "Till " + mydateFormat2.string(from: mydateFormat5.date(from: record.fOut!)!) //cancelled tull for round version

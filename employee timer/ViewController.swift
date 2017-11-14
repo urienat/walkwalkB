@@ -34,7 +34,8 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
     static var fixedName:String!
     static var fixedLastName:String!
     static var fixedemail:String!
-
+    static var dateTimeFormat:String!
+    
     var paymentUpdate = String()
     var RateUpdate = 0.0
 
@@ -82,8 +83,8 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
     let mydateFormat = DateFormatter()
     let mydateFormat2 = DateFormatter()
     let mydateFormat5 = DateFormatter()
+    let mydateFormat6 = DateFormatter()
 
-  
     //varibalwds for roundung
     var roundSecond = 0
     var roundMinute = 0
@@ -445,6 +446,7 @@ print ("started view did load")
         mydateFormat2.dateFormat = DateFormatter.dateFormat(fromTemplate:  " HH:mm", options: 0, locale: nil)!
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
                 ,options: 0, locale: nil)!
+        mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale: nil)!
         
         DateIn.text = ""
        
@@ -453,6 +455,7 @@ print ("started view did load")
             ViewController.fixedName =  String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String
             ViewController.fixedLastName =  String(describing: snapshot.childSnapshot(forPath: "fLastName").value!) as String
             ViewController.fixedemail =  String(describing: snapshot.childSnapshot(forPath: "femail").value!) as String
+            ViewController.dateTimeFormat =  String(describing: snapshot.childSnapshot(forPath: "fDateTime").value!) as String
 
 
         })

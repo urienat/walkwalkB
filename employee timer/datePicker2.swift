@@ -45,6 +45,8 @@ class datePicker2: UIViewController {
     var roundIndicator = String()
     let mydateFormat = DateFormatter()
     let mydateFormat5 = DateFormatter()
+    let mydateFormat6 = DateFormatter()
+
 
 
     @IBOutlet weak var extendedDate2Button: UIButton!
