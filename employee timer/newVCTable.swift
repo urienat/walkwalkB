@@ -42,8 +42,13 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var midCalc2 = ""
     var midCalc3 = ""
       var taxForBlock = ""
+    var taxSwitch: String?
+    var taxCalc: String?
+    var stam: Double?
+    var stam3: Double?
 
     var taxationBlock = ""
+    
     let queue1 = DispatchQueue(label: "queue for solution")
     
      let keeper = UserDefaults.standard
@@ -580,7 +585,7 @@ print (mailVisit)
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         mailComposerVC.setSubject("csv file from your app")
-        mailComposerVC.setMessageBody("\(mydateFormat3.string(from: Date()))  \r\n\r\n\r\n Hi, \r\n \r\n These are records for  period chosen (csv file is attached as well):\r\n\(htmlReport!)\r\n Number of sessions:\(self.eventCounter)\r\n Total time: \(totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\nTotal (\(ViewController.fixedCurrency!)): \(self.amount.text!)\r\n\r\n\r\n Regards PerSession app )", isHTML: false)
+        mailComposerVC.setMessageBody("\(mydateFormat3.string(from: Date()))  \r\n\r\n\r\n Hi, \r\n \r\n These are records for  period chosen (csv file is attached as well):\r\n\(htmlReport!)\r\n Number of sessions:\(self.eventCounter)\r\n Total time: \(totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\nTotal: \(ViewController.fixedCurrency!)\(self.amount.text!)\r\n\r\n\r\n Regards PerSession app )", isHTML: false)
         
         mailComposerVC.setToRecipients([ViewController.fixedemail])
         mailComposerVC.addAttachmentData(csvReport!, mimeType: "text/csv", fileName: "Your pets' records")//the csv attachement through here
@@ -592,10 +597,10 @@ print (mailVisit)
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
         mailComposerVC2.setSubject("PerSession - \(counterForMail2!)")
-        mailComposerVC2.setMessageBody("\(mydateFormat3.string(from: Date()))\r\n ref#: \(counterForMail2!)\r\n Family: \(employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(htmlReport!)\r\n Total Number of Sessions: \(self.eventCounter) -  \(totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\n Total (\(ViewController.fixedCurrency!)): \(self.amount.text!)\r\n \(taxationBlock)\r\n\r\n\r\n Regards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by PerSession app. ", isHTML: false)
+        mailComposerVC2.setMessageBody("\(mydateFormat3.string(from: Date()))\r\n ref#: \(counterForMail2!)\r\n\(employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(htmlReport!)\r\n Total Number of Sessions: \(self.eventCounter) -  \(totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.amount.text!)\r\n \(taxationBlock)\r\n\r\n\r\n Regards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by PerSession app. ", isHTML: false)
         mailComposerVC2.setToRecipients([employerMail])
         mailComposerVC2.setCcRecipients([ViewController.fixedemail])
-        mailSaver = "\(mydateFormat3.string(from: Date()))\r\n ref#: \(counterForMail2!)\r\n Family: \(employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) -  \(totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\n Total due(\(ViewController.fixedCurrency!)): \(self.amount.text!)\r\n \(taxationBlock)\r\n\r\n\r\n Regards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by PerSession app. "
+        mailSaver = "\(mydateFormat3.string(from: Date()))\r\n ref#: \(counterForMail2!)\r\n \(employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) -  \(totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\n Total due: \(ViewController.fixedCurrency!)\(self.amount.text!)\r\n \(taxationBlock)\r\n\r\n\r\n Regards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by PerSession app. "
         
         DispatchQueue.main.asyncAfter(deadline: .now()+2){
 
@@ -1157,21 +1162,30 @@ print (mailVisit)
     let counterForMail = (snapshot.childSnapshot(forPath: "fCounter").value as! String)
     let taxation = (snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String)
     let taxName = (snapshot.childSnapshot(forPath: "fTaxName").value as! String)
-    print (Double(taxation)!)
-        if Double(taxation)! > 0 {
+            self.taxCalc = (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String)
+            self.taxSwitch = (snapshot.childSnapshot(forPath: "fSwitcher").value as! String)
+
             
-                let stam =  Double(Double(taxation)!*self.calc*0.01).roundTo(places: 2)  // Swift 3 version.
-                print (stam)
-                let stam3 =  Double(self.calc).roundTo(places: 2)
-                self.midCalc =  String (stam)
-                self.midCalc3 =  String(stam3)
+    print (Double(taxation)!)
+       // if Double(taxation)! > 0 {
+            if  self.taxSwitch == "Yes" {
+
+                if self.self.taxCalc == "Over" {self.self.stam =  Double(Double(taxation)!*self.calc*0.01).roundTo(places: 2)}  else  { self.stam = Double((self.calc / Double(Double(taxation)!*0.01+1)) * Double(Double(taxation)!*0.01)).roundTo(places: 2)}
+
+                if self.self.taxCalc == "Over" {self.self.stam3 =  Double(Double(taxation)!*self.calc*0.01).roundTo(places: 2)}  else  { self.stam3 =  self.calc -  Double((self.calc / Double(Double(taxation)!*0.01+1)) * Double(Double(taxation)!*0.01)).roundTo(places: 2)}
+                
+                print (self.stam)
+                //let stam3 =  Double(self.calc).roundTo(places: 2)
+                self.midCalc =  String (describing: self.stam!)
+                self.midCalc3 =  String(describing: self.stam3!)
                 print (self.midCalc)
                 if taxName == "" {self.taxForBlock = "Tax"} else {self.taxForBlock = taxName}
                 print (self.midCalc3)
             
-            self.midCalc2 =  String(stam3 + stam)
+                self.midCalc2 =  String(self.stam3! + self.stam!)
+                self.amount.text = self.midCalc3
             
-        self.taxationBlock = ("\(self.taxForBlock)(\(ViewController.fixedCurrency!))):\(self.midCalc)\r\nTotal(w/\(self.taxForBlock)(\(ViewController.fixedCurrency!))):\(self.midCalc2)\r\n")
+            self.taxationBlock = ("\(self.taxForBlock): \(ViewController.fixedCurrency!)\(self.midCalc)\r\nTotal (w/\(self.taxForBlock)): \(ViewController.fixedCurrency!)\(self.midCalc2)\r\n")
              } else {self.taxationBlock = ""}
             
             if self.gpsBlock != "0" { self.gpsLegend = "\r\n\r\n\r\n     Sessions' LEGEND \r\n     Manual - Session recorded manually\r\n     Gps - Session recorded by Gps\r\n        🏳 - onsite \r\n        🚩 - offsite"} else {self.gpsLegend = ""}
