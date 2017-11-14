@@ -109,10 +109,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yv6-XF-GvY" userLabel="View datePicker background">
-                                <rect key="frame" x="40" y="186" width="240" height="250"/>
+                                <rect key="frame" x="10" y="156" width="300" height="280"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AwW-qy-Zpc">
-                                        <rect key="frame" x="200" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="260" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="45b-lc-F5I"/>
                                             <constraint firstAttribute="width" constant="40" id="eLk-K8-CZP"/>
@@ -123,10 +123,9 @@
                                         </connections>
                                     </button>
                                     <datePicker tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Zh1-5a-B5S">
-                                        <rect key="frame" x="0.0" y="34" width="240" height="216"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="280"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="240" id="Qlz-bg-lPn"/>
-                                            <constraint firstAttribute="height" constant="216" id="kzN-OC-ezd"/>
+                                            <constraint firstAttribute="height" constant="280" id="kzN-OC-ezd"/>
                                         </constraints>
                                         <date key="date" timeIntervalSinceReferenceDate="494789735.04378498">
                                             <!--2016-09-05 17:35:35 +0000-->
@@ -139,9 +138,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="AwW-qy-Zpc" secondAttribute="trailing" id="FSW-9B-EOl"/>
-                                    <constraint firstAttribute="height" constant="250" id="MAc-ev-3Z4"/>
+                                    <constraint firstAttribute="height" constant="280" id="MAc-ev-3Z4"/>
                                     <constraint firstAttribute="bottom" secondItem="Zh1-5a-B5S" secondAttribute="bottom" id="jfT-MB-QnM"/>
-                                    <constraint firstAttribute="width" constant="240" id="kqB-Sg-foy"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="kqB-Sg-foy"/>
                                     <constraint firstItem="AwW-qy-Zpc" firstAttribute="top" secondItem="yv6-XF-GvY" secondAttribute="top" id="lwE-6G-QAk"/>
                                     <constraint firstItem="Zh1-5a-B5S" firstAttribute="leading" secondItem="yv6-XF-GvY" secondAttribute="leading" id="s89-kw-17G"/>
                                     <constraint firstAttribute="trailing" secondItem="Zh1-5a-B5S" secondAttribute="trailing" id="zuK-0S-oC2"/>
@@ -330,6 +329,7 @@
                             <constraint firstItem="1xg-Ig-RaM" firstAttribute="top" secondItem="Ohp-4N-8Ys" secondAttribute="bottom" id="EwO-9c-Rbm"/>
                             <constraint firstItem="Ydt-wR-B8B" firstAttribute="centerY" secondItem="a1i-tg-2qU" secondAttribute="centerY" id="FGj-s1-dMq"/>
                             <constraint firstItem="SVh-me-uB2" firstAttribute="centerX" secondItem="Znj-aX-FL2" secondAttribute="centerX" id="Fc5-l5-iqB"/>
+                            <constraint firstItem="yv6-XF-GvY" firstAttribute="leading" secondItem="Znj-aX-FL2" secondAttribute="leadingMargin" priority="750" constant="8" id="GV9-tQ-w53"/>
                             <constraint firstItem="TwU-Ef-nz8" firstAttribute="leading" secondItem="Znj-aX-FL2" secondAttribute="leadingMargin" constant="8" id="HUJ-9Y-vrc"/>
                             <constraint firstItem="4yB-e4-ZDK" firstAttribute="leading" secondItem="Znj-aX-FL2" secondAttribute="leading" id="HhT-RM-bcn"/>
                             <constraint firstItem="R93-r4-WYA" firstAttribute="trailing" secondItem="Ocl-iC-Ud2" secondAttribute="trailing" id="J87-dy-dGj"/>
@@ -348,6 +348,7 @@
                             <constraint firstItem="wRl-Bm-jHt" firstAttribute="top" secondItem="onX-IQ-7h2" secondAttribute="bottom" constant="12" id="br5-fv-rrG"/>
                             <constraint firstItem="R93-r4-WYA" firstAttribute="centerY" secondItem="onX-IQ-7h2" secondAttribute="centerY" id="cMh-1G-7U8"/>
                             <constraint firstItem="mK9-6d-CXh" firstAttribute="top" secondItem="eic-ue-SnJ" secondAttribute="bottom" constant="40" id="fwI-Qr-nkN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yv6-XF-GvY" secondAttribute="trailing" priority="750" constant="8" id="g2x-TC-nQQ"/>
                             <constraint firstItem="onX-IQ-7h2" firstAttribute="top" secondItem="Sfr-6v-HXX" secondAttribute="bottom" constant="22" id="m1Y-7i-2Of"/>
                             <constraint firstItem="V2L-Iv-IDI" firstAttribute="leading" secondItem="Znj-aX-FL2" secondAttribute="leading" id="nlf-05-fDH"/>
                             <constraint firstItem="Sfr-6v-HXX" firstAttribute="centerX" secondItem="0Mh-GW-9vW" secondAttribute="centerX" id="ox8-cc-BaK"/>

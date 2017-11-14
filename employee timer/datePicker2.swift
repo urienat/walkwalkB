@@ -59,6 +59,7 @@ class datePicker2: UIViewController {
     
     
     @IBAction func extendedDate1Button(_ sender: Any) {
+        
         datePickerbBackground .isHidden = false
         datePickerBackground2.isHidden = true
 
@@ -153,10 +154,8 @@ class datePicker2: UIViewController {
         print(self.mydateFormat6.string(from: self.mydateFormat5.date(from: record.fIn!)!))
 
         if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = self.mydateFormat.string(from: self.mydateFormat5.date(from: record.fIn!)!)} else {self.TimeIN.text = self.mydateFormat6.string(from: self.mydateFormat5.date(from: record.fIn!)!) }
-        //self.TimeIN.text = self.mydateFormat.string(from: self.mydateFormat5.date(from: record.fIn!)!)
         self.inDate = record.fIn!
         
-        if ViewController.dateTimeFormat == "DateTime" {self.DatePicker.datePickerMode = .dateAndTime } else { self.DatePicker.datePickerMode = .date}
         
         self.DatePicker.setDate( self.mydateFormat5.date(from: record.fIn!)!  , animated: true)
 
@@ -186,6 +185,9 @@ class datePicker2: UIViewController {
     /////////////////////////////////////////////////////////////////  view did load starts///////////////////////
     override func viewDidLoad() {
     super.viewDidLoad()
+        
+        if ViewController.dateTimeFormat == "DateTime" {self.DatePicker.datePickerMode = .dateAndTime } else { self.DatePicker.datePickerMode = .date}
+
       
         //connectivity
         if Reachability.isConnectedToNetwork() == true
@@ -219,8 +221,8 @@ class datePicker2: UIViewController {
             ,options: 0, locale: nil)!
 
         if recordToHandle == "" {
-            TimeIN.text = mydateFormat.string(from: Date())//brings the a date as a string
-            
+            //TimeIN.text = mydateFormat.string(from: Date())//brings the a date as a string
+                  if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat.string(from: Date())} else {self.TimeIN.text = mydateFormat6.string(from: Date()) }
             
             pooBackground.isHidden = true
             titleLbl = "Add for " + employerFromMain!
@@ -266,7 +268,6 @@ class datePicker2: UIViewController {
 
         datePickerbBackground .isHidden = true
         datePickerBackground2.isHidden = true
-        //TimeIN.text = mydateFormat.string(from: DatePicker.date) //brings the a date as a string
          if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat.string(from: DatePicker.date) } else {self.TimeIN.text = mydateFormat6.string(from: DatePicker.date) }
         
         print("in as a date:")
@@ -285,7 +286,7 @@ class datePicker2: UIViewController {
         }//end of func
     
     func datePickerChanged2(DatePicker:UIDatePicker) {
-        
+
         //outDate = mydateFormat.string(from: DatePicker.date) //brings the a date as a string
         datePickerbBackground .isHidden = true
         datePickerBackground2.isHidden = true
@@ -297,6 +298,8 @@ class datePicker2: UIViewController {
    
     func saveToDB() {
         navigationController!.popViewController(animated: true)
+        
+        
         if calcTotal > 0  {
         print ("bigger than 0")
         
@@ -330,7 +333,8 @@ class datePicker2: UIViewController {
     
     func saveToDB2() {
         navigationController!.popViewController(animated: true)
-     
+        print (calcTotal)
+
         
             if recordToHandle == "" {
                 let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker.date), "fTotal" : "-1", "fEmployer": String (describing : employerFromMain!), "fIndication" : " " ,"fIndication2" :" " ,"fIndication3" :"✏️","fStatus" : "Pre", "FPoo" : self.poo, "fPee" : self.pee,"fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID)]
@@ -496,7 +500,7 @@ class datePicker2: UIViewController {
             //nothing
         }
         let saveAction = UIAlertAction(title: "Yes Save it.", style: .default) { (UIAlertAction) in
-         self.saveToDB()
+         self.saveToDB2()
         //self.navigationController!.popViewController(animated: true)
         }
         
