@@ -70,7 +70,7 @@
                                     <action selector="extendedDate2Button:" destination="4DZ-OI-VHJ" eventType="touchUpInside" id="TVk-00-v81"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="TimeIN" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="mK9-6d-CXh">
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="TimeIN" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="mK9-6d-CXh">
                                 <rect key="frame" x="78.5" y="84" width="163" height="30"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -109,7 +109,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yv6-XF-GvY" userLabel="View datePicker background">
-                                <rect key="frame" x="10" y="156" width="300" height="280"/>
+                                <rect key="frame" x="10" y="116" width="300" height="320"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AwW-qy-Zpc">
                                         <rect key="frame" x="260" y="0.0" width="40" height="40"/>
@@ -123,9 +123,9 @@
                                         </connections>
                                     </button>
                                     <datePicker tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Zh1-5a-B5S">
-                                        <rect key="frame" x="15" y="0.0" width="270" height="280"/>
+                                        <rect key="frame" x="15" y="55" width="270" height="250"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="280" id="kzN-OC-ezd"/>
+                                            <constraint firstAttribute="height" constant="250" id="kzN-OC-ezd"/>
                                         </constraints>
                                         <date key="date" timeIntervalSinceReferenceDate="494789735.04378498">
                                             <!--2016-09-05 17:35:35 +0000-->
@@ -141,8 +141,8 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="AwW-qy-Zpc" secondAttribute="trailing" id="FSW-9B-EOl"/>
-                                    <constraint firstAttribute="height" constant="280" id="MAc-ev-3Z4"/>
-                                    <constraint firstAttribute="bottom" secondItem="Zh1-5a-B5S" secondAttribute="bottom" id="jfT-MB-QnM"/>
+                                    <constraint firstAttribute="height" constant="320" id="MAc-ev-3Z4"/>
+                                    <constraint firstAttribute="bottom" secondItem="Zh1-5a-B5S" secondAttribute="bottom" constant="15" id="jfT-MB-QnM"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="kqB-Sg-foy"/>
                                     <constraint firstItem="AwW-qy-Zpc" firstAttribute="top" secondItem="yv6-XF-GvY" secondAttribute="top" id="lwE-6G-QAk"/>
                                     <constraint firstItem="Zh1-5a-B5S" firstAttribute="leading" secondItem="yv6-XF-GvY" secondAttribute="leading" constant="15" id="s89-kw-17G"/>
