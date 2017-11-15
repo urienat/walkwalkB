@@ -34,7 +34,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     var fbEmail: String?
     
     var pickedImage:UIImage?
-    let picture = UIImage(named: "dogwalkerimage")
+    let picture = UIImage(named: "perSessionImage")
 
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print ("logout from face book")

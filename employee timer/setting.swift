@@ -180,7 +180,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         super.viewDidLoad()
 
         picture.clipsToBounds = true
-        picture.layer.cornerRadius = 20
+        picture.layer.cornerRadius = 34
         
         //connectivity
         if Reachability.isConnectedToNetwork() == true
@@ -281,6 +281,9 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         URLSession.shared.dataTask(with: url, completionHandler: { (Data, response, error) in
         if error != nil {
         print (error as Any)
+        self.picture.image = self.pDogImage.image //I added to avoid teufut. if not stop cancel
+            
+            
         }
         DispatchQueue.main.async {
             if self.picture.image == nil {self.picture.image = self.pDogImage.image } else{
@@ -335,7 +338,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             ,options: 0, locale: nil)!
         
         picture.clipsToBounds = true
-        picture.layer.cornerRadius = 30
+        picture.layer.cornerRadius = 34
         
         //keyboard adjustment
         NotificationCenter.default.addObserver(self, selector: #selector(self.KeyboardNotificationwillShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: self.view.window)
@@ -467,7 +470,6 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             
           self.updateEmail()
             
-        //self.invitation() //un comment when in use for the employer who adds employee.
         
             //storage of pictures
             //in cache under employeeID

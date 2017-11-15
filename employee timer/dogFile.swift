@@ -31,6 +31,9 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBOutlet weak var leash: UIBarButtonItem!
     @IBOutlet weak var trash: UIBarButtonItem!
     
+    var perSessionImage = UIImage(named:"perSessionImage")?.withRenderingMode(.alwaysTemplate)
+
+    
     var messageInstruction = ""
     var titleInstruction = ""
 
@@ -723,6 +726,9 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
                         URLSession.shared.dataTask(with: url, completionHandler: { (Data, response, error) in
                             if error != nil {
                                 print (error as Any)
+                                self.pDogImage.image = self.perSessionImage //I added to avoid teufut. if not stop cancel
+
+                                
                             }
                             DispatchQueue.main.async {
                                 self.pDogImage.image = UIImage(data: Data!)!
