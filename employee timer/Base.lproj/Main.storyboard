@@ -28,13 +28,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grass12" translatesAutoresizingMaskIntoConstraints="NO" id="GHK-96-v1w">
-                                <rect key="frame" x="0.0" y="20" width="320" height="570"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="560"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J23-II-GU4">
-                                <rect key="frame" x="0.0" y="590" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="580" width="320" height="60"/>
                                 <color key="backgroundColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="yhr-2P-Ndl"/>
+                                    <constraint firstAttribute="height" constant="60" id="yhr-2P-Ndl"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem image="billsIcon" id="Rlt-lE-oNq" userLabel="bills">
@@ -49,7 +49,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="mkK-mi-Kvc"/>
-                                    <barButtonItem systemItem="trash" id="nZp-Dl-0PV">
+                                    <barButtonItem title="Item" image="trash" id="nZp-Dl-0PV">
                                         <connections>
                                             <action selector="deleteAdog:" destination="nD7-g7-jdd" id="HHP-an-WRV"/>
                                         </connections>
@@ -57,7 +57,7 @@
                                 </items>
                             </toolbar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="scrollerView" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIG-Rt-2a2">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="530"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="520"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kjJ-qf-Ai6" userLabel="contentView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="620"/>
@@ -605,7 +605,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grass12" translatesAutoresizingMaskIntoConstraints="NO" id="gvF-8a-PLX">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xJI-kw-XIv">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
@@ -673,9 +673,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZi-ek-Reb">
-                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="420" width="320" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="irM-Dr-cgs"/>
+                                    <constraint firstAttribute="height" constant="60" id="irM-Dr-cgs"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="BKZ-mQ-cBN"/>
@@ -1282,10 +1282,10 @@
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAK-kc-O8k">
-                                <rect key="frame" x="0.0" y="770" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="760" width="320" height="60"/>
                                 <color key="backgroundColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="pAd-23-OtN"/>
+                                    <constraint firstAttribute="height" constant="60" id="pAd-23-OtN"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="D3h-7D-UQS"/>
@@ -1297,7 +1297,7 @@
                                 </items>
                             </toolbar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcj-3g-ZF0" userLabel="setting scroller">
-                                <rect key="frame" x="0.0" y="70" width="320" height="670"/>
+                                <rect key="frame" x="0.0" y="70" width="320" height="660"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MGW-Fk-kb6">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
@@ -1975,7 +1975,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fgv-lZ-OY1">
-                                <rect key="frame" x="0.0" y="98" width="320" height="332"/>
+                                <rect key="frame" x="0.0" y="98" width="320" height="322"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="billerId" id="oUk-dv-frm" customClass="billerCell" customModule="perSession" customModuleProvider="target">
@@ -2060,10 +2060,10 @@
                                 </prototypes>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PrW-i7-IuZ">
-                                <rect key="frame" x="0.0" y="430" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="420" width="320" height="60"/>
                                 <color key="backgroundColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="NWC-gi-XYE"/>
+                                    <constraint firstAttribute="height" constant="60" id="NWC-gi-XYE"/>
                                 </constraints>
                                 <items/>
                             </toolbar>
@@ -2183,9 +2183,9 @@
                                 </connections>
                             </segmentedControl>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6A1-XQ-3Qo">
-                                <rect key="frame" x="0.0" y="430" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="420" width="320" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="S0K-IT-oY1"/>
+                                    <constraint firstAttribute="height" constant="60" id="S0K-IT-oY1"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="oYK-pt-rkV"/>
@@ -2211,7 +2211,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="47" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G8b-SK-75d">
-                                <rect key="frame" x="0.0" y="28" width="320" height="358"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="348"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellId" rowHeight="47" id="AQP-Fh-lfh" customClass="newTableCell" customModule="perSession" customModuleProvider="target">
@@ -2367,7 +2367,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARH-Y4-MAG">
-                                <rect key="frame" x="0.0" y="380" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="370" width="320" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sessions " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Kbw-MS-DaF" userLabel="Events">
                                         <rect key="frame" x="45" y="2" width="41" height="34"/>
@@ -2529,7 +2529,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grass12" translatesAutoresizingMaskIntoConstraints="NO" id="bga-Pw-fC7">
-                                <rect key="frame" x="0.0" y="44" width="320" height="386"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="376"/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgJ-kM-9CK">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2542,10 +2542,10 @@
                                 </items>
                             </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ka5-D8-Si7">
-                                <rect key="frame" x="0.0" y="430" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="420" width="320" height="60"/>
                                 <color key="backgroundColor" red="0.2145790309" green="0.45587304229999998" blue="0.84711945060000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="oq5-oC-ito"/>
+                                    <constraint firstAttribute="height" constant="60" id="oq5-oC-ito"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem systemItem="action" id="R6p-At-dlq">
@@ -2554,7 +2554,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="uQY-Pe-tFk"/>
-                                    <barButtonItem systemItem="trash" id="CkP-hP-qjf">
+                                    <barButtonItem title="Item" image="trash" id="CkP-hP-qjf">
                                         <connections>
                                             <action selector="deleteBtn:" destination="8gY-C3-V1Z" id="NlM-7M-YBm"/>
                                         </connections>
@@ -2562,7 +2562,7 @@
                                 </items>
                             </toolbar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pGt-z5-fAP">
-                                <rect key="frame" x="16" y="84" width="288" height="315"/>
+                                <rect key="frame" x="16" y="84" width="288" height="305"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82B-Jq-qRO">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="1100"/>
@@ -2643,24 +2643,26 @@
     </scenes>
     <resources>
         <image name="Grass12" width="512" height="512"/>
-        <image name="Leash" width="50" height="100"/>
+        <image name="Leash" width="50" height="50"/>
         <image name="V" width="512" height="512"/>
-        <image name="billsIcon" width="55" height="55"/>
+        <image name="billsIcon" width="50" height="50"/>
         <image name="emptyV" width="512" height="512"/>
-        <image name="meluna" width="50" height="100"/>
+        <image name="meluna" width="50" height="50"/>
         <image name="noSign" width="309" height="255"/>
         <image name="pencilImage" width="100" height="100"/>
         <image name="perSessionImage" width="234" height="225"/>
         <image name="roundBig" width="100" height="100"/>
         <image name="sandWatchStop" width="257" height="261"/>
-        <image name="sendBillIcon" width="55" height="55"/>
+        <image name="sendBillIcon" width="50" height="50"/>
+        <image name="trash" width="50" height="50"/>
         <image name="walkerProfile" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="djG-dA-RhY"/>
         <segue reference="8Bf-Vi-arA"/>
-        <segue reference="kfH-wV-ZNk"/>
-        <segue reference="J3o-R7-qWW"/>
+        <segue reference="RQi-YY-5wb"/>
+        <segue reference="x0P-Ew-8Ag"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="gfT-By-X34"/>
+        <segue reference="1k4-P4-HYk"/>
     </inferredMetricsTieBreakers>
 </document>
