@@ -180,7 +180,8 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         super.viewDidLoad()
 
         picture.clipsToBounds = true
-        picture.layer.cornerRadius = 34
+        picture.layer.cornerRadius = 15
+        
         
         //connectivity
         if Reachability.isConnectedToNetwork() == true
