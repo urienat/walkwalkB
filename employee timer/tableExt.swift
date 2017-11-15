@@ -48,7 +48,9 @@ extension(ViewController){
         print (ViewController.checkSubOnce!)
  
         if ViewController.checkSubOnce == 2 {
-            self.records.isEnabled = false;self.employerToS = "Add new Account" ; self.performSegue(withIdentifier: "employerForDogFile", sender: self.employerToS) }
+        print (self.employerToS)
+            
+            self.records.isEnabled = false;self.employerToS = "Add new dog" ; self.performSegue(withIdentifier: "employerForDogFile", sender: self.employerToS) }
         }//end of dispatch
         }//end of if
             
