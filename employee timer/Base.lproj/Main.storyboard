@@ -2548,7 +2548,7 @@
                                     <constraint firstAttribute="height" constant="60" id="oq5-oC-ito"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem systemItem="action" id="R6p-At-dlq">
+                                    <barButtonItem title="Item" image="resend" id="R6p-At-dlq">
                                         <connections>
                                             <action selector="reSend:" destination="8gY-C3-V1Z" id="V6e-y6-VcK"/>
                                         </connections>
@@ -2651,6 +2651,7 @@
         <image name="noSign" width="309" height="255"/>
         <image name="pencilImage" width="100" height="100"/>
         <image name="perSessionImage" width="234" height="225"/>
+        <image name="resend" width="50" height="50"/>
         <image name="roundBig" width="100" height="100"/>
         <image name="sandWatchStop" width="257" height="261"/>
         <image name="sendBillIcon" width="50" height="50"/>
@@ -2658,7 +2659,6 @@
         <image name="walkerProfile" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="djG-dA-RhY"/>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="RQi-YY-5wb"/>
         <segue reference="x0P-Ew-8Ag"/>

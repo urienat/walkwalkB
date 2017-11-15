@@ -190,7 +190,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     
  //alerts//////////////////////////////
     func alert5(){
-        let alertController5 = UIAlertController(title: ("Bill Recovery") , message: "Do you want to recover bill's copy and send it to yourdelf?", preferredStyle: .alert)
+        let alertController5 = UIAlertController(title: ("Bill Recovery") , message: "Do you want to recover bill's copy and send it to yourself?", preferredStyle: .alert)
         let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
             //do nothing
         }

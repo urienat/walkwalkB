@@ -91,7 +91,7 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="o1c-Od-2bt"/>
-                                    <barButtonItem systemItem="trash" id="jaO-3a-pGo">
+                                    <barButtonItem title="Item" image="trash" id="jaO-3a-pGo">
                                         <connections>
                                             <action selector="deleter:" destination="4DZ-OI-VHJ" id="QsC-KJ-jTz"/>
                                         </connections>
@@ -398,5 +398,6 @@
     </scenes>
     <resources>
         <image name="Grass12" width="512" height="512"/>
+        <image name="trash" width="50" height="50"/>
     </resources>
 </document>
