@@ -337,8 +337,6 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
             ,options: 0, locale: nil)!
         
-        picture.clipsToBounds = true
-        picture.layer.cornerRadius = 34
         
         //keyboard adjustment
         NotificationCenter.default.addObserver(self, selector: #selector(self.KeyboardNotificationwillShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: self.view.window)
