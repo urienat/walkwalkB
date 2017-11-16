@@ -747,7 +747,7 @@ print ("started view did load")
             
         else if (segue.identifier == "employerForBills"){
             let recordsView = segue.destination as? biller
-            recordsView?.employerID = employerIDToS
+            recordsView?.employerID = ""//employerIDToS
             recordsView?.employerFromMain = employerToS
             recordsView?.employeeID = employeeIDToS
         }//end of else if

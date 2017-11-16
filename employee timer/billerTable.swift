@@ -110,7 +110,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             ,options: 0, locale: nil)!
         mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale: nil)!
 
-        
+        self.StatusChoice = "All"
         
 
             
@@ -217,7 +217,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billItems.removeAll()
         BillArray.removeAll()
         BillArrayStatus.removeAll()
-        //self.billerConnect.reloadData()
 
         
         print ("fetch bills")
