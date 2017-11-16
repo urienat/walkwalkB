@@ -1981,8 +1981,8 @@
                                                         <constraint firstAttribute="height" constant="21" id="UwV-zq-hR4"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="eyr-bF-nId"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
-                                                    <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJG-u7-F6Y">
@@ -1999,28 +1999,28 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="sg5-Ew-ol6" userLabel="l3">
-                                                    <rect key="frame" x="210" y="12.5" width="50" height="18.5"/>
+                                                    <rect key="frame" x="210" y="11.5" width="50" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="6kf-zw-0qS"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="19"/>
                                                     <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clN-0j-1FU" userLabel="l4">
-                                                    <rect key="frame" x="195" y="12" width="14" height="18.5"/>
-                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                                    <rect key="frame" x="193" y="10.5" width="16" height="22"/>
+                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
                                                     <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l6" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEB-4f-1Nn" userLabel="l6">
-                                                    <rect key="frame" x="6" y="22" width="180" height="21.5"/>
+                                                    <rect key="frame" x="6" y="22" width="100" height="21.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Cg8-Nd-0mJ"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21.5" id="Xck-0n-LMn"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="ZyB-pd-TV4"/>
+                                                        <constraint firstAttribute="width" constant="100" id="ZyB-pd-TV4"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
                                                     <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -2217,7 +2217,7 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="166" id="YYJ-ZC-k61"/>
                                                         <constraint firstAttribute="height" constant="21" id="Zzl-s3-Cti"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="21"/>
                                                     <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -2291,7 +2291,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gCC-uY-Je8" userLabel="l8">
-                                                    <rect key="frame" x="215" y="18" width="20" height="20"/>
+                                                    <rect key="frame" x="223" y="18" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="W6U-bP-CL4"/>
                                                         <constraint firstAttribute="width" constant="20" id="uPF-bq-Ddj"/>
@@ -2299,9 +2299,9 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="fmf-zH-ULJ" firstAttribute="leading" secondItem="gCC-uY-Je8" secondAttribute="trailing" constant="30" id="6Yt-QP-D5X"/>
                                                 <constraint firstItem="RPq-26-PI3" firstAttribute="leading" secondItem="WGK-if-uRa" secondAttribute="trailing" constant="3" id="6n9-be-aPJ"/>
                                                 <constraint firstItem="GV9-3k-hfB" firstAttribute="leading" secondItem="QKu-nI-1V4" secondAttribute="trailing" constant="2" id="8PH-dA-vL9"/>
-                                                <constraint firstItem="gCC-uY-Je8" firstAttribute="leading" secondItem="Nbi-dh-SCY" secondAttribute="trailing" constant="10" id="8aB-Mn-OXp"/>
                                                 <constraint firstItem="RPq-26-PI3" firstAttribute="top" secondItem="2zf-Oo-Imi" secondAttribute="top" id="Cmm-YN-DiD"/>
                                                 <constraint firstItem="GV9-3k-hfB" firstAttribute="bottom" secondItem="2zf-Oo-Imi" secondAttribute="bottomMargin" id="DEd-xx-Qeq"/>
                                                 <constraint firstItem="WGK-if-uRa" firstAttribute="leading" secondItem="2zf-Oo-Imi" secondAttribute="leading" constant="8" id="Efo-yy-4AU"/>
@@ -2389,7 +2389,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="97h-H1-ijY" userLabel="amount">
-                                        <rect key="frame" x="230" y="2" width="85" height="34"/>
+                                        <rect key="frame" x="117.5" y="2" width="85" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="85" id="0wC-q7-o8f"/>
                                             <constraint firstAttribute="height" constant="34" id="J6a-Jb-JtK"/>
@@ -2399,7 +2399,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="heW-i9-L8n">
-                                        <rect key="frame" x="206" y="7" width="24" height="25"/>
+                                        <rect key="frame" x="93.5" y="7" width="24" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="GET-wl-a3I"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="paU-TB-CcE"/>
@@ -2431,6 +2431,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="97h-H1-ijY" firstAttribute="centerX" secondItem="ARH-Y4-MAG" secondAttribute="centerX" id="EnF-XN-PJS"/>
                                     <constraint firstItem="FxB-rw-Kcp" firstAttribute="leading" secondItem="Kbw-MS-DaF" secondAttribute="trailing" id="GRq-Hq-Kge"/>
                                     <constraint firstItem="FxB-rw-Kcp" firstAttribute="top" secondItem="ARH-Y4-MAG" secondAttribute="top" constant="2" id="J0q-7I-BIn"/>
                                     <constraint firstAttribute="bottom" secondItem="UOT-E4-1lw" secondAttribute="bottom" constant="2" id="LM8-N9-51l"/>
@@ -2444,7 +2445,6 @@
                                     <constraint firstItem="taA-Dx-ovz" firstAttribute="top" secondItem="ARH-Y4-MAG" secondAttribute="top" constant="2" id="WyT-ir-y0d"/>
                                     <constraint firstItem="taA-Dx-ovz" firstAttribute="leading" secondItem="ARH-Y4-MAG" secondAttribute="leading" constant="2" id="YCS-P1-pSI"/>
                                     <constraint firstItem="97h-H1-ijY" firstAttribute="top" secondItem="ARH-Y4-MAG" secondAttribute="top" constant="2" id="brm-zA-It9"/>
-                                    <constraint firstAttribute="trailing" secondItem="97h-H1-ijY" secondAttribute="trailing" constant="5" id="cVC-Gq-UJ9"/>
                                     <constraint firstItem="97h-H1-ijY" firstAttribute="leading" relation="lessThanOrEqual" secondItem="heW-i9-L8n" secondAttribute="trailing" id="gfI-FC-qTF"/>
                                     <constraint firstItem="Kbw-MS-DaF" firstAttribute="bottom" secondItem="taA-Dx-ovz" secondAttribute="bottom" id="qTp-uy-bgz"/>
                                     <constraint firstItem="Kbw-MS-DaF" firstAttribute="leading" secondItem="taA-Dx-ovz" secondAttribute="trailing" constant="3" id="xCI-Po-2am"/>
@@ -2655,6 +2655,6 @@
         <segue reference="kfH-wV-ZNk"/>
         <segue reference="J3o-R7-qWW"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="1k4-P4-HYk"/>
+        <segue reference="gfT-By-X34"/>
     </inferredMetricsTieBreakers>
 </document>
