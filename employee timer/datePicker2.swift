@@ -221,7 +221,8 @@ class datePicker2: UIViewController {
             ,options: 0, locale: nil)!
 
         if recordToHandle == "" {
-            //TimeIN.text = mydateFormat.string(from: Date())//brings the a date as a string
+            deleter.isEnabled = false
+            
                   if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat.string(from: Date())} else {self.TimeIN.text = mydateFormat6.string(from: Date()) }
             
             pooBackground.isHidden = true
@@ -242,6 +243,8 @@ class datePicker2: UIViewController {
                 }//end of else of payment= round
         }//end of if
         else{
+            deleter.isEnabled = true
+
              saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveToDB2))
             self.deleter.isEnabled = true
            
