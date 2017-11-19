@@ -63,7 +63,7 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
 
 
     
-    let Vimage = UIImage(named: "V")
+    let Vimage = UIImage(named: "vNaked")
     let nonVimage = UIImage(named: "emptyV")
     let dogVimage = UIImage(named: "dogshadow")
     let noSign = UIImage(named:"noSign")
