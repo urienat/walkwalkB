@@ -1111,12 +1111,12 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
         self.startBackground.isHidden = false
         startBarButtonFadeOut()
         startBarButtonFadeIn()
-        UIView.animate(withDuration: 2.0, delay :6.0 ,options:[],animations: {
+        DispatchQueue.main.asyncAfter(deadline: .now()){
+        UIView.animate(withDuration: 2.0, delay :4.0 ,options:[],animations: {
             self.textAdd.alpha = 1
         },completion:nil)
-        UIView.animate(withDuration: 2.0, delay :8.0 ,options:[],animations: {
-            self.textAdd.alpha = 0
-        },completion:nil)
+            
+        }
         self.petFile.isEnabled = true; 
         
         self.chooseEmployer.isUserInteractionEnabled = true
