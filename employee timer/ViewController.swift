@@ -237,7 +237,6 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
             //sound for start
            // playSound()
         self.timeBackground.alpha = 1
-            
         self.animationImage.alpha = 1
             self.postStartView()
 
@@ -281,7 +280,7 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
                 //sound for start
                // playSound()
                  self.DateIn.text = "Walking...\(self.dIn2)"
-                textAdd.text = "\t\t Session added for \(employerToS) \t\t\( mydateFormat7.string(from: Date()))"
+                textAdd.text = "\r\n\r\n Session added for \(employerToS) \r\n\r\n\( mydateFormat7.string(from: Date()))"
                 self.postRoundView()
 
                
@@ -1103,22 +1102,23 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
     
     func preStartView() {
         
-        self.textAdd.isHidden = true
         self.stopBackground.isHidden = true
         self.addAmanualRecord.isHidden = false
         self.DateIn.isHidden = true
         self.timeBackground.isHidden = true
-        //self.gpsDistance.isHidden = true
         self.pooBackground.isHidden = true
         self.workedFor.isHidden = true
         self.startBackground.isHidden = false
         startBarButtonFadeOut()
         startBarButtonFadeIn()
-        
+        UIView.animate(withDuration: 2.0, delay :6.0 ,options:[],animations: {
+            self.textAdd.alpha = 1
+        },completion:nil)
+        UIView.animate(withDuration: 2.0, delay :8.0 ,options:[],animations: {
+            self.textAdd.alpha = 0
+        },completion:nil)
         self.petFile.isEnabled = true; 
-        print("qzhhjq")
-        //self.dogFileLbl.isHidden = false
-       // self.fileLbl.isHidden = false
+        
         self.chooseEmployer.isUserInteractionEnabled = true
 
         ///
@@ -1129,9 +1129,9 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
     func postStartView() {
         
         self.petFile.isEnabled = true
-       // self.dogFileLbl.isHidden = false
-        //self.fileLbl.isHidden = false
-
+      
+       
+        
         self.timeBackground.isHidden = false
         self.animationImage.isHidden = true
         self.startBackground.isHidden = true
@@ -1176,10 +1176,7 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
     func postRoundView() {
         
         self.petFile.isEnabled = true
-        // self.dogFileLbl.isHidden = false
-        //self.fileLbl.isHidden = false
         
-
         
         self.timeBackground.isHidden = true
         self.animationImage.isHidden = false
@@ -1189,9 +1186,7 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
         self.pooBackground.isHidden = true
         self.addAmanualRecord.isHidden = true
         self.stopBackground.isHidden = true
-        //stopBarButtonFadeOut()
-       // stopBarButtonFadeIn()
-        //self.gpsDistance.isHidden = false
+        
         self.chooseEmployer.isUserInteractionEnabled = true
         
                 self.navigationController!.popViewController(animated: true)
@@ -1201,27 +1196,28 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
         self.animationImage.center.x -= self.view.bounds.width
         self.animationImage.isHidden = false
         self.animationImage.alpha = 1
-        
+       
+
         
         UIView.animate(withDuration: 2.0, animations:{
             self.animationImage.center.x += self.view.bounds.width
         })
         UIView.animate(withDuration: 2.0, delay :2.0 ,options:[],animations: {
             self.animationImage.alpha = 0
-            //self.preStartView()
             self.startBackground.alpha = 0
             self.addAmanualRecord.alpha = 0
-        },completion:nil)
-        UIView.animate(withDuration: 1.0, delay :4.0 ,options:[],animations: {
-            self.startBackground.alpha = 1
-            self.addAmanualRecord.alpha = 1
-            self.preStartView()
-            self.DateIn.alpha = 0
-            self.textAdd.isHidden = false
-
 
         },completion:nil)
         
+        UIView.animate(withDuration: 1.0, delay :6.0 ,options:[],animations: {
+            self.startBackground.alpha = 1
+            self.addAmanualRecord.alpha = 1
+            
+            self.preStartView()
+            self.DateIn.alpha = 0
+            
+            
+        },completion:nil)
     }//end of func oost round view
     
     //no Firebase connection
