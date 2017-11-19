@@ -1033,6 +1033,12 @@
                                 <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XDi-hZ-CdO" userLabel="textAdd">
+                                <rect key="frame" x="84.5" y="165" width="150" height="150"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="V" translatesAutoresizingMaskIntoConstraints="NO" id="M0C-iW-AVD" userLabel="animationImage">
                                 <rect key="frame" x="84.5" y="165" width="150" height="150"/>
                                 <constraints>
@@ -1183,6 +1189,7 @@
                             <constraint firstItem="3dt-Xh-ZbI" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" constant="95" id="0bY-5K-D5W"/>
                             <constraint firstItem="JyP-95-znE" firstAttribute="top" secondItem="yHg-YC-CqC" secondAttribute="bottom" id="1hb-Xe-QgI"/>
                             <constraint firstAttribute="trailing" secondItem="JEU-k8-q20" secondAttribute="trailing" id="2OL-F2-fVW"/>
+                            <constraint firstItem="XDi-hZ-CdO" firstAttribute="centerY" secondItem="M0C-iW-AVD" secondAttribute="centerY" id="2aS-7s-ElH"/>
                             <constraint firstItem="bqu-UG-4qJ" firstAttribute="top" secondItem="K9m-63-7gA" secondAttribute="bottom" constant="18" id="2pf-Lr-2t9"/>
                             <constraint firstAttribute="trailing" secondItem="iC3-6e-xAj" secondAttribute="trailing" id="3ZK-5I-mtl"/>
                             <constraint firstAttribute="trailing" secondItem="Wkx-Tt-3io" secondAttribute="trailing" id="3iw-Bp-Rkw"/>
@@ -1196,12 +1203,15 @@
                             <constraint firstItem="fXg-VA-EDp" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="BKR-ZQ-q0s"/>
                             <constraint firstAttribute="trailing" secondItem="yHg-YC-CqC" secondAttribute="trailing" id="Dmq-dH-nve"/>
                             <constraint firstAttribute="trailing" secondItem="lxT-w2-3r9" secondAttribute="trailing" id="Gpc-gv-ZS2"/>
+                            <constraint firstItem="XDi-hZ-CdO" firstAttribute="centerX" secondItem="M0C-iW-AVD" secondAttribute="centerX" id="HpA-hV-Z0x"/>
                             <constraint firstItem="M0C-iW-AVD" firstAttribute="centerY" secondItem="uv4-gs-ESI" secondAttribute="centerY" id="LlY-0f-a7a"/>
+                            <constraint firstItem="XDi-hZ-CdO" firstAttribute="width" secondItem="M0C-iW-AVD" secondAttribute="width" id="MnU-qU-gVu"/>
                             <constraint firstItem="M0C-iW-AVD" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="NCa-KC-sLb"/>
                             <constraint firstItem="Wkx-Tt-3io" firstAttribute="top" secondItem="45C-VX-M18" secondAttribute="bottom" id="Qba-fl-Alu"/>
                             <constraint firstItem="45C-VX-M18" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="RgB-xL-tIk"/>
                             <constraint firstItem="Wkx-Tt-3io" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="TAL-qv-Umm"/>
                             <constraint firstItem="fqn-dL-iFO" firstAttribute="top" secondItem="BhS-3v-3nc" secondAttribute="bottom" constant="45" id="TbV-z0-ich"/>
+                            <constraint firstItem="XDi-hZ-CdO" firstAttribute="height" secondItem="M0C-iW-AVD" secondAttribute="height" id="VLJ-em-YRr"/>
                             <constraint firstItem="tbR-QL-TgX" firstAttribute="top" secondItem="lxT-w2-3r9" secondAttribute="bottom" constant="30" id="WI7-6r-u9D"/>
                             <constraint firstItem="45C-VX-M18" firstAttribute="height" secondItem="iC3-6e-xAj" secondAttribute="height" id="Xb3-TF-aPj"/>
                             <constraint firstItem="fqn-dL-iFO" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="Yxj-2x-GlY"/>
@@ -1251,6 +1261,7 @@
                         <outlet property="stopBackground" destination="iC3-6e-xAj" id="Mlj-wH-iKb"/>
                         <outlet property="stopButton" destination="Q3X-s5-1Iu" id="dcm-4V-yLN"/>
                         <outlet property="stopImage" destination="mfN-Bp-1CY" id="fji-1K-A04"/>
+                        <outlet property="textAdd" destination="XDi-hZ-CdO" id="nf8-xp-7Gw"/>
                         <outlet property="thinking2" destination="fEo-2V-FTr" id="V9X-bN-rJU"/>
                         <outlet property="timeBackground" destination="K9m-63-7gA" id="MQo-qT-bdp"/>
                         <outlet property="timeh" destination="g2O-9u-XxV" id="JxR-zT-mpL"/>
@@ -2651,10 +2662,11 @@
         <image name="walkerProfile" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="djG-dA-RhY"/>
         <segue reference="8Bf-Vi-arA"/>
-        <segue reference="kfH-wV-ZNk"/>
-        <segue reference="J3o-R7-qWW"/>
+        <segue reference="RQi-YY-5wb"/>
+        <segue reference="x0P-Ew-8Ag"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="gfT-By-X34"/>
+        <segue reference="1k4-P4-HYk"/>
     </inferredMetricsTieBreakers>
 </document>

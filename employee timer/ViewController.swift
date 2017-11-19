@@ -84,6 +84,7 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
     let mydateFormat2 = DateFormatter()
     let mydateFormat5 = DateFormatter()
     let mydateFormat6 = DateFormatter()
+    let mydateFormat7 = DateFormatter()
 
     //varibalwds for roundung
     var roundSecond = 0
@@ -202,6 +203,7 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
         @IBOutlet weak var chooseEmployer: UIButton!
         @IBOutlet weak var gpsDistance: UITextField!
         @IBOutlet weak var animationImage: UIImageView!
+    @IBOutlet weak var textAdd: UITextView!
     
     @IBOutlet weak var startImage: UIImageView!
     @IBOutlet weak var stopImage: UIImageView!
@@ -279,6 +281,7 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
                 //sound for start
                // playSound()
                  self.DateIn.text = "Walking...\(self.dIn2)"
+                textAdd.text = "\t\t\ Session added for \(employerToS) \t\t\( mydateFormat7.string(from: Date()))"
                 self.postRoundView()
 
                
@@ -445,6 +448,8 @@ print ("started view did load")
         mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale: nil)!
         mydateFormat2.dateFormat = DateFormatter.dateFormat(fromTemplate:  " HH:mm", options: 0, locale: nil)!
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
+                ,options: 0, locale: nil)!
+            mydateFormat7.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd, (HH:mm)"
                 ,options: 0, locale: nil)!
         mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale: nil)!
         
@@ -1098,6 +1103,7 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
     
     func preStartView() {
         
+        self.textAdd.isHidden = true
         self.stopBackground.isHidden = true
         self.addAmanualRecord.isHidden = false
         self.DateIn.isHidden = true
@@ -1121,6 +1127,7 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
     }//end of func
     
     func postStartView() {
+        
         self.petFile.isEnabled = true
        // self.dogFileLbl.isHidden = false
         //self.fileLbl.isHidden = false
@@ -1210,6 +1217,8 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
             self.addAmanualRecord.alpha = 1
             self.preStartView()
             self.DateIn.alpha = 0
+            self.textAdd.isHidden = false
+
 
         },completion:nil)
         
