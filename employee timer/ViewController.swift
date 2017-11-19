@@ -1112,10 +1112,12 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
         startBarButtonFadeOut()
         startBarButtonFadeIn()
         DispatchQueue.main.asyncAfter(deadline: .now()){
-        UIView.animate(withDuration: 2.0, delay :4.0 ,options:[],animations: {
+        UIView.animate(withDuration: 2.0, delay :0.0 ,options:[],animations: {
             self.textAdd.alpha = 1
         },completion:nil)
-            
+            UIView.animate(withDuration: 2.0, delay :2.0 ,options:[],animations: {
+                self.textAdd.alpha = 0
+            },completion:nil)
         }
         self.petFile.isEnabled = true; 
         
@@ -1130,8 +1132,6 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
         
         self.petFile.isEnabled = true
       
-       
-        
         self.timeBackground.isHidden = false
         self.animationImage.isHidden = true
         self.startBackground.isHidden = true
@@ -1142,15 +1142,11 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
         self.stopBackground.isHidden = false
         stopBarButtonFadeOut()
         stopBarButtonFadeIn()
-        //self.gpsDistance.isHidden = false
         self.chooseEmployer.isUserInteractionEnabled = true
         UIView.animate(withDuration: TimeInterval(4.9),delay: 0, options: [.repeat], animations:{
-            self.stopImage.transform = self.stopImage.transform.rotated(by: CGFloat(Double.pi*1))
+        self.stopImage.transform = self.stopImage.transform.rotated(by: CGFloat(Double.pi*1))
         })
-      //  UIView.animate(withDuration: TimeInterval(3),delay: 3, options: [.repeat], animations:{
-        //    self.stopImage.transform = self.stopImage.transform.rotated(by: CGFloat(Double.pi*1))
-        //})
-
+      
     
     }//end of func
     
@@ -1209,7 +1205,7 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
 
         },completion:nil)
         
-        UIView.animate(withDuration: 1.0, delay :6.0 ,options:[],animations: {
+        UIView.animate(withDuration: 1.0, delay :4.0 ,options:[],animations: {
             self.startBackground.alpha = 1
             self.addAmanualRecord.alpha = 1
             

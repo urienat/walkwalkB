@@ -1034,7 +1034,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XDi-hZ-CdO" userLabel="textAdd">
-                                <rect key="frame" x="84.5" y="165" width="150" height="150"/>
+                                <rect key="frame" x="84.5" y="295" width="150" height="150"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1186,10 +1186,10 @@
                         <constraints>
                             <constraint firstItem="lxT-w2-3r9" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="0Ud-I2-4q7"/>
                             <constraint firstItem="fEo-2V-FTr" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="0Ui-fH-QHB"/>
+                            <constraint firstItem="XDi-hZ-CdO" firstAttribute="top" secondItem="M0C-iW-AVD" secondAttribute="bottom" constant="-20" id="0Yv-3F-zlV"/>
                             <constraint firstItem="3dt-Xh-ZbI" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" constant="95" id="0bY-5K-D5W"/>
                             <constraint firstItem="JyP-95-znE" firstAttribute="top" secondItem="yHg-YC-CqC" secondAttribute="bottom" id="1hb-Xe-QgI"/>
                             <constraint firstAttribute="trailing" secondItem="JEU-k8-q20" secondAttribute="trailing" id="2OL-F2-fVW"/>
-                            <constraint firstItem="XDi-hZ-CdO" firstAttribute="centerY" secondItem="M0C-iW-AVD" secondAttribute="centerY" id="2aS-7s-ElH"/>
                             <constraint firstItem="bqu-UG-4qJ" firstAttribute="top" secondItem="K9m-63-7gA" secondAttribute="bottom" constant="18" id="2pf-Lr-2t9"/>
                             <constraint firstAttribute="trailing" secondItem="iC3-6e-xAj" secondAttribute="trailing" id="3ZK-5I-mtl"/>
                             <constraint firstAttribute="trailing" secondItem="Wkx-Tt-3io" secondAttribute="trailing" id="3iw-Bp-Rkw"/>
