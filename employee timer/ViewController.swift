@@ -422,16 +422,6 @@ print ("started view did load")
             self.fetchEmployers()
             self.dbRefEmployee.removeAllObservers()
 
-            //self.employerList.reloadData()
-            //self.employerList.reloadInputViews()
-            
-    
-        
-          //  self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Grass12")!)
-       // self.view.insertSubview(backgroundImage, at: 0)
-       // if(UIApplication.shared.statusBarOrientation.isLandscape)
-      //  {self.view.insertSubview(backgroundImage, at: 30)
-      //  backgroundImage.frame = self.view.bounds}
         
         if poo == "No" {PooSwitch.setOn(false, animated: true)} else {PooSwitch.setOn(true, animated: true)}
         if pee == "No" {peeSwitch.setOn(false, animated: true)} else {peeSwitch.setOn(true, animated: true)}
@@ -645,20 +635,11 @@ print ("started view did load")
             
             if recordInProcess != "" {
                 bringRecord()
-                //postStartView()
             }
             else{
                 preStartView()
             }//end of elsee
-            
-            //set variable for Segue
-           // employerToS = String(describing:chooseEmployer.currentTitle!)
-
-            print (employerToS)
-            
-            print("vv")
-            
-            
+           
 
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
@@ -943,7 +924,7 @@ print ("started view did load")
             })
             UIView.animate(withDuration: 2.0, delay :2.0 ,options:[],animations: {
                 self.animationImage.alpha = 0
-                self.preStartView()
+               // self.preStartView()
                 self.startBackground.alpha = 0
                 self.addAmanualRecord.alpha = 0
             },completion:nil)
@@ -1109,22 +1090,13 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
         self.pooBackground.isHidden = true
         self.workedFor.isHidden = true
         self.startBackground.isHidden = false
-        startBarButtonFadeOut()
-        startBarButtonFadeIn()
-        DispatchQueue.main.asyncAfter(deadline: .now()){
-        UIView.animate(withDuration: 2.0, delay :0.0 ,options:[],animations: {
-            self.textAdd.alpha = 1
-        },completion:nil)
-            UIView.animate(withDuration: 2.0, delay :2.0 ,options:[],animations: {
-                self.textAdd.alpha = 0
-            },completion:nil)
-        }
-        self.petFile.isEnabled = true; 
+        self.petFile.isEnabled = true;
         
         self.chooseEmployer.isUserInteractionEnabled = true
-
-        ///
+        startBarButtonFadeOut()
+        startBarButtonFadeIn()
         
+     
         
     }//end of func
     
@@ -1155,9 +1127,7 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
         DateIn.isHidden = true
         records.isEnabled = false
         petFile.isEnabled = false
-       // dogFileLbl.isHidden = true
-         //   self.fileLbl.isHidden = true
-
+       
         chooseEmployer.isHidden = true
         startBackground.isHidden = true
         stopBackground.isHidden = true
@@ -1172,7 +1142,6 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
     func postRoundView() {
         
         self.petFile.isEnabled = true
-        
         
         self.timeBackground.isHidden = true
         self.animationImage.isHidden = false
@@ -1209,6 +1178,15 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
             self.startBackground.alpha = 1
             self.addAmanualRecord.alpha = 1
             
+            DispatchQueue.main.asyncAfter(deadline: .now()){
+                UIView.animate(withDuration: 2.0, delay :0.0 ,options:[],animations: {
+                    self.textAdd.alpha = 1
+                },completion:nil)
+                UIView.animate(withDuration: 2.0, delay :2.0 ,options:[],animations: {
+                    self.textAdd.alpha = 0
+                },completion:nil)
+            }
+            
             self.preStartView()
             self.DateIn.alpha = 0
             
@@ -1226,10 +1204,7 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
     
     func startBarButtonFadeOut(){
         UIView.animate(withDuration: 0.3, animations: {
-            //timeCapDesign is a UIButton
-            
-            //self.startButton.alpha = 0
-            
+           
             self.startButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             
         })
