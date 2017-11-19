@@ -994,11 +994,16 @@ print (mailVisit)
                             
                             self.csv.append("\( record.fEmployer!),\(record.fIn!),\(record.fOut!),\(String(describing: self.totalForReport)),\(record.fIndication3!),\(record.fIndication!),\(record.fIndication2!),\(record.fStatus!),\(String(describing: record.fBill))\n")
                           
-                           // self.csv2.append(record.fStatus!);self.csv2.append("       \t\t\t\t")
-                            self.csv2.append( self.mydateFormat4.string(from: self.mydateFormat5.date(from: record.fIn!)!) );self.csv2.append("  \t\t\t")
+                            if ViewController.dateTimeFormat == "DateTime" {  self.csv2.append( self.mydateFormat4.string(from: self.mydateFormat5.date(from: record.fIn!)!) );self.csv2.append("  \t\t\t")
+                                
+                            } else {
+                                
+                                self.csv2.append( self.mydateFormat6.string(from: self.mydateFormat5.date(from: record.fIn!)!) );self.csv2.append("  \t\t\t") }
+                            
+                            ///self.csv2.append( self.mydateFormat4.string(from: self.mydateFormat5.date(from: record.fIn!)!) );self.csv2.append("  \t\t\t")
+                    
                             self.csv2.append(self.totalForReport!);
-                            //if self.gpsBlock != "0" { self.csv2.append("- \(record.fIndication!)\(record.fIndication3!)\(record.fIndication2!)")};//commented whenfor round version
-                            //self.csv2.append("- \(record.fIndication3!)");
+                            
 
                             self.csv2.append("\r\n")
                             //self.csv2.append("\r\n")
