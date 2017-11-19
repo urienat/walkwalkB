@@ -280,7 +280,7 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
                 //sound for start
                // playSound()
                  self.DateIn.text = "Walking...\(self.dIn2)"
-                textAdd.text = "\r\n\r\n Session added for \(employerToS) \r\n\r\n\( mydateFormat7.string(from: Date()))"
+                textAdd.text = "Session added: \r\n\r\n\( mydateFormat7.string(from: Date()))"
                 self.postRoundView()
 
                
