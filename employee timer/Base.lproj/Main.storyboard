@@ -1038,7 +1038,7 @@
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="V" translatesAutoresizingMaskIntoConstraints="NO" id="M0C-iW-AVD" userLabel="animationImage">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vNaked" translatesAutoresizingMaskIntoConstraints="NO" id="M0C-iW-AVD" userLabel="animationImage">
                                 <rect key="frame" x="84.5" y="165" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="UNQ-wl-NLM"/>
@@ -2659,6 +2659,7 @@
         <image name="sendBillIcon" width="50" height="50"/>
         <image name="telephone" width="50" height="50"/>
         <image name="trash" width="50" height="50"/>
+        <image name="vNaked" width="150" height="150"/>
         <image name="walkerProfile" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
