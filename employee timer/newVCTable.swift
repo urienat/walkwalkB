@@ -364,7 +364,6 @@ tableConnect.backgroundColor = UIColor.clear
             
         eventCounter = 0
         timeCounter = 0.0
-print (mailVisit)
             
             if mailVisit == false {fetch()}
             mailVisit = false
@@ -1268,7 +1267,7 @@ print (mailVisit)
         DispatchQueue.main.asyncAfter(deadline: .now()){
             self.billSender.isEnabled = false}
         
-        let alertController18 = UIAlertController(title: ("Bill records") , message: "Sessions are set to 'Billed'." , preferredStyle: .alert)
+        let alertController18 = UIAlertController(title: ("Bill") , message: "Register a new Bill and set sessions to 'Billed'." , preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
             self.thinking.startAnimating()
             self.billing()
@@ -1290,11 +1289,7 @@ print (mailVisit)
                     /*
 
                     DispatchQueue.main.asyncAfter(deadline: .now()+2){
-                        
-                        self.segmentedPressed = 0
-                        self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
-                        self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-                        
+                     
                         
                         self.biller = false
                         self.mailVisit = true
@@ -1335,6 +1330,12 @@ print (mailVisit)
                
                 self.csv.deleteCharacters(in: NSMakeRange(0, self.csv.length-1) )
                 self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
+                    DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                        
+                        self.segmentedPressed = 0
+                        self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
+                        self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+                    }
             }
             }
             let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
