@@ -174,7 +174,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         DispatchQueue.main.asyncAfter(deadline: .now()+4.4){
             print(self.appArray.count)
             
-            if self.appArray.count != 0 {self.thinking.stopAnimating(); self.alert19()}
+            if self.appArray.count != 0 {self.thinking.stopAnimating(); self.alert18()}
             if self.appArray.count == 0 {
                 self.thinking.stopAnimating()
                 self.alert27()
@@ -1309,14 +1309,65 @@ print (mailVisit)
         }
     }//end of alert11
     
+    func alert18(){
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()){
+            self.billSender.isEnabled = false}
+        
+        let alertController18 = UIAlertController(title: ("Bill records") , message: "Sessions are set to 'Billed'." , preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            self.thinking.startAnimating()
+            self.billing()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                self.csvReport = self.csv.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: false)! as Data
+                self.htmlReport = self.csv2 as String!
+                
+                if self.biller == true {self.dbRefEmployees.child(self.employeeID).updateChildValues(["fCounter": String(describing: (Int(self.counterForMail2!)!+1))])//add counter to invouce #
+                    
+                    self.mailSaver = "\(self.mydateFormat3.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n \(self.employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) -  \(self.totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\n Regards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by PerSession app. "
+                    
+
+                //update bill with DB
+                self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": "Billed", "fBillEmployer": self.employerID,"fBillPayment":self.payment,"fBillEventRate": self.perEvents.text!,"fBillHourRate": self.perHour.text!, "fBillEvents": String(self.eventCounter) as String,"fBillTotalTime": self.totalTime.text!,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2
+                    ], withCompletionBlock: { (error) in}) //end of update.//was 0
+                    self.generalApprovalClicked()
+                  //  controller.dismiss(animated: true, completion: nil)
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                        
+                        self.segmentedPressed = 0
+                        self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
+                        self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+                        
+                        
+                        self.biller = false
+                        self.mailVisit = true
+                        
+                    }
+            
+                }//end of if biller
+                }
+        }
+        let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+            self.csv.deleteCharacters(in: NSMakeRange(0, self.csv.length-1) )
+            self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
+            self.segmentedPressed = 0
+            self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
+            self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+        }
+        
+        alertController18.addAction(OKAction)
+        alertController18.addAction(CancelAction)
+        
+        self.present(alertController18, animated: true, completion: nil)
+    }//end of alert18
     
     func alert19(){
         
         DispatchQueue.main.asyncAfter(deadline: .now()){
-            
             self.billSender.isEnabled = false}
        
-        
             let alertController19 = UIAlertController(title: ("Bill records") , message: "Mail with bill of sessions marked as 'due' is prepared. Sending or saving the mail, would set sessions to final status of 'Billed'." , preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
                 self.thinking.startAnimating()
@@ -1324,43 +1375,30 @@ print (mailVisit)
                 
                 DispatchQueue.main.asyncAfter(deadline: .now()+2){
                     self.csvReport = self.csv.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: false)! as Data
-                    print (self.csv2 as String)
-                    
-                self.htmlReport = self.csv2 as String!
-                
-                
-                
+                    self.htmlReport = self.csv2 as String!
                 let mailComposeViewController2 = self.configuredMailComposeViewController2()
                 if MFMailComposeViewController.canSendMail() {
-                    
-                    self.present(mailComposeViewController2, animated: true, completion: nil)
+                self.present(mailComposeViewController2, animated: true, completion: nil)
                 } //end of if
                 else{ self.showSendmailErrorAlert() }
-                // navigationController!.popViewController(animated: true)
+               
                 self.csv.deleteCharacters(in: NSMakeRange(0, self.csv.length-1) )
                 self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
-                
             }
-        }
+            }
             let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
-                
                 self.csv.deleteCharacters(in: NSMakeRange(0, self.csv.length-1) )
                 self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
-
-                
                 self.segmentedPressed = 0
                 self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
                 self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-                
-                
-                
             }
             
             alertController19.addAction(OKAction)
             alertController19.addAction(CancelAction)
             
             self.present(alertController19, animated: true, completion: nil)
-    }//end of alert19
+            }//end of alert19
     
         func alert27() {
             DispatchQueue.main.asyncAfter(deadline: .now()){

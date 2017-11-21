@@ -49,7 +49,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="mkK-mi-Kvc"/>
-                                    <barButtonItem title="Item" image="trash" id="nZp-Dl-0PV">
+                                    <barButtonItem image="trash" id="nZp-Dl-0PV">
                                         <connections>
                                             <action selector="deleteAdog:" destination="nD7-g7-jdd" id="HHP-an-WRV"/>
                                         </connections>
