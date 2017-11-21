@@ -2067,6 +2067,36 @@
                                 </constraints>
                                 <items/>
                             </toolbar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ILg-rw-WUw" userLabel="totalBills">
+                                <rect key="frame" x="10" y="370" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="GkE-WT-reQ"/>
+                                    <constraint firstAttribute="width" constant="40" id="kYF-gY-uRz"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kwr-P5-PJT" userLabel="totalTax">
+                                <rect key="frame" x="80" y="370" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="bJg-fh-NXJ"/>
+                                    <constraint firstAttribute="height" constant="40" id="knF-jr-qQX"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RwY-u5-Vpk" userLabel="totalAmount">
+                                <rect key="frame" x="196" y="370" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="42G-6B-sY0"/>
+                                    <constraint firstAttribute="height" constant="40" id="uCJ-iO-QJc"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noSign" translatesAutoresizingMaskIntoConstraints="NO" id="xK7-aT-7LI">
                                 <rect key="frame" x="100" y="180" width="120" height="120"/>
                                 <constraints>
@@ -2118,17 +2148,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="kwr-P5-PJT" firstAttribute="centerX" secondItem="LE5-Ui-4B3" secondAttribute="centerX" constant="-30" id="2LM-8v-nRg"/>
                             <constraint firstItem="fgv-lZ-OY1" firstAttribute="top" secondItem="dos-vv-upu" secondAttribute="bottom" constant="30" id="2UA-ee-yym"/>
                             <constraint firstItem="fgv-lZ-OY1" firstAttribute="leading" secondItem="LE5-Ui-4B3" secondAttribute="leading" id="4GD-BZ-ZdV"/>
                             <constraint firstItem="dos-vv-upu" firstAttribute="centerX" secondItem="LE5-Ui-4B3" secondAttribute="centerX" id="4Q6-Uu-4Fx"/>
                             <constraint firstItem="n0x-Pz-LMA" firstAttribute="centerX" secondItem="LE5-Ui-4B3" secondAttribute="centerX" id="5Fg-2U-Exw"/>
+                            <constraint firstItem="RwY-u5-Vpk" firstAttribute="centerY" secondItem="ILg-rw-WUw" secondAttribute="centerY" id="5HG-Nv-IUw"/>
                             <constraint firstItem="xK7-aT-7LI" firstAttribute="centerX" secondItem="LE5-Ui-4B3" secondAttribute="centerX" id="7oB-Vm-6mA"/>
                             <constraint firstItem="iRs-Yv-I4q" firstAttribute="top" secondItem="PrW-i7-IuZ" secondAttribute="bottom" id="7pF-AM-RlE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RwY-u5-Vpk" secondAttribute="trailing" constant="8" id="DFW-o3-XNp"/>
                             <constraint firstAttribute="trailing" secondItem="fgv-lZ-OY1" secondAttribute="trailing" id="Ijc-rw-eXp"/>
                             <constraint firstItem="cAA-bj-x4q" firstAttribute="leading" secondItem="LE5-Ui-4B3" secondAttribute="leading" id="SOl-BA-Xvs"/>
                             <constraint firstAttribute="bottom" secondItem="cAA-bj-x4q" secondAttribute="bottom" id="XHi-E2-g52"/>
                             <constraint firstAttribute="trailing" secondItem="cAA-bj-x4q" secondAttribute="trailing" id="ZLX-qb-KiH"/>
                             <constraint firstItem="PrW-i7-IuZ" firstAttribute="top" secondItem="fgv-lZ-OY1" secondAttribute="bottom" id="cuB-ny-T0b"/>
+                            <constraint firstItem="ILg-rw-WUw" firstAttribute="leading" secondItem="LE5-Ui-4B3" secondAttribute="leading" constant="10" id="cyX-0B-txm"/>
+                            <constraint firstItem="ILg-rw-WUw" firstAttribute="centerY" secondItem="kwr-P5-PJT" secondAttribute="centerY" id="fDS-Cl-Yi5"/>
+                            <constraint firstItem="PrW-i7-IuZ" firstAttribute="top" secondItem="kwr-P5-PJT" secondAttribute="bottom" constant="10" id="igM-p7-cXY"/>
                             <constraint firstAttribute="trailing" secondItem="PrW-i7-IuZ" secondAttribute="trailing" id="izT-mK-gro"/>
                             <constraint firstItem="5YM-uj-HSp" firstAttribute="top" secondItem="dos-vv-upu" secondAttribute="bottom" constant="8" id="mk8-s1-ku2"/>
                             <constraint firstItem="n0x-Pz-LMA" firstAttribute="centerY" secondItem="LE5-Ui-4B3" secondAttribute="centerY" id="qXo-Z5-qkE"/>
@@ -2144,6 +2180,9 @@
                         <outlet property="StatusChosen" destination="dos-vv-upu" id="Gbn-xO-HWO"/>
                         <outlet property="billerConnect" destination="fgv-lZ-OY1" id="Rx0-B2-O4e"/>
                         <outlet property="thinking" destination="n0x-Pz-LMA" id="ZFn-TC-imW"/>
+                        <outlet property="totalAmount" destination="RwY-u5-Vpk" id="nqf-q4-hwd"/>
+                        <outlet property="totalBills" destination="ILg-rw-WUw" id="23Y-xA-55y"/>
+                        <outlet property="totalTax" destination="kwr-P5-PJT" id="c7j-YN-9dc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UVZ-2I-f4S" userLabel="First Responder" sceneMemberID="firstResponder"/>

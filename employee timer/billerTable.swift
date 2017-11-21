@@ -23,6 +23,10 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var BillArray = [String]()
     var statusTemp = "Billed"
 
+    var billCounter = 0
+    var taxCounter = 0.0
+    var AmountCounter = 0.0
+
     var titleLbl = ""
     
     let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
@@ -43,6 +47,9 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var PeriodChosen: UISegmentedControl!
     @IBOutlet weak var StatusChosen: UISegmentedControl!
     
+    @IBOutlet weak var totalBills: UITextField!
+    @IBOutlet weak var totalTax: UITextField!
+    @IBOutlet weak var totalAmount: UITextField!
     
     
 
@@ -174,7 +181,9 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         
         
         let billItem = billItems[indexPath.row]
+        
         cell.backgroundColor = UIColor.clear
+        
 
 
         cell.l1.text = ("\(billItem.fBill!) - \(mydateFormat10.string(from: mydateFormat5.date(from: billItem.fBillDate!)!)) ")
@@ -228,6 +237,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billItems.removeAll()
         BillArray.removeAll()
         BillArrayStatus.removeAll()
+        self.billCounter = 0
 
         
         print ("fetch bills")
@@ -244,17 +254,29 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 print ("dic :\(dictionary)")
                 
                 print (self.billItems)
-                print(billItem)
-                print (billItem.fBillEmployer!,self.employerID)
+                print(billItem.fBill)
+                print (Double(billItem.fBillTotalTotal!))
+               
+                
+
+
+                
                 if self .employerID != ""{
                 if self.StatusChoice == "Not Paid" && billItem.fBillStatus == "Billed" && billItem.fBillEmployer == self.employerID {
-                    self.billItems.append(billItem); self.BillArray.append(billItem.fBill!); self.BillArrayStatus.append(billItem.fBillStatus!)} else  if self.StatusChoice == "All" && billItem.fBillEmployer == self.employerID  {self.billItems.append(billItem);self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
+                    self.billItems.append(billItem); self.billCounter+=1 ;self.AmountCounter += Double(billItem.fBillTotalTotal!)!
+                    ; self.BillArray.append(billItem.fBill!); self.BillArrayStatus.append(billItem.fBillStatus!)} else  if self.StatusChoice == "All" && billItem.fBillEmployer == self.employerID  {self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
                 }
                 if self .employerID == "" {
-                if self.StatusChoice == "All"  {self.billItems.append(billItem);self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
-                else if self.StatusChoice == "Not Paid" &&  billItem.fBillStatus == "Billed"  {self.billItems.append(billItem);self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
+                    if self.StatusChoice == "All"  {self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += (Double(billItem.fBillTotalTotal!)!);              self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
+                    else if self.StatusChoice == "Not Paid" &&  billItem.fBillStatus == "Billed"  {self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
                 }
-                print (self.billItems.count)
+               // print (self.billItems.count)
+              //  print (self.billCounter)
+                self.totalBills.text = String(describing: self.billItems.count)
+                self.totalAmount.text = String(describing: self.AmountCounter)
+               // self.totalTax.text = String (describing: self.billCounter)
+                self.totalTax.text = String (describing: self.billCounter)
+
                 self.billerConnect.reloadData()
                 print (self.billItems.count)
 
