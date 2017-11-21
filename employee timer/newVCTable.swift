@@ -333,9 +333,6 @@ tableConnect.backgroundColor = UIColor.clear
             
         }//end of view did load/////////////////////////////////////////////////////////////////////////////////////////////////////////
  
-        
-        
-    
     
         override func viewDidAppear(_ animated: Bool) {
             let connectedRef = FIRDatabase.database().reference(withPath: ".info/connected")
@@ -365,8 +362,9 @@ tableConnect.backgroundColor = UIColor.clear
         eventCounter = 0
         timeCounter = 0.0
             
-            if mailVisit == false {fetch()}
-            mailVisit = false
+         //   if mailVisit == false {fetch()}
+            fetch()
+            //mailVisit = false
              
             
         }//view did appear end
@@ -600,15 +598,12 @@ tableConnect.backgroundColor = UIColor.clear
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
         mailComposerVC2.setSubject("PerSession - \(counterForMail2!)")
-        mailComposerVC2.setMessageBody("\(mydateFormat3.string(from: Date()))\r\n ref#: \(counterForMail2!)\r\n\(employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(htmlReport!)\r\n Total Number of Sessions: \(self.eventCounter) -  \(totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(taxationBlock)\r\n\r\n\r\n Regards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by PerSession app. ", isHTML: false)
+        mailComposerVC2.setMessageBody("\(mailSaver!)", isHTML: false)
         mailComposerVC2.setToRecipients([employerMail])
         mailComposerVC2.setCcRecipients([ViewController.fixedemail])
-        mailSaver = "\(mydateFormat3.string(from: Date()))\r\n ref#: \(counterForMail2!)\r\n \(employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) -  \(totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(taxationBlock)\r\n\r\n\r\n Regards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by PerSession app. "
-        
+   
         DispatchQueue.main.asyncAfter(deadline: .now()+2){
-
             self.saveBase64StringToPDF(self.mailSaver!)
-    
         }
         
         return mailComposerVC2
@@ -626,21 +621,9 @@ tableConnect.backgroundColor = UIColor.clear
         switch result.rawValue {
         case MFMailComposeResult.cancelled.rawValue:
             print("Mail cancelled")
-            thinking.startAnimating()
-            self.csv.deleteCharacters(in: NSMakeRange(0, self.csv.length-1) )
-            self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
-            DispatchQueue.main.asyncAfter(deadline: .now()+2){ //probably sensetive delay
-
             
-            self.segmentedPressed = 0
-            self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
-            self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-            }
-            biller = false
-            mailVisit = true
-
-            controller.dismiss(animated: true, completion: nil)
-
+        //    biller = false
+         //   mailVisit = true
 
         case MFMailComposeResult.saved.rawValue:
             print("Mail saved3")
@@ -648,27 +631,28 @@ tableConnect.backgroundColor = UIColor.clear
         case MFMailComposeResult.sent.rawValue:
             print("Mail sent3")
 
-
         case MFMailComposeResult.failed.rawValue:
             print("Mail sent failure: %@", [error!.localizedDescription])
-            
-            self.segmentedPressed = 0
-            self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
-            self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-            biller = false
-            controller.dismiss(animated: true, completion: nil)
+           
+           // biller = false
             
         default:
             break
         }
+        
+        thinking.startAnimating()
+        self.csv.deleteCharacters(in: NSMakeRange(0, self.csv.length-1) )
+        self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
+        DispatchQueue.main.asyncAfter(deadline: .now()+2){ //probably sensetive delay
+            
+            controller.dismiss(animated: true, completion: nil)
+        }
+        
         // Dismiss the mail compose view controller.
-        biller = false
-        mailVisit = true
+      //  biller = false
+    //    mailVisit = true
 
-        //controller.dismiss(animated: true, completion: nil)
         self.navigationController!.popViewController(animated: true)
-
-
     }
     
     func thisWeek() {}
@@ -1267,7 +1251,7 @@ tableConnect.backgroundColor = UIColor.clear
         DispatchQueue.main.asyncAfter(deadline: .now()){
             self.billSender.isEnabled = false}
         
-        let alertController18 = UIAlertController(title: ("Bill") , message: "Register a new Bill and set sessions to 'Billed'." , preferredStyle: .alert)
+        let alertController18 = UIAlertController(title: ("Bill") , message: "Register a new Bill and set sessions from 'Due' to 'Billed'." , preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
             self.thinking.startAnimating()
             self.billing()
@@ -1277,6 +1261,9 @@ tableConnect.backgroundColor = UIColor.clear
                 self.htmlReport = self.csv2 as String!
                 
                 if self.biller == true {self.dbRefEmployees.child(self.employeeID).updateChildValues(["fCounter": String(describing: (Int(self.counterForMail2!)!+1))])//add counter to invouce #
+                    
+                    
+                    self.biller = false
                     
                     self.mailSaver = "\(self.mydateFormat3.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n \(self.employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) -  \(self.totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\n Regards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by PerSession app. "
                     
@@ -1291,8 +1278,8 @@ tableConnect.backgroundColor = UIColor.clear
                     DispatchQueue.main.asyncAfter(deadline: .now()+2){
                      
                         
-                        self.biller = false
-                        self.mailVisit = true
+                       // self.biller = false
+                //self.mailVisit = true
                         
                     }
             */
