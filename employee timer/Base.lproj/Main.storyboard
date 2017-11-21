@@ -57,7 +57,7 @@
                                 </items>
                             </toolbar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="scrollerView" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIG-Rt-2a2">
-                                <rect key="frame" x="0.0" y="70" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="70" width="320" height="485"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kjJ-qf-Ai6" userLabel="contentView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="620"/>
@@ -264,7 +264,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTn-MV-ILJ" userLabel="activeButton">
-                                                <rect key="frame" x="101" y="315" width="118" height="136"/>
+                                                <rect key="frame" x="110" y="315" width="100" height="110"/>
                                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="12"/>
                                                 <state key="normal" title="Inactive">
                                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
@@ -274,10 +274,10 @@
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyV" translatesAutoresizingMaskIntoConstraints="NO" id="tPs-Eu-2ZP" userLabel="activeEmployer">
-                                                <rect key="frame" x="101" y="315" width="118" height="136"/>
+                                                <rect key="frame" x="110" y="315" width="100" height="110"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="118" id="KK7-1U-4Wx"/>
-                                                    <constraint firstAttribute="height" constant="136" id="yzb-67-g6D"/>
+                                                    <constraint firstAttribute="width" constant="100" id="KK7-1U-4Wx"/>
+                                                    <constraint firstAttribute="height" constant="110" id="yzb-67-g6D"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rem" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWa-6n-maP">
@@ -528,7 +528,7 @@
                             <constraint firstItem="NIG-Rt-2a2" firstAttribute="top" secondItem="QtJ-ie-bvO" secondAttribute="top" constant="70" id="6gx-5Z-Iw6"/>
                             <constraint firstItem="wVP-gt-AU3" firstAttribute="leading" secondItem="A9d-xz-Q5S" secondAttribute="trailing" constant="7" id="8aC-C9-XGc"/>
                             <constraint firstAttribute="trailing" secondItem="GHK-96-v1w" secondAttribute="trailing" id="Cj1-DP-dSm"/>
-                            <constraint firstItem="J23-II-GU4" firstAttribute="top" secondItem="NIG-Rt-2a2" secondAttribute="bottom" constant="30" id="EGg-so-56b"/>
+                            <constraint firstItem="J23-II-GU4" firstAttribute="top" secondItem="NIG-Rt-2a2" secondAttribute="bottom" constant="5" id="EGg-so-56b"/>
                             <constraint firstItem="IUy-hN-OMw" firstAttribute="leading" secondItem="A9d-xz-Q5S" secondAttribute="trailing" constant="163" id="GdH-k4-jsJ"/>
                             <constraint firstItem="J23-II-GU4" firstAttribute="top" secondItem="GHK-96-v1w" secondAttribute="bottom" id="MEb-FN-BMu"/>
                             <constraint firstItem="kjJ-qf-Ai6" firstAttribute="width" secondItem="QtJ-ie-bvO" secondAttribute="width" id="Mf9-19-BXy"/>
@@ -2714,8 +2714,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8Bf-Vi-arA"/>
-        <segue reference="RQi-YY-5wb"/>
-        <segue reference="x0P-Ew-8Ag"/>
+        <segue reference="kfH-wV-ZNk"/>
+        <segue reference="J3o-R7-qWW"/>
         <segue reference="8s0-fg-N01"/>
         <segue reference="gfT-By-X34"/>
     </inferredMetricsTieBreakers>

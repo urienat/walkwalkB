@@ -355,9 +355,9 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             self.employeeRefUpdate =  user.uid}
             print (employeeRefUpdate)
         
-            self.dbRefEmployees.child((employeeRefUpdate)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : fbNname, "fLastName": fbLastName, "femail" : fbEmail, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage":"0" ,"fTaxName":"",  "fSwitcher": "No"])
-                
-                
+            self.dbRefEmployees.child((employeeRefUpdate)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : fbNname, "fLastName": fbLastName, "femail" : fbEmail, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage":"0" ,"fTaxName":"",  "fSwitcher": "No","fTaxCalc" : "Over", "fDateTime": "DateTime","fConnect": "Off"])
+        
+                 
             self.dbRefEmployees.child(employeeRefUpdate!).child("programHistory").setValue([ self.mydateFormat5.string(from: Date()):"0"])
             self.dbRefEmployees.child(employeeRefUpdate!).child("myEmployers").setValue(["New Dog":0])//add employer to my employers of employee
                 

@@ -38,9 +38,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var billMessage: String?
     var releaser: Int? = 0
     
-    var midCalc = ""
-    var midCalc2 = ""
-    var midCalc3 = ""
+    var midCalc = "0.0"
+    var midCalc2 = "0.0"
+    var midCalc3 = "0.0"
       var taxForBlock = ""
     var taxSwitch: String?
     var taxCalc: String?
