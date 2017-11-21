@@ -60,6 +60,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let mydateFormat3 = DateFormatter()
     let mydateFormat5 = DateFormatter()
     let mydateFormat6 = DateFormatter()
+    let mydateFormat10 = DateFormatter()
 
     
     let dbRef = FIRDatabase.database().reference().child("fRecords")
@@ -109,6 +110,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
             ,options: 0, locale: nil)!
         mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale: nil)!
+        mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
 
         self.StatusChoice = "All"
         
@@ -152,6 +154,13 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         
     }//view did appear end
     
+    func tableView(_ billerConnect: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+    
+
+    
     func tableView(_ billerConnect: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         print (billItems.count)
@@ -166,13 +175,13 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         cell.backgroundColor = UIColor.clear
 
 
-        cell.l1.text = ("Bill-\(billItem.fBill!) - \(billItem.fBillEmployerName!)")
+        cell.l1.text = ("\(billItem.fBill!) - \(mydateFormat10.string(from: mydateFormat5.date(from: billItem.fBillDate!)!)) ")
         print ("fuf\(billItem.fBillTotalTotal!)" )
         print ("fuf2\(billItem.fBillTotalTotal!)" )
         
         if billItem.fBillTotalTotal != "" {cell.l3.text = billItem.fBillTotalTotal} else {cell.l3.text = billItem.fBillSum}
         cell.l4.text  = billItem.fBillCurrency!
-        cell.l6.text = mydateFormat3.string(from: mydateFormat5.date(from: billItem.fBillDate!)!) //was 0
+        cell.l6.text = "\(billItem.fBillEmployerName!)"
         
         print("fbillstatus\(billItem.fBillStatus!)")
         

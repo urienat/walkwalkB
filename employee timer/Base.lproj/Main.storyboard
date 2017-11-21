@@ -1997,7 +1997,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJG-u7-F6Y">
-                                                    <rect key="frame" x="275" y="2" width="39" height="39"/>
+                                                    <rect key="frame" x="275" y="0.0" width="39" height="39"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="39" id="0aT-fJ-avo"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="39" id="W7F-M4-Ub0"/>
@@ -2019,16 +2019,15 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clN-0j-1FU" userLabel="l4">
-                                                    <rect key="frame" x="193" y="10.5" width="16" height="22"/>
+                                                    <rect key="frame" x="193" y="11" width="16" height="22"/>
                                                     <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
                                                     <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l6" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEB-4f-1Nn" userLabel="l6">
-                                                    <rect key="frame" x="6" y="22" width="100" height="21.5"/>
+                                                    <rect key="frame" x="6" y="25.5" width="100" height="21.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Cg8-Nd-0mJ"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21.5" id="Xck-0n-LMn"/>
                                                         <constraint firstAttribute="width" constant="100" id="ZyB-pd-TV4"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="15"/>
@@ -2038,14 +2037,14 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Rlo-ls-wai" firstAttribute="top" secondItem="8pP-cp-jw0" secondAttribute="top" id="2Am-NU-kdx"/>
+                                                <constraint firstItem="yEB-4f-1Nn" firstAttribute="top" secondItem="Rlo-ls-wai" secondAttribute="bottom" constant="4" id="6fJ-Ip-kjU"/>
                                                 <constraint firstItem="JJG-u7-F6Y" firstAttribute="leading" secondItem="sg5-Ew-ol6" secondAttribute="trailing" constant="15" id="DM8-es-WZu"/>
-                                                <constraint firstItem="clN-0j-1FU" firstAttribute="centerY" secondItem="8pP-cp-jw0" secondAttribute="centerY" id="I9i-og-2Sh"/>
+                                                <constraint firstItem="JJG-u7-F6Y" firstAttribute="top" secondItem="8pP-cp-jw0" secondAttribute="top" id="EZX-aK-Jof"/>
+                                                <constraint firstItem="clN-0j-1FU" firstAttribute="top" secondItem="8pP-cp-jw0" secondAttribute="topMargin" id="IEm-Y1-dZI"/>
                                                 <constraint firstItem="yEB-4f-1Nn" firstAttribute="leading" secondItem="8pP-cp-jw0" secondAttribute="leading" constant="6" id="NgT-5H-cXl"/>
-                                                <constraint firstItem="JJG-u7-F6Y" firstAttribute="centerY" secondItem="8pP-cp-jw0" secondAttribute="centerY" id="R7b-53-VpY"/>
+                                                <constraint firstItem="sg5-Ew-ol6" firstAttribute="top" secondItem="8pP-cp-jw0" secondAttribute="topMargin" id="QJ2-if-Xud"/>
                                                 <constraint firstAttribute="trailing" secondItem="JJG-u7-F6Y" secondAttribute="trailing" constant="6" id="V5H-Fd-ndx"/>
                                                 <constraint firstItem="sg5-Ew-ol6" firstAttribute="leading" secondItem="clN-0j-1FU" secondAttribute="trailing" constant="1" id="VEJ-SG-feN"/>
-                                                <constraint firstAttribute="bottom" secondItem="yEB-4f-1Nn" secondAttribute="bottom" id="n8i-8q-coV"/>
-                                                <constraint firstItem="sg5-Ew-ol6" firstAttribute="centerY" secondItem="8pP-cp-jw0" secondAttribute="centerY" id="p01-0y-F32"/>
                                                 <constraint firstItem="Rlo-ls-wai" firstAttribute="leading" secondItem="8pP-cp-jw0" secondAttribute="leading" constant="6" id="urG-R2-A3F"/>
                                             </constraints>
                                         </tableViewCellContentView>
