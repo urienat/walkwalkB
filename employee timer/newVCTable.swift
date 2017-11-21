@@ -590,7 +590,7 @@ tableConnect.backgroundColor = UIColor.clear
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         mailComposerVC.setSubject("csv file from your app")
-        mailComposerVC.setMessageBody("\(mydateFormat3.string(from: Date()))  \r\n\r\n\r\n Hi, \r\n \r\n These are records for  period chosen (csv file is attached as well):\r\n\(htmlReport!)\r\n Number of sessions:\(self.eventCounter)\r\n Total time: \(totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n\r\n\r\n Regards PerSession app )", isHTML: false)
+        mailComposerVC.setMessageBody("\(mydateFormat10.string(from: Date()))  \r\n\r\n\r\n Hi, \r\n \r\n These are records for  period chosen (csv file is attached as well):\r\n\(htmlReport!)\r\n Number of sessions:\(self.eventCounter)\r\n Total time: \(totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n\r\n\r\n Regards PerSession app )", isHTML: false)
         
         mailComposerVC.setToRecipients([ViewController.fixedemail])
         mailComposerVC.addAttachmentData(csvReport!, mimeType: "text/csv", fileName: "Your pets' records")//the csv attachement through here
@@ -779,7 +779,7 @@ tableConnect.backgroundColor = UIColor.clear
         
         self.csv.append("Pet Family, Date In, Time In,Date Out, Time Out, Total,Gps/Manual,Indication IN, Indication Out, Status, Bill#,\n")
         //self.csv2.append( ("Hi, \r\n \r\n These are due records for the period:\r\n")) ;self.csv2.append("\r\n")
-        self.csv2.append( (" Date\t                         \r\n\r\n"))
+        self.csv2.append( (" Sessions:\t                         \r\n\r\n"))
 
         self.tableConnect.reloadData()
         dbRefEmployers.child(self.employerID).child("myEmployees").queryOrderedByKey().queryEqual(toValue: employeeID).observeSingleEvent(of: .childAdded, with:  {(snapshot) in
@@ -935,11 +935,11 @@ tableConnect.backgroundColor = UIColor.clear
                             
                             self.csv.append("\( record.fEmployer!),\(record.fIn!),\(record.fOut!),\(String(describing: self.totalForReport)),\(record.fIndication3!),\(record.fIndication!),\(record.fIndication2!),\(record.fStatus!),\(String(describing: record.fBill))\n")
                           
-                            if ViewController.dateTimeFormat == "DateTime" {  self.csv2.append( self.mydateFormat4.string(from: self.mydateFormat5.date(from: record.fIn!)!) );self.csv2.append("  \t\t\t")
+                            if ViewController.dateTimeFormat == "DateTime" {  self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) );self.csv2.append("  \t\t\t")
                                 
                             } else {
                                 
-                                self.csv2.append( self.mydateFormat6.string(from: self.mydateFormat5.date(from: record.fIn!)!) );self.csv2.append("  \t\t\t") }
+                                self.csv2.append( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!) );self.csv2.append("  \t\t\t") }
                             
                             ///self.csv2.append( self.mydateFormat4.string(from: self.mydateFormat5.date(from: record.fIn!)!) );self.csv2.append("  \t\t\t")
                     
@@ -1269,7 +1269,7 @@ tableConnect.backgroundColor = UIColor.clear
                     
                     self.biller = false
                     
-                    self.mailSaver = "\(self.mydateFormat3.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n \(self.employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) -  \(self.totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\n Regards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by PerSession app. "
+                    self.mailSaver = "\(self.mydateFormat10.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n \(self.employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) -  \(self.totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\n Regards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by PerSession app. "
                     
 
                 //update bill with DB
