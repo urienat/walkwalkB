@@ -255,13 +255,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 billItem.setValuesForKeys(dictionary)
                 print ("dic :\(dictionary)")
                 
-                print (self.billItems)
-                print(billItem.fBill)
-                print (Double(billItem.fBillTotalTotal!))
-               
-                
-
-
                 
                 if self .employerID != ""{
                 if self.StatusChoice == "Not Paid" && billItem.fBillStatus == "Billed" && billItem.fBillEmployer == self.employerID {
@@ -273,12 +266,10 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
 
                     else if self.StatusChoice == "Not Paid" &&  billItem.fBillStatus == "Billed"  {self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
                 }
-               // print (self.billItems.count)
-              //  print (self.billCounter)
-                self.totalBills.text = String(describing: self.billItems.count)
-                self.totalAmount.text = String(describing: self.AmountCounter)
-               // self.totalTax.text = String (describing: self.billCounter)
-                self.totalTax.text = String (describing: self.taxCounter)
+              
+                self.totalBills.text = "\(String(describing: self.billItems.count)) Bills"
+                self.totalAmount.text = "Total \(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
+                self.totalTax.text = "Tax \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
 
                 self.billerConnect.reloadData()
                 print (self.billItems.count)
