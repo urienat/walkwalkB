@@ -646,51 +646,10 @@ print (mailVisit)
         case MFMailComposeResult.saved.rawValue:
             print("Mail saved3")
             
-            thinking.startAnimating()
-            if biller == true {self.dbRefEmployees.child(self.employeeID).updateChildValues(["fCounter": String(describing: (Int(self.counterForMail2!)!+1))])//add counter to invouce #
-            //update bill with DB
-                self.dbRefEmployees.child(employeeID).child("myBills").child("-\(counterForMail2!)").updateChildValues(["fBill": counterForMail2!,"fBillDate": mydateFormat5.string(from: Date()) ,"fBillStatus": "Billed", "fBillEmployer": self.employerID,"fBillPayment":self.payment,"fBillEventRate": perEvents.text!,"fBillHourRate": perHour.text!, "fBillEvents": String(eventCounter) as String,"fBillTotalTime": totalTime.text!,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": employerFromMain!, "fBillMailSaver" : mailSaver!,"fBillTax" : midCalc ,"fBillTotalTotal": midCalc2
-                    ], withCompletionBlock: { (error) in}) //end of update.//was 0
-                self.generalApprovalClicked()
-                controller.dismiss(animated: true, completion: nil)
-
-               DispatchQueue.main.asyncAfter(deadline: .now()+2){
-
-                self.segmentedPressed = 0
-                self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
-                self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-                
-                
-                self.biller = false
-                self.mailVisit = true
-
-                }
-            }
-
         case MFMailComposeResult.sent.rawValue:
             print("Mail sent3")
 
-            
-            if biller == true {            self.dbRefEmployees.child(self.employeeID).updateChildValues(["fCounter": String(describing: (Int(self.counterForMail2!)!+1))])//add counter to invouce #
-                //update bill with DB
-                self.dbRefEmployees.child(employeeID).child("myBills").child("-\(counterForMail2!)").updateChildValues(["fBill": counterForMail2!,"fBillDate": mydateFormat5.string(from: Date()) ,"fBillStatus": "Billed", "fBillEmployer": self.employerID,"fBillPayment":self.payment,"fBillEventRate": perEvents.text!,"fBillHourRate": perHour.text!, "fBillEvents": String(eventCounter) as String,"fBillTotalTime": totalTime.text!,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!, "fBillEmployerName": employerFromMain!, "fBillMailSaver" : mailSaver!,"fBillTax" : midCalc ,"fBillTotalTotal": midCalc2
-                    ], withCompletionBlock: { (error) in}) //end of update.///was 0
-            self.generalApprovalClicked()
-                controller.dismiss(animated: true, completion: nil)
 
-                
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now()+2){
-                self.navigationItem.rightBarButtonItem?.isEnabled = true
-
-            self.segmentedPressed = 0
-            self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
-            self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-                self.biller = false
-                self.mailVisit = true
-
-                
-            }
         case MFMailComposeResult.failed.rawValue:
             print("Mail sent failure: %@", [error!.localizedDescription])
             
@@ -715,11 +674,6 @@ print (mailVisit)
     
     func thisWeek() {}
     
-    //image background rotation
-   // override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-   // if(UIApplication.shared.statusBarOrientation.isLandscape)
-   // {backgroundImage.frame = self.view.bounds} else   {backgroundImage.frame = self.view.bounds}
-   // }
     
     
     // button on table clicked
@@ -790,9 +744,9 @@ print (mailVisit)
             
            
             
-         StatusChosen.selectedSegmentIndex = segmentedPressed!
+        /// StatusChosen.selectedSegmentIndex = segmentedPressed!
             
-         StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+       ///  StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
             
           //  self.StatusChosen.isEnabled = false
            // self.periodChosen.isEnabled = false
@@ -1332,8 +1286,9 @@ print (mailVisit)
                 self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": "Billed", "fBillEmployer": self.employerID,"fBillPayment":self.payment,"fBillEventRate": self.perEvents.text!,"fBillHourRate": self.perHour.text!, "fBillEvents": String(self.eventCounter) as String,"fBillTotalTime": self.totalTime.text!,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2
                     ], withCompletionBlock: { (error) in}) //end of update.//was 0
                     self.generalApprovalClicked()
-                  //  controller.dismiss(animated: true, completion: nil)
-                    
+                    self.alert19()
+                    /*
+
                     DispatchQueue.main.asyncAfter(deadline: .now()+2){
                         
                         self.segmentedPressed = 0
@@ -1345,7 +1300,7 @@ print (mailVisit)
                         self.mailVisit = true
                         
                     }
-            
+            */
                 }//end of if biller
                 }
         }
@@ -1368,14 +1323,10 @@ print (mailVisit)
         DispatchQueue.main.asyncAfter(deadline: .now()){
             self.billSender.isEnabled = false}
        
-            let alertController19 = UIAlertController(title: ("Bill records") , message: "Mail with bill of sessions marked as 'due' is prepared. Sending or saving the mail, would set sessions to final status of 'Billed'." , preferredStyle: .alert)
+            let alertController19 = UIAlertController(title: ("Mail Bill-\(self.counterForMail2!)") , message: "Mail with bill-\(self.counterForMail2!) is being prepared for you to send or save." , preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-                self.thinking.startAnimating()
-                    self.billing()
                 
                 DispatchQueue.main.asyncAfter(deadline: .now()+2){
-                    self.csvReport = self.csv.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: false)! as Data
-                    self.htmlReport = self.csv2 as String!
                 let mailComposeViewController2 = self.configuredMailComposeViewController2()
                 if MFMailComposeViewController.canSendMail() {
                 self.present(mailComposeViewController2, animated: true, completion: nil)
