@@ -328,7 +328,7 @@ tableConnect.backgroundColor = UIColor.clear
             
             if keeper.integer(forKey: "dueInstruction") != 1 {rememberMe1 = 0 } else { rememberMe1 = 1 }
          
-           
+           tableConnect.separatorColor = blueColor
 
             
         }//end of view did load/////////////////////////////////////////////////////////////////////////////////////////////////////////

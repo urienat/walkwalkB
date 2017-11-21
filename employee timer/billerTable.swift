@@ -48,7 +48,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
 
     var whiteColor = UIColor(red :255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     var greenColor = UIColor(red :32.0/255.0, green: 150.0/255.0, blue: 24.0/255.0, alpha: 1.0)
-    
+    var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
+
     //variablesfrom main
     var employerID = ""
     var employerFromMain = ""
@@ -114,8 +115,9 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
 
         self.StatusChoice = "All"
         
+        self.billerConnect.separatorColor = blueColor
 
-            
+
 
         
     billerConnect.delegate = self
@@ -155,7 +157,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }//view did appear end
     
     func tableView(_ billerConnect: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 50
     }
     
     
