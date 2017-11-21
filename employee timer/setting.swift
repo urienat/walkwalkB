@@ -419,7 +419,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
                 self.dbRefEmployees.child(user!.uid).child("programHistory").setValue([ self.mydateFormat5.string(from: Date()):"0"])
                 self.dbRefEmployees.child(user!.uid).child("myEmployers").setValue(["New Dog":0])//add employer to my employers of employee
                 
-                //storage of pictures
+                //storage of pictures 
                 //in cache under employeeID
                 MyImageCache.sharedCache.setObject(self.pickedImage as AnyObject, forKey: self.employeeRefUpdate as AnyObject)
                 
