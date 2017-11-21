@@ -46,6 +46,8 @@ class datePicker2: UIViewController {
     let mydateFormat = DateFormatter()
     let mydateFormat5 = DateFormatter()
     let mydateFormat6 = DateFormatter()
+    let mydateFormat10 = DateFormatter()
+    let mydateFormat11 = DateFormatter()
 
 
 
@@ -153,7 +155,7 @@ class datePicker2: UIViewController {
         print(record.fIn!)
         print(self.mydateFormat6.string(from: self.mydateFormat5.date(from: record.fIn!)!))
 
-        if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = self.mydateFormat.string(from: self.mydateFormat5.date(from: record.fIn!)!)} else {self.TimeIN.text = self.mydateFormat6.string(from: self.mydateFormat5.date(from: record.fIn!)!) }
+        if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!)} else {self.TimeIN.text = self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) }
         self.inDate = record.fIn!
         
         
@@ -219,11 +221,12 @@ class datePicker2: UIViewController {
             ,options: 0, locale: nil)!
         mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy"
             ,options: 0, locale: nil)!
-
+        mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
+        mydateFormat11.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy , (HH,mm)", options: 0, locale: Locale.autoupdatingCurrent)!
         if recordToHandle == "" {
             deleter.isEnabled = false
             
-                  if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat.string(from: Date())} else {self.TimeIN.text = mydateFormat6.string(from: Date()) }
+                  if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat11.string(from: Date())} else {self.TimeIN.text = mydateFormat10.string(from: Date()) }
             
             pooBackground.isHidden = true
             titleLbl = "Add for " + employerFromMain!
@@ -271,7 +274,7 @@ class datePicker2: UIViewController {
 
         datePickerbBackground .isHidden = true
         datePickerBackground2.isHidden = true
-         if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat.string(from: DatePicker.date) } else {self.TimeIN.text = mydateFormat6.string(from: DatePicker.date) }
+         if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat11.string(from: DatePicker.date) } else {self.TimeIN.text = mydateFormat10.string(from: DatePicker.date) }
         
         print("in as a date:")
         print( calcTimeIn)

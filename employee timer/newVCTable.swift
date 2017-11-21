@@ -119,6 +119,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let mydateFormat4 = DateFormatter()
     let mydateFormat5 = DateFormatter()
     let mydateFormat6 = DateFormatter()
+    let mydateFormat10 = DateFormatter()
+    let mydateFormat11 = DateFormatter()
 
 
     var counterForMail2: String?
@@ -303,6 +305,8 @@ tableConnect.backgroundColor = UIColor.clear
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
                 ,options: 0, locale: nil)!
         mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy", options: 0, locale: nil)!
+            mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
+            mydateFormat11.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy , (HH,mm)", options: 0, locale: Locale.autoupdatingCurrent)!
 
             
             dbRefEmployers.child(self.employerID).observeSingleEvent(of:.value, with: {(snapshot) in
@@ -448,7 +452,7 @@ tableConnect.backgroundColor = UIColor.clear
         if let fInToDate = record.fIn {
             print (fInToDate)
             
-            if ViewController.dateTimeFormat == "DateTime" { cell.l1.text = mydateFormat.string(from: mydateFormat5.date(from: fInToDate)!)} else {cell.l1.text = mydateFormat6.string(from: mydateFormat5.date(from: fInToDate)!) } }
+            if ViewController.dateTimeFormat == "DateTime" { cell.l1.text = mydateFormat11.string(from: mydateFormat5.date(from: fInToDate)!)} else {cell.l1.text = mydateFormat10.string(from: mydateFormat5.date(from: fInToDate)!) } }
             else { cell.l1.text = "N/A"}
             
      
