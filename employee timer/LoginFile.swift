@@ -419,6 +419,10 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
                     }else{
                         print("doesn't exist")
                         LoginFile.provider = "Google"
+                        fbNname =
+                        fbEmail = 
+                        fbLastName =
+                        
                         self.accounCreation()
                         self.thinking.stopAnimating()
                         self.performSegue(withIdentifier: "signIn", sender: Any?.self)

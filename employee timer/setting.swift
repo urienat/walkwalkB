@@ -212,7 +212,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             taxerTitle.isHidden = false
             currencyTitle.isHidden = false
             taxinfoSign.isHidden = false
-            if LoginFile.provider == "facebook" {passwordTitle.isHidden = true; reset.isHidden=true} else {
+            if LoginFile.provider == "facebook" || LoginFile.provider == "Google" {passwordTitle.isHidden = true; reset.isHidden=true} else {
             passwordTitle.isHidden = false;  reset.isHidden = false}
             passWord.isHidden = true
             subscriptionBtn.isHidden = false
