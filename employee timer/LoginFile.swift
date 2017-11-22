@@ -260,6 +260,16 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         if LoginFile.logoutchosen == true{let loginManager = FBSDKLoginManager()
             loginManager.logOut()
             //logout from face book
+
+            let firebaseAuth = FIRAuth.auth()
+            do {
+                try firebaseAuth?.signOut()
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
+            //logout google
+            
+            
         }//end of if
        
         thinking.hidesWhenStopped = true
@@ -267,6 +277,14 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         DispatchQueue.main.asyncAfter(deadline: .now() ) {
         if FBSDKAccessToken.current() != nil {        LoginFile.provider = "facebook"
             self.performSegue(withIdentifier: "signIn", sender: Any?.self)
+            }//end of if
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() ) {
+            print (AccessToken.current)
+            
+            if AccessToken.current != nil {        LoginFile.provider = "Google"
+                self.performSegue(withIdentifier: "signIn", sender: Any?.self)
             }//end of if
         }
         thinking.hidesWhenStopped = true
