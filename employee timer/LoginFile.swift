@@ -178,22 +178,23 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     override func viewDidLoad() {
        
         dog.clipsToBounds = true
-        dog.layer.cornerRadius = 110
+        dog.layer.cornerRadius = 50
+        
         LoginFile.provider = "normal"
         
         
         //google login setting
         GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().signIn()
+        //GIDSignIn.sharedInstance().signIn()
         
         view.addSubview(loginButton2)
-        loginButton2.frame = CGRect(x: view.frame.width/2-100, y: 0, width: 220, height: 45)
+        loginButton2.frame = CGRect(x: view.frame.width/2-102, y: 30, width: 204, height: 45)
         //loginButton2.delegate = self
        // loginButton2.readPermissions = ["email","public_profile"]
 // end of login google setting
 
         view.addSubview(loginButton)
-        loginButton.frame = CGRect(x: view.frame.width/2-100, y: 50, width: 200, height: 45)
+        loginButton.frame = CGRect(x: view.frame.width/2-100, y: 95, width: 200, height: 45)
         loginButton.delegate = self
         loginButton.readPermissions = ["email","public_profile"]
 
