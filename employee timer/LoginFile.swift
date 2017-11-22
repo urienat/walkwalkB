@@ -27,15 +27,19 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     let mydateFormat = DateFormatter()
     let mydateFormat5 = DateFormatter()
 
-    let loginButton =  FBSDKLoginButton()
+    @IBAction func loginButton3(_ sender: Any) {
+    }
     let loginButton2 =  GIDSignInButton()
-
-    var employeeRefUpdate:String?
+    let loginButton =  FBSDKLoginButton()
     static var provider: String?
+
     
     var fbNname: String?
     var fbLastName: String?
     var fbEmail: String?
+    
+    var employeeRefUpdate:String?
+
     
     var pickedImage:UIImage?
     let picture = UIImage(named: "perSessionImage")
@@ -108,7 +112,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     static var userForCreate = ""
     static var passwordForCreate = ""
 
-//keepקר variables
+//Keeper variables
     let keeper = UserDefaults.standard
     
     var checkBox : Bool?
@@ -184,15 +188,14 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         
         
         //google login setting
+
         GIDSignIn.sharedInstance().uiDelegate = self
-        //GIDSignIn.sharedInstance().signIn()
-        
+       // GIDSignIn.sharedInstance().signIn()
         view.addSubview(loginButton2)
         loginButton2.frame = CGRect(x: view.frame.width/2-104, y: 30, width: 208, height: 45)
-        //loginButton2.delegate = self
-       // loginButton2.readPermissions = ["email","public_profile"]
-// end of login google setting
+        // end of login google setting
 
+        //Facebook login setting
         view.addSubview(loginButton)
         loginButton.frame = CGRect(x: view.frame.width/2-100, y: 95, width: 200, height: 45)
         loginButton.delegate = self
@@ -202,10 +205,9 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
 
         if Reachability.isConnectedToNetwork() == true
         {print("Internet Connection Available!")}
-        else
-        {print("Internet Connection not Available!")
+        else{print("Internet Connection not Available!")
             alert50() }
-        
+       
         if keeper.integer(forKey: "remember") != 1 {rememberMe = 0 } else { rememberMe = keeper.integer(forKey: "remember")}
         print("rememberMe:\(rememberMe!)")
       
@@ -254,9 +256,6 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         self.email.delegate = self
         self.password.delegate = self
         
-        print ("FBSDKAccessToken.curren\( FBSDKAccessToken.current())")
-        print ("logoutchosen\( LoginFile.logoutchosen)")
-
         if LoginFile.logoutchosen == true{let loginManager = FBSDKLoginManager()
             loginManager.logOut()
             //logout from face book
@@ -383,11 +382,16 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             }//end of else
             })//end of auth
             }//end of func
+    
+    
    //google signin
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+   // func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+
+        print("i am in sign google func")
         // ...
         if let error = error {
-            // ...
+            print (error)
             return
         }
         
@@ -397,12 +401,42 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         
           FIRAuth.auth()?.signIn(with: credential) { (user, error) in
                 if let error = error {
-                    // ...
+                    print (error)
                     return
                 }
                 // User is signed in
-              print ("I am in google signin")  // ...
-                
+              print ("I am in google signin")
+            self.rememberMe = 0
+            self.keeper.set(0, forKey: "remember")
+            self.keeper.set("", forKey: "userKept")
+            self.keeper.set("", forKey: "passwordKept")// ...
+            
+            let loginManager = FBSDKLoginManager()
+            loginManager.logOut()
+            //logout from face book
+
+            
+    
+            self.employeeRefUpdate = user?.uid
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() ) {
+                self.dbRefEmployees.child(self.employeeRefUpdate!).observeSingleEvent(of: .value, with: { (snapshot) in
+                    if snapshot.hasChild("fCounter"){
+                        print("exist")
+                        self.thinking.stopAnimating()
+                        LoginFile.provider = "Google"
+                        self.performSegue(withIdentifier: "signIn", sender: Any?.self)
+                    }else{
+                        print("doesn't exist")
+                        LoginFile.provider = "Google"
+                        self.accounCreation()
+                        self.thinking.stopAnimating()
+                        self.performSegue(withIdentifier: "signIn", sender: Any?.self)
+                    }//end of else
+                })
+            }//end of dispatch
+
+            
         }//end of googlesignin
         // ...
     }//end of googlesignin
