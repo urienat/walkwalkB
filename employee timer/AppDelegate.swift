@@ -121,14 +121,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user2: GIDGoogleUser!, withError error: Error?) {
         // ...
         if let error = error {
             // ...
             return
         }
         print ("123")
-        guard let authentication = user.authentication else { return }
+        guard let authentication = user2.authentication else { return }
         let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
@@ -136,11 +136,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 print (error)
                 return
             }
-            LoginFile().inFireBase((user?.uid)!)
 
-            
-            
-            
+            LoginFile().inFireBase(_fromGoogle: (user?.uid)!, _userFromGoogle:user2 )
         }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {

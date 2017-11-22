@@ -27,7 +27,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     let mydateFormat = DateFormatter()
     let mydateFormat5 = DateFormatter()
     
-    var fromGoogle: String?
+    //var fromGoogle: String?
 
     @IBAction func loginButton3(_ sender: Any) {
     }
@@ -87,13 +87,13 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         print("exist")
         self.thinking.stopAnimating()
         LoginFile.provider = "facebook"
-        self.performSegue(withIdentifier: "signIn", sender: Any?.self)
+        self.performSegue(withIdentifier: "signIn2", sender: Any?.self)
         }else{
         print("doesn't exist")
         LoginFile.provider = "facebook"
         self.accounCreation()
         self.thinking.stopAnimating()
-        self.performSegue(withIdentifier: "signIn", sender: Any?.self)
+        self.performSegue(withIdentifier: "signIn2", sender: Any?.self)
         }//end of else
         })
         }//end of dispatch
@@ -282,7 +282,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
        
         DispatchQueue.main.asyncAfter(deadline: .now() ) {
         if FBSDKAccessToken.current() != nil {        LoginFile.provider = "facebook"
-            self.performSegue(withIdentifier: "signIn", sender: Any?.self)
+            self.performSegue(withIdentifier: "signIn2", sender: Any?.self)
             }//end of if
         }
         
@@ -290,7 +290,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             print (AccessToken.current)
             
             if AccessToken.current != nil {        LoginFile.provider = "Google"
-                self.performSegue(withIdentifier: "signIn", sender: Any?.self)
+                self.performSegue(withIdentifier: "signIn2", sender: Any?.self)
             }//end of if
         }
         thinking.hidesWhenStopped = true
@@ -308,19 +308,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     password.resignFirstResponder()
     return true}
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let middle =  segue.destination as! UINavigationController
-        let third = middle.topViewController as! ViewController
-        print ("prepare")
-        if (segue.identifier == "create"){
-        setting.newEmployee = "YES"
-        third.newRegister = "YES"}
-            
-        else if  (segue.identifier == "signIn") {third.newRegister = "NO"}
-        else {//do nothing}
-            
-        }
-        }// end of prepare
+    
     
     func checkIntial() {
         if  email.text != "" && password.text != "" { signIn.isHidden = false;signIn.isEnabled = true}
@@ -383,7 +371,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
                         self.keeper.set(0, forKey: "remember")
             }//end of else
             
-            self.performSegue(withIdentifier: "signIn", sender: Any?.self)
+            self.performSegue(withIdentifier: "signIn2", sender: Any?.self)
             print (self.userEmail)
             print (self.userPassword)
             }//end of else
@@ -392,40 +380,41 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     
     
    //google signin
-    func inFireBase(_ fromGoogle: String){
-        print("i am in sign google func")
-        // ...
-        print ("I am in google signin")
-        self.rememberMe = 0
-        self.keeper.set(0, forKey: "remember")
-        self.keeper.set("", forKey: "userKept")
-        self.keeper.set("", forKey: "passwordKept")// ...
+    func inFireBase(_fromGoogle: String, _userFromGoogle: GIDGoogleUser){
+        self.employeeRefUpdate = _fromGoogle
+            print (self.employeeRefUpdate)
         
-        let loginManager = FBSDKLoginManager()
-        loginManager.logOut()
-        //logout from face book
-        
-        // User is signed in
-        
-           self.employeeRefUpdate = fromGoogle
-            
             DispatchQueue.main.asyncAfter(deadline: .now() ) {
                 self.dbRefEmployees.child(self.employeeRefUpdate!).observeSingleEvent(of: .value, with: { (snapshot) in
                     if snapshot.hasChild("fCounter"){
                         print("exist")
-                        self.thinking.stopAnimating()
+                      //  self.thinking.stopAnimating()
                         LoginFile.provider = "Google"
-                        self.performSegue(withIdentifier: "signIn", sender: Any?.self)
+
+                        self.performSegue(withIdentifier: "signIn2", sender: (Any).self)
                     }else{
                         print("doesn't exist")
                         LoginFile.provider = "Google"
-                        fbNname =
-                        fbEmail = 
-                        fbLastName =
+                        //func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+                          //          withError error: NSError!) {
+                         //   if (error == nil) {
+                                
+
+                        print (_userFromGoogle.profile.givenName,_userFromGoogle.profile.familyName,_userFromGoogle.profile.email)
+                                
+                        if _userFromGoogle.profile.givenName == nil {self.fbNname = ""}else {    self.fbNname = _userFromGoogle.profile.givenName!}
+
+                        if _userFromGoogle.profile.familyName == nil {self.fbLastName = ""} else { self.fbLastName = _userFromGoogle.profile.familyName! }
+                        if _userFromGoogle.profile.email == nil {self.fbEmail = ""} else { self.fbEmail = _userFromGoogle.profile.email!}
+                        
+                        print (self.fbNname!,self.fbLastName!,self.fbEmail!)
+
+                        
                         
                         self.accounCreation()
-                        self.thinking.stopAnimating()
-                        self.performSegue(withIdentifier: "signIn", sender: Any?.self)
+                      //  self.thinking.stopAnimating()
+
+                        self.performSegue(withIdentifier: "signIn2", sender: Any?)
                     }//end of else
                 })
             }//end of dispatch
@@ -437,11 +426,14 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             self.employeeRefUpdate =  user.uid}
             print (employeeRefUpdate)
         
-            self.dbRefEmployees.child((employeeRefUpdate)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : fbNname, "fLastName": fbLastName, "femail" : fbEmail, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage":"0" ,"fTaxName":"",  "fSwitcher": "No","fTaxCalc" : "Over", "fDateTime": "DateTime","fConnect": "Off"])
+     
+           self.dbRefEmployees.child((employeeRefUpdate)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : fbNname, "fLastName": fbLastName, "femail" : fbEmail, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage":"0" ,"fTaxName":"",  "fSwitcher": "No","fTaxCalc" : "Over", "fDateTime": "DateTime","fConnect": "Off"])
         
                  
-            self.dbRefEmployees.child(employeeRefUpdate!).child("programHistory").setValue([ self.mydateFormat5.string(from: Date()):"0"])
-            self.dbRefEmployees.child(employeeRefUpdate!).child("myEmployers").setValue(["New Dog":0])//add employer to my employers of employee
+       // self.dbRefEmployees.child(employeeRefUpdate!).child("programHistory").setValue([ self.mydateFormat5.string(from: Date()):"0"])
+        
+        
+         self.dbRefEmployees.child(employeeRefUpdate!).child("myEmployers").setValue(["New Dog":0])//add employer to my employers of employee
                 
             //storage of pictures //in cache under employeeID
             MyImageCache.sharedCache.setObject(self.pickedImage as AnyObject, forKey: self.employeeRefUpdate as AnyObject)
@@ -460,8 +452,22 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         
             }//end of account creation
 
-  
-    // alerts///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let middle =  segue.destination as! UINavigationController
+        let third = middle.topViewController as! ViewController
+        print ("prepare")
+        if (segue.identifier == "create"){
+            setting.newEmployee = "YES"
+            third.newRegister = "YES"}
+            
+        else if  (segue.identifier == "signIn2") {third.newRegister = "NO"}
+        else {//do nothing}
+            
+        }
+    }// end of prepare
+    //
+ 
+ //alerts///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // alert
     // ("Valid mail and password requiered. Please correct accordingly.")
     func alert () {

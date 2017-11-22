@@ -1979,7 +1979,7 @@
                         <outlet property="password" destination="Pog-dx-X7C" id="DPt-6s-xTU"/>
                         <outlet property="signIn" destination="NTs-3R-g9p" id="icG-yh-2Fe"/>
                         <outlet property="thinking" destination="AiQ-AU-mU3" id="XoA-hO-Av1"/>
-                        <segue destination="H8h-Dv-TZT" kind="show" identifier="signIn" animates="NO" id="8Bf-Vi-arA"/>
+                        <segue destination="H8h-Dv-TZT" kind="show" identifier="signIn2" id="8Bf-Vi-arA"/>
                         <segue destination="H8h-Dv-TZT" kind="show" identifier="create" id="UPU-lN-oqU"/>
                     </connections>
                 </viewController>
