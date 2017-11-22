@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0010D84E1FC56EF700291FFF /* client_652073679380-so0npi4n865nv8a8a4880g5hqr8pnnfs.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0010D84D1FC56EF600291FFF /* client_652073679380-so0npi4n865nv8a8a4880g5hqr8pnnfs.apps.googleusercontent.com.plist */; };
 		AE0213491DCF8130006F927F /* setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0213481DCF8130006F927F /* setting.swift */; };
 		AE0B0A7F1E62D461000E539C /* billView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0B0A7E1E62D461000E539C /* billView.swift */; };
 		AE1B3DB11DF824E100BB507F /* employerCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1B3DB01DF824E100BB507F /* employerCellTableViewCell.swift */; };
@@ -35,7 +36,6 @@
 		AEE95E481D7B092A00093B51 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE95E471D7B092A00093B51 /* ViewController.swift */; };
 		AEE95E4B1D7B092A00093B51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE95E491D7B092A00093B51 /* Main.storyboard */; };
 		AEE95E501D7B092A00093B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE95E4E1D7B092A00093B51 /* LaunchScreen.storyboard */; };
-		E4EE88E89A8EC0CE28C1CC52 /* Pods_perSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16919F753712E3C6E4DD2AF7 /* Pods_perSession.framework */; };
 		F42DD2991FB03E6A00BBAE75 /* recordsStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42DD2981FB03E6A00BBAE75 /* recordsStructure.swift */; };
 		F44CF4041FAB67FA00093950 /* UIControl.h in Headers */ = {isa = PBXBuildFile; fileRef = F44CF4031FAB67FA00093950 /* UIControl.h */; };
 		F46C02AA1FB3139D00EBC4A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46C02A91FB3139D00EBC4A4 /* Assets.xcassets */; };
@@ -57,7 +57,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		16919F753712E3C6E4DD2AF7 /* Pods_perSession.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_perSession.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0010D84D1FC56EF600291FFF /* client_652073679380-so0npi4n865nv8a8a4880g5hqr8pnnfs.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_652073679380-so0npi4n865nv8a8a4880g5hqr8pnnfs.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		3524438E11FB26ADA3170CED /* Pods-perSession.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-perSession.release.xcconfig"; path = "Pods/Target Support Files/Pods-perSession/Pods-perSession.release.xcconfig"; sourceTree = "<group>"; };
 		AE0213481DCF8130006F927F /* setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setting.swift; sourceTree = "<group>"; };
 		AE0B0A7E1E62D461000E539C /* billView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = billView.swift; sourceTree = "<group>"; };
@@ -105,7 +105,6 @@
 			files = (
 				F4D0683C1FA9C5920079CA88 /* StoreKit.framework in Frameworks */,
 				AE29BE9D1D972A910066214D /* UIKit.framework in Frameworks */,
-				E4EE88E89A8EC0CE28C1CC52 /* Pods_perSession.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +125,6 @@
 			children = (
 				F4D0683B1FA9C5920079CA88 /* StoreKit.framework */,
 				AE29BE9C1D972A910066214D /* UIKit.framework */,
-				16919F753712E3C6E4DD2AF7 /* Pods_perSession.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -248,6 +246,7 @@
 				AE577AD41DF941C800EBE62B /* Side programs */,
 				AEE95E4E1D7B092A00093B51 /* LaunchScreen.storyboard */,
 				F4DDD6331FB1C92B00A327D7 /* GoogleService-Info.plist */,
+				0010D84D1FC56EF600291FFF /* client_652073679380-so0npi4n865nv8a8a4880g5hqr8pnnfs.apps.googleusercontent.com.plist */,
 				AEE95E511D7B092A00093B51 /* Info.plist */,
 			);
 			path = "employee timer";
@@ -346,6 +345,7 @@
 			files = (
 				AE84DE8D1E7E638700F08945 /* CHANGE LOG.rtf in Resources */,
 				AEE95E501D7B092A00093B51 /* LaunchScreen.storyboard in Resources */,
+				0010D84E1FC56EF700291FFF /* client_652073679380-so0npi4n865nv8a8a4880g5hqr8pnnfs.apps.googleusercontent.com.plist in Resources */,
 				F4DDD6341FB1C92B00A327D7 /* GoogleService-Info.plist in Resources */,
 				F46C02AA1FB3139D00EBC4A4 /* Assets.xcassets in Resources */,
 				AEE95E4B1D7B092A00093B51 /* Main.storyboard in Resources */,
@@ -369,7 +369,9 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -382,7 +384,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
@@ -399,9 +403,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-perSession/Pods-perSession-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

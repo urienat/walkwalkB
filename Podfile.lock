@@ -62,6 +62,21 @@ PODS:
   - FirebaseStorage (1.1.0):
     - FirebaseAnalytics (~> 3.7)
     - GTMSessionFetcher/Core (~> 1.1)
+  - Google/Core (3.0.3):
+    - FirebaseAnalytics (~> 3.2)
+  - Google/SignIn (3.0.3):
+    - Google/Core
+    - GoogleSignIn (~> 4.0)
+  - GoogleAPIClientForREST/Calendar (1.2.1):
+    - GoogleAPIClientForREST/Core
+    - GTMSessionFetcher (>= 1.1.7)
+  - GoogleAPIClientForREST/Core (1.2.1):
+    - GTMSessionFetcher (>= 1.1.7)
+  - GoogleSignIn (4.1.1):
+    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
+    - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
+    - GTMOAuth2 (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleToolboxForMac/DebugUtils (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/Defines (2.1.1)
@@ -74,7 +89,13 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
+  - GTMOAuth2 (1.1.5):
+    - GTMSessionFetcher (~> 1.1)
+  - GTMSessionFetcher (1.1.9):
+    - GTMSessionFetcher/Full (= 1.1.9)
   - GTMSessionFetcher/Core (1.1.9)
+  - GTMSessionFetcher/Full (1.1.9):
+    - GTMSessionFetcher/Core (= 1.1.9)
   - KeychainAccess (3.0.0)
   - Protobuf (3.3.0)
   - SwiftyStoreKit (0.5.1)
@@ -91,6 +112,8 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Messaging
   - Firebase/Storage
+  - Google/SignIn (~> 3.0.3)
+  - GoogleAPIClientForREST/Calendar (~> 1.2.1)
   - KeychainAccess (from `https://github.com/kishikawakatsumi/KeychainAccess.git`, tag `v3.0.0`)
   - Protobuf
   - SwiftyStoreKit (from `https://github.com/bizz84/SwiftyStoreKit.git`, tag `0.5.1`)
@@ -126,12 +149,16 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
   FirebaseMessaging: 753d05a925e9eb8eadd09a0ffc9b808578b72fac
   FirebaseStorage: a5c55b23741a49a72af8f30f95b3bb5ddbeda12d
+  Google: cd92fab98f800f509da88c1e0c570275713bc9d5
+  GoogleAPIClientForREST: a8b95a252014ce2e618df6b75dc72eca2c00b4af
+  GoogleSignIn: 3fdaa34a2ba04dbd7a25d7db39aecb0da98d5bdc
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  GTMOAuth2: be83fd28d63ae3087e7d351b1f39c1a7e24ab6e7
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   KeychainAccess: 412bf2650d9aebfc8135a58103b90ec38caad7f8
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
   SwiftyStoreKit: 53c63f91545a3778dc108f860a7414905ce40a63
 
-PODFILE CHECKSUM: 49be4d2985c1ee501109043b0a9374893fc096e0
+PODFILE CHECKSUM: 2a72c0fdd8a2d235091f1bfe6f4406a7f0040111
 
 COCOAPODS: 1.3.1

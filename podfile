@@ -22,6 +22,9 @@ target ‘perSession’ do
   pod 'Firebase/Messaging'
 pod 'Firebase/Crash'
 
+pod 'GoogleAPIClientForREST/Calendar', '~> 1.2.1'
+    pod 'Google/SignIn', '~> 3.0.3'
+
    pod 'Firebase/Storage'
 pod 'Protobuf'
 
