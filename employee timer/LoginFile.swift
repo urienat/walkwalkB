@@ -188,7 +188,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         //GIDSignIn.sharedInstance().signIn()
         
         view.addSubview(loginButton2)
-        loginButton2.frame = CGRect(x: view.frame.width/2-102, y: 30, width: 204, height: 45)
+        loginButton2.frame = CGRect(x: view.frame.width/2-104, y: 30, width: 208, height: 45)
         //loginButton2.delegate = self
        // loginButton2.readPermissions = ["email","public_profile"]
 // end of login google setting
@@ -365,6 +365,30 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             }//end of else
             })//end of auth
             }//end of func
+   //google signin
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        // ...
+        if let error = error {
+            // ...
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        
+          FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+                if let error = error {
+                    // ...
+                    return
+                }
+                // User is signed in
+              print ("I am in google signin")  // ...
+                
+        }//end of googlesignin
+        // ...
+    }//end of googlesignin
+
     
     func accounCreation() {
             if let user = FIRAuth.auth()?.currentUser {
