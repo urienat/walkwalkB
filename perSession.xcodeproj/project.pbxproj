@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0010D84E1FC56EF700291FFF /* client_652073679380-so0npi4n865nv8a8a4880g5hqr8pnnfs.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0010D84D1FC56EF600291FFF /* client_652073679380-so0npi4n865nv8a8a4880g5hqr8pnnfs.apps.googleusercontent.com.plist */; };
+		36A03E068C6D6196AD6257CF /* Pods_perSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5756A9D8D83AA717B759692 /* Pods_perSession.framework */; };
 		AE0213491DCF8130006F927F /* setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0213481DCF8130006F927F /* setting.swift */; };
 		AE0B0A7F1E62D461000E539C /* billView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0B0A7E1E62D461000E539C /* billView.swift */; };
 		AE1B3DB11DF824E100BB507F /* employerCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1B3DB01DF824E100BB507F /* employerCellTableViewCell.swift */; };
@@ -91,6 +92,7 @@
 		AEE95E4F1D7B092A00093B51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AEE95E511D7B092A00093B51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D36D34D1D194F34A2C696A4C /* Pods-perSession.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-perSession.debug.xcconfig"; path = "Pods/Target Support Files/Pods-perSession/Pods-perSession.debug.xcconfig"; sourceTree = "<group>"; };
+		D5756A9D8D83AA717B759692 /* Pods_perSession.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_perSession.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F42DD2981FB03E6A00BBAE75 /* recordsStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recordsStructure.swift; sourceTree = "<group>"; };
 		F44CF4031FAB67FA00093950 /* UIControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIControl.h; sourceTree = "<group>"; };
 		F46C02A91FB3139D00EBC4A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			files = (
 				F4D0683C1FA9C5920079CA88 /* StoreKit.framework in Frameworks */,
 				AE29BE9D1D972A910066214D /* UIKit.framework in Frameworks */,
+				36A03E068C6D6196AD6257CF /* Pods_perSession.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +128,7 @@
 			children = (
 				F4D0683B1FA9C5920079CA88 /* StoreKit.framework */,
 				AE29BE9C1D972A910066214D /* UIKit.framework */,
+				D5756A9D8D83AA717B759692 /* Pods_perSession.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

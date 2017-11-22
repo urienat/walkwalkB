@@ -13,10 +13,12 @@ import FirebaseAuth
 import FirebaseDatabase
 import FBSDKLoginKit
 import FacebookCore
+import Google
+import GoogleSignIn
 
 
 
-class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate {
+class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate ,GIDSignInUIDelegate{
 
     let dbRef = FIRDatabase.database().reference()
     let dbRefUser = FIRDatabase.database().reference().child("fEmployees")
@@ -26,6 +28,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     let mydateFormat5 = DateFormatter()
 
     let loginButton =  FBSDKLoginButton()
+    let loginButton2 =  GIDSignInButton()
+
     var employeeRefUpdate:String?
     static var provider: String?
     
@@ -176,6 +180,17 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         dog.clipsToBounds = true
         dog.layer.cornerRadius = 110
         LoginFile.provider = "normal"
+        
+        
+        //google login setting
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().signIn()
+        
+        view.addSubview(loginButton2)
+        loginButton2.frame = CGRect(x: view.frame.width/2-100, y: 0, width: 220, height: 45)
+        //loginButton2.delegate = self
+       // loginButton2.readPermissions = ["email","public_profile"]
+// end of login google setting
 
         view.addSubview(loginButton)
         loginButton.frame = CGRect(x: view.frame.width/2-100, y: 50, width: 200, height: 45)
