@@ -26,10 +26,11 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
 
     let mydateFormat = DateFormatter()
     let mydateFormat5 = DateFormatter()
+    
+    var fromGoogle: String?
 
     @IBAction func loginButton3(_ sender: Any) {
     }
-    let loginButton2 =  GIDSignInButton()
     let loginButton =  FBSDKLoginButton()
     static var provider: String?
 
@@ -188,11 +189,17 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         
         
         //google login setting
+        let loginButton2 =  GIDSignInButton()
 
+        
         GIDSignIn.sharedInstance().uiDelegate = self
        // GIDSignIn.sharedInstance().signIn()
         view.addSubview(loginButton2)
         loginButton2.frame = CGRect(x: view.frame.width/2-104, y: 30, width: 208, height: 45)
+       
+       // NotificationCenter.default.addObserver(self, selector: #selector(LoginFile.inFireBase()), name: NSNotification.Name., object: nil)
+
+       //  NotificationCenter.default.addObserver(self, selector: #selector(ViewController.applicationDidBecomeActive(notification:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         // end of login google setting
 
         //Facebook login setting
@@ -385,39 +392,22 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     
     
    //google signin
-   // func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-
+    func inFireBase(_ fromGoogle: String){
         print("i am in sign google func")
         // ...
-        if let error = error {
-            print (error)
-            return
-        }
+        print ("I am in google signin")
+        self.rememberMe = 0
+        self.keeper.set(0, forKey: "remember")
+        self.keeper.set("", forKey: "userKept")
+        self.keeper.set("", forKey: "passwordKept")// ...
         
-        guard let authentication = user.authentication else { return }
-        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
+        //logout from face book
         
-          FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-                if let error = error {
-                    print (error)
-                    return
-                }
-                // User is signed in
-              print ("I am in google signin")
-            self.rememberMe = 0
-            self.keeper.set(0, forKey: "remember")
-            self.keeper.set("", forKey: "userKept")
-            self.keeper.set("", forKey: "passwordKept")// ...
-            
-            let loginManager = FBSDKLoginManager()
-            loginManager.logOut()
-            //logout from face book
-
-            
-    
-            self.employeeRefUpdate = user?.uid
+        // User is signed in
+        
+           self.employeeRefUpdate = fromGoogle
             
             DispatchQueue.main.asyncAfter(deadline: .now() ) {
                 self.dbRefEmployees.child(self.employeeRefUpdate!).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -435,11 +425,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
                     }//end of else
                 })
             }//end of dispatch
-
-            
-        }//end of googlesignin
-        // ...
-    }//end of googlesignin
+    }//end of infirebase
 
     
     func accounCreation() {
