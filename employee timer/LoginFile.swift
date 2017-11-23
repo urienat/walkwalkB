@@ -212,6 +212,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         
         //add observer
         if GIDSignIn.sharedInstance().currentUser != nil  {
+        thinking.startAnimating()
+
         print (GIDSignIn.sharedInstance().currentUser)
         inFireBase()
             print ("after infirebase")
@@ -462,7 +464,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     print ("Error signing out: %@", signOutError)
     }
     GIDSignIn.sharedInstance().signOut()
-
+        LoginFile.logoutchosen = false
     }//end of if
     }
     //alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
