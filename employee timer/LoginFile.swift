@@ -81,13 +81,13 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         print("exist")
         self.thinking.stopAnimating()
         LoginFile.provider = "facebook"
-        self.performSegue(withIdentifier: "signIn2", sender: Any?.self)
+            self.doSegue()
         }else{
         print("doesn't exist")
         LoginFile.provider = "facebook"
         self.accounCreation()
         self.thinking.stopAnimating()
-        self.performSegue(withIdentifier: "signIn2", sender: Any?.self)
+            self.doSegue()
         }//end of else
         })
         }//end of dispatch
@@ -266,7 +266,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
        
         DispatchQueue.main.asyncAfter(deadline: .now() ) {
         if FBSDKAccessToken.current() != nil {        LoginFile.provider = "facebook"
-            self.performSegue(withIdentifier: "signIn2", sender: Any?.self)
+            self.doSegue()
             }//end of if
         }
         
@@ -274,7 +274,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             print (AccessToken.current as Any)
             
             if AccessToken.current != nil {        LoginFile.provider = "Google"
-                self.performSegue(withIdentifier: "signIn2", sender: Any?.self)
+                self.doSegue()
             }//end of if
         }
         thinking.hidesWhenStopped = true
@@ -350,7 +350,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
                         self.keeper.set(0, forKey: "remember")
             }//end of else
             
-            self.performSegue(withIdentifier: "signIn2", sender: Any?.self)
+            self.doSegue()
             print (self.userEmail)
             print (self.userPassword)
             }//end of else
@@ -370,7 +370,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             //  self.thinking.stopAnimating()
             LoginFile.provider = "Google"
 
-                self.performSegue(withIdentifier: "signIn2", sender: Any? )
+                self.doSegue()
             }else{
             print("doesn't exist")
             LoginFile.provider = "Google"
@@ -382,7 +382,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             self.accounCreation()
             //  self.thinking.stopAnimating()
 
-            self.performSegue(withIdentifier: "signIn2", sender: Any?.self)
+            self.doSegue()
             }//end of else
             })
             }//end of dispatch
@@ -428,6 +428,11 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         else {//do nothing}
         print ("nothing")}
         }// end of prepare
+    
+    func doSegue(){
+        self.performSegue(withIdentifier: "signIn2", sender: Any?.self)
+
+    }
    
     //alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     

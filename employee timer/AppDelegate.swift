@@ -22,6 +22,7 @@ import GoogleSignIn
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
+
     var isLoggedIn:Bool?
     //keep variables
     let keeper = UserDefaults.standard
@@ -136,8 +137,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 print (error)
                 return
             }
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController  =  storyboard.instantiateViewController(withIdentifier: "loginScreen")
+            let homeViewController  =  storyboard.instantiateViewController(withIdentifier: "homeScreen")
+            self.window?.rootViewController = loginViewController
 
             LoginFile().inFireBase(_fromGoogle: (user?.uid)!, _userFromGoogle:user2 )
+
+        
         }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
