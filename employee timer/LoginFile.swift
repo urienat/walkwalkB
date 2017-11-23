@@ -208,6 +208,23 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         loginButton2.frame = CGRect(x: view.frame.width/2-104, y: 30, width: 208, height: 45)
         
         //add observer
+       // NotificationCenter.default.addObserver(self, selector: #selector(LoginFile.inFireBase()), name: NSNotification.Name., object: nil)
+       // GIDSignIn.sharedInstance().delegate = self
+        /* check for user's token */
+        //if GIDSignIn.sharedInstance().hasAuthInKeychain() {
+            if GIDSignIn.sharedInstance().currentUser != nil  {
+
+            print (GIDSignIn.sharedInstance().currentUser)
+                
+            inFireBase()
+      
+            print ("after infirebase")
+        } else {
+                print (GIDSignIn.sharedInstance().currentUser)
+
+            /* code to show your login VC */
+        }
+
        
         //Facebook login setting
         view.addSubview(loginButton)
@@ -447,9 +464,9 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     
     func doSegue(){
         self.performSegue(withIdentifier: "signIn2", sender: Any?.self)
-
     }
-   
+    
+    
     //alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     func alert () {
