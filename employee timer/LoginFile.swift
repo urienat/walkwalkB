@@ -34,7 +34,14 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     var fbLastName = ""
     var fbEmail = ""
     static var userFromGoole : GIDGoogleUser?
-    static var employeeRef2 = ""
+    static var employeeRef2 = "" {
+        
+        didSet {    //called when employeeref2 changed
+            print("changed")
+            
+        }
+    }
+    
     
     var pickedImage:UIImage?
     let picture = UIImage(named: "perSessionImage")
@@ -173,8 +180,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
        // inFireBase()
 
 
-     //   try! FIRAuth.auth()?.signOut() // why signout?
-   //     self.performSegue(withIdentifier: "create", sender: Any?.self)
+        try! FIRAuth.auth()?.signOut() // why signout?
+       self.performSegue(withIdentifier: "create", sender: Any?.self)
     }//end of create action
     
    
@@ -285,6 +292,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             }//end of if
         }
         thinking.hidesWhenStopped = true
+        
+        
        
         } ///end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////////////
    
