@@ -80,7 +80,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             
 
         } else {
+            
             self.window?.rootViewController = loginViewController
+
+            print ("loginViewController")
             
         }
  
@@ -140,11 +143,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginViewController  =  storyboard.instantiateViewController(withIdentifier: "loginScreen")
             let homeViewController  =  storyboard.instantiateViewController(withIdentifier: "homeScreen")
-            self.window?.rootViewController = loginViewController
+           // self.window?.rootViewController = homeViewController// inside the app
+             self.window?.rootViewController = loginViewController// before the app
 
-            LoginFile().inFireBase(_fromGoogle: (user?.uid)!, _userFromGoogle:user2 )
+            print("homeViewController from the GID")
+            print("loginController from the GID")
+            loginViewController
+            LoginFile.userFromGoole = user2
+            LoginFile.employeeRef2 = (user?.uid)!
 
-        
+        return
         }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {

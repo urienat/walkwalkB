@@ -33,6 +33,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     var fbNname = ""
     var fbLastName = ""
     var fbEmail = ""
+    static var userFromGoole : GIDGoogleUser?
+    static var employeeRef2 = ""
     
     var pickedImage:UIImage?
     let picture = UIImage(named: "perSessionImage")
@@ -141,7 +143,6 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     @IBOutlet weak var password: UITextField!
     
     @IBAction func forgot(_ sender: Any) {  //section for forgot or change password
-    userEmail = email.text!
     FIRAuth.auth()?.sendPasswordReset(withEmail: userEmail) { (error) in
         if error != nil { print ("erorrr!!!!")
         self.alert4()
@@ -168,8 +169,12 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     @IBOutlet weak var forgot: UIButton!
     @IBOutlet weak var create: UIButton! //section for create
     @IBAction func createAccount(_ sender: AnyObject) {
-        try! FIRAuth.auth()?.signOut() // why signout?
-        self.performSegue(withIdentifier: "create", sender: Any?.self)
+        print ("back in town")
+       // inFireBase()
+
+
+     //   try! FIRAuth.auth()?.signOut() // why signout?
+   //     self.performSegue(withIdentifier: "create", sender: Any?.self)
     }//end of create action
     
    
@@ -359,12 +364,13 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     
     
         //google signin
-        func inFireBase(_fromGoogle: String, _userFromGoogle: GIDGoogleUser){
-            self.employeeRefUpdate = _fromGoogle
+        func inFireBase(){
+            
+            
             print (self.employeeRefUpdate as Any)
         
             DispatchQueue.main.asyncAfter(deadline: .now() ) {
-            self.dbRefEmployees.child(self.employeeRefUpdate!).observeSingleEvent(of: .value, with: { (snapshot) in
+                self.dbRefEmployees.child(LoginFile.employeeRef2).observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.hasChild("fCounter"){
             print("exist")
             //  self.thinking.stopAnimating()
@@ -375,9 +381,9 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             print("doesn't exist")
             LoginFile.provider = "Google"
                 
-            if _userFromGoogle.profile.givenName == nil {self.fbNname = ""}else {    self.fbNname = _userFromGoogle.profile.givenName!}
-            if _userFromGoogle.profile.familyName == nil {self.fbLastName = ""} else { self.fbLastName = _userFromGoogle.profile.familyName! }
-            if _userFromGoogle.profile.email == nil {self.fbEmail = ""} else { self.fbEmail = _userFromGoogle.profile.email!}
+                if LoginFile.userFromGoole?.profile.givenName == nil {self.fbNname = ""}else {    self.fbNname = (LoginFile.userFromGoole?.profile.givenName!)!}
+                if LoginFile.userFromGoole?.profile.familyName == nil {self.fbLastName = ""} else { self.fbLastName = (LoginFile.userFromGoole?.profile.familyName!)! }
+                if LoginFile.userFromGoole?.profile.email == nil {self.fbEmail = ""} else { self.fbEmail = (LoginFile.userFromGoole?.profile.email!)!}
                 
             self.accounCreation()
             //  self.thinking.stopAnimating()
