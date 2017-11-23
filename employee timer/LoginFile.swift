@@ -192,6 +192,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         dog.clipsToBounds = true
         dog.layer.cornerRadius = 50
         
+        
         mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale: nil)!
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
             ,options: 0, locale: nil)!
@@ -200,6 +201,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         self.email.delegate = self
         self.password.delegate = self
 
+        logoutGeneral()
+        
         //google login setting
         let loginButton2 =  GIDSignInButton()
         GIDSignIn.sharedInstance().uiDelegate = self
@@ -208,21 +211,12 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         loginButton2.frame = CGRect(x: view.frame.width/2-104, y: 30, width: 208, height: 45)
         
         //add observer
-       // NotificationCenter.default.addObserver(self, selector: #selector(LoginFile.inFireBase()), name: NSNotification.Name., object: nil)
-       // GIDSignIn.sharedInstance().delegate = self
-        /* check for user's token */
-        //if GIDSignIn.sharedInstance().hasAuthInKeychain() {
-            if GIDSignIn.sharedInstance().currentUser != nil  {
-
-            print (GIDSignIn.sharedInstance().currentUser)
-                
-            inFireBase()
-      
+        if GIDSignIn.sharedInstance().currentUser != nil  {
+        print (GIDSignIn.sharedInstance().currentUser)
+        inFireBase()
             print ("after infirebase")
         } else {
-                print (GIDSignIn.sharedInstance().currentUser)
-
-            /* code to show your login VC */
+        print (GIDSignIn.sharedInstance().currentUser)
         }
 
        
@@ -282,16 +276,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
 
         
         
-        //logout from face book & Google
-        if LoginFile.logoutchosen == true{let loginManager = FBSDKLoginManager()
-            loginManager.logOut()
-            print ("logout from facebook")
-            let firebaseAuth = FIRAuth.auth()
-            do {try firebaseAuth?.signOut();            print ("logout from Google")
-            } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-            }
-        }//end of if
+        logoutGeneral()
        
         thinking.hidesWhenStopped = true
        
@@ -466,7 +451,20 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         self.performSegue(withIdentifier: "signIn2", sender: Any?.self)
     }
     
-    
+    //logout from face book & Google
+    func logoutGeneral(){
+    if LoginFile.logoutchosen == true{let loginManager = FBSDKLoginManager()
+    loginManager.logOut()
+    print ("logout from facebook")
+    let firebaseAuth = FIRAuth.auth()
+    do {try firebaseAuth?.signOut();            print ("logout from Google")
+    } catch let signOutError as NSError {
+    print ("Error signing out: %@", signOutError)
+    }
+    GIDSignIn.sharedInstance().signOut()
+
+    }//end of if
+    }
     //alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     func alert () {
