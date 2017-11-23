@@ -199,6 +199,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         // GIDSignIn.sharedInstance().signIn()
         view.addSubview(loginButton2)
         loginButton2.frame = CGRect(x: view.frame.width/2-104, y: 30, width: 208, height: 45)
+        
+        //add observer
        
         //Facebook login setting
         view.addSubview(loginButton)
@@ -366,7 +368,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         //google signin
         func inFireBase(){
             
-            
+            LoginFile.provider = "Google"
+
             print (self.employeeRefUpdate as Any)
         
             DispatchQueue.main.asyncAfter(deadline: .now() ) {
@@ -374,12 +377,10 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             if snapshot.hasChild("fCounter"){
             print("exist")
             //  self.thinking.stopAnimating()
-            LoginFile.provider = "Google"
 
                 self.doSegue()
             }else{
             print("doesn't exist")
-            LoginFile.provider = "Google"
                 
                 if LoginFile.userFromGoole?.profile.givenName == nil {self.fbNname = ""}else {    self.fbNname = (LoginFile.userFromGoole?.profile.givenName!)!}
                 if LoginFile.userFromGoole?.profile.familyName == nil {self.fbLastName = ""} else { self.fbLastName = (LoginFile.userFromGoole?.profile.familyName!)! }

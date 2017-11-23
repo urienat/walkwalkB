@@ -148,7 +148,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
             print("homeViewController from the GID")
             print("loginController from the GID")
-            loginViewController
             LoginFile.userFromGoole = user2
             LoginFile.employeeRef2 = (user?.uid)!
 
