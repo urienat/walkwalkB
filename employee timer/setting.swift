@@ -462,7 +462,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
         let updateDBAction = UIAlertAction(title: "Yes", style: .default) { (UIAlertAction) in
        
-        print ("jhgdjhg\(self.dateTimeUpdate)")
+            print ("jhgdjhg\(String(describing: self.dateTimeUpdate))")
         
             self.dbRefEmployees.child(self.employeeRefUpdate).updateChildValues(["fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": self.currency.text!, "fProgram": "0","fTaxPrecentage": self.precentage.text!,"fTaxName": self.taxName.text!, "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : self.taxCalacUpdate, "fDateTime": self.dateTimeUpdate, "fConnect" : self.connectUpdate]) //check email update with regard to auth
            

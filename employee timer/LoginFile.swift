@@ -370,7 +370,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             //  self.thinking.stopAnimating()
             LoginFile.provider = "Google"
 
-            self.performSegue(withIdentifier: "signIn2", sender: (Any).self)
+                self.performSegue(withIdentifier: "signIn2", sender: Any? )
             }else{
             print("doesn't exist")
             LoginFile.provider = "Google"
@@ -421,13 +421,12 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         let third = middle.topViewController as! ViewController
         print ("prepare")
         if (segue.identifier == "create"){
-            setting.newEmployee = "YES"
-            third.newRegister = "YES"}
+        setting.newEmployee = "YES"
+        third.newRegister = "YES"}
             
         else if (segue.identifier == "signIn2") {third.newRegister = "NO"}
         else {//do nothing}
-            print ("nothing")
-        }
+        print ("nothing")}
         }// end of prepare
    
     //alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
