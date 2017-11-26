@@ -397,7 +397,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Grass12" width="512" height="512"/>
+        <image name="Grass12" width="424" height="282"/>
         <image name="trash" width="50" height="50"/>
     </resources>
 </document>
