@@ -20,13 +20,15 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
     private let scopes = [kGTLRAuthScopeCalendarReadonly]
-    
     private let service = GTLRCalendarService()
-   // let signInButton = GIDSignInButton()
     let output = UITextView()
+    let signInButton = GIDSignInButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if   LoginFile.provider != "Google" {view.addSubview(signInButton) }
+
         
         // Configure Google Sign-in.
         GIDSignIn.sharedInstance().delegate = self
@@ -35,7 +37,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         GIDSignIn.sharedInstance().signInSilently()
         
         // Add the sign-in button.
-      //  view.addSubview(signInButton)
+       
         
         // Add a UITextView to display output.
         output.frame = view.bounds
