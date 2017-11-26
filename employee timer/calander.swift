@@ -22,19 +22,34 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     private let scopes = [kGTLRAuthScopeCalendarReadonly]
     private let service = GTLRCalendarService()
     let output = UITextView()
-    let signInButton = GIDSignInButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if   LoginFile.provider != "Google" {view.addSubview(signInButton) }
+       // if   LoginFile.provider != "Google" {view.addSubview(signInButton) }
 
         
         // Configure Google Sign-in.
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().scopes = scopes
-        GIDSignIn.sharedInstance().signInSilently()
+        if GIDSignIn.sharedInstance().hasAuthInKeychain() == true{
+            
+            GIDSignIn.sharedInstance().signInSilently()
+            print ("in")
+            
+        }
+        else{
+            print ("out")
+            let signInButton = GIDSignInButton()
+            view.addSubview(signInButton)
+            signInButton.frame = CGRect(x: view.frame.width/2-104, y: 130, width: 208, height: 45)
+
+            //not sign in
+            
+        }
+        
+       // GIDSignIn.sharedInstance().signInSilently()
         
         // Add the sign-in button.
        
@@ -64,7 +79,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     // Construct a query and get a list of upcoming events from the user calendar
     func fetchEvents() {
         let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")
-        query.maxResults = 10
+        query.maxResults = 50
         query.timeMin = GTLRDateTime(date: Date())
         query.singleEvents = true
         query.orderBy = kGTLRCalendarOrderByStartTime
