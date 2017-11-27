@@ -120,7 +120,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     // Construct a query and get a list of upcoming events from the user calendar
     func fetchEvents() {
         let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")// instard of "primary"
-        query.maxResults = 5
+        query.maxResults = 50
         
         query.timeMin = GTLRDateTime(date: (Date()-(3600*24*30)))
         query.timeMax = GTLRDateTime(date: Date())
@@ -169,7 +169,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 outputText += "\(calIn) - \(event.summary!)\r\n\r\n"
                 print (event.summary)
                 print (employerArray3)
-                print ([employerArray3[event.summary!]] )
+                // print ([employerArray3[event.summary!]] )
                 let keyExists = employerArray3[event.summary!]
 
                 if (keyExists)  != nil { employerId = employerArray3[event.summary!]!
