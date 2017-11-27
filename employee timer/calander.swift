@@ -59,7 +59,13 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         if currentUser != nil {
             print(currentUser!.uid)
             employeeId = (currentUser!.uid)
+            //create zugot
+            
+            
+            
         }
+        
+        
         
         // Configure Google Sign-in.
         GIDSignIn.sharedInstance().delegate = self
@@ -141,6 +147,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             
             for event in events {
                 
+                findEmployerId()
+                
                 let start = event.start!.dateTime ?? event.start!.date!
                 let end = event.end!.dateTime ?? event.start!.date!
 
@@ -172,7 +180,32 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             recordRefence.setValue(record)
         
         self.dbRefEmployee.child(employeeId).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-((self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)!)])
-        self.dbRefEmployer.child(self.employerId).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-((self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)!)]) }
+        self.dbRefEmployer.child(self.employerId).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-((self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)!)])
+        
+    }//end of save
+    
+    func findEmployerId(){
+       
+            print ("fetch employerId")
+        
+            self.dbRefEmployee.child(employeeId).child("myEmployers").observe(.childAdded, with: { (snapshot) in
+                
+                
+                //create zugot
+                if let dictionary =  snapshot.value as? [String: AnyObject] {
+                    print ("snappp\(snapshot.value!)")
+                    
+                    let employerIdMatch = [String:String].self
+                    employerIdMatch.setValuesForKeys(dictionary)
+                    
+                    employerId = employerIdMatch[employerFromMain]
+
+                }
+
+
+        })//end of dbRef
+        
+    }//end of find
        
     
     

@@ -70,5 +70,4 @@ class billStruct: NSObject{
 
 class employerListStruct : NSObject{
     static var cheeckbox: Int?
-    
 }
