@@ -192,49 +192,26 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             
         self.employerArray = snapshot.childSnapshot(forPath: "myEmployers").value! as! [String:Int]
         self.employerArray2 = Array(self.employerArray.keys) // for Dictionary
-        print (self.employerArray2)
-         
-            
-
-            for spliterItem in 0...(self.employerArray.count-1){
-                print (self.employerArray.keys)
-
-                // print (splitItem)
-                
-                
-                //self.employerArray2.append(splitItem)
-                
-            
-
-
-                
-            if (String(describing: snapshot.childSnapshot(forPath: "myEmployers").value!) as String!) == nil {
-                print("null")}
-            else{
-                print (self.employerArray)
-                
-                
-                    
-                    
-                }
-                
-                
-                
-                print (snapshot.value as! [String : AnyObject])
-                print ("snappp\(String(describing: snapshot))" )
-                self.employerId = (snapshot.key)
-                //self.employerArray.append(self.employerId)
-                
-            }
-
-            
-            
+        print ("employerArray2\(self.employerArray2)")
         })
         
-        }//end of find
+        
+       
+
+            
+    func match(){
+        print ("match")
+        for eachEmployer in 0...(self.employerArray2.count-1){
+        self.dbRefEmployer.child(self.employerArray2[eachEmployer]).observeSingleEvent(of: .childAdded, with: { (snapshot) in
+            var employerNameForGoogle = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String
+        print ("tttt\(employerNameForGoogle)")
+        })
+        }//end of loop
+        
+    }//end of match
     /////////////////////
   
-    
+     }//end of find
     /*
     
     
