@@ -193,13 +193,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         self.employerArray = snapshot.childSnapshot(forPath: "myEmployers").value! as! [String:Int]
         self.employerArray2 = Array(self.employerArray.keys) // for Dictionary
         print ("employerArray2\(self.employerArray2)")
-        })
-        
-        
-       
-
-            
-    func match(){
+          
         print ("match")
         for eachEmployer in 0...(self.employerArray2.count-1){
         self.dbRefEmployer.child(self.employerArray2[eachEmployer]).observeSingleEvent(of: .childAdded, with: { (snapshot) in
@@ -208,9 +202,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         })
         }//end of loop
         
-    }//end of match
-    /////////////////////
-  
+    
+        })//end of dbref employeeid
+
      }//end of find
     /*
     
