@@ -33,6 +33,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     var employerFromMain = ""
     var employeeId = ""
     var employerId = "-KzwkTiZcoAI1OGbL94f"
+    var employerArray: [String:Int] = [:]
+    var employerArray2: [String] = []
 
 
     // If modifying these scopes, delete your previously saved credentials by
@@ -61,7 +63,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             employeeId = (currentUser!.uid)
             //create zugot
             
-            
+            findEmployerId()
             
         }
         
@@ -147,7 +149,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             
             for event in events {
                 
-                findEmployerId()
                 
                 let start = event.start!.dateTime ?? event.start!.date!
                 let end = event.end!.dateTime ?? event.start!.date!
@@ -185,29 +186,82 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     }//end of save
     
     func findEmployerId(){
-       
-            print ("fetch employerId")
+        print ("fetch employerId")
         
-            self.dbRefEmployee.child(employeeId).child("myEmployers").observe(.childAdded, with: { (snapshot) in
-                
-                
-                //create zugot
-                if let dictionary =  snapshot.value as? [String: AnyObject] {
-                    print ("snappp\(snapshot.value!)")
-                    
-                    let employerIdMatch = [String:String].self
-                    employerIdMatch.setValuesForKeys(dictionary)
-                    
-                    employerId = employerIdMatch[employerFromMain]
+        self.dbRefEmployee.child(employeeId).queryOrderedByValue().observeSingleEvent(of: .value, with: { (snapshot) in
+            
+        self.employerArray = snapshot.childSnapshot(forPath: "myEmployers").value! as! [String:Int]
+        self.employerArray2 = Array(self.employerArray.keys) // for Dictionary
+        print (self.employerArray2)
+         
+            
 
+            for spliterItem in 0...(self.employerArray.count-1){
+                print (self.employerArray.keys)
+
+                // print (splitItem)
+                
+                
+                //self.employerArray2.append(splitItem)
+                
+            
+
+
+                
+            if (String(describing: snapshot.childSnapshot(forPath: "myEmployers").value!) as String!) == nil {
+                print("null")}
+            else{
+                print (self.employerArray)
+                
+                
+                    
+                    
                 }
+                
+                
+                
+                print (snapshot.value as! [String : AnyObject])
+                print ("snappp\(String(describing: snapshot))" )
+                self.employerId = (snapshot.key)
+                //self.employerArray.append(self.employerId)
+                
+            }
 
-
-        })//end of dbRef
+            
+            
+        })
         
-    }//end of find
-       
+        }//end of find
+    /////////////////////
+  
     
+    /*
+    
+    
+    
+ 
+    /////////////////////////////
+    
+    
+    
+    
+    
+    func match(){
+        print ("match")
+        print (employerArray.count)
+        
+        for item in 0...(self.employerArray.count-1)  {
+            
+            self.dbRefEmployer.child(employerArray[item]).child("fEmployer").observe(.childAdded, with: { (snapshot) in
+                print ("snappp2\(String(describing: snapshot.value))")
+                self.employerFromMain = (snapshot.value as! String)
+                
+            })//end of dbRef
+            
+        }//end of loop
+    }
+       
+      */
     
 // alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Helper for showing an alert
