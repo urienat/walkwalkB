@@ -119,7 +119,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     // Construct a query and get a list of upcoming events from the user calendar
     func fetchEvents() {
-        let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "PerSession")// instard of "primary"
+        let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")// instard of "primary"
         query.maxResults = 5
         
         query.timeMin = GTLRDateTime(date: (Date()-(3600*24*30)))
@@ -167,8 +167,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
                 //outputText += "\(start2) - \(event.summary!)\r\n\(event.attendees)\r\n \(event.descriptionProperty)\r\n\r\n"
                 outputText += "\(calIn) - \(event.summary!)\r\n\r\n"
+                print (event.summary)
+                print (employerArray3)
                 print ([employerArray3[event.summary!]])
-                if [employerArray3[event.summary!]] == nil { //do nothing
+                
+                if ([employerArray3[event.summary!]]) == nil { //do nothing
                 } else { employerId = employerArray3[event.summary!]!
                     saveToDB2()
                 }
