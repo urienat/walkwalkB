@@ -196,8 +196,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
           
         print ("match")
         for eachEmployer in 0...(self.employerArray2.count-1){
-        self.dbRefEmployer.child(self.employerArray2[eachEmployer]).observeSingleEvent(of: .childAdded, with: { (snapshot) in
-            var employerNameForGoogle = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String
+        self.dbRefEmployer.child(self.employerArray2[eachEmployer]).child("fEmployer").observeSingleEvent(of: .value, with: { (snapshot) in
+        let employerNameForGoogle = String(describing: snapshot.value!) as String
         print ("tttt\(employerNameForGoogle)")
         })
         }//end of loop
