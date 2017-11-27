@@ -31,7 +31,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     var calOut = ""
     var calOutFB = ""
     var employerFromMain = ""
-    
+    var employeeId = ""
+
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
     private let scopes = [kGTLRAuthScopeCalendarReadonly]
@@ -51,6 +52,12 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         
         service.shouldFetchNextPages = true
 
+        let currentUser = FIRAuth.auth()?.currentUser
+        print (currentUser as Any)
+        if currentUser != nil {
+            print(currentUser!.uid)
+            employeeId = (currentUser!.uid)
+        }
         
         // Configure Google Sign-in.
         GIDSignIn.sharedInstance().delegate = self
@@ -157,7 +164,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     }
  
     func saveToDB2() {
-            let record = ["fIn" : calInFB, "fOut" : calOutFB, "fTotal" : "-1", "fEmployer": String (describing : employerFromMain!), "fIndication" : " " ,"fIndication2" :" " ,"fIndication3" :"📆","fStatus" : "Pre", "FPoo" :"No", "fPee" : "No","fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID)]
+        let record = ["fIn" : calInFB, "fOut" : calOutFB, "fTotal" : "-1", "fEmployer": String (describing : employerFromMain!), "fIndication" : " " ,"fIndication2" :" " ,"fIndication3" :"📆","fStatus" : "Pre", "FPoo" :"No", "fPee" : "No","fEmployeeRef": String (describing : employeeId),"fEmployerRef":  String (describing : employerID)]
             
             let recordRefence = self.dbRef.childByAutoId()
             recordRefence.setValue(record)
@@ -165,7 +172,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             
             
             
-            self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-(self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)])
+        self.dbRefEmployee.child(employeeId).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-((self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)!)])
             self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-(self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)]) }
        
     
