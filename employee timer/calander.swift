@@ -32,6 +32,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     var calOutFB = ""
     var employerFromMain = ""
     var employeeId = ""
+    var employerId = "-KzwkTiZcoAI1OGbL94f"
+
 
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
@@ -155,7 +157,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
                 //outputText += "\(start2) - \(event.summary!)\r\n\(event.attendees)\r\n \(event.descriptionProperty)\r\n\r\n"
                 outputText += "\(calIn) - \(event.summary!)\r\n\r\n"
-
+                saveToDB2()
             }
         } else {
             outputText = "No upcoming events found."
@@ -164,16 +166,13 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     }
  
     func saveToDB2() {
-        let record = ["fIn" : calInFB, "fOut" : calOutFB, "fTotal" : "-1", "fEmployer": String (describing : employerFromMain!), "fIndication" : " " ,"fIndication2" :" " ,"fIndication3" :"📆","fStatus" : "Pre", "FPoo" :"No", "fPee" : "No","fEmployeeRef": String (describing : employeeId),"fEmployerRef":  String (describing : employerID)]
+        let record = ["fIn" : calInFB, "fOut" : calOutFB, "fTotal" : "-1", "fEmployer": String (describing : employerFromMain), "fIndication" : " " ,"fIndication2" :" " ,"fIndication3" :"📆","fStatus" : "Pre", "FPoo" :"No", "fPee" : "No","fEmployeeRef": String (describing : employeeId),"fEmployerRef":  String (describing : employerId)]
             
             let recordRefence = self.dbRef.childByAutoId()
             recordRefence.setValue(record)
-            
-            
-            
-            
+        
         self.dbRefEmployee.child(employeeId).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-((self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)!)])
-            self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-(self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)]) }
+        self.dbRefEmployer.child(self.employerId).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-((self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)!)]) }
        
     
     
