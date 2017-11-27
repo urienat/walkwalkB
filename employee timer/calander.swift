@@ -170,10 +170,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 print (event.summary)
                 print (employerArray3)
                 print ([employerArray3[event.summary!]] )
-                
-                if ([employerArray3[event.summary!]])  == [nil!] { print ("nothing")//do nothing
-                } else { employerId = employerArray3[event.summary!]!
+                let keyExists = employerArray3[event.summary!]
+
+                if (keyExists)  != nil { employerId = employerArray3[event.summary!]!
                     saveToDB2()
+                } else { print ("nothing")//do nothing
                 }
                 
                
