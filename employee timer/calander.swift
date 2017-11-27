@@ -35,6 +35,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     var employerId = "-KzwkTiZcoAI1OGbL94f"
     var employerArray: [String:Int] = [:]
     var employerArray2: [String] = []
+    var employerArray3: [String:String] = [:]
 
 
     // If modifying these scopes, delete your previously saved credentials by
@@ -199,6 +200,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         self.dbRefEmployer.child(self.employerArray2[eachEmployer]).child("fEmployer").observeSingleEvent(of: .value, with: { (snapshot) in
         let employerNameForGoogle = String(describing: snapshot.value!) as String
         print ("tttt\(employerNameForGoogle)")
+            
+        self.employerArray3[self.employerArray2[eachEmployer]] = employerNameForGoogle
+            print("uuuu\(self.employerArray3)")
         })
         }//end of loop
         
@@ -206,33 +210,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         })//end of dbref employeeid
 
      }//end of find
-    /*
     
-    
-    
- 
-    /////////////////////////////
-    
-    
-    
-    
-    
-    func match(){
-        print ("match")
-        print (employerArray.count)
-        
-        for item in 0...(self.employerArray.count-1)  {
-            
-            self.dbRefEmployer.child(employerArray[item]).child("fEmployer").observe(.childAdded, with: { (snapshot) in
-                print ("snappp2\(String(describing: snapshot.value))")
-                self.employerFromMain = (snapshot.value as! String)
-                
-            })//end of dbRef
-            
-        }//end of loop
-    }
-       
-      */
     
 // alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Helper for showing an alert
