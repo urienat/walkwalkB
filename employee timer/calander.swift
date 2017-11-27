@@ -154,10 +154,10 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 let start = event.start!.dateTime ?? event.start!.date!
                 let end = event.end!.dateTime ?? event.start!.date!
 
-                 calIn = self.mydateFormat6.string(from: start.date)
-                 calInFB = self.mydateFormat5.string(from: start.date)
-                    calOut = self.mydateFormat6.string(from: end.date)
-                 calOutFB = self.mydateFormat5.string(from: end.date)
+                calIn = self.mydateFormat6.string(from: start.date)
+                calInFB = self.mydateFormat5.string(from: start.date)
+                calOut = self.mydateFormat6.string(from: end.date)
+                calOutFB = self.mydateFormat5.string(from: end.date)
                 employerFromMain = event.summary!
 
                 _ = DateFormatter.localizedString(
@@ -167,6 +167,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
                 //outputText += "\(start2) - \(event.summary!)\r\n\(event.attendees)\r\n \(event.descriptionProperty)\r\n\r\n"
                 outputText += "\(calIn) - \(event.summary!)\r\n\r\n"
+                print ([employerArray3[event.summary!]])
+                
                 saveToDB2()
             }
         } else {
@@ -188,6 +190,10 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     func findEmployerId(){
         print ("fetch employerId")
+        
+        employerArray3.removeAll()
+        employerArray2.removeAll()
+        employerArray.removeAll()
         
         self.dbRefEmployee.child(employeeId).queryOrderedByValue().observeSingleEvent(of: .value, with: { (snapshot) in
             
