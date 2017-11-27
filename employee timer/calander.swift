@@ -169,9 +169,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 outputText += "\(calIn) - \(event.summary!)\r\n\r\n"
                 print (event.summary)
                 print (employerArray3)
-                print ([employerArray3[event.summary!]])
+                print ([employerArray3[event.summary!]] )
                 
-                if ([employerArray3[event.summary!]]) == nil { //do nothing
+                if ([employerArray3[event.summary!]])  == [nil!] { print ("nothing")//do nothing
                 } else { employerId = employerArray3[event.summary!]!
                     saveToDB2()
                 }
