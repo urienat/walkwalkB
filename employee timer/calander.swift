@@ -15,7 +15,15 @@ import GoogleSignIn
 import GoogleAPIClientForREST
 
 class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
-
+   
+    let dbRef = FIRDatabase.database().reference().child("fRecords")
+    let dbRefEmployer = FIRDatabase.database().reference().child("fEmployers")
+    let dbRefEmployee = FIRDatabase.database().reference().child("fEmployees")
+    
+    
+    let mydateFormat5 = DateFormatter()
+    let mydateFormat6 = DateFormatter()
+    let mydateFormat7 = DateFormatter()
     
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
@@ -23,10 +31,18 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     private let service = GTLRCalendarService()
     let output = UITextView()
     
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       // if   LoginFile.provider != "Google" {view.addSubview(signInButton) }
+        mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
+            ,options: 0, locale: nil)!
+        mydateFormat7.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd MMM, (HH:mm)"
+            ,options: 0, locale: nil)!
+        mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale:Locale.autoupdatingCurrent )!
+        
+        service.shouldFetchNextPages = true
 
         
         // Configure Google Sign-in.
@@ -79,8 +95,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     // Construct a query and get a list of upcoming events from the user calendar
     func fetchEvents() {
         let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")
-        query.maxResults = 50
-        query.timeMin = GTLRDateTime(date: Date())
+        query.maxResults = 5
+        
+        query.timeMin = GTLRDateTime(date: (Date()-(3600*24*30)))
+        query.timeMax = GTLRDateTime(date: Date())
+        //query.alwaysIncludeEmail = true
         query.singleEvents = true
         query.orderBy = kGTLRCalendarOrderByStartTime
         service.executeQuery(
@@ -95,6 +114,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         finishedWithObject response : GTLRCalendar_Events,
         error : NSError?) {
         
+        
         if let error = error {
             showAlert(title: "Error", message: error.localizedDescription)
             return
@@ -102,21 +122,43 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         
         var outputText = ""
         if let events = response.items, !events.isEmpty {
+            
             for event in events {
+                
                 let start = event.start!.dateTime ?? event.start!.date!
-                let startString = DateFormatter.localizedString(
+                let start2 = self.mydateFormat6.string(from: start.date)
+                print (start2)
+
+                _ = DateFormatter.localizedString(
                     from: start.date,
                     dateStyle: .short,
                     timeStyle: .short)
-                outputText += "\(startString) - \(event.summary!)\n"
+
+                //outputText += "\(start2) - \(event.summary!)\r\n\(event.attendees)\r\n \(event.descriptionProperty)\r\n\r\n"
+                outputText += "\(start2) - \(event.summary!)\r\n\r\n"
+
             }
         } else {
             outputText = "No upcoming events found."
         }
         output.text = outputText
     }
+ 
+    func saveToDB2() {
+            let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker.date), "fTotal" : "-1", "fEmployer": String (describing : employerFromMain!), "fIndication" : " " ,"fIndication2" :" " ,"fIndication3" :"✏️","fStatus" : "Pre", "FPoo" : self.poo, "fPee" : self.pee,"fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID)]
+            
+            let recordRefence = self.dbRef.childByAutoId()
+            recordRefence.setValue(record)
+            
+            
+            
+            
+            self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-(DatePicker.date.timeIntervalSince1970))])
+            self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-(DatePicker.date.timeIntervalSince1970))])            }//  end od if recors to handle is ""
+       
     
     
+// alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Helper for showing an alert
     func showAlert(title : String, message: String) {
         let alert = UIAlertController(
