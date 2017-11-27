@@ -30,6 +30,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     var calOut = ""
     var calOutFB = ""
+    var employerFromMain = ""
     
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
@@ -136,11 +137,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
                  calIn = self.mydateFormat6.string(from: start.date)
                  calInFB = self.mydateFormat5.string(from: start.date)
-                let calFB2 =
-
-                 calOut = self.mydateFormat6.string(from: end.date)
+                    calOut = self.mydateFormat6.string(from: end.date)
                  calOutFB = self.mydateFormat5.string(from: end.date)
-
+                employerFromMain = event.summary!
 
                 _ = DateFormatter.localizedString(
                     from: start.date,
