@@ -25,6 +25,12 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     let mydateFormat6 = DateFormatter()
     let mydateFormat7 = DateFormatter()
     
+    var calIn = ""
+    var calInFB = ""
+    
+    var calOut = ""
+    var calOutFB = ""
+    
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
     private let scopes = [kGTLRAuthScopeCalendarReadonly]
@@ -126,8 +132,15 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             for event in events {
                 
                 let start = event.start!.dateTime ?? event.start!.date!
-                let start2 = self.mydateFormat6.string(from: start.date)
-                print (start2)
+                let end = event.end!.dateTime ?? event.start!.date!
+
+                 calIn = self.mydateFormat6.string(from: start.date)
+                 calInFB = self.mydateFormat5.string(from: start.date)
+                let calFB2 =
+
+                 calOut = self.mydateFormat6.string(from: end.date)
+                 calOutFB = self.mydateFormat5.string(from: end.date)
+
 
                 _ = DateFormatter.localizedString(
                     from: start.date,
@@ -135,7 +148,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                     timeStyle: .short)
 
                 //outputText += "\(start2) - \(event.summary!)\r\n\(event.attendees)\r\n \(event.descriptionProperty)\r\n\r\n"
-                outputText += "\(start2) - \(event.summary!)\r\n\r\n"
+                outputText += "\(calIn) - \(event.summary!)\r\n\r\n"
 
             }
         } else {
@@ -145,7 +158,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     }
  
     func saveToDB2() {
-            let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker.date), "fTotal" : "-1", "fEmployer": String (describing : employerFromMain!), "fIndication" : " " ,"fIndication2" :" " ,"fIndication3" :"✏️","fStatus" : "Pre", "FPoo" : self.poo, "fPee" : self.pee,"fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID)]
+            let record = ["fIn" : calInFB, "fOut" : calOutFB, "fTotal" : "-1", "fEmployer": String (describing : employerFromMain!), "fIndication" : " " ,"fIndication2" :" " ,"fIndication3" :"📆","fStatus" : "Pre", "FPoo" :"No", "fPee" : "No","fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID)]
             
             let recordRefence = self.dbRef.childByAutoId()
             recordRefence.setValue(record)
@@ -153,8 +166,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             
             
             
-            self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-(DatePicker.date.timeIntervalSince1970))])
-            self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-(DatePicker.date.timeIntervalSince1970))])            }//  end od if recors to handle is ""
+            self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-(self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)])
+            self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-(self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)]) }
        
     
     
