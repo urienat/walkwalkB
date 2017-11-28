@@ -221,8 +221,8 @@ class datePicker2: UIViewController {
             ,options: 0, locale: nil)!
         mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy"
             ,options: 0, locale: nil)!
-        mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
-        mydateFormat11.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy , (HH,mm)", options: 0, locale: Locale.autoupdatingCurrent)!
+        mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
+        mydateFormat11.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy , (HH,mm)", options: 0, locale: Locale.autoupdatingCurrent)!
         if recordToHandle == "" {
             deleter.isEnabled = false
             

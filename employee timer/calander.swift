@@ -120,28 +120,29 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         }
     }
     
-    // Construct a query and get a list of upcoming events from the user calendar
+    // Construct a query and get a list of upcoming events
     func fetchEvents() {
         let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")// instard of "primary"
 
             query.maxResults = 50
-        
+        /*
             self.dbRefEmployee.child(employeeId).observeSingleEvent(of: .value , with: { (snapshot) in
             self.LastCalander = String(describing: snapshot.childSnapshot(forPath: "fLastCalander").value!) as String!
             print(self.LastCalander!)
-               
-                query.timeMax = GTLRDateTime(date: Date())
-                //query.alwaysIncludeEmail = true
-                query.singleEvents = true
-                query.orderBy = kGTLRCalendarOrderByStartTime
-                
+               if self.LastCalander! == "New" {query.timeMin = GTLRDateTime(date: (Date()-(3600*24*30)))} else {query.timeMin = GTLRDateTime(date: self.mydateFormat5.date(from: self.LastCalander!)!  )
+                 }
                 
 
-                if self.LastCalander! == "New" {query.timeMin = GTLRDateTime(date: (Date()-(3600*24*30)))} else {query.timeMin = GTLRDateTime(date: self.mydateFormat5.date(from: self.LastCalander!)!  )
-                }
+               
             })//end of dbref
-       
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+       */
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0){
+            query.timeMax = GTLRDateTime(date: Date())
+            //query.alwaysIncludeEmail = true
+            query.singleEvents = true
+            query.orderBy = kGTLRCalendarOrderByStartTime
+            
+            query.timeMin = GTLRDateTime(date: (Date()-(3600*24*30)))
         self.service.executeQuery(
             query,
             delegate: self,

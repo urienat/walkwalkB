@@ -306,8 +306,8 @@ tableConnect.backgroundColor = UIColor.clear
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
                 ,options: 0, locale: nil)!
         mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy", options: 0, locale: nil)!
-            mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
-            mydateFormat11.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy , (HH,mm)", options: 0, locale: Locale.autoupdatingCurrent)!
+            mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: "EEE-dd-MMM-yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
+            mydateFormat11.dateFormat = DateFormatter.dateFormat(fromTemplate: "EEE-dd-MMM-yyyy , (HH,mm)", options: 0, locale: Locale.autoupdatingCurrent)!
 
             
             dbRefEmployers.child(self.employerID).observeSingleEvent(of:.value, with: {(snapshot) in
@@ -456,7 +456,7 @@ tableConnect.backgroundColor = UIColor.clear
             if ViewController.dateTimeFormat == "DateTime" { cell.l1.text = mydateFormat11.string(from: mydateFormat5.date(from: fInToDate)!)} else {cell.l1.text = mydateFormat10.string(from: mydateFormat5.date(from: fInToDate)!) } }
             else { cell.l1.text = "N/A"}
             
-            if record.fIndication3 == "📆" { cell.l8.image = billedImage}
+            if record.fIndication3 == "📆" { cell.l8.image = sandwatchImageGreen}
             if record.fIndication3 == "✏️"||record.fIndication3 == "Manual" { cell.l8.image = pencilImage}
             if record.fIndication3 == "↺" && record.fIndication == "🚩" {  cell.l8.image = roundImageNormal}
             if record.fIndication3 == "↺" && record.fIndication == "🏳" {  cell.l8.image = roundImageNormal }
