@@ -36,6 +36,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     var employerArray: [String:Int] = [:]
     var employerArray2: [String] = []
     var employerArray3: [String:String] = [:]
+    var employerNameForGoogle = ""
 
 
     // If modifying these scopes, delete your previously saved credentials by
@@ -167,12 +168,16 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
                 //outputText += "\(start2) - \(event.summary!)\r\n\(event.attendees)\r\n \(event.descriptionProperty)\r\n\r\n"
                 outputText += "\(calIn) - \(event.summary!)\r\n\r\n"
-                print (event.summary)
+                print ("\(event.summary!)")
                 print (employerArray3)
-                // print ([employerArray3[event.summary!]] )
-                let keyExists = employerArray3[event.summary!]
+                 print ([employerArray3[event.summary!]] )
+                let keyExists = employerArray3[("\(event.summary!)")]
+               // let keyExists = employerArray3["Goldstaub"]
 
-                if (keyExists)  != nil { employerId = employerArray3[event.summary!]!
+                print (keyExists)
+                
+
+                if (keyExists)  != nil { print ("CAL");employerId = employerArray3[event.summary!]!
                     saveToDB2()
                 } else { print ("nothing")//do nothing
                 }
@@ -211,11 +216,12 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
           
         print ("match")
         for eachEmployer in 0...(self.employerArray2.count-1){
-        self.dbRefEmployer.child(self.employerArray2[eachEmployer]).child("fEmployer").observeSingleEvent(of: .value, with: { (snapshot) in
-        let employerNameForGoogle = String(describing: snapshot.value!) as String
-        print ("tttt\(employerNameForGoogle)")
             
-        self.employerArray3[self.employerArray2[eachEmployer]] = employerNameForGoogle
+        self.dbRefEmployer.child(self.employerArray2[eachEmployer]).child("fEmployer").observeSingleEvent(of: .value, with: { (snapshot) in
+        self.employerNameForGoogle = String(describing: snapshot.value!)
+            print ("tttt\(self.employerNameForGoogle)")
+            
+            self.employerArray3[self.employerNameForGoogle] = self.employerArray2[eachEmployer]
             print("uuuu\(self.employerArray3)")
         })
         }//end of loop
