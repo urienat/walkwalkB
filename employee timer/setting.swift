@@ -413,7 +413,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
 
                 //self.dbRefEmployees.child(user!.uid).setValue(["femail" :emailUpdate, "fCreated"  : self.mydateFormat.string(from: Date()), "fName": "" , "fLastName": "", "fCell": "", "fCounter": "1000","fCurrency": self.cu!,  "fImageRef":"","fProgram":"0", "fSwitcher": "No","fTaxPrecentage":"0.0"])
                 
-            self.dbRefEmployees.child((user?.uid)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage": self.taxPrecentageUpdate,"fTaxName": self.taxNamerUpdate,  "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : "Over", "fDateTime": "DateTime","fConnect": "Off","fLogin":"Normal"])
+            self.dbRefEmployees.child((user?.uid)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage": self.taxPrecentageUpdate,"fTaxName": self.taxNamerUpdate,  "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : "Over", "fDateTime": "DateTime","fConnect": "Off","fLogin":"Normal","fLastCalander":"New"])
 
                 ViewController.dateTimeFormat = self.dateTimeUpdate
 

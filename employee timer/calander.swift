@@ -37,6 +37,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     var employerArray2: [String] = []
     var employerArray3: [String:String] = [:]
     var employerNameForGoogle = ""
+    var LastCalander: String?
 
 
     // If modifying these scopes, delete your previously saved credentials by
@@ -113,6 +114,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         } else {
       //      self.signInButton.isHidden = true
             self.output.isHidden = false
+            
             self.service.authorizer = user.authentication.fetcherAuthorizer()
             fetchEvents()
         }
@@ -122,9 +124,18 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     func fetchEvents() {
         let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")// instard of "primary"
 
-        query.maxResults = 50
+            query.maxResults = 50
+            self.dbRefEmployee.child(employeeId).observeSingleEvent(of: .value , with: { (snapshot) in
+
+            self.LastCalander = String(describing: snapshot.childSnapshot(forPath: "fLastCalander").value!) as String!
+            print(self.LastCalander!)
+            
         
-        query.timeMin = GTLRDateTime(date: (Date()-(3600*24*30)))
+                if self.LastCalander! == "New" {query.timeMin = GTLRDateTime(date: (Date()-(3600*24*30)))} else {query.timeMin = GTLRDateTime(date: self.mydateFormat5.date(from: self.LastCalander!)!  )
+                }
+                
+
+        })//end of dbref
         query.timeMax = GTLRDateTime(date: Date())
         //query.alwaysIncludeEmail = true
         query.singleEvents = true
@@ -178,8 +189,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 
 
                 if (keyExists)  != nil { print ("CAL"); print (event.iCalUID);employerId = employerArray3[event.summary!]!
-                    saveToDB2();
-                    GTLRCalendarQuery_EventsUpdate.query(withObject: event, calendarId: "primary", eventId: event.identifier!)
+                    saveToDB2()
+                 //avoid double entry   //GTLRCalendarQuery_EventsUpdate.query(withObject: event, calendarId: "primary", eventId: event.identifier!)
                     
                     print ("\(event.summary!)")
 
@@ -193,6 +204,10 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             outputText = "No upcoming events found."
         }
         output.text = outputText
+                // save last date
+        self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: Date())])
+
+        
     }
  
     func saveToDB2() {
