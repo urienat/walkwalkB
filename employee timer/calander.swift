@@ -121,6 +121,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     // Construct a query and get a list of upcoming events from the user calendar
     func fetchEvents() {
         let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")// instard of "primary"
+
         query.maxResults = 50
         
         query.timeMin = GTLRDateTime(date: (Date()-(3600*24*30)))
@@ -160,25 +161,29 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 calOut = self.mydateFormat6.string(from: end.date)
                 calOutFB = self.mydateFormat5.string(from: end.date)
                 employerFromMain = event.summary!
-
+                
                 _ = DateFormatter.localizedString(
                     from: start.date,
                     dateStyle: .short,
                     timeStyle: .short)
 
-                //outputText += "\(start2) - \(event.summary!)\r\n\(event.attendees)\r\n \(event.descriptionProperty)\r\n\r\n"
                 outputText += "\(calIn) - \(event.summary!)\r\n\r\n"
                 print ("\(event.summary!)")
                 print (employerArray3)
                  print ([employerArray3[event.summary!]] )
+                print (event.iCalUID)
                 let keyExists = employerArray3[("\(event.summary!)")]
-               // let keyExists = employerArray3["Goldstaub"]
 
                 print (keyExists)
                 
 
-                if (keyExists)  != nil { print ("CAL");employerId = employerArray3[event.summary!]!
-                    saveToDB2()
+                if (keyExists)  != nil { print ("CAL"); print (event.iCalUID);employerId = employerArray3[event.summary!]!
+                    saveToDB2();
+                    GTLRCalendarQuery_EventsUpdate.query(withObject: event, calendarId: "primary", eventId: event.identifier!)
+                    
+                    print ("\(event.summary!)")
+
+                    
                 } else { print ("nothing")//do nothing
                 }
                 
