@@ -26,10 +26,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     let mydateFormat7 = DateFormatter()
     
     
-    let updater = GTLRCalendar_Event()
-
-    
-    
     var calIn = ""
     var calInFB = ""
     
@@ -48,11 +44,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
     //private let scopes = [kGTLRAuthScopeCalendarReadonly]
-        private let scopes = [kGTLRAuthScopeCalendar]  
-
-    
-    private let service = GTLRCalendarService()
+    let scopes = [kGTLRAuthScopeCalendar]
+    let service = GTLRCalendarService()
     let output = UITextView()
+    let updater = GTLRCalendar_Event()
+
     
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,6 +66,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         let currentUser = FIRAuth.auth()?.currentUser
         print (currentUser as Any)
         if currentUser != nil {
+            updateRead()
+            
             print(currentUser!.uid)
             employeeId = (currentUser!.uid)
             //create zugot
@@ -108,6 +106,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         output.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         output.isHidden = true
         view.addSubview(output);
+        
     }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////
     
     
@@ -133,7 +132,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         print("0.1 \(self.LastCalander)")
         let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")// instard of "primary"
         query.maxResults = 50
-       
+
         self.dbRefEmployee.child(self.employeeId).observeSingleEvent(of: .value , with: { (snapshot) in
             self.LastCalander = String(describing: snapshot.childSnapshot(forPath: "fLastCalander").value!) as String!
         })//end of dbref
@@ -172,7 +171,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             showAlert(title: "Error", message: error.localizedDescription)
             return
         }
-        
+
         var outputText = ""
         if let events = response.items, !events.isEmpty {
             
@@ -218,7 +217,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                     print (updater)
 
                     DispatchQueue.main.asyncAfter(deadline: .now()){
-                        GTLRCalendarQuery_EventsPatch.query(withObject: self.updater , calendarId: "primary", eventId: id1!)
+                        GTLRCalendarQuery_EventsPatch.query(withObject: self.updater , calendarId: "primary", eventId:"6fimtn9v4vl3chpu2fj6dn8gjh")
                     }
                     
                     print (id1)
@@ -237,6 +236,13 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: Date())])
 
         
+    }
+    
+    func updateRead(){
+        updater.summary = "AAAA"
+
+        GTLRCalendarQuery_EventsPatch.query(withObject: self.updater , calendarId: "primary", eventId:"6fimtn9v4vl3chpu2fj6dn8gjh")
+
     }
  
     func saveToDB2() {
