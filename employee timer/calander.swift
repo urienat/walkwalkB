@@ -25,6 +25,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     let mydateFormat6 = DateFormatter()
     let mydateFormat7 = DateFormatter()
     
+    
+    let updater = GTLRCalendar_Event()
+
+    
+    
     var calIn = ""
     var calInFB = ""
     
@@ -42,7 +47,10 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
-    private let scopes = [kGTLRAuthScopeCalendarReadonly]
+    //private let scopes = [kGTLRAuthScopeCalendarReadonly]
+    private let scopes = [kGTLRAuthScopeCalendar]
+
+    
     private let service = GTLRCalendarService()
     let output = UITextView()
     
@@ -100,7 +108,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         output.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         output.isHidden = true
         view.addSubview(output);
-    }
+    }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////
+    
+    
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {
@@ -116,6 +126,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         }
     }
     
+    
+    
     // Construct a query and get a list of upcoming events
     func fetchEvents() {
         print("0.1 \(self.LastCalander)")
@@ -130,8 +142,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         print("0.2 \(self.LastCalander!)")
 
         if self.LastCalander! == "New" {query.timeMin = GTLRDateTime(date: (Date()-(3600*24*30)))
-            } else {
-            query.timeMin = GTLRDateTime(date: self.mydateFormat5.date(from: self.LastCalander!)!)
+            } else {query.timeMin = GTLRDateTime(date: (Date()-(3600*24*30)))//replace to avoid double reading
+           // query.timeMin = GTLRDateTime(date: self.mydateFormat5.date(from: self.LastCalander!)!)
             }//avoid reread of same period
             print("222")
 
@@ -148,10 +160,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         }//end of fetchevents
         
     
+    
     // Display the start dates and event summaries in the UITextView
     func displayResultWithTicket(
         ticket: GTLRServiceTicket,
-        finishedWithObject response : GTLRCalendar_Events,
+        finishedWithObject response :  GTLRCalendar_Events,
         error : NSError?) {
         
         
@@ -187,13 +200,28 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 print (event.iCalUID)
                 let keyExists = employerArray3[("\(event.summary!)")]
 
+
                 print (keyExists)
                 
 
                 if (keyExists)  != nil { print ("CAL"); print (event.iCalUID);employerId = employerArray3[event.summary!]!
                     saveToDB2()
-                 //avoid double entry   //GTLRCalendarQuery_EventsUpdate.query(withObject: event, calendarId: "primary", eventId: event.identifier!)
                     
+                  
+
+                 //avoid double entry
+                 let id1 = event.identifier
+                 let id2 = event.iCalUID
+                    
+                    updater.summary = "ighihih"
+                    updater.start =  event.start!
+                    updater.end = event.end!
+                    
+                    
+                        GTLRCalendarQuery_EventsUpdate.query(withObject: updater , calendarId: "primary", eventId: id2!) 
+
+                    print (id1,id2)
+                    print ("\(updater.summary!)")
                     print ("\(event.summary!)")
 
                     
@@ -252,6 +280,12 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         })//end of dbref employeeid
 
      }//end of find
+    
+    var emptyDictionary = [String: String]()
+    
+
+   
+    
     
     
 // alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////

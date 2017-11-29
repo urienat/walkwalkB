@@ -13,10 +13,7 @@ import FirebaseDatabase
 import MessageUI
 import Intents
 
-
-
 class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate {
-    
     
     @IBOutlet weak var tableConnect: UITableView!
    
