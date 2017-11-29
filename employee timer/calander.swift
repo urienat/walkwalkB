@@ -210,15 +210,16 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                   
 
                  //avoid double entry
-                 //let id1 = event.identifier
-                let id2 = event.iCalUID
+                 let id1 = event.identifier
                     
                     updater.summary = "ighihih"
-                  
-                   // GTLRCalendarQuery_EventsUpdate.query(withObject: self.updater , calendarId: "primary", eventId: id1!)
-                    GTLRCalendarQuery_EventsPatch.query(withObject: self.updater , calendarId: "primary", eventId: id2!)
+                    event.summary = "ighihih"
+
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+                        GTLRCalendarQuery_EventsPatch.query(withObject: self.updater , calendarId: "primary", eventId: id1!)
+                    }
                     
-                    print (id2)
+                    print (id1)
 
                     
                 } else { print ("nothing")//do nothing
