@@ -48,6 +48,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     let service = GTLRCalendarService()
     let output = UITextView()
     let updater = GTLRCalendar_Event()
+    var id1: String?
 
     
     
@@ -165,8 +166,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         ticket: GTLRServiceTicket,
         finishedWithObject response :  GTLRCalendar_Events,
         error : NSError?) {
-        
-        
         if let error = error {
             showAlert(title: "Error", message: error.localizedDescription)
             return
@@ -174,10 +173,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
         var outputText = ""
         if let events = response.items, !events.isEmpty {
-            
-            for event in events {
-                
-                
+        for event in events {
                 let start = event.start!.dateTime ?? event.start!.date!
                 let end = event.end!.dateTime ?? event.start!.date!
 
@@ -198,63 +194,44 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                  print ([employerArray3[event.summary!]] )
                 let keyExists = employerArray3[("\(event.summary!)")]
 
-
-                print (keyExists)
-                
-
                 if (keyExists)  != nil { print ("CAL");employerId = employerArray3[event.summary!]!
                     saveToDB2()
-                    
                   
-
-                 //avoid double entry
-                 let id1 = event.identifier
-                    
-                    updater.summary = "ighihih"
-                    event.summary = "ighihih"
-                    
-                   // print(event)
-                    print (updater)
-
-                    updateRead()
-
-                    
+                //avoid double entry
+                id1 = event.identifier
+                updater.summary = ("\(event.summary)+")
+                updateRead()
+   
                 } else { print ("nothing")//do nothing
                 }
-                
-               
-            }
-        } else {
-            outputText = "No upcoming events found."
-        }
-        output.text = outputText
+            
+                }
+                } else {
+                outputText = "No upcoming events found."
+                }
+                output.text = outputText
                 // save last date
-        self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: Date())])
-
-        
-    }
+                self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: Date())])
+                }
     
     func updateRead(){
-        updater.summary = "AAAA"
-
-        let query2 = GTLRCalendarQuery_EventsPatch.query(withObject: self.updater , calendarId: "primary", eventId:"6fimtn9v4vl3chpu2fj6dn8gjh")
-        service.executeQuery(query2) { (ticket: GTLRServiceTicket, Any, error) in
-        if let error = error {
-        self.showAlert(title: "Error", message: error.localizedDescription)
-        return
-        }
-        }
-        
-        }//end of func
+    let query2 = GTLRCalendarQuery_EventsPatch.query(withObject: self.updater , calendarId: "primary", eventId:id1!)
+    service.executeQuery(query2) { (ticket: GTLRServiceTicket, Any, error) in
+    if let error = error {
+    self.showAlert(title: "Error", message: error.localizedDescription)
+    return
+    }//end of if error
+    }
+    }//end of func
  
     func saveToDB2() {
-        let record = ["fIn" : calInFB, "fOut" : calOutFB, "fTotal" : "-1", "fEmployer": String (describing : employerFromMain), "fIndication" : " " ,"fIndication2" :" " ,"fIndication3" :"📆","fStatus" : "Pre", "FPoo" :"No", "fPee" : "No","fEmployeeRef": String (describing : employeeId),"fEmployerRef":  String (describing : employerId)]
+    let record = ["fIn" : calInFB, "fOut" : calOutFB, "fTotal" : "-1", "fEmployer": String (describing : employerFromMain), "fIndication" : " " ,"fIndication2" :" " ,"fIndication3" :"📆","fStatus" : "Pre", "FPoo" :"No", "fPee" : "No","fEmployeeRef": String (describing : employeeId),"fEmployerRef":  String (describing : employerId)]
             
-            let recordRefence = self.dbRef.childByAutoId()
-            recordRefence.setValue(record)
+    let recordRefence = self.dbRef.childByAutoId()
+    recordRefence.setValue(record)
         
-        self.dbRefEmployee.child(employeeId).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-((self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)!)])
-        self.dbRefEmployer.child(self.employerId).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-((self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)!)])
+    self.dbRefEmployee.child(employeeId).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-((self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)!)])
+    self.dbRefEmployer.child(self.employerId).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-((self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)!)])
         
     }//end of save
     
