@@ -147,6 +147,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
     @IBAction func exportData(_ sender: Any) {alert()}
     @IBOutlet weak var eventsNumber: UILabel!
+    @IBOutlet weak var eventsLbl: UILabel!
+    
     @IBOutlet weak var totalTime: UILabel!
     @IBOutlet weak var amount: UILabel!
     @IBOutlet weak var perEvents: UILabel!
@@ -1059,7 +1061,7 @@ tableConnect.backgroundColor = UIColor.clear
         DispatchQueue.main.asyncAfter(deadline: .now()+3){
              //trial
             self.eventsNumber.text = String(self.eventCounter)
-            
+            if self.eventCounter == 1 {self.eventsLbl.text = "Session"} else {self.eventsLbl.text = "Sessions"}
             
             if self.Status == "All" /*|| self.Status == "Paid"*/{self.generalApproval.isHidden = true}
             
