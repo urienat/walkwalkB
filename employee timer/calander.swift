@@ -116,41 +116,41 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             self.output.isHidden = false
             
             self.service.authorizer = user.authentication.fetcherAuthorizer()
+            
             fetchEvents()
         }
     }
     
     // Construct a query and get a list of upcoming events
     func fetchEvents() {
+        print("0.1 \(self.LastCalander)")
         let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")// instard of "primary"
-
-            query.maxResults = 50
-        /*
-            self.dbRefEmployee.child(employeeId).observeSingleEvent(of: .value , with: { (snapshot) in
+        query.maxResults = 50
+       
+        self.dbRefEmployee.child(self.employeeId).observeSingleEvent(of: .value , with: { (snapshot) in
             self.LastCalander = String(describing: snapshot.childSnapshot(forPath: "fLastCalander").value!) as String!
-            print(self.LastCalander!)
-               if self.LastCalander! == "New" {query.timeMin = GTLRDateTime(date: (Date()-(3600*24*30)))} else {query.timeMin = GTLRDateTime(date: self.mydateFormat5.date(from: self.LastCalander!)!  )
-                 }
-                
+        })//end of dbref
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+        print("0.2 \(self.LastCalander!)")
 
-               
-            })//end of dbref
-       */
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0){
+        if self.LastCalander! == "New" {query.timeMin = GTLRDateTime(date: (Date()-(3600*24*30)))
+            } else {
+            query.timeMin = GTLRDateTime(date: self.mydateFormat5.date(from: self.LastCalander!)!)
+            }
+            print("222")
+
             query.timeMax = GTLRDateTime(date: Date())
             //query.alwaysIncludeEmail = true
             query.singleEvents = true
             query.orderBy = kGTLRCalendarOrderByStartTime
-            
-            query.timeMin = GTLRDateTime(date: (Date()-(3600*24*30)))
-        self.service.executeQuery(
+            self.service.executeQuery(
             query,
             delegate: self,
-            
             didFinish: #selector(self.displayResultWithTicket(ticket:finishedWithObject:error:)))
-        }
+        }//end of dispatch
        
-    }
+        }//end of fetchevents
         
     
     // Display the start dates and event summaries in the UITextView
