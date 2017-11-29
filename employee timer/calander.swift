@@ -112,8 +112,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             self.output.isHidden = false
             
             self.service.authorizer = user.authentication.fetcherAuthorizer()
-            
-            fetchEvents()
+            alert123()
         }
     }
     
@@ -270,5 +269,25 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         )
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
+    }
+    
+    func  alert123(){
+        
+        let alertController123 = UIAlertController(title: ("Download Calander Session") , message: "You are about to download calander's sessions from last 30 days that use the exact account name as event's name - are you sure?" , preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            //download
+            self.fetchEvents()
+
+            
+        }
+        let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+            //do nothing
+        }
+        
+        alertController123.addAction(OKAction)
+        alertController123.addAction(CancelAction)
+        
+        self.present(alertController123, animated: true, completion: nil)
+        
     }
 }

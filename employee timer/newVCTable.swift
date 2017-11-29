@@ -20,7 +20,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
     @IBOutlet weak var tableConnect: UITableView!
    
- //   let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
     let Vimage = UIImage(named: "due")
     let nonVimage = UIImage(named: "emptyV")
     let paidImage = UIImage(named: "paid")
@@ -42,7 +41,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var midCalc = "0.0"
     var midCalc2 = "0.0"
     var midCalc3 = "0.0"
-      var taxForBlock = ""
+    var taxForBlock = ""
     var taxSwitch: String?
     var taxCalc: String?
     var stam: Double?
@@ -51,10 +50,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var taxationBlock = ""
     
     
-    
-    let queue1 = DispatchQueue(label: "queue for solution")
-    
-     let keeper = UserDefaults.standard
+    let keeper = UserDefaults.standard
     var rememberMe1 = 0
     
     var totalForReport: String?

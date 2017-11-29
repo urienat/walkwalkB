@@ -188,7 +188,11 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
     
     //The  appear
     
-        @IBOutlet weak var timeBackground: UIView!
+    @IBOutlet weak var calDL: UIButton!
+    @IBAction func calDL(_ sender: Any) {
+    }
+    
+    @IBOutlet weak var timeBackground: UIView!
         @IBOutlet weak var timeh: UILabel!
         @IBOutlet weak var timem: UILabel!
         @IBOutlet weak var times: UILabel!
@@ -1293,6 +1297,7 @@ print (snapshot.childSnapshot(forPath: "fImageRef").value!)
         self.present(alertController30, animated: true, completion: nil)
     }
     
+ 
     //Logic alert
     func logicAlert () {
         
