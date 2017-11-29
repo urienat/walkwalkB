@@ -199,7 +199,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                   
                 //avoid double entry
                 id1 = event.identifier
-                updater.summary = ("\(event.summary)+")
+                updater.summary = ("\(event.summary!)+")
                 updateRead()
    
                 } else { print ("nothing")//do nothing
