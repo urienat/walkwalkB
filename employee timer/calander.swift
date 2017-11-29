@@ -66,7 +66,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         let currentUser = FIRAuth.auth()?.currentUser
         print (currentUser as Any)
         if currentUser != nil {
-            updateRead()
             
             print(currentUser!.uid)
             employeeId = (currentUser!.uid)
@@ -159,6 +158,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         }//end of fetchevents
         
     
+
     
     // Display the start dates and event summaries in the UITextView
     func displayResultWithTicket(
@@ -216,11 +216,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                    // print(event)
                     print (updater)
 
-                    DispatchQueue.main.asyncAfter(deadline: .now()){
-                        GTLRCalendarQuery_EventsPatch.query(withObject: self.updater , calendarId: "primary", eventId:"6fimtn9v4vl3chpu2fj6dn8gjh")
-                    }
-                    
-                    print (id1)
+                    updateRead()
 
                     
                 } else { print ("nothing")//do nothing
@@ -241,9 +237,15 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     func updateRead(){
         updater.summary = "AAAA"
 
-        GTLRCalendarQuery_EventsPatch.query(withObject: self.updater , calendarId: "primary", eventId:"6fimtn9v4vl3chpu2fj6dn8gjh")
-
-    }
+        let query2 = GTLRCalendarQuery_EventsPatch.query(withObject: self.updater , calendarId: "primary", eventId:"6fimtn9v4vl3chpu2fj6dn8gjh")
+        service.executeQuery(query2) { (ticket: GTLRServiceTicket, Any, error) in
+        if let error = error {
+        self.showAlert(title: "Error", message: error.localizedDescription)
+        return
+        }
+        }
+        
+        }//end of func
  
     func saveToDB2() {
         let record = ["fIn" : calInFB, "fOut" : calOutFB, "fTotal" : "-1", "fEmployer": String (describing : employerFromMain), "fIndication" : " " ,"fIndication2" :" " ,"fIndication3" :"📆","fStatus" : "Pre", "FPoo" :"No", "fPee" : "No","fEmployeeRef": String (describing : employeeId),"fEmployerRef":  String (describing : employerId)]
