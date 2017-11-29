@@ -65,12 +65,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             print(currentUser!.uid)
             employeeId = (currentUser!.uid)
             //create zugot
-            
             findEmployerId()
-            
         }
-        
-        
         
         // Configure Google Sign-in.
         GIDSignIn.sharedInstance().delegate = self
@@ -137,7 +133,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         if self.LastCalander! == "New" {query.timeMin = GTLRDateTime(date: (Date()-(3600*24*30)))
             } else {
             query.timeMin = GTLRDateTime(date: self.mydateFormat5.date(from: self.LastCalander!)!)
-            }
+            }//avoid reread of same period
             print("222")
 
             query.timeMax = GTLRDateTime(date: Date())
