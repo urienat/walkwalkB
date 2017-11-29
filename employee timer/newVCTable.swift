@@ -144,13 +144,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         billSender.isEnabled = false
         releaser = 1
         
-    //refresh
-        
-    StatusChosen.isMomentary = true
-    segmentedPressed = 1
-    StatusChosen.selectedSegmentIndex = segmentedPressed!
-    StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-    StatusChosen.isMomentary = false
+    refresh(presser: 1)
     
     DispatchQueue.main.asyncAfter(deadline: .now()+4.4){
             print(self.appArray.count)
@@ -174,22 +168,12 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     generalApproval.isHidden = true
 
     if  checkBoxGeneral == 2 {
-    //refresh
-            StatusChosen.isMomentary = true
-            segmentedPressed = 1
-            StatusChosen.selectedSegmentIndex = segmentedPressed!
-            StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-            StatusChosen.isMomentary = false
+    refresh(presser: 1)
         }
         
-        if  checkBoxGeneral == 1         {
-            //refresh
-            StatusChosen.isMomentary = true
-            segmentedPressed = 1
-            StatusChosen.selectedSegmentIndex = segmentedPressed!
-            StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-            StatusChosen.isMomentary = false
-        }
+    if  checkBoxGeneral == 1         {
+    refresh(presser: 1)
+    }
         
         DispatchQueue.main.asyncAfter(deadline: .now()+1){
             self.alert11()
@@ -876,13 +860,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     let alertController27 = UIAlertController(title: ("Bill records") , message:" There are no  sessions with 'Due' status. Please mark sessions that you would like to bill by touching the empty square or create new 'sessions'." , preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-        
-    //refresh
-    self.StatusChosen.isMomentary = true
-    self.segmentedPressed = 0
-    self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
-    self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-    self.StatusChosen.isMomentary = false
+     
+    self.refresh(presser: 0)
     }
         
     alertController27.addAction(OKAction)
@@ -895,12 +874,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
     self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
     DispatchQueue.main.asyncAfter(deadline: .now()+1){
-    //refresh
-    self.StatusChosen.isMomentary = true
-    self.segmentedPressed = 0
-    self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
-    self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-    self.StatusChosen.isMomentary = false
+    self.refresh(presser: 0)
     }
     }
     
