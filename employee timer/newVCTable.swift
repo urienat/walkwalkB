@@ -324,7 +324,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             if record.fIndication3 == "GPS" {  cell.l8.image = sandwatchImageGreen}
 
      
-            if record.fStatus == "Approved" { cell.approval.setImage(Vimage, for: .normal)}
+            if record.fStatus == "Approved" { cell.approval.setImage(Vimage, for: .normal);eventCounter+=1}
             if record.fStatus == "Pre" { cell.approval.setImage(nonVimage, for: .normal)}
             if record.fStatus == "Paid" { cell.approval.setImage(billedImage, for: .normal)}
             
@@ -551,7 +551,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.appArray.append(appStatus!)
         self.tableConnect.reloadData()
                             
-        self.eventCounter+=1
+        //self.eventCounter+=1
         let (hForTotal,mForTotal) = self.secondsTo(seconds: (self.timeCounter))
         if self.payment=="Normal"{self.totalTime.isHidden = false; self.totalTime.text = String(Int(hForTotal)) + "h:" + String (Int(mForTotal)) + "m"} else {self.totalTime.text = "" ; self.totalTime.isHidden = true}
                             
