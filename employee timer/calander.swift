@@ -48,7 +48,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
     //private let scopes = [kGTLRAuthScopeCalendarReadonly]
-    private let scopes = [kGTLRAuthScopeCalendar]
+        private let scopes = [kGTLRAuthScopeCalendar]  
 
     
     private let service = GTLRCalendarService()
@@ -197,14 +197,13 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 print ("\(event.summary!)")
                 print (employerArray3)
                  print ([employerArray3[event.summary!]] )
-                print (event.iCalUID)
                 let keyExists = employerArray3[("\(event.summary!)")]
 
 
                 print (keyExists)
                 
 
-                if (keyExists)  != nil { print ("CAL"); print (event.iCalUID);employerId = employerArray3[event.summary!]!
+                if (keyExists)  != nil { print ("CAL");employerId = employerArray3[event.summary!]!
                     saveToDB2()
                     
                   
@@ -214,8 +213,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                     
                     updater.summary = "ighihih"
                     event.summary = "ighihih"
+                    
+                   // print(event)
+                    print (updater)
 
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+                    DispatchQueue.main.asyncAfter(deadline: .now()){
                         GTLRCalendarQuery_EventsPatch.query(withObject: self.updater , calendarId: "primary", eventId: id1!)
                     }
                     
