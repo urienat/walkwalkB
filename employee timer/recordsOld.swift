@@ -13,7 +13,7 @@ import FirebaseDatabase
 import MessageUI
 import Intents
 
-extension(ViewController){
+extension(newVCTable){
 /*switch checkBoxGeneral {
  //pre
  case 0: generalApproval.setImage(billedImage, for: .normal); checkBoxGeneral = 1 //
