@@ -410,8 +410,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         billSender.isEnabled = false
         buttonRow = sender.tag
         
-        if appArray[buttonRow] == "Pre" { newVCTable.checkBox = 1; statusTemp = "Approved";}
-        else if appArray[buttonRow] == "Approved" { newVCTable.checkBox = 0; statusTemp = "Pre"}
+            if appArray[buttonRow] == "Pre" { newVCTable.checkBox = 1; statusTemp = "Approved";eventCounter+=1;amountCalc()}
+            else if appArray[buttonRow] == "Approved" { newVCTable.checkBox = 0; statusTemp = "Pre";eventCounter-=1;amountCalc()}
         else if  appArray[buttonRow] == "Paid" {newVCTable.checkBox = 2; statusTemp = "Paid";alert12()}
         print( "apparray buttonarray\(appArray[buttonRow])")
         print( "checkBox\(newVCTable.checkBox)")
@@ -637,7 +637,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         DispatchQueue.main.asyncAfter(deadline: .now()+3){
         //trial
         self.eventsNumber.text = String(self.eventCounter)
-        if self.eventCounter == 1 {self.eventsLbl.text = "Session"} else {self.eventsLbl.text = "Sessions"}
+        if self.eventCounter == 1 {self.eventsLbl.text = "Due session"} else {self.eventsLbl.text = "Due Sessions"}
         if self.Status == "All" /*|| self.Status == "Paid"*/{self.generalApproval.isHidden = true}
         let (hForTotal,mForTotal) = self.secondsTo(seconds: self.timeCounter)
         if self.payment=="Normal"  {self.totalTime.text = String(Int(hForTotal)) + "h:" + String (Int(mForTotal)) + "m" ; self.totalTime.isHidden = false}else {self.totalTime.text = "" ; self.totalTime.isHidden = true}
@@ -657,6 +657,12 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }//end of dispatch
 
         }//end of fetch
+    
+    func amountCalc(){
+        self.calc = (Double(self.eventCounter))*(self.Employerrate)
+        self.amount.text =  String(Double(self.calc).roundTo(places: 2))
+        
+    }
     
         func noFB() {
         self.thinking.stopAnimating()
