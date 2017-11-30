@@ -31,9 +31,6 @@ class recordsStruct: NSObject{
 
 class employersStruct: NSObject{
     var fEmployer: String?
-    
-    var fLocationX: String?
-    var fLocationY: String?
     var fPayment: String?
     var fMethood: String?
     var fEmployerRate: String?

@@ -58,7 +58,6 @@ extension(ViewController){
         recordInProcess = pickerIP[indexPath.row]
         employerIDToS = employerIdArray2[indexPath.row] as! String
         bringEmployerData()
-        bringCoordninates()
         
         // reset varibales on select
         poo  = "No"

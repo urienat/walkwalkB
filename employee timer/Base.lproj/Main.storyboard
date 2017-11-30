@@ -68,27 +68,6 @@
                                                     <action selector="takePhoto:" destination="nD7-g7-jdd" eventType="touchUpInside" id="mmu-iR-3hK"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOn-XC-Hk1">
-                                                <rect key="frame" x="128.5" y="234" width="50" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="YBJ-Xn-ZA0"/>
-                                                    <constraint firstAttribute="height" constant="35" id="tdg-eP-JL7"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="15"/>
-                                                <state key="normal" title=" ">
-                                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="setGPS:" destination="nD7-g7-jdd" eventType="touchUpInside" id="4r2-Se-Ccm"/>
-                                                </connections>
-                                            </button>
-                                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyV" translatesAutoresizingMaskIntoConstraints="NO" id="3Hv-yJ-f7d" userLabel="GPS OK">
-                                                <rect key="frame" x="135.5" y="234" width="35" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="0LR-3o-aNb"/>
-                                                    <constraint firstAttribute="width" constant="35" id="3v7-FB-zQK"/>
-                                                </constraints>
-                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBM-wj-30S">
                                                 <rect key="frame" x="8" y="84" width="70" height="30"/>
                                                 <constraints>
@@ -305,7 +284,7 @@
                                                     <action selector="pPayment:" destination="nD7-g7-jdd" eventType="valueChanged" id="egd-7f-z5H"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypz-fk-HuR" userLabel="info2">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypz-fk-HuR" userLabel="info2">
                                                 <rect key="frame" x="90" y="236" width="15" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="Tza-nd-c6e"/>
@@ -357,16 +336,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home GPS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifs-2W-Er8">
-                                                <rect key="frame" x="8" y="236" width="90" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="OK6-IP-uZA"/>
-                                                    <constraint firstAttribute="height" constant="30" id="qL5-Tw-1Bu"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="19"/>
-                                                <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last name is the only obligatory field" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mf8-Uq-Tl6" userLabel="obligatory">
                                                 <rect key="frame" x="4" y="286" width="312" height="21"/>
                                                 <constraints>
@@ -385,8 +354,6 @@
                                             </imageView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="ifs-2W-Er8" firstAttribute="top" secondItem="mn0-EA-CCe" secondAttribute="bottom" constant="8" id="0fS-95-st1"/>
-                                            <constraint firstItem="3Hv-yJ-f7d" firstAttribute="centerX" secondItem="BEA-GK-5ua" secondAttribute="centerX" id="1UW-SX-SM0"/>
                                             <constraint firstItem="MWa-6n-maP" firstAttribute="top" secondItem="myh-hV-PQf" secondAttribute="bottom" constant="8" id="1a6-tE-hSh"/>
                                             <constraint firstItem="MWa-6n-maP" firstAttribute="leading" secondItem="kjJ-qf-Ai6" secondAttribute="leading" constant="8" id="2Ee-nG-a9e"/>
                                             <constraint firstItem="PgN-Sp-vUs" firstAttribute="leading" secondItem="kjJ-qf-Ai6" secondAttribute="leading" constant="8" id="2RF-4v-iXd"/>
@@ -395,7 +362,6 @@
                                             <constraint firstItem="bFk-lf-7tT" firstAttribute="centerY" secondItem="hwh-Qn-68b" secondAttribute="centerY" id="711-PP-TF2"/>
                                             <constraint firstItem="xM3-e2-D0h" firstAttribute="centerY" secondItem="myh-hV-PQf" secondAttribute="centerY" id="8a3-eA-omZ"/>
                                             <constraint firstItem="myh-hV-PQf" firstAttribute="top" secondItem="cRX-nG-wk8" secondAttribute="bottom" constant="8" id="9AZ-Ov-GZp"/>
-                                            <constraint firstItem="ypz-fk-HuR" firstAttribute="top" secondItem="ifs-2W-Er8" secondAttribute="top" id="9Vh-7c-bBX"/>
                                             <constraint firstItem="cRX-nG-wk8" firstAttribute="top" secondItem="BV5-Mg-kcY" secondAttribute="bottom" constant="8" id="Aaz-IG-3iu"/>
                                             <constraint firstItem="tPs-Eu-2ZP" firstAttribute="centerX" secondItem="kjJ-qf-Ai6" secondAttribute="centerX" id="AkQ-6h-gkD"/>
                                             <constraint firstItem="mf8-Uq-Tl6" firstAttribute="top" secondItem="MWa-6n-maP" secondAttribute="bottom" constant="20" id="B94-c1-9Mj"/>
@@ -410,16 +376,12 @@
                                             <constraint firstItem="Tvj-0H-np8" firstAttribute="leading" secondItem="kjJ-qf-Ai6" secondAttribute="leading" constant="8" id="JIO-N6-wDY"/>
                                             <constraint firstItem="wTn-MV-ILJ" firstAttribute="centerY" secondItem="tPs-Eu-2ZP" secondAttribute="centerY" id="Jcd-N7-m9q"/>
                                             <constraint firstItem="nlo-y1-HI5" firstAttribute="top" secondItem="nxc-fT-4aR" secondAttribute="bottom" constant="8" id="Jut-Qe-AFS"/>
-                                            <constraint firstItem="ypz-fk-HuR" firstAttribute="leading" secondItem="ifs-2W-Er8" secondAttribute="trailing" constant="-8" id="JwT-pQ-TzE"/>
-                                            <constraint firstItem="ifs-2W-Er8" firstAttribute="leading" secondItem="kjJ-qf-Ai6" secondAttribute="leading" constant="8" id="Kku-Ic-uLp"/>
                                             <constraint firstItem="cRX-nG-wk8" firstAttribute="leading" secondItem="kjJ-qf-Ai6" secondAttribute="leading" constant="8" id="L5T-zJ-Lab"/>
                                             <constraint firstItem="hOn-5e-AV7" firstAttribute="height" secondItem="5Rw-j6-6DO" secondAttribute="height" id="LAg-1b-jrY"/>
                                             <constraint firstItem="tPs-Eu-2ZP" firstAttribute="top" secondItem="mf8-Uq-Tl6" secondAttribute="bottom" constant="8" id="McN-6M-pWf"/>
                                             <constraint firstItem="xM3-e2-D0h" firstAttribute="height" secondItem="hwh-Qn-68b" secondAttribute="height" id="Mub-0n-eSa"/>
-                                            <constraint firstItem="3Hv-yJ-f7d" firstAttribute="centerY" secondItem="ifs-2W-Er8" secondAttribute="centerY" id="ODo-Dp-Xy7"/>
                                             <constraint firstItem="CBM-wj-30S" firstAttribute="top" secondItem="Tvj-0H-np8" secondAttribute="bottom" constant="8" id="PUC-GQ-0hn"/>
                                             <constraint firstItem="hwh-Qn-68b" firstAttribute="leading" secondItem="xM3-e2-D0h" secondAttribute="trailing" constant="3" id="QjQ-QD-r18"/>
-                                            <constraint firstItem="bOn-XC-Hk1" firstAttribute="centerY" secondItem="3Hv-yJ-f7d" secondAttribute="centerY" id="TRx-tG-UTy"/>
                                             <constraint firstItem="wTn-MV-ILJ" firstAttribute="width" secondItem="tPs-Eu-2ZP" secondAttribute="width" id="UGH-dr-7Hv"/>
                                             <constraint firstItem="bFk-lf-7tT" firstAttribute="leading" secondItem="hwh-Qn-68b" secondAttribute="trailing" constant="5" id="VrK-ft-1bf"/>
                                             <constraint firstItem="Clb-ky-rEY" firstAttribute="leading" secondItem="nlo-y1-HI5" secondAttribute="leading" id="WIL-qP-TOg"/>
@@ -431,7 +393,6 @@
                                             <constraint firstItem="mf8-Uq-Tl6" firstAttribute="leading" secondItem="kjJ-qf-Ai6" secondAttribute="leading" constant="4" id="dGj-uy-Xgq"/>
                                             <constraint firstItem="mn0-EA-CCe" firstAttribute="leading" secondItem="kjJ-qf-Ai6" secondAttribute="leading" constant="8" id="eSF-qA-XdW"/>
                                             <constraint firstItem="9f3-Ix-fua" firstAttribute="leading" secondItem="3ey-yI-Stf" secondAttribute="leading" id="eXc-z1-cRR"/>
-                                            <constraint firstItem="bOn-XC-Hk1" firstAttribute="centerX" secondItem="3Hv-yJ-f7d" secondAttribute="centerX" id="eZI-aD-QyU"/>
                                             <constraint firstItem="3ey-yI-Stf" firstAttribute="trailing" secondItem="nlo-y1-HI5" secondAttribute="trailing" id="epd-EX-FqG"/>
                                             <constraint firstItem="nxc-fT-4aR" firstAttribute="centerY" secondItem="PgN-Sp-vUs" secondAttribute="centerY" id="evI-Zs-TXz"/>
                                             <constraint firstItem="5Rw-j6-6DO" firstAttribute="top" secondItem="kjJ-qf-Ai6" secondAttribute="top" constant="12" id="gYV-Ka-y8u"/>
@@ -550,14 +511,12 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="620"/>
                     <connections>
-                        <outlet property="GPStitle" destination="bOn-XC-Hk1" id="eTt-fV-rCN"/>
                         <outlet property="activeButton" destination="wTn-MV-ILJ" id="ChB-z8-CZB"/>
                         <outlet property="activeEmployer" destination="tPs-Eu-2ZP" id="J8N-1w-sUj"/>
                         <outlet property="bills" destination="Rlt-lE-oNq" id="gbx-UO-2RY"/>
                         <outlet property="connect" destination="IUy-hN-OMw" id="xgw-J5-XPw"/>
                         <outlet property="connectTitle" destination="A9d-xz-Q5S" id="6oA-24-VW7"/>
                         <outlet property="currencySign" destination="xM3-e2-D0h" id="ARW-xc-pmW"/>
-                        <outlet property="imageGps" destination="3Hv-yJ-f7d" id="11T-Il-nW7"/>
                         <outlet property="infoPayment" destination="a8w-xK-m3A" id="KtU-xR-ZGr"/>
                         <outlet property="invite" destination="wVP-gt-AU3" id="qoi-Xz-2Xe"/>
                         <outlet property="leash" destination="V8H-gy-tTz" id="7t5-6u-vSL"/>
@@ -1046,19 +1005,6 @@
                                     <constraint firstAttribute="width" constant="150" id="zuu-ll-odg"/>
                                 </constraints>
                             </imageView>
-                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="3dt-Xh-ZbI" userLabel="Gps distance">
-                                <rect key="frame" x="215" y="253" width="80" height="30"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" notEnabled="YES"/>
-                                </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="tOY-Jj-ntV"/>
-                                    <constraint firstAttribute="height" constant="30" id="zJY-TY-5Em"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqu-UG-4qJ" userLabel="pooBackground">
                                 <rect key="frame" x="60" y="200" width="200" height="30"/>
                                 <subviews>
@@ -1183,7 +1129,6 @@
                         <constraints>
                             <constraint firstItem="lxT-w2-3r9" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="0Ud-I2-4q7"/>
                             <constraint firstItem="fEo-2V-FTr" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="0Ui-fH-QHB"/>
-                            <constraint firstItem="3dt-Xh-ZbI" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" constant="95" id="0bY-5K-D5W"/>
                             <constraint firstItem="XDi-hZ-CdO" firstAttribute="centerY" secondItem="Cq4-SE-U6N" secondAttribute="centerY" id="100-Io-J4L"/>
                             <constraint firstItem="JyP-95-znE" firstAttribute="top" secondItem="yHg-YC-CqC" secondAttribute="bottom" id="1hb-Xe-QgI"/>
                             <constraint firstAttribute="trailing" secondItem="JEU-k8-q20" secondAttribute="trailing" id="2OL-F2-fVW"/>
@@ -1261,7 +1206,6 @@
                         <outlet property="employerListHeiget" destination="QAK-61-qij" id="DuM-13-Fpw"/>
                         <outlet property="employerListTop" destination="WI7-6r-u9D" id="VTG-on-q7b"/>
                         <outlet property="googleCalander" destination="yFh-ig-nQ8" id="QP9-Pr-mO1"/>
-                        <outlet property="gpsDistance" destination="3dt-Xh-ZbI" id="NSn-J7-yxs"/>
                         <outlet property="peeSwitch" destination="qI3-MF-d0a" id="LWy-mu-dxw"/>
                         <outlet property="petFile" destination="nYU-wY-z3v" id="6YC-0W-eQA"/>
                         <outlet property="pooBackground" destination="bqu-UG-4qJ" id="riw-tI-F4h"/>

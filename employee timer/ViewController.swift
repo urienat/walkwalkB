@@ -9,14 +9,12 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
-import CoreLocation
-import MapKit
 import AVFoundation
 import Google
 import GoogleSignIn
 import GoogleAPIClientForREST
 
-class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate ,UITableViewDelegate,UITableViewDataSource{
+class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     
     var window: UIWindow?
 
@@ -95,18 +93,11 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
     var roundHour = 0
     var roundDay = 0
     var total = 0
-    var gpsTag = ""
-    var gpsTag2 = ""
+    
 
     var activeId = ""
     var activeid2 = ""
     var  recordInProcess = ""
-    
-    let locationManager = CLLocationManager()
-    var employerLocation: CLLocation?
-    var location :CLLocation?
-    
-    
     
     var employerItem = ""
     var profileImageUrl = ""
@@ -218,7 +209,6 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
         @IBOutlet weak var blinker: UILabel!
         @IBOutlet weak var blinker2: UILabel!
         @IBOutlet weak var chooseEmployer: UIButton!
-        @IBOutlet weak var gpsDistance: UITextField!
         @IBOutlet weak var animationImage: UIImageView!
     @IBOutlet weak var textAdd: UITextView!
     
@@ -258,15 +248,6 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
             self.postStartView()
 
         self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").updateChildValues([(self.employerIDToS):1]) //consider chane font color
-        print ("location:\(String(describing: location))")
-        print ("employerLocation:\(String(describing: employerLocation))")
-        if let distance = location?.distance(from: employerLocation!) {
-            gpsDistance.text = String(Int(distance))
-            if distance > 80 {print ("distance is far \( distance)");  gpsTag = "🚩"}
-            else {print ("distance is OK \(distance)"); gpsTag = "🏳"}
-            print ("location:\(String(describing: location))")
-        } //end of if let distance
-        
         //timer loop
         self.employeeTimer.invalidate()
         //employeeCounter = 0
@@ -277,7 +258,7 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
         dIn2 = mydateFormat2.string(from: Date()) //brings the a date as a string
         DateIn.text = "Started:  " + self.dIn2
        
-        let record = ["fIn" : dIn, "fEmployer": String (describing : employerToS),"fEmployeeRef": employeeIDToS,"fEmployerRef": employerIDToS, "fIndication" : gpsTag,"fStatus" : "W" , "fPoo" : "No", "fPee" : "No"]
+        let record = ["fIn" : dIn, "fEmployer": String (describing : employerToS),"fEmployeeRef": employeeIDToS,"fEmployerRef": employerIDToS,"fStatus" : "W" , "fPoo" : "No", "fPee" : "No"]
         let fInRef = dbRef.childByAutoId()
         fInRef.setValue(record)
         print (String(describing:self.chooseEmployer.currentTitle!))
@@ -302,21 +283,13 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
 
                
                 self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").updateChildValues([(self.employerIDToS):1]) //consider chane font color
-                print ("location:\(String(describing: location))")
-                print ("employerLocation:\(String(describing: employerLocation))")
-                if let distance = location?.distance(from: employerLocation!) {
-                    gpsDistance.text = String(Int(distance))
-                    if distance > 80 {print ("distance is far \( distance)");  gpsTag = "🚩"}
-                    else {print ("distance is OK \(distance)"); gpsTag = "🏳"}
-                    print ("location:\(String(describing: location))")
-                } //end of if let distance
                 
                 //intial date and time of the timer
                 dIn =  mydateFormat5.string(from: Date()) //brings the a date as a string
                 dIn2 = mydateFormat2.string(from: Date()) //brings the a date as a string
                // DateIn.text = "Started:  " + self.dIn2
                 
-                let record = ["fIn" : dIn, "fOut": dIn,"fIndication2":gpsTag,"fIndication3": "↺","fTotal":"-1", "fEmployer": String (describing : employerToS),"fEmployeeRef": employeeIDToS,"fEmployerRef": employerIDToS, "fIndication" : gpsTag,"fStatus" : "Pre" , "fPoo" : "No", "fPee" : "No"]
+                let record = ["fIn" : dIn, "fOut": dIn,"fIndication3": "↺","fTotal":"-1", "fEmployer": String (describing : employerToS),"fEmployeeRef": employeeIDToS,"fEmployerRef": employerIDToS,"fStatus" : "Pre" , "fPoo" : "No", "fPee" : "No"]
                 let fInRef = dbRef.childByAutoId()
                 fInRef.setValue(record)
                 print(fInRef)
@@ -371,19 +344,10 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
         workedFor.text = "till: " + ( mydateFormat2.string(from: mydateFormat5.date(from: dOut)!))
         
         
-        //self.employeeCounter = 0
-            if let distance2 = location?.distance(from: employerLocation!) {
-                gpsDistance.text =  String(Int(distance2))
-
-                 print("distance2 is:\(distance2)")
-                if distance2 > 80 {print ("distance is far \( distance2)");  gpsTag2 = "🚩"}
-                else {print ("distance is OK \(distance2)"); gpsTag2 = "🏳"}
-                print ("location:\(String(describing: location))")
-            } //end of if let distance
+       
             
         normalClosure()
 
-      //  self.locationManager.stopUpdatingLocation() //addit to tho stop updating location
         }//end of stop
     
     
@@ -444,12 +408,6 @@ print ("started view did load")
         if pee == "No" {peeSwitch.setOn(false, animated: true)} else {peeSwitch.setOn(true, animated: true)}
         if methood == "Normal" {print ("Normal!!!!!!!!")}
        
-        //GPS
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestWhenInUseAuthorization()// thi smean that it won't work when app in the background - consider change it accordingly.
-        self.locationManager.startUpdatingLocation()
-        
         //formating the date
         mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale: nil)!
         mydateFormat2.dateFormat = DateFormatter.dateFormat(fromTemplate:  " HH:mm", options: 0, locale: nil)!
@@ -513,7 +471,6 @@ print ("started view did load")
     }// end of viewdidload//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    
     override func viewDidAppear(_ animated: Bool) {
-        self.locationManager.startUpdatingLocation()
 
         let connectedRef = FIRDatabase.database().reference(withPath: ".info/connected")
         connectedRef.observe(.value, with: { snapshot in
@@ -551,10 +508,7 @@ print ("started view did load")
 
     }//end of view did appear
     
-    override func viewDidDisappear(_ animated: Bool) {
-        self.locationManager.stopUpdatingLocation()
-    }
-  
+    
         override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         if(UIApplication.shared.statusBarOrientation.isLandscape)
         {backgroundImage.frame = self.view.bounds} else   {backgroundImage.frame = self.view.bounds}
@@ -630,7 +584,6 @@ print ("started view did load")
     //did become active procedure
     func applicationDidBecomeActive(notification: NSNotification) {
         thinking2.startAnimating()
-        self.locationManager.startUpdatingLocation()
 
         //stopButton.sendActions(for: .touchUpInside)
         if petFile.isEnabled == true {
@@ -639,7 +592,6 @@ print ("started view did load")
             self.recordInProcess = self.savedActiveRecord
             print ("resumeRecordinprocess\(self.recordInProcess)")
             
-            bringCoordninates()
             
             // reset varibales on select
             poo  = "No"
@@ -674,7 +626,6 @@ print ("started view did load")
         if petFile.isEnabled == true {
             savedActiveRecord =  self.recordInProcess
             print ("resumeactiveID\(self.activeId)")
-            self.locationManager.stopUpdatingLocation()
 
         }
     }// end of func application did stop
@@ -702,9 +653,7 @@ print ("started view did load")
         super.didReceiveMemoryWarning()
         }
     
-        func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print ("GPS ERORR!!!!!!")
-        }
+    
     
     func recordsClicked() {
       performSegue(withIdentifier: "employerforVC", sender: employerToS)
@@ -763,11 +712,6 @@ print ("started view did load")
         }
         }//end of prepare
     
-    //locTION DELEGTE METHODS
-        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        location = locations.last
-        // self.locationManager.stopUpdatingLocation() //addit to tho stop updating location
-        }
     
     //bring record
         func bringRecord() {
@@ -797,8 +741,6 @@ print ("started view did load")
                 self.employeeTimer.invalidate()
                 self.employeeTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateCounter), userInfo: nil, repeats: true)
               
-                self.gpsTag = record.fIndication!
-
                 self.poo  = record.fPoo!
                 self.pee = record.fPee!
                 if self.poo == "No" {self.PooSwitch.setOn(false, animated: true)} else {self.PooSwitch.setOn(true, animated: true)}
@@ -835,7 +777,6 @@ print ("started view did load")
                 
             
                 
-               // self.gpsTag = record.fIndication!
                 
                 }// end of if let dictionary
         }, withCancel: { (Error) in
@@ -914,7 +855,7 @@ print ("started view did load")
             print ("total\(self.total)")
             print ("total2\(total2)")
 
-            let record = [ "fOut" : self.dOut, "fTotal" : String((self.total)),"fIndication" : self.gpsTag,"fIndication3" : "⏳","fIndication2" : self.gpsTag2, "fStatus" : "Pre" , "FPoo" : self.poo, "fPee" : self.pee]
+            let record = [ "fOut" : self.dOut, "fTotal" : String((self.total)),"fIndication3" : "⏳", "fStatus" : "Pre" , "FPoo" : self.poo, "fPee" : self.pee]
             
             print ("active in updating statge:\(self.activeId)")
             
@@ -964,22 +905,7 @@ print ("started view did load")
             self.present(alertController, animated: true, completion: nil)
         }//probabaly end of normal closure
 
-    //bring coordinates
-        func bringCoordninates() {
-        dbRefEmployer.queryOrdered(byChild: "fEmployer").queryEqual(toValue: String(describing:self.employerToS)).observeSingleEvent(of: .childAdded , with: { (snapshot) in
-            
-            let currentEmployerX = String(describing: snapshot.childSnapshot(forPath: "fLocationX").value!) as String
-            print (currentEmployerX)
-            let currentEmployery = String(describing: snapshot.childSnapshot(forPath: "fLocationY").value!) as String
-            self.employerLocation = CLLocation(latitude: Double(currentEmployerX)!, longitude: Double(currentEmployery)!)
-            print (self.employerLocation!)
-            print("coordinatessssssssss")
-            //self.dbRefEmployer.removeAllObservers()
-            //print(self.employerLocation)
-        })  {(error) in
-            print("error from FB\(error.localizedDescription)")}//end of dbrefemployer
-      
-        }//end of bringcoordinated
+ 
     
     //check if their is who to connect
     func checkConnection() {
@@ -1137,7 +1063,6 @@ print ("started view did load")
                     stopBackground.isHidden = true
                     addAmanualRecord.isHidden = true
                     timeBackground.isHidden = true
-                    self.gpsDistance.isHidden = true
                     pooBackground.isHidden = true
                     animationImage.isHidden = true
                     

@@ -9,10 +9,9 @@
 import UIKit
 import Firebase
 import MessageUI
-import CoreLocation
 import FirebaseAuth
 
-class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate, MFMailComposeViewControllerDelegate ,MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
+class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate, MFMailComposeViewControllerDelegate ,MFMessageComposeViewControllerDelegate {
 
     let Vimage = UIImage(named: "V")
     let emptyVimage = UIImage(named: "emptyV")
@@ -26,12 +25,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     var messageInstruction = ""
     var titleInstruction = ""
 
-    let locationManager = CLLocationManager()
-    var location: CLLocation?
-    var locationXUpdate: String? = ""
-    var cLocationXUpdate: String? = ""
-    var locationYUpdate:  String? = ""
-    var cLocationYUpdate: String? = ""
     var connectSetter: String? = ""
     
     var adjuster = 0
@@ -45,7 +38,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     var message3 :String?
     
     var activeEmployerSwitch: Bool?
-    var activeGpsSwitch: Bool?
     
     var employerID = ""
     var EmployerRef = ""
@@ -95,28 +87,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBOutlet weak var pAddress: UITextField!
     var addressUpdate = ""
     var cAddressUpdate = ""
-
-    
-    @IBOutlet weak var imageGps: UIImageView!
-        @IBAction func setGPS(_ sender: Any) {
-        print (activeGpsSwitch!)
-        if activeGpsSwitch == true {
-        if self.location != nil { alert9()
-        locationXUpdate = String(describing: location!.coordinate.latitude)
-        locationYUpdate =  String(describing: location!.coordinate.longitude)
-        imageGps.image = Vimage
-        activeGpsSwitch = false
-        }else{
-        print ("location\(String(describing: self.location))")
-        alert20()
-        }
-        }else {
-        locationXUpdate = "0"
-        locationYUpdate =  "0"
-        imageGps.image = emptyVimage
-        activeGpsSwitch = true}
-        }//end of set GPS
-    @IBOutlet weak var GPStitle: UIButton!
     
     @IBOutlet weak var rateTitle: UILabel!
     @IBOutlet weak var pRate: UITextField!
@@ -145,7 +115,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
         @IBOutlet weak var infoPayment: UIButton!
     @IBAction func infoPayment(_ sender: Any) {alert8()}
-    @IBAction func infoGps(_ sender: Any) {alert9()}
     
     @IBOutlet weak var pPetName: UITextField!
     var petNameUpdate = ""
@@ -201,12 +170,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         
         paymentchanged = false
         
-        //GPS
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestWhenInUseAuthorization()// thi smean that it won't work when app in the background - consider change it accordingly.
-        //self.locationManager.startUpdatingLocation()
-
         //keyboard adjustment
         NotificationCenter.default.addObserver(self, selector: #selector(self.KeyboardNotificationwillShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: self.view.window)
         NotificationCenter.default.addObserver(self, selector: #selector(self.KeyboardNotificationwillHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: self.view.window)
@@ -217,8 +180,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             self.pEmail.text = ""
             self.pCell.text = ""
             self.pAddress.text = ""
-            self.locationXUpdate = "0"
-            self.locationYUpdate = "0"
+           
             self.paymentUpdate = "Round"
             self.pRate .text = ""
             self.pPetName.text = ""
@@ -226,8 +188,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             activeEmployer.image = Vimage
             activeButton.setTitle("", for: .normal)
             activeEmployerSwitch = false
-            activeGpsSwitch = true
-            imageGps.image = emptyVimage
             connect.setOn(false, animated: true)
             
             bills.isEnabled = false
@@ -260,44 +220,33 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         
     }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-        override func viewDidDisappear(_ animated: Bool) {
-        self.locationManager.stopUpdatingLocation()}
         deinit {NotificationCenter.default.removeObserver(self) }
 
-        override func viewDidAppear(_ animated: Bool) {
-        self.locationManager.startUpdatingLocation()
-        }//view did appear end
- 
         override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         }
     
-        func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print ("GPS ERORR!!!!!!")
-        }
     
         func saveToDB(_ sender: AnyObject) {
         if pRate.text == "" {pRate.text = "0.0"}
        
-        //if self.imageGps.image == self.emptyVimage { messageInstruction = " If you would set pet's home GPS location, you would enjoy validation of In/Out records.";}
-        if self.paymentUpdate == "" { messageInstruction = " If you would set rate per Session , you would enjoy records' bill calculation."}
-        if self.imageGps.image == self.emptyVimage || self.paymentUpdate == "" {titleInstruction = "Save Anyway"} else {titleInstruction = "Yes"}
+        if self.paymentUpdate == "" { messageInstruction = " If you would set rate per Session , you would enjoy bill calculation."}
             
         if self.pLastName.text != "" { // this check that last name is filled and it is filled
         if connectSetter == "Yes" { message2 = "As 'connect' is on, you would save in your app the presented current fields. Are You Sure?"} else {
-        if self.imageGps.image == self.emptyVimage || self.paymentUpdate == ""  {message2 = messageInstruction} else
+        if self.paymentUpdate == ""  {message2 = messageInstruction} else
         { message2 = "Are You Sure?"}}
        
         let alertController = UIAlertController(title: ("Save Setting") , message: self.message2, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
         }
         
-        let updateDBAction = UIAlertAction(title: titleInstruction, style: .default) { (UIAlertAction) in
+        let updateDBAction = UIAlertAction(title: "Yes", style: .default) { (UIAlertAction) in
         ViewController.refresh = true
         if self.employerFromMain != "Add new dog" {
         if self.activeEmployerSwitch == true {self.activeEmployerSwitch = false} else {self.activeEmployerSwitch = true}
             
-        self.dbRefEmployers.child(self.employerID).updateChildValues(["fName" : self.pName.text!, "fLastName": self.pLastName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!,"fPetName": self.pPetName.text!, "fRem" : self.pRem.text!, "fLocationX": self.locationXUpdate!, "fLocationY": self.locationYUpdate!, "fEmployer":self.pLastName.text!,"fActive" : self.activeEmployerSwitch!])
+        self.dbRefEmployers.child(self.employerID).updateChildValues(["fName" : self.pName.text!, "fLastName": self.pLastName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!,"fPetName": self.pPetName.text!, "fRem" : self.pRem.text!, "fEmployer":self.pLastName.text!,"fActive" : self.activeEmployerSwitch!])
            
             //in firebase under url
             print ("employerId to store cache and FB:\(self.employerID)")
@@ -325,7 +274,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         } // end of update of an existed employer
         else{
         let employerRefence = self.dbRefEmployers.childByAutoId()
-        employerRefence.setValue(["fName" : self.pName.text!, "fLastName": self.pLastName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!,"fPetName": self.pPetName.text!, "fRem" : self.pRem.text!, "fLocationX": self.locationXUpdate!, "fLocationY": self.locationYUpdate!, "fEmployer":self.pLastName.text!, "finProcess" : "", "fEmployerReg":employerRefence.key, "fActive" : true, "fImageRef":"https://firebasestorage.googleapis.com/v0/b/employeetimer.appspot.com/o/employerImages%2F47574737_s.jpg?alt=media&token=48983dc3-ca8d-4d9f-9b6d-3df6d756c480"
+        employerRefence.setValue(["fName" : self.pName.text!, "fLastName": self.pLastName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!,"fPetName": self.pPetName.text!, "fRem" : self.pRem.text!,  "fEmployer":self.pLastName.text!, "finProcess" : "", "fEmployerReg":employerRefence.key, "fActive" : true, "fImageRef":"https://firebasestorage.googleapis.com/v0/b/employeetimer.appspot.com/o/employerImages%2F47574737_s.jpg?alt=media&token=48983dc3-ca8d-4d9f-9b6d-3df6d756c480"
         ])//end of set value
             
         //update pic in chache for new employee
@@ -485,9 +434,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.addressUpdate = String(describing: snapshot.childSnapshot(forPath: "fAddress").value!) as String!
         self.petNameUpdate = String(describing: snapshot.childSnapshot(forPath: "fPetName").value!) as String!
         self.cellUpdate = String(describing: snapshot.childSnapshot(forPath: "fCell").value!) as String!
-        self.locationXUpdate = String(describing: snapshot.childSnapshot(forPath: "fLocationX").value!) as String!
-        self.locationYUpdate = String(describing: snapshot.childSnapshot(forPath: "fLocationY").value!) as String!
-
+        
         self.activeEmployerSwitch =  snapshot.childSnapshot(forPath: "fActive").value! as? Bool
         if self.activeEmployerSwitch == true { self.activeEmployer.image = self.Vimage
         self.activeButton.setTitle("", for: .normal)
@@ -526,13 +473,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.cCellUpdate = String(describing: snapshot.childSnapshot(forPath: "cCell").value!) as String!
         if self.connectSetter == "Yes" && self.cCellUpdate != "" {self.pCell.text = self.cCellUpdate; self.pCell.isEnabled = false}
         else {  self.pCell.text = self.cCellUpdate; self.pCell.isEnabled = true}
-        
-        self.cLocationXUpdate = String(describing: snapshot.childSnapshot(forPath: "cLocationX").value!) as String!
-            if self.connectSetter == "Yes" && self.cLocationXUpdate != "0" {self.locationXUpdate = self.cLocationXUpdate; self.GPStitle.isEnabled = false;self.imageGps.alpha = 0.5}
-            else { self.GPStitle.isEnabled = true;self.imageGps.alpha = 1 }
-        self.cLocationYUpdate = String(describing: snapshot.childSnapshot(forPath: "cLocationY").value!) as String!
-            
-        if self.locationXUpdate == "0" {self.imageGps.image = self.emptyVimage} else {self.imageGps.image = self.Vimage}
             
         })//end of dbref from dbRefcEmployers.queryOrdered(byChild: "cMail").queryEqual(toValue: "mikaenat@gmail.com")
         })//end of    self.dbRefcEmployers.queryOrderedByKey().queryEqual(toValue:self.cEmployerRef)
@@ -546,7 +486,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.canInvite()
         }
             
-        if self.locationXUpdate != "0"  { self.imageGps.image = self.Vimage; self.activeGpsSwitch = false } else { self.imageGps.image = self.emptyVimage; self.activeGpsSwitch = true }
             
         self.remUpdate = snapshot.childSnapshot(forPath: "fRem").value as! String
         self.pRem.text = self.remUpdate
@@ -653,9 +592,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         present(alertController3, animated: true, completion: nil)
         }//delete dog alert end
     
-        //locTION DELEGTE METHODS
-        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        location = locations.last}
     
         //validation
         func isValidEmail(testStr:String) -> Bool {
@@ -714,23 +650,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
                 alertController4.addAction(OKAction)
         self.present(alertController4, animated: true, completion: nil)
-        }
-    
-        func alert9(){
-        let alertController4 = UIAlertController(title: ("GPS") , message: "Set pet's GPS home location to current location  to enable GPS validation for In/Out.", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-        }
-        
-        alertController4.addAction(OKAction)
-        self.present(alertController4, animated: true, completion: nil)
-        }
-    
-        func alert20(){
-        let alertController20 = UIAlertController(title: ("GPS") , message: "There is no GPS connection, Check GPS setting turned on or try in a different location.", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-        }
-                alertController20.addAction(OKAction)
-        self.present(alertController20, animated: true, completion: nil)
         }
     
         func alert5(){

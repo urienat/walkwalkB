@@ -60,8 +60,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var sendBillIcon = UIImage(named:"sendBillIcon")?.withRenderingMode(.alwaysTemplate )
 
     var employerMail = ""
-    var gpsBlock = ""
-    var gpsLegend = ""
+
 
     let space = ""
     
@@ -211,7 +210,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
         dbRefEmployers.child(self.employerID).observeSingleEvent(of:.value, with: {(snapshot) in
         self.employerMail = String(describing: snapshot.childSnapshot(forPath: "fMail").value!) as String!
-        self.gpsBlock = String(describing: snapshot.childSnapshot(forPath: "fLocationX").value!) as String!
         })
   
         self.thinking.color = self.blueColor
@@ -317,7 +315,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             if record.fIndication3 == "↺" && record.fIndication == "🏳" {  cell.l8.image = roundImageNormal }
             if record.fIndication3 == "⏳"  && record.fIndication == "🚩"  || record.fIndication3 == "⏳" && record.fIndication2 == "🚩"{  cell.l8.image = sandwatchImageRed}
             if record.fIndication3 == "⏳" && record.fIndication == "🏳" && record.fIndication2 == "🏳" {  cell.l8.image = sandwatchImageGreen}
-            if record.fIndication3 == "GPS" {  cell.l8.image = sandwatchImageGreen}
 
      
             if record.fStatus == "Approved" { cell.approval.setImage(Vimage, for: .normal);eventCounter+=1}
@@ -693,7 +690,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
              } else {
             self.taxationBlock = ""}
             
-            if self.gpsBlock != "0" { self.gpsLegend = "\r\n\r\n\r\n     Sessions' LEGEND \r\n     Manual - Session recorded manually\r\n     Gps - Session recorded by Gps\r\n        🏳 - onsite \r\n        🚩 - offsite"} else {self.gpsLegend = ""}
    
             self.counterForMail2 = counterForMail
             print("guygug3\(self.counterForMail2!)")
