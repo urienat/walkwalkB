@@ -188,8 +188,18 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
     
     //The  appear
     
-    @IBOutlet weak var calDL: UIButton!
-    @IBAction func calDL(_ sender: Any) {
+    
+    
+    @IBOutlet weak var googleCalander: UIBarButtonItem!
+    @IBAction func googleCalander(_ sender: Any) {
+        
+    }
+    
+    @IBOutlet weak var addAccount: UIBarButtonItem!
+    @IBAction func addAccount(_ sender: Any) {
+        print ("add")
+        employerToS = "Add new dog"
+        petFileClicked()
     }
     
     @IBOutlet weak var timeBackground: UIView!

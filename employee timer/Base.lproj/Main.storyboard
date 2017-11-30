@@ -28,7 +28,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grass12" translatesAutoresizingMaskIntoConstraints="NO" id="GHK-96-v1w">
-                                <rect key="frame" x="0.0" y="20" width="320" height="540"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="496"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J23-II-GU4">
                                 <rect key="frame" x="0.0" y="560" width="320" height="60"/>
@@ -796,7 +796,7 @@
                                 <rect key="frame" x="0.0" y="50" width="320" height="370"/>
                             </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqn-dL-iFO">
-                                <rect key="frame" x="145" y="65" width="30" height="53"/>
+                                <rect key="frame" x="145" y="109" width="30" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="MHf-8d-wBY"/>
                                 </constraints>
@@ -809,7 +809,7 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FxU-Wn-hMn" userLabel="add a button view">
-                                <rect key="frame" x="0.0" y="350" width="316" height="70"/>
+                                <rect key="frame" x="0.0" y="394" width="316" height="70"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencilImage" translatesAutoresizingMaskIntoConstraints="NO" id="fJW-rO-BL2" userLabel="pencil">
                                         <rect key="frame" x="213" y="20" width="30" height="30"/>
@@ -840,7 +840,7 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iC3-6e-xAj" userLabel="stopBackground">
-                                <rect key="frame" x="0.0" y="230" width="320" height="76"/>
+                                <rect key="frame" x="0.0" y="274" width="320" height="76"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3X-s5-1Iu">
                                         <rect key="frame" x="119.5" y="0.0" width="81" height="76"/>
@@ -869,7 +869,7 @@
                                 </constraints>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wkx-Tt-3io" userLabel="DateIn">
-                                <rect key="frame" x="0.0" y="306" width="320" height="22"/>
+                                <rect key="frame" x="0.0" y="350" width="320" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="EB2-xY-uTN"/>
                                 </constraints>
@@ -937,7 +937,7 @@
                                 </prototypes>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45C-VX-M18" userLabel="startBackground">
-                                <rect key="frame" x="0.0" y="230" width="320" height="76"/>
+                                <rect key="frame" x="0.0" y="274" width="320" height="76"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cq4-SE-U6N">
                                         <rect key="frame" x="76.5" y="0.0" width="137" height="76"/>
@@ -967,7 +967,7 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K9m-63-7gA" userLabel="timeBackground">
-                                <rect key="frame" x="0.0" y="144" width="320" height="38"/>
+                                <rect key="frame" x="0.0" y="188" width="320" height="38"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2O-9u-XxV" userLabel="Show Time h">
                                         <rect key="frame" x="95" y="0.0" width="60" height="38"/>
@@ -1027,19 +1027,19 @@
                                 </constraints>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Worked for" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXg-VA-EDp">
-                                <rect key="frame" x="0.0" y="336" width="320" height="25"/>
+                                <rect key="frame" x="0.0" y="380" width="320" height="25"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="23"/>
                                 <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XDi-hZ-CdO" userLabel="textAdd">
-                                <rect key="frame" x="70" y="230" width="150" height="76"/>
+                                <rect key="frame" x="70" y="274" width="150" height="76"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vNaked" translatesAutoresizingMaskIntoConstraints="NO" id="M0C-iW-AVD" userLabel="animationImage">
-                                <rect key="frame" x="84.5" y="280" width="150" height="150"/>
+                                <rect key="frame" x="84.5" y="324" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="UNQ-wl-NLM"/>
                                     <constraint firstAttribute="width" constant="150" id="zuu-ll-odg"/>
@@ -1059,7 +1059,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqu-UG-4qJ" userLabel="pooBackground">
-                                <rect key="frame" x="60" y="200" width="200" height="30"/>
+                                <rect key="frame" x="60" y="244" width="200" height="30"/>
                                 <subviews>
                                     <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="💩" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EXT-H4-arO">
                                         <rect key="frame" x="124" y="0.0" width="26" height="30"/>
@@ -1172,22 +1172,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="BWl-6v-Y2T"/>
                                 </constraints>
-                                <items>
-                                    <navigationItem title="Choose an Employer" id="DAa-be-5Ce"/>
-                                </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDI-vt-NGs" userLabel="calDL">
-                                <rect key="frame" x="252" y="70" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="0Lk-Zp-YhF"/>
-                                    <constraint firstAttribute="width" constant="60" id="Jq9-ZQ-EvK"/>
-                                </constraints>
-                                <state key="normal" image="googleCal"/>
-                                <connections>
-                                    <action selector="calDL:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="s9W-pZ-Pqt"/>
-                                    <segue destination="WI7-wY-L03" kind="show" animates="NO" id="P0Y-rK-hyi"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.2145790309" green="0.45587304229999998" blue="0.84711945060000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <accessibility key="accessibilityConfiguration">
@@ -1212,14 +1197,12 @@
                             <constraint firstItem="JEU-k8-q20" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="81U-us-2Sc"/>
                             <constraint firstItem="45C-VX-M18" firstAttribute="top" secondItem="bqu-UG-4qJ" secondAttribute="bottom" id="8rE-VL-nOH"/>
                             <constraint firstItem="fXg-VA-EDp" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="BKR-ZQ-q0s"/>
-                            <constraint firstItem="kDI-vt-NGs" firstAttribute="top" secondItem="lxT-w2-3r9" secondAttribute="bottom" constant="20" id="BP9-74-LF3"/>
                             <constraint firstItem="7jm-zy-yg0" firstAttribute="leading" secondItem="XDi-hZ-CdO" secondAttribute="trailing" constant="-36" id="BkY-d8-Yfn"/>
                             <constraint firstItem="XDi-hZ-CdO" firstAttribute="width" secondItem="M0C-iW-AVD" secondAttribute="width" id="Bps-Gc-a0V"/>
                             <constraint firstItem="XDi-hZ-CdO" firstAttribute="top" secondItem="M0C-iW-AVD" secondAttribute="bottom" constant="-200" id="Bxa-uI-HYC"/>
                             <constraint firstAttribute="trailing" secondItem="yHg-YC-CqC" secondAttribute="trailing" id="Dmq-dH-nve"/>
                             <constraint firstAttribute="trailing" secondItem="lxT-w2-3r9" secondAttribute="trailing" id="Gpc-gv-ZS2"/>
                             <constraint firstItem="M0C-iW-AVD" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="NCa-KC-sLb"/>
-                            <constraint firstItem="kDI-vt-NGs" firstAttribute="trailing" secondItem="uv4-gs-ESI" secondAttribute="trailingMargin" constant="8" id="OxC-m5-6V6"/>
                             <constraint firstItem="Wkx-Tt-3io" firstAttribute="top" secondItem="45C-VX-M18" secondAttribute="bottom" id="Qba-fl-Alu"/>
                             <constraint firstItem="45C-VX-M18" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="RgB-xL-tIk"/>
                             <constraint firstItem="Wkx-Tt-3io" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="TAL-qv-Umm"/>
@@ -1248,22 +1231,35 @@
                             <constraint firstAttribute="trailing" secondItem="fXg-VA-EDp" secondAttribute="trailing" id="zsc-ne-CXT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Accounts' list" id="Rys-Nf-bfB" userLabel="Pets' list"/>
+                    <navigationItem key="navigationItem" title="Title" id="Q5z-uo-p1A">
+                        <barButtonItem key="leftBarButtonItem" image="googleCal" id="yFh-ig-nQ8" userLabel="googleCalander">
+                            <connections>
+                                <action selector="googleCalander:" destination="Ecy-Z7-2Op" id="Wcl-1H-noi"/>
+                                <segue destination="WI7-wY-L03" kind="show" animates="NO" id="or3-S4-NLe"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NNj-jv-ITI">
+                            <connections>
+                                <action selector="addAccount:" destination="Ecy-Z7-2Op" id="Dj8-eg-VS0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="DateIn" destination="Wkx-Tt-3io" id="tOD-4u-tgI"/>
                         <outlet property="PooSwitch" destination="oCB-kd-hnb" id="PfM-ec-bmG"/>
+                        <outlet property="addAccount" destination="NNj-jv-ITI" id="sEC-ZB-NCc"/>
                         <outlet property="addAmanualRecord" destination="FxU-Wn-hMn" id="TvW-qU-vMq"/>
                         <outlet property="animationImage" destination="M0C-iW-AVD" id="xlo-Ti-y7F"/>
                         <outlet property="bills" destination="2Ty-Up-jjh" id="099-jf-XpW"/>
                         <outlet property="blinker" destination="MHi-fb-T0c" id="zh3-S7-5py"/>
                         <outlet property="blinker2" destination="D6z-um-NZL" id="NKp-i2-S0Z"/>
-                        <outlet property="calDL" destination="kDI-vt-NGs" id="UIb-df-ZzF"/>
                         <outlet property="chooseEmployer" destination="fqn-dL-iFO" id="3pe-Mr-ayf"/>
                         <outlet property="emoloyerListBottom" destination="iQn-al-QjX" id="dJh-gK-WBq"/>
                         <outlet property="employerList" destination="tbR-QL-TgX" id="ctS-xd-Xy1"/>
                         <outlet property="employerListBottom" destination="iQn-al-QjX" id="FWA-ji-eSl"/>
                         <outlet property="employerListHeiget" destination="QAK-61-qij" id="DuM-13-Fpw"/>
                         <outlet property="employerListTop" destination="WI7-6r-u9D" id="VTG-on-q7b"/>
+                        <outlet property="googleCalander" destination="yFh-ig-nQ8" id="QP9-Pr-mO1"/>
                         <outlet property="gpsDistance" destination="3dt-Xh-ZbI" id="NSn-J7-yxs"/>
                         <outlet property="peeSwitch" destination="qI3-MF-d0a" id="LWy-mu-dxw"/>
                         <outlet property="petFile" destination="nYU-wY-z3v" id="6YC-0W-eQA"/>
@@ -2046,7 +2042,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fgv-lZ-OY1">
-                                <rect key="frame" x="0.0" y="98" width="320" height="278"/>
+                                <rect key="frame" x="0.0" y="142" width="320" height="234"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="billerId" id="oUk-dv-frm" customClass="billerCell" customModule="perSession" customModuleProvider="target">
@@ -2156,7 +2152,7 @@
                                 </constraints>
                             </activityIndicatorView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="dos-vv-upu">
-                                <rect key="frame" x="100" y="40" width="120" height="29"/>
+                                <rect key="frame" x="100" y="84" width="120" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="Tb8-5E-iP3"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="ayt-DN-y47"/>
@@ -2172,7 +2168,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="5YM-uj-HSp">
-                                <rect key="frame" x="109" y="76" width="101" height="29"/>
+                                <rect key="frame" x="109" y="120" width="101" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="Z1w-fn-lCo"/>
                                 </constraints>
@@ -2288,7 +2284,7 @@
                                 <color key="backgroundColor" red="0.2145790309" green="0.45587304229999998" blue="0.84711945060000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7i1-XX-uWr">
-                                <rect key="frame" x="8" y="32" width="250" height="29"/>
+                                <rect key="frame" x="8" y="76" width="250" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="X8j-zQ-Ayu"/>
                                 </constraints>
@@ -2315,7 +2311,7 @@
                                 </items>
                             </toolbar>
                             <segmentedControl hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="4" translatesAutoresizingMaskIntoConstraints="NO" id="eCO-la-3hV">
-                                <rect key="frame" x="-14" y="72" width="348" height="29"/>
+                                <rect key="frame" x="-14" y="116" width="348" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="310" id="hJ8-Lx-yEf"/>
                                 </constraints>
@@ -2332,7 +2328,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="47" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G8b-SK-75d">
-                                <rect key="frame" x="0.0" y="28" width="320" height="348"/>
+                                <rect key="frame" x="0.0" y="72" width="320" height="304"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellId" rowHeight="47" id="AQP-Fh-lfh" customClass="newTableCell" customModule="perSession" customModuleProvider="target">
@@ -2786,7 +2782,7 @@
         <segue reference="UPU-lN-oqU"/>
         <segue reference="RQi-YY-5wb"/>
         <segue reference="x0P-Ew-8Ag"/>
-        <segue reference="8s0-fg-N01"/>
+        <segue reference="COZ-mk-Xid"/>
         <segue reference="1k4-P4-HYk"/>
     </inferredMetricsTieBreakers>
 </document>
