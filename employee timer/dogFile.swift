@@ -15,10 +15,8 @@ import FirebaseAuth
 
 class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate, MFMailComposeViewControllerDelegate ,MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
 
-    let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
     let Vimage = UIImage(named: "V")
     let emptyVimage = UIImage(named: "emptyV")
-    
     
     let greenColor = UIColor(red :32.0/255.0, green: 150.0/255.0, blue: 24.0/255.0, alpha: 1.0)
     let blackColor = UIColor(red :24.0/255.0, green: 25.0/255.0, blue: 27.0/255.0, alpha: 1.0)
@@ -26,7 +24,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
 
 
     @IBOutlet weak var scrollerView: UIScrollView!
-    
     @IBOutlet weak var bills: UIBarButtonItem!
     @IBOutlet weak var leash: UIBarButtonItem!
     @IBOutlet weak var trash: UIBarButtonItem!
@@ -48,9 +45,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     var adjuster = 0
     
     var paymentchanged: Bool?
-    
-    
-    //var cProfileImage: String?
     
     var wrongField:String?
     
@@ -887,6 +881,8 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             
         })
     }
+    
+    
     
     ///////////////////////////////////////alerts
     

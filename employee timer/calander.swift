@@ -103,13 +103,13 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         // Add the sign-in button.
        
         
-        // Add a UITextView to display output.
+        //Add a UITextView to display output.
         output.frame = view.bounds
         output.isEditable = false
         output.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
         output.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         output.isHidden = true
-        view.addSubview(output);
+        //view.addSubview(output);
         
     }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////
     
@@ -143,7 +143,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
         print("0.2 \(self.LastCalander!)")
-
+        
+        if self.LastCalander == nil { self.LastCalander = "New"}
         if self.LastCalander! == "New" {query.timeMin = GTLRDateTime(date: (Date()-(3600*24*45)))
             } else {query.timeMin = GTLRDateTime(date: (Date()-(3600*24*45)))//replace to avoid double reading
             }//avoid reread of same period
@@ -212,9 +213,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 } else {
                 outputText = "No upcoming events found."
                 }
-                output.text = outputText
+                //output.text = outputText
                 // save last date
                 self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: Date())])
+                self.navigationController!.popViewController(animated: false)
+
                 }
     
     func updateRead(){
