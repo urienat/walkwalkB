@@ -28,8 +28,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let dbRef = FIRDatabase.database().reference().child("fRecords")
     let dbRefEmployer = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployee = FIRDatabase.database().reference().child("fEmployees")
+    
     var tableRowHeight:Int?
-    var employerRadious:Int?
     
     static var fixedCurrency:String!
     static var fixedName:String!
@@ -118,7 +118,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var thinking2: UIActivityIndicatorView!
     @IBOutlet weak var employerList: UITableView!
     @IBOutlet weak var employerListTop: NSLayoutConstraint!
-    
     @IBOutlet weak var emoloyerListBottom: NSLayoutConstraint!
     @IBOutlet weak var employerListHeiget: NSLayoutConstraint!
     @IBOutlet weak var employerListBottom: NSLayoutConstraint!
@@ -141,9 +140,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var employerIDToS = ""
     var employeeIDToS = ""
 
-    
-    
-    
     //variables for the Timer
     var employeeTimer = Timer()
     var employeeCounter: Int = 0
@@ -152,16 +148,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var dIn = String (describing: Date())
     var dIn2 = String (describing: Date())
 
-    //var timeOut = Date()
-  
-
-   
-    
-    
-    //The  appear
-    
-    
-    
     @IBOutlet weak var googleCalander: UIBarButtonItem!
     @IBAction func googleCalander(_ sender: Any) {
         
@@ -200,13 +186,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let btn3 = UIButton(type: .custom)
     let btn4 = UIButton(type: .custom)
 
-    
-    
-  //  @IBOutlet weak var dogFileLbl: UITextField!
-   // @IBOutlet weak var fileLbl: UITextField!
-
-    
-    //background that helps "add a manual background" disappear after it eas chosen
         @IBOutlet weak var startBackground: UIView!
     
     //start timer action
@@ -239,10 +218,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
 
         @IBOutlet weak var startButton: UIButton!
-    
-    
-    
-    
     
     
     override func viewDidLoad() {  //view did load/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -367,12 +342,9 @@ print ("started view did load")
         connectedRef.observe(.value, with: { snapshot in
             if let connected = snapshot.value as? Bool, connected {
                 print("Connected")
-                
-            
-            }
+                            }
 
-    
-            else {
+                else {
             
                 print("Not connected")
                
@@ -391,12 +363,8 @@ print ("started view did load")
         chooseEmployer.sendActions(for: .touchUpInside)
         ViewController.refresh = false
             
-           
-        
-            
         }
         
-
     }//end of view did appear
     
     
@@ -482,10 +450,6 @@ print ("started view did load")
             print ("resumeactiveID\(self.activeId)")
             self.recordInProcess = self.savedActiveRecord
             print ("resumeRecordinprocess\(self.recordInProcess)")
-            
-            
-           
-            
             
             
             if recordInProcess != "" {
@@ -735,9 +699,6 @@ print ("started view did load")
             
             
             self.dbRefEmployer.child(self.employerIDToS).child("fEmployerRecords").updateChildValues([self.activeId:Int(-(self.mydateFormat5.date(from: self.dIn)?.timeIntervalSince1970)!)])
-            
-            
-            
             
             self.navigationController!.popViewController(animated: true)
             
