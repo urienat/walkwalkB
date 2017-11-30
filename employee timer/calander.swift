@@ -38,7 +38,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     var employerArray2: [String] = []
     var employerArray3: [String:String] = [:]
     var employerNameForGoogle = ""
+    var employerLastNameForGoogle = ""
+    var employerNameLastNameForGoogle = ""
     var LastCalander: String?
+    var Dictionary = [String: String]()
+
 
 
     // If modifying these scopes, delete your previously saved credentials by
@@ -140,9 +144,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
         print("0.2 \(self.LastCalander!)")
 
-        if self.LastCalander! == "New" {query.timeMin = GTLRDateTime(date: (Date()-(3600*24*30)))
-            } else {query.timeMin = GTLRDateTime(date: (Date()-(3600*24*30)))//replace to avoid double reading
-           // query.timeMin = GTLRDateTime(date: self.mydateFormat5.date(from: self.LastCalander!)!)
+        if self.LastCalander! == "New" {query.timeMin = GTLRDateTime(date: (Date()-(3600*24*45)))
+            } else {query.timeMin = GTLRDateTime(date: (Date()-(3600*24*45)))//replace to avoid double reading
             }//avoid reread of same period
             print("222")
 
@@ -252,20 +255,27 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         for eachEmployer in 0...(self.employerArray2.count-1){
             
         self.dbRefEmployer.child(self.employerArray2[eachEmployer]).child("fEmployer").observeSingleEvent(of: .value, with: { (snapshot) in
-        self.employerNameForGoogle = String(describing: snapshot.value!)
-            print ("tttt\(self.employerNameForGoogle)")
-            
-            self.employerArray3[self.employerNameForGoogle] = self.employerArray2[eachEmployer]
-            print("uuuu\(self.employerArray3)")
+        self.employerLastNameForGoogle = String(describing: snapshot.value!)
+        self.employerArray3[self.employerLastNameForGoogle] = self.employerArray2[eachEmployer]
+        print ("tttt1\(self.employerLastNameForGoogle)")
         })
-        }//end of loop
-        
-    
-        })//end of dbref employeeid
 
-     }//end of find
+        
+        self.dbRefEmployer.child(self.employerArray2[eachEmployer]).child("fName").observeSingleEvent(of: .value, with: { (snapshot) in
+        self.employerNameForGoogle = String(describing: snapshot.value!)
+        if  self.employerNameForGoogle != ""   {self.employerArray3[self.employerNameForGoogle] = self.employerArray2[eachEmployer] }
+        print ("tttt2\(self.employerNameForGoogle)")
+            
+        self.employerNameLastNameForGoogle = ("\(self.employerNameForGoogle) \(self.employerLastNameForGoogle)")
+        if  self.employerNameForGoogle != "" {self.employerArray3[self.employerNameLastNameForGoogle] = self.employerArray2[eachEmployer]}
+        print ("tttt3\(self.employerNameLastNameForGoogle)")
+        print("uuuu4\(self.employerArray3)")
+        })
+
+        }//end of loop
+        })//end of dbref employeeid
+        }//end of find
     
-    var emptyDictionary = [String: String]()
     
 
    
