@@ -59,15 +59,9 @@ extension(ViewController){
         employerIDToS = employerIdArray2[indexPath.row] as! String
         bringEmployerData()
         
-        // reset varibales on select
-        poo  = "No"
-        pee = "No"
-        //employeeCounter = 0
-                    
-        //manage the view
-        PooSwitch.onTintColor = brownColor
-        peeSwitch.onTintColor = yellowColor
         
+                    
+       
         
         if recordInProcess != "" {
             bringRecord()

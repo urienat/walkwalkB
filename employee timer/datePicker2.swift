@@ -21,11 +21,6 @@ class datePicker2: UIViewController {
     
     let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
     
-    
-    
-    var poo = "No"
-    var pee = "No"
-    
     var locker = ""
 
     var employerID = ""
@@ -84,17 +79,7 @@ class datePicker2: UIViewController {
     @IBOutlet weak var Employer: UILabel!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var deleteBackground: UIView!
-    @IBOutlet weak var pooBackground: UIView!
-    @IBOutlet weak var peeSwitch: UISwitch!
-    @IBAction func peeAction(_ sender: Any) {
-        if peeSwitch.isOn {pee = "Yes"}
-        else{pee = "No"}
-        }
-    @IBOutlet weak var pooSwitch: UISwitch!
-    @IBAction func pooAction(_ sender: Any) {
-        if pooSwitch.isOn {poo = "Yes"}
-        else{poo = "No"}
-        }
+    
     
     @IBAction func pickerDone(_ sender: Any) {
     datePickerChanged(DatePicker: DatePicker)
@@ -144,13 +129,7 @@ class datePicker2: UIViewController {
         print(self.tempTotal)
         
         
-        self.pee = record.fPee!
-        if self.pee == "Yes" { self.peeSwitch.setOn(true, animated: true)}
-        else {self.peeSwitch.setOn(false, animated: true)}
         
-        self.poo = record.fPoo!
-        if self.poo == "Yes" { self.pooSwitch.setOn(true, animated: true)}
-        else {self.pooSwitch.setOn(false, animated: true)}
         
         print(record.fIn!)
         print(self.mydateFormat6.string(from: self.mydateFormat5.date(from: record.fIn!)!))
@@ -202,18 +181,7 @@ class datePicker2: UIViewController {
             alert50()
         }
         
-       // self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Grass12")!)
-        //self.view.insertSubview(backgroundImage, at: 0)
-        pooBackground.isHidden = true
-        pooSwitch.setOn(false, animated: true)
-        peeSwitch.setOn(false, animated: true)
-        pooSwitch.onTintColor = UIColor .brown
-        peeSwitch.onTintColor = UIColor .yellow
-        
-       // navigationItem.rightBarButtonItem = saveRecord
-        //saveRecord?.isEnabled = false
-        
-        
+      
         //formating the date
         mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)"
 , options: 0, locale: nil)!
@@ -228,7 +196,6 @@ class datePicker2: UIViewController {
             
                   if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat11.string(from: Date())} else {self.TimeIN.text = mydateFormat10.string(from: Date()) }
             
-            pooBackground.isHidden = true
             titleLbl = "Add for " + employerFromMain!
             
             print(paymentMethood)
@@ -287,7 +254,6 @@ class datePicker2: UIViewController {
         print( roundIndicator)
         
         if  self.roundIndicator == "-1"  {} else { calcuatingTotal() }
-        pooBackground.isHidden = true//false; // saveRecord?.isEnabled = true
         
         }//end of func
     
@@ -298,7 +264,6 @@ class datePicker2: UIViewController {
         datePickerBackground2.isHidden = true
         TimeOut.text = mydateFormat.string(from: DatePicker.date) //brings the a date as a string
         calcuatingTotal()
-        pooBackground.isHidden = true//false;//saveRecord?.isEnabled = true
 
         }
    
@@ -310,7 +275,7 @@ class datePicker2: UIViewController {
         print ("bigger than 0")
         
             if recordToHandle == "" {
-                let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker2.date), "fTotal" : String (describing : calcTotal), "fEmployer": String (describing : employerFromMain!),"fIndication3" :"✏️","fStatus" : "Pre", "FPoo" : self.poo, "fPee" : self.pee,"fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID)]
+                let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker2.date), "fTotal" : String (describing : calcTotal), "fEmployer": String (describing : employerFromMain!),"fIndication3" :"✏️","fStatus" : "Pre", "fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID)]
         
             let recordRefence = self.dbRef.childByAutoId()
             recordRefence.setValue(record)
@@ -321,7 +286,7 @@ class datePicker2: UIViewController {
             self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-(DatePicker.date.timeIntervalSince1970))])
             self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-(DatePicker.date.timeIntervalSince1970))])            }//  end od if recors to handle is ""
             else {
-            let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker2.date), "fTotal" : String (describing : calcTotal) ,"fIndication3" :"✏️","fStatus" : "Pre","FPoo" : self.poo, "fPee" : self.pee ]
+            let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker2.date), "fTotal" : String (describing : calcTotal) ,"fIndication3" :"✏️","fStatus" : "Pre" ]
             dbRef.child(recordToHandle).updateChildValues(record)
                 self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])
                 self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])
@@ -343,7 +308,7 @@ class datePicker2: UIViewController {
 
         
             if recordToHandle == "" {
-                let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker.date), "fTotal" : "-1", "fEmployer": String (describing : employerFromMain!),"fIndication3" :"✏️","fStatus" : "Pre", "FPoo" : self.poo, "fPee" : self.pee,"fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID)]
+                let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker.date), "fTotal" : "-1", "fEmployer": String (describing : employerFromMain!),"fIndication3" :"✏️","fStatus" : "Pre","fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID)]
                 
                 let recordRefence = self.dbRef.childByAutoId()
                 recordRefence.setValue(record)
@@ -354,7 +319,7 @@ class datePicker2: UIViewController {
                 self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-(DatePicker.date.timeIntervalSince1970))])
                 self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-(DatePicker.date.timeIntervalSince1970))])            }//  end od if recors to handle is ""
             else {
-                let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker.date), "fTotal" :"-1","fIndication3" :"✏️","fStatus" : "Pre","FPoo" : self.poo, "fPee" : self.pee ]
+                let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker.date), "fTotal" :"-1","fIndication3" :"✏️","fStatus" : "Pre" ]
                 dbRef.child(recordToHandle).updateChildValues(record)
                 self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])
                 self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])
@@ -425,7 +390,6 @@ class datePicker2: UIViewController {
             saveRecord?.isEnabled = true
            
             
-           // pooBackground.isHidden = false
             if calcTotal > (24*3600) {
             
             logicAlert()
@@ -437,7 +401,6 @@ class datePicker2: UIViewController {
             }//end of if
         else  {
             self.Total.text = "   N/A"
-            pooBackground.isHidden = true
             saveRecord?.isEnabled = false
 
             calcTotal = 0

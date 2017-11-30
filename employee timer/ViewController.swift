@@ -154,26 +154,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
 
     //var timeOut = Date()
   
-    //Poo Pee
-        var poo = "No"
-        var pee = "No"
-        @IBOutlet weak var pooBackground: UIView!
-        @IBOutlet weak var PooSwitch: UISwitch!
-        @IBAction func pooAction(_ sender: Any) {
-        if PooSwitch.isOn {poo = "Yes"
-        self.dbRef.child(self.activeId).updateChildValues(["fPoo" : "Yes"])
-        }
-        else {poo = "No"}
-        print ("poo from switch\(poo)")
-        }//end of poo action
-    
-        @IBOutlet weak var peeSwitch: UISwitch!
-        @IBAction func peeAction(_ sender: Any) {
-        if peeSwitch.isOn {pee = "Yes"
-        self.dbRef.child(self.activeId).updateChildValues(["fPee" : "Yes"])
-        }
-        else{pee = "No"}
-        }//end of pee action
+
    
     
     
@@ -258,7 +239,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         dIn2 = mydateFormat2.string(from: Date()) //brings the a date as a string
         DateIn.text = "Started:  " + self.dIn2
        
-        let record = ["fIn" : dIn, "fEmployer": String (describing : employerToS),"fEmployeeRef": employeeIDToS,"fEmployerRef": employerIDToS,"fStatus" : "W" , "fPoo" : "No", "fPee" : "No"]
+        let record = ["fIn" : dIn, "fEmployer": String (describing : employerToS),"fEmployeeRef": employeeIDToS,"fEmployerRef": employerIDToS,"fStatus" : "W"]
         let fInRef = dbRef.childByAutoId()
         fInRef.setValue(record)
         print (String(describing:self.chooseEmployer.currentTitle!))
@@ -267,10 +248,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         dbRefEmployer.child(self.employerIDToS).updateChildValues(["finProcess" : activeId])
         recordInProcess = activeId
       
-        pee = "No"
-        poo = "No"
-        if poo == "No" {PooSwitch.setOn(false, animated: true)} else {PooSwitch.setOn(true, animated: true)}
-        if pee == "No" {peeSwitch.setOn(false, animated: true)} else {peeSwitch.setOn(true, animated: true)}
+       
             }//end of if normal
             else{
                 
@@ -289,7 +267,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
                 dIn2 = mydateFormat2.string(from: Date()) //brings the a date as a string
                // DateIn.text = "Started:  " + self.dIn2
                 
-                let record = ["fIn" : dIn, "fOut": dIn,"fIndication3": "↺","fTotal":"-1", "fEmployer": String (describing : employerToS),"fEmployeeRef": employeeIDToS,"fEmployerRef": employerIDToS,"fStatus" : "Pre" , "fPoo" : "No", "fPee" : "No"]
+                let record = ["fIn" : dIn, "fOut": dIn,"fIndication3": "↺","fTotal":"-1", "fEmployer": String (describing : employerToS),"fEmployeeRef": employeeIDToS,"fEmployerRef": employerIDToS,"fStatus" : "Pre"]
                 let fInRef = dbRef.childByAutoId()
                 fInRef.setValue(record)
                 print(fInRef)
@@ -404,8 +382,7 @@ print ("started view did load")
             self.dbRefEmployee.removeAllObservers()
 
         
-        if poo == "No" {PooSwitch.setOn(false, animated: true)} else {PooSwitch.setOn(true, animated: true)}
-        if pee == "No" {peeSwitch.setOn(false, animated: true)} else {peeSwitch.setOn(true, animated: true)}
+        
         if methood == "Normal" {print ("Normal!!!!!!!!")}
        
         //formating the date
@@ -593,14 +570,8 @@ print ("started view did load")
             print ("resumeRecordinprocess\(self.recordInProcess)")
             
             
-            // reset varibales on select
-            poo  = "No"
-            pee = "No"
-            //employeeCounter = 0
+           
             
-            //manage the view
-            PooSwitch.onTintColor = brownColor
-            peeSwitch.onTintColor = yellowColor
             
             
             if recordInProcess != "" {
@@ -741,10 +712,7 @@ print ("started view did load")
                 self.employeeTimer.invalidate()
                 self.employeeTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateCounter), userInfo: nil, repeats: true)
               
-                self.poo  = record.fPoo!
-                self.pee = record.fPee!
-                if self.poo == "No" {self.PooSwitch.setOn(false, animated: true)} else {self.PooSwitch.setOn(true, animated: true)}
-                if self.pee == "No" {self.peeSwitch.setOn(false, animated: true)} else {self.peeSwitch.setOn(true, animated: true)}
+               
             }// end of if let dictionary
         }, withCancel: { (Error) in
             print("error from FB")
@@ -855,7 +823,7 @@ print ("started view did load")
             print ("total\(self.total)")
             print ("total2\(total2)")
 
-            let record = [ "fOut" : self.dOut, "fTotal" : String((self.total)),"fIndication3" : "⏳", "fStatus" : "Pre" , "FPoo" : self.poo, "fPee" : self.pee]
+            let record = [ "fOut" : self.dOut, "fTotal" : String((self.total)),"fIndication3" : "⏳", "fStatus" : "Pre" ]
             
             print ("active in updating statge:\(self.activeId)")
             
@@ -1021,7 +989,6 @@ print ("started view did load")
                     self.addAmanualRecord.isHidden = false
                     self.DateIn.isHidden = true
                     self.timeBackground.isHidden = true
-                    self.pooBackground.isHidden = true
                     self.workedFor.isHidden = true
                     self.startBackground.isHidden = false
                     self.petFile.isEnabled = true;
@@ -1040,7 +1007,6 @@ print ("started view did load")
                     self.startBackground.isHidden = true
                     self.DateIn.isHidden = false;
                     self.workedFor.isHidden = true
-                    self.pooBackground.isHidden = true//false
                     self.addAmanualRecord.isHidden = true
                     self.stopBackground.isHidden = false
                     stopBarButtonFadeOut()
@@ -1063,7 +1029,6 @@ print ("started view did load")
                     stopBackground.isHidden = true
                     addAmanualRecord.isHidden = true
                     timeBackground.isHidden = true
-                    pooBackground.isHidden = true
                     animationImage.isHidden = true
                     
                     }//end of func
@@ -1077,7 +1042,6 @@ print ("started view did load")
         self.startBackground.isHidden = true
         self.DateIn.isHidden = false;
         self.workedFor.isHidden = true
-        self.pooBackground.isHidden = true
         self.addAmanualRecord.isHidden = true
         self.stopBackground.isHidden = true
         
