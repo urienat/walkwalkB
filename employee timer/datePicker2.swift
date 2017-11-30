@@ -310,7 +310,7 @@ class datePicker2: UIViewController {
         print ("bigger than 0")
         
             if recordToHandle == "" {
-                let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker2.date), "fTotal" : String (describing : calcTotal), "fEmployer": String (describing : employerFromMain!), "fIndication" : " " ,"fIndication2" :" " ,"fIndication3" :"✏️","fStatus" : "Pre", "FPoo" : self.poo, "fPee" : self.pee,"fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID)]
+                let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker2.date), "fTotal" : String (describing : calcTotal), "fEmployer": String (describing : employerFromMain!),"fIndication3" :"✏️","fStatus" : "Pre", "FPoo" : self.poo, "fPee" : self.pee,"fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID)]
         
             let recordRefence = self.dbRef.childByAutoId()
             recordRefence.setValue(record)
@@ -321,7 +321,7 @@ class datePicker2: UIViewController {
             self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-(DatePicker.date.timeIntervalSince1970))])
             self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-(DatePicker.date.timeIntervalSince1970))])            }//  end od if recors to handle is ""
             else {
-            let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker2.date), "fTotal" : String (describing : calcTotal), "fIndication" : " " ,"fIndication2" :" " ,"fIndication3" :"✏️","fStatus" : "Pre","FPoo" : self.poo, "fPee" : self.pee ]
+            let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker2.date), "fTotal" : String (describing : calcTotal) ,"fIndication3" :"✏️","fStatus" : "Pre","FPoo" : self.poo, "fPee" : self.pee ]
             dbRef.child(recordToHandle).updateChildValues(record)
                 self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])
                 self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])
@@ -343,7 +343,7 @@ class datePicker2: UIViewController {
 
         
             if recordToHandle == "" {
-                let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker.date), "fTotal" : "-1", "fEmployer": String (describing : employerFromMain!), "fIndication" : " " ,"fIndication2" :" " ,"fIndication3" :"✏️","fStatus" : "Pre", "FPoo" : self.poo, "fPee" : self.pee,"fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID)]
+                let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker.date), "fTotal" : "-1", "fEmployer": String (describing : employerFromMain!),"fIndication3" :"✏️","fStatus" : "Pre", "FPoo" : self.poo, "fPee" : self.pee,"fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID)]
                 
                 let recordRefence = self.dbRef.childByAutoId()
                 recordRefence.setValue(record)
@@ -354,7 +354,7 @@ class datePicker2: UIViewController {
                 self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-(DatePicker.date.timeIntervalSince1970))])
                 self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-(DatePicker.date.timeIntervalSince1970))])            }//  end od if recors to handle is ""
             else {
-                let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker.date), "fTotal" :"-1", "fIndication" : " " ,"fIndication2" :" " ,"fIndication3" :"✏️","fStatus" : "Pre","FPoo" : self.poo, "fPee" : self.pee ]
+                let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fOut" : mydateFormat5.string(from: DatePicker.date), "fTotal" :"-1","fIndication3" :"✏️","fStatus" : "Pre","FPoo" : self.poo, "fPee" : self.pee ]
                 dbRef.child(recordToHandle).updateChildValues(record)
                 self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])
                 self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])

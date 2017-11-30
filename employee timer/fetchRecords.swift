@@ -91,7 +91,6 @@ var records = [recordsStruct]()
         
         cell.l2.text = record.fOut
         
-        cell.l4.text = record.fIndication
         
 
         

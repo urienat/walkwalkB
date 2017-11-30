@@ -15,10 +15,7 @@ class recordsStruct: NSObject{
     var fEmployerRef: String?
     var fIn: String?
     var fOut: String?
-    var fIndication: String?
-    var fIndication2: String?
     var fIndication3: String?
-    
     var fStatus:String?
     var fTotal: String?
     //var fId: String?

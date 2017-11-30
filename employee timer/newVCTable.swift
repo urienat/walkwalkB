@@ -311,10 +311,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             
             if record.fIndication3 == "📆" { cell.l8.image = sandwatchImageGreen}
             if record.fIndication3 == "✏️"||record.fIndication3 == "Manual" { cell.l8.image = pencilImage}
-            if record.fIndication3 == "↺" && record.fIndication == "🚩" {  cell.l8.image = roundImageNormal}
-            if record.fIndication3 == "↺" && record.fIndication == "🏳" {  cell.l8.image = roundImageNormal }
-            if record.fIndication3 == "⏳"  && record.fIndication == "🚩"  || record.fIndication3 == "⏳" && record.fIndication2 == "🚩"{  cell.l8.image = sandwatchImageRed}
-            if record.fIndication3 == "⏳" && record.fIndication == "🏳" && record.fIndication2 == "🏳" {  cell.l8.image = sandwatchImageGreen}
+            if record.fIndication3 == "↺" {  cell.l8.image = roundImageNormal}
+            if record.fIndication3 == "⏳" {  cell.l8.image = sandwatchImageRed}
 
      
             if record.fStatus == "Approved" { cell.approval.setImage(Vimage, for: .normal);eventCounter+=1}
