@@ -81,6 +81,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     override func viewDidLoad() {
        
         super.viewDidLoad()
+        noSign.isHidden = true
         
         billerConnect.backgroundColor = UIColor.clear
         if employerID != "" {  titleLbl = "\(employerFromMain)'s bills" } else {titleLbl = "Bills"}
