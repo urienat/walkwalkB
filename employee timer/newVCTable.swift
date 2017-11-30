@@ -253,6 +253,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             fetch()
             
             }//view did appear end
+    
    
             func tableView(_ tableConnect: UITableView, numberOfRowsInSection section: Int) -> Int {
                 return records.count}
@@ -262,7 +263,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             @IBAction func StatusChosen(_ sender: AnyObject) {
             
             print("pressed")
-            noSign.isHidden = true
             generalApproval.isEnabled = false
             self.thinking.isHidden = false
             self.thinking.startAnimating()
@@ -282,7 +282,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
         @IBOutlet weak var periodChosen: UISegmentedControl!
         @IBAction func PeriodChosen(_ sender: AnyObject) {
-        noSign.isHidden = true
         generalApproval.isEnabled = false
         
         self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
@@ -633,8 +632,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
         DispatchQueue.main.asyncAfter(deadline: .now()+3){
         //trial
+            if self.idArray.isEmpty == true {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
+            print (self.idArray.isEmpty)
+            
         self.eventsNumber.text = String(self.eventCounter)
-        if self.eventCounter == 1 {self.eventsLbl.text = "Due session"} else {self.eventsLbl.text = "Due Sessions"}
+            if self.eventCounter == 0 {self.eventsLbl.text = " Due Sessions"} else if self.eventCounter == 1 {self.eventsLbl.text = " Due session"} else {self.eventsLbl.text = " Due Sessions"}
         if self.Status == "All" /*|| self.Status == "Paid"*/{self.generalApproval.isHidden = true}
         let (hForTotal,mForTotal) = self.secondsTo(seconds: self.timeCounter)
         if self.payment=="Normal"  {self.totalTime.text = String(Int(hForTotal)) + "h:" + String (Int(mForTotal)) + "m" ; self.totalTime.isHidden = false}else {self.totalTime.text = "" ; self.totalTime.isHidden = true}
@@ -645,11 +647,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.amount.text =  String(Double(self.calc).roundTo(places: 2))
         self.currencySymbol.text = ViewController.fixedCurrency!
             
-        if self.eventCounter != 0 {if self.rememberMe1 == 0 {self.alert90()}; self.generalApproval.isHidden = true;self.generalApproval.isEnabled = true; self.noSign.isHidden = true; if self.releaser == 0 {self.billSender.isEnabled = true;self.noSign.isHidden = true}
+        if self.eventCounter != 0 {if self.rememberMe1 == 0 {self.alert90()}; self.generalApproval.isHidden = true;self.generalApproval.isEnabled = true;  if self.releaser == 0 {self.billSender.isEnabled = true}
         }else {
         self.billSender.isEnabled = false
         self.generalApproval.isHidden = true;
-        self.noSign.isHidden = false;self.noSign.alpha = 0.5
         }
         }//end of dispatch
 
