@@ -1029,133 +1029,116 @@ print ("started view did load")
                     let split2    = splitItem.0
                     print (split2)
                     
-                    self.employerIdArray2.append(split2 as AnyObject)
+                    if split2 != "New Dog" {
+                        self.employerIdArray2.append(split2 as AnyObject) } else {//do nothing
+                        
+                    }
                     
                 }
                 
                 print ("employeridarray2\(self.employerIdArray2)")
 
-
+                if self.employerIdArray2.isEmpty == true {self.thinking2.stopAnimating()
+                // animation to open your first account
+                } else {
                 for iIndex in 0...(self.employerIdArray2.count-1){
-                   
-
                     self.dbRefEmployer.child(self.employerIdArray2[iIndex] as! String).observeSingleEvent(of: .value, with:{ (snapshot) in
-                
                     self.employerItem = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
-                    print("i3 \(iIndex)")
                     self.pickerData.append(self.employerItem  )
                     
-
-                   // self.pickerData.insert(self.employerItem, at: i-1)
-                    print ("pickerData\(self.pickerData)")
-
                     self.employerInProcess = String(describing: snapshot.childSnapshot(forPath: "finProcess").value!) as String!
                     self.pickerIP.append((self.employerInProcess))
 
-  
-                self.dogItem = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
+                    self.dogItem = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
                     self.nameData.append(self.dogItem  )
 
-                self.activeItem = String(describing: snapshot.childSnapshot(forPath: "fActive").value!) as String!
+                    self.activeItem = String(describing: snapshot.childSnapshot(forPath: "fActive").value!) as String!
                     self.activeData.append(String(describing: self.activeItem) )
-print (snapshot.childSnapshot(forPath: "fImageRef").value!)
                         
                         
-                          self.profileImageUrl = snapshot.childSnapshot(forPath: "fImageRef").value as! String!
-                          //  self.profileImageUrl = "https://firebasestorage.googleapis.com/v0/b/persession-45987.appspot.com/o/Myprofile.png?alt=media&token=263c8fdb-9cca-4256-9d3b-b794774bf4e1"
+                    self.profileImageUrl = snapshot.childSnapshot(forPath: "fImageRef").value as! String!
+                    //  self.profileImageUrl = "https://firebasestorage.googleapis.com/v0/b/persession-45987.appspot.com/o/Myprofile.png?alt=media&token=263c8fdb-9cca-4256-9d3b-b794774bf4e1"
                     self.imageArray.append(self.profileImageUrl)
-                        
-                       // self.employerList.reloadData()
-
+                      
                     if iIndex == (self.employerIdArray2.count-1) {
                      
-                        self.thinking2.stopAnimating()
+                    self.thinking2.stopAnimating()
 
-                        self.employerList.isUserInteractionEnabled = true
-                        if self.employerIdArray2.count < 5 {self.employerListHeiget.priority = 1000 ;self.employerListBottom.priority = 750;self.employerListTop.constant = 60.0; self.employerListHeiget.constant >= 265;self.employerListBottom.constant = 285} else {self.employerListBottom.priority = 750; self.employerListHeiget.priority = 1000;self.employerListTop.constant = 30.0;self.employerListHeiget.constant >= 315;self.employerListBottom.constant = 285 }
+                    self.employerList.isUserInteractionEnabled = true
+                    if self.employerIdArray2.count < 5 {self.employerListHeiget.priority = 1000 ;self.employerListBottom.priority = 750;self.employerListTop.constant = 60.0; self.employerListHeiget.constant >= 265;self.employerListBottom.constant = 285} else {self.employerListBottom.priority = 750; self.employerListHeiget.priority = 1000;self.employerListTop.constant = 30.0;self.employerListHeiget.constant >= 315;self.employerListBottom.constant = 285 }
                         self.employerList.reloadData()
-                       // print (self.employerIdArray2.count)
                       self.checkSubs()
                         
-                        
-                        
-
-                        self.employerList.isHidden = false
-                        self.dbRefEmployer.removeAllObservers()
-
-
+                    self.employerList.isHidden = false
+                    self.dbRefEmployer.removeAllObservers()
 
                     }
 
                     self.dbRefEmployee.removeAllObservers()
-                }){(error) in
+                    }){(error) in
                     print(error.localizedDescription)} // end of dbrefemployer
                 
-                }//end of i loop
+                    }//end of i loop
+                    }//end of idarray2 is empty
 
-        }){(error) in
-        print(error.localizedDescription)}//end of dbref employee
+                    }){(error) in
+                    print(error.localizedDescription)}//end of dbref employee
             
-
-            }//end of fetch employer
+                    }//end of fetch employer
     
-    func preStartView() {
+                    func preStartView() {
         
-        self.stopBackground.isHidden = true
-        self.addAmanualRecord.isHidden = false
-        self.DateIn.isHidden = true
-        self.timeBackground.isHidden = true
-        self.pooBackground.isHidden = true
-        self.workedFor.isHidden = true
-        self.startBackground.isHidden = false
-        self.petFile.isEnabled = true;
-        
-        self.chooseEmployer.isUserInteractionEnabled = true
-        startBarButtonFadeOut()
-        startBarButtonFadeIn()
-        
-     
-        
-    }//end of func
+                    self.stopBackground.isHidden = true
+                    self.addAmanualRecord.isHidden = false
+                    self.DateIn.isHidden = true
+                    self.timeBackground.isHidden = true
+                    self.pooBackground.isHidden = true
+                    self.workedFor.isHidden = true
+                    self.startBackground.isHidden = false
+                    self.petFile.isEnabled = true;
+                    self.chooseEmployer.isUserInteractionEnabled = true
+                    startBarButtonFadeOut()
+                    startBarButtonFadeIn()
+                  
+                    }//end of func
     
-    func postStartView() {
+                    func postStartView() {
         
-        self.petFile.isEnabled = true
+                    self.petFile.isEnabled = true
+                  
+                    self.timeBackground.isHidden = false
+                    self.animationImage.isHidden = true
+                    self.startBackground.isHidden = true
+                    self.DateIn.isHidden = false;
+                    self.workedFor.isHidden = true
+                    self.pooBackground.isHidden = true//false
+                    self.addAmanualRecord.isHidden = true
+                    self.stopBackground.isHidden = false
+                    stopBarButtonFadeOut()
+                    stopBarButtonFadeIn()
+                    self.chooseEmployer.isUserInteractionEnabled = true
+                    UIView.animate(withDuration: TimeInterval(4.9),delay: 0, options: [.repeat], animations:{
+                    self.stopImage.transform = self.stopImage.transform.rotated(by: CGFloat(Double.pi*1))
+                    })
       
-        self.timeBackground.isHidden = false
-        self.animationImage.isHidden = true
-        self.startBackground.isHidden = true
-        self.DateIn.isHidden = false;
-        self.workedFor.isHidden = true
-        self.pooBackground.isHidden = true//false
-        self.addAmanualRecord.isHidden = true
-        self.stopBackground.isHidden = false
-        stopBarButtonFadeOut()
-        stopBarButtonFadeIn()
-        self.chooseEmployer.isUserInteractionEnabled = true
-        UIView.animate(withDuration: TimeInterval(4.9),delay: 0, options: [.repeat], animations:{
-        self.stopImage.transform = self.stopImage.transform.rotated(by: CGFloat(Double.pi*1))
-        })
-      
+                    }//end of func
     
-    }//end of func
-    
-        func postTimerView() {
-        
-        DateIn.isHidden = true
-        records.isEnabled = false
-        petFile.isEnabled = false
-       
-        chooseEmployer.isHidden = true
-        startBackground.isHidden = true
-        stopBackground.isHidden = true
-        addAmanualRecord.isHidden = true
-        timeBackground.isHidden = true
-        self.gpsDistance.isHidden = true
-        pooBackground.isHidden = true
-        animationImage.isHidden = true
-        
-    }//end of func
+                    func postTimerView() {
+                    
+                    DateIn.isHidden = true
+                    records.isEnabled = false
+                    petFile.isEnabled = false
+                   
+                    chooseEmployer.isHidden = true
+                    startBackground.isHidden = true
+                    stopBackground.isHidden = true
+                    addAmanualRecord.isHidden = true
+                    timeBackground.isHidden = true
+                    self.gpsDistance.isHidden = true
+                    pooBackground.isHidden = true
+                    animationImage.isHidden = true
+                    
+                    }//end of func
     
     func postRoundView() {
         
