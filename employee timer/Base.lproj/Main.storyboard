@@ -799,35 +799,6 @@
                                     <constraint firstItem="fJW-rO-BL2" firstAttribute="centerX" secondItem="FxU-Wn-hMn" secondAttribute="centerX" constant="70" id="xV4-qh-pye"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iC3-6e-xAj" userLabel="stopBackground">
-                                <rect key="frame" x="0.0" y="230" width="320" height="76"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3X-s5-1Iu">
-                                        <rect key="frame" x="119.5" y="0.0" width="81" height="76"/>
-                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="45"/>
-                                        <state key="normal" title="Stop">
-                                            <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="Stop:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="oqV-Cn-dfY"/>
-                                        </connections>
-                                    </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="sandWatchStop" translatesAutoresizingMaskIntoConstraints="NO" id="mfN-Bp-1CY" userLabel="stoprImage">
-                                        <rect key="frame" x="209.5" y="18" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="3D2-b9-TGP"/>
-                                            <constraint firstAttribute="width" constant="40" id="svx-PR-SbW"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="mfN-Bp-1CY" firstAttribute="centerY" secondItem="Q3X-s5-1Iu" secondAttribute="centerY" id="4Ja-hH-W8T"/>
-                                    <constraint firstItem="Q3X-s5-1Iu" firstAttribute="top" secondItem="iC3-6e-xAj" secondAttribute="top" id="Hfn-5x-Bls"/>
-                                    <constraint firstItem="Q3X-s5-1Iu" firstAttribute="leading" secondItem="mfN-Bp-1CY" secondAttribute="trailing" constant="-130" id="N86-6c-ooy"/>
-                                    <constraint firstItem="Q3X-s5-1Iu" firstAttribute="centerX" secondItem="iC3-6e-xAj" secondAttribute="centerX" id="fRg-fJ-yCr"/>
-                                    <constraint firstAttribute="bottom" secondItem="Q3X-s5-1Iu" secondAttribute="bottom" id="tDz-Xm-DFj"/>
-                                </constraints>
-                            </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wkx-Tt-3io" userLabel="DateIn">
                                 <rect key="frame" x="0.0" y="306" width="320" height="22"/>
                                 <constraints>
@@ -1059,11 +1030,9 @@
                             <constraint firstItem="XDi-hZ-CdO" firstAttribute="centerY" secondItem="Cq4-SE-U6N" secondAttribute="centerY" id="100-Io-J4L"/>
                             <constraint firstItem="JyP-95-znE" firstAttribute="top" secondItem="yHg-YC-CqC" secondAttribute="bottom" id="1hb-Xe-QgI"/>
                             <constraint firstAttribute="trailing" secondItem="JEU-k8-q20" secondAttribute="trailing" id="2OL-F2-fVW"/>
-                            <constraint firstAttribute="trailing" secondItem="iC3-6e-xAj" secondAttribute="trailing" id="3ZK-5I-mtl"/>
                             <constraint firstAttribute="trailing" secondItem="Wkx-Tt-3io" secondAttribute="trailing" id="3iw-Bp-Rkw"/>
                             <constraint firstAttribute="trailing" secondItem="K9m-63-7gA" secondAttribute="trailing" id="4YD-yT-RZ8"/>
                             <constraint firstItem="tbR-QL-TgX" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="4b8-su-roT"/>
-                            <constraint firstItem="45C-VX-M18" firstAttribute="width" secondItem="iC3-6e-xAj" secondAttribute="width" id="7ZL-We-esj"/>
                             <constraint firstItem="fEo-2V-FTr" firstAttribute="centerY" secondItem="uv4-gs-ESI" secondAttribute="centerY" id="7hJ-c6-joF"/>
                             <constraint firstItem="JEU-k8-q20" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="81U-us-2Sc"/>
                             <constraint firstItem="fXg-VA-EDp" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="BKR-ZQ-q0s"/>
@@ -1080,7 +1049,6 @@
                             <constraint firstItem="45C-VX-M18" firstAttribute="top" secondItem="fqn-dL-iFO" secondAttribute="bottom" constant="112" id="U8j-Aa-dZf"/>
                             <constraint firstItem="XDi-hZ-CdO" firstAttribute="centerX" secondItem="Cq4-SE-U6N" secondAttribute="centerX" id="Ver-zq-PUb"/>
                             <constraint firstItem="tbR-QL-TgX" firstAttribute="top" secondItem="lxT-w2-3r9" secondAttribute="bottom" constant="30" id="WI7-6r-u9D"/>
-                            <constraint firstItem="45C-VX-M18" firstAttribute="height" secondItem="iC3-6e-xAj" secondAttribute="height" id="Xb3-TF-aPj"/>
                             <constraint firstItem="fqn-dL-iFO" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="Yxj-2x-GlY"/>
                             <constraint firstItem="K9m-63-7gA" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="Zku-H8-6y8"/>
                             <constraint firstItem="FxU-Wn-hMn" firstAttribute="top" secondItem="45C-VX-M18" secondAttribute="bottom" constant="44" id="db2-hz-AHs"/>
@@ -1091,7 +1059,6 @@
                             <constraint firstItem="tbR-QL-TgX" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leadingMargin" constant="4" id="lj5-TB-d6x"/>
                             <constraint firstItem="fXg-VA-EDp" firstAttribute="top" secondItem="Wkx-Tt-3io" secondAttribute="bottom" constant="8" id="nYN-0S-YLS"/>
                             <constraint firstItem="XDi-hZ-CdO" firstAttribute="height" secondItem="Cq4-SE-U6N" secondAttribute="height" id="qAi-h8-Wb1"/>
-                            <constraint firstItem="iC3-6e-xAj" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="qBH-4q-cp2"/>
                             <constraint firstAttribute="trailing" secondItem="45C-VX-M18" secondAttribute="trailing" id="qOY-3o-Yzg"/>
                             <constraint firstItem="yHg-YC-CqC" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="sRk-0I-EqB"/>
                             <constraint firstItem="yHg-YC-CqC" firstAttribute="top" secondItem="JEU-k8-q20" secondAttribute="bottom" id="v44-Xx-vbe"/>
@@ -1135,9 +1102,6 @@
                         <outlet property="startBackground" destination="45C-VX-M18" id="DnN-Lg-IRl"/>
                         <outlet property="startButton" destination="Cq4-SE-U6N" id="ULk-SV-W07"/>
                         <outlet property="startImage" destination="Chx-Kf-Bii" id="Tqx-Za-zgy"/>
-                        <outlet property="stopBackground" destination="iC3-6e-xAj" id="Mlj-wH-iKb"/>
-                        <outlet property="stopButton" destination="Q3X-s5-1Iu" id="dcm-4V-yLN"/>
-                        <outlet property="stopImage" destination="mfN-Bp-1CY" id="fji-1K-A04"/>
                         <outlet property="textAdd" destination="XDi-hZ-CdO" id="nf8-xp-7Gw"/>
                         <outlet property="thinking2" destination="fEo-2V-FTr" id="V9X-bN-rJU"/>
                         <outlet property="timeBackground" destination="K9m-63-7gA" id="MQo-qT-bdp"/>
@@ -2672,7 +2636,6 @@
         <image name="perSessionImage" width="234" height="225"/>
         <image name="resend" width="50" height="50"/>
         <image name="roundBig" width="100" height="100"/>
-        <image name="sandWatchStop" width="257" height="261"/>
         <image name="sendBillIcon" width="50" height="50"/>
         <image name="telephone" width="50" height="50"/>
         <image name="trash" width="50" height="50"/>

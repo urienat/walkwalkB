@@ -210,52 +210,11 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
 
     
     //background that helps "add a manual background" disappear after it eas chosen
-        @IBOutlet weak var stopBackground: UIView!
         @IBOutlet weak var startBackground: UIView!
     
     //start timer action
         @IBAction func Start(_ sender: AnyObject) {
-            
-            if self.paymentUpdate == "Normal" {
-
-            timeh.text = "00H"
-            timem.text = "00m"
-            employeeCounter = 0
-            
-            //sound for start
-           // playSound()
-        self.timeBackground.alpha = 1
-        self.animationImage.alpha = 1
-            self.postStartView()
-
-        self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").updateChildValues([(self.employerIDToS):1]) //consider chane font color
-        //timer loop
-        self.employeeTimer.invalidate()
-        //employeeCounter = 0
-        employeeTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
-        
-        //intial date and time of the timer
-        dIn =  mydateFormat5.string(from: Date()) //brings the a date as a string
-        dIn2 = mydateFormat2.string(from: Date()) //brings the a date as a string
-        DateIn.text = "Started:  " + self.dIn2
-       
-        let record = ["fIn" : dIn, "fEmployer": String (describing : employerToS),"fEmployeeRef": employeeIDToS,"fEmployerRef": employerIDToS,"fStatus" : "W"]
-        let fInRef = dbRef.childByAutoId()
-        fInRef.setValue(record)
-        print (String(describing:self.chooseEmployer.currentTitle!))
-        activeId = fInRef.key
-        print("activeID \(activeId)")
-        dbRefEmployer.child(self.employerIDToS).updateChildValues(["finProcess" : activeId])
-        recordInProcess = activeId
-      
-       
-            }//end of if normal
-            else{
-                
-                print ("ffff")
-                //sound for start
-               // playSound()
-                 self.DateIn.text = "Walking...\(self.dIn2)"
+           
                 textAdd.text = "Session added: \r\n\r\n\( mydateFormat7.string(from: Date()))"
                 self.postRoundView()
 
@@ -278,55 +237,13 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
                 self.dbRefEmployer.child(self.employerIDToS).child("fEmployerRecords").updateChildValues([fInRef.key:Int(-(self.mydateFormat5.date(from: self.dIn)?.timeIntervalSince1970)!)])
 
                 
-            }//end of else
 
         }//end of start
     
-    //update counter for the timer
-        func updateCounter() {
-        //print("employeecounter pre+\(employeeCounter)")
-        employeeCounter += 1
-        let (h,m,_) = secondsTo(seconds: employeeCounter)
 
-       
-
-        if blinker.isHidden == false {
-            self.blinker.isHidden = true
-            self.blinker2.isHidden = true
-        } else { self.blinker.isHidden = false;            self.blinker2.isHidden = false
-            }//end of else
-            
-            if 10 > m {timem.text = String("0\(m)m")} else
-            {timem.text = String("\(m)m")}
-            if 10 > h  {timeh.text = String("0\(h)H")} else {timeh.text = String("\(h)H")}
-            if h > 23  {employeeCounter = 0; logicAlert()
-                
-            }
-        }//end of update counter
-    
-        func secondsTo (seconds : Int) -> (Int, Int, Int) {
-        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600 ) % 60)
-        }//end of secondsTo
-    
-    //Stop button of the timer
-
-    
-        @IBOutlet weak var stopButton: UIButton!
         @IBOutlet weak var startButton: UIButton!
     
-        @IBAction func Stop(_ sender: AnyObject) {
-
-        employeeTimer.invalidate()
-       
-        dOut = mydateFormat5.string(from: Date()) //brings the a date as a string
-        workedFor.text = "till: " + ( mydateFormat2.string(from: mydateFormat5.date(from: dOut)!))
-        
-        
-       
-            
-        normalClosure()
-
-        }//end of stop
+    
     
     
     
@@ -705,12 +622,6 @@ print ("started view did load")
                                 self.DateIn.text = "Started:  " + self.dIn2
 
                 
-                //should understand the time local!!!!!!!
-                let timerResume =  Date().timeIntervalSince((self.mydateFormat5.date(from: self.dIn))!)   //the diffrence date() din
-                print ("timeresume\(timerResume)")
-                self.employeeCounter = Int(timerResume)
-                self.employeeTimer.invalidate()
-                self.employeeTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateCounter), userInfo: nil, repeats: true)
               
                
             }// end of if let dictionary
@@ -985,7 +896,6 @@ print ("started view did load")
     
                     func preStartView() {
         
-                    self.stopBackground.isHidden = true
                     self.addAmanualRecord.isHidden = false
                     self.DateIn.isHidden = true
                     self.timeBackground.isHidden = true
@@ -1008,9 +918,7 @@ print ("started view did load")
                     self.DateIn.isHidden = false;
                     self.workedFor.isHidden = true
                     self.addAmanualRecord.isHidden = true
-                    self.stopBackground.isHidden = false
-                    stopBarButtonFadeOut()
-                    stopBarButtonFadeIn()
+                    
                     self.chooseEmployer.isUserInteractionEnabled = true
                     UIView.animate(withDuration: TimeInterval(4.9),delay: 0, options: [.repeat], animations:{
                     self.stopImage.transform = self.stopImage.transform.rotated(by: CGFloat(Double.pi*1))
@@ -1026,7 +934,6 @@ print ("started view did load")
                    
                     chooseEmployer.isHidden = true
                     startBackground.isHidden = true
-                    stopBackground.isHidden = true
                     addAmanualRecord.isHidden = true
                     timeBackground.isHidden = true
                     animationImage.isHidden = true
@@ -1043,7 +950,6 @@ print ("started view did load")
         self.DateIn.isHidden = false;
         self.workedFor.isHidden = true
         self.addAmanualRecord.isHidden = true
-        self.stopBackground.isHidden = true
         
         self.chooseEmployer.isUserInteractionEnabled = true
         
@@ -1124,28 +1030,7 @@ print ("started view did load")
         
     }
 
-    func stopBarButtonFadeOut(){
-        UIView.animate(withDuration: 0.3, animations: {
-            //timeCapDesign is a UIButton
-            
-           // self.stopButton.alpha = 0
-            
-            self.stopButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-            
-        })
-    }
     
-    //P Fade In Buttons
-    func stopBarButtonFadeIn(){
-        UIView.animate(withDuration: 0.3,delay: 0.3, animations: {
-            
-            self.stopButton.alpha = 1
-            
-            self.stopButton.transform = .identity// CGAffineTransformIdentity
-            
-            
-        })
-    }
     
 ///////////////////////////////////////alerts
     func       alert83(){
