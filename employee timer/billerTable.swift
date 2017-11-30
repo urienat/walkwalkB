@@ -37,6 +37,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let billIcon = UIImage(named: "bill")
     let canceledImage = UIImage(named: "cancelled")
     
+    
     var StatusChoice = "Not Paid"
       var buttonRow = 0
     
@@ -50,6 +51,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var totalBills: UITextField!
     @IBOutlet weak var totalTax: UITextField!
     @IBOutlet weak var totalAmount: UITextField!
+    @IBOutlet weak var noSign: UIImageView!
     
     
 
@@ -267,6 +269,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                     else if self.StatusChoice == "Not Paid" &&  billItem.fBillStatus == "Billed"  {self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
                 }
               
+                if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
                 self.totalBills.text = "\(String(describing: self.billItems.count)) Bills"
                 self.totalAmount.text = "Total \(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
                 self.totalTax.text = "Tax \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"

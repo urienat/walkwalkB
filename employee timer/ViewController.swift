@@ -1039,8 +1039,11 @@ print ("started view did load")
                 print ("employeridarray2\(self.employerIdArray2)")
 
                 if self.employerIdArray2.isEmpty == true {self.thinking2.stopAnimating()
+                    self.googleCalander.isEnabled = false
                 // animation to open your first account
                 } else {
+                    self.googleCalander.isEnabled = true
+
                 for iIndex in 0...(self.employerIdArray2.count-1){
                     self.dbRefEmployer.child(self.employerIdArray2[iIndex] as! String).observeSingleEvent(of: .value, with:{ (snapshot) in
                     self.employerItem = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
