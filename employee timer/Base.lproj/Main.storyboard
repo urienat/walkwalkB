@@ -897,66 +897,6 @@
                                     <constraint firstAttribute="bottom" secondItem="Cq4-SE-U6N" secondAttribute="bottom" id="mA2-ZT-H6u"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K9m-63-7gA" userLabel="timeBackground">
-                                <rect key="frame" x="0.0" y="144" width="320" height="38"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2O-9u-XxV" userLabel="Show Time h">
-                                        <rect key="frame" x="95" y="0.0" width="60" height="38"/>
-                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="32"/>
-                                        <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jm-zy-yg0" userLabel="Show Time s">
-                                        <rect key="frame" x="184" y="18" width="0.0" height="10"/>
-                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="25"/>
-                                        <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHi-fb-T0c" userLabel="blinker">
-                                        <rect key="frame" x="158" y="10" width="5" height="5"/>
-                                        <color key="backgroundColor" red="0.12549019610000001" green="0.58823529409999997" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="5" id="08h-VC-IFu"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="5" id="TVd-eM-huS"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="25"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6z-um-NZL" userLabel="blinker2">
-                                        <rect key="frame" x="158" y="22" width="5" height="5"/>
-                                        <color key="backgroundColor" red="0.12558225109999999" green="0.58808092950000002" blue="0.095813386410000007" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="25"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbI-tn-sNO" userLabel="Show Time m">
-                                        <rect key="frame" x="164" y="0.0" width="60" height="38"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="R91-r5-y3v"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="32"/>
-                                        <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="LbI-tn-sNO" firstAttribute="height" secondItem="K9m-63-7gA" secondAttribute="height" id="FaL-qO-UfC"/>
-                                    <constraint firstItem="LbI-tn-sNO" firstAttribute="width" secondItem="g2O-9u-XxV" secondAttribute="width" id="GbI-d3-xJd"/>
-                                    <constraint firstItem="MHi-fb-T0c" firstAttribute="top" secondItem="K9m-63-7gA" secondAttribute="top" constant="10" id="KW1-DW-I5X"/>
-                                    <constraint firstItem="MHi-fb-T0c" firstAttribute="centerX" secondItem="K9m-63-7gA" secondAttribute="centerX" id="OzF-65-hgT"/>
-                                    <constraint firstItem="D6z-um-NZL" firstAttribute="centerX" secondItem="K9m-63-7gA" secondAttribute="centerX" id="QEX-eM-1ED"/>
-                                    <constraint firstItem="D6z-um-NZL" firstAttribute="width" secondItem="MHi-fb-T0c" secondAttribute="width" id="QwF-lk-Csb"/>
-                                    <constraint firstItem="D6z-um-NZL" firstAttribute="top" secondItem="MHi-fb-T0c" secondAttribute="bottom" constant="7" id="ROs-zg-BMG"/>
-                                    <constraint firstItem="LbI-tn-sNO" firstAttribute="centerY" secondItem="K9m-63-7gA" secondAttribute="centerY" id="SHa-ao-NTe"/>
-                                    <constraint firstItem="LbI-tn-sNO" firstAttribute="leading" secondItem="MHi-fb-T0c" secondAttribute="trailing" constant="1" id="TjP-5o-wsg"/>
-                                    <constraint firstAttribute="height" constant="38" id="UUs-Qr-jSL"/>
-                                    <constraint firstItem="LbI-tn-sNO" firstAttribute="height" secondItem="g2O-9u-XxV" secondAttribute="height" id="Uhf-7c-o0y"/>
-                                    <constraint firstItem="D6z-um-NZL" firstAttribute="height" secondItem="MHi-fb-T0c" secondAttribute="height" id="bRK-Do-nZ5"/>
-                                    <constraint firstItem="MHi-fb-T0c" firstAttribute="leading" secondItem="g2O-9u-XxV" secondAttribute="trailing" constant="3" id="ljE-bl-m8X"/>
-                                    <constraint firstItem="g2O-9u-XxV" firstAttribute="centerY" secondItem="K9m-63-7gA" secondAttribute="centerY" id="sSQ-vG-Th2"/>
-                                </constraints>
-                            </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Worked for" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXg-VA-EDp">
                                 <rect key="frame" x="0.0" y="336" width="320" height="25"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="23"/>
@@ -1031,12 +971,10 @@
                             <constraint firstItem="JyP-95-znE" firstAttribute="top" secondItem="yHg-YC-CqC" secondAttribute="bottom" id="1hb-Xe-QgI"/>
                             <constraint firstAttribute="trailing" secondItem="JEU-k8-q20" secondAttribute="trailing" id="2OL-F2-fVW"/>
                             <constraint firstAttribute="trailing" secondItem="Wkx-Tt-3io" secondAttribute="trailing" id="3iw-Bp-Rkw"/>
-                            <constraint firstAttribute="trailing" secondItem="K9m-63-7gA" secondAttribute="trailing" id="4YD-yT-RZ8"/>
                             <constraint firstItem="tbR-QL-TgX" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="4b8-su-roT"/>
                             <constraint firstItem="fEo-2V-FTr" firstAttribute="centerY" secondItem="uv4-gs-ESI" secondAttribute="centerY" id="7hJ-c6-joF"/>
                             <constraint firstItem="JEU-k8-q20" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="81U-us-2Sc"/>
                             <constraint firstItem="fXg-VA-EDp" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="BKR-ZQ-q0s"/>
-                            <constraint firstItem="7jm-zy-yg0" firstAttribute="leading" secondItem="XDi-hZ-CdO" secondAttribute="trailing" constant="-36" id="BkY-d8-Yfn"/>
                             <constraint firstItem="XDi-hZ-CdO" firstAttribute="width" secondItem="M0C-iW-AVD" secondAttribute="width" id="Bps-Gc-a0V"/>
                             <constraint firstItem="XDi-hZ-CdO" firstAttribute="top" secondItem="M0C-iW-AVD" secondAttribute="bottom" constant="-200" id="Bxa-uI-HYC"/>
                             <constraint firstAttribute="trailing" secondItem="yHg-YC-CqC" secondAttribute="trailing" id="Dmq-dH-nve"/>
@@ -1050,7 +988,6 @@
                             <constraint firstItem="XDi-hZ-CdO" firstAttribute="centerX" secondItem="Cq4-SE-U6N" secondAttribute="centerX" id="Ver-zq-PUb"/>
                             <constraint firstItem="tbR-QL-TgX" firstAttribute="top" secondItem="lxT-w2-3r9" secondAttribute="bottom" constant="30" id="WI7-6r-u9D"/>
                             <constraint firstItem="fqn-dL-iFO" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="Yxj-2x-GlY"/>
-                            <constraint firstItem="K9m-63-7gA" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="Zku-H8-6y8"/>
                             <constraint firstItem="FxU-Wn-hMn" firstAttribute="top" secondItem="45C-VX-M18" secondAttribute="bottom" constant="44" id="db2-hz-AHs"/>
                             <constraint firstItem="lxT-w2-3r9" firstAttribute="top" secondItem="uv4-gs-ESI" secondAttribute="top" id="f3E-b2-6a4"/>
                             <constraint firstItem="yHg-YC-CqC" firstAttribute="top" secondItem="tbR-QL-TgX" secondAttribute="bottom" priority="750" constant="280" id="iQn-al-QjX"/>
@@ -1064,7 +1001,6 @@
                             <constraint firstItem="yHg-YC-CqC" firstAttribute="top" secondItem="JEU-k8-q20" secondAttribute="bottom" id="v44-Xx-vbe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tbR-QL-TgX" secondAttribute="trailing" constant="4" id="xkR-pN-ggA"/>
                             <constraint firstItem="FxU-Wn-hMn" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" constant="4" id="xnN-uG-pY9"/>
-                            <constraint firstItem="K9m-63-7gA" firstAttribute="top" secondItem="fqn-dL-iFO" secondAttribute="bottom" constant="26" id="ywt-1G-3Aw"/>
                             <constraint firstAttribute="trailing" secondItem="fXg-VA-EDp" secondAttribute="trailing" id="zsc-ne-CXT"/>
                         </constraints>
                     </view>
@@ -1087,8 +1023,6 @@
                         <outlet property="addAmanualRecord" destination="FxU-Wn-hMn" id="TvW-qU-vMq"/>
                         <outlet property="animationImage" destination="M0C-iW-AVD" id="xlo-Ti-y7F"/>
                         <outlet property="bills" destination="2Ty-Up-jjh" id="099-jf-XpW"/>
-                        <outlet property="blinker" destination="MHi-fb-T0c" id="zh3-S7-5py"/>
-                        <outlet property="blinker2" destination="D6z-um-NZL" id="NKp-i2-S0Z"/>
                         <outlet property="chooseEmployer" destination="fqn-dL-iFO" id="3pe-Mr-ayf"/>
                         <outlet property="emoloyerListBottom" destination="iQn-al-QjX" id="dJh-gK-WBq"/>
                         <outlet property="employerList" destination="tbR-QL-TgX" id="ctS-xd-Xy1"/>
@@ -1104,10 +1038,6 @@
                         <outlet property="startImage" destination="Chx-Kf-Bii" id="Tqx-Za-zgy"/>
                         <outlet property="textAdd" destination="XDi-hZ-CdO" id="nf8-xp-7Gw"/>
                         <outlet property="thinking2" destination="fEo-2V-FTr" id="V9X-bN-rJU"/>
-                        <outlet property="timeBackground" destination="K9m-63-7gA" id="MQo-qT-bdp"/>
-                        <outlet property="timeh" destination="g2O-9u-XxV" id="JxR-zT-mpL"/>
-                        <outlet property="timem" destination="LbI-tn-sNO" id="uh6-HL-uvH"/>
-                        <outlet property="times" destination="7jm-zy-yg0" id="YRE-tP-Qtt"/>
                         <outlet property="toolBar" destination="yHg-YC-CqC" id="Yrd-Xl-UuZ"/>
                         <outlet property="workedFor" destination="fXg-VA-EDp" id="4ga-cI-C7J"/>
                     </connections>

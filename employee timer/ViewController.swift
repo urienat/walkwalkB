@@ -174,10 +174,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         petFileClicked()
     }
     
-    @IBOutlet weak var timeBackground: UIView!
-        @IBOutlet weak var timeh: UILabel!
-        @IBOutlet weak var timem: UILabel!
-        @IBOutlet weak var times: UILabel!
+
         @IBOutlet weak var DateIn: UILabel!
         @IBOutlet weak var workedFor: UILabel!
         @IBOutlet weak var addAmanualRecord: UIView!
@@ -522,8 +519,7 @@ print ("started view did load")
         @IBAction func chooseEmployerBtn(_ sender: AnyObject) {
             
             thinking2.startAnimating()
-            timeh.text = ""
-            timem.text = ""
+            
             employerIDToS = ""
             employerToS = ""
         //self.employeeTimer.invalidate() //dismiss func of counter
@@ -604,8 +600,6 @@ print ("started view did load")
     //bring record
         func bringRecord() {
 
-        timeh.text = ""
-        timem.text = ""
         print (recordInProcess)
         dbRef.child(recordInProcess).observeSingleEvent(of:.value, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String: String] {
@@ -687,9 +681,7 @@ print ("started view did load")
         let cancelAction = UIAlertAction(title: "Delete", style: .cancel) { (UIAlertAction) in
             self.preStartView()
             
-            self.timeh.text = ""
-            self.timem.text = ""
-            
+           
             self.dbRef.child(self.activeId).removeValue()
             self.navigationController!.popViewController(animated: true)
             
@@ -704,10 +696,7 @@ print ("started view did load")
         
             //update action
         let updateDBAction = UIAlertAction(title: "Accept", style: .default) { (UIAlertAction) in
-            //
-           // self.employeeCounter = 0
-            self.timeh.text = ""
-            self.timem.text = ""
+            
             
             //rounding
             let calendar = Calendar.current
@@ -898,7 +887,6 @@ print ("started view did load")
         
                     self.addAmanualRecord.isHidden = false
                     self.DateIn.isHidden = true
-                    self.timeBackground.isHidden = true
                     self.workedFor.isHidden = true
                     self.startBackground.isHidden = false
                     self.petFile.isEnabled = true;
@@ -912,7 +900,6 @@ print ("started view did load")
         
                     self.petFile.isEnabled = true
                   
-                    self.timeBackground.isHidden = false
                     self.animationImage.isHidden = true
                     self.startBackground.isHidden = true
                     self.DateIn.isHidden = false;
@@ -935,7 +922,6 @@ print ("started view did load")
                     chooseEmployer.isHidden = true
                     startBackground.isHidden = true
                     addAmanualRecord.isHidden = true
-                    timeBackground.isHidden = true
                     animationImage.isHidden = true
                     
                     }//end of func
@@ -944,7 +930,6 @@ print ("started view did load")
         
         self.petFile.isEnabled = true
         
-        self.timeBackground.isHidden = true
         self.animationImage.isHidden = false
         self.startBackground.isHidden = true
         self.DateIn.isHidden = false;
@@ -1074,8 +1059,7 @@ print ("started view did load")
         let alertController4 = UIAlertController(title: "Record's limit", message: "Sorry, but  24 hours is record's limit. This record is deleted . Please update with a manual record.", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
            self.preStartView()
-            self.timeh.text = ""
-            self.timem.text = ""
+           
             
             self.dbRef.child(self.activeId).removeValue()
             
