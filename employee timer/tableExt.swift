@@ -28,7 +28,7 @@ extension(ViewController){
         
         chooseEmployer.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         chooseEmployer.titleLabel?.textAlignment = NSTextAlignment.center
-        chooseEmployer.setTitle( dogData[indexPath.row] + " " + pickerData[indexPath.row] + " ▽", for: UIControlState.normal)
+        chooseEmployer.setTitle( nameData[indexPath.row] + " " + pickerData[indexPath.row] + " ▽", for: UIControlState.normal)
         petFile.title = "\(pickerData[indexPath.row])'s file"
         records.title =  "\(pickerData[indexPath.row])'s Sessions"
 
@@ -106,17 +106,18 @@ extension(ViewController){
         func tableView(_ employerList: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell2 = employerList.dequeueReusableCell(withIdentifier: "employerList", for: indexPath) as! employerCellTableViewCell
             print (employerIdArray2)
-            print (dogData)
+            print (nameData)
             print (pickerData)
           
             print (employerToS)
             print (pickerData[indexPath.row])
+            
 
     
             if pickerData[indexPath.row] != "Add new dog" {cell2.employerName.textColor = blueColor;            cell2.backgroundColor = UIColor.clear
                 
 
-            cell2.employerName?.text = "\(pickerData[indexPath.row])" ;cell2.employerDog.isHidden = false} else
+                cell2.employerName?.text = "\(pickerData[indexPath.row])" ;cell2.employerDog.isHidden = false; cell2.employerDog?.text = nameData[indexPath.row]} else
             //change add dof to account
             {cell2.employerName.textColor = blueColor;cell2.employerName?.text = "New Account ✚" ;cell2.employerDog.isHidden = true;            cell2.backgroundColor = UIColor.clear
 }
@@ -127,7 +128,7 @@ extension(ViewController){
             
        if activeData[indexPath.row] == "0" { cell2.employerName.alpha = 0.4;cell2.employerDog.alpha = 0.4} else{ cell2.employerName.alpha = 1; cell2.employerDog.alpha = 1}
           
-            cell2.employerDog?.text =  dogData[indexPath.row] + activeSign
+            cell2.employerDog?.text =  nameData[indexPath.row] + activeSign
 
             
         cell2.dogImage.clipsToBounds = true

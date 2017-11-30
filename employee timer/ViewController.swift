@@ -136,7 +136,7 @@ class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDel
     
     //Choose an employer object
     var pickerData: [String] = [String]()
-    var dogData: [String] = [String]()
+    var nameData: [String] = [String]()
     var activeData: [String] = [String]()
 
     var pickerIP: [String] = [String]()
@@ -986,7 +986,7 @@ print ("started view did load")
                 
                 self.pickerData.removeAll()
                 self.imageArray.removeAll()
-                self.dogData.removeAll()
+                self.nameData.removeAll()
                 self.activeData.removeAll()
                 self.pickerIP.removeAll()
             
@@ -1043,8 +1043,8 @@ print ("started view did load")
                     self.pickerIP.append((self.employerInProcess))
 
   
-                self.dogItem = String(describing: snapshot.childSnapshot(forPath: "fPetName").value!) as String!
-                    self.dogData.append(self.dogItem  )
+                self.dogItem = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
+                    self.nameData.append(self.dogItem  )
 
                 self.activeItem = String(describing: snapshot.childSnapshot(forPath: "fActive").value!) as String!
                     self.activeData.append(String(describing: self.activeItem) )
