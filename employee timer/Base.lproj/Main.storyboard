@@ -1932,7 +1932,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="kwr-P5-PJT" userLabel="totalTax">
-                                        <rect key="frame" x="10" y="41" width="120" height="18"/>
+                                        <rect key="frame" x="10" y="30" width="120" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="bJg-fh-NXJ"/>
                                             <constraint firstAttribute="height" constant="18" id="knF-jr-qQX"/>
@@ -1944,10 +1944,10 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="kwr-P5-PJT" firstAttribute="centerY" secondItem="tR9-cS-rER" secondAttribute="centerY" id="2tW-D7-N7a"/>
                                     <constraint firstAttribute="bottom" secondItem="RwY-u5-Vpk" secondAttribute="bottom" constant="4" id="36R-VG-Pf7"/>
                                     <constraint firstItem="ILg-rw-WUw" firstAttribute="top" secondItem="tR9-cS-rER" secondAttribute="top" constant="4" id="8eR-fE-V5g"/>
                                     <constraint firstItem="kwr-P5-PJT" firstAttribute="centerX" secondItem="tR9-cS-rER" secondAttribute="centerX" id="Kc9-9e-cVx"/>
+                                    <constraint firstItem="kwr-P5-PJT" firstAttribute="top" secondItem="ILg-rw-WUw" secondAttribute="bottom" constant="8" id="OXX-im-47m"/>
                                     <constraint firstAttribute="width" constant="140" id="WYN-GM-znH"/>
                                     <constraint firstItem="RwY-u5-Vpk" firstAttribute="centerX" secondItem="tR9-cS-rER" secondAttribute="centerX" id="Zns-CX-NIx"/>
                                     <constraint firstItem="ILg-rw-WUw" firstAttribute="centerX" secondItem="tR9-cS-rER" secondAttribute="centerX" id="aEl-my-twF"/>
