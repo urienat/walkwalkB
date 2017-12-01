@@ -55,23 +55,13 @@ extension(ViewController){
         }//end of if
             
         else{
-        recordInProcess = pickerIP[indexPath.row]
         employerIDToS = employerIdArray2[indexPath.row] as! String
         bringEmployerData()
         
         
-                    
-       
-        
-        if recordInProcess != "" {
-            bringRecord()
-            
-            }
-        else{
             
             if activeData[indexPath.row] != "0" {self.thinking2.stopAnimating(); preStartView()}
             else {petFile.isEnabled = true; chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating()}
-           }//end of else
         
         //set variable for Segue
         //employerToS = String(describing:chooseEmployer.currentTitle!)
@@ -114,14 +104,11 @@ extension(ViewController){
             //change add dof to account
             {cell2.employerName.textColor = blueColor;cell2.employerName?.text = "New Account ✚" ;cell2.employerDog.isHidden = true;            cell2.backgroundColor = UIColor.clear
 }
-            
 
-        if pickerIP[indexPath.row] != "" { activeSign = " In session..." ;cell2.employerDog.textColor = redColor}
-        else {activeSign = ""; cell2.employerDog.textColor = blueColor}
             
        if activeData[indexPath.row] == "0" { cell2.employerName.alpha = 0.4;cell2.employerDog.alpha = 0.4} else{ cell2.employerName.alpha = 1; cell2.employerDog.alpha = 1}
           
-            cell2.employerDog?.text =  nameData[indexPath.row] + activeSign
+            cell2.employerDog?.text =  nameData[indexPath.row] 
 
             
         cell2.dogImage.clipsToBounds = true

@@ -37,7 +37,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var alive:Bool?
     static var checkSubOnce: Int?
     var addDog: Int?
-    var savedActiveRecord = ""
     
     var greenColor = UIColor(red :32.0/255.0, green: 150.0/255.0, blue: 24.0/255.0, alpha: 1.0)
     var redColor = UIColor(red :170.0/255.0, green: 26.0/255.0, blue: 0/255.0, alpha: 1.0)
@@ -45,8 +44,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var yellowColor = UIColor(red :225/255.0, green: 235/255.0, blue: 20/255.0, alpha: 1.0)
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
 
-
-    
     let Vimage = UIImage(named: "vNaked")
     let nonVimage = UIImage(named: "emptyV")
     let dogVimage = UIImage(named: "dogshadow")
@@ -55,13 +52,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let roundImageBig = UIImage(named: "roundBig")
     let pencilImage = UIImage(named: "pencilImage")
     var ImageFromFirebase : UIImage?
-
-   
     var leashImage = UIImage(named:"Leash")?.withRenderingMode(.alwaysTemplate)
     var meluna = UIImage(named:"meluna")?.withRenderingMode(.alwaysTemplate)
     var billsIcon = UIImage(named:"billsIcon")?.withRenderingMode(.alwaysTemplate)
     var walkerProfile = UIImage(named:"walkerProfile")?.withRenderingMode(.alwaysTemplate)
-
 
     let mydateFormat = DateFormatter()
     let mydateFormat2 = DateFormatter()
@@ -76,17 +70,13 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var roundDay = 0
     var total = 0
     
-    var activeId = ""
     var activeid2 = ""
-    var  recordInProcess = ""
     
     var employerItem = ""
     var profileImageUrl = ""
     var dogItem = ""
     var activeItem = ""
-    var employerInProcess = ""
     var employerIdRef = ""
-    var activeSign = ""
     var dOut = ""
     var methood = "Normal"
     var pickerlabel =  UILabel.self
@@ -103,7 +93,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var nameData: [String] = [String]()
     var activeData: [String] = [String]()
 
-    var pickerIP: [String] = [String]()
     var employerIdArray: [AnyObject] = []
     var employerIdArray2: [AnyObject] = []
 
@@ -125,7 +114,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
 
     @IBOutlet weak var googleCalander: UIBarButtonItem!
     @IBAction func googleCalander(_ sender: Any) {
-    
     }
 
     @IBOutlet weak var addAccount: UIBarButtonItem!
@@ -318,12 +306,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     func applicationDidBecomeActive(notification: NSNotification) {
     thinking2.startAnimating()
     if petFile.isEnabled == true {
-    self.recordInProcess = self.savedActiveRecord
-    if recordInProcess != "" {
-    bringRecord()
-    }else{
     preStartView()
-    }//end of elsee
     }
     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
     self.thinking2.stopAnimating()
@@ -333,7 +316,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     //did stop active procedure
     func applicationDidBecomePassive(notification: NSNotification) {
     if petFile.isEnabled == true {
-    savedActiveRecord =  self.recordInProcess
     }
     }// end of func application did stop
     
@@ -394,51 +376,20 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }
     }//end of prepare
     
-    func bringRecord() {
-    dbRef.child(recordInProcess).observeSingleEvent(of:.value, with: { (snapshot) in
-    if let dictionary = snapshot.value as? [String: String] {
-    let record = recordsStruct()
-    record.setValuesForKeys(dictionary)
-    print ("Dic:\(dictionary)")
-    self.activeId = self.recordInProcess
-    
-    // bring in process data to record
-    self.dIn = record.fIn!
-    self.dIn2 = self.mydateFormat2.string(from:self.mydateFormat5.date(from: self.dIn)!)
-    self.DateIn.reloadInputViews()
-    print ("din from  in process\(self.dIn)")
-    self.DateIn.text = "Started:  " + self.dIn2
-     
-    }// end of if let dictionary
-    }, withCancel: { (Error) in
-    print("error from FB")
-    })
-    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-    self.thinking2.stopAnimating(self.postStartView())
-    }
-        } //end of bring record
-    
-    
     func normalClosure () {
     print("recordiscomplete")
     let alertController = UIAlertController(title: (dIn) , message: ("Till: \( mydateFormat2.string(from: mydateFormat5.date(from: dOut)!))"), preferredStyle: .alert)
     let resumeAction = UIAlertAction(title: "Resume", style: .default) { (UIAlertAction) in
-    self.recordInProcess = self.activeId
 
-    self.bringRecord()
     self.postStartView()
     } //end of resume
             
     let cancelAction = UIAlertAction(title: "Delete", style: .cancel) { (UIAlertAction) in
     self.preStartView()
         
-    self.dbRef.child(self.activeId).removeValue()
     self.navigationController!.popViewController(animated: true)
 
     self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").updateChildValues([(self.employerIDToS):5])
-    self.dbRefEmployer.child(self.employerIDToS).updateChildValues(["finProcess" : ""])
-    self.activeId = ""
-    self.recordInProcess = self.activeId
     }//end of cancel action
         
     let updateDBAction = UIAlertAction(title: "Accept", style: .default) { (UIAlertAction) in
@@ -458,13 +409,9 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let total2 = self.mydateFormat5.date(from: self.dOut)!.timeIntervalSince((self.mydateFormat5.date(from: self.dIn))!)
     self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").updateChildValues([(self.employerIDToS):5])
 
-    self.dbRefEmployer.child(self.employerIDToS).updateChildValues(["finProcess" : ""])
     let record = [ "fOut" : self.dOut, "fTotal" : String((self.total)),"fIndication3" : "⏳", "fStatus" : "Pre" ]
 
-    self.dbRef.child(self.activeId).updateChildValues(record)
-    self.dbRefEmployer.child(self.employerIDToS).updateChildValues(["finProcess" : ""])
-    self.dbRefEmployee.child(self.employeeIDToS).child("fEmployeeRecords").updateChildValues([self.activeId:Int(-(self.mydateFormat5.date(from: self.dIn)?.timeIntervalSince1970)!)])
-    self.dbRefEmployer.child(self.employerIDToS).child("fEmployerRecords").updateChildValues([self.activeId:Int(-(self.mydateFormat5.date(from: self.dIn)?.timeIntervalSince1970)!)])
+    
 
     self.navigationController!.popViewController(animated: true)
 
@@ -486,8 +433,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.preStartView()
     },completion:nil)
 
-    self.activeId = ""
-    self.recordInProcess = self.activeId
 
     }//end of update action
             
@@ -505,7 +450,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.imageArray.removeAll()
     self.nameData.removeAll()
     self.activeData.removeAll()
-    self.pickerIP.removeAll()
         
     self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").observeSingleEvent(of: .value, with:{(snapshot) in
     self.listOfEmployers = snapshot.value as! [String : AnyObject] as! [String : Int]
@@ -538,8 +482,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.employerItem = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
     self.pickerData.append(self.employerItem  )
     
-    self.employerInProcess = String(describing: snapshot.childSnapshot(forPath: "finProcess").value!) as String!
-    self.pickerIP.append((self.employerInProcess))
+    
+        
 
     self.dogItem = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
     self.nameData.append(self.dogItem  )
