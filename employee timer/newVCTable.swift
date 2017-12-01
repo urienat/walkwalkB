@@ -631,7 +631,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             
         self.perEvents.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /session") 
             
-        self.amount.text =  String(Double(self.calc).roundTo(places: 2))
+        self.amount.text =  ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")
             
         if self.eventCounter != 0 {if self.rememberMe1 == 0 {self.alert90()}; self.generalApproval.isHidden = true;self.generalApproval.isEnabled = true;  if self.releaser == 0 {self.billSender.isEnabled = true}
         }else {
@@ -644,7 +644,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
     func amountCalc(){
         self.calc = (Double(self.eventCounter))*(self.Employerrate)
-        self.amount.text =  String(Double(self.calc).roundTo(places: 2))
+        self.amount.text =   ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")
         
     }
     
