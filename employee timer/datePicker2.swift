@@ -198,19 +198,11 @@ class datePicker2: UIViewController {
             
             titleLbl = "Add for " + employerFromMain!
             
-            print(paymentMethood)
-            if paymentMethood == "Normal" {TimeOut.isHidden = false; date2Button.isHidden = false; date2Button.isEnabled = true;TimeOut.isHidden = false;Total.isHidden = false;totalLabel.isHidden = false;stopLbl.isHidden = false;startLbl.text = "Start";extendedDate2Button.isHidden = false;extendedDate2Button.isEnabled = true;topOfStart.constant = 40
-                TimeOut.text = mydateFormat.string(from: Date());
-                
-                
-                saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveAlert));saveRecord?.isEnabled = false
-            }
-            
-            else {TimeOut.isHidden = true;date2Button.isHidden = true;date2Button.isEnabled = false;TimeOut.isHidden = true;Total.isHidden = true;totalLabel.isHidden = true;stopLbl.isHidden = true;startLbl.text = "Session";extendedDate2Button.isHidden = true;extendedDate2Button.isEnabled = false;topOfStart.constant = 60;
+         TimeOut.isHidden = true;date2Button.isHidden = true;date2Button.isEnabled = false;TimeOut.isHidden = true;Total.isHidden = true;totalLabel.isHidden = true;stopLbl.isHidden = true;startLbl.text = "Session";extendedDate2Button.isHidden = true;extendedDate2Button.isEnabled = false;topOfStart.constant = 60;
                 
                 saveRecord?.isEnabled = true;        saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveToDB2))
                 self.roundIndicator = "-1"
-                }//end of else of payment= round
+                
         }//end of if
         else{
             deleter.isEnabled = true

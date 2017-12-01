@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
-import AVFoundation
+//import AVFoundation
 import Google
 import GoogleSignIn
 import GoogleAPIClientForREST
@@ -18,10 +18,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     var window: UIWindow?
 
-    
     let dbRef = FIRDatabase.database().reference().child("fRecords")
     let dbRefEmployer = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployee = FIRDatabase.database().reference().child("fEmployees")
+    
     
     static var fixedCurrency:String!
     static var fixedName:String!
@@ -30,14 +30,14 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     static var dateTimeFormat:String!
     static var refresh:Bool?
 
-    
     var paymentUpdate = String()
     var RateUpdate = 0.0
     var newRegister = ""
     var alive:Bool?
     static var checkSubOnce: Int?
     var addDog: Int?
-    
+    var tableRowHeight:Int?
+
     var greenColor = UIColor(red :32.0/255.0, green: 150.0/255.0, blue: 24.0/255.0, alpha: 1.0)
     var redColor = UIColor(red :170.0/255.0, green: 26.0/255.0, blue: 0/255.0, alpha: 1.0)
     var brownColor = UIColor(red :141/255.0, green: 111/255.0, blue: 56/255.0, alpha: 1.0)
@@ -62,15 +62,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let mydateFormat5 = DateFormatter()
     let mydateFormat6 = DateFormatter()
     let mydateFormat7 = DateFormatter()
-
-    //varibalwds for roundung
-    var roundSecond = 0
-    var roundMinute = 0
-    var roundHour = 0
-    var roundDay = 0
-    var total = 0
-    
-    var activeid2 = ""
     
     var employerItem = ""
     var profileImageUrl = ""
@@ -352,7 +343,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     secondView?.employerFromMain = employerToS
     secondView?.employerID = employerIDToS
     secondView?.employeeID = employeeIDToS
-    secondView?.paymentMethood = paymentUpdate
+    //secondView?.paymentMethood = paymentUpdate
     }//end of if
     
     else if (segue.identifier == "employerForDogFile"){
@@ -376,71 +367,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }
     }//end of prepare
     
-    func normalClosure () {
-    print("recordiscomplete")
-    let alertController = UIAlertController(title: (dIn) , message: ("Till: \( mydateFormat2.string(from: mydateFormat5.date(from: dOut)!))"), preferredStyle: .alert)
-    let resumeAction = UIAlertAction(title: "Resume", style: .default) { (UIAlertAction) in
-
-    self.postStartView()
-    } //end of resume
-            
-    let cancelAction = UIAlertAction(title: "Delete", style: .cancel) { (UIAlertAction) in
-    self.preStartView()
-        
-    self.navigationController!.popViewController(animated: true)
-
-    self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").updateChildValues([(self.employerIDToS):5])
-    }//end of cancel action
-        
-    let updateDBAction = UIAlertAction(title: "Accept", style: .default) { (UIAlertAction) in
-    //rounding
-    let calendar = Calendar.current
-    let date2 = calendar.dateComponents([.day, .hour,.minute,.second], from: self.mydateFormat5.date(from: self.dIn)!)
-    let date1 = calendar.dateComponents([.day, .hour,.minute, .second], from: self.mydateFormat5.date(from: self.dOut)!)
-        
-    self.roundSecond = date1.second! - date2.second!
-    self.roundMinute = date1.minute! - date2.minute!
-    self.roundHour = date1.hour! - date2.hour!
-    self.roundDay = date1.day! - date2.day!
-
-    if self.roundDay == 0 {  self.total = self.roundMinute*60 + self.roundHour*3600}
-    else if self.roundDay == 1 {self.total = ((24-date2.hour!+date1.hour!)*3600 + (self.roundMinute*60))}
-    else {self.total = 0 }
-    let total2 = self.mydateFormat5.date(from: self.dOut)!.timeIntervalSince((self.mydateFormat5.date(from: self.dIn))!)
-    self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").updateChildValues([(self.employerIDToS):5])
-
-    let record = [ "fOut" : self.dOut, "fTotal" : String((self.total)),"fIndication3" : "⏳", "fStatus" : "Pre" ]
-
-    
-
-    self.navigationController!.popViewController(animated: true)
-
-    self.animationImage.center.x -= self.view.bounds.width
-    self.animationImage.isHidden = false
-    self.animationImage.alpha = 1
-
-    UIView.animate(withDuration: 2.0, animations:{
-    self.animationImage.center.x += self.view.bounds.width
-    })
-    UIView.animate(withDuration: 2.0, delay :2.0 ,options:[],animations: {
-    self.animationImage.alpha = 0
-    self.startBackground.alpha = 0
-    self.addAmanualRecord.alpha = 0
-    },completion:nil)
-    UIView.animate(withDuration: 1.0, delay :4.0 ,options:[],animations: {
-    self.startBackground.alpha = 1
-    self.addAmanualRecord.alpha = 1
-    self.preStartView()
-    },completion:nil)
-
-
-    }//end of update action
-            
-    alertController.addAction(cancelAction)
-    alertController.addAction(updateDBAction)
-    alertController.addAction(resumeAction)
-    self.present(alertController, animated: true, completion: nil)
-    }//probabaly end of normal closure
 
     func fetchEmployers() {
        

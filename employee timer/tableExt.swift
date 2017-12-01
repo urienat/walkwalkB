@@ -97,6 +97,7 @@ extension(ViewController){
             
 
     
+    
             if pickerData[indexPath.row] != "Add new dog" {cell2.employerName.textColor = blueColor;            cell2.backgroundColor = UIColor.clear
                 
 
