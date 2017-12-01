@@ -25,8 +25,6 @@ class recordsStruct: NSObject{
 
 class employersStruct: NSObject{
     var fEmployer: String?
-    var fPayment: String?
-    var fMethood: String?
     var fEmployerRate: String?
     var fImageRef: String?
     var fActive: Bool?
@@ -40,16 +38,13 @@ class billStruct: NSObject{
     var fBillDate: String?
     var fBillStatus: String?
     var fBillEmployer: String?
-    var fBillPayment: String?
     var fBillEventRate: String?
-    var fBillHourRate: String?
     var fBillEvents: String?
     var fBillTotalTime: String?
     var fBillSum: String?
     var fBillCurrency: String?
     var fBillEmployerName: String?
     var fBillMailSaver: String?
-    //var fBillCanceled: String?
     var fBillTax: String?
     var fBillTotalTotal: String?
     var fBillStatusDate: String?

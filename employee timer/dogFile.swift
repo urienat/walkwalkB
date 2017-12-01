@@ -29,7 +29,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     var adjuster = 0
     
-    var paymentchanged: Bool?
     
     var wrongField:String?
     
@@ -91,30 +90,8 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBOutlet weak var rateTitle: UILabel!
     @IBOutlet weak var pRate: UITextField!
     var RateUpdate = 0.0
-    var paymentUpdate = ""
     @IBOutlet weak var currencySign: UILabel!
-    @IBOutlet weak var pPayment: UISegmentedControl!
-    @IBAction func pPayment(_ sender: Any) {
-        
-        switch pPayment.selectedSegmentIndex {
-        case 0:
-        paymentUpdate = "Normal"
-        rateTitle.text = "Hour rate"
-        if paymentchanged == false {} else { alert512()}
-        paymentchanged = true
-        case 1:
-        paymentUpdate = "Round"
-        rateTitle.text = "Rate"
-        infoPayment.isHidden = false
-        if paymentchanged == false {} else { alert512()}
-        paymentchanged = true
-           default:
-        print("nothing")
-        }//end of switch
-        }
     
-        @IBOutlet weak var infoPayment: UIButton!
-    @IBAction func infoPayment(_ sender: Any) {alert8()}
     
     @IBOutlet weak var pPetName: UITextField!
     var petNameUpdate = ""
@@ -168,7 +145,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         
         self.dbRef.removeAllObservers()
         
-        paymentchanged = false
         
         //keyboard adjustment
         NotificationCenter.default.addObserver(self, selector: #selector(self.KeyboardNotificationwillShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: self.view.window)
@@ -181,7 +157,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             self.pCell.text = ""
             self.pAddress.text = ""
            
-            self.paymentUpdate = "Round"
             self.pRate .text = ""
             self.pPetName.text = ""
             self .pRem.text = ""
@@ -214,7 +189,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveToDB(_:)))
         navigationItem.rightBarButtonItem = saveRecord
         
-        if self.paymentUpdate == "Normal" {rateTitle.text = "Hour rate"} else if self.paymentUpdate == "Round" {  rateTitle.text = "Rate"}
+        rateTitle.text = "Rate"
         if ViewController.fixedCurrency != nil {currencySign.text = (ViewController.fixedCurrency!)} else {currencySign.text = ""}
         self.pEmail.addTarget(self, action: #selector(canInvite), for: .editingDidEnd)
         
@@ -230,11 +205,11 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         func saveToDB(_ sender: AnyObject) {
         if pRate.text == "" {pRate.text = "0.0"}
        
-        if self.paymentUpdate == "" { messageInstruction = " If you would set rate per Session , you would enjoy bill calculation."}
+        if self.RateUpdate == 0.0 { messageInstruction = " If you would set rate per Session , you would enjoy bill calculation."}
             
         if self.pLastName.text != "" { // this check that last name is filled and it is filled
         if connectSetter == "Yes" { message2 = "As 'connect' is on, you would save in your app the presented current fields. Are You Sure?"} else {
-        if self.paymentUpdate == ""  {message2 = messageInstruction} else
+        if self.RateUpdate == 0.0  {message2 = messageInstruction} else
         { message2 = "Are You Sure?"}}
        
         let alertController = UIAlertController(title: ("Save Setting") , message: self.message2, preferredStyle: .alert)
@@ -265,7 +240,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             //update pic in chache for old employee
             MyImageCache.sharedCache.setObject(self.pDogImage.image as AnyObject, forKey: self.employerID as AnyObject)
             
-            self.dbRefEmployers.child(self.employerID).child("myEmployees").child(self.employeeID).updateChildValues(["fConnect": self.connectSetter!,"fPayment": self.paymentUpdate , "fEmployerRate": Double( self.pRate.text!)!])//add employer rate per employee
+            self.dbRefEmployers.child(self.employerID).child("myEmployees").child(self.employeeID).updateChildValues(["fConnect": self.connectSetter!, "fEmployerRate": Double( self.pRate.text!)!])//add employer rate per employee
             
             if self.activeEmployerSwitch == false {  self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([self.employerID:10])}
             else {self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([self.employerID:5])}
@@ -295,7 +270,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             
         self.employerID = employerRefence.key
         self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([self.employerID:5])//add employer to my employers of employee
-        self.dbRefEmployers.child(self.employerID).child("myEmployees").child(self.employeeID).setValue(["fPayment": self.paymentUpdate, "fConnect": "No", "fEmployerRate": Double( self.pRate.text!)!])//add employer rate per employee
+        self.dbRefEmployers.child(self.employerID).child("myEmployees").child(self.employeeID).setValue(["fConnect": "No", "fEmployerRate": Double( self.pRate.text!)!])//add employer rate per employee
                 
         self.navigationController!.popViewController(animated: true)
             
@@ -412,15 +387,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         func bringEmployerData() {
         if employerFromMain != "Add new dog" {
         dbRefEmployers.child(self.employerID).child("myEmployees").queryOrderedByKey().queryEqual(toValue: employeeID).observeSingleEvent(of:.childAdded, with: { (snapshot) in
-                self.paymentUpdate = String(describing: snapshot.childSnapshot(forPath: "fPayment").value!) as String!
-
-        if self.paymentUpdate == "Normal" {
-        self.pPayment.selectedSegmentIndex = 0
-        self.pPayment.sendActions(for: .valueChanged)
-                    
-        } else if self.paymentUpdate == "Round" { self.pPayment.selectedSegmentIndex = 1
-        self.pPayment.sendActions(for: .valueChanged)}
-                
+            
         self.RateUpdate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)
         if self.RateUpdate != 0.0 { self.pRate.text = String(self.RateUpdate)} else {self.pRate.text = ""}
                 
@@ -644,13 +611,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.present(alertController30, animated: true, completion: nil)
         }
     
-        func alert8(){
-        let alertController4 = UIAlertController(title: ("Payment methood") , message: "Set per hour/Session to affect calculation.", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-        }
-                alertController4.addAction(OKAction)
-        self.present(alertController4, animated: true, completion: nil)
-        }
     
         func alert5(){
         let alertController5 = UIAlertController(title: ("Connect") , message: self.message3, preferredStyle: .alert)
@@ -660,17 +620,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.present(alertController5, animated: true, completion: nil)
         }
     
-        func alert512(){
-        let alertController512 = UIAlertController(title: ("Change payment methood") , message: "Important! Did you check that there are no unbilled sessions for that dog before you change payment methood? ", preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "Yes", style: .default) { (UIAlertAction) in
-        }
-        let noAction = UIAlertAction(title: "No", style: .default) { (UIAlertAction) in
-        if self.pPayment.selectedSegmentIndex == 1{ self.pPayment.selectedSegmentIndex = 0 } else {self.pPayment.selectedSegmentIndex = 1}
-        }
-        alertController512.addAction(yesAction)
-        alertController512.addAction(noAction)
-        self.present(alertController512, animated: true, completion: nil)
-        }
+    
     
         func alert50(){
         let alertController50 = UIAlertController(title: ("Internet Connection") , message: " There is no internet - Check communication avilability.", preferredStyle: .alert)

@@ -145,16 +145,7 @@ print (imageArray)
         print ("employerfrom main:\(employerToS)")
         if self.employerToS != "Add new dog" {
             dbRefEmployer.child(self.employerIDToS).child("myEmployees").queryOrderedByKey().queryEqual(toValue: employeeIDToS).observeSingleEvent(of:.childAdded, with: { (snapshot) in
-                self.paymentUpdate = String(describing: snapshot.childSnapshot(forPath: "fPayment").value!) as String!
-                print(self.paymentUpdate)
-                
-                if self.paymentUpdate == "Normal" {
-                    
-                    
-                } else if self.paymentUpdate == "Round" {
-                    
-                }
-                if   self.paymentUpdate == "Normal" {self.startButton.setTitle("Start", for: .normal);self.startImage.image = self.sandwtchImageBig} else {self.startButton.setTitle("Session", for: .normal);self.startImage.image = self.roundImageBig}
+                self.startButton.setTitle("Session", for: .normal);self.startImage.image = self.roundImageBig
 
                 
                 self.RateUpdate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)

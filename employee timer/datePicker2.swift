@@ -36,7 +36,6 @@ class datePicker2: UIViewController {
     var totalManual = 0
     
     var tempTotal = 0
-    var paymentMethood = String()
     var roundIndicator = String()
     let mydateFormat = DateFormatter()
     let mydateFormat5 = DateFormatter()

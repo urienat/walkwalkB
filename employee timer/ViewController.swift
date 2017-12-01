@@ -30,7 +30,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     static var dateTimeFormat:String!
     static var refresh:Bool?
 
-    var paymentUpdate = String()
     var RateUpdate = 0.0
     var newRegister = ""
     var alive:Bool?
@@ -343,7 +342,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     secondView?.employerFromMain = employerToS
     secondView?.employerID = employerIDToS
     secondView?.employeeID = employeeIDToS
-    //secondView?.paymentMethood = paymentUpdate
     }//end of if
     
     else if (segue.identifier == "employerForDogFile"){

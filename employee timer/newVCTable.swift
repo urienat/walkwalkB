@@ -89,7 +89,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var timeCounter = 0.0
     var calc = 0.0
     var Employerrate = 0.0
-    var payment = ""
     let formatter = NumberFormatter()
     var spesificToInt = 0.00
     var employerFromMain: String?
@@ -460,7 +459,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.csv2.append( (" Sessions:\t                         \r\n\r\n"))
         self.tableConnect.reloadData()
         dbRefEmployers.child(self.employerID).child("myEmployees").queryOrderedByKey().queryEqual(toValue: employeeID).observeSingleEvent(of: .childAdded, with:  {(snapshot) in
-        self.payment = String(describing: snapshot.childSnapshot(forPath: "fPayment").value!) as String!
         self.Employerrate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)
         
         self.dbRefEmployers.child(self.employerID).child("fEmployerRecords").queryOrderedByValue().observeSingleEvent(of: .value, with: { (snapshot) in
@@ -544,12 +542,12 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                             
         //self.eventCounter+=1
         let (hForTotal,mForTotal) = self.secondsTo(seconds: (self.timeCounter))
-        if self.payment=="Normal"{self.totalTime.isHidden = false; self.totalTime.text = String(Int(hForTotal)) + "h:" + String (Int(mForTotal)) + "m"} else {self.totalTime.text = "" ; self.totalTime.isHidden = true}
+        self.totalTime.text = "" ; self.totalTime.isHidden = true
                             
         //changing the Total for presentation
         let recordToInt = Double(record.fTotal!)
         let (h,m) = self.secondsTo(seconds: (recordToInt)!)
-        if self.payment=="Normal" {self.totalForReport = String(Int(h)) + "h:" + String (Int(m)) + "m"} else {self.totalForReport = ""}
+        self.totalForReport = ""
             
         if ViewController.dateTimeFormat == "DateTime" {  self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) );self.csv2.append("  \t\t\t")
         } else {
@@ -634,10 +632,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             if self.eventCounter == 0 {self.eventsLbl.text = " Due Sessions"} else if self.eventCounter == 1 {self.eventsLbl.text = " Due session"} else {self.eventsLbl.text = " Due Sessions"}
         if self.Status == "All" /*|| self.Status == "Paid"*/{self.generalApproval.isHidden = true}
         let (hForTotal,mForTotal) = self.secondsTo(seconds: self.timeCounter)
-        if self.payment=="Normal"  {self.totalTime.text = String(Int(hForTotal)) + "h:" + String (Int(mForTotal)) + "m" ; self.totalTime.isHidden = false}else {self.totalTime.text = "" ; self.totalTime.isHidden = true}
-        if self.payment=="Normal" {   self.calc = Double(Int(hForTotal))*(self.Employerrate)+Double(Int(mForTotal))*(self.Employerrate)/60} else if self.payment == "Round" {   self.calc = (Double(self.eventCounter))*(self.Employerrate)} else    {self.calc = 0.0}
+        self.totalTime.text = "" ; self.totalTime.isHidden = true
+        self.calc = (Double(self.eventCounter))*(self.Employerrate)
             
-        if self.payment=="Normal" {   self.perEvents.text = "" ;self.perHour.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /hour") } else if self.payment == "Round" {  self.perEvents.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /session") ;self.perHour.text =  ""   } else    {self.perEvents.text = ""; self.perHour.text = ""}
+        self.perEvents.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /session") ;self.perHour.text =  ""
             
         self.amount.text =  String(Double(self.calc).roundTo(places: 2))
         self.currencySymbol.text = ViewController.fixedCurrency!
@@ -797,7 +795,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                     
 
     //update bill with DB
-    self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": "Billed", "fBillEmployer": self.employerID,"fBillPayment":self.payment,"fBillEventRate": self.perEvents.text!,"fBillHourRate": self.perHour.text!, "fBillEvents": String(self.eventCounter) as String,"fBillTotalTime": self.totalTime.text!,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2
+    self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": "Billed", "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillTotalTime": self.totalTime.text!,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2
         ], withCompletionBlock: { (error) in}) //end of update.//was 0
     self.generalApprovalClicked()
     self.alert19()
