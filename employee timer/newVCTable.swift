@@ -588,7 +588,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         else if self.Status == "All"
         {cases()}
         else {print ("in else: calc is :\(self.calc)")
-        self.amount.text =  String(Double(self.calc).roundTo(places: 2))
+        self.amount.text =  ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")
         }
                             
         }//end of period switch

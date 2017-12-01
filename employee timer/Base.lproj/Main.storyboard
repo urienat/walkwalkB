@@ -2229,9 +2229,9 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NbR-aV-1V6" userLabel="totalBG">
-                                <rect key="frame" x="204" y="320" width="100" height="100"/>
+                                <rect key="frame" x="204" y="308" width="100" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="97h-H1-ijY" userLabel="amount">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="97h-H1-ijY" userLabel="amount">
                                         <rect key="frame" x="12" y="33" width="75" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="J6a-Jb-JtK"/>
@@ -2289,7 +2289,7 @@
                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="bfb-SV-Kyy" firstAttribute="top" secondItem="ydA-FB-V1V" secondAttribute="top" id="2hh-wV-Xzb"/>
-                            <constraint firstItem="6A1-XQ-3Qo" firstAttribute="top" secondItem="NbR-aV-1V6" secondAttribute="bottom" id="2ym-Ib-4aS"/>
+                            <constraint firstItem="6A1-XQ-3Qo" firstAttribute="top" secondItem="NbR-aV-1V6" secondAttribute="bottom" constant="12" id="2ym-Ib-4aS"/>
                             <constraint firstItem="cvq-V7-JIv" firstAttribute="centerX" secondItem="ydA-FB-V1V" secondAttribute="centerX" id="4Z1-Fe-O8A"/>
                             <constraint firstItem="bfb-SV-Kyy" firstAttribute="leading" secondItem="ydA-FB-V1V" secondAttribute="leading" id="4jW-fa-HVg"/>
                             <constraint firstItem="g9S-Xq-42n" firstAttribute="top" secondItem="6A1-XQ-3Qo" secondAttribute="bottom" id="77Z-SX-SBG"/>
