@@ -151,12 +151,14 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         NotificationCenter.default.addObserver(self, selector: #selector(self.KeyboardNotificationwillHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: self.view.window)
         
         if self.employerFromMain == "Add new dog" {
+            self.lbl = "New Account"
+            self.title = lbl
+
             self.pName.text = ""
             self.pLastName.text = ""
             self.pEmail.text = ""
             self.pCell.text = ""
             self.pAddress.text = ""
-           
             self.pRate .text = ""
             self.pPetName.text = ""
             self .pRem.text = ""
@@ -173,15 +175,16 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             obligatoryOut()
             
         } else {
+            self.lbl = ("\(employerFromMain)")
+            self.title = lbl
+                
             bringEmployerData()
-                        bills.isEnabled = true
+            bills.isEnabled = true
             trash.isEnabled = true
             leash.isEnabled = true
             obligatory .isHidden = true
         }
 
-        if employerFromMain == "Add new dog" {lbl = "New Account"} else {lbl = ("\(employerFromMain)")}
-        self.title = lbl
 
         pDogImage.clipsToBounds = true
         pDogImage.layer.cornerRadius = 30

@@ -422,16 +422,6 @@
                                 <color key="textColor" red="0.12558225109999999" green="0.58808092950000002" blue="0.095813386410000007" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8w-xK-m3A" userLabel="info1">
-                                <rect key="frame" x="90" y="292" width="15" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="15" id="Kyu-J8-X2B"/>
-                                    <constraint firstAttribute="height" constant="15" id="pYV-bF-cQY"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="infoPayment:" destination="nD7-g7-jdd" eventType="touchUpInside" id="7Y0-4a-4k4"/>
-                                </connections>
-                            </button>
                             <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IUy-hN-OMw">
                                 <rect key="frame" x="243" y="399.5" width="52" height="31"/>
                                 <constraints>
@@ -486,7 +476,6 @@
                         <outlet property="connect" destination="IUy-hN-OMw" id="xgw-J5-XPw"/>
                         <outlet property="connectTitle" destination="A9d-xz-Q5S" id="6oA-24-VW7"/>
                         <outlet property="currencySign" destination="xM3-e2-D0h" id="ARW-xc-pmW"/>
-                        <outlet property="infoPayment" destination="a8w-xK-m3A" id="KtU-xR-ZGr"/>
                         <outlet property="invite" destination="wVP-gt-AU3" id="qoi-Xz-2Xe"/>
                         <outlet property="leash" destination="V8H-gy-tTz" id="7t5-6u-vSL"/>
                         <outlet property="obligatory" destination="mf8-Uq-Tl6" id="dYX-NP-75D"/>
@@ -1252,19 +1241,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Sy-Ch-u6f" userLabel="info1">
-                                                <rect key="frame" x="55" y="86" width="15" height="15"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="15" id="esa-WQ-wCJ"/>
-                                                    <constraint firstAttribute="width" constant="15" id="ymU-HO-Yua"/>
-                                                </constraints>
-                                                <state key="normal">
-                                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="help:" destination="bu7-cQ-GBV" eventType="touchUpInside" id="IO1-tr-Twc"/>
-                                                </connections>
-                                            </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="abz-bh-Dk7" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
                                                 <rect key="frame" x="112" y="48" width="115" height="30"/>
                                                 <constraints>
@@ -1455,7 +1431,6 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="TBg-ht-L1l" firstAttribute="top" secondItem="gxx-Xl-cZH" secondAttribute="bottom" constant="14" id="0Ec-cW-PR9"/>
-                                            <constraint firstItem="1Sy-Ch-u6f" firstAttribute="leading" secondItem="jGY-Rx-J7r" secondAttribute="trailing" constant="5" id="0YY-eW-4bo"/>
                                             <constraint firstItem="XE2-sS-i4C" firstAttribute="leading" secondItem="eRi-ta-mdX" secondAttribute="leading" id="11d-WP-anE"/>
                                             <constraint firstItem="dce-An-tH6" firstAttribute="centerY" secondItem="TBg-ht-L1l" secondAttribute="centerY" id="1E7-sb-gWG"/>
                                             <constraint firstItem="k7K-bJ-hKl" firstAttribute="top" secondItem="4Wg-qF-OrD" secondAttribute="bottom" constant="8" id="1en-dt-Kt4"/>
@@ -1480,7 +1455,6 @@
                                             <constraint firstItem="oGz-6p-JzI" firstAttribute="top" secondItem="vFb-TQ-AMp" secondAttribute="bottom" constant="14" id="LIY-oH-E6j"/>
                                             <constraint firstItem="XCs-4G-KHr" firstAttribute="leading" secondItem="d3p-Mh-USA" secondAttribute="trailing" constant="-1" id="Li0-hH-Dv9"/>
                                             <constraint firstItem="3je-Hd-SEg" firstAttribute="bottom" secondItem="abz-bh-Dk7" secondAttribute="bottom" id="MHO-bE-27H"/>
-                                            <constraint firstItem="1Sy-Ch-u6f" firstAttribute="top" secondItem="jGY-Rx-J7r" secondAttribute="top" id="N5P-6P-xLz"/>
                                             <constraint firstItem="d3p-Mh-USA" firstAttribute="leading" secondItem="oGz-6p-JzI" secondAttribute="leading" id="NSE-P1-P9d"/>
                                             <constraint firstItem="vFb-TQ-AMp" firstAttribute="leading" secondItem="MGW-Fk-kb6" secondAttribute="leading" constant="20" id="ONx-7B-mMN"/>
                                             <constraint firstItem="abz-bh-Dk7" firstAttribute="width" secondItem="Ktd-Fm-ugk" secondAttribute="width" id="QPP-p4-e0z"/>
