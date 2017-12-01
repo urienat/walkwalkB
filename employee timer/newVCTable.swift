@@ -124,7 +124,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let dbRefEmployers = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     
-    @IBOutlet weak var eventsNumber: UILabel!
     @IBOutlet weak var eventsLbl: UILabel!
     
     @IBOutlet weak var amount: UILabel!
@@ -397,12 +396,12 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         billSender.isEnabled = false
         buttonRow = sender.tag
         
-            if appArray[buttonRow] == "Pre" { newVCTable.checkBox = 1; statusTemp = "Approved";eventCounter+=1;amountCalc()}
+        if appArray[buttonRow] == "Pre" { newVCTable.checkBox = 1; statusTemp = "Approved";eventCounter+=1;amountCalc()}
             else if appArray[buttonRow] == "Approved" { newVCTable.checkBox = 0; statusTemp = "Pre";eventCounter-=1;amountCalc()}
         else if  appArray[buttonRow] == "Paid" {newVCTable.checkBox = 2; statusTemp = "Paid";alert12()}
         print( "apparray buttonarray\(appArray[buttonRow])")
         print( "checkBox\(newVCTable.checkBox)")
-        self.eventsNumber.text = String(self.eventCounter)
+        if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions'"} else if self.eventCounter == 1 {self.eventsLbl.text = "\(String(self.eventCounter)) Due session"} else {self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions"}
         
         if statusTemp != appArray[buttonRow] {
         appArray[buttonRow] = statusTemp!
@@ -623,8 +622,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             if self.idArray.isEmpty == true {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
             print (self.idArray.isEmpty)
             
-        self.eventsNumber.text = String(self.eventCounter)
-            if self.eventCounter == 0 {self.eventsLbl.text = " Due Sessions"} else if self.eventCounter == 1 {self.eventsLbl.text = " Due session"} else {self.eventsLbl.text = " Due Sessions"}
+        if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions'"} else if self.eventCounter == 1 {self.eventsLbl.text = "\(String(self.eventCounter)) Due session"} else {self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions"}
+            
         if self.Status == "All" /*|| self.Status == "Paid"*/{self.generalApproval.isHidden = true}
         let (hForTotal,mForTotal) = self.secondsTo(seconds: self.timeCounter)
         self.calc = (Double(self.eventCounter))*(self.Employerrate)

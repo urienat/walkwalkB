@@ -93,9 +93,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBOutlet weak var currencySign: UILabel!
     
     
-    @IBOutlet weak var pPetName: UITextField!
-    var petNameUpdate = ""
-    var cPetNameUpdate = ""
+
     
     @IBOutlet weak var connectTitle: UILabel!
     @IBOutlet weak var connect: UISwitch!
@@ -160,7 +158,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             self.pCell.text = ""
             self.pAddress.text = ""
             self.pRate .text = ""
-            self.pPetName.text = ""
             self .pRem.text = ""
             activeEmployer.image = Vimage
             activeButton.setTitle("", for: .normal)
@@ -224,7 +221,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if self.employerFromMain != "Add new dog" {
         if self.activeEmployerSwitch == true {self.activeEmployerSwitch = false} else {self.activeEmployerSwitch = true}
             
-        self.dbRefEmployers.child(self.employerID).updateChildValues(["fName" : self.pName.text!, "fLastName": self.pLastName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!,"fPetName": self.pPetName.text!, "fRem" : self.pRem.text!, "fEmployer":self.pLastName.text!,"fActive" : self.activeEmployerSwitch!])
+        self.dbRefEmployers.child(self.employerID).updateChildValues(["fName" : self.pName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!, "fRem" : self.pRem.text!, "fEmployer":self.pLastName.text!,"fActive" : self.activeEmployerSwitch!])
            
             //in firebase under url
             print ("employerId to store cache and FB:\(self.employerID)")
@@ -252,7 +249,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         } // end of update of an existed employer
         else{
         let employerRefence = self.dbRefEmployers.childByAutoId()
-        employerRefence.setValue(["fName" : self.pName.text!, "fLastName": self.pLastName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!,"fPetName": self.pPetName.text!, "fRem" : self.pRem.text!,  "fEmployer":self.pLastName.text!, "fEmployerReg":employerRefence.key, "fActive" : true, "fImageRef":"https://firebasestorage.googleapis.com/v0/b/employeetimer.appspot.com/o/employerImages%2F47574737_s.jpg?alt=media&token=48983dc3-ca8d-4d9f-9b6d-3df6d756c480"
+        employerRefence.setValue(["fName" : self.pName.text!, "fLastName": self.pLastName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!, "fRem" : self.pRem.text!,  "fEmployer":self.pLastName.text!, "fEmployerReg":employerRefence.key, "fActive" : true, "fImageRef":"https://firebasestorage.googleapis.com/v0/b/employeetimer.appspot.com/o/employerImages%2F47574737_s.jpg?alt=media&token=48983dc3-ca8d-4d9f-9b6d-3df6d756c480"
         ])//end of set value
             
         //update pic in chache for new employee
@@ -400,9 +397,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             
         dbRefEmployers.queryOrderedByKey().queryEqual(toValue: employerID).observeSingleEvent(of: .childAdded, with: { (snapshot) in
         self.nameUpdate = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
-        self.lastNameUpdate = snapshot.childSnapshot(forPath: "fLastName").value! as! String
         self.addressUpdate = String(describing: snapshot.childSnapshot(forPath: "fAddress").value!) as String!
-        self.petNameUpdate = String(describing: snapshot.childSnapshot(forPath: "fPetName").value!) as String!
         self.cellUpdate = String(describing: snapshot.childSnapshot(forPath: "fCell").value!) as String!
         
         self.activeEmployerSwitch =  snapshot.childSnapshot(forPath: "fActive").value! as? Bool
@@ -436,10 +431,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if self.connectSetter == "Yes" && self.cAddressUpdate != "" {self.pAddress.text = self.cAddressUpdate;self.pAddress.isEnabled = false}
         else {  self.pAddress.text = self.addressUpdate; self.pAddress.isEnabled = true}
         
-        self.cPetNameUpdate = String(describing: snapshot.childSnapshot(forPath: "cPetName").value!) as String!
-        if self.connectSetter == "Yes" && self.cPetNameUpdate != "" {self.pPetName.text = self.cPetNameUpdate; self.pPetName.isEnabled = false}
-        else {  self.pPetName.text = self.cPetNameUpdate; self.pPetName.isEnabled = true}
-        
+       
         self.cCellUpdate = String(describing: snapshot.childSnapshot(forPath: "cCell").value!) as String!
         if self.connectSetter == "Yes" && self.cCellUpdate != "" {self.pCell.text = self.cCellUpdate; self.pCell.isEnabled = false}
         else {  self.pCell.text = self.cCellUpdate; self.pCell.isEnabled = true}
@@ -450,7 +442,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if self.cEmployerRef == "" {self.pName.text = self.nameUpdate; self.pName.isEnabled = true
         self.pLastName.text = self.lastNameUpdate; self.pLastName.isEnabled = true
         self.pAddress.text = self.addressUpdate;self.pAddress.isEnabled = true
-        self.pPetName.text = self.petNameUpdate;self.pPetName.isEnabled = true
         self.pCell.text = self.cellUpdate; self.pCell.isEnabled = true
         
         self.canInvite()

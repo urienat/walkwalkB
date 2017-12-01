@@ -272,7 +272,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
               
                 if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
                 self.totalBills.text = "\(String(describing: self.billItems.count)) Bills"
-                self.totalAmount.text = "Total \(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
+                self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
                 self.totalTax.text = "Tax \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
 
                 self.billerConnect.reloadData()
