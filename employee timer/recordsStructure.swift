@@ -40,7 +40,6 @@ class billStruct: NSObject{
     var fBillEmployer: String?
     var fBillEventRate: String?
     var fBillEvents: String?
-    var fBillTotalTime: String?
     var fBillSum: String?
     var fBillCurrency: String?
     var fBillEmployerName: String?

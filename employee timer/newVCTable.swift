@@ -127,11 +127,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var eventsNumber: UILabel!
     @IBOutlet weak var eventsLbl: UILabel!
     
-    @IBOutlet weak var totalTime: UILabel!
     @IBOutlet weak var amount: UILabel!
     @IBOutlet weak var perEvents: UILabel!
-    @IBOutlet weak var perHour: UILabel!
-    @IBOutlet weak var currencySymbol: UILabel!
     @IBOutlet weak var noSign: UIImageView!
     
     @IBOutlet weak var billSender: UIBarButtonItem!
@@ -542,8 +539,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                             
         //self.eventCounter+=1
         let (hForTotal,mForTotal) = self.secondsTo(seconds: (self.timeCounter))
-        self.totalTime.text = "" ; self.totalTime.isHidden = true
-                            
+            
         //changing the Total for presentation
         let recordToInt = Double(record.fTotal!)
         let (h,m) = self.secondsTo(seconds: (recordToInt)!)
@@ -593,7 +589,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         {cases()}
         else {print ("in else: calc is :\(self.calc)")
         self.amount.text =  String(Double(self.calc).roundTo(places: 2))
-        self.currencySymbol.text = ViewController.fixedCurrency
         }
                             
         }//end of period switch
@@ -632,13 +627,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             if self.eventCounter == 0 {self.eventsLbl.text = " Due Sessions"} else if self.eventCounter == 1 {self.eventsLbl.text = " Due session"} else {self.eventsLbl.text = " Due Sessions"}
         if self.Status == "All" /*|| self.Status == "Paid"*/{self.generalApproval.isHidden = true}
         let (hForTotal,mForTotal) = self.secondsTo(seconds: self.timeCounter)
-        self.totalTime.text = "" ; self.totalTime.isHidden = true
         self.calc = (Double(self.eventCounter))*(self.Employerrate)
             
-        self.perEvents.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /session") ;self.perHour.text =  ""
+        self.perEvents.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /session") 
             
         self.amount.text =  String(Double(self.calc).roundTo(places: 2))
-        self.currencySymbol.text = ViewController.fixedCurrency!
             
         if self.eventCounter != 0 {if self.rememberMe1 == 0 {self.alert90()}; self.generalApproval.isHidden = true;self.generalApproval.isEnabled = true;  if self.releaser == 0 {self.billSender.isEnabled = true}
         }else {
@@ -791,11 +784,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     self.biller = false
 
-    self.mailSaver = "\(self.mydateFormat10.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n \(self.employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) -  \(self.totalTime.text!)\r\n \(self.perEvents.text!)\r\n \(self.perHour.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\n Regards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by PerSession app. "
+    self.mailSaver = "\(self.mydateFormat10.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n \(self.employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) \r\n \(self.perEvents.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\n Regards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by PerSession app. "
                     
 
     //update bill with DB
-    self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": "Billed", "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillTotalTime": self.totalTime.text!,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2
+    self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": "Billed", "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2
         ], withCompletionBlock: { (error) in}) //end of update.//was 0
     self.generalApprovalClicked()
     self.alert19()
