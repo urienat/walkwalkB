@@ -25,7 +25,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     var messageInstruction = ""
     var titleInstruction = ""
 
-    var connectSetter: String? = ""
     
     var adjuster = 0
     
@@ -70,22 +69,18 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     @IBOutlet weak var pName: UITextField!
     var nameUpdate = ""
-    var cNameUpdate = ""
     
     @IBOutlet weak var pLastName: UITextField!
     var lastNameUpdate = ""
-    var cLastNameUpdate = ""
     
     @IBOutlet weak var pEmail: UITextField!
     var emailUpdate = ""
     
     @IBOutlet weak var pCell: UITextField!
     var cellUpdate = ""
-    var cCellUpdate = ""
     
     @IBOutlet weak var pAddress: UITextField!
     var addressUpdate = ""
-    var cAddressUpdate = ""
     
     @IBOutlet weak var rateTitle: UILabel!
     @IBOutlet weak var pRate: UITextField!
@@ -95,21 +90,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
 
     
-    @IBOutlet weak var connectTitle: UILabel!
-    @IBOutlet weak var connect: UISwitch!
-    @IBAction func connect(_ sender: Any) {
-    if connect.isOn == true {connectSetter = "Yes"; alert5(); self.dbRefEmployers.child(self.employerID).child("myEmployees").child(self.employeeID).updateChildValues(["fConnect": self.connectSetter!]);bringEmployerData()
-    }else {
-    connectSetter = "No"
-    self.dbRefEmployers.child(self.employerID).child("myEmployees").child(self.employeeID).updateChildValues(["fConnect": self.connectSetter!]);
-    bringEmployerData()
-    }
-    }
-    
-    @IBAction func infoConnect(_ sender: Any) {alert5()}
-    @IBOutlet weak var invite: UIButton!
-    @IBAction func invite(_ sender: Any) {alert15()}//end of invite
-    
+
     @IBOutlet weak var pRem: UITextField!
     var remUpdate = ""
     
@@ -130,7 +111,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     override func viewDidLoad() { ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
         super.viewDidLoad()
-        connect.onTintColor =  blueColor
         ViewController.refresh = false
         
         //connectivity
@@ -162,7 +142,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             activeEmployer.image = Vimage
             activeButton.setTitle("", for: .normal)
             activeEmployerSwitch = false
-            connect.setOn(false, animated: true)
             
             bills.isEnabled = false
             trash.isEnabled = false
@@ -191,7 +170,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         
         rateTitle.text = "Rate"
         if ViewController.fixedCurrency != nil {currencySign.text = (ViewController.fixedCurrency!)} else {currencySign.text = ""}
-        self.pEmail.addTarget(self, action: #selector(canInvite), for: .editingDidEnd)
         
     }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -208,9 +186,9 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if self.RateUpdate == 0.0 { messageInstruction = " If you would set rate per Session , you would enjoy bill calculation."}
             
         if self.pLastName.text != "" { // this check that last name is filled and it is filled
-        if connectSetter == "Yes" { message2 = "As 'connect' is on, you would save in your app the presented current fields. Are You Sure?"} else {
+        
         if self.RateUpdate == 0.0  {message2 = messageInstruction} else
-        { message2 = "Are You Sure?"}}
+        { message2 = "Are You Sure?"}
        
         let alertController = UIAlertController(title: ("Save Setting") , message: self.message2, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
@@ -240,7 +218,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             //update pic in chache for old employee
             MyImageCache.sharedCache.setObject(self.pDogImage.image as AnyObject, forKey: self.employerID as AnyObject)
             
-            self.dbRefEmployers.child(self.employerID).child("myEmployees").child(self.employeeID).updateChildValues(["fConnect": self.connectSetter!, "fEmployerRate": Double( self.pRate.text!)!])//add employer rate per employee
+            self.dbRefEmployers.child(self.employerID).child("myEmployees").child(self.employeeID).updateChildValues(["fEmployerRate": Double( self.pRate.text!)!])//add employer rate per employee
             
             if self.activeEmployerSwitch == false {  self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([self.employerID:10])}
             else {self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([self.employerID:5])}
@@ -391,8 +369,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.RateUpdate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)
         if self.RateUpdate != 0.0 { self.pRate.text = String(self.RateUpdate)} else {self.pRate.text = ""}
                 
-        self.connectSetter = String(describing: snapshot.childSnapshot(forPath: "fConnect").value! as! String)
-        if self.connectSetter == "Yes"{ self.connect.setOn(true, animated: true)} else { self.connect.setOn(false, animated: true)}
         })//end of dbrefemployers
             
         dbRefEmployers.queryOrderedByKey().queryEqual(toValue: employerID).observeSingleEvent(of: .childAdded, with: { (snapshot) in
@@ -413,41 +389,28 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.pEmail.text = self.emailUpdate
         print("hfghgfh0\(self.cEmployerRef)")
 
-        //connection to the employers app
-        self.dbRefcEmployers.queryOrdered(byChild: "cMail").queryEqual(toValue: self.emailUpdate).observeSingleEvent(of: .childAdded, with: { (snapshot) in
-        self.cEmployerRef = String(describing: snapshot.key) as String!
-            
+      
+    
         self.dbRefcEmployers.queryOrderedByKey().queryEqual(toValue:self.cEmployerRef).observeSingleEvent(of: .childAdded, with: { (snapshot) in
         
-        self.cNameUpdate = String(describing: snapshot.childSnapshot(forPath: "cName").value!) as String!
-        if self.connectSetter == "Yes" && self.cNameUpdate != "" {self.pName.text = self.cNameUpdate;self.pName.isEnabled = false}
-        else {  self.pName.text = self.nameUpdate; self.pName.isEnabled = true}
+        self.pName.text = self.nameUpdate; self.pName.isEnabled = true
             
-            self.isConnected()
         
-        self.cLastNameUpdate = String(describing: snapshot.childSnapshot(forPath: "cLastName").value!) as String!
-        if self.connectSetter == "Yes" && self.cLastNameUpdate != "" {self.pLastName.text = self.cLastNameUpdate;self.pLastName.isEnabled = false}
-        else {  self.pLastName.text = self.lastNameUpdate; self.pLastName.isEnabled = true}
+        self.pLastName.text = self.lastNameUpdate; self.pLastName.isEnabled = true
         
-        self.cAddressUpdate = String(describing: snapshot.childSnapshot(forPath: "cAddress").value!) as String!
-        if self.connectSetter == "Yes" && self.cAddressUpdate != "" {self.pAddress.text = self.cAddressUpdate;self.pAddress.isEnabled = false}
-        else {  self.pAddress.text = self.addressUpdate; self.pAddress.isEnabled = true}
+        self.pAddress.text = self.addressUpdate; self.pAddress.isEnabled = true
         
-       
-        self.cCellUpdate = String(describing: snapshot.childSnapshot(forPath: "cCell").value!) as String!
-        if self.connectSetter == "Yes" && self.cCellUpdate != "" {self.pCell.text = self.cCellUpdate; self.pCell.isEnabled = false}
-        else {  self.pCell.text = self.cCellUpdate; self.pCell.isEnabled = true}
+       self.pCell.text = self.cellUpdate; self.pCell.isEnabled = true
             
-        })//end of dbref from dbRefcEmployers.queryOrdered(byChild: "cMail").queryEqual(toValue: "mikaenat@gmail.com")
+        //})//end of dbref from dbRefcEmployers.queryOrdered(byChild: "cMail").queryEqual(toValue: "mikaenat@gmail.com")
         })//end of    self.dbRefcEmployers.queryOrderedByKey().queryEqual(toValue:self.cEmployerRef)
                 
-        if self.cEmployerRef == "" {self.pName.text = self.nameUpdate; self.pName.isEnabled = true
+        self.pName.text = self.nameUpdate; self.pName.isEnabled = true
         self.pLastName.text = self.lastNameUpdate; self.pLastName.isEnabled = true
         self.pAddress.text = self.addressUpdate;self.pAddress.isEnabled = true
         self.pCell.text = self.cellUpdate; self.pCell.isEnabled = true
         
-        self.canInvite()
-        }
+        
             
             
         self.remUpdate = snapshot.childSnapshot(forPath: "fRem").value as! String
@@ -487,23 +450,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }//end of if employers is not new
         }//end of bring employer data
     
-        func canInvite() {
-        print("cemployerref\(self.cEmployerRef)")
-        if pEmail.text == "" {connect.isEnabled = false;connectSetter = "No" ;connect.setOn(false, animated: true); connectTitle.alpha = 0.5; message3 = "Connect requiered pet's family email adrress."; self.invite.isEnabled = false;invite.isHidden = true;  self.invite.alpha = 0.5}// change hinvite is hidden upon connect.
-        else {connect.isEnabled = true;  connectTitle.alpha = 1;
-        message3 = "When Pet's family join the app - 'Connect' enables you share information. Left fields above, would be updated (if filled by pet's family). In addition , Pet's records would be seen but not updated by pet's family.";
-        self.invite.isHidden = true;invite.setTitleColor(blackColor, for: .normal);self.invite.isEnabled = true; self.invite.alpha = 1; //change invite is hidden upon connect.
-        isConnected()
-        print("cemployerref\(self.cEmployerRef)")
-            
-        }//end of else
-        }//end of caninvite
-    
-        func isConnected() {
-        if connectSetter == "Yes" && cEmployerRef != "" {print("connection is OK");invite.setTitleColor(blueColor, for: .normal); invite.setTitle("Paired", for: .normal);invite.isHidden = true;//change hinvite is hidden upon connect.
-            invite.isEnabled = false;message3 = "'Connect' enables you share information. Left fields above,  updated (if filled by pet's family). In addition , Pet's records can be seen but not updated by pet's family."} else {print ("no connection"); invite.setTitle("(Invite)", for: .normal); invite.isEnabled = true}
-        if connectSetter == "No" && cEmployerRef != "" {print ("paired but not connected"); invite.isHidden = true;message3 = "When you would set 'connect' to 'On' -  Left fields above, would be updated (if filled by pet's family). In addition , Pet's records would be seen but not updated by pet's family."}
-        }
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "billsFromDogFile") {
             let secondView = segue.destination as? biller
@@ -606,17 +552,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         alertController30.addAction(OKAction)
         self.present(alertController30, animated: true, completion: nil)
         }
-    
-    
-        func alert5(){
-        let alertController5 = UIAlertController(title: ("Connect") , message: self.message3, preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-        }
-        alertController5.addAction(OKAction)
-        self.present(alertController5, animated: true, completion: nil)
-        }
-    
-    
     
         func alert50(){
         let alertController50 = UIAlertController(title: ("Internet Connection") , message: " There is no internet - Check communication avilability.", preferredStyle: .alert)
