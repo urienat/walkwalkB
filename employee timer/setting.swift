@@ -89,13 +89,6 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }//end of switch
     }
     
-    var connectUpdate: String?
-    @IBOutlet weak var connect: UISwitch!
-    @IBAction func connect(_ sender: Any) {
-        
-        if connect.isOn == true {connectUpdate = "On" }
-        else {connectUpdate = "Off"}
-    }
     
     var taxCalacUpdate:String?
     
@@ -251,9 +244,6 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
                 
                 self.dateTimeUpdate = (snapshot.childSnapshot(forPath: "fDateTime").value as! String)
                 if self.dateTimeUpdate == "Date"{self.dateTimeFormat.selectedSegmentIndex = 1} else {self.dateTimeFormat.selectedSegmentIndex = 0}
-
-                self.connectUpdate = (snapshot.childSnapshot(forPath: "fConnect").value as! String)
-                if self.connectUpdate == "On"{self.connect.setOn(true, animated: true)} else {self.connect.setOn(false, animated: true)}
             
                 self.taxCalacUpdate = (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String)
                 
@@ -470,7 +460,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
        
             print ("jhgdjhg\(String(describing: self.dateTimeUpdate))")
         
-            self.dbRefEmployees.child(self.employeeRefUpdate).updateChildValues(["fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": self.currency.text!, "fProgram": "0","fTaxPrecentage": self.precentage.text!,"fTaxName": self.taxName.text!, "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : self.taxCalacUpdate, "fDateTime": self.dateTimeUpdate, "fConnect" : self.connectUpdate]) //check email update with regard to auth
+            self.dbRefEmployees.child(self.employeeRefUpdate).updateChildValues(["fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": self.currency.text!, "fProgram": "0","fTaxPrecentage": self.precentage.text!,"fTaxName": self.taxName.text!, "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : self.taxCalacUpdate, "fDateTime": self.dateTimeUpdate]) //check email update with regard to auth
            
             
           self.updateEmail()

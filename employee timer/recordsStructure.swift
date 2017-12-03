@@ -28,7 +28,6 @@ class employersStruct: NSObject{
     var fEmployerRate: String?
     var fImageRef: String?
     var fActive: Bool?
-    var fConnect: String?
     var cName: String?
 
 }
