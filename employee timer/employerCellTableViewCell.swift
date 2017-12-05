@@ -10,10 +10,9 @@ import UIKit
 
 class employerCellTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var employerName: UILabel!
-    @IBOutlet weak var employerDog: UILabel!
     @IBOutlet weak var dogImage: UIImageView!
+    @IBOutlet weak var employerFirst: UILabel!
     
   
     

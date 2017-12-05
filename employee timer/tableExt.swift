@@ -11,60 +11,58 @@ import UIKit
 import Firebase
 
 extension(ViewController){
-   
-   
-    func tableView(_ employerList: UITableView, didSelectRowAt indexPath: IndexPath) {
-        employerList.isHidden = true
-        self.thinking2.startAnimating()
-
-        employerList.isUserInteractionEnabled = false
-        chooseEmployer.isUserInteractionEnabled = false
-        print ("selected!!!!!!")
-        records.isEnabled = true
     
-        if pickerData.count == 0 {
-        print ("indexpath4\([pickerData])")
-        }
-        
-        chooseEmployer.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-        chooseEmployer.titleLabel?.textAlignment = NSTextAlignment.center
-        chooseEmployer.setTitle( nameData[indexPath.row] + " " + pickerData[indexPath.row] + " ▽", for: UIControlState.normal)
-        petFile.title = "\(pickerData[indexPath.row])'s file"
-        records.title =  "\(pickerData[indexPath.row])'s Sessions"
+func tableView(_ employerList: UITableView, didSelectRowAt indexPath: IndexPath) {
+employerList.isHidden = true
+self.thinking2.startAnimating()
 
-        
-        employerToS = pickerData[indexPath.row]
-        
-       
-        if pickerData[indexPath.row] == "Add new dog" {
-        ViewController.checkSubOnce = 1
-        addDog = 1
-        
-        DispatchQueue.main.async {
-       self.checkSubs()
-        }
-            
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-        print (ViewController.checkSubOnce!)
- 
-        if ViewController.checkSubOnce == 2 {
-        print (self.employerToS)
-            
-            self.records.isEnabled = false;self.employerToS = "Add new dog" ; self.performSegue(withIdentifier: "employerForDogFile", sender: self.employerToS) }
-        }//end of dispatch
-        }//end of if
-            
-        else{
-        employerIDToS = employerIdArray2[indexPath.row] as! String
+employerList.isUserInteractionEnabled = false
+chooseEmployer.isUserInteractionEnabled = false
+print ("selected!!!!!!")
+records.isEnabled = true
+
+if pickerData.count == 0 {
+print ("indexpath4\([pickerData])")
+}
+
+chooseEmployer.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+chooseEmployer.titleLabel?.textAlignment = NSTextAlignment.center
+chooseEmployer.setTitle( nameData[indexPath.row] + " " + pickerData[indexPath.row] + " ▽", for: UIControlState.normal)
+account.title = "\(pickerData[indexPath.row])'s file"
+records.title =  "\(pickerData[indexPath.row])'s Sessions"
+
+
+employerToS = pickerData[indexPath.row]
+
+
+if pickerData[indexPath.row] == "Add new dog" {
+ViewController.checkSubOnce = 1
+addDog = 1
+
+DispatchQueue.main.async {
+self.checkSubs()
+}
+
+DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+print (ViewController.checkSubOnce!)
+
+if ViewController.checkSubOnce == 2 {
+print (self.employerToS)
+
+self.records.isEnabled = false;self.employerToS = "Add new dog" ; self.performSegue(withIdentifier: "employerForDogFile", sender: self.employerToS) }
+}//end of dispatch
+}//end of if
+
+else{
+employerIDToS = employerIdArray2[indexPath.row] as! String
         bringEmployerData()
         
         
             
             if activeData[indexPath.row] != "0" {self.thinking2.stopAnimating(); preStartView()}
-            else {petFile.isEnabled = true; chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating()}
+            else {account.isEnabled = true; chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating()}
         
         //set variable for Segue
-        //employerToS = String(describing:chooseEmployer.currentTitle!)
         employerToS = pickerData[indexPath.row]
 
         print (employerToS)
@@ -101,15 +99,15 @@ extension(ViewController){
             if pickerData[indexPath.row] != "Add new dog" {cell2.employerName.textColor = blueColor;            cell2.backgroundColor = UIColor.clear
                 
 
-                cell2.employerName?.text = "\(pickerData[indexPath.row])" ;cell2.employerDog.isHidden = false; cell2.employerDog?.text = nameData[indexPath.row]} else
+                cell2.employerName?.text = "\(pickerData[indexPath.row])" ;cell2.employerFirst.isHidden = false; cell2.employerFirst?.text = nameData[indexPath.row]} else
             //change add dof to account
-            {cell2.employerName.textColor = blueColor;cell2.employerName?.text = "New Account ✚" ;cell2.employerDog.isHidden = true;            cell2.backgroundColor = UIColor.clear
+            {cell2.employerName.textColor = blueColor;cell2.employerName?.text = "New Account ✚" ;cell2.employerFirst.isHidden = true;            cell2.backgroundColor = UIColor.clear
 }
 
             
-       if activeData[indexPath.row] == "0" { cell2.employerName.alpha = 0.4;cell2.employerDog.alpha = 0.4} else{ cell2.employerName.alpha = 1; cell2.employerDog.alpha = 1}
+       if activeData[indexPath.row] == "0" { cell2.employerName.alpha = 0.4;cell2.employerFirst.alpha = 0.4} else{ cell2.employerName.alpha = 1; cell2.employerFirst.alpha = 1}
           
-            cell2.employerDog?.text =  nameData[indexPath.row] 
+            cell2.employerFirst?.text =  nameData[indexPath.row] 
 
             
         cell2.dogImage.clipsToBounds = true

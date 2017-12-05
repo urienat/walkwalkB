@@ -104,7 +104,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBAction func addAccount(_ sender: Any) {
     print ("add")
     employerToS = "Add new dog"
-    petFileClicked()
+    accountClicked()
     }
 
     @IBOutlet weak var startButton: UIButton!
@@ -113,10 +113,9 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var addAmanualRecord: UIView!
     @IBOutlet weak var records: UIBarButtonItem!
     @IBOutlet weak var bills: UIBarButtonItem!
-    @IBOutlet weak var petFile: UIBarButtonItem!
+    
+    @IBOutlet weak var account: UIBarButtonItem!
     @IBOutlet weak var setting: UIBarButtonItem!
-    @IBOutlet weak var blinker: UILabel!
-    @IBOutlet weak var blinker2: UILabel!
     @IBOutlet weak var chooseEmployer: UIButton!
     @IBOutlet weak var animationImage: UIImageView!
     @IBOutlet weak var textAdd: UITextView!
@@ -216,8 +215,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     records.customView = btn1
     btn2.setImage(meluna, for: .normal)
     btn2.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
-    btn2.addTarget(self, action:#selector(petFileClicked), for: UIControlEvents.touchDown)
-    petFile.customView = btn2
+    btn2.addTarget(self, action:#selector(accountClicked), for: UIControlEvents.touchDown)
+    account.customView = btn2
     btn3.setImage(billsIcon, for: .normal)
     btn3.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
     btn3.addTarget(self, action:#selector(billsClicked), for: UIControlEvents.touchDown)
@@ -286,7 +285,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     //did become active procedure
     func applicationDidBecomeActive(notification: NSNotification) {
     thinking2.startAnimating()
-    if petFile.isEnabled == true {
+    if account.isEnabled == true {
     preStartView()
     }
     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
@@ -296,7 +295,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     //did stop active procedure
     func applicationDidBecomePassive(notification: NSNotification) {
-    if petFile.isEnabled == true {
+    if account.isEnabled == true {
     }
     }// end of func application did stop
     
@@ -315,7 +314,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     performSegue(withIdentifier: "employerforVC", sender: employerToS)
     }
     
-    func petFileClicked() {
+    func accountClicked() {
     performSegue(withIdentifier: "employerForDogFile", sender: employerToS)
     }
     
@@ -441,14 +440,14 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.DateIn.isHidden = true
     self.workedFor.isHidden = true
     self.startBackground.isHidden = false
-    self.petFile.isEnabled = true;
+    self.account.isEnabled = true;
     self.chooseEmployer.isUserInteractionEnabled = true
     startBarButtonFadeOut()
     startBarButtonFadeIn()
     }//end of func
 
     func postStartView() {
-    self.petFile.isEnabled = true
+    self.account.isEnabled = true
     self.animationImage.isHidden = true
     self.startBackground.isHidden = true
     self.DateIn.isHidden = false;
@@ -461,7 +460,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     func postTimerView() {
     DateIn.isHidden = true
     records.isEnabled = false
-    petFile.isEnabled = false
+    account.isEnabled = false
     chooseEmployer.isHidden = true
     startBackground.isHidden = true
     addAmanualRecord.isHidden = true
@@ -469,7 +468,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }//end of func
     
         func postRoundView() {
-                self.petFile.isEnabled = true
+                self.account.isEnabled = true
         self.animationImage.isHidden = false
         self.startBackground.isHidden = true
         self.DateIn.isHidden = false;

@@ -702,7 +702,7 @@
                                                         <constraint firstAttribute="width" constant="50" id="XRn-wn-2OB"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KUx-wf-FBc" userLabel="employerDog">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KUx-wf-FBc" userLabel="employerFirst">
                                                     <rect key="frame" x="60" y="32" width="160" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="Xns-zP-XJo"/>
@@ -734,7 +734,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dogImage" destination="86m-f8-5r4" id="3wz-I4-dSz"/>
-                                            <outlet property="employerDog" destination="KUx-wf-FBc" id="9Pp-vd-N1x"/>
+                                            <outlet property="employerFirst" destination="KUx-wf-FBc" id="BDX-NH-xHx"/>
                                             <outlet property="employerName" destination="wKD-Zi-gR2" id="61F-z3-L46"/>
                                         </connections>
                                     </tableViewCell>
@@ -818,7 +818,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Pow-Ns-nZF"/>
-                                    <barButtonItem enabled="NO" image="meluna" id="nYU-wY-z3v">
+                                    <barButtonItem enabled="NO" image="meluna" id="nYU-wY-z3v" userLabel="account">
                                         <connections>
                                             <segue destination="nD7-g7-jdd" kind="show" identifier="employerForDogFile" id="MLF-fz-7Mf"/>
                                         </connections>
@@ -892,6 +892,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="DateIn" destination="Wkx-Tt-3io" id="tOD-4u-tgI"/>
+                        <outlet property="account" destination="nYU-wY-z3v" id="Jtm-3v-mJQ"/>
                         <outlet property="addAccount" destination="NNj-jv-ITI" id="sEC-ZB-NCc"/>
                         <outlet property="addAmanualRecord" destination="FxU-Wn-hMn" id="TvW-qU-vMq"/>
                         <outlet property="animationImage" destination="M0C-iW-AVD" id="xlo-Ti-y7F"/>
@@ -903,7 +904,6 @@
                         <outlet property="employerListHeiget" destination="QAK-61-qij" id="DuM-13-Fpw"/>
                         <outlet property="employerListTop" destination="WI7-6r-u9D" id="VTG-on-q7b"/>
                         <outlet property="googleCalander" destination="yFh-ig-nQ8" id="QP9-Pr-mO1"/>
-                        <outlet property="petFile" destination="nYU-wY-z3v" id="6YC-0W-eQA"/>
                         <outlet property="profile" destination="xOX-bG-FKO" id="tbU-w2-8C6"/>
                         <outlet property="records" destination="uPD-Ce-NUz" id="vkv-Tl-a3Z"/>
                         <outlet property="startBackground" destination="45C-VX-M18" id="DnN-Lg-IRl"/>
@@ -2499,6 +2499,6 @@
         <segue reference="RQi-YY-5wb"/>
         <segue reference="x0P-Ew-8Ag"/>
         <segue reference="COZ-mk-Xid"/>
-        <segue reference="gfT-By-X34"/>
+        <segue reference="1k4-P4-HYk"/>
     </inferredMetricsTieBreakers>
 </document>
