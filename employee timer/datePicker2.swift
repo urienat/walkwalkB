@@ -146,7 +146,7 @@ class datePicker2: UIViewController {
             
         startLbl.text = "Session";topOfStart.constant = 60;
          
-            self.saveRecord?.isEnabled = true;self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveToDB2) )
+            self.saveRecord?.isEnabled = false;self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveToDB2) )
         navigationItem.rightBarButtonItem = saveRecord
 
             
@@ -172,6 +172,8 @@ class datePicker2: UIViewController {
         
         
         navigationItem.rightBarButtonItem = saveRecord
+        
+
 
             self.title = titleLbl
  
