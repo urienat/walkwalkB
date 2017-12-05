@@ -246,7 +246,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             
         self.employerID = employerRefence.key
         self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([self.employerID:5])//add employer to my employers of employee
-        self.dbRefEmployers.child(self.employerID).child("myEmployees").child(self.employeeID).setValue(["fConnect": "No", "fEmployerRate": Double( self.pRate.text!)!])//add employer rate per employee
+        self.dbRefEmployers.child(self.employerID).child("myEmployees").child(self.employeeID).setValue(["fEmployerRate": Double( self.pRate.text!)!])//add employer rate per employee
                 
         self.navigationController!.popViewController(animated: true)
             

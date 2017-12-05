@@ -55,6 +55,9 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBOutlet weak var address: UITextField!
     var addressUpdate = ""
     
+    @IBOutlet weak var profession: UITextField!
+    var professionUpdate = ""
+    
     @IBOutlet weak var reset: UIButton!
     
     @IBOutlet weak var passWord: UITextField!
@@ -88,6 +91,22 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }//end of switch
     }
     
+    
+    var calanderUpdate:String?
+    @IBOutlet weak var calander: UISegmentedControl!
+    @IBAction func calander(_ sender: Any) {
+        switch calander.selectedSegmentIndex {
+        case 0:
+            calanderUpdate = "Google"
+            
+        case 1:
+            calanderUpdate = "IOS"
+            
+        default:
+            calanderUpdate = "None"
+            print("None")
+        }//end of switch
+    }
     
     var taxCalacUpdate:String?
     
@@ -124,6 +143,13 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBAction func taxationInfo(_ sender: Any) {
         alert17()
     }
+    
+    @IBOutlet weak var paypal: UITextField!
+    var paypalUpdate = ""
+    
+    @IBOutlet weak var billInfo: UITextField!
+    var billInfoUpdate = ""
+    
     
     @IBOutlet weak var subscriptionLbl: UILabel!
     @IBOutlet weak var subscriptionBtn: UIButton!
@@ -233,6 +259,9 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
                 
             self.addressUpdate = snapshot.childSnapshot(forPath: "fAddress").value! as! String
             self.address.text = self.addressUpdate
+                
+            self.professionUpdate = snapshot.childSnapshot(forPath: "fProfession").value! as! String
+            self.profession.text = self.professionUpdate
                     
             
             self .currencyUpdate = snapshot.childSnapshot(forPath: "fCurrency").value as! String
@@ -243,6 +272,10 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
                 
                 self.dateTimeUpdate = (snapshot.childSnapshot(forPath: "fDateTime").value as! String)
                 if self.dateTimeUpdate == "Date"{self.dateTimeFormat.selectedSegmentIndex = 1} else {self.dateTimeFormat.selectedSegmentIndex = 0}
+                
+                
+                self.calanderUpdate = (snapshot.childSnapshot(forPath: "fCalander").value as! String)
+                if self.calanderUpdate == "Google" {self.calander.selectedSegmentIndex = 0} else if self.calanderUpdate == "IOS" {self.calander.selectedSegmentIndex = 1} else {self.calander.selectedSegmentIndex = 2}
             
                 self.taxCalacUpdate = (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String)
                 
@@ -257,6 +290,12 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             
             self.taxNamerUpdate  =  snapshot.childSnapshot(forPath: "fTaxName").value as! String
             self.taxName.text = self.taxNamerUpdate
+                
+            self.paypalUpdate = snapshot.childSnapshot(forPath: "fPaypal").value! as! String
+            self.paypal.text = self.paypalUpdate
+            
+            self.billInfoUpdate = snapshot.childSnapshot(forPath: "fBillinfo").value! as! String
+            self.billInfo.text = self.billInfoUpdate
                     
         //bring image
         print("employeeref\(self.employeeRefUpdate)")
@@ -299,6 +338,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }//end of if current user !=nil
         
         // end of firauth
+        
         
         print("ughghjg\(employeeRefUpdate)")
         if setting.newEmployee == "YES"{
@@ -405,7 +445,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
                 
                 self.employeeRefUpdate = (user?.uid)!
                 
-            self.dbRefEmployees.child((user?.uid)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage": self.taxPrecentageUpdate,"fTaxName": self.taxNamerUpdate,  "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : "Over", "fDateTime": "DateTime","fConnect": "Off","fLogin":"Normal","fLastCalander":"New","fAddress":self.address.text!])
+            self.dbRefEmployees.child((user?.uid)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage": self.taxPrecentageUpdate,"fTaxName": self.taxNamerUpdate,  "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : "Over", "fDateTime": "DateTime","fLogin":"Normal","fLastCalander":"New","fAddress":self.addressUpdate,"fProfession": self.professionUpdate,"fPaypal" : self.paypalUpdate, "fBillinfo" :self.billInfoUpdate])
 
                 ViewController.dateTimeFormat = self.dateTimeUpdate
 
@@ -442,6 +482,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
 
+            
        self.navigationItem.rightBarButtonItem?.isEnabled = true
         }
 
@@ -456,7 +497,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
        
             print ("jhgdjhg\(String(describing: self.dateTimeUpdate))")
         
-            self.dbRefEmployees.child(self.employeeRefUpdate).updateChildValues(["fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": self.currency.text!, "fProgram": "0","fTaxPrecentage": self.precentage.text!,"fTaxName": self.taxName.text!, "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : self.taxCalacUpdate, "fDateTime": self.dateTimeUpdate]) //check email update with regard to auth
+            self.dbRefEmployees.child(self.employeeRefUpdate).updateChildValues(["fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": self.currency.text!, "fProgram": "0","fTaxPrecentage": self.precentage.text!,"fTaxName": self.taxName.text!, "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : self.taxCalacUpdate, "fDateTime": self.dateTimeUpdate, "fCalander" : self.calanderUpdate,"fAddress":self.addressUpdate,"fProfession": self.professionUpdate,"fPaypal" : self.paypalUpdate, "fBillinfo" :self.billInfoUpdate]) //check email update with regard to auth
            
             
           self.updateEmail()
