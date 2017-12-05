@@ -127,7 +127,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     // Construct a query and get a list of upcoming events
     func fetchEvents() {
-        print("0.1 \(self.LastCalander)")
         let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")// instard of "primary"
         query.maxResults = 50
 
@@ -173,7 +172,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         if let events = response.items, !events.isEmpty {
         for event in events {
                 let start = event.start!.dateTime ?? event.start!.date!
-                let end = event.end!.dateTime ?? event.start!.date!
+                //let end = event.end!.dateTime ?? event.start!.date!
 
                 calIn = self.mydateFormat6.string(from: start.date)
                 calInFB = self.mydateFormat5.string(from: start.date)
