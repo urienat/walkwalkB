@@ -64,10 +64,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     let space = ""
     
-    var whiteColor = UIColor(red :255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
-    var redColor = UIColor(red :170.0/255.0, green: 26.0/255.0, blue: 0/255.0, alpha: 1.0)
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
-    var greenColor = UIColor(red :32.0/255.0, green: 150.0/255.0, blue: 24.0/255.0, alpha: 1.0)
     
     var statusTemp:String?
     static var checkBox:Int = 0

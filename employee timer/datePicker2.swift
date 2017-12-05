@@ -37,9 +37,7 @@ class datePicker2: UIViewController {
     
     var tempTotal = 0
     var roundIndicator = String()
-    let mydateFormat = DateFormatter()
     let mydateFormat5 = DateFormatter()
-    let mydateFormat6 = DateFormatter()
     let mydateFormat10 = DateFormatter()
     let mydateFormat11 = DateFormatter()
 
@@ -115,7 +113,7 @@ class datePicker2: UIViewController {
         }
         
         else
-        {self.TimeOut.isHidden = false; self.date2Button.isHidden = false; self.date2Button.isEnabled = true;self.TimeOut.isHidden = false;self.Total.isHidden = false;self.totalLabel.isHidden = false;self.stopLbl.isHidden = false;self.startLbl.text = "Start";self.extendedDate2Button.isHidden = false;self.extendedDate2Button.isEnabled = true;self.topOfStart.constant = 40;self.TimeOut.text = self.mydateFormat.string(from: Date());
+        {self.TimeOut.isHidden = false; self.date2Button.isHidden = false; self.date2Button.isEnabled = true;self.TimeOut.isHidden = false;self.Total.isHidden = false;self.totalLabel.isHidden = false;self.stopLbl.isHidden = false;self.startLbl.text = "Start";self.extendedDate2Button.isHidden = false;self.extendedDate2Button.isEnabled = true;self.topOfStart.constant = 40;self.TimeOut.text = self.mydateFormat5.string(from: Date());
           //  self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveAlert) );
             self.saveRecord?.isEnabled = false
         }//end of else
@@ -127,19 +125,13 @@ class datePicker2: UIViewController {
         self.tempTotal = Int(record.fTotal!)!
         print(self.tempTotal)
         
-        
-        
-        
-        print(record.fIn!)
-        print(self.mydateFormat6.string(from: self.mydateFormat5.date(from: record.fIn!)!))
-
         if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!)} else {self.TimeIN.text = self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) }
         self.inDate = record.fIn!
         
         
         self.DatePicker.setDate( self.mydateFormat5.date(from: record.fIn!)!  , animated: true)
 
-        self.TimeOut.text = self.mydateFormat.string(from:   self.mydateFormat5.date(from: record.fOut!)!)
+        self.TimeOut.text = self.mydateFormat5.string(from:   self.mydateFormat5.date(from: record.fOut!)!)
         self.outDate = record.fOut!
         self.DatePicker2.setDate( self.mydateFormat5.date(from: record.fOut!)!  , animated: true)
 
@@ -182,11 +174,7 @@ class datePicker2: UIViewController {
         
       
         //formating the date
-        mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)"
-, options: 0, locale: nil)!
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
-            ,options: 0, locale: nil)!
-        mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy"
             ,options: 0, locale: nil)!
         mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
         mydateFormat11.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy , (HH,mm)", options: 0, locale: Locale.autoupdatingCurrent)!
@@ -238,7 +226,9 @@ class datePicker2: UIViewController {
         print( calcTimeIn)
         
         if DatePicker.date >  Date() {
-            self.TimeOut.text = self.mydateFormat.string(from: DatePicker.date)
+           // self.TimeOut.text = self.mydateFormat.string(from: DatePicker.date)
+            self.TimeOut.text = self.mydateFormat5.string(from: DatePicker.date)
+
             self.DatePicker2.setDate( DatePicker.date , animated: true)
         }
         print("in as a date:")
@@ -250,7 +240,6 @@ class datePicker2: UIViewController {
     
     func datePickerChanged2(DatePicker:UIDatePicker) {
 
-        //outDate = mydateFormat.string(from: DatePicker.date) //brings the a date as a string
         datePickerbBackground .isHidden = true
         datePickerBackground2.isHidden = true
         TimeOut.text = mydateFormat.string(from: DatePicker.date) //brings the a date as a string

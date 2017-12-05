@@ -53,10 +53,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var totalAmount: UITextField!
     @IBOutlet weak var noSign: UIImageView!
     
-    
-
-    var whiteColor = UIColor(red :255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
-    var greenColor = UIColor(red :32.0/255.0, green: 150.0/255.0, blue: 24.0/255.0, alpha: 1.0)
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
 
     //variablesfrom main
@@ -65,11 +61,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var employeeID = ""
 
     //variabled for date filtering
-    let mydateFormat = DateFormatter()
-    let mydateFormat2 = DateFormatter()
-    let mydateFormat3 = DateFormatter()
+    
     let mydateFormat5 = DateFormatter()
-    let mydateFormat6 = DateFormatter()
     let mydateFormat10 = DateFormatter()
 
     
@@ -112,15 +105,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         
         
         //formating the date
-        mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate:  " EEE-dd-MMM-yyyy, (HH:mm)"
-            ,options: 0, locale: nil)!
-        mydateFormat2.dateFormat = DateFormatter.dateFormat(fromTemplate:  " HH:mm"
-            , options: 0, locale: nil)!
-        mydateFormat3.dateFormat = DateFormatter.dateFormat(fromTemplate:  " MM/dd/yyyy"
-            , options: 0, locale: nil)!
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
             ,options: 0, locale: nil)!
-        mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale: nil)!
         mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
 
         self.StatusChoice = "All"

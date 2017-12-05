@@ -23,8 +23,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     let mydateFormat5 = DateFormatter()
     let mydateFormat6 = DateFormatter()
-    let mydateFormat7 = DateFormatter()
-    
     
     var calIn = ""
     var calInFB = ""
@@ -61,8 +59,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         super.viewDidLoad()
         
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
-            ,options: 0, locale: nil)!
-        mydateFormat7.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd MMM, (HH:mm)"
             ,options: 0, locale: nil)!
         mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale:Locale.autoupdatingCurrent )!
         

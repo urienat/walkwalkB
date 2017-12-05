@@ -37,10 +37,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var addDog: Int?
     var tableRowHeight:Int?
 
-    var greenColor = UIColor(red :32.0/255.0, green: 150.0/255.0, blue: 24.0/255.0, alpha: 1.0)
-    var redColor = UIColor(red :170.0/255.0, green: 26.0/255.0, blue: 0/255.0, alpha: 1.0)
-    var brownColor = UIColor(red :141/255.0, green: 111/255.0, blue: 56/255.0, alpha: 1.0)
-    var yellowColor = UIColor(red :225/255.0, green: 235/255.0, blue: 20/255.0, alpha: 1.0)
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
 
     let Vimage = UIImage(named: "vNaked")
@@ -56,10 +52,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var billsIcon = UIImage(named:"billsIcon")?.withRenderingMode(.alwaysTemplate)
     var walkerProfile = UIImage(named:"walkerProfile")?.withRenderingMode(.alwaysTemplate)
 
-    let mydateFormat = DateFormatter()
     let mydateFormat2 = DateFormatter()
     let mydateFormat5 = DateFormatter()
-    let mydateFormat6 = DateFormatter()
     let mydateFormat7 = DateFormatter()
     
     var employerItem = ""
@@ -195,11 +189,9 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.dbRefEmployee.removeAllObservers()
     
     //formating the date
-    mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale: nil)!
     mydateFormat2.dateFormat = DateFormatter.dateFormat(fromTemplate:  " HH:mm", options: 0, locale: nil)!
     mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
     mydateFormat7.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd MMM, (HH:mm)",options: 0, locale: nil)!
-    mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale: nil)!
        
     self.dbRefEmployee.queryOrderedByKey().queryEqual(toValue: currentUser?.uid).observeSingleEvent(of: .childAdded, with: { (snapshot) in
     ViewController.fixedCurrency = String(describing: snapshot.childSnapshot(forPath: "fCurrency").value!) as String

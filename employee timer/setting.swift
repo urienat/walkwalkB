@@ -25,7 +25,6 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     var created: String?
     
-    let mydateFormat = DateFormatter()
     let mydateFormat5 = DateFormatter()
 
     var textForError:String?
@@ -331,7 +330,6 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             setting.newEmployee = "NO"
         }
         
-        mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale: nil)!
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
             ,options: 0, locale: nil)!
         
@@ -406,8 +404,6 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
                 LoginFile.passwordForCreate = self.passWord.text!
                 
                 self.employeeRefUpdate = (user?.uid)!
-
-                //self.dbRefEmployees.child(user!.uid).setValue(["femail" :emailUpdate, "fCreated"  : self.mydateFormat.string(from: Date()), "fName": "" , "fLastName": "", "fCell": "", "fCounter": "1000","fCurrency": self.cu!,  "fImageRef":"","fProgram":"0", "fSwitcher": "No","fTaxPrecentage":"0.0"])
                 
             self.dbRefEmployees.child((user?.uid)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage": self.taxPrecentageUpdate,"fTaxName": self.taxNamerUpdate,  "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : "Over", "fDateTime": "DateTime","fConnect": "Off","fLogin":"Normal","fLastCalander":"New","fAddress":self.address.text!])
 

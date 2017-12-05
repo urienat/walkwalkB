@@ -14,6 +14,13 @@ import MessageUI
 import Intents
 
 extension(newVCTable){
+
+    
+   // var greenColor = UIColor(red :32.0/255.0, green: 150.0/255.0, blue: 24.0/255.0, alpha: 1.0)
+   // var redColor = UIColor(red :170.0/255.0, green: 26.0/255.0, blue: 0/255.0, alpha: 1.0)
+   // var brownColor = UIColor(red :141/255.0, green: 111/255.0, blue: 56/255.0, alpha: 1.0)
+  //  var yellowColor = UIColor(red :225/255.0, green: 235/255.0, blue: 20/255.0, alpha: 1.0)
+    
 /*switch checkBoxGeneral {
  //pre
  case 0: generalApproval.setImage(billedImage, for: .normal); checkBoxGeneral = 1 //

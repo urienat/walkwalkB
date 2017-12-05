@@ -28,10 +28,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     var billToHandle = String()
     var employerID = ""
     var employeeID = ""
-    let mydateFormat = DateFormatter()
-    let mydateFormat5 = DateFormatter()
-    let mydateFormat6 = DateFormatter()
-
+    
     var deleteBill : UIBarButtonItem?
     
     var recoveredBill = ""
@@ -41,11 +38,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
 
     
     let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-    
-
-
-    
-    
+  
     @IBOutlet weak var mailText: UITextView!
  
 
@@ -94,13 +87,6 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         self.titleLbl = "Bill"
         self.title = self.titleLbl
         
-        //formating the date
-        mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "EEE-dd-MMM-yyyy, (HH:mm)"
-            ,options: 0, locale: nil)!
-        mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
-            ,options: 0, locale: nil)!
-        mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale: nil)!
-
         
         reBill()
         

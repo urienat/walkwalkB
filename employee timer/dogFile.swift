@@ -17,8 +17,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     let emptyVimage = UIImage(named: "emptyV")
     var perSessionImage = UIImage(named:"perSessionImage")?.withRenderingMode(.alwaysTemplate)
 
-    let greenColor = UIColor(red :32.0/255.0, green: 150.0/255.0, blue: 24.0/255.0, alpha: 1.0)
-    let blackColor = UIColor(red :24.0/255.0, green: 25.0/255.0, blue: 27.0/255.0, alpha: 1.0)
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
 
 
