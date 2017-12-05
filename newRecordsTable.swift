@@ -35,18 +35,7 @@ class newRecordsTable: UIViewController,UITableViewDelegate,UITableViewDataSourc
         // Do any additional setup after loading the view.
     }
 
-   /* override func viewDidAppear(_ animated: Bool) {
-        let recordRef = ref.child("record")
-        let recievedRecord = ["fIn" : "22", "fOut" : "22" , "fTotal" : "22", "fEmployer": "22"]
-
-    }
-    */
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
+   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recordsdates.count
         

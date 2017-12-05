@@ -83,11 +83,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var Status: String = "Pre"
     let cellId =  "cellId"
     var eventCounter = 0
-    var timeCounter = 0.0
     var calc = 0.0
     var Employerrate = 0.0
     let formatter = NumberFormatter()
-    var spesificToInt = 0.00
     var employerFromMain: String?
     var buttonRow = 0
     
@@ -238,7 +236,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             })
             
             eventCounter = 0
-            timeCounter = 0.0
             
             fetch()
             
@@ -287,14 +284,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         let cell = tableConnect.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! newTableCell
         let record = records[indexPath.row]
  
-        //changing the Total for presentation
-        if let recordToInt = Double(record.fTotal!) {
-        let (h,m) = secondsTo(seconds: (recordToInt))
-            print (self.spesificToInt)
-            cell.backgroundColor = UIColor.clear
-            
-        if record.fTotal != "-1" {  cell.l3.text = String(Int(h)) + "h:" + String (Int(m)) + "m"} }
-        else {cell.l3.text = "  "}
                
         //changing the dates for prentation
         if let fInToDate = record.fIn {
@@ -441,7 +430,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         func fetch()  {
         
         eventCounter = 0
-        timeCounter = 0.0       
         self.idArray.removeAll()
         self.appArray.removeAll()
         self.records.removeAll()
@@ -525,27 +513,20 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.currentYear = today.year!
         self.currentYearForWeek = today.yearForWeekOfYear!
 
-        self.spesificToInt = Double(record.fTotal!)!
-        if self.spesificToInt > -1 { self.timeCounter += self.spesificToInt }//changed for add per due
-                            
+            
         self.records.append(record)
         self.idArray.append(id)
         self.appArray.append(appStatus!)
         self.tableConnect.reloadData()
                             
         //self.eventCounter+=1
-        let (hForTotal,mForTotal) = self.secondsTo(seconds: (self.timeCounter))
             
         //changing the Total for presentation
-        let recordToInt = Double(record.fTotal!)
-        let (h,m) = self.secondsTo(seconds: (recordToInt)!)
-        self.totalForReport = ""
             
         if ViewController.dateTimeFormat == "DateTime" {  self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) );self.csv2.append("  \t\t\t")
         } else {
         self.csv2.append( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!) );self.csv2.append("  \t\t\t") }
             
-        self.csv2.append(self.totalForReport!);self.csv2.append("\r\n")
         }// end of cases func
                         
         switch period{
@@ -622,7 +603,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions'"} else if self.eventCounter == 1 {self.eventsLbl.text = "\(String(self.eventCounter)) Due session"} else {self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions"}
             
         if self.Status == "All" /*|| self.Status == "Paid"*/{self.generalApproval.isHidden = true}
-        let (hForTotal,mForTotal) = self.secondsTo(seconds: self.timeCounter)
         self.calc = (Double(self.eventCounter))*(self.Employerrate)
             
         self.perEvents.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /session") 

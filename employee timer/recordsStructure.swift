@@ -16,7 +16,6 @@ class recordsStruct: NSObject{
     var fIn: String?
     var fIndication3: String?
     var fStatus:String?
-    var fTotal: String?
     var fBill:  String?
     
     

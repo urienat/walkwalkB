@@ -27,8 +27,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     var calIn = ""
     var calInFB = ""
     
-    var calOut = ""
-    var calOutFB = ""
     var employerFromMain = ""
     var employeeId = ""
     var employerId = ""
@@ -179,8 +177,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
                 calIn = self.mydateFormat6.string(from: start.date)
                 calInFB = self.mydateFormat5.string(from: start.date)
-                calOut = self.mydateFormat6.string(from: end.date)
-                calOutFB = self.mydateFormat5.string(from: end.date)
                 employerFromMain = event.summary!
                 
                 _ = DateFormatter.localizedString(
@@ -227,7 +223,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     }//end of func
  
     func saveToDB2() {
-    let record = ["fIn" : calInFB, "fOut" : calOutFB, "fTotal" : "-1", "fEmployer": String (describing : employerFromMain),"fIndication3" :"📆","fStatus" : "Pre","fEmployeeRef": String (describing : employeeId),"fEmployerRef":  String (describing : employerId)]
+    let record = ["fIn" : calInFB,  "fEmployer": String (describing : employerFromMain),"fIndication3" :"📆","fStatus" : "Pre","fEmployeeRef": String (describing : employeeId),"fEmployerRef":  String (describing : employerId)]
             
     let recordRefence = self.dbRef.childByAutoId()
     recordRefence.setValue(record)

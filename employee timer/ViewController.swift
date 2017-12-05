@@ -121,7 +121,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var animationImage: UIImageView!
     @IBOutlet weak var textAdd: UITextView!
     @IBOutlet weak var startImage: UIImageView!
-    @IBOutlet weak var stopImage: UIImageView!
     @IBOutlet weak var startBackground: UIView!
 
     @IBOutlet weak var toolBar: UIToolbar!
@@ -139,7 +138,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     dIn =  mydateFormat5.string(from: Date()) //brings the a date as a string
     dIn2 = mydateFormat2.string(from: Date()) //brings the a date as a string
     
-    let record = ["fIn" : dIn, "fOut": dIn,"fIndication3": "↺","fTotal":"-1", "fEmployer": String (describing : employerToS),"fEmployeeRef": employeeIDToS,"fEmployerRef": employerIDToS,"fStatus" : "Pre"]
+    let record = ["fIn" : dIn,"fIndication3": "↺", "fEmployer": String (describing : employerToS),"fEmployeeRef": employeeIDToS,"fEmployerRef": employerIDToS,"fStatus" : "Pre"]
     let fInRef = dbRef.childByAutoId()
     fInRef.setValue(record)
         
@@ -456,9 +455,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.workedFor.isHidden = true
     self.addAmanualRecord.isHidden = true
     self.chooseEmployer.isUserInteractionEnabled = true
-    UIView.animate(withDuration: TimeInterval(4.9),delay: 0, options: [.repeat], animations:{
-    self.stopImage.transform = self.stopImage.transform.rotated(by: CGFloat(Double.pi*1))
-    })
+    
     }//end of func
 
     func postTimerView() {

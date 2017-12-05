@@ -68,14 +68,7 @@ var records = [recordsStruct]()
         let record = records[indexPath.row]
         
 
-        //changing the Total for presentation
-        if let recordToInt = Double(record.fTotal!) {
-            let (h,m) = secondsTo(seconds: Int(recordToInt))
-            cell.l3.text = String(h) + "h : " + String (m) + "m"
-        }
-        else {
-            cell.l3.text = "   N/A"
-        }
+    
 
         
         //changing the dates for prentation
@@ -89,7 +82,6 @@ var records = [recordsStruct]()
         }
         
         
-        cell.l2.text = record.fOut
         
         
 
