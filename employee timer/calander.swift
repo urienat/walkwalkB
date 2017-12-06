@@ -80,6 +80,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem
+
+        
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
             ,options: 0, locale: nil)!
         mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale:Locale.autoupdatingCurrent )!
@@ -408,10 +411,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         self.datePickerBG.isHidden = false
         }
         
-        let helpAction = UIAlertAction(title: "Help", style: .default) { (UIAlertAction) in
-            print("Help")
-            self.help()
-        }
+        
         
         let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
         self.navigationController!.popViewController(animated: true)
@@ -422,7 +422,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         if self.employerFromMain != "" {alertController123.addAction(spesificAction)}
         alertController123.addAction(dateAction)
         alertController123.addAction(CancelAction)
-        alertController123.addAction(helpAction)
 
         
         self.present(alertController123, animated: true, completion: nil)
