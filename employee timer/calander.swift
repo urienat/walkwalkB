@@ -23,11 +23,15 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     let mydateFormat5 = DateFormatter()
     let mydateFormat6 = DateFormatter()
+    let mydateFormat9 = DateFormatter()
+
     
     var calIn = ""
     var calInFB = ""
     
     var employerFromMain = ""
+    var employer = ""
+
     var employeeId = ""
     var employerId = ""
     var employerArray: [String:Int] = [:]
@@ -38,6 +42,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     var employerNameLastNameForGoogle = ""
     var LastCalander: String?
     var Dictionary = [String: String]()
+    var beginDate = Date()
+    
 
 
 
@@ -52,14 +58,15 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
     
     
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
             ,options: 0, locale: nil)!
         mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale:Locale.autoupdatingCurrent )!
-        
+        mydateFormat9.dateFormat = DateFormatter.dateFormat(fromTemplate: " dd-MMM-yy", options: 0, locale:Locale.autoupdatingCurrent )!
+
         service.shouldFetchNextPages = true
 
         let currentUser = FIRAuth.auth()?.currentUser
@@ -176,7 +183,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
                 calIn = self.mydateFormat6.string(from: start.date)
                 calInFB = self.mydateFormat5.string(from: start.date)
-                employerFromMain = event.summary!
+                employer = event.summary!
                 
                 _ = DateFormatter.localizedString(
                     from: start.date,
@@ -222,7 +229,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     }//end of func
  
     func saveToDB2() {
-    let record = ["fIn" : calInFB,  "fEmployer": String (describing : employerFromMain),"fIndication3" :"📆","fStatus" : "Pre","fEmployeeRef": String (describing : employeeId),"fEmployerRef":  String (describing : employerId)]
+    let record = ["fIn" : calInFB,  "fEmployer": String (describing : employer),"fIndication3" :"📆","fStatus" : "Pre","fEmployeeRef": String (describing : employeeId),"fEmployerRef":  String (describing : employerId)]
             
     let recordRefence = self.dbRef.childByAutoId()
     recordRefence.setValue(record)
@@ -295,18 +302,26 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     func  alert123(){
         
-        let alertController123 = UIAlertController(title: ("Download Calander Session") , message: "You are about to download calander's sessions from last 30 days that use the exact account name as event's name - are you sure?" , preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-            //download
-            self.fetchEvents()
-
-            
+        let alertController123 = UIAlertController(title: ("Import Calander Sessions") , message: "You are about to import calander's sessions from \( mydateFormat9 .string(from: beginDate)) till Now." , preferredStyle: .alert)
+        let allAction = UIAlertAction(title: "All accounts", style: .default) { (UIAlertAction) in
+        self.fetchEvents()
         }
+        
+        let spesificAction = UIAlertAction(title: "\(employerFromMain) only", style: .default) { (UIAlertAction) in
+        self.fetchEvents()
+        }
+        
+        let dateAction = UIAlertAction(title: "Change begining date", style: .default) { (UIAlertAction) in
+        print("change date")
+        }
+        
         let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
             //do nothing
         }
         
-        alertController123.addAction(OKAction)
+        alertController123.addAction(allAction)
+        if self.employerFromMain != "" {alertController123.addAction(spesificAction)}
+        alertController123.addAction(dateAction)
         alertController123.addAction(CancelAction)
         
         self.present(alertController123, animated: true, completion: nil)

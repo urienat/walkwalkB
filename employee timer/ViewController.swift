@@ -347,6 +347,13 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     recordsView?.employerFromMain = employerToS
     recordsView?.employeeID = employeeIDToS
     }//end of else if
+        
+    else if (segue.identifier == "employerForCalander"){
+    let recordsView = segue.destination as? calander
+    //recordsView?.employerID = ""//employerIDToS
+    recordsView?.employerFromMain = employerToS
+    //recordsView?.employeeID = employeeIDToS
+    }//end of else if
 
     else{let recordsView = segue.destination as? newVCTable
     recordsView?.employerFromMain = employerToS

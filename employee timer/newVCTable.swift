@@ -387,7 +387,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         else if  appArray[buttonRow] == "Paid" {newVCTable.checkBox = 2; statusTemp = "Paid";alert12()}
         print( "apparray buttonarray\(appArray[buttonRow])")
         print( "checkBox\(newVCTable.checkBox)")
-        if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions'"} else if self.eventCounter == 1 {self.eventsLbl.text = "\(String(self.eventCounter)) Due session"} else {self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions"}
+        if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions"} else if self.eventCounter == 1 {self.eventsLbl.text = "\(String(self.eventCounter)) Due session"} else {self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions"}
         
         if statusTemp != appArray[buttonRow] {
         appArray[buttonRow] = statusTemp!
