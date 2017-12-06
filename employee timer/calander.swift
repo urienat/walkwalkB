@@ -209,39 +209,48 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         print ("\(event.summary!)")
         print (employerArray3)
         print ([employerArray3[event.summary!]] )
-            
-        let keyExists = employerArray3[("\(event.summary!)")]
-        if spesific == false {
-            if (keyExists)  != nil { print ("another all included");employerId = employerArray3[event.summary!]!
+        
+            let keyExists = employerArray3[("\(event.summary!)")]
+
+            if (keyExists)  != nil {
+                
+                if spesific == false {
+                if (keyExists!) != nil { print ("another all included");employerId = employerArray3[event.summary!]!
                 saveToDB2()
+                //avoid double entry
+                id1 = event.identifier
+                updater.summary = ("\(event.summary!)+")
+                updateRead()
+                }//end of if
 
-        } else {
-          if (keyExists) == employerIdFromMain { print ("another spesific included");employerId = employerArray3[event.summary!]!
-            saveToDB2()
+                } else {
 
-                }
-            }//end of else
+                print ("keyexist\(keyExists)")
+                print ("employerid\(employerIdFromMain)")
+                if (keyExists!) == employerIdFromMain { print ("another spesific included");employerId = employerArray3[event.summary!]!
+                saveToDB2()
+                //avoid double entry
+                id1 = event.identifier
+                updater.summary = ("\(event.summary!)+")
+                updateRead()
+                }//end of if
+                }//end of else
+
+                }// end of if key exist != nil
             
             
+            
+            
+            }//end of for event
+            }
+            // save last date
+            self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: Date())])
+            self.navigationController!.popViewController(animated: false)
+            }//end of function
+    
+    
+    
 
-        //avoid double entry
-        id1 = event.identifier
-        updater.summary = ("\(event.summary!)+")
-        updateRead()
-
-        } else { print ("nothing")//do nothing
-        }
-
-        }
-        } else {
-        outputText = "No upcoming events found."
-        }
-        //output.text = outputText
-        // save last date
-        self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: Date())])
-        self.navigationController!.popViewController(animated: false)
-
-        }//end of display
     
     func updateRead(){
     let query2 = GTLRCalendarQuery_EventsPatch.query(withObject: self.updater , calendarId: "primary", eventId:id1!)
