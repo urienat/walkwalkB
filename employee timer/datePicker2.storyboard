@@ -82,7 +82,7 @@
                                             <action selector="pickerDone:" destination="4DZ-OI-VHJ" eventType="touchUpInside" id="7KS-TQ-Jlp"/>
                                         </connections>
                                     </button>
-                                    <datePicker tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Zh1-5a-B5S">
+                                    <datePicker tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="Zh1-5a-B5S">
                                         <rect key="frame" x="15" y="55" width="270" height="250"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="250" id="kzN-OC-ezd"/>

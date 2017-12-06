@@ -48,8 +48,15 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     var beginDate = Date()
     var helpText : UITextField?
     
-
-
+    @IBOutlet weak var datePickerBG: UIView!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
+    @IBAction func done(_ sender: Any) {
+    LastCalander = mydateFormat5.string(from:  datePicker.date)
+    datePickerBG.isHidden = true
+    alert123()
+    }
+    
 
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
@@ -201,14 +208,16 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         let keyExists = employerArray3[("\(event.summary!)")]
         if spesific == false {
             if (keyExists)  != nil { print ("another all included");employerId = employerArray3[event.summary!]!
-                
+                saveToDB2()
+
         } else {
           if (keyExists) == employerIdFromMain { print ("another spesific included");employerId = employerArray3[event.summary!]!
+            saveToDB2()
+
                 }
             }//end of else
             
             
-        saveToDB2()
 
         //avoid double entry
         id1 = event.identifier
@@ -339,6 +348,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         
         let dateAction = UIAlertAction(title: "Change begining date", style: .default) { (UIAlertAction) in
         print("change date")
+        self.datePickerBG.isHidden = false
         }
         
         let helpAction = UIAlertAction(title: "Help", style: .default) { (UIAlertAction) in
