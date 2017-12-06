@@ -121,6 +121,14 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var textAdd: UITextView!
     @IBOutlet weak var startImage: UIImageView!
     @IBOutlet weak var startBackground: UIView!
+    
+    @IBOutlet weak var importImage: UIImageView!
+    @IBOutlet weak var importBackground: UIView!
+    @IBOutlet weak var importBtn: UIButton!
+    @IBAction func importBtn(_ sender: Any) {
+    importClicked()
+    }
+    
 
     @IBOutlet weak var toolBar: UIToolbar!
     let btn1 = UIButton(type: .custom)
@@ -316,6 +324,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     performSegue(withIdentifier: "employerforVC", sender: employerToS)
     }
     
+    func importClicked() {
+        performSegue(withIdentifier: "employerforCalander", sender: employerToS)
+    }
+    
     func accountClicked() {
     performSegue(withIdentifier: "employerForDogFile", sender: employerToS)
     }
@@ -449,6 +461,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.DateIn.isHidden = true
     self.workedFor.isHidden = true
     self.startBackground.isHidden = false
+    self.importBackground.isHidden = false
+        
     self.account.isEnabled = true;
     self.chooseEmployer.isUserInteractionEnabled = true
     startBarButtonFadeOut()
@@ -459,6 +473,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.account.isEnabled = true
     self.animationImage.isHidden = true
     self.startBackground.isHidden = true
+    self.importBackground.isHidden = true
     self.DateIn.isHidden = false;
     self.workedFor.isHidden = true
     self.addAmanualRecord.isHidden = true
@@ -472,6 +487,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     account.isEnabled = false
     chooseEmployer.isHidden = true
     startBackground.isHidden = true
+     self.importBackground.isHidden = true
     addAmanualRecord.isHidden = true
     animationImage.isHidden = true
     }//end of func
@@ -480,6 +496,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
                 self.account.isEnabled = true
         self.animationImage.isHidden = false
         self.startBackground.isHidden = true
+        self.importBackground.isHidden = true
         self.DateIn.isHidden = false;
         self.workedFor.isHidden = true
         self.addAmanualRecord.isHidden = true
@@ -495,11 +512,13 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         UIView.animate(withDuration: 2.0, delay :2.0 ,options:[],animations: {
         self.animationImage.alpha = 0
         self.startBackground.alpha = 0
+        self.importBackground.alpha = 0
         self.addAmanualRecord.alpha = 0
         },completion:nil)
         
         UIView.animate(withDuration: 1.0, delay :4.0 ,options:[],animations: {
         self.startBackground.alpha = 1
+        self.importBackground.alpha = 1
         self.addAmanualRecord.alpha = 1
             
         DispatchQueue.main.asyncAfter(deadline: .now()){
