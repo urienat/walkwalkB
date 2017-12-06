@@ -197,6 +197,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     ViewController.fixedLastName =  String(describing: snapshot.childSnapshot(forPath: "fLastName").value!) as String
     ViewController.fixedemail =  String(describing: snapshot.childSnapshot(forPath: "femail").value!) as String
     ViewController.dateTimeFormat =  String(describing: snapshot.childSnapshot(forPath: "fDateTime").value!) as String
+    //.dateTimeFormat =  String(describing: snapshot.childSnapshot(forPath: "fLastCalander").value!) as String
+
     })
     } else {
     print ("newreg\(newRegister)")
@@ -350,7 +352,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
     else if (segue.identifier == "employerForCalander"){
     let recordsView = segue.destination as? calander
-    //recordsView?.employerID = ""//employerIDToS
+    recordsView?.employerIdFromMain = employerIDToS
     recordsView?.employerFromMain = employerToS
     //recordsView?.employeeID = employeeIDToS
     }//end of else if

@@ -29,7 +29,10 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     var calIn = ""
     var calInFB = ""
     
+   var spesific : Bool = false
+    
     var employerFromMain = ""
+    var employerIdFromMain = ""
     var employer = ""
 
     var employeeId = ""
@@ -43,6 +46,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     var LastCalander: String?
     var Dictionary = [String: String]()
     var beginDate = Date()
+    var helpText : UITextField?
     
 
 
@@ -76,7 +80,19 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             print(currentUser!.uid)
             employeeId = (currentUser!.uid)
             //create zugot
+            
+                self.dbRefEmployee.child(self.employeeId).observeSingleEvent(of: .value , with: { (snapshot) in
+                self.LastCalander = String(describing: snapshot.childSnapshot(forPath: "fLastCalander").value!) as String!
+                print ("self.LastCalander!")
+                print (self.LastCalander!)
+                self.alert123()
+
+                
+            })//end of dbref
+            
+
             findEmployerId()
+
         }
         
         // Configure Google Sign-in.
@@ -99,10 +115,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             
         }
         
-       // GIDSignIn.sharedInstance().signInSilently()
         
-        // Add the sign-in button.
-       
         
         //Add a UITextView to display output.
         output.frame = view.bounds
@@ -124,9 +137,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         } else {
       //      self.signInButton.isHidden = true
             self.output.isHidden = false
-            
             self.service.authorizer = user.authentication.fetcherAuthorizer()
-            alert123()
+            
+            
         }
     }
     
@@ -136,87 +149,85 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     func fetchEvents() {
         let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")// instard of "primary"
         query.maxResults = 50
-
-        self.dbRefEmployee.child(self.employeeId).observeSingleEvent(of: .value , with: { (snapshot) in
-            self.LastCalander = String(describing: snapshot.childSnapshot(forPath: "fLastCalander").value!) as String!
-        })//end of dbref
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
         print("0.2 \(self.LastCalander!)")
-        
-        if self.LastCalander == nil { self.LastCalander = "New"}
-        if self.LastCalander! == "New" {query.timeMin = GTLRDateTime(date: (Date()-(3600*24*45)))
-            } else {query.timeMin = GTLRDateTime(date: (Date()-(3600*24*45)))//replace to avoid double reading
-            }//avoid reread of same period
-            print("222")
+        query.timeMin = GTLRDateTime(date: (Date()-(3600*24*45)))
 
-            query.timeMax = GTLRDateTime(date: Date())
-            //query.alwaysIncludeEmail = true
-            query.singleEvents = true
-            query.orderBy = kGTLRCalendarOrderByStartTime
-            self.service.executeQuery(
-            query,
-            delegate: self,
-            didFinish: #selector(self.displayResultWithTicket(ticket:finishedWithObject:error:)))
+        print("222")
+
+        query.timeMax = GTLRDateTime(date: Date())
+        query.singleEvents = true
+        query.orderBy = kGTLRCalendarOrderByStartTime
+        self.service.executeQuery(
+        query,
+        delegate: self,
+        didFinish: #selector(self.displayResultWithTicket(ticket:finishedWithObject:error:)))
         }//end of dispatch
-       
+
         }//end of fetchevents
-        
-    
+
+
 
     
     // Display the start dates and event summaries in the UITextView
-    func displayResultWithTicket(
-        ticket: GTLRServiceTicket,
-        finishedWithObject response :  GTLRCalendar_Events,
-        error : NSError?) {
+        func displayResultWithTicket(
+        ticket: GTLRServiceTicket,finishedWithObject response :  GTLRCalendar_Events,error : NSError?) {
+        
         if let error = error {
-            showAlert(title: "Error", message: error.localizedDescription)
-            return
+        showAlert(title: "Error", message: error.localizedDescription)
+        return
         }
 
         var outputText = ""
         if let events = response.items, !events.isEmpty {
         for event in events {
-                let start = event.start!.dateTime ?? event.start!.date!
-                //let end = event.end!.dateTime ?? event.start!.date!
+        let start = event.start!.dateTime ?? event.start!.date!
+        //let end = event.end!.dateTime ?? event.start!.date!
 
-                calIn = self.mydateFormat6.string(from: start.date)
-                calInFB = self.mydateFormat5.string(from: start.date)
-                employer = event.summary!
-                
-                _ = DateFormatter.localizedString(
-                    from: start.date,
-                    dateStyle: .short,
-                    timeStyle: .short)
+        calIn = self.mydateFormat6.string(from: start.date)
+        calInFB = self.mydateFormat5.string(from: start.date)
+        employer = event.summary!
 
-                outputText += "\(calIn) - \(event.summary!)\r\n\r\n"
-                print ("\(event.summary!)")
-                print (employerArray3)
-                 print ([employerArray3[event.summary!]] )
-                let keyExists = employerArray3[("\(event.summary!)")]
+        _ = DateFormatter.localizedString(
+        from: start.date,
+        dateStyle: .short,
+        timeStyle: .short)
 
-                if (keyExists)  != nil { print ("CAL");employerId = employerArray3[event.summary!]!
-                    saveToDB2()
-                  
-                //avoid double entry
-                id1 = event.identifier
-                updater.summary = ("\(event.summary!)+")
-                updateRead()
-   
-                } else { print ("nothing")//do nothing
-                }
+        outputText += "\(calIn) - \(event.summary!)\r\n\r\n"
+        print ("\(event.summary!)")
+        print (employerArray3)
+        print ([employerArray3[event.summary!]] )
             
+        let keyExists = employerArray3[("\(event.summary!)")]
+        if spesific == false {
+            if (keyExists)  != nil { print ("another all included");employerId = employerArray3[event.summary!]!
+                
+        } else {
+          if (keyExists) == employerIdFromMain { print ("another spesific included");employerId = employerArray3[event.summary!]!
                 }
-                } else {
-                outputText = "No upcoming events found."
-                }
-                //output.text = outputText
-                // save last date
-                self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: Date())])
-                self.navigationController!.popViewController(animated: false)
+            }//end of else
+            
+            
+        saveToDB2()
 
-                }
+        //avoid double entry
+        id1 = event.identifier
+        updater.summary = ("\(event.summary!)+")
+        updateRead()
+
+        } else { print ("nothing")//do nothing
+        }
+
+        }
+        } else {
+        outputText = "No upcoming events found."
+        }
+        //output.text = outputText
+        // save last date
+        self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: Date())])
+        self.navigationController!.popViewController(animated: false)
+
+        }//end of display
     
     func updateRead(){
     let query2 = GTLRCalendarQuery_EventsPatch.query(withObject: self.updater , calendarId: "primary", eventId:id1!)
@@ -277,6 +288,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         })//end of dbref employeeid
         }//end of find
     
+    func help(){
+        view.addSubview(helpText!)
+        helpText?.frame = CGRect(x: view.frame.width/2-104, y: 130, width: 208, height: 45)
+        
+    }
     
 
    
@@ -301,13 +317,23 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     }
     
     func  alert123(){
+        print (LastCalander)
+
+        if self.LastCalander == nil || self.LastCalander == "New" {self.LastCalander = mydateFormat5.string(from: Date()-(3600*24*45))}
+        print (LastCalander!)
+
         
-        let alertController123 = UIAlertController(title: ("Import Calander Sessions") , message: "You are about to import calander's sessions from \( mydateFormat9 .string(from: beginDate)) till Now." , preferredStyle: .alert)
+        let alertController123 = UIAlertController(title: ("Import Calander Sessions") , message: "You are about to import calander's sessions from \(mydateFormat9.string(from: mydateFormat5.date(from: LastCalander!)!)) till Now." , preferredStyle: .alert)
+
+        
+        //let alertController123 = UIAlertController(title: ("Import Calander Sessions") , message: "You are about to import calander's sessions from \( mydateFormat9 .string(from: mydateFormat5.date(from: LastCalander!)!)) till Now." , preferredStyle: .alert)
         let allAction = UIAlertAction(title: "All accounts", style: .default) { (UIAlertAction) in
+            self.spesific = false
         self.fetchEvents()
         }
         
         let spesificAction = UIAlertAction(title: "\(employerFromMain) only", style: .default) { (UIAlertAction) in
+            self.spesific = true
         self.fetchEvents()
         }
         
@@ -315,7 +341,13 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         print("change date")
         }
         
+        let helpAction = UIAlertAction(title: "Help", style: .default) { (UIAlertAction) in
+            print("Help")
+            self.help()
+        }
+        
         let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+        self.navigationController!.popViewController(animated: true)
             //do nothing
         }
         
@@ -323,6 +355,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         if self.employerFromMain != "" {alertController123.addAction(spesificAction)}
         alertController123.addAction(dateAction)
         alertController123.addAction(CancelAction)
+        alertController123.addAction(helpAction)
+
         
         self.present(alertController123, animated: true, completion: nil)
         
