@@ -643,7 +643,7 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FxU-Wn-hMn" userLabel="add a button view">
-                                <rect key="frame" x="4" y="209" width="312" height="70"/>
+                                <rect key="frame" x="4" y="199" width="312" height="70"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencilImage" translatesAutoresizingMaskIntoConstraints="NO" id="fJW-rO-BL2" userLabel="pencil">
                                         <rect key="frame" x="211" y="20" width="30" height="30"/>
@@ -771,7 +771,7 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9U-e8-FEx" userLabel="importBackground">
-                                <rect key="frame" x="0.0" y="271" width="320" height="76"/>
+                                <rect key="frame" x="0.0" y="291" width="320" height="76"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgz-2X-N9Q" userLabel="import">
                                         <rect key="frame" x="83.5" y="0.0" width="123" height="76"/>
@@ -891,14 +891,14 @@
                             <constraint firstItem="XDi-hZ-CdO" firstAttribute="centerX" secondItem="Cq4-SE-U6N" secondAttribute="centerX" id="Ver-zq-PUb"/>
                             <constraint firstItem="tbR-QL-TgX" firstAttribute="top" secondItem="lxT-w2-3r9" secondAttribute="bottom" constant="30" id="WI7-6r-u9D"/>
                             <constraint firstItem="fqn-dL-iFO" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="Yxj-2x-GlY"/>
-                            <constraint firstItem="FxU-Wn-hMn" firstAttribute="top" secondItem="45C-VX-M18" secondAttribute="bottom" constant="-15" id="db2-hz-AHs"/>
+                            <constraint firstItem="FxU-Wn-hMn" firstAttribute="top" secondItem="45C-VX-M18" secondAttribute="bottom" constant="-25" id="db2-hz-AHs"/>
                             <constraint firstItem="lxT-w2-3r9" firstAttribute="top" secondItem="uv4-gs-ESI" secondAttribute="top" id="f3E-b2-6a4"/>
                             <constraint firstItem="yHg-YC-CqC" firstAttribute="top" secondItem="tbR-QL-TgX" secondAttribute="bottom" priority="750" constant="280" id="iQn-al-QjX"/>
                             <constraint firstItem="JEU-k8-q20" firstAttribute="top" secondItem="lxT-w2-3r9" secondAttribute="bottom" id="jej-Ec-HTv"/>
                             <constraint firstAttribute="trailing" secondItem="FxU-Wn-hMn" secondAttribute="trailing" constant="4" id="la0-LF-LtB"/>
                             <constraint firstItem="tbR-QL-TgX" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leadingMargin" constant="4" id="lj5-TB-d6x"/>
                             <constraint firstItem="fXg-VA-EDp" firstAttribute="top" secondItem="Wkx-Tt-3io" secondAttribute="bottom" constant="8" id="nYN-0S-YLS"/>
-                            <constraint firstItem="ebM-9e-cve" firstAttribute="top" secondItem="b9U-e8-FEx" secondAttribute="bottom" constant="-120" id="nrC-nh-kS5"/>
+                            <constraint firstItem="ebM-9e-cve" firstAttribute="top" secondItem="b9U-e8-FEx" secondAttribute="bottom" constant="-150" id="nrC-nh-kS5"/>
                             <constraint firstItem="XDi-hZ-CdO" firstAttribute="height" secondItem="Cq4-SE-U6N" secondAttribute="height" id="qAi-h8-Wb1"/>
                             <constraint firstAttribute="trailing" secondItem="45C-VX-M18" secondAttribute="trailing" id="qOY-3o-Yzg"/>
                             <constraint firstAttribute="trailing" secondItem="b9U-e8-FEx" secondAttribute="trailing" id="rbS-aw-AKs"/>
@@ -953,7 +953,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wOq-bQ-nMi" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6266" y="-2204"/>
+            <point key="canvasLocation" x="-5824" y="-2185"/>
         </scene>
         <!--Calander-->
         <scene sceneID="Qwi-xQ-0q6">
@@ -2214,7 +2214,7 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="166" id="YYJ-ZC-k61"/>
                                                         <constraint firstAttribute="height" constant="21" id="Zzl-s3-Cti"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="21"/>
+                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="18"/>
                                                     <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -2607,11 +2607,10 @@
         <image name="walkerProfile" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="djG-dA-RhY"/>
         <segue reference="UPU-lN-oqU"/>
         <segue reference="RQi-YY-5wb"/>
         <segue reference="x0P-Ew-8Ag"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="1k4-P4-HYk"/>
+        <segue reference="gfT-By-X34"/>
     </inferredMetricsTieBreakers>
 </document>

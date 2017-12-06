@@ -408,9 +408,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
                 
 
     if self.employerIdArray2.isEmpty == true {self.thinking2.stopAnimating()
-    self.googleCalander.isEnabled = false
+        self.googleCalander.isEnabled = false
     } else {
-    self.googleCalander.isEnabled = true
 
     for iIndex in 0...(self.employerIdArray2.count-1){
     self.dbRefEmployer.child(self.employerIdArray2[iIndex] as! String).observeSingleEvent(of: .value, with:{ (snapshot) in
@@ -462,6 +461,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.workedFor.isHidden = true
     self.startBackground.isHidden = false
     self.importBackground.isHidden = false
+    self.googleCalander.isEnabled = false
+    
         
     self.account.isEnabled = true;
     self.chooseEmployer.isUserInteractionEnabled = true
@@ -474,6 +475,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.animationImage.isHidden = true
     self.startBackground.isHidden = true
     self.importBackground.isHidden = true
+    self.googleCalander.isEnabled = true
+
     self.DateIn.isHidden = false;
     self.workedFor.isHidden = true
     self.addAmanualRecord.isHidden = true
@@ -488,6 +491,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     chooseEmployer.isHidden = true
     startBackground.isHidden = true
      self.importBackground.isHidden = true
+    self.googleCalander.isEnabled = true
+
     addAmanualRecord.isHidden = true
     animationImage.isHidden = true
     }//end of func
@@ -497,6 +502,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         self.animationImage.isHidden = false
         self.startBackground.isHidden = true
         self.importBackground.isHidden = true
+        self.googleCalander.isEnabled = true
+
         self.DateIn.isHidden = false;
         self.workedFor.isHidden = true
         self.addAmanualRecord.isHidden = true
