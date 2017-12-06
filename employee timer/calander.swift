@@ -145,9 +145,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         output.isHidden = true
         //view.addSubview(output);
         
-        
-        let help = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.bookmarks , target: self, action: #selector(self.helper))
-        
+       
+
+        let help =  UIBarButtonItem(title: "Help", style: .plain, target: self, action: #selector(self.helper))
         navigationItem.rightBarButtonItem = help
         
     }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////
