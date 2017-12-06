@@ -764,7 +764,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     self.biller = false
 
-        self.mailSaver = "\(self.mydateFormat10.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n \(self.employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) \r\n \(self.perEvents.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\nPayment using paypalme:\(self.paypal)\r\n\r\n\r\n  Regards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by PerSession app. "
+        self.mailSaver = "\(self.mydateFormat10.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n \(self.employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) \r\n \(self.perEvents.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\nPayment using paypal.me:\(self.paypal)/\(self.midCalc3) \r\n\r\n\r\n  Regards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by PerSession app. "
                     
 
     //update bill with DB
