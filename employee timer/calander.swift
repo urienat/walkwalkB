@@ -52,7 +52,12 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBAction func done(_ sender: Any) {
+    datePicker.maximumDate = Date()
+    datePicker.minimumDate = Date() - 24*3600*60
+        
     LastCalander = mydateFormat5.string(from:  datePicker.date)
+    print (LastCalander!)
+        
     datePickerBG.isHidden = true
     alert123()
     }
