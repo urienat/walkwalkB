@@ -497,7 +497,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
        
             print ("jhgdjhg\(String(describing: self.dateTimeUpdate))")
         
-            self.dbRefEmployees.child(self.employeeRefUpdate).updateChildValues(["fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": self.currency.text!, "fProgram": "0","fTaxPrecentage": self.precentage.text!,"fTaxName": self.taxName.text!, "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : self.taxCalacUpdate, "fDateTime": self.dateTimeUpdate, "fCalander" : self.calanderUpdate,"fAddress":self.addressUpdate,"fProfession": self.professionUpdate,"fPaypal" : self.paypalUpdate, "fBillinfo" :self.billInfoUpdate]) //check email update with regard to auth
+            self.dbRefEmployees.child(self.employeeRefUpdate).updateChildValues(["fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": self.currency.text!, "fProgram": "0","fTaxPrecentage": self.precentage.text!,"fTaxName": self.taxName.text!, "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : self.taxCalacUpdate, "fDateTime": self.dateTimeUpdate, "fCalander" : self.calanderUpdate,"fAddress":self.address.text,"fProfession": self.profession.text,"fPaypal" : self.paypal.text, "fBillinfo" :self.billInfo.text]) //check email update with regard to auth
            
             
           self.updateEmail()
