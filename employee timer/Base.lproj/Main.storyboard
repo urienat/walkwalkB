@@ -643,7 +643,7 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FxU-Wn-hMn" userLabel="add a button view">
-                                <rect key="frame" x="4" y="350" width="312" height="70"/>
+                                <rect key="frame" x="4" y="274" width="312" height="70"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencilImage" translatesAutoresizingMaskIntoConstraints="NO" id="fJW-rO-BL2" userLabel="pencil">
                                         <rect key="frame" x="211" y="20" width="30" height="30"/>
@@ -673,7 +673,7 @@
                                 </constraints>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wkx-Tt-3io" userLabel="DateIn">
-                                <rect key="frame" x="0.0" y="306" width="320" height="22"/>
+                                <rect key="frame" x="0.0" y="274" width="320" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="EB2-xY-uTN"/>
                                 </constraints>
@@ -741,7 +741,7 @@
                                 </prototypes>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45C-VX-M18" userLabel="startBackground">
-                                <rect key="frame" x="0.0" y="230" width="320" height="76"/>
+                                <rect key="frame" x="0.0" y="198" width="320" height="76"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cq4-SE-U6N">
                                         <rect key="frame" x="76.5" y="0.0" width="137" height="76"/>
@@ -771,19 +771,19 @@
                                 </constraints>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Worked for" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXg-VA-EDp">
-                                <rect key="frame" x="0.0" y="336" width="320" height="25"/>
+                                <rect key="frame" x="0.0" y="304" width="320" height="25"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="23"/>
                                 <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XDi-hZ-CdO" userLabel="textAdd">
-                                <rect key="frame" x="70" y="230" width="150" height="76"/>
+                                <rect key="frame" x="70" y="198" width="150" height="76"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vNaked" translatesAutoresizingMaskIntoConstraints="NO" id="M0C-iW-AVD" userLabel="animationImage">
-                                <rect key="frame" x="84.5" y="280" width="150" height="150"/>
+                                <rect key="frame" x="84.5" y="248" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="UNQ-wl-NLM"/>
                                     <constraint firstAttribute="width" constant="150" id="zuu-ll-odg"/>
@@ -857,11 +857,11 @@
                             <constraint firstItem="45C-VX-M18" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="RgB-xL-tIk"/>
                             <constraint firstItem="Wkx-Tt-3io" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="TAL-qv-Umm"/>
                             <constraint firstItem="fqn-dL-iFO" firstAttribute="top" secondItem="BhS-3v-3nc" secondAttribute="bottom" constant="45" id="TbV-z0-ich"/>
-                            <constraint firstItem="45C-VX-M18" firstAttribute="top" secondItem="fqn-dL-iFO" secondAttribute="bottom" constant="112" id="U8j-Aa-dZf"/>
+                            <constraint firstItem="45C-VX-M18" firstAttribute="top" secondItem="fqn-dL-iFO" secondAttribute="bottom" constant="80" id="U8j-Aa-dZf"/>
                             <constraint firstItem="XDi-hZ-CdO" firstAttribute="centerX" secondItem="Cq4-SE-U6N" secondAttribute="centerX" id="Ver-zq-PUb"/>
                             <constraint firstItem="tbR-QL-TgX" firstAttribute="top" secondItem="lxT-w2-3r9" secondAttribute="bottom" constant="30" id="WI7-6r-u9D"/>
                             <constraint firstItem="fqn-dL-iFO" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="Yxj-2x-GlY"/>
-                            <constraint firstItem="FxU-Wn-hMn" firstAttribute="top" secondItem="45C-VX-M18" secondAttribute="bottom" constant="44" id="db2-hz-AHs"/>
+                            <constraint firstItem="FxU-Wn-hMn" firstAttribute="top" secondItem="45C-VX-M18" secondAttribute="bottom" id="db2-hz-AHs"/>
                             <constraint firstItem="lxT-w2-3r9" firstAttribute="top" secondItem="uv4-gs-ESI" secondAttribute="top" id="f3E-b2-6a4"/>
                             <constraint firstItem="yHg-YC-CqC" firstAttribute="top" secondItem="tbR-QL-TgX" secondAttribute="bottom" priority="750" constant="280" id="iQn-al-QjX"/>
                             <constraint firstItem="JEU-k8-q20" firstAttribute="top" secondItem="lxT-w2-3r9" secondAttribute="bottom" id="jej-Ec-HTv"/>
@@ -975,20 +975,43 @@
                                     <constraint firstItem="bL9-7r-59O" firstAttribute="top" secondItem="J8i-en-uWZ" secondAttribute="top" id="v2P-jF-3zK"/>
                                 </constraints>
                             </view>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vNaked" translatesAutoresizingMaskIntoConstraints="NO" id="NnU-L0-TDq" userLabel="animationImage">
+                                <rect key="frame" x="85" y="165" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="0qv-QO-s7J"/>
+                                    <constraint firstAttribute="width" constant="150" id="EzC-2a-lFC"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5Rb-jP-Blk" userLabel="textAdd">
+                                <rect key="frame" x="50" y="102" width="220" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="gDx-W5-gkF"/>
+                                    <constraint firstAttribute="width" constant="220" id="hDG-wI-tTR"/>
+                                </constraints>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="YNn-Jo-Stj" secondAttribute="trailing" id="7Qg-aU-Ops"/>
+                            <constraint firstItem="5Rb-jP-Blk" firstAttribute="centerX" secondItem="h2t-9w-Imj" secondAttribute="centerX" id="ARZ-JB-Ih5"/>
+                            <constraint firstItem="5Rb-jP-Blk" firstAttribute="centerY" secondItem="h2t-9w-Imj" secondAttribute="centerY" constant="-100" id="K1d-Dz-1rM"/>
                             <constraint firstItem="jVI-SH-XJ9" firstAttribute="top" secondItem="J8i-en-uWZ" secondAttribute="bottom" constant="40" id="MJJ-3J-8dO"/>
                             <constraint firstItem="YNn-Jo-Stj" firstAttribute="leading" secondItem="h2t-9w-Imj" secondAttribute="leading" id="VNr-Qd-QsM"/>
+                            <constraint firstItem="NnU-L0-TDq" firstAttribute="centerY" secondItem="h2t-9w-Imj" secondAttribute="centerY" id="XJ8-N8-cxz"/>
                             <constraint firstItem="YNn-Jo-Stj" firstAttribute="top" secondItem="h2t-9w-Imj" secondAttribute="top" id="eTF-Dp-7QW"/>
+                            <constraint firstItem="NnU-L0-TDq" firstAttribute="centerX" secondItem="h2t-9w-Imj" secondAttribute="centerX" id="jk8-b5-Ohp"/>
                             <constraint firstItem="J8i-en-uWZ" firstAttribute="centerX" secondItem="h2t-9w-Imj" secondAttribute="centerX" id="lvs-F0-ETV"/>
                             <constraint firstItem="jVI-SH-XJ9" firstAttribute="top" secondItem="YNn-Jo-Stj" secondAttribute="bottom" id="tlV-RO-AmQ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="animationImage" destination="NnU-L0-TDq" id="NpE-46-bOL"/>
                         <outlet property="datePicker" destination="Alt-nm-btb" id="f0G-jl-gkF"/>
                         <outlet property="datePickerBG" destination="J8i-en-uWZ" id="7vv-pa-PgW"/>
+                        <outlet property="textAdd" destination="5Rb-jP-Blk" id="vIa-3x-Om3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTj-hQ-wxp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2547,6 +2570,7 @@
         <image name="walkerProfile" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="djG-dA-RhY"/>
         <segue reference="UPU-lN-oqU"/>
         <segue reference="RQi-YY-5wb"/>
         <segue reference="x0P-Ew-8Ag"/>

@@ -50,6 +50,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     @IBOutlet weak var datePickerBG: UIView!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var animationImage: UIImageView!
+    @IBOutlet weak var textAdd: UITextView!
     
     @IBAction func done(_ sender: Any) {
     datePicker.maximumDate = Date()
@@ -161,9 +163,12 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     func fetchEvents() {
         let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")// instard of "primary"
         query.maxResults = 50
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+       // DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
         print("0.2 \(self.LastCalander!)")
-        query.timeMin = GTLRDateTime(date: (Date()-(3600*24*45)))
+        //query.timeMin = GTLRDateTime(date: (Date()-(3600*24*45)))
+            print (self.LastCalander)
+            
+        query.timeMin = GTLRDateTime(date: self.mydateFormat5.date(from: self.LastCalander!)!)
 
         print("222")
 
@@ -174,7 +179,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         query,
         delegate: self,
         didFinish: #selector(self.displayResultWithTicket(ticket:finishedWithObject:error:)))
-        }//end of dispatch
+        //}//end of dispatch
 
         }//end of fetchevents
 
@@ -238,17 +243,55 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
                 }// end of if key exist != nil
             
-            
-            
-            
             }//end of for event
             }
             // save last date
-            self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: Date())])
-            self.navigationController!.popViewController(animated: false)
+            if spesific == false {textAdd.text = "Accounts' sessions\r\n\r\n imported from calander"
+                self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: Date())])}
+            else {
+                
+                textAdd.text = "\(employerFromMain)'s sessions\r\n imported from calander"
+
+            }
+            animation()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now()+4){
+
+            self.navigationController!.popViewController(animated: true)
+            }
+            
             }//end of function
     
-    
+            func animation(){
+            self.animationImage.center.x -= self.view.bounds.width
+            self.animationImage.isHidden = false
+            self.animationImage.alpha = 1
+
+            UIView.animate(withDuration: 2.0, animations:{
+            self.animationImage.center.x += self.view.bounds.width
+            })
+            UIView.animate(withDuration: 2.0, delay :2.0 ,options:[],animations: {
+            self.animationImage.alpha = 0
+            },completion:nil)
+
+            UIView.animate(withDuration: 1.0, delay :4.0 ,options:[],animations: {
+
+            DispatchQueue.main.asyncAfter(deadline: .now()){
+            UIView.animate(withDuration: 3.0, delay :0.0 ,options:[],animations: {
+                self.textAdd.alpha = 1
+            },completion:nil)
+            UIView.animate(withDuration: 2.0, delay :3.0 ,options:[],animations: {
+                self.textAdd.alpha = 0
+
+            },completion:nil)
+
+            }
+
+
+            },completion:nil)
+
+            }//end of animation
+
     
 
     
