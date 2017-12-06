@@ -34,6 +34,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     var employerFromMain = ""
     var employerIdFromMain = ""
     var employer = ""
+    
+    let btn1 = UIButton(type: .custom)
+
 
     var employeeId = ""
     var employerId = ""
@@ -80,7 +83,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem
+        
 
         
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
@@ -141,6 +144,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         output.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         output.isHidden = true
         //view.addSubview(output);
+        
+        
+        let help = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.bookmarks , target: self, action: #selector(self.helper))
+        
+        navigationItem.rightBarButtonItem = help
         
     }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////
     
@@ -357,7 +365,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         })//end of dbref employeeid
         }//end of find
     
-    func help(){
+    func helper(){
         view.addSubview(helpText!)
         helpText?.frame = CGRect(x: view.frame.width/2-104, y: 130, width: 208, height: 45)
         
