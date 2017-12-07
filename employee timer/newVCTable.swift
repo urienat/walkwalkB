@@ -286,7 +286,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         
         let cell = tableConnect.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! newTableCell
         let record = records[indexPath.row]
- 
+        cell.backgroundColor = UIColor.clear
+
                
         //changing the dates for prentation
         if let fInToDate = record.fIn {
