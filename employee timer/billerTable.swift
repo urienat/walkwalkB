@@ -133,13 +133,13 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         let cell = billerConnect.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! billerCell
         let billItem = billItems[indexPath.row]
         cell.backgroundColor = UIColor.clear
-        cell.l1.text = ("\(billItem.fBill!) - \(mydateFormat10.string(from: mydateFormat5.date(from: billItem.fBillDate!)!)) ")
+        cell.l1.text = ("\(billItem.fBill!) - \(billItem.fBillEmployerName!) ")
         print ("fuf\(billItem.fBillTotalTotal!)" )
         print ("fuf2\(billItem.fBillTotalTotal!)" )
         
         if billItem.fBillTotalTotal != "" {cell.l3.text = billItem.fBillTotalTotal} else {cell.l3.text = billItem.fBillSum}
         cell.l4.text  = billItem.fBillCurrency!
-        cell.l6.text = "\(billItem.fBillEmployerName!)"
+        cell.l6.text = "\(mydateFormat10.string(from: mydateFormat5.date(from: billItem.fBillDate!)!))"
         
         print("fbillstatus\(billItem.fBillStatus!)")
         
