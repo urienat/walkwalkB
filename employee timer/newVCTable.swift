@@ -23,10 +23,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let billedImage = UIImage(named: "locked")
     let billIcon = UIImage(named: "bill")
     let sandwatchImage = UIImage(named: "sandWatch")
-    let sandwatchImageRed = UIImage(named: "sandWatchRed")
-    let sandwatchImageGreen = UIImage(named: "sandWatchGreen")
+    //let sandwatchImageRed = UIImage(named: "sandWatchRed")
+    //let sandwatchImageGreen = UIImage(named: "sandWatchGreen")
     let roundImageRed = UIImage(named: "roundImageRed")
-    let roundImageGreen = UIImage(named: "roundImageGreen")
+    //let roundImageGreen = UIImage(named: "roundImageGreen")
     let pencilImage = UIImage(named: "pencilImage")
     let roundImageNormal = UIImage(named: "roundImageNormal")
 
@@ -293,10 +293,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         if ViewController.dateTimeFormat == "DateTime" { cell.l1.text = mydateFormat11.string(from: mydateFormat5.date(from: fInToDate)!)} else {cell.l1.text = mydateFormat10.string(from: mydateFormat5.date(from: fInToDate)!) } }
         else { cell.l1.text = "N/A"}
             
-            if record.fIndication3 == "📆" { cell.l8.image = sandwatchImageGreen}
+            if record.fIndication3 == "📆" { cell.l8.image = sandwatchImage}
             if record.fIndication3 == "✏️"||record.fIndication3 == "Manual" { cell.l8.image = pencilImage}
             if record.fIndication3 == "↺" {  cell.l8.image = roundImageNormal}
-            if record.fIndication3 == "⏳" {  cell.l8.image = sandwatchImageRed}
+            //if record.fIndication3 == "⏳" {  cell.l8.image = sandwatchImageRed}
 
      
             if record.fStatus == "Approved" { cell.approval.setImage(Vimage, for: .normal);eventCounter+=1}
