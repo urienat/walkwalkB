@@ -551,21 +551,28 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     func startBarButtonFadeOut(){
     UIView.animate(withDuration: 0.3, animations: {
-    self.startButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+    self.startButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+    self.importBtn.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+
     })
     }
     
     func startBarButtonFadeIn(){
     UIView.animate(withDuration: 0.3,delay: 0.3, animations: {
     self.startButton.alpha = 1
+    self.importBtn.alpha = 1
     self.startButton.transform = .identity// CGAffineTransformIdentity
+    self.importBtn.transform = .identity// CGAffineTransformIdentity
+
     })
         
     UIView.animate(withDuration: 0.3, delay: 0.6 ,animations: {
-    self.startButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+    self.startButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+    self.importBtn.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
     })
     UIView.animate(withDuration: 0.3, delay: 0.9,animations: {
     self.startButton.transform = .identity
+    self.importBtn.transform = .identity
     })
     }
 
