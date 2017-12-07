@@ -72,12 +72,12 @@ extension(ViewController){
     
             func tableView(_ employerList: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
                 let cell2 = employerList.dequeueReusableCell(withIdentifier: "employerList", for: indexPath) as! employerCellTableViewCell
-            if pickerData[indexPath.row] != "Add new dog" {cell2.employerName.textColor = blueColor;            cell2.backgroundColor = UIColor.clear
-            cell2.employerName?.text = "\(pickerData[indexPath.row])" ;cell2.employerFirst.isHidden = false; cell2.employerFirst?.text = nameData[indexPath.row]} else
+            if pickerData[indexPath.row] != "Add new dog" {            cell2.backgroundColor = UIColor.clear
+             ;cell2.employerFirst.isHidden = false; cell2.employerFirst?.text = nameData[indexPath.row]} else
             //change add dof to account
             //{cell2.employerName.textColor = blueColor;cell2.employerName?.text = "New Account ✚" ;cell2.employerFirst.isHidden = true;            cell2.backgroundColor = UIColor.clear
             //}
-            if activeData[indexPath.row] == "0" { cell2.employerName.alpha = 0.4;cell2.employerFirst.alpha = 0.4} else{ cell2.employerName.alpha = 1; cell2.employerFirst.alpha = 1}
+            if activeData[indexPath.row] == "0" { cell2.employerFirst.alpha = 0.4} else{ cell2.employerFirst.alpha = 1}
             cell2.employerFirst?.text =  "\(nameData[indexPath.row]) \(pickerData[indexPath.row])"
 
             cell2.dogImage.clipsToBounds = true
