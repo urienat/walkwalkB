@@ -688,13 +688,12 @@
                                                         <constraint firstAttribute="width" constant="50" id="XRn-wn-2OB"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KUx-wf-FBc" userLabel="employerFirst">
-                                                    <rect key="frame" x="60" y="28" width="160" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="KUx-wf-FBc" userLabel="employerFirst">
+                                                    <rect key="frame" x="75" y="22" width="205" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="Xns-zP-XJo"/>
-                                                        <constraint firstAttribute="height" constant="18" id="gV9-bI-J9Y"/>
+                                                        <constraint firstAttribute="height" constant="30" id="gV9-bI-J9Y"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="28"/>
                                                     <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -702,7 +701,8 @@
                                             <constraints>
                                                 <constraint firstItem="KUx-wf-FBc" firstAttribute="centerY" secondItem="i8b-rx-fpw" secondAttribute="centerY" id="34v-Uq-kjX"/>
                                                 <constraint firstItem="86m-f8-5r4" firstAttribute="centerY" secondItem="i8b-rx-fpw" secondAttribute="centerY" id="GdD-mc-zPE"/>
-                                                <constraint firstItem="KUx-wf-FBc" firstAttribute="leading" secondItem="86m-f8-5r4" secondAttribute="trailing" constant="10" id="PyH-cs-PKZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="KUx-wf-FBc" secondAttribute="trailing" id="JnF-ph-YBR"/>
+                                                <constraint firstItem="KUx-wf-FBc" firstAttribute="leading" secondItem="86m-f8-5r4" secondAttribute="trailing" constant="25" id="PyH-cs-PKZ"/>
                                                 <constraint firstItem="86m-f8-5r4" firstAttribute="leading" secondItem="i8b-rx-fpw" secondAttribute="leading" id="n9b-vP-JdJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
