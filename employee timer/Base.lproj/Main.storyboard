@@ -1127,7 +1127,7 @@
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="left" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="cu. " textAlignment="center" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="dce-An-tH6" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="112" y="221.5" width="45" height="30"/>
+                                                <rect key="frame" x="146" y="221.5" width="45" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="2C8-1u-IVw"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="zE4-X3-y5K"/>
@@ -1148,7 +1148,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ft4-Fz-x53">
-                                                <rect key="frame" x="8" y="10" width="92" height="30"/>
+                                                <rect key="frame" x="8" y="10" width="126" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="92" id="Deb-Vy-0zJ"/>
                                                     <constraint firstAttribute="height" constant="30" id="nlp-ec-cXe"/>
@@ -1167,7 +1167,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="03V-OC-j7W" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="112" y="533" width="194" height="30"/>
+                                                <rect key="frame" x="146" y="533" width="160" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="145" id="Lik-St-KDk"/>
                                                     <constraint firstAttribute="height" constant="30" id="m72-6C-kiC"/>
@@ -1182,7 +1182,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eRi-ta-mdX" userLabel="taxSwitch">
-                                                <rect key="frame" x="112" y="259.5" width="51" height="25"/>
+                                                <rect key="frame" x="146" y="259.5" width="51" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="fAI-Q6-cr0"/>
                                                     <constraint firstAttribute="width" constant="49" id="wo5-5f-XvO"/>
@@ -1204,7 +1204,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ktd-Fm-ugk" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="112" y="10" width="115" height="30"/>
+                                                <rect key="frame" x="146" y="10" width="115" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="cTW-9H-ZvR"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="115" id="cXD-zi-REU"/>
@@ -1228,12 +1228,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="voQ-tU-PFp" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="112" y="86" width="194" height="30"/>
+                                                <rect key="frame" x="146" y="86" width="160" height="30"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                                 </accessibility>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="KnO-aR-FFF"/>
+                                                    <constraint firstAttribute="width" constant="160" id="zhU-IO-C2N"/>
                                                 </constraints>
                                                 <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1245,7 +1246,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Profession " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RzR-xf-ogE" userLabel="profession" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="112" y="162" width="194" height="30"/>
+                                                <rect key="frame" x="146" y="162" width="160" height="30"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                                 </accessibility>
@@ -1254,7 +1255,7 @@
                                                 </constraints>
                                                 <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
                                                         <integer key="value" value="45"/>
@@ -1262,7 +1263,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PayPal/Me " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CL9-rp-678" userLabel="payPal" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="112" y="333" width="194" height="30"/>
+                                                <rect key="frame" x="146" y="333" width="160" height="30"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                                 </accessibility>
@@ -1274,12 +1275,12 @@
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
-                                                        <integer key="value" value="45"/>
+                                                        <integer key="value" value="50"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Info to present in bill" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KWf-qy-tLB" userLabel="billInfo" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="112" y="371" width="194" height="30"/>
+                                                <rect key="frame" x="146" y="371" width="160" height="30"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                                 </accessibility>
@@ -1288,15 +1289,15 @@
                                                 </constraints>
                                                 <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
-                                                        <integer key="value" value="45"/>
+                                                        <integer key="value" value="120"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jeh-Sl-RkP" userLabel="Address" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="112" y="124" width="194" height="30"/>
+                                                <rect key="frame" x="146" y="124" width="160" height="30"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                                 </accessibility>
@@ -1308,12 +1309,12 @@
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
-                                                        <integer key="value" value="45"/>
+                                                        <integer key="value" value="120"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="abz-bh-Dk7" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="112" y="48" width="115" height="30"/>
+                                                <rect key="frame" x="146" y="48" width="115" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="yR5-qg-tt9"/>
                                                 </constraints>
@@ -1340,7 +1341,7 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NdQ-LL-HGn" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="166" y="257" width="44" height="30"/>
+                                                <rect key="frame" x="200" y="257" width="44" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="3at-M6-7IN"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="aRm-6u-KKU"/>
@@ -1356,7 +1357,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="%" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iho-r5-Jit" userLabel="%sign">
-                                                <rect key="frame" x="214" y="263.5" width="15" height="17"/>
+                                                <rect key="frame" x="248" y="263.5" width="15" height="17"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                                 </accessibility>
@@ -1368,7 +1369,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tax name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="no1-5P-gIF" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="235" y="256.5" width="78.5" height="30"/>
+                                                <rect key="frame" x="269" y="256.5" width="78.5" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="74" id="geJ-HM-p72"/>
                                                     <constraint firstAttribute="height" constant="30" id="nlM-qh-ro2"/>
@@ -1383,7 +1384,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gfv-7f-bWL">
-                                                <rect key="frame" x="112" y="533" width="194" height="30"/>
+                                                <rect key="frame" x="146" y="533" width="160" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="145" id="eHw-0Q-knn"/>
                                                     <constraint firstAttribute="height" constant="30" id="mOb-OX-df2"/>
@@ -1397,7 +1398,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XE2-sS-i4C" userLabel="Edit">
-                                                <rect key="frame" x="112" y="571" width="110" height="30"/>
+                                                <rect key="frame" x="146" y="571" width="110" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="3cB-iD-KcB"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="uMP-Zj-KYW"/>
@@ -1419,8 +1420,8 @@
                                                 <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PayPal/Me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6w-AJ-d7e">
-                                                <rect key="frame" x="8" y="333" width="86" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PayPal.Me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6w-AJ-d7e">
+                                                <rect key="frame" x="8" y="333" width="80" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="79" id="Xji-Xp-xTY"/>
                                                 </constraints>
@@ -1429,7 +1430,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bill info" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1g-cy-2Lc" userLabel="Bill info">
-                                                <rect key="frame" x="8" y="371" width="86" height="30"/>
+                                                <rect key="frame" x="8" y="371" width="80" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="79" id="XMf-qz-zai"/>
                                                 </constraints>
@@ -1438,7 +1439,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iq6-6K-0xo">
-                                                <rect key="frame" x="112" y="297.5" width="201.5" height="26"/>
+                                                <rect key="frame" x="146" y="297.5" width="201.5" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="0ul-wO-y3M"/>
                                                 </constraints>
@@ -1491,7 +1492,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="25j-eK-VXl" userLabel="date&amp;Time">
-                                                <rect key="frame" x="112" y="435.5" width="201.5" height="26"/>
+                                                <rect key="frame" x="146" y="435.5" width="201.5" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="I9F-ag-OH2"/>
                                                 </constraints>
@@ -1504,7 +1505,7 @@
                                                 </connections>
                                             </segmentedControl>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rrM-Wg-SYV" userLabel="calander">
-                                                <rect key="frame" x="112" y="474" width="201.5" height="26"/>
+                                                <rect key="frame" x="146" y="474" width="201.5" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="ZMr-aE-gvJ"/>
                                                 </constraints>
