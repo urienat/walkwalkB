@@ -10,8 +10,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="MarkerFeltThin.ttf">
-            <string>MarkerFelt-Thin</string>
+        <array key="PingFang.ttc">
+            <string>PingFangTC-Thin</string>
         </array>
     </customFonts>
     <scenes>
@@ -27,9 +27,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grass12" translatesAutoresizingMaskIntoConstraints="NO" id="7SV-uP-hHf" userLabel="background">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perSessionImage" translatesAutoresizingMaskIntoConstraints="NO" id="Sv0-L9-SUd">
                                 <rect key="frame" x="66" y="392" width="243" height="225"/>
                                 <constraints>
@@ -37,26 +34,22 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PerSession" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StO-8g-Zzw">
-                                <rect key="frame" x="77.5" y="110" width="220" height="60"/>
+                                <rect key="frame" x="57.5" y="110" width="260" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="9fl-Su-xiZ"/>
+                                    <constraint firstAttribute="width" constant="260" id="9fl-Su-xiZ"/>
                                     <constraint firstAttribute="height" constant="60" id="xr5-vI-0Yo"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="47"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="47"/>
                                 <color key="textColor" red="0.086202956736087799" green="0.51369708776473999" blue="0.970622718334198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Sv0-L9-SUd" secondAttribute="bottom" constant="50" id="FAB-DL-rGM"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="7SV-uP-hHf" secondAttribute="bottom" id="LME-3A-9E2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Sv0-L9-SUd" secondAttribute="trailing" constant="50" id="UiG-sK-ngb"/>
                             <constraint firstItem="Sv0-L9-SUd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="50" id="XaX-jA-wko"/>
-                            <constraint firstItem="7SV-uP-hHf" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Xkl-H2-Gn8"/>
                             <constraint firstItem="StO-8g-Zzw" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="cvm-SF-5C6"/>
-                            <constraint firstAttribute="trailing" secondItem="7SV-uP-hHf" secondAttribute="trailing" id="hhb-Uo-sB9"/>
-                            <constraint firstItem="7SV-uP-hHf" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="kXO-hO-0bQ"/>
                             <constraint firstItem="StO-8g-Zzw" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="90" id="lc0-oE-gf5"/>
                         </constraints>
                     </view>
@@ -67,7 +60,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Grass12" width="424" height="282"/>
         <image name="perSessionImage" width="234" height="225"/>
     </resources>
 </document>
