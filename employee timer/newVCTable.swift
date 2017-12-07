@@ -57,6 +57,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var csv2 = NSMutableString()
     
     var paypal: String?
+    var billInfo: String?
+
 
     let btn4 = UIButton(type: .custom)
     var sendBillIcon = UIImage(named:"sendBillIcon")?.withRenderingMode(.alwaysTemplate )
@@ -642,7 +644,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             self.taxCalc = (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String)
             self.taxSwitch = (snapshot.childSnapshot(forPath: "fSwitcher").value as! String)
             self.paypal = (snapshot.childSnapshot(forPath: "fPaypal").value as! String)
-
+            self.billInfo = (snapshot.childSnapshot(forPath: "fBillinfo").value as! String)
 
             if  self.taxSwitch == "Yes" {
             if self.self.taxCalc == "Over" {self.self.stam =  Double(Double(taxation)!*self.calc*0.01).roundTo(places: 2)}  else  { self.stam = Double((self.calc / Double(Double(taxation)!*0.01+1)) * Double(Double(taxation)!*0.01)).roundTo(places: 2)}
@@ -765,7 +767,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     self.biller = false
 
-        self.mailSaver = "\(self.mydateFormat3.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n Account: \(self.employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) \r\n \(self.perEvents.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\nPayment with paypal: \(self.paypal!)/\(self.midCalc2) \r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\nMade by PerSession app. "
+        self.mailSaver = "\(self.mydateFormat3.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n Account: \(self.employerFromMain!)\r\n\(self.billInfo)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) \r\n \(self.perEvents.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\nPayment with paypal: \(self.paypal!)/\(self.midCalc2) \r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\nMade by PerSession app. "
                     
 
     //update bill with DB

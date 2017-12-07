@@ -596,7 +596,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         //mail export
         func alert () {
         print("export")
-        let alertController = UIAlertController(title: "Preapre client a mail ", message: "Are You Sure?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Mail ", message: "Prepare a mail?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
         //nothing
         }//end of cancel
