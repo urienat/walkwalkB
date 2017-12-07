@@ -97,7 +97,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var employeeID = ""
     
     //variabled for date filtering
-    
+    let mydateFormat3 = DateFormatter()
     let mydateFormat5 = DateFormatter()
     let mydateFormat10 = DateFormatter()
     let mydateFormat11 = DateFormatter()
@@ -196,6 +196,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         
       
         //formating the date
+        mydateFormat3.dateFormat = DateFormatter.dateFormat(fromTemplate: "dd-MMM-yyyy",options: 0, locale: nil)!
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: "EEE-dd-MMM-yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
         mydateFormat11.dateFormat = DateFormatter.dateFormat(fromTemplate: "EEE-dd-MMM-yyyy , (HH,mm)", options: 0, locale: Locale.autoupdatingCurrent)!
@@ -439,7 +440,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.FbArray2.removeAll()
         htmlReport = nil
         
-        self.csv2.append( (" Sessions:\t                         \r\n\r\n"))
+        self.csv2.append( ("Sessions:\r\n"))
         self.tableConnect.reloadData()
         dbRefEmployers.child(self.employerID).child("myEmployees").queryOrderedByKey().queryEqual(toValue: employeeID).observeSingleEvent(of: .childAdded, with:  {(snapshot) in
         self.Employerrate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)
@@ -525,9 +526,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             
         //changing the Total for presentation
             
-        if ViewController.dateTimeFormat == "DateTime" {  self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) );self.csv2.append("  \t\t\t")
-        } else {
-        self.csv2.append( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!) );self.csv2.append("  \t\t\t") }
+        if ViewController.dateTimeFormat == "DateTime" {" \(self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n")
+        } else {" \(self.csv2.append( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n") }
             
         }// end of cases func
                         
@@ -764,7 +764,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     self.biller = false
 
-        self.mailSaver = "\(self.mydateFormat10.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n \(self.employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) \r\n \(self.perEvents.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\nPayment with paypal:\(self.paypal!)/\(self.midCalc2) \r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\n Made by PerSession app. "
+        self.mailSaver = "\(self.mydateFormat10.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n \(self.employerFromMain!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) \r\n \(self.perEvents.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\nPayment with paypal: \(self.paypal!)/\(self.midCalc2) \r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\nMade by PerSession app. "
                     
 
     //update bill with DB

@@ -105,9 +105,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 self.LastCalander = String(describing: snapshot.childSnapshot(forPath: "fLastCalander").value!) as String!
                 print ("self.LastCalander!")
                 print (self.LastCalander!)
+                if self.LastCalander == "New" { self.alert456()} else{
                 self.alert123()
-
-                
+                }
             })//end of dbref
             
 
@@ -177,7 +177,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
        // DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
         print("0.2 \(self.LastCalander!)")
         //query.timeMin = GTLRDateTime(date: (Date()-(3600*24*45)))
-            print (self.LastCalander)
+        print ("before min \(String(describing: self.LastCalander))")
             
         query.timeMin = GTLRDateTime(date: self.mydateFormat5.date(from: self.LastCalander!)!)
 
@@ -394,45 +394,68 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     }
     
     func  alert123(){
-        print (LastCalander)
 
-        if self.LastCalander == nil || self.LastCalander == "New" {self.LastCalander = mydateFormat5.string(from: Date()-(3600*24*45))}
+        if self.LastCalander == nil {
+        print ("nil and therefore alert456");
+        alert456()
+        } else {
+        if mydateFormat5.date(from: self.LastCalander!)! <=  Date()-(3600*24*60)
+        {self.LastCalander = mydateFormat5.string(from: Date()-(3600*24*60))}
+        }//end of else
         print (LastCalander!)
 
         
-        let alertController123 = UIAlertController(title: ("Import Calander Sessions") , message: "You are about to import calander's sessions from \(mydateFormat9.string(from: mydateFormat5.date(from: LastCalander!)!)) till Now." , preferredStyle: .alert)
+        let alertController123 = UIAlertController(title: ("Import Calander Sessions") , message: "You are about to import calander's sessions occured till now" , preferredStyle: .alert)
 
-        
-        //let alertController123 = UIAlertController(title: ("Import Calander Sessions") , message: "You are about to import calander's sessions from \( mydateFormat9 .string(from: mydateFormat5.date(from: LastCalander!)!)) till Now." , preferredStyle: .alert)
-        let allAction = UIAlertAction(title: "All accounts", style: .default) { (UIAlertAction) in
-            self.spesific = false
-        self.fetchEvents()
-        }
-        
         let spesificAction = UIAlertAction(title: "\(employerFromMain) only", style: .default) { (UIAlertAction) in
-            self.spesific = true
+        self.spesific = true
         self.fetchEvents()
         }
         
-        let dateAction = UIAlertAction(title: "Change begining date", style: .default) { (UIAlertAction) in
-        print("change date")
-        self.datePickerBG.isHidden = false
+        let allAction = UIAlertAction(title: "Import all accounts", style: .default) { (UIAlertAction) in
+        self.spesific = false
+        self.fetchEvents()
         }
-        
-        
         
         let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
         self.navigationController!.popViewController(animated: true)
             //do nothing
         }
         
-        alertController123.addAction(allAction)
         if self.employerFromMain != "" {alertController123.addAction(spesificAction)}
-        alertController123.addAction(dateAction)
-        alertController123.addAction(CancelAction)
 
-        
+        alertController123.addAction(allAction)
+        alertController123.addAction(CancelAction)
         self.present(alertController123, animated: true, completion: nil)
         
-    }
+        }//end of alert123
+    
+    func  alert456(){
+        
+        if self.LastCalander == nil || self.LastCalander == "New" {self.LastCalander = mydateFormat5.string(from: Date()-(3600*24*31))}
+        print (LastCalander!)
+        
+        
+        let alertController123 = UIAlertController(title: ("Import starting date") , message: "You are about to import calander's sessions for the first time. Default starting date is \(mydateFormat9.string(from: mydateFormat5.date(from: LastCalander!)!))." , preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+        self.spesific = false
+        self.fetchEvents()
+        }
+        
+        let dateAction = UIAlertAction(title: "Change starting date", style: .default) { (UIAlertAction) in
+        print("change date")
+        self.datePickerBG.isHidden = false
+        }
+        
+        let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+            self.navigationController!.popViewController(animated: true)
+            //do nothing
+        }
+        
+        alertController123.addAction(OKAction)
+        alertController123.addAction(dateAction)
+        alertController123.addAction(CancelAction)
+        self.present(alertController123, animated: true, completion: nil)
+        }
 }
