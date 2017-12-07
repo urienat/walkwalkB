@@ -434,9 +434,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grass12" translatesAutoresizingMaskIntoConstraints="NO" id="gvF-8a-PLX">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
-                            </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xJI-kw-XIv">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                 <constraints>
@@ -447,12 +444,12 @@
                                 </items>
                             </navigationBar>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ils-2a-qKn" userLabel="Bark2">
-                                <rect key="frame" x="75" y="120" width="170" height="35"/>
+                                <rect key="frame" x="64.5" y="120" width="191" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Mzy-zb-E3x"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="gvl-qk-GA5"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="21"/>
                                 <state key="normal" title="&lt;&lt; Bark annualy &gt;&gt;">
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
@@ -461,12 +458,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQz-Hs-fNV" userLabel="woof">
-                                <rect key="frame" x="60" y="74" width="200" height="30"/>
+                                <rect key="frame" x="35.5" y="74" width="249" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="F2U-0J-YaS"/>
                                     <constraint firstAttribute="height" constant="30" id="UDJ-ai-Pj6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
                                 <state key="normal" title="&lt;&lt;Subscribe to PerSession&gt;&gt;">
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
@@ -480,7 +477,7 @@
                                     <constraint firstAttribute="width" constant="20" id="V5Z-fT-AbF"/>
                                     <constraint firstAttribute="height" constant="20" id="eN7-2P-k2R"/>
                                 </constraints>
-                                <color key="color" red="0.12558225109999999" green="0.58808092950000002" blue="0.095813386410000007" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="color" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zve-AF-n09" userLabel="woofLbl">
                                 <rect key="frame" x="85" y="104" width="150" height="15"/>
@@ -523,7 +520,7 @@
                                     <constraint firstAttribute="width" constant="40" id="QSh-OO-wEH"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gF4-tF-i12">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="gF4-tF-i12">
                                 <rect key="frame" x="16" y="124" width="288" height="230"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -533,7 +530,7 @@
                                 </constraints>
                                 <string key="text">After 2 months of free trial, monthly subscription with full and ongoing access to all features, so you can try before you buy. A subscription costs $2.99 per month. Payment will be charged to your iTunes Account at confirmation of purchase and after the 2 months free trial.  Unused portion of free trial, will be forfeited when the user purchases a subscription. The subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Your account will be charged for renewal within 24-hours prior to the end of the current 1 month period. You can turn off auto-renew at any time from your iTunes account settings. Cancellation of the current active subscription period is not allowed. Find our privacy policy and Terms &amp; Conditions, at the following links: </string>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ru-Qy-YhC" userLabel="privacy">
@@ -542,7 +539,7 @@
                                     <constraint firstAttribute="height" constant="31" id="IGq-Ka-CJ2"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="124" id="nUd-sa-pLE"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
                                 <state key="normal" title="&lt;&lt;Privacy policy&gt;&gt;">
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
@@ -551,12 +548,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsj-Dg-aLI" userLabel="terms">
-                                <rect key="frame" x="180" y="354" width="124" height="31"/>
+                                <rect key="frame" x="163" y="354" width="141" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="124" id="BZN-4u-Dfb"/>
                                     <constraint firstAttribute="height" constant="31" id="CKH-TQ-fcV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
                                 <state key="normal" title="&lt;&lt;Terms &amp; Conditions&gt;&gt;">
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
@@ -565,7 +562,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.2145790309" green="0.45587304229999998" blue="0.84711945060000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Ml5-Iv-mbD" firstAttribute="top" secondItem="xJI-kw-XIv" secondAttribute="bottom" constant="40" id="1s0-ie-R3H"/>
                             <constraint firstItem="Ils-2a-qKn" firstAttribute="top" secondItem="xJI-kw-XIv" secondAttribute="bottom" constant="70" id="8lC-Ab-cKo"/>
@@ -579,21 +576,17 @@
                             <constraint firstAttribute="trailingMargin" secondItem="gF4-tF-i12" secondAttribute="trailing" id="I5d-qs-18g"/>
                             <constraint firstItem="gF4-tF-i12" firstAttribute="leading" secondItem="V25-s4-mQy" secondAttribute="leadingMargin" id="LS4-8R-IG5"/>
                             <constraint firstItem="fZi-ek-Reb" firstAttribute="leading" secondItem="V25-s4-mQy" secondAttribute="leading" id="OLn-w0-gli"/>
-                            <constraint firstItem="gvF-8a-PLX" firstAttribute="leading" secondItem="V25-s4-mQy" secondAttribute="leading" id="Onq-Xd-3je"/>
                             <constraint firstAttribute="trailing" secondItem="fZi-ek-Reb" secondAttribute="trailing" id="RdT-fs-MaJ"/>
                             <constraint firstItem="1Ru-Qy-YhC" firstAttribute="top" secondItem="gF4-tF-i12" secondAttribute="bottom" id="SX8-kS-oCa"/>
                             <constraint firstItem="vsj-Dg-aLI" firstAttribute="centerY" secondItem="1Ru-Qy-YhC" secondAttribute="centerY" id="VBx-B8-auo"/>
-                            <constraint firstItem="fZi-ek-Reb" firstAttribute="top" secondItem="gvF-8a-PLX" secondAttribute="bottom" id="Xoz-n9-yot"/>
                             <constraint firstItem="F1J-Og-Wpy" firstAttribute="trailing" secondItem="V25-s4-mQy" secondAttribute="trailingMargin" id="auW-Tx-JY3"/>
                             <constraint firstItem="Ml5-Iv-mbD" firstAttribute="centerX" secondItem="V25-s4-mQy" secondAttribute="centerX" id="dM2-xY-ggh"/>
                             <constraint firstItem="h1y-h7-toK" firstAttribute="leading" secondItem="V25-s4-mQy" secondAttribute="leadingMargin" constant="8" id="eWa-ln-fnL"/>
                             <constraint firstItem="xJI-kw-XIv" firstAttribute="top" secondItem="V25-s4-mQy" secondAttribute="top" id="g4c-IN-Vgf"/>
                             <constraint firstItem="yQz-Hs-fNV" firstAttribute="centerX" secondItem="V25-s4-mQy" secondAttribute="centerX" id="gur-Ux-SRe"/>
                             <constraint firstItem="xJI-kw-XIv" firstAttribute="leading" secondItem="V25-s4-mQy" secondAttribute="leading" id="jjx-le-2Xb"/>
-                            <constraint firstItem="gvF-8a-PLX" firstAttribute="top" secondItem="V25-s4-mQy" secondAttribute="top" id="mNN-Bd-xjD"/>
                             <constraint firstItem="F1J-Og-Wpy" firstAttribute="top" secondItem="xJI-kw-XIv" secondAttribute="bottom" constant="30" id="o5B-oE-8Oz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vsj-Dg-aLI" secondAttribute="trailing" id="teR-M9-Jxy"/>
-                            <constraint firstAttribute="trailing" secondItem="gvF-8a-PLX" secondAttribute="trailing" id="u2m-3W-VHw"/>
                             <constraint firstItem="zve-AF-n09" firstAttribute="top" secondItem="yQz-Hs-fNV" secondAttribute="bottom" id="vGf-Pn-3aK"/>
                             <constraint firstAttribute="trailing" secondItem="xJI-kw-XIv" secondAttribute="trailing" id="ycP-NN-Icy"/>
                             <constraint firstItem="1Ru-Qy-YhC" firstAttribute="leading" secondItem="V25-s4-mQy" secondAttribute="leadingMargin" id="yq4-om-zlZ"/>
@@ -1366,7 +1359,7 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="145" id="eHw-0Q-knn"/>
                                                     <constraint firstAttribute="height" constant="30" id="mOb-OX-df2"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                                 <state key="normal" title="&lt;&lt; Change Password &gt;&gt;">
                                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                 </state>
@@ -1375,12 +1368,12 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XE2-sS-i4C" userLabel="Edit">
-                                                <rect key="frame" x="112" y="571" width="110" height="30"/>
+                                                <rect key="frame" x="112" y="571" width="137" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="3cB-iD-KcB"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="uMP-Zj-KYW"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                                 <state key="normal" title="&lt;&lt; View &amp; Edit &gt;&gt;">
                                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                 </state>
@@ -1735,7 +1728,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="kdg-4Z-TfK"/>
                                     <constraint firstAttribute="height" constant="30" id="s6z-Uq-z7t"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="13"/>
                                 <state key="normal" title="Forgot  Password">
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
@@ -1749,7 +1742,7 @@
                                     <constraint firstAttribute="height" constant="30" id="CHT-8J-pUx"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="164" id="HVT-ZX-6pm"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
                                 <state key="normal" title="Set New Account">
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
@@ -1778,12 +1771,12 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTs-3R-g9p">
-                                <rect key="frame" x="238" y="205" width="40" height="30"/>
+                                <rect key="frame" x="238" y="205" width="47" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="F52-oR-lhd"/>
                                     <constraint firstAttribute="height" constant="30" id="tjw-8A-D7P"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
@@ -2466,7 +2459,7 @@
                 <navigationController storyboardIdentifier="homeScreen" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="currentContext" id="H8h-Dv-TZT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3T4-MP-mlr">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="48"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
@@ -2481,7 +2474,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Grass12" width="424" height="282"/>
         <image name="Leash" width="50" height="50"/>
         <image name="V" width="156" height="141"/>
         <image name="billsIcon" width="50" height="50"/>
@@ -2501,7 +2493,6 @@
         <image name="walkerProfile" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="djG-dA-RhY"/>
         <segue reference="UPU-lN-oqU"/>
         <segue reference="RQi-YY-5wb"/>
         <segue reference="x0P-Ew-8Ag"/>
