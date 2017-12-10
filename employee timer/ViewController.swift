@@ -67,7 +67,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var methood = "Normal"
     var pickerlabel =  UILabel.self
     
-    @IBOutlet weak var profile: UIBarButtonItem!
     @IBOutlet weak var thinking2: UIActivityIndicatorView!
     @IBOutlet weak var employerList: UITableView!
     @IBOutlet weak var employerListTop: NSLayoutConstraint!
@@ -132,14 +131,49 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     importClicked()
     }
     
+    //side Menu
     @IBOutlet weak var sideMenuConstarin: NSLayoutConstraint!
     @IBOutlet weak var sideMenu: UIView!
+    @IBAction func billBtn(_ sender: Any) {
+    //fix spesific
+    sideMenuMovement()
+    billsClicked()
+    }
+    
+    @IBAction func taxationBtn(_ sender: Any) {
+    sideMenuMovement()
+    //do nothing
+    }
+    
+    
+    @IBAction func importAllBtn(_ sender: Any) {
+    sideMenuMovement()
+    //fix spesific
+    importClicked()
+    }
+    
+    @IBAction func otherBtn(_ sender: Any) {
+    sideMenuMovement()
+    //do nothing
+    }
+    
+    @IBAction func settingBtn(_ sender: Any) {
+    sideMenuMovement()
+    profileClicked()
+    }
+    
+    @IBAction func logoutBtn(_ sender: Any) {
+    sideMenuMovement()
+    LoginFile.logoutchosen = true
+    try! FIRAuth.auth()?.signOut()
+
+    self.present((storyboard?.instantiateViewController(withIdentifier: "loginScreen"))!, animated: true, completion: nil)
+    }
     
     @IBOutlet weak var toolBar: UIToolbar!
     let btn1 = UIButton(type: .custom)
     let btn2 = UIButton(type: .custom)
     let btn3 = UIButton(type: .custom)
-    let btn4 = UIButton(type: .custom)
     
     //start timer action
     @IBAction func Start(_ sender: AnyObject) {
@@ -236,10 +270,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     btn3.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
     btn3.addTarget(self, action:#selector(billsClicked), for: UIControlEvents.touchDown)
     bills.customView = btn3
-    btn4.setImage(walkerProfile, for: .normal)
-    btn4.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
-    btn4.addTarget(self, action:#selector(profileClicked), for: UIControlEvents.touchDown)
-    profile.customView = btn4
+    
         
     self.sideMenuConstarin.constant = -140
 
