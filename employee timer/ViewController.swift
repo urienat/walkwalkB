@@ -113,11 +113,11 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var DateIn: UILabel!
     @IBOutlet weak var workedFor: UILabel!
     @IBOutlet weak var addAmanualRecord: UIView!
+    
     @IBOutlet weak var records: UIBarButtonItem!
     @IBOutlet weak var bills: UIBarButtonItem!
-    
     @IBOutlet weak var account: UIBarButtonItem!
-    @IBOutlet weak var setting: UIBarButtonItem!
+    
     @IBOutlet weak var chooseEmployer: UIButton!
     @IBOutlet weak var animationImage: UIImageView!
     @IBOutlet weak var textAdd: UITextView!
@@ -201,6 +201,9 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     employerList.delegate = self
     
     records.isEnabled = false
+    bills.isEnabled = false
+    account.isEnabled = false
+        
     ViewController.checkSubOnce = 1
     DateIn.text = ""
     self.employerList.separatorColor = blueColor
@@ -396,7 +399,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
     else if (segue.identifier == "employerForBills"){
     let recordsView = segue.destination as? biller
-    recordsView?.employerID = ""//employerIDToS
+    recordsView?.employerID = employerIDToS
     recordsView?.employerFromMain = employerToS
     recordsView?.employeeID = employeeIDToS
     }//end of else if
@@ -503,14 +506,14 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.googleCalander.isEnabled = false
     
         
-    self.account.isEnabled = true;
+    //self.account.isEnabled = true;
     self.chooseEmployer.isUserInteractionEnabled = true
     startBarButtonFadeOut()
     startBarButtonFadeIn()
     }//end of func
 
     func postStartView() {
-    self.account.isEnabled = true
+    //self.account.isEnabled = true
     self.animationImage.isHidden = true
     self.startBackground.isHidden = true
     self.importBackground.isHidden = true
@@ -527,6 +530,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     DateIn.isHidden = true
     records.isEnabled = false
     account.isEnabled = false
+    bills.isEnabled = false
     chooseEmployer.isHidden = true
     startBackground.isHidden = true
      self.importBackground.isHidden = true
@@ -537,7 +541,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }//end of func
     
         func postRoundView() {
-                self.account.isEnabled = true
+        //self.account.isEnabled = true
         self.animationImage.isHidden = false
         self.startBackground.isHidden = true
         self.importBackground.isHidden = true

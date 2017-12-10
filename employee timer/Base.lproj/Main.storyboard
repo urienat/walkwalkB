@@ -803,7 +803,7 @@
                                     <constraint firstAttribute="height" constant="60" id="uyg-ED-g2R"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem image="billsIcon" id="2Ty-Up-jjh" userLabel="Bills">
+                                    <barButtonItem enabled="NO" image="billsIcon" id="2Ty-Up-jjh" userLabel="Bills">
                                         <connections>
                                             <segue destination="Grl-4C-vV7" kind="show" identifier="employerForBills" id="x0P-Ew-8Ag"/>
                                         </connections>
@@ -2580,6 +2580,6 @@
         <segue reference="RQi-YY-5wb"/>
         <segue reference="x0P-Ew-8Ag"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="gfT-By-X34"/>
+        <segue reference="1k4-P4-HYk"/>
     </inferredMetricsTieBreakers>
 </document>

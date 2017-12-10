@@ -20,6 +20,7 @@ extension(ViewController){
             chooseEmployer.isUserInteractionEnabled = false
             print ("selected!!!!!!")
             records.isEnabled = true
+            account.isEnabled = true
 
             if pickerData.count == 0 {
             print ("indexpath4\([pickerData])")
@@ -51,7 +52,7 @@ extension(ViewController){
             employerIDToS = employerIdArray2[indexPath.row] as! String
             bringEmployerData()
             if activeData[indexPath.row] != "0" {self.thinking2.stopAnimating(); preStartView()}
-            else {account.isEnabled = true; chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating()}
+            else { chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating()}
 
             //set variable for Segue
             employerToS = pickerData[indexPath.row]
