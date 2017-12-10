@@ -689,12 +689,12 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KUx-wf-FBc" userLabel="employerFirst">
-                                                    <rect key="frame" x="60" y="28" width="160" height="18"/>
+                                                    <rect key="frame" x="60" y="28" width="200" height="18"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="Xns-zP-XJo"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Xns-zP-XJo"/>
                                                         <constraint firstAttribute="height" constant="18" id="gV9-bI-J9Y"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
                                                     <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -834,6 +834,30 @@
                                     <constraint firstAttribute="height" constant="50" id="BWl-6v-Y2T"/>
                                 </constraints>
                             </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKA-rE-TUN" userLabel="sideMenu">
+                                <rect key="frame" x="0.0" y="50" width="140" height="370"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qc-n2-TDv">
+                                        <rect key="frame" x="8" y="20" width="124" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Wj8-b4-D45"/>
+                                        </constraints>
+                                        <state key="normal" title="Import">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="bu7-cQ-GBV" kind="show" id="87c-ra-iUU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1Qc-n2-TDv" secondAttribute="trailing" constant="8" id="Cew-eA-rEP"/>
+                                    <constraint firstItem="1Qc-n2-TDv" firstAttribute="leading" secondItem="cKA-rE-TUN" secondAttribute="leading" constant="8" id="I71-So-y4t"/>
+                                    <constraint firstItem="1Qc-n2-TDv" firstAttribute="top" secondItem="cKA-rE-TUN" secondAttribute="top" constant="20" id="JBB-TC-dRd"/>
+                                    <constraint firstAttribute="width" constant="140" id="cvI-9M-eSU"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <accessibility key="accessibilityConfiguration">
@@ -855,12 +879,14 @@
                             <constraint firstAttribute="trailing" secondItem="lxT-w2-3r9" secondAttribute="trailing" id="Gpc-gv-ZS2"/>
                             <constraint firstItem="M0C-iW-AVD" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="NCa-KC-sLb"/>
                             <constraint firstItem="Wkx-Tt-3io" firstAttribute="top" secondItem="45C-VX-M18" secondAttribute="bottom" id="Qba-fl-Alu"/>
+                            <constraint firstItem="cKA-rE-TUN" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="Qng-b0-SRL"/>
                             <constraint firstItem="45C-VX-M18" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="RgB-xL-tIk"/>
                             <constraint firstItem="Wkx-Tt-3io" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="TAL-qv-Umm"/>
                             <constraint firstItem="fqn-dL-iFO" firstAttribute="top" secondItem="BhS-3v-3nc" secondAttribute="bottom" constant="45" id="TbV-z0-ich"/>
                             <constraint firstItem="45C-VX-M18" firstAttribute="top" secondItem="fqn-dL-iFO" secondAttribute="bottom" constant="50" id="U8j-Aa-dZf"/>
                             <constraint firstItem="XDi-hZ-CdO" firstAttribute="centerX" secondItem="Cq4-SE-U6N" secondAttribute="centerX" id="Ver-zq-PUb"/>
                             <constraint firstItem="tbR-QL-TgX" firstAttribute="top" secondItem="lxT-w2-3r9" secondAttribute="bottom" constant="30" id="WI7-6r-u9D"/>
+                            <constraint firstItem="yHg-YC-CqC" firstAttribute="top" secondItem="cKA-rE-TUN" secondAttribute="bottom" id="WUw-vo-Uj3"/>
                             <constraint firstItem="fqn-dL-iFO" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="Yxj-2x-GlY"/>
                             <constraint firstItem="FxU-Wn-hMn" firstAttribute="top" secondItem="45C-VX-M18" secondAttribute="bottom" constant="-25" id="db2-hz-AHs"/>
                             <constraint firstItem="lxT-w2-3r9" firstAttribute="top" secondItem="uv4-gs-ESI" secondAttribute="top" id="f3E-b2-6a4"/>
@@ -872,6 +898,7 @@
                             <constraint firstItem="XDi-hZ-CdO" firstAttribute="height" secondItem="Cq4-SE-U6N" secondAttribute="height" id="qAi-h8-Wb1"/>
                             <constraint firstAttribute="trailing" secondItem="45C-VX-M18" secondAttribute="trailing" id="qOY-3o-Yzg"/>
                             <constraint firstAttribute="trailing" secondItem="b9U-e8-FEx" secondAttribute="trailing" id="rbS-aw-AKs"/>
+                            <constraint firstItem="cKA-rE-TUN" firstAttribute="top" secondItem="lxT-w2-3r9" secondAttribute="bottom" id="s6C-Qf-AA6"/>
                             <constraint firstItem="yHg-YC-CqC" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="sRk-0I-EqB"/>
                             <constraint firstItem="b9U-e8-FEx" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="vj3-WL-TM5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tbR-QL-TgX" secondAttribute="trailing" constant="4" id="xkR-pN-ggA"/>
@@ -883,7 +910,6 @@
                         <barButtonItem key="leftBarButtonItem" title="Import" style="done" id="yFh-ig-nQ8" userLabel="googleCalander">
                             <connections>
                                 <action selector="googleCalander:" destination="Ecy-Z7-2Op" id="Wcl-1H-noi"/>
-                                <segue destination="WI7-wY-L03" kind="show" identifier="employerForCalander" animates="NO" id="or3-S4-NLe"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NNj-jv-ITI">
@@ -911,6 +937,8 @@
                         <outlet property="importImage" destination="l9b-bB-9mb" id="6ef-nj-1c4"/>
                         <outlet property="profile" destination="xOX-bG-FKO" id="tbU-w2-8C6"/>
                         <outlet property="records" destination="uPD-Ce-NUz" id="vkv-Tl-a3Z"/>
+                        <outlet property="sideMenu" destination="cKA-rE-TUN" id="ZO5-OH-NyS"/>
+                        <outlet property="sideMenuConstarin" destination="Qng-b0-SRL" id="STP-FC-cVD"/>
                         <outlet property="startBackground" destination="45C-VX-M18" id="DnN-Lg-IRl"/>
                         <outlet property="startButton" destination="Cq4-SE-U6N" id="ULk-SV-W07"/>
                         <outlet property="startImage" destination="Chx-Kf-Bii" id="Tqx-Za-zgy"/>
@@ -922,7 +950,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wOq-bQ-nMi" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5824" y="-2185"/>
+            <point key="canvasLocation" x="-5825.625" y="-2185"/>
         </scene>
         <!--Calander-->
         <scene sceneID="Qwi-xQ-0q6">
@@ -2481,10 +2509,10 @@
         <image name="walkerProfile" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="djG-dA-RhY"/>
         <segue reference="UPU-lN-oqU"/>
         <segue reference="RQi-YY-5wb"/>
         <segue reference="x0P-Ew-8Ag"/>
+        <segue reference="87c-ra-iUU"/>
         <segue reference="8s0-fg-N01"/>
         <segue reference="1k4-P4-HYk"/>
     </inferredMetricsTieBreakers>

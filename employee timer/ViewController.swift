@@ -56,6 +56,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let mydateFormat5 = DateFormatter()
     let mydateFormat7 = DateFormatter()
     
+    
+    var isSideMenuHidden = true
     var employerItem = ""
     var profileImageUrl = ""
     var dogItem = ""
@@ -98,7 +100,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
 
     @IBOutlet weak var googleCalander: UIBarButtonItem!
     @IBAction func googleCalander(_ sender: Any) {
-    }
+    sideMenuMovement()
+    }//end of googlecalander
 
     @IBOutlet weak var addAccount: UIBarButtonItem!
     @IBAction func addAccount(_ sender: Any) {
@@ -129,7 +132,9 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     importClicked()
     }
     
-
+    @IBOutlet weak var sideMenuConstarin: NSLayoutConstraint!
+    @IBOutlet weak var sideMenu: UIView!
+    
     @IBOutlet weak var toolBar: UIToolbar!
     let btn1 = UIButton(type: .custom)
     let btn2 = UIButton(type: .custom)
@@ -235,6 +240,9 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     btn4.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
     btn4.addTarget(self, action:#selector(profileClicked), for: UIControlEvents.touchDown)
     profile.customView = btn4
+        
+    self.sideMenuConstarin.constant = -140
+
 
     }// end of viewdidload//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    
@@ -574,6 +582,21 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.startButton.transform = .identity
     self.importBtn.transform = .identity
     })
+    }
+    
+    func sideMenuMovement(){
+        if isSideMenuHidden {
+            self.sideMenuConstarin.constant = 0
+            UIView.animate(withDuration: 0.4, animations: {
+               self.view.layoutIfNeeded()
+            })
+        }else{
+            sideMenuConstarin.constant = -140
+            UIView.animate(withDuration:0.4, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
+        isSideMenuHidden = !isSideMenuHidden
     }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////alerts
