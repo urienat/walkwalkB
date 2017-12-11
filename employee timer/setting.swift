@@ -165,13 +165,6 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         alert4()
     }
     
-    @IBAction func logout(_ sender: Any) {
-        LoginFile.logoutchosen = true
-        try! FIRAuth.auth()?.signOut()
-        
-        self.present((storyboard?.instantiateViewController(withIdentifier: "loginScreen"))!, animated: true, completion: nil)
-    }
-    
     @IBOutlet weak var bark: UIButton!
     @IBAction func bark(_ sender: Any) {
         bark.isEnabled = false

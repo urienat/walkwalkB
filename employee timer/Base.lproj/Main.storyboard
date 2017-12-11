@@ -915,6 +915,10 @@
                                     <constraint firstItem="Apw-du-z4J" firstAttribute="trailing" secondItem="1Qc-n2-TDv" secondAttribute="trailing" id="qv3-xL-BW8"/>
                                 </constraints>
                             </view>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Fh-da-mJL" userLabel="blackView">
+                                <rect key="frame" x="140" y="50" width="180" height="370"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <accessibility key="accessibilityConfiguration">
@@ -934,7 +938,9 @@
                             <constraint firstItem="XDi-hZ-CdO" firstAttribute="top" secondItem="M0C-iW-AVD" secondAttribute="bottom" constant="-200" id="Bxa-uI-HYC"/>
                             <constraint firstAttribute="trailing" secondItem="yHg-YC-CqC" secondAttribute="trailing" id="Dmq-dH-nve"/>
                             <constraint firstAttribute="trailing" secondItem="lxT-w2-3r9" secondAttribute="trailing" id="Gpc-gv-ZS2"/>
+                            <constraint firstAttribute="trailing" secondItem="9Fh-da-mJL" secondAttribute="trailing" id="M2P-pU-Ep9"/>
                             <constraint firstItem="M0C-iW-AVD" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="NCa-KC-sLb"/>
+                            <constraint firstItem="9Fh-da-mJL" firstAttribute="leading" secondItem="cKA-rE-TUN" secondAttribute="trailing" id="NRE-58-wZa"/>
                             <constraint firstItem="Wkx-Tt-3io" firstAttribute="top" secondItem="45C-VX-M18" secondAttribute="bottom" id="Qba-fl-Alu"/>
                             <constraint firstItem="cKA-rE-TUN" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="Qng-b0-SRL"/>
                             <constraint firstItem="45C-VX-M18" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="RgB-xL-tIk"/>
@@ -944,10 +950,12 @@
                             <constraint firstItem="XDi-hZ-CdO" firstAttribute="centerX" secondItem="Cq4-SE-U6N" secondAttribute="centerX" id="Ver-zq-PUb"/>
                             <constraint firstItem="tbR-QL-TgX" firstAttribute="top" secondItem="lxT-w2-3r9" secondAttribute="bottom" constant="30" id="WI7-6r-u9D"/>
                             <constraint firstItem="yHg-YC-CqC" firstAttribute="top" secondItem="cKA-rE-TUN" secondAttribute="bottom" id="WUw-vo-Uj3"/>
+                            <constraint firstItem="9Fh-da-mJL" firstAttribute="bottom" secondItem="cKA-rE-TUN" secondAttribute="bottom" id="XbM-1d-XN2"/>
                             <constraint firstItem="fqn-dL-iFO" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="Yxj-2x-GlY"/>
                             <constraint firstItem="FxU-Wn-hMn" firstAttribute="top" secondItem="45C-VX-M18" secondAttribute="bottom" constant="-25" id="db2-hz-AHs"/>
                             <constraint firstItem="lxT-w2-3r9" firstAttribute="top" secondItem="uv4-gs-ESI" secondAttribute="top" id="f3E-b2-6a4"/>
                             <constraint firstItem="yHg-YC-CqC" firstAttribute="top" secondItem="tbR-QL-TgX" secondAttribute="bottom" priority="750" constant="280" id="iQn-al-QjX"/>
+                            <constraint firstItem="9Fh-da-mJL" firstAttribute="top" secondItem="cKA-rE-TUN" secondAttribute="top" id="jW5-YC-j89"/>
                             <constraint firstAttribute="trailing" secondItem="FxU-Wn-hMn" secondAttribute="trailing" id="la0-LF-LtB"/>
                             <constraint firstItem="tbR-QL-TgX" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leadingMargin" constant="4" id="lj5-TB-d6x"/>
                             <constraint firstItem="fXg-VA-EDp" firstAttribute="top" secondItem="Wkx-Tt-3io" secondAttribute="bottom" constant="8" id="nYN-0S-YLS"/>
@@ -982,6 +990,7 @@
                         <outlet property="addAmanualRecord" destination="FxU-Wn-hMn" id="TvW-qU-vMq"/>
                         <outlet property="animationImage" destination="M0C-iW-AVD" id="xlo-Ti-y7F"/>
                         <outlet property="bills" destination="2Ty-Up-jjh" id="099-jf-XpW"/>
+                        <outlet property="blackView" destination="9Fh-da-mJL" id="kT6-sc-gvs"/>
                         <outlet property="chooseEmployer" destination="fqn-dL-iFO" id="3pe-Mr-ayf"/>
                         <outlet property="emoloyerListBottom" destination="iQn-al-QjX" id="dJh-gK-WBq"/>
                         <outlet property="employerList" destination="tbR-QL-TgX" id="ctS-xd-Xy1"/>
@@ -1007,7 +1016,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wOq-bQ-nMi" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4418" y="-2379"/>
+            <point key="canvasLocation" x="-4419.375" y="-2380"/>
         </scene>
         <!--Calander-->
         <scene sceneID="Qwi-xQ-0q6">
@@ -1133,14 +1142,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="pAd-23-OtN"/>
                                 </constraints>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="D3h-7D-UQS"/>
-                                    <barButtonItem title="Logout" id="YE0-jv-hBF">
-                                        <connections>
-                                            <action selector="logout:" destination="bu7-cQ-GBV" id="fJg-se-vYc"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
+                                <items/>
                             </toolbar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcj-3g-ZF0" userLabel="setting scroller">
                                 <rect key="frame" x="0.0" y="70" width="320" height="660"/>

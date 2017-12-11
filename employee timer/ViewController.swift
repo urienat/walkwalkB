@@ -132,6 +132,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }
     
     //side Menu
+    
+    @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var sideMenuConstarin: NSLayoutConstraint!
     @IBOutlet weak var sideMenu: UIView!
     @IBAction func billBtn(_ sender: Any) {
@@ -613,11 +615,14 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     func sideMenuMovement(){
         if isSideMenuHidden {
+            self.blackView.isHidden = false
             self.sideMenuConstarin.constant = 0
             UIView.animate(withDuration: 0.4, animations: {
                self.view.layoutIfNeeded()
             })
         }else{
+            self.blackView.isHidden = true
+
             sideMenuConstarin.constant = -140
             UIView.animate(withDuration:0.4, animations: {
                 self.view.layoutIfNeeded()
