@@ -933,6 +933,13 @@
                                 <rect key="frame" x="140" y="50" width="180" height="370"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="iHN-TD-1dx" userLabel="arrow">
+                                <rect key="frame" x="274" y="64" width="40" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="HCD-sG-SJb"/>
+                                    <constraint firstAttribute="width" constant="40" id="bhH-wa-SU6"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <accessibility key="accessibilityConfiguration">
@@ -946,7 +953,9 @@
                             <constraint firstItem="JyP-95-znE" firstAttribute="top" secondItem="yHg-YC-CqC" secondAttribute="bottom" id="1hb-Xe-QgI"/>
                             <constraint firstAttribute="trailing" secondItem="Wkx-Tt-3io" secondAttribute="trailing" id="3iw-Bp-Rkw"/>
                             <constraint firstItem="tbR-QL-TgX" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="4b8-su-roT"/>
+                            <constraint firstItem="iHN-TD-1dx" firstAttribute="top" secondItem="lxT-w2-3r9" secondAttribute="bottom" constant="14" id="4jT-BY-MaF"/>
                             <constraint firstItem="fEo-2V-FTr" firstAttribute="centerY" secondItem="uv4-gs-ESI" secondAttribute="centerY" id="7hJ-c6-joF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iHN-TD-1dx" secondAttribute="trailing" constant="-10" id="7nR-Zh-qVy"/>
                             <constraint firstItem="fXg-VA-EDp" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="BKR-ZQ-q0s"/>
                             <constraint firstItem="XDi-hZ-CdO" firstAttribute="width" secondItem="M0C-iW-AVD" secondAttribute="width" id="Bps-Gc-a0V"/>
                             <constraint firstItem="XDi-hZ-CdO" firstAttribute="top" secondItem="M0C-iW-AVD" secondAttribute="bottom" constant="-200" id="Bxa-uI-HYC"/>
@@ -1003,6 +1012,7 @@
                         <outlet property="addAccount" destination="NNj-jv-ITI" id="sEC-ZB-NCc"/>
                         <outlet property="addAmanualRecord" destination="FxU-Wn-hMn" id="TvW-qU-vMq"/>
                         <outlet property="animationImage" destination="M0C-iW-AVD" id="xlo-Ti-y7F"/>
+                        <outlet property="arrow" destination="iHN-TD-1dx" id="kyt-Ae-Vaf"/>
                         <outlet property="bills" destination="2Ty-Up-jjh" id="099-jf-XpW"/>
                         <outlet property="blackView" destination="9Fh-da-mJL" id="kT6-sc-gvs"/>
                         <outlet property="chooseEmployer" destination="fqn-dL-iFO" id="3pe-Mr-ayf"/>
@@ -2568,6 +2578,7 @@
     <resources>
         <image name="Leash" width="50" height="50"/>
         <image name="V" width="156" height="141"/>
+        <image name="arrow" width="30" height="36"/>
         <image name="billsIcon" width="50" height="50"/>
         <image name="emptyV" width="50" height="45"/>
         <image name="mail" width="50" height="50"/>

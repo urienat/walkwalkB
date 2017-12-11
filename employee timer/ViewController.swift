@@ -133,6 +133,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     importClicked()
     }
     
+    @IBOutlet weak var arrow: UIImageView!
+    
     //side Menu
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var sideMenuConstarin: NSLayoutConstraint!
@@ -290,6 +292,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
     blackView.addGestureRecognizer(tap)
     blackView.isUserInteractionEnabled = true
+        
+      arrowMove()
 
     }// end of viewdidload//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    
@@ -643,8 +647,17 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
             })
         }
         isSideMenuHidden = !isSideMenuHidden
-    }
+        }//end of issidemenuhidden
+    
+    func arrowMove(){
+        UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse], animations: {
+        self.arrow.center.y -= 20
+        }, completion: nil)
 
+       // UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse], animations: {
+       // self.arrow.center.y -= 40
+       // }, completion: nil)
+        }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////alerts
     func  alert83(){
     let alertController83 = UIAlertController(title: ("Subscription alert") , message: " Adding more than two accounts requires subscription and we couldn't find one. please subscribe with free trial or log again if you have one.", preferredStyle: .alert)
