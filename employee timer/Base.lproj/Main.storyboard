@@ -2307,10 +2307,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gCC-uY-Je8" userLabel="l8">
-                                                    <rect key="frame" x="223" y="13.5" width="20" height="20"/>
+                                                    <rect key="frame" x="213" y="8.5" width="30" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="W6U-bP-CL4"/>
-                                                        <constraint firstAttribute="width" constant="20" id="uPF-bq-Ddj"/>
+                                                        <constraint firstAttribute="height" constant="30" id="W6U-bP-CL4"/>
+                                                        <constraint firstAttribute="width" constant="30" id="uPF-bq-Ddj"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -2590,18 +2590,17 @@
         <image name="perSessionImage" width="234" height="225"/>
         <image name="resend" width="50" height="50"/>
         <image name="roundBig" width="100" height="100"/>
-        <image name="sandWatch" width="100" height="100"/>
+        <image name="sandWatch" width="50" height="50"/>
         <image name="sendBillIcon" width="50" height="50"/>
         <image name="telephone" width="50" height="50"/>
         <image name="trash" width="50" height="50"/>
         <image name="vNaked" width="150" height="150"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cyf-eK-Md6"/>
         <segue reference="UPU-lN-oqU"/>
         <segue reference="vGn-ru-ol3"/>
         <segue reference="kEl-UY-JOa"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="1k4-P4-HYk"/>
+        <segue reference="gfT-By-X34"/>
     </inferredMetricsTieBreakers>
 </document>
