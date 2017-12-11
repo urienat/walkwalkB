@@ -138,7 +138,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var sideMenuConstarin: NSLayoutConstraint!
     @IBOutlet weak var sideMenu: UIView!
     @IBAction func billBtn(_ sender: Any) {
-    //fix spesific
     sideMenuMovement()
     performSegue(withIdentifier: "employerForAllBills", sender: employerToS)
     }
@@ -151,8 +150,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     @IBAction func importAllBtn(_ sender: Any) {
     sideMenuMovement()
-    //fix spesific
-    importClicked()
+    importAllClicked()
     }
     
     @IBAction func otherBtn(_ sender: Any) {
@@ -378,6 +376,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     func recordsClicked() {performSegue(withIdentifier: "employerforVC", sender: employerToS)}
     func importClicked() {performSegue(withIdentifier: "employerForCalander", sender: employerToS)}
+    func importAllClicked() {performSegue(withIdentifier: "employerForAllCalander", sender: employerToS)}
     func accountClicked() {performSegue(withIdentifier: "employerForDogFile", sender: employerToS)}
     func  billsClicked() {performSegue(withIdentifier: "employerForBills", sender: employerToS)}
     func  profileClicked() {performSegue(withIdentifier: "setting", sender: employerToS)}
@@ -405,9 +404,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }//end of else if
         
     else if (segue.identifier == "employerForAllBills"){
+        
     let recordsView = segue.destination as? biller
-    recordsView?.employerID = employerIDToS
-    recordsView?.employerFromMain = employerToS
+    recordsView?.employerID = ""//employerIDToS
+    recordsView?.employerFromMain = ""//employerToS
     recordsView?.employeeID = employeeIDToS
     }//end of else if
         
@@ -420,8 +420,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     else if (segue.identifier == "employerForAllCalander"){
     let recordsView = segue.destination as? calander
-    recordsView?.employerIdFromMain = employerIDToS
-    recordsView?.employerFromMain = employerToS
+    recordsView?.employerIdFromMain = ""//employerIDToS
+    recordsView?.employerFromMain = ""//employerToS
     //recordsView?.employeeID = employeeIDToS
     }//end of else if
 

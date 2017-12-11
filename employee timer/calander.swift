@@ -407,7 +407,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         
         let alertController123 = UIAlertController(title: ("Import Calander Sessions") , message: "You are about to import calander's sessions occured till now" , preferredStyle: .alert)
 
-        let spesificAction = UIAlertAction(title: "\(employerFromMain) only", style: .default) { (UIAlertAction) in
+        let spesificAction = UIAlertAction(title: "Import \(employerFromMain)'s only", style: .default) { (UIAlertAction) in
         self.spesific = true
         self.fetchEvents()
         }
@@ -423,8 +423,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         }
         
         if self.employerFromMain != "" {alertController123.addAction(spesificAction)}
-
-        alertController123.addAction(allAction)
+        if self.employerFromMain == "" {alertController123.addAction(allAction)}
         alertController123.addAction(CancelAction)
         self.present(alertController123, animated: true, completion: nil)
         
