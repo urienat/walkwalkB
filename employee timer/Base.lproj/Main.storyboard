@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="QwA-1e-1p4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="QwA-1e-1p4">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1018,6 +1018,8 @@
                         <outlet property="toolBar" destination="yHg-YC-CqC" id="Yrd-Xl-UuZ"/>
                         <outlet property="workedFor" destination="fXg-VA-EDp" id="4ga-cI-C7J"/>
                         <segue destination="bu7-cQ-GBV" kind="show" identifier="setting" id="cyf-eK-Md6"/>
+                        <segue destination="WI7-wY-L03" kind="show" identifier="employerForAllCalander" id="kEl-UY-JOa"/>
+                        <segue destination="WI7-wY-L03" kind="show" identifier="employerForCalander" id="5at-sc-TfM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wOq-bQ-nMi" sceneMemberID="firstResponder"/>
@@ -1128,7 +1130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTj-hQ-wxp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3101" y="-2353"/>
+            <point key="canvasLocation" x="-3039" y="-2523"/>
         </scene>
         <!--My Profile-->
         <scene sceneID="pOg-1f-sVS">
@@ -2575,6 +2577,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="UPU-lN-oqU"/>
         <segue reference="Gn3-m3-lJV"/>
+        <segue reference="5at-sc-TfM"/>
         <segue reference="8s0-fg-N01"/>
         <segue reference="1k4-P4-HYk"/>
     </inferredMetricsTieBreakers>

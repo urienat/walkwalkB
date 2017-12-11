@@ -280,7 +280,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     bills.customView = btn3
         
     btnMenu.setImage (menu, for: .normal)
-    btnMenu.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
+    btnMenu.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
     btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
     menuItem.customView = btnMenu
      
@@ -412,6 +412,13 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }//end of else if
         
     else if (segue.identifier == "employerForCalander"){
+    let recordsView = segue.destination as? calander
+    recordsView?.employerIdFromMain = employerIDToS
+    recordsView?.employerFromMain = employerToS
+    //recordsView?.employeeID = employeeIDToS
+    }//end of else if
+    
+    else if (segue.identifier == "employerForAllCalander"){
     let recordsView = segue.destination as? calander
     recordsView?.employerIdFromMain = employerIDToS
     recordsView?.employerFromMain = employerToS
