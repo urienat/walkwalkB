@@ -45,6 +45,16 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var totalAmount: UITextField!
     @IBOutlet weak var noSign: UIImageView!
     
+    //filter
+    var isFilterHidden = true
+    @IBOutlet weak var blackView: UIView!
+    @IBOutlet weak var filterBG: UIView!
+    @IBOutlet weak var filter: UIButton!
+    @IBAction func filter(_ sender: Any) {
+      filterMovement()
+    }
+    @IBOutlet weak var filterConstrain: NSLayoutConstraint!
+    
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
 
     //variablesfrom main
@@ -65,6 +75,12 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
        
         super.viewDidLoad()
         noSign.isHidden = true
+        
+        filterConstrain.constant = -200
+        blackView.isHidden = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        blackView.addGestureRecognizer(tap)
+        blackView.isUserInteractionEnabled = true
         
         billerConnect.backgroundColor = UIColor.clear
         if employerID != "" {  titleLbl = "\(employerFromMain)'s bills" } else {titleLbl = "Bills"}
@@ -334,6 +350,26 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             break
             }
             }
+    
+            func handleTap(sender: UITapGestureRecognizer? = nil) {
+                filterMovement()    }
+    
+            func filterMovement(){
+            if isFilterHidden {
+            self.blackView.isHidden = false
+            self.filterConstrain.constant = 0
+            UIView.animate(withDuration: 0.4, animations: {
+            self.view.layoutIfNeeded()
+            })
+            }else{
+            self.blackView.isHidden = true
+            filterConstrain.constant = -200
+            UIView.animate(withDuration:0.4, animations: {
+            self.view.layoutIfNeeded()
+            })
+            }
+            isFilterHidden = !isFilterHidden
+            }//end of issidemenuhidden
 
             // alerts/////////////////////////////////////////////////////////////////////////////////////
             func alert30(){

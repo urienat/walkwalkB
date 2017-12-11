@@ -996,7 +996,7 @@
                             <constraint firstAttribute="trailing" secondItem="fXg-VA-EDp" secondAttribute="trailing" id="zsc-ne-CXT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Accounts" id="Q5z-uo-p1A">
+                    <navigationItem key="navigationItem" title="Home" id="Q5z-uo-p1A">
                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="organize" id="yFh-ig-nQ8" userLabel="menuItem">
                             <connections>
                                 <action selector="menuItem:" destination="Ecy-Z7-2Op" id="nF3-QX-sLd"/>
@@ -2169,9 +2169,32 @@
                                     <constraint firstAttribute="height" constant="100" id="b2T-8w-F3Y"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AE9-S5-B4h">
+                                <rect key="frame" x="272" y="34" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="0tk-LK-cfq"/>
+                                    <constraint firstAttribute="width" constant="40" id="Z1j-QR-6KZ"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="sandWatchGreen"/>
+                                <connections>
+                                    <action selector="filter:" destination="Grl-4C-vV7" eventType="touchUpInside" id="Iph-cI-r3E"/>
+                                </connections>
+                            </button>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOU-wI-y5F" userLabel="blackView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="280"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFF-pl-qqA" userLabel="filterView">
+                                <rect key="frame" x="0.0" y="280" width="320" height="200"/>
+                                <color key="backgroundColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="9zn-p2-Qm8"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="WFF-pl-qqA" firstAttribute="top" secondItem="WOU-wI-y5F" secondAttribute="bottom" id="12f-Ia-4YA"/>
                             <constraint firstItem="fgv-lZ-OY1" firstAttribute="top" secondItem="dos-vv-upu" secondAttribute="bottom" constant="30" id="2UA-ee-yym"/>
                             <constraint firstItem="fgv-lZ-OY1" firstAttribute="leading" secondItem="LE5-Ui-4B3" secondAttribute="leading" id="4GD-BZ-ZdV"/>
                             <constraint firstItem="dos-vv-upu" firstAttribute="centerX" secondItem="LE5-Ui-4B3" secondAttribute="centerX" id="4Q6-Uu-4Fx"/>
@@ -2179,24 +2202,36 @@
                             <constraint firstItem="n0x-Pz-LMA" firstAttribute="centerX" secondItem="LE5-Ui-4B3" secondAttribute="centerX" id="5Fg-2U-Exw"/>
                             <constraint firstItem="xK7-aT-7LI" firstAttribute="centerX" secondItem="LE5-Ui-4B3" secondAttribute="centerX" id="7oB-Vm-6mA"/>
                             <constraint firstItem="iRs-Yv-I4q" firstAttribute="top" secondItem="PrW-i7-IuZ" secondAttribute="bottom" id="7pF-AM-RlE"/>
+                            <constraint firstAttribute="trailing" secondItem="WFF-pl-qqA" secondAttribute="trailing" id="CTg-ZK-bmv"/>
                             <constraint firstAttribute="trailing" secondItem="fgv-lZ-OY1" secondAttribute="trailing" id="Ijc-rw-eXp"/>
                             <constraint firstItem="PrW-i7-IuZ" firstAttribute="top" secondItem="tR9-cS-rER" secondAttribute="bottom" constant="12" id="KXJ-wK-w0R"/>
+                            <constraint firstItem="WFF-pl-qqA" firstAttribute="leading" secondItem="LE5-Ui-4B3" secondAttribute="leading" id="LxG-ob-lwR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tR9-cS-rER" secondAttribute="trailing" id="Oop-Ug-NxC"/>
+                            <constraint firstItem="AE9-S5-B4h" firstAttribute="centerY" secondItem="dos-vv-upu" secondAttribute="centerY" id="WBc-L2-5Xz"/>
+                            <constraint firstItem="WOU-wI-y5F" firstAttribute="leading" secondItem="LE5-Ui-4B3" secondAttribute="leading" id="azG-70-gSK"/>
+                            <constraint firstAttribute="trailing" secondItem="AE9-S5-B4h" secondAttribute="trailing" constant="8" id="bco-EX-DsU"/>
                             <constraint firstItem="PrW-i7-IuZ" firstAttribute="top" secondItem="fgv-lZ-OY1" secondAttribute="bottom" constant="12" id="cuB-ny-T0b"/>
                             <constraint firstAttribute="trailing" secondItem="PrW-i7-IuZ" secondAttribute="trailing" id="izT-mK-gro"/>
+                            <constraint firstAttribute="trailing" secondItem="WOU-wI-y5F" secondAttribute="trailing" id="lOo-af-2rU"/>
                             <constraint firstItem="5YM-uj-HSp" firstAttribute="top" secondItem="dos-vv-upu" secondAttribute="bottom" constant="8" id="mk8-s1-ku2"/>
                             <constraint firstItem="n0x-Pz-LMA" firstAttribute="centerY" secondItem="LE5-Ui-4B3" secondAttribute="centerY" id="qXo-Z5-qkE"/>
                             <constraint firstItem="PrW-i7-IuZ" firstAttribute="leading" secondItem="LE5-Ui-4B3" secondAttribute="leading" id="udA-SX-lkf"/>
                             <constraint firstItem="5YM-uj-HSp" firstAttribute="centerX" secondItem="LE5-Ui-4B3" secondAttribute="centerX" id="un9-4D-rrN"/>
                             <constraint firstItem="dos-vv-upu" firstAttribute="top" secondItem="s0z-Tx-Xcl" secondAttribute="bottom" constant="20" id="vSZ-hn-ggb"/>
                             <constraint firstItem="xK7-aT-7LI" firstAttribute="centerY" secondItem="LE5-Ui-4B3" secondAttribute="centerY" id="w3h-Tq-rFr"/>
+                            <constraint firstItem="iRs-Yv-I4q" firstAttribute="top" secondItem="WFF-pl-qqA" secondAttribute="bottom" id="xS0-JC-fPc"/>
                             <constraint firstItem="Zd3-FV-qbM" firstAttribute="leading" secondItem="tR9-cS-rER" secondAttribute="leading" constant="3" id="xu6-cc-3YU"/>
+                            <constraint firstItem="WOU-wI-y5F" firstAttribute="top" secondItem="LE5-Ui-4B3" secondAttribute="top" id="yA6-Ub-HUI"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="PeriodChosen" destination="5YM-uj-HSp" id="Ynx-YW-EJy"/>
                         <outlet property="StatusChosen" destination="dos-vv-upu" id="Gbn-xO-HWO"/>
                         <outlet property="billerConnect" destination="fgv-lZ-OY1" id="Rx0-B2-O4e"/>
+                        <outlet property="blackView" destination="WOU-wI-y5F" id="Cez-do-14d"/>
+                        <outlet property="filter" destination="AE9-S5-B4h" id="g1C-52-BZq"/>
+                        <outlet property="filterBG" destination="WFF-pl-qqA" id="PvO-oU-GQe"/>
+                        <outlet property="filterConstrain" destination="xS0-JC-fPc" id="bb1-Xr-9pI"/>
                         <outlet property="noSign" destination="xK7-aT-7LI" id="68e-Uo-GDp"/>
                         <outlet property="thinking" destination="n0x-Pz-LMA" id="ZFn-TC-imW"/>
                         <outlet property="totalAmount" destination="RwY-u5-Vpk" id="nqf-q4-hwd"/>
@@ -2206,7 +2241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UVZ-2I-f4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5891" y="-905"/>
+            <point key="canvasLocation" x="-5891.25" y="-905"/>
         </scene>
         <!--NewVC Table-->
         <scene sceneID="NSE-n1-xE8">
@@ -2591,6 +2626,7 @@
         <image name="resend" width="50" height="50"/>
         <image name="roundBig" width="100" height="100"/>
         <image name="sandWatch" width="50" height="50"/>
+        <image name="sandWatchGreen" width="100" height="100"/>
         <image name="sendBillIcon" width="50" height="50"/>
         <image name="telephone" width="50" height="50"/>
         <image name="trash" width="50" height="50"/>
@@ -2601,6 +2637,6 @@
         <segue reference="vGn-ru-ol3"/>
         <segue reference="kEl-UY-JOa"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="gfT-By-X34"/>
+        <segue reference="1k4-P4-HYk"/>
     </inferredMetricsTieBreakers>
 </document>
