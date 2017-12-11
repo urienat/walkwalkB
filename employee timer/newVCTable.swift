@@ -752,31 +752,57 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     }
     }//end of alert11
     
+    func billProcess() {
+        self.thinking.startAnimating()
+        self.billing()
+
+        DispatchQueue.main.asyncAfter(deadline: .now()+2){
+        self.htmlReport = self.csv2 as String!
+        if self.biller == true {self.dbRefEmployees.child(self.employeeID).updateChildValues(["fCounter": String(describing: (Int(self.counterForMail2!)!+1))])//add counter to invouce #
+
+        self.biller = false
+
+        self.mailSaver = "\(self.mydateFormat3.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n Account: \(self.employerFromMain!)\r\n\(self.billInfo)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) \r\n \(self.perEvents.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\nPayment with paypal: \(self.paypal!)/\(self.midCalc2) \r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\nMade by PerSession app. "
+
+
+        //update bill with DB
+        self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": "Billed", "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2
+        ], withCompletionBlock: { (error) in}) //end of update.//was 0
+        self.generalApprovalClicked()
+        //self.alert19()
+        }//end of if biller
+        }
+    }
+    
     func alert18(){
     DispatchQueue.main.asyncAfter(deadline: .now()){
     self.billSender.isEnabled = false}
         
     let alertController18 = UIAlertController(title: ("Bill") , message: "Register a new Bill and set sessions from 'Due' to 'Billed'." , preferredStyle: .alert)
-    let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-    self.thinking.startAnimating()
-    self.billing()
-            
-    DispatchQueue.main.asyncAfter(deadline: .now()+2){
-    self.htmlReport = self.csv2 as String!
-    if self.biller == true {self.dbRefEmployees.child(self.employeeID).updateChildValues(["fCounter": String(describing: (Int(self.counterForMail2!)!+1))])//add counter to invouce #
-
-    self.biller = false
-
-        self.mailSaver = "\(self.mydateFormat3.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n Account: \(self.employerFromMain!)\r\n\(self.billInfo)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) \r\n \(self.perEvents.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\nPayment with paypal: \(self.paypal!)/\(self.midCalc2) \r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\nMade by PerSession app. "
-                    
-
-    //update bill with DB
-    self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": "Billed", "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2
-        ], withCompletionBlock: { (error) in}) //end of update.//was 0
-    self.generalApprovalClicked()
-    self.alert19()
-    }//end of if biller
+    let OKAction = UIAlertAction(title: "Just do it", style: .default) { (UIAlertAction) in
+    self.billProcess()
     }
+    let mailAction = UIAlertAction(title: "Mail it", style: .default) { (UIAlertAction) in
+    self.billProcess()
+    DispatchQueue.main.asyncAfter(deadline: .now()+2){
+    let mailComposeViewController2 = self.configuredMailComposeViewController2()
+    if MFMailComposeViewController.canSendMail() {
+    self.present(mailComposeViewController2, animated: true, completion: nil)
+    } //end of if
+    else{ self.showSendmailErrorAlert() }
+
+    self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
+    DispatchQueue.main.asyncAfter(deadline: .now()+2){
+
+    self.segmentedPressed = 0
+    self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
+    self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+    }
+    }
+    }
+    let printAction = UIAlertAction(title: "Print it", style: .default) { (UIAlertAction) in
+        self.billProcess()
+        //add printing process
     }
     let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
     self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
@@ -786,45 +812,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     }
         
     alertController18.addAction(OKAction)
+    alertController18.addAction(mailAction)
+    alertController18.addAction(printAction)
     alertController18.addAction(CancelAction)
     self.present(alertController18, animated: true, completion: nil)
     }//end of alert18
-    
-    func alert19(){
-    DispatchQueue.main.asyncAfter(deadline: .now()){
-    self.billSender.isEnabled = false}
-       
-    let alertController19 = UIAlertController(title: ("Mail Bill-\(self.counterForMail2!)") , message: "Mail with bill-\(self.counterForMail2!) is being prepared for you to send or save." , preferredStyle: .alert)
-    let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-                
-    DispatchQueue.main.asyncAfter(deadline: .now()+2){
-    let mailComposeViewController2 = self.configuredMailComposeViewController2()
-    if MFMailComposeViewController.canSendMail() {
-    self.present(mailComposeViewController2, animated: true, completion: nil)
-    } //end of if
-    else{ self.showSendmailErrorAlert() }
-               
-    self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
-    DispatchQueue.main.asyncAfter(deadline: .now()+2){
-                        
-    self.segmentedPressed = 0
-    self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
-    self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-    }
-    }
-    }
-    let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
-    self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
-    self.segmentedPressed = 0
-    self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
-    self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-    }
-            
-    alertController19.addAction(OKAction)
-    alertController19.addAction(CancelAction)
-            
-    self.present(alertController19, animated: true, completion: nil)
-    }//end of alert19
     
     func alert27() {
     DispatchQueue.main.asyncAfter(deadline: .now()){

@@ -651,13 +651,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         }//end of issidemenuhidden
     
     func arrowMove(){
-        UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse], animations: {
+        UIView.animate(withDuration: 1.3, delay: 0, options: [.repeat, .autoreverse], animations: {
         self.arrow.center.y -= 20
         }, completion: nil)
 
-       // UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse], animations: {
-       // self.arrow.center.y -= 40
-       // }, completion: nil)
         }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////alerts
     func  alert83(){

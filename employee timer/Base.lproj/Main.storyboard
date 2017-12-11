@@ -936,7 +936,7 @@
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="iHN-TD-1dx" userLabel="arrow">
-                                <rect key="frame" x="274" y="64" width="40" height="80"/>
+                                <rect key="frame" x="274" y="85" width="40" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="HCD-sG-SJb"/>
                                     <constraint firstAttribute="width" constant="40" id="bhH-wa-SU6"/>
@@ -955,7 +955,7 @@
                             <constraint firstItem="JyP-95-znE" firstAttribute="top" secondItem="yHg-YC-CqC" secondAttribute="bottom" id="1hb-Xe-QgI"/>
                             <constraint firstAttribute="trailing" secondItem="Wkx-Tt-3io" secondAttribute="trailing" id="3iw-Bp-Rkw"/>
                             <constraint firstItem="tbR-QL-TgX" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="4b8-su-roT"/>
-                            <constraint firstItem="iHN-TD-1dx" firstAttribute="top" secondItem="lxT-w2-3r9" secondAttribute="bottom" constant="14" id="4jT-BY-MaF"/>
+                            <constraint firstItem="iHN-TD-1dx" firstAttribute="top" secondItem="lxT-w2-3r9" secondAttribute="bottom" constant="35" id="4jT-BY-MaF"/>
                             <constraint firstItem="fEo-2V-FTr" firstAttribute="centerY" secondItem="uv4-gs-ESI" secondAttribute="centerY" id="7hJ-c6-joF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iHN-TD-1dx" secondAttribute="trailing" constant="-10" id="7nR-Zh-qVy"/>
                             <constraint firstItem="fXg-VA-EDp" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="BKR-ZQ-q0s"/>
@@ -2598,10 +2598,11 @@
         <image name="vNaked" width="150" height="150"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="cyf-eK-Md6"/>
         <segue reference="UPU-lN-oqU"/>
         <segue reference="vGn-ru-ol3"/>
         <segue reference="kEl-UY-JOa"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="gfT-By-X34"/>
+        <segue reference="1k4-P4-HYk"/>
     </inferredMetricsTieBreakers>
 </document>
