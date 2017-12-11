@@ -97,10 +97,11 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var dIn = String (describing: Date())
     var dIn2 = String (describing: Date())
 
-    @IBOutlet weak var googleCalander: UIBarButtonItem!
-    @IBAction func googleCalander(_ sender: Any) {
+    
+    @IBOutlet weak var menuItem: UIBarButtonItem!
+    @IBAction func menuItem(_ sender: Any) {
     sideMenuMovement()
-    }//end of googlecalander
+    }//end of menu
 
     @IBOutlet weak var addAccount: UIBarButtonItem!
     @IBAction func addAccount(_ sender: Any) {
@@ -132,7 +133,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }
     
     //side Menu
-    
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var sideMenuConstarin: NSLayoutConstraint!
     @IBOutlet weak var sideMenu: UIView!
@@ -279,7 +279,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
     self.sideMenuConstarin.constant = -140
     self.blackView.isHidden = true
-
+    
+    let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+    blackView.addGestureRecognizer(tap)
+    blackView.isUserInteractionEnabled = true
 
     }// end of viewdidload//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    
@@ -445,7 +448,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
                 
 
     if self.employerIdArray2.isEmpty == true {self.thinking2.stopAnimating()
-        self.googleCalander.isEnabled = false
     } else {
 
     for iIndex in 0...(self.employerIdArray2.count-1){
@@ -498,7 +500,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.workedFor.isHidden = true
     self.startBackground.isHidden = false
     self.importBackground.isHidden = false
-    self.googleCalander.isEnabled = false
     
         
     //self.account.isEnabled = true;
@@ -515,7 +516,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     chooseEmployer.isHidden = true
     startBackground.isHidden = true
      self.importBackground.isHidden = true
-    self.googleCalander.isEnabled = true
 
     addAmanualRecord.isHidden = true
     animationImage.isHidden = true
@@ -526,7 +526,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         self.animationImage.isHidden = false
         self.startBackground.isHidden = true
         self.importBackground.isHidden = true
-        self.googleCalander.isEnabled = true
 
         self.DateIn.isHidden = false;
         self.workedFor.isHidden = true
@@ -600,7 +599,12 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     })
     }
     
+    func handleTap(sender: UITapGestureRecognizer? = nil) {
+    sideMenuMovement()    }
+    
     func sideMenuMovement(){
+        print ("fff")
+        
         if isSideMenuHidden {
             self.blackView.isHidden = false
             self.sideMenuConstarin.constant = 0

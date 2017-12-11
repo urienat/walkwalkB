@@ -915,7 +915,7 @@
                                     <constraint firstItem="Apw-du-z4J" firstAttribute="trailing" secondItem="1Qc-n2-TDv" secondAttribute="trailing" id="qv3-xL-BW8"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Fh-da-mJL" userLabel="blackView">
+                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Fh-da-mJL" userLabel="blackView">
                                 <rect key="frame" x="140" y="50" width="180" height="370"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -972,9 +972,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Accounts" id="Q5z-uo-p1A">
-                        <barButtonItem key="leftBarButtonItem" title="Import" style="done" id="yFh-ig-nQ8" userLabel="googleCalander">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="organize" id="yFh-ig-nQ8" userLabel="menuItem">
                             <connections>
-                                <action selector="googleCalander:" destination="Ecy-Z7-2Op" id="Wcl-1H-noi"/>
+                                <action selector="menuItem:" destination="Ecy-Z7-2Op" id="nF3-QX-sLd"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NNj-jv-ITI">
@@ -997,10 +997,10 @@
                         <outlet property="employerListBottom" destination="iQn-al-QjX" id="FWA-ji-eSl"/>
                         <outlet property="employerListHeiget" destination="QAK-61-qij" id="DuM-13-Fpw"/>
                         <outlet property="employerListTop" destination="WI7-6r-u9D" id="VTG-on-q7b"/>
-                        <outlet property="googleCalander" destination="yFh-ig-nQ8" id="QP9-Pr-mO1"/>
                         <outlet property="importBackground" destination="b9U-e8-FEx" id="wcP-Rn-43l"/>
                         <outlet property="importBtn" destination="bgz-2X-N9Q" id="oW8-ar-l0U"/>
                         <outlet property="importImage" destination="l9b-bB-9mb" id="6ef-nj-1c4"/>
+                        <outlet property="menuItem" destination="yFh-ig-nQ8" id="5zC-xf-qOB"/>
                         <outlet property="records" destination="uPD-Ce-NUz" id="vkv-Tl-a3Z"/>
                         <outlet property="sideMenu" destination="cKA-rE-TUN" id="ZO5-OH-NyS"/>
                         <outlet property="sideMenuConstarin" destination="Qng-b0-SRL" id="STP-FC-cVD"/>
