@@ -137,7 +137,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBAction func billBtn(_ sender: Any) {
     //fix spesific
     sideMenuMovement()
-    billsClicked()
+    performSegue(withIdentifier: "employerForAllBills", sender: employerToS)
     }
     
     @IBAction func taxationBtn(_ sender: Any) {
@@ -347,8 +347,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     //did stop active procedure
     func applicationDidBecomePassive(notification: NSNotification) {
-    if account.isEnabled == true {
-    }
+    
     }// end of func application did stop
     
     //chose employer
@@ -398,6 +397,13 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }//end of else if
         
     else if (segue.identifier == "employerForBills"){
+    let recordsView = segue.destination as? biller
+    recordsView?.employerID = employerIDToS
+    recordsView?.employerFromMain = employerToS
+    recordsView?.employeeID = employeeIDToS
+    }//end of else if
+        
+    else if (segue.identifier == "employerForAllBills"){
     let recordsView = segue.destination as? biller
     recordsView?.employerID = employerIDToS
     recordsView?.employerFromMain = employerToS
@@ -510,20 +516,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.chooseEmployer.isUserInteractionEnabled = true
     startBarButtonFadeOut()
     startBarButtonFadeIn()
-    }//end of func
-
-    func postStartView() {
-    //self.account.isEnabled = true
-    self.animationImage.isHidden = true
-    self.startBackground.isHidden = true
-    self.importBackground.isHidden = true
-    self.googleCalander.isEnabled = true
-
-    self.DateIn.isHidden = false;
-    self.workedFor.isHidden = true
-    self.addAmanualRecord.isHidden = true
-    self.chooseEmployer.isUserInteractionEnabled = true
-    
     }//end of func
 
     func postTimerView() {

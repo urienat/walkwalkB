@@ -21,6 +21,7 @@ extension(ViewController){
             print ("selected!!!!!!")
             records.isEnabled = true
             account.isEnabled = true
+            bills.isEnabled = true
 
             if pickerData.count == 0 {
             print ("indexpath4\([pickerData])")
