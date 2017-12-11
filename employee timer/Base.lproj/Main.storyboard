@@ -2244,7 +2244,6 @@
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="oYK-pt-rkV"/>
                                     <barButtonItem enabled="NO" image="sendBillIcon" id="OJv-uh-gXy" userLabel="billSender"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Ncs-bw-Beo"/>
                                 </items>
                             </toolbar>
                             <segmentedControl hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="4" translatesAutoresizingMaskIntoConstraints="NO" id="eCO-la-3hV">
@@ -2598,11 +2597,10 @@
         <image name="vNaked" width="150" height="150"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cyf-eK-Md6"/>
         <segue reference="UPU-lN-oqU"/>
         <segue reference="vGn-ru-ol3"/>
         <segue reference="kEl-UY-JOa"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="1k4-P4-HYk"/>
+        <segue reference="gfT-By-X34"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -263,20 +263,20 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             
             self.created = (snapshot.childSnapshot(forPath: "fCreated").value as! String)
                 
-                self.dateTimeUpdate = (snapshot.childSnapshot(forPath: "fDateTime").value as! String)
-                if self.dateTimeUpdate == "Date"{self.dateTimeFormat.selectedSegmentIndex = 1} else {self.dateTimeFormat.selectedSegmentIndex = 0}
-                
-                
-                self.calanderUpdate = (snapshot.childSnapshot(forPath: "fCalander").value as! String)
-                if self.calanderUpdate == "Google" {self.calander.selectedSegmentIndex = 0} else if self.calanderUpdate == "IOS" {self.calander.selectedSegmentIndex = 1} else {self.calander.selectedSegmentIndex = 2}
-            
-                self.taxCalacUpdate = (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String)
-                
+            self.dateTimeUpdate = (snapshot.childSnapshot(forPath: "fDateTime").value as! String)
+            if self.dateTimeUpdate == "Date"{self.dateTimeFormat.selectedSegmentIndex = 1} else {self.dateTimeFormat.selectedSegmentIndex = 0}
+
+
+            self.calanderUpdate = (snapshot.childSnapshot(forPath: "fCalander").value as! String)
+            if self.calanderUpdate == "Google" {self.calander.selectedSegmentIndex = 0} else if self.calanderUpdate == "IOS" {self.calander.selectedSegmentIndex = 1} else {self.calander.selectedSegmentIndex = 2}
+
+            self.taxCalacUpdate = (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String)
+
             self.taxSwitchTemp = snapshot.childSnapshot(forPath: "fSwitcher").value as! String
-                if self.taxSwitchTemp == "No" {self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true; self.taxCalac.isHidden = true; self.taxName.isHidden = true; self.signer.isHidden = true;self.taxSwitchTemp = "Yes";
-                    
-                } else {
-                    self.taxSwitch.setOn(true, animated: true);self.taxCalac.isHidden = false; self.precentage.isHidden = false; self.taxName.isHidden = false; self.signer.isHidden = false;self.taxSwitchTemp = "No";self.taxSwitcherUpdate = "Yes"; if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0} }
+            if self.taxSwitchTemp == "No" {self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true; self.taxCalac.isHidden = true; self.taxName.isHidden = true; self.signer.isHidden = true;self.taxSwitchTemp = "Yes";
+
+            } else {
+            self.taxSwitch.setOn(true, animated: true);self.taxCalac.isHidden = false; self.precentage.isHidden = false; self.taxName.isHidden = false; self.signer.isHidden = false;self.taxSwitchTemp = "No";self.taxSwitcherUpdate = "Yes"; if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0} }
 
             self.taxPrecentageUpdate  = snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String
             self.precentage.text = self.taxPrecentageUpdate
@@ -361,6 +361,8 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             navigationItem.rightBarButtonItem = saveRecord
 
             setting.newEmployee = "NO"
+        }else {
+            
         }
         
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
