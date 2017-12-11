@@ -107,6 +107,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var addAccount: UIBarButtonItem!
     @IBAction func addAccount(_ sender: Any) {
     print ("add")
+    arrow.isHidden = true
     employerToS = "Add new dog"
     accountClicked()
     }
@@ -293,7 +294,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     blackView.addGestureRecognizer(tap)
     blackView.isUserInteractionEnabled = true
         
-      arrowMove()
 
     }// end of viewdidload//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    
@@ -468,9 +468,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }//end of j loop
                 
 
-    if self.employerIdArray2.isEmpty == true {self.thinking2.stopAnimating()
-    } else {
+        if self.employerIdArray2.isEmpty == true {self.thinking2.stopAnimating();  self.arrow.isHidden = false; self.arrowMove()
 
+    } else {
+    self.arrow.isHidden = true
     for iIndex in 0...(self.employerIdArray2.count-1){
     self.dbRefEmployer.child(self.employerIdArray2[iIndex] as! String).observeSingleEvent(of: .value, with:{ (snapshot) in
     self.employerItem = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
