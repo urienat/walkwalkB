@@ -819,8 +819,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKA-rE-TUN" userLabel="sideMenu">
                                 <rect key="frame" x="0.0" y="50" width="140" height="370"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qc-n2-TDv">
-                                        <rect key="frame" x="30" y="20" width="102" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qc-n2-TDv">
+                                        <rect key="frame" x="8" y="60" width="124" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Wj8-b4-D45"/>
                                         </constraints>
@@ -832,8 +832,8 @@
                                             <segue destination="Grl-4C-vV7" kind="show" identifier="employerForAllBills" id="Gn3-m3-lJV"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Apw-du-z4J" userLabel="taxation">
-                                        <rect key="frame" x="30" y="70" width="102" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Apw-du-z4J" userLabel="taxation">
+                                        <rect key="frame" x="8" y="110" width="124" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="nAi-wH-8QU"/>
                                         </constraints>
@@ -845,8 +845,19 @@
                                             <action selector="taxationBtn:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="mS9-eu-HN7"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUE-gp-XN7" userLabel="importAll">
-                                        <rect key="frame" x="30" y="120" width="102" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kul-S5-qLg" userLabel="seprationLine">
+                                        <rect key="frame" x="50" y="150" width="40" height="1"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="7TO-zW-q4U"/>
+                                            <constraint firstAttribute="width" constant="40" id="gQe-2E-oCG"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUE-gp-XN7" userLabel="importAll">
+                                        <rect key="frame" x="8" y="160" width="124" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="GbA-ER-RRg"/>
                                         </constraints>
@@ -858,8 +869,8 @@
                                             <action selector="importAllBtn:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="vTj-bc-CmK"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVz-zc-egn" userLabel="other">
-                                        <rect key="frame" x="30" y="170" width="102" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVz-zc-egn" userLabel="other">
+                                        <rect key="frame" x="8" y="210" width="124" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="xYK-I9-9Xd"/>
                                         </constraints>
@@ -871,8 +882,19 @@
                                             <action selector="otherBtn:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="C0Y-i6-hUx"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVb-jk-U9q" userLabel="logout">
-                                        <rect key="frame" x="30" y="270" width="102" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rWv-Jm-WnL" userLabel="seprationLine">
+                                        <rect key="frame" x="50" y="249" width="40" height="1"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="3MB-QP-MC1"/>
+                                            <constraint firstAttribute="width" constant="40" id="FxN-vP-sIa"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVb-jk-U9q" userLabel="logout">
+                                        <rect key="frame" x="8" y="310" width="124" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="kvk-Jv-Ex6"/>
                                         </constraints>
@@ -884,8 +906,8 @@
                                             <action selector="logoutBtn:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="cY4-0Z-yjJ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2K-IY-bl8" userLabel="setting">
-                                        <rect key="frame" x="30" y="220" width="102" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2K-IY-bl8" userLabel="setting">
+                                        <rect key="frame" x="8" y="260" width="124" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="2eN-cz-Rux"/>
                                         </constraints>
@@ -904,21 +926,25 @@
                                     <constraint firstItem="Apw-du-z4J" firstAttribute="leading" secondItem="1Qc-n2-TDv" secondAttribute="leading" id="5c8-xh-7uP"/>
                                     <constraint firstItem="JVz-zc-egn" firstAttribute="trailing" secondItem="WUE-gp-XN7" secondAttribute="trailing" id="A5D-h6-AoZ"/>
                                     <constraint firstAttribute="trailing" secondItem="1Qc-n2-TDv" secondAttribute="trailing" constant="8" id="Cew-eA-rEP"/>
-                                    <constraint firstItem="1Qc-n2-TDv" firstAttribute="leading" secondItem="cKA-rE-TUN" secondAttribute="leading" constant="30" id="I71-So-y4t"/>
-                                    <constraint firstItem="1Qc-n2-TDv" firstAttribute="top" secondItem="cKA-rE-TUN" secondAttribute="top" constant="20" id="JBB-TC-dRd"/>
+                                    <constraint firstItem="Kul-S5-qLg" firstAttribute="centerX" secondItem="cKA-rE-TUN" secondAttribute="centerX" id="Fex-iD-8y7"/>
+                                    <constraint firstItem="1Qc-n2-TDv" firstAttribute="leading" secondItem="cKA-rE-TUN" secondAttribute="leading" constant="8" id="I71-So-y4t"/>
+                                    <constraint firstItem="1Qc-n2-TDv" firstAttribute="top" secondItem="cKA-rE-TUN" secondAttribute="top" constant="60" id="JBB-TC-dRd"/>
                                     <constraint firstItem="N2K-IY-bl8" firstAttribute="trailing" secondItem="JVz-zc-egn" secondAttribute="trailing" id="Lcs-kC-cHe"/>
                                     <constraint firstItem="WUE-gp-XN7" firstAttribute="leading" secondItem="Apw-du-z4J" secondAttribute="leading" id="MbK-Uw-Rak"/>
                                     <constraint firstItem="WUE-gp-XN7" firstAttribute="trailing" secondItem="Apw-du-z4J" secondAttribute="trailing" id="O8q-RN-gk3"/>
                                     <constraint firstItem="eVb-jk-U9q" firstAttribute="trailing" secondItem="N2K-IY-bl8" secondAttribute="trailing" id="OXs-vc-7qG"/>
                                     <constraint firstItem="N2K-IY-bl8" firstAttribute="leading" secondItem="JVz-zc-egn" secondAttribute="leading" id="PkL-It-0EZ"/>
+                                    <constraint firstItem="N2K-IY-bl8" firstAttribute="top" secondItem="rWv-Jm-WnL" secondAttribute="bottom" constant="10" id="SDg-Ag-uGT"/>
                                     <constraint firstItem="eVb-jk-U9q" firstAttribute="leading" secondItem="N2K-IY-bl8" secondAttribute="leading" id="TIS-TG-E3h"/>
                                     <constraint firstItem="JVz-zc-egn" firstAttribute="top" secondItem="WUE-gp-XN7" secondAttribute="bottom" constant="20" id="XGD-1R-Huk"/>
                                     <constraint firstItem="WUE-gp-XN7" firstAttribute="top" secondItem="Apw-du-z4J" secondAttribute="bottom" constant="20" id="ckp-Pa-LGG"/>
                                     <constraint firstAttribute="width" constant="140" id="cvI-9M-eSU"/>
                                     <constraint firstItem="eVb-jk-U9q" firstAttribute="top" secondItem="N2K-IY-bl8" secondAttribute="bottom" constant="20" id="hEq-cZ-N1r"/>
                                     <constraint firstItem="N2K-IY-bl8" firstAttribute="top" secondItem="JVz-zc-egn" secondAttribute="bottom" constant="20" id="hoL-c0-bBc"/>
+                                    <constraint firstItem="rWv-Jm-WnL" firstAttribute="centerX" secondItem="cKA-rE-TUN" secondAttribute="centerX" id="nin-ke-ux0"/>
                                     <constraint firstItem="JVz-zc-egn" firstAttribute="leading" secondItem="WUE-gp-XN7" secondAttribute="leading" id="pFv-5h-7XU"/>
                                     <constraint firstItem="Apw-du-z4J" firstAttribute="trailing" secondItem="1Qc-n2-TDv" secondAttribute="trailing" id="qv3-xL-BW8"/>
+                                    <constraint firstItem="Kul-S5-qLg" firstAttribute="top" secondItem="Apw-du-z4J" secondAttribute="bottom" constant="10" id="xl0-qR-8g7"/>
                                 </constraints>
                             </view>
                             <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Fh-da-mJL" userLabel="blackView">
@@ -2575,6 +2601,7 @@
         <image name="vNaked" width="150" height="150"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="cyf-eK-Md6"/>
         <segue reference="UPU-lN-oqU"/>
         <segue reference="Gn3-m3-lJV"/>
         <segue reference="5at-sc-TfM"/>
