@@ -137,6 +137,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var sideMenuConstarin: NSLayoutConstraint!
     @IBOutlet weak var sideMenu: UIView!
+    
     @IBAction func billBtn(_ sender: Any) {
     sideMenuMovement()
     performSegue(withIdentifier: "employerForAllBills", sender: employerToS)
