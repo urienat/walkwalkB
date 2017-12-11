@@ -2186,9 +2186,100 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFF-pl-qqA" userLabel="filterView">
                                 <rect key="frame" x="0.0" y="280" width="320" height="200"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42o-9O-q03">
+                                        <rect key="frame" x="8" y="0.0" width="304" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Env-Gb-9Cg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                        <state key="normal" title="None">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eP2-jy-EKg" userLabel="seprationLine">
+                                        <rect key="frame" x="140" y="40" width="40" height="1"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="eJy-rC-Iwb"/>
+                                            <constraint firstAttribute="width" constant="40" id="pYD-bs-59K"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFO-Jh-kR1" userLabel="currentMonth">
+                                        <rect key="frame" x="8" y="40" width="304" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="NOW-ym-IkK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                        <state key="normal" title="Current Month">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Yn-I6-tEs" userLabel="lastMonth">
+                                        <rect key="frame" x="8" y="80" width="304" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="mpF-cG-FT8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                        <state key="normal" title="Last Month">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3zJ-sW-iik" userLabel="seprationLine">
+                                        <rect key="frame" x="140" y="119" width="40" height="1"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="fnG-4D-bS0"/>
+                                            <constraint firstAttribute="height" constant="1" id="vmc-kB-7JT"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWT-Ke-MgJ" userLabel="currentYear">
+                                        <rect key="frame" x="8" y="120" width="304" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="tGi-5e-3Xn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                        <state key="normal" title="Current Year">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbb-h3-Gwm" userLabel="lastYear">
+                                        <rect key="frame" x="8" y="160" width="304" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="JbR-cD-txh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                        <state key="normal" title="Last Year">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="cbb-h3-Gwm" firstAttribute="trailing" secondItem="CWT-Ke-MgJ" secondAttribute="trailing" id="0zX-ms-dRh"/>
+                                    <constraint firstItem="xFO-Jh-kR1" firstAttribute="trailing" secondItem="42o-9O-q03" secondAttribute="trailing" id="1Dg-Ss-z5Q"/>
+                                    <constraint firstItem="cbb-h3-Gwm" firstAttribute="leading" secondItem="CWT-Ke-MgJ" secondAttribute="leading" id="2CG-HE-Nf3"/>
+                                    <constraint firstItem="CWT-Ke-MgJ" firstAttribute="top" secondItem="1Yn-I6-tEs" secondAttribute="bottom" id="5WP-Oe-e8i"/>
                                     <constraint firstAttribute="height" constant="200" id="9zn-p2-Qm8"/>
+                                    <constraint firstItem="xFO-Jh-kR1" firstAttribute="top" secondItem="42o-9O-q03" secondAttribute="bottom" id="QXS-Xk-9hV"/>
+                                    <constraint firstItem="1Yn-I6-tEs" firstAttribute="leading" secondItem="xFO-Jh-kR1" secondAttribute="leading" id="R2h-H7-ptD"/>
+                                    <constraint firstItem="xFO-Jh-kR1" firstAttribute="leading" secondItem="42o-9O-q03" secondAttribute="leading" id="U7d-dR-AGo"/>
+                                    <constraint firstItem="CWT-Ke-MgJ" firstAttribute="top" secondItem="3zJ-sW-iik" secondAttribute="bottom" id="Xdr-Mv-fky"/>
+                                    <constraint firstItem="CWT-Ke-MgJ" firstAttribute="leading" secondItem="1Yn-I6-tEs" secondAttribute="leading" id="eM6-9H-FCt"/>
+                                    <constraint firstItem="eP2-jy-EKg" firstAttribute="top" secondItem="42o-9O-q03" secondAttribute="bottom" id="idI-bM-dRr"/>
+                                    <constraint firstItem="42o-9O-q03" firstAttribute="leading" secondItem="WFF-pl-qqA" secondAttribute="leading" constant="8" id="jbl-77-i94"/>
+                                    <constraint firstItem="1Yn-I6-tEs" firstAttribute="top" secondItem="xFO-Jh-kR1" secondAttribute="bottom" id="jcx-EH-04y"/>
+                                    <constraint firstAttribute="trailing" secondItem="42o-9O-q03" secondAttribute="trailing" constant="8" id="jrv-jQ-ECh"/>
+                                    <constraint firstItem="cbb-h3-Gwm" firstAttribute="top" secondItem="CWT-Ke-MgJ" secondAttribute="bottom" id="mHw-y8-rge"/>
+                                    <constraint firstItem="42o-9O-q03" firstAttribute="top" secondItem="WFF-pl-qqA" secondAttribute="top" id="nWf-fX-2SE"/>
+                                    <constraint firstItem="1Yn-I6-tEs" firstAttribute="trailing" secondItem="xFO-Jh-kR1" secondAttribute="trailing" id="pYa-cM-fxc"/>
+                                    <constraint firstItem="CWT-Ke-MgJ" firstAttribute="trailing" secondItem="1Yn-I6-tEs" secondAttribute="trailing" id="t5S-32-fc2"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2633,6 +2724,7 @@
         <image name="vNaked" width="150" height="150"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="cyf-eK-Md6"/>
         <segue reference="UPU-lN-oqU"/>
         <segue reference="vGn-ru-ol3"/>
         <segue reference="kEl-UY-JOa"/>
