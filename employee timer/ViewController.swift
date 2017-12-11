@@ -47,6 +47,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let roundImageBig = UIImage(named: "roundBig")
     let pencilImage = UIImage(named: "pencilImage")
     var ImageFromFirebase : UIImage?
+    var menu = UIImage(named: "menu")
     var leashImage = UIImage(named:"Leash")?.withRenderingMode(.alwaysTemplate)
     var meluna = UIImage(named:"meluna")?.withRenderingMode(.alwaysTemplate)
     var billsIcon = UIImage(named:"billsIcon")?.withRenderingMode(.alwaysTemplate)
@@ -176,6 +177,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let btn1 = UIButton(type: .custom)
     let btn2 = UIButton(type: .custom)
     let btn3 = UIButton(type: .custom)
+    let btnMenu = UIButton(type: .custom)
+ 
     
     //start timer action
     @IBAction func Start(_ sender: AnyObject) {
@@ -275,11 +278,16 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     btn3.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
     btn3.addTarget(self, action:#selector(billsClicked), for: UIControlEvents.touchDown)
     bills.customView = btn3
-    
         
+    btnMenu.setImage (menu, for: .normal)
+    btnMenu.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
+    btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
+    menuItem.customView = btnMenu
+     
+    
     self.sideMenuConstarin.constant = -140
     self.blackView.isHidden = true
-    
+        
     let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
     blackView.addGestureRecognizer(tap)
     blackView.isUserInteractionEnabled = true
@@ -306,6 +314,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     chooseEmployer.sendActions(for: .touchUpInside)
     ViewController.refresh = false
     }
+        
     }//end of view did appear
 
    
@@ -607,12 +616,18 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
         if isSideMenuHidden {
             self.blackView.isHidden = false
+            records.isEnabled = false
+            bills.isEnabled = false
+            account.isEnabled = false
             self.sideMenuConstarin.constant = 0
             UIView.animate(withDuration: 0.4, animations: {
                self.view.layoutIfNeeded()
             })
         }else{
             self.blackView.isHidden = true
+            records.isEnabled = true
+            bills.isEnabled = true
+            account.isEnabled = true
 
             sideMenuConstarin.constant = -140
             UIView.animate(withDuration:0.4, animations: {
