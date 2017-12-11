@@ -401,7 +401,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             })
             }else{
             self.blackView.isHidden = true
-            filterConstrain.constant = -200
+            filterConstrain.constant = -240
             UIView.animate(withDuration:0.4, animations: {
             self.view.layoutIfNeeded()
             })
