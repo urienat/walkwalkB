@@ -819,11 +819,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKA-rE-TUN" userLabel="sideMenu">
                                 <rect key="frame" x="0.0" y="50" width="140" height="370"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qc-n2-TDv">
-                                        <rect key="frame" x="8" y="20" width="124" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qc-n2-TDv">
+                                        <rect key="frame" x="30" y="20" width="102" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Wj8-b4-D45"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
                                         <state key="normal" title="Bills">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -831,11 +832,12 @@
                                             <segue destination="Grl-4C-vV7" kind="show" identifier="employerForAllBills" id="Gn3-m3-lJV"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Apw-du-z4J" userLabel="taxation">
-                                        <rect key="frame" x="8" y="70" width="124" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Apw-du-z4J" userLabel="taxation">
+                                        <rect key="frame" x="30" y="70" width="102" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="nAi-wH-8QU"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
                                         <state key="normal" title="Taxation">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -843,11 +845,12 @@
                                             <action selector="taxationBtn:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="mS9-eu-HN7"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUE-gp-XN7" userLabel="importAll">
-                                        <rect key="frame" x="8" y="120" width="124" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUE-gp-XN7" userLabel="importAll">
+                                        <rect key="frame" x="30" y="120" width="102" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="GbA-ER-RRg"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
                                         <state key="normal" title="Import ">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -855,11 +858,12 @@
                                             <action selector="importAllBtn:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="vTj-bc-CmK"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVz-zc-egn" userLabel="other">
-                                        <rect key="frame" x="8" y="170" width="124" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVz-zc-egn" userLabel="other">
+                                        <rect key="frame" x="30" y="170" width="102" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="xYK-I9-9Xd"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
                                         <state key="normal" title="Other">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -867,11 +871,12 @@
                                             <action selector="otherBtn:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="C0Y-i6-hUx"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVb-jk-U9q" userLabel="logout">
-                                        <rect key="frame" x="8" y="270" width="124" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVb-jk-U9q" userLabel="logout">
+                                        <rect key="frame" x="30" y="270" width="102" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="kvk-Jv-Ex6"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
                                         <state key="normal" title="Logout">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -879,11 +884,12 @@
                                             <action selector="logoutBtn:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="cY4-0Z-yjJ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2K-IY-bl8" userLabel="setting">
-                                        <rect key="frame" x="8" y="220" width="124" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2K-IY-bl8" userLabel="setting">
+                                        <rect key="frame" x="30" y="220" width="102" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="2eN-cz-Rux"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
                                         <state key="normal" title="Setting">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -898,7 +904,7 @@
                                     <constraint firstItem="Apw-du-z4J" firstAttribute="leading" secondItem="1Qc-n2-TDv" secondAttribute="leading" id="5c8-xh-7uP"/>
                                     <constraint firstItem="JVz-zc-egn" firstAttribute="trailing" secondItem="WUE-gp-XN7" secondAttribute="trailing" id="A5D-h6-AoZ"/>
                                     <constraint firstAttribute="trailing" secondItem="1Qc-n2-TDv" secondAttribute="trailing" constant="8" id="Cew-eA-rEP"/>
-                                    <constraint firstItem="1Qc-n2-TDv" firstAttribute="leading" secondItem="cKA-rE-TUN" secondAttribute="leading" constant="8" id="I71-So-y4t"/>
+                                    <constraint firstItem="1Qc-n2-TDv" firstAttribute="leading" secondItem="cKA-rE-TUN" secondAttribute="leading" constant="30" id="I71-So-y4t"/>
                                     <constraint firstItem="1Qc-n2-TDv" firstAttribute="top" secondItem="cKA-rE-TUN" secondAttribute="top" constant="20" id="JBB-TC-dRd"/>
                                     <constraint firstItem="N2K-IY-bl8" firstAttribute="trailing" secondItem="JVz-zc-egn" secondAttribute="trailing" id="Lcs-kC-cHe"/>
                                     <constraint firstItem="WUE-gp-XN7" firstAttribute="leading" secondItem="Apw-du-z4J" secondAttribute="leading" id="MbK-Uw-Rak"/>
