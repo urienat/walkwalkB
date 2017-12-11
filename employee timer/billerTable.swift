@@ -21,6 +21,9 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let billedImage = UIImage(named: "locked")
     let billIcon = UIImage(named: "bill")
     let canceledImage = UIImage(named: "cancelled")
+    let greenFilter = UIImage(named: "sandWatchGreen")
+    let redFilter = UIImage(named: "sandWatchRed")
+
     
     var billItems = [billStruct]()
     static var checkBoxBiller:Int = 0
@@ -46,6 +49,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var noSign: UIImageView!
     
     //filter
+    var filterDecided :String?
     var isFilterHidden = true
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var filterBG: UIView!
@@ -54,6 +58,38 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
       filterMovement()
     }
     @IBOutlet weak var filterConstrain: NSLayoutConstraint!
+    @IBAction func noneBtn(_ sender: Any) {
+        filterMovement()
+        filterDecided = "None"
+        filter.setImage(greenFilter, for: .normal)
+    }
+    
+    @IBAction func currentMonthBtn(_ sender: Any) {
+        filterMovement()
+        filterDecided = "currentMonth"
+        filter.setImage(redFilter, for: .normal)
+
+    }
+    
+    @IBAction func lastMonthBtn(_ sender: Any) {
+        filterMovement()
+        filterDecided = "lastMonth"
+        filter.setImage(redFilter, for: .normal)
+
+        
+    }
+    @IBAction func currentYearBtn(_ sender: Any) {
+        filterMovement()
+        filterDecided = "currentYear"
+        filter.setImage(redFilter, for: .normal)
+
+    }
+    @IBAction func lastYearBtn(_ sender: Any) {
+        filterMovement()
+        filterDecided = "currentYear"
+        filter.setImage(redFilter, for: .normal)
+    }
+    
     
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
 
@@ -76,11 +112,13 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         super.viewDidLoad()
         noSign.isHidden = true
         
-        filterConstrain.constant = -200
+        filterConstrain.constant = -240
         blackView.isHidden = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
         blackView.addGestureRecognizer(tap)
         blackView.isUserInteractionEnabled = true
+        filterDecided = "None"
+        filter.setImage(greenFilter, for: .normal)
         
         billerConnect.backgroundColor = UIColor.clear
         if employerID != "" {  titleLbl = "\(employerFromMain)'s bills" } else {titleLbl = "Bills"}
