@@ -50,8 +50,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
 
 
     @IBOutlet weak var scrollerView: UIScrollView!
-    @IBOutlet weak var bills: UIBarButtonItem!
-    @IBOutlet weak var leash: UIBarButtonItem!
+    
     @IBOutlet weak var trash: UIBarButtonItem!
     @IBOutlet weak var obligatory: UILabel!
     @IBAction func deleteAdog(_ sender: Any) {dogDeleteAlert()}  //for deleting an employer
@@ -141,9 +140,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             activeButton.setTitle("", for: .normal)
             activeEmployerSwitch = false
             
-            bills.isEnabled = false
             trash.isEnabled = false
-            leash.isEnabled = false
             obligatory .isHidden = false
             obligatoryIn()
             obligatoryOut()
@@ -153,9 +150,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             self.title = lbl
                 
             bringEmployerData()
-            bills.isEnabled = true
             trash.isEnabled = true
-            leash.isEnabled = true
             obligatory .isHidden = true
         }
 
@@ -447,22 +442,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         print(error.localizedDescription)}//end of second dbrefemployers
         }//end of if employers is not new
         }//end of bring employer data
-    
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "billsFromDogFile") {
-            let secondView = segue.destination as? biller
-            secondView?.employerFromMain = employerFromMain
-            secondView?.employerID = self.employerID
-            secondView?.employeeID = self.employeeID
-        }
-        else if (segue.identifier == "recordsFromDogFile"){
-                        let recordsView = segue.destination as? newVCTable
-            recordsView?.employerFromMain = employerFromMain
-            recordsView?.employerID = employerID
-            recordsView?.employeeID =  employeeID
-        }
-
-        }
     
         //adjustkeyboard
         func KeyboardNotificationwillShow(notification: NSNotification){

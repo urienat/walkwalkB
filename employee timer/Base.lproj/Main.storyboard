@@ -39,12 +39,6 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="JrI-ez-tv6"/>
-                                    <barButtonItem image="Leash" id="V8H-gy-tTz" userLabel="leash">
-                                        <connections>
-                                            <segue destination="KQc-zY-Jl3" kind="show" identifier="recordsFromDogFile" id="kfH-wV-ZNk"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="mkK-mi-Kvc"/>
                                     <barButtonItem image="trash" id="nZp-Dl-0PV">
                                         <connections>
                                             <action selector="deleteAdog:" destination="nD7-g7-jdd" id="HHP-an-WRV"/>
@@ -386,7 +380,6 @@
                         <outlet property="activeButton" destination="wTn-MV-ILJ" id="ChB-z8-CZB"/>
                         <outlet property="activeEmployer" destination="tPs-Eu-2ZP" id="J8N-1w-sUj"/>
                         <outlet property="currencySign" destination="xM3-e2-D0h" id="ARW-xc-pmW"/>
-                        <outlet property="leash" destination="V8H-gy-tTz" id="7t5-6u-vSL"/>
                         <outlet property="obligatory" destination="mf8-Uq-Tl6" id="dYX-NP-75D"/>
                         <outlet property="pAddress" destination="Clb-ky-rEY" id="XVa-RA-zOp"/>
                         <outlet property="pCell" destination="3ey-yI-Stf" id="qvh-bz-i3v"/>
@@ -611,7 +604,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqn-dL-iFO">
-                                <rect key="frame" x="145" y="109" width="30" height="53"/>
+                                <rect key="frame" x="145" y="65" width="30" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="MHf-8d-wBY"/>
                                 </constraints>
@@ -624,7 +617,7 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FxU-Wn-hMn" userLabel="add a button view">
-                                <rect key="frame" x="0.0" y="263" width="320" height="70"/>
+                                <rect key="frame" x="0.0" y="219" width="320" height="70"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencilImage" translatesAutoresizingMaskIntoConstraints="NO" id="fJW-rO-BL2" userLabel="pencil">
                                         <rect key="frame" x="215" y="25" width="20" height="20"/>
@@ -653,7 +646,7 @@
                                 </constraints>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wkx-Tt-3io" userLabel="DateIn">
-                                <rect key="frame" x="0.0" y="288" width="320" height="22"/>
+                                <rect key="frame" x="0.0" y="244" width="320" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="EB2-xY-uTN"/>
                                 </constraints>
@@ -709,7 +702,7 @@
                                 </prototypes>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45C-VX-M18" userLabel="startBackground">
-                                <rect key="frame" x="0.0" y="212" width="320" height="76"/>
+                                <rect key="frame" x="0.0" y="168" width="320" height="76"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cq4-SE-U6N">
                                         <rect key="frame" x="59" y="0.0" width="156" height="76"/>
@@ -739,7 +732,7 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9U-e8-FEx" userLabel="importBackground">
-                                <rect key="frame" x="0.0" y="377" width="320" height="76"/>
+                                <rect key="frame" x="0.0" y="333" width="320" height="76"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgz-2X-N9Q" userLabel="import">
                                         <rect key="frame" x="72" y="0.0" width="130" height="76"/>
@@ -769,19 +762,19 @@
                                 </constraints>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Worked for" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXg-VA-EDp">
-                                <rect key="frame" x="0.0" y="318" width="320" height="25"/>
+                                <rect key="frame" x="0.0" y="274" width="320" height="25"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="23"/>
                                 <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XDi-hZ-CdO" userLabel="textAdd">
-                                <rect key="frame" x="62" y="212" width="150" height="76"/>
+                                <rect key="frame" x="62" y="168" width="150" height="76"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vNaked" translatesAutoresizingMaskIntoConstraints="NO" id="M0C-iW-AVD" userLabel="animationImage">
-                                <rect key="frame" x="84.5" y="262" width="150" height="150"/>
+                                <rect key="frame" x="84.5" y="218" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="UNQ-wl-NLM"/>
                                     <constraint firstAttribute="width" constant="150" id="zuu-ll-odg"/>
@@ -1951,7 +1944,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fgv-lZ-OY1">
-                                <rect key="frame" x="0.0" y="142" width="320" height="266"/>
+                                <rect key="frame" x="0.0" y="98" width="320" height="310"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="billerId" id="oUk-dv-frm" customClass="billerCell" customModule="perSession" customModuleProvider="target">
@@ -2061,7 +2054,7 @@
                                 </constraints>
                             </activityIndicatorView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="dos-vv-upu">
-                                <rect key="frame" x="100" y="84" width="120" height="29"/>
+                                <rect key="frame" x="100" y="40" width="120" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="Tb8-5E-iP3"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="ayt-DN-y47"/>
@@ -2077,7 +2070,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="5YM-uj-HSp">
-                                <rect key="frame" x="109" y="120" width="101" height="29"/>
+                                <rect key="frame" x="109" y="76" width="101" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="Z1w-fn-lCo"/>
                                 </constraints>
@@ -2196,7 +2189,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7i1-XX-uWr">
-                                <rect key="frame" x="8" y="76" width="250" height="29"/>
+                                <rect key="frame" x="8" y="32" width="250" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="X8j-zQ-Ayu"/>
                                 </constraints>
@@ -2223,7 +2216,7 @@
                                 </items>
                             </toolbar>
                             <segmentedControl hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="4" translatesAutoresizingMaskIntoConstraints="NO" id="eCO-la-3hV">
-                                <rect key="frame" x="-14" y="116" width="348" height="29"/>
+                                <rect key="frame" x="-14" y="72" width="348" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="310" id="hJ8-Lx-yEf"/>
                                 </constraints>
@@ -2240,7 +2233,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="47" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G8b-SK-75d">
-                                <rect key="frame" x="0.0" y="72" width="320" height="348"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="392"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellId" rowHeight="47" id="AQP-Fh-lfh" customClass="newTableCell" customModule="perSession" customModuleProvider="target">
@@ -2572,9 +2565,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="UPU-lN-oqU"/>
-        <segue reference="kfH-wV-ZNk"/>
         <segue reference="Gn3-m3-lJV"/>
-        <segue reference="COZ-mk-Xid"/>
+        <segue reference="8s0-fg-N01"/>
         <segue reference="1k4-P4-HYk"/>
     </inferredMetricsTieBreakers>
 </document>
