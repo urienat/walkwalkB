@@ -278,6 +278,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
         
     self.sideMenuConstarin.constant = -140
+    self.blackView.isHidden = true
 
 
     }// end of viewdidload//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -363,25 +364,11 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.animationImage.alpha = 1
     }//end of choose employerbtn
     
-    func recordsClicked() {
-    performSegue(withIdentifier: "employerforVC", sender: employerToS)
-    }
-    
-    func importClicked() {
-        performSegue(withIdentifier: "employerForCalander", sender: employerToS)
-    }
-    
-    func accountClicked() {
-    performSegue(withIdentifier: "employerForDogFile", sender: employerToS)
-    }
-    
-    func  billsClicked() {
-    performSegue(withIdentifier: "employerForBills", sender: employerToS)
-    }
-    
-    func  profileClicked() {
-    performSegue(withIdentifier: "setting", sender: employerToS)
-    }
+    func recordsClicked() {performSegue(withIdentifier: "employerforVC", sender: employerToS)}
+    func importClicked() {performSegue(withIdentifier: "employerForCalander", sender: employerToS)}
+    func accountClicked() {performSegue(withIdentifier: "employerForDogFile", sender: employerToS)}
+    func  billsClicked() {performSegue(withIdentifier: "employerForBills", sender: employerToS)}
+    func  profileClicked() {performSegue(withIdentifier: "setting", sender: employerToS)}
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if (segue.identifier == "employerforRecord") {
