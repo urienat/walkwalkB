@@ -2274,6 +2274,13 @@
                                             <action selector="lastYearBtn:" destination="Grl-4C-vV7" eventType="touchUpInside" id="0tF-jg-B8M"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whiteV" translatesAutoresizingMaskIntoConstraints="NO" id="tD7-HZ-3U7" userLabel="filterChoice">
+                                        <rect key="frame" x="230" y="20" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="UAj-Sg-a2d"/>
+                                            <constraint firstAttribute="height" constant="40" id="iw5-v7-cqK"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -2281,6 +2288,7 @@
                                     <constraint firstItem="xFO-Jh-kR1" firstAttribute="trailing" secondItem="42o-9O-q03" secondAttribute="trailing" id="1Dg-Ss-z5Q"/>
                                     <constraint firstItem="cbb-h3-Gwm" firstAttribute="leading" secondItem="CWT-Ke-MgJ" secondAttribute="leading" id="2CG-HE-Nf3"/>
                                     <constraint firstItem="CWT-Ke-MgJ" firstAttribute="top" secondItem="1Yn-I6-tEs" secondAttribute="bottom" id="5WP-Oe-e8i"/>
+                                    <constraint firstItem="tD7-HZ-3U7" firstAttribute="centerX" secondItem="WFF-pl-qqA" secondAttribute="centerX" constant="90" id="6we-i8-YCF"/>
                                     <constraint firstAttribute="height" constant="240" id="9zn-p2-Qm8"/>
                                     <constraint firstItem="eP2-jy-EKg" firstAttribute="centerX" secondItem="WFF-pl-qqA" secondAttribute="centerX" id="NTM-mh-J4a"/>
                                     <constraint firstItem="xFO-Jh-kR1" firstAttribute="top" secondItem="42o-9O-q03" secondAttribute="bottom" id="QXS-Xk-9hV"/>
@@ -2295,6 +2303,7 @@
                                     <constraint firstItem="cbb-h3-Gwm" firstAttribute="top" secondItem="CWT-Ke-MgJ" secondAttribute="bottom" id="mHw-y8-rge"/>
                                     <constraint firstItem="42o-9O-q03" firstAttribute="top" secondItem="WFF-pl-qqA" secondAttribute="top" constant="20" id="nWf-fX-2SE"/>
                                     <constraint firstItem="1Yn-I6-tEs" firstAttribute="trailing" secondItem="xFO-Jh-kR1" secondAttribute="trailing" id="pYa-cM-fxc"/>
+                                    <constraint firstItem="tD7-HZ-3U7" firstAttribute="centerY" secondItem="42o-9O-q03" secondAttribute="centerY" id="qDa-Kp-BJx"/>
                                     <constraint firstItem="CWT-Ke-MgJ" firstAttribute="trailing" secondItem="1Yn-I6-tEs" secondAttribute="trailing" id="t5S-32-fc2"/>
                                     <constraint firstItem="3zJ-sW-iik" firstAttribute="centerX" secondItem="WFF-pl-qqA" secondAttribute="centerX" id="zLs-Nr-aoJ"/>
                                 </constraints>
@@ -2339,6 +2348,7 @@
                         <outlet property="blackView" destination="WOU-wI-y5F" id="Cez-do-14d"/>
                         <outlet property="filter" destination="AE9-S5-B4h" id="g1C-52-BZq"/>
                         <outlet property="filterBG" destination="WFF-pl-qqA" id="PvO-oU-GQe"/>
+                        <outlet property="filterChoiceConstrain" destination="qDa-Kp-BJx" id="31l-FX-GSG"/>
                         <outlet property="filterConstrain" destination="xS0-JC-fPc" id="bb1-Xr-9pI"/>
                         <outlet property="noSign" destination="xK7-aT-7LI" id="68e-Uo-GDp"/>
                         <outlet property="thinking" destination="n0x-Pz-LMA" id="ZFn-TC-imW"/>
@@ -2739,9 +2749,10 @@
         <image name="telephone" width="50" height="50"/>
         <image name="trash" width="50" height="50"/>
         <image name="vNaked" width="150" height="150"/>
+        <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UPU-lN-oqU"/>
+        <segue reference="8Bf-Vi-arA"/>
         <segue reference="vGn-ru-ol3"/>
         <segue reference="kEl-UY-JOa"/>
         <segue reference="8s0-fg-N01"/>

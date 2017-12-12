@@ -57,16 +57,20 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBAction func filter(_ sender: Any) {
       filterMovement()
     }
+    @IBOutlet weak var filterChoiceConstrain: NSLayoutConstraint!
     @IBOutlet weak var filterConstrain: NSLayoutConstraint!
     @IBAction func noneBtn(_ sender: Any) {
         filterMovement()
         filterDecided = "None"
+        filterChoiceConstrain.constant = 0
         filter.setImage(greenFilter, for: .normal)
     }
     
     @IBAction func currentMonthBtn(_ sender: Any) {
         filterMovement()
         filterDecided = "currentMonth"
+        filterChoiceConstrain.constant = -40
+
         filter.setImage(redFilter, for: .normal)
 
     }
