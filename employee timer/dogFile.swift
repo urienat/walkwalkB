@@ -178,7 +178,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
        
         if self.RateUpdate == 0.0 { messageInstruction = " If you would set rate per Session , you would enjoy bill calculation."}
             
-        if self.pLastName.text != "" { // this check that last name is filled and it is filled
+        if self.pLastName.text != "" || self.pName.text != "" { // this check that last nameor name is filled and it is filled
         
         if self.RateUpdate == 0.0  {message2 = messageInstruction} else
         { message2 = "Are You Sure?"}
@@ -253,7 +253,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.present(alertController, animated: true, completion: nil)
         } // end of last name is filled
         else { //last name is not filled
-        let alertController2 = UIAlertController(title: ("Save Setting") , message: ("Last name is a requiered field"), preferredStyle: .alert)
+        let alertController2 = UIAlertController(title: ("Save Setting") , message: ("Name & Last name are requiered fields"), preferredStyle: .alert)
         let cancelAction2 = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in
         }
         alertController2.addAction(cancelAction2)
@@ -538,39 +538,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.present(alertController50, animated: true, completion: nil)
         }
 
-        func invitation() {
-        let alertController2 = UIAlertController(title: ("Invitation") , message: ("Prepare app invitation SMS for your pet family?"), preferredStyle: .alert)
-        let cancelAction2 = UIAlertAction(title: "No", style: .cancel) { (UIAlertAction2) in
-           // self.navigationController!.popViewController(animated: true)
-        }//end of cancel
-        let updateDBAction2 = UIAlertAction(title: "Yes", style: .default) { (UIAlertAction2) in
-            self.sendMessage()
-        }//end of update DBA
-        alertController2.addAction(cancelAction2)
-        alertController2.addAction(updateDBAction2)
-        self.present(alertController2, animated: true, completion: nil)
-        }
-    
-        //choice of invitation
-        func alert15(){
-        let alertController15 = UIAlertController(title: ("Send Invitation") , message: "", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "SMS Invitation", style: .default) { (UIAlertAction) in
-               self.invitation() }
-        
-        let OKAction2 = UIAlertAction(title: "Mail Invitation", style: .default) { (UIAlertAction) in
-        let mailComposeViewController = self.invitationMail()
-        if MFMailComposeViewController.canSendMail() {
-        self.present(mailComposeViewController, animated: true, completion: nil)
-        }else{
-        self.showSendmailErrorAlert()
-        }} //end of okaction2
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in}
-        if self.pCell.text != "" {  alertController15.addAction(OKAction)}
-        if self.pEmail.text != "" {alertController15.addAction(OKAction2)}
-        alertController15.addAction(cancelAction)
-        self.present(alertController15, animated: true, completion: nil)
-    
-        }
 
         //mail export
         func alert () {
