@@ -116,17 +116,14 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var DateIn: UILabel!
     @IBOutlet weak var workedFor: UILabel!
     @IBOutlet weak var addAmanualRecord: UIView!
-    
     @IBOutlet weak var records: UIBarButtonItem!
     @IBOutlet weak var bills: UIBarButtonItem!
     @IBOutlet weak var account: UIBarButtonItem!
-    
     @IBOutlet weak var chooseEmployer: UIButton!
     @IBOutlet weak var animationImage: UIImageView!
     @IBOutlet weak var textAdd: UITextView!
     @IBOutlet weak var startImage: UIImageView!
     @IBOutlet weak var startBackground: UIView!
-    
     @IBOutlet weak var importImage: UIImageView!
     @IBOutlet weak var importBackground: UIView!
     @IBOutlet weak var importBtn: UIButton!
@@ -140,7 +137,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var sideMenuConstarin: NSLayoutConstraint!
     @IBOutlet weak var sideMenu: UIView!
-    
     @IBAction func billBtn(_ sender: Any) {
     sideMenuMovement()
     performSegue(withIdentifier: "employerForAllBills", sender: employerToS)
@@ -150,7 +146,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     sideMenuMovement()
     //do nothing
     }
-    
     
     @IBAction func importAllBtn(_ sender: Any) {
     sideMenuMovement()

@@ -49,49 +49,56 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var noSign: UIImageView!
     
     //filter
+    
+    @IBOutlet weak var filterChoiceImage: UIImageView!
     var filterDecided :String?
+    @IBOutlet weak var filterImageConstrain: NSLayoutConstraint!
+    
     var isFilterHidden = true
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var filterBG: UIView!
     @IBOutlet weak var filter: UIButton!
     @IBAction func filter(_ sender: Any) {
-      filterMovement()
+        filterMovement(delay: 0)
     }
-    @IBOutlet weak var filterChoiceConstrain: NSLayoutConstraint!
     @IBOutlet weak var filterConstrain: NSLayoutConstraint!
     @IBAction func noneBtn(_ sender: Any) {
-        filterMovement()
         filterDecided = "None"
-        filterChoiceConstrain.constant = 0
+        filterImageConstrain.constant = 20
         filter.setImage(greenFilter, for: .normal)
+        filterMovement(delay: 1)
+
     }
     
     @IBAction func currentMonthBtn(_ sender: Any) {
-        filterMovement()
         filterDecided = "currentMonth"
-        filterChoiceConstrain.constant = -40
-
+        filterImageConstrain.constant = 60
         filter.setImage(redFilter, for: .normal)
+        filterMovement(delay: 1)
 
     }
     
     @IBAction func lastMonthBtn(_ sender: Any) {
-        filterMovement()
+        filterImageConstrain.constant = 100
         filterDecided = "lastMonth"
         filter.setImage(redFilter, for: .normal)
+        filterMovement(delay: 1)
 
         
     }
     @IBAction func currentYearBtn(_ sender: Any) {
-        filterMovement()
+        filterImageConstrain.constant = 140
         filterDecided = "currentYear"
         filter.setImage(redFilter, for: .normal)
+        filterMovement(delay: 1)
 
     }
     @IBAction func lastYearBtn(_ sender: Any) {
-        filterMovement()
+        filterImageConstrain.constant = 180
         filterDecided = "currentYear"
         filter.setImage(redFilter, for: .normal)
+        filterMovement(delay: 1)
+
     }
     
     
@@ -394,19 +401,20 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             }
     
             func handleTap(sender: UITapGestureRecognizer? = nil) {
-                filterMovement()    }
+                
+                filterMovement(delay: 0)    }
     
-            func filterMovement(){
+    func filterMovement(delay:Double){
             if isFilterHidden {
             self.blackView.isHidden = false
             self.filterConstrain.constant = 0
-            UIView.animate(withDuration: 0.4, animations: {
+                UIView.animate(withDuration: (0.4), animations: {
             self.view.layoutIfNeeded()
             })
             }else{
             self.blackView.isHidden = true
             filterConstrain.constant = -240
-            UIView.animate(withDuration:0.4, animations: {
+                UIView.animate(withDuration:(0.4),delay:delay, animations: {
             self.view.layoutIfNeeded()
             })
             }

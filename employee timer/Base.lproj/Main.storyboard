@@ -2287,8 +2287,8 @@
                                     <constraint firstItem="cbb-h3-Gwm" firstAttribute="trailing" secondItem="CWT-Ke-MgJ" secondAttribute="trailing" id="0zX-ms-dRh"/>
                                     <constraint firstItem="xFO-Jh-kR1" firstAttribute="trailing" secondItem="42o-9O-q03" secondAttribute="trailing" id="1Dg-Ss-z5Q"/>
                                     <constraint firstItem="cbb-h3-Gwm" firstAttribute="leading" secondItem="CWT-Ke-MgJ" secondAttribute="leading" id="2CG-HE-Nf3"/>
+                                    <constraint firstItem="tD7-HZ-3U7" firstAttribute="top" secondItem="WFF-pl-qqA" secondAttribute="top" constant="20" id="4Vn-FY-gml"/>
                                     <constraint firstItem="CWT-Ke-MgJ" firstAttribute="top" secondItem="1Yn-I6-tEs" secondAttribute="bottom" id="5WP-Oe-e8i"/>
-                                    <constraint firstItem="tD7-HZ-3U7" firstAttribute="centerX" secondItem="WFF-pl-qqA" secondAttribute="centerX" constant="90" id="6we-i8-YCF"/>
                                     <constraint firstAttribute="height" constant="240" id="9zn-p2-Qm8"/>
                                     <constraint firstItem="eP2-jy-EKg" firstAttribute="centerX" secondItem="WFF-pl-qqA" secondAttribute="centerX" id="NTM-mh-J4a"/>
                                     <constraint firstItem="xFO-Jh-kR1" firstAttribute="top" secondItem="42o-9O-q03" secondAttribute="bottom" id="QXS-Xk-9hV"/>
@@ -2296,6 +2296,7 @@
                                     <constraint firstItem="xFO-Jh-kR1" firstAttribute="leading" secondItem="42o-9O-q03" secondAttribute="leading" id="U7d-dR-AGo"/>
                                     <constraint firstItem="CWT-Ke-MgJ" firstAttribute="top" secondItem="3zJ-sW-iik" secondAttribute="bottom" id="Xdr-Mv-fky"/>
                                     <constraint firstItem="CWT-Ke-MgJ" firstAttribute="leading" secondItem="1Yn-I6-tEs" secondAttribute="leading" id="eM6-9H-FCt"/>
+                                    <constraint firstItem="tD7-HZ-3U7" firstAttribute="centerX" secondItem="WFF-pl-qqA" secondAttribute="centerX" constant="90" id="f0g-2K-61m"/>
                                     <constraint firstItem="eP2-jy-EKg" firstAttribute="top" secondItem="42o-9O-q03" secondAttribute="bottom" id="idI-bM-dRr"/>
                                     <constraint firstItem="42o-9O-q03" firstAttribute="leading" secondItem="WFF-pl-qqA" secondAttribute="leading" constant="8" id="jbl-77-i94"/>
                                     <constraint firstItem="1Yn-I6-tEs" firstAttribute="top" secondItem="xFO-Jh-kR1" secondAttribute="bottom" id="jcx-EH-04y"/>
@@ -2303,7 +2304,6 @@
                                     <constraint firstItem="cbb-h3-Gwm" firstAttribute="top" secondItem="CWT-Ke-MgJ" secondAttribute="bottom" id="mHw-y8-rge"/>
                                     <constraint firstItem="42o-9O-q03" firstAttribute="top" secondItem="WFF-pl-qqA" secondAttribute="top" constant="20" id="nWf-fX-2SE"/>
                                     <constraint firstItem="1Yn-I6-tEs" firstAttribute="trailing" secondItem="xFO-Jh-kR1" secondAttribute="trailing" id="pYa-cM-fxc"/>
-                                    <constraint firstItem="tD7-HZ-3U7" firstAttribute="centerY" secondItem="42o-9O-q03" secondAttribute="centerY" id="qDa-Kp-BJx"/>
                                     <constraint firstItem="CWT-Ke-MgJ" firstAttribute="trailing" secondItem="1Yn-I6-tEs" secondAttribute="trailing" id="t5S-32-fc2"/>
                                     <constraint firstItem="3zJ-sW-iik" firstAttribute="centerX" secondItem="WFF-pl-qqA" secondAttribute="centerX" id="zLs-Nr-aoJ"/>
                                 </constraints>
@@ -2348,8 +2348,9 @@
                         <outlet property="blackView" destination="WOU-wI-y5F" id="Cez-do-14d"/>
                         <outlet property="filter" destination="AE9-S5-B4h" id="g1C-52-BZq"/>
                         <outlet property="filterBG" destination="WFF-pl-qqA" id="PvO-oU-GQe"/>
-                        <outlet property="filterChoiceConstrain" destination="qDa-Kp-BJx" id="31l-FX-GSG"/>
+                        <outlet property="filterChoiceImage" destination="tD7-HZ-3U7" id="0PG-Ew-9ap"/>
                         <outlet property="filterConstrain" destination="xS0-JC-fPc" id="bb1-Xr-9pI"/>
+                        <outlet property="filterImageConstrain" destination="4Vn-FY-gml" id="vTa-bs-MkQ"/>
                         <outlet property="noSign" destination="xK7-aT-7LI" id="68e-Uo-GDp"/>
                         <outlet property="thinking" destination="n0x-Pz-LMA" id="ZFn-TC-imW"/>
                         <outlet property="totalAmount" destination="RwY-u5-Vpk" id="nqf-q4-hwd"/>
