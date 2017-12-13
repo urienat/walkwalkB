@@ -66,8 +66,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         filterDecided = "None"
         filterImageConstrain.constant = 20
         filter.setImage(greenFilter, for: .normal)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-            self.filterMovement(delay: 0.5)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            self.filterMovement(delay: 1.3)
         }
         }
     
@@ -77,8 +77,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         filterChoiceImage.reloadInputViews()
 
         filter.setImage(redFilter, for: .normal)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-            self.filterMovement(delay: 0.5)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            self.filterMovement(delay: 1.3)
         }
         }
     
@@ -86,8 +86,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         filterImageConstrain.constant = 100
         filterDecided = "lastMonth"
         filter.setImage(redFilter, for: .normal)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-            self.filterMovement(delay: 0.5)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            self.filterMovement(delay: 1.3)
         }
 
         
@@ -96,8 +96,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         filterImageConstrain.constant = 140
         filterDecided = "currentYear"
         filter.setImage(redFilter, for: .normal)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-            self.filterMovement(delay: 0.5)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            self.filterMovement(delay: 1.3)
         }
 
     }
@@ -106,7 +106,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         filterDecided = "currentYear"
         filter.setImage(redFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-            self.filterMovement(delay: 0.5)
+            self.filterMovement(delay: 1.3)
         }
 
     }
