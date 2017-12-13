@@ -2105,13 +2105,13 @@
                                 <rect key="frame" x="0.0" y="420" width="320" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ILg-rw-WUw" userLabel="totalBills">
-                                        <rect key="frame" x="4" y="4" width="150" height="25"/>
+                                        <rect key="frame" x="8" y="4" width="150" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="GkE-WT-reQ"/>
                                             <constraint firstAttribute="width" constant="150" id="kYF-gY-uRz"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="RwY-u5-Vpk" userLabel="totalAmount">
@@ -2125,13 +2125,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="kwr-P5-PJT" userLabel="totalTax">
-                                        <rect key="frame" x="4" y="31" width="140" height="25"/>
+                                        <rect key="frame" x="8" y="31" width="140" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="140" id="bJg-fh-NXJ"/>
                                             <constraint firstAttribute="height" constant="25" id="knF-jr-qQX"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
@@ -2143,7 +2143,7 @@
                                     <constraint firstItem="RwY-u5-Vpk" firstAttribute="centerY" secondItem="tR9-cS-rER" secondAttribute="centerY" id="IsU-am-NfS"/>
                                     <constraint firstAttribute="trailing" secondItem="RwY-u5-Vpk" secondAttribute="trailing" constant="4" id="Y6n-RQ-t4z"/>
                                     <constraint firstAttribute="height" constant="60" id="b2T-8w-F3Y"/>
-                                    <constraint firstItem="ILg-rw-WUw" firstAttribute="leading" secondItem="tR9-cS-rER" secondAttribute="leading" constant="4" id="fM2-Sa-Ut5"/>
+                                    <constraint firstItem="ILg-rw-WUw" firstAttribute="leading" secondItem="tR9-cS-rER" secondAttribute="leading" constant="8" id="fM2-Sa-Ut5"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AE9-S5-B4h">
@@ -2478,7 +2478,7 @@
                                 <rect key="frame" x="0.0" y="360" width="320" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="97h-H1-ijY" userLabel="amount">
-                                        <rect key="frame" x="196" y="10" width="120" height="40"/>
+                                        <rect key="frame" x="192" y="10" width="120" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="J6a-Jb-JtK"/>
                                             <constraint firstAttribute="width" constant="120" id="vkc-qW-agS"/>
@@ -2488,22 +2488,22 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YVF-H5-8sR" userLabel="perEvents">
-                                        <rect key="frame" x="4" y="31" width="150" height="25"/>
+                                        <rect key="frame" x="8" y="31" width="150" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="MDV-KF-liJ"/>
                                             <constraint firstAttribute="width" constant="150" id="o8N-tJ-9fl"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Kbw-MS-DaF" userLabel="Events">
-                                        <rect key="frame" x="4" y="4.5" width="150" height="25"/>
+                                        <rect key="frame" x="8" y="4.5" width="150" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="CcV-rb-4wC"/>
                                             <constraint firstAttribute="width" constant="150" id="kLb-2E-soc"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -2511,9 +2511,9 @@
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="YVF-H5-8sR" secondAttribute="bottom" constant="4" id="0pL-HX-LT8"/>
-                                    <constraint firstAttribute="trailing" secondItem="97h-H1-ijY" secondAttribute="trailing" constant="4" id="6mR-aC-RDc"/>
+                                    <constraint firstAttribute="trailing" secondItem="97h-H1-ijY" secondAttribute="trailing" constant="8" id="6mR-aC-RDc"/>
                                     <constraint firstItem="Kbw-MS-DaF" firstAttribute="top" secondItem="NbR-aV-1V6" secondAttribute="top" constant="4" id="FCS-Je-Mkc"/>
-                                    <constraint firstItem="Kbw-MS-DaF" firstAttribute="leading" secondItem="NbR-aV-1V6" secondAttribute="leading" constant="4" id="I3L-vA-Orh"/>
+                                    <constraint firstItem="Kbw-MS-DaF" firstAttribute="leading" secondItem="NbR-aV-1V6" secondAttribute="leading" constant="8" id="I3L-vA-Orh"/>
                                     <constraint firstItem="97h-H1-ijY" firstAttribute="centerY" secondItem="NbR-aV-1V6" secondAttribute="centerY" id="XoZ-0I-AeG"/>
                                     <constraint firstAttribute="height" constant="60" id="e3T-af-5Xd"/>
                                     <constraint firstItem="YVF-H5-8sR" firstAttribute="leading" secondItem="Kbw-MS-DaF" secondAttribute="leading" id="kP0-Zq-IaS"/>
