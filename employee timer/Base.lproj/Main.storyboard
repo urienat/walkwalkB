@@ -2101,20 +2101,6 @@
                                     <action selector="StatusChosen:" destination="Grl-4C-vV7" eventType="valueChanged" id="ZJO-fp-oy7"/>
                                 </connections>
                             </segmentedControl>
-                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="5YM-uj-HSp">
-                                <rect key="frame" x="109" y="76" width="101" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="Z1w-fn-lCo"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="This year"/>
-                                    <segment title="All"/>
-                                </segments>
-                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <connections>
-                                    <action selector="PeriodChosen:" destination="KQc-zY-Jl3" eventType="valueChanged" id="fhL-ti-23U"/>
-                                </connections>
-                            </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zd3-FV-qbM" userLabel="totalBG3D">
                                 <rect key="frame" x="167" y="305" width="140" height="100"/>
                                 <color key="backgroundColor" red="0.0048598507420000003" green="0.096086271109999996" blue="0.57499289509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2330,10 +2316,8 @@
                             <constraint firstItem="PrW-i7-IuZ" firstAttribute="top" secondItem="fgv-lZ-OY1" secondAttribute="bottom" constant="12" id="cuB-ny-T0b"/>
                             <constraint firstAttribute="trailing" secondItem="PrW-i7-IuZ" secondAttribute="trailing" id="izT-mK-gro"/>
                             <constraint firstAttribute="trailing" secondItem="WOU-wI-y5F" secondAttribute="trailing" id="lOo-af-2rU"/>
-                            <constraint firstItem="5YM-uj-HSp" firstAttribute="top" secondItem="dos-vv-upu" secondAttribute="bottom" constant="8" id="mk8-s1-ku2"/>
                             <constraint firstItem="n0x-Pz-LMA" firstAttribute="centerY" secondItem="LE5-Ui-4B3" secondAttribute="centerY" id="qXo-Z5-qkE"/>
                             <constraint firstItem="PrW-i7-IuZ" firstAttribute="leading" secondItem="LE5-Ui-4B3" secondAttribute="leading" id="udA-SX-lkf"/>
-                            <constraint firstItem="5YM-uj-HSp" firstAttribute="centerX" secondItem="LE5-Ui-4B3" secondAttribute="centerX" id="un9-4D-rrN"/>
                             <constraint firstItem="dos-vv-upu" firstAttribute="top" secondItem="s0z-Tx-Xcl" secondAttribute="bottom" constant="20" id="vSZ-hn-ggb"/>
                             <constraint firstItem="xK7-aT-7LI" firstAttribute="centerY" secondItem="LE5-Ui-4B3" secondAttribute="centerY" id="w3h-Tq-rFr"/>
                             <constraint firstItem="iRs-Yv-I4q" firstAttribute="top" secondItem="WFF-pl-qqA" secondAttribute="bottom" id="xS0-JC-fPc"/>
@@ -2342,7 +2326,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="PeriodChosen" destination="5YM-uj-HSp" id="Ynx-YW-EJy"/>
                         <outlet property="StatusChosen" destination="dos-vv-upu" id="Gbn-xO-HWO"/>
                         <outlet property="billerConnect" destination="fgv-lZ-OY1" id="Rx0-B2-O4e"/>
                         <outlet property="blackView" destination="WOU-wI-y5F" id="Cez-do-14d"/>

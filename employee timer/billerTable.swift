@@ -41,7 +41,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
 
     @IBOutlet weak var billerConnect: UITableView!
     @IBOutlet weak var thinking: UIActivityIndicatorView!
-    @IBOutlet weak var PeriodChosen: UISegmentedControl!
     @IBOutlet weak var StatusChosen: UISegmentedControl!
     @IBOutlet weak var totalBills: UITextField!
     @IBOutlet weak var totalTax: UITextField!
@@ -240,39 +239,36 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         self.AmountCounter = 0
 
         self.dbRefEmployees.child(employeeID).child("myBills").observe(.childAdded, with: { (snapshot) in
-
         if let dictionary =  snapshot.value as? [String: AnyObject] {
         print ("snappp\(snapshot.value!)")
-
         let billItem = billStruct()
         billItem.setValuesForKeys(dictionary)
-        print ("dic :\(dictionary)")
+            
+            if Date.current == billItem.fBillDate {
 
-        if self .employerID != ""{
-        if self.StatusChoice == "Not Paid" && billItem.fBillStatus == "Billed" && billItem.fBillEmployer == self.employerID {
-        self.billItems.append(billItem); self.billCounter+=1 ;self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!
-        ; self.BillArray.append(billItem.fBill!); self.BillArrayStatus.append(billItem.fBillStatus!)
-        }
-        else  if self.StatusChoice == "All" && billItem.fBillEmployer == self.employerID  {self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
-        print ("billcounter1\(self.billCounter)")
-        self.taxCounter += Double(billItem.fBillTax!)!}
-        print ("billcounter1\(self.billCounter)")
-        ;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
-        }
+            if self .employerID != ""{
+            if self.StatusChoice == "Not Paid" && billItem.fBillStatus == "Billed" && billItem.fBillEmployer == self.employerID {
+            self.billItems.append(billItem); self.billCounter+=1 ;self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!
+            ; self.BillArray.append(billItem.fBill!); self.BillArrayStatus.append(billItem.fBillStatus!)
+            }
+            else  if self.StatusChoice == "All" && billItem.fBillEmployer == self.employerID  {self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
+            self.taxCounter += Double(billItem.fBillTax!)!}
+            ;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
+            }//end of spesic employer
 
-        if self .employerID == "" {
-        if self.StatusChoice == "All"  {self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += (Double(billItem.fBillTotalTotal!)!);  self.taxCounter += Double(billItem.fBillTax!)!};    self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
-        else if self.StatusChoice == "Not Paid" &&  billItem.fBillStatus == "Billed"  {self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
-        }//end of  if self .employerID != ""
-
+            if self .employerID == "" {
+            if self.StatusChoice == "All"  {self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += (Double(billItem.fBillTotalTotal!)!);  self.taxCounter += Double(billItem.fBillTax!)!};    self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
+            else if self.StatusChoice == "Not Paid" &&  billItem.fBillStatus == "Billed"  {self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
+            }//end of  if self .employerID != ""
+            }//end of inFilter
+                
         if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
         self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
         self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
         self.totalTax.text = "Tax \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
         self.billerConnect.reloadData()
-        print (self.billItems.count)
-        }
-        })
+        }//end of if let dic
+        })//end of dbref
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
         if self.billItems.count != self.BillArray.count {
@@ -293,7 +289,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         self.thinking.isHidden = false
         self.thinking.startAnimating()
         StatusChosen.isEnabled = false
-        PeriodChosen.isEnabled = false
         switch StatusChosen.selectedSegmentIndex {
         case 0: StatusChoice = "Not Paid"
         case 1: StatusChoice = "All"
@@ -305,41 +300,39 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         // button on table clicked
         func  approvalClicked(sender:UIButton!) {
         self.StatusChosen.isEnabled = false
-        print("clicked")
         buttonRow = sender.tag
         
-        if BillArrayStatus[buttonRow] != "Cancelled" { if BillArrayStatus[buttonRow] == "Billed" {  statusTemp = "Paid"
-        self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).updateChildValues(["fBillStatus": statusTemp, "fBillStatusDate":
-        mydateFormat5.string(from: Date())//was 3
+        if BillArrayStatus[buttonRow] != "Cancelled"
+            { if BillArrayStatus[buttonRow] == "Billed" {  statusTemp = "Paid"
+            self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).updateChildValues(["fBillStatus": statusTemp, "fBillStatusDate":
+            mydateFormat5.string(from: Date())//was 3
+            ], withCompletionBlock: { (error) in}) //end of update.
+            BillArrayStatus[buttonRow] = statusTemp
+            }//end of if billed
+            else if BillArrayStatus[buttonRow] == "Paid" {  if StatusChoice == "Not Paid" { statusTemp = "Billed"
+            self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).updateChildValues(["fBillStatus": statusTemp, "fBillStatusDate":
+            mydateFormat5.string(from: Date())//was 3
+            ], withCompletionBlock: { (error) in}) //end of update.
+            BillArrayStatus[buttonRow] = statusTemp
+            } else { //BillArrayStatus[buttonRow] == "Cancelled"
+            alert3()}
+            }//end of if paid
 
-
-        ], withCompletionBlock: { (error) in}) //end of update.
-        BillArrayStatus[buttonRow] = statusTemp
-        }
-        else if BillArrayStatus[buttonRow] == "Paid" {  if StatusChoice == "Not Paid" { statusTemp = "Billed"
-        self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).updateChildValues(["fBillStatus": statusTemp, "fBillStatusDate":
-        mydateFormat5.string(from: Date())//was 3
-
-        ], withCompletionBlock: { (error) in}) //end of update.
-        BillArrayStatus[buttonRow] = statusTemp
-
-        } else {alert3()}}
-
-        }
-        else {alert9()}
-
+        }else {
+        alert9()}// end of if cancelled
         
         if StatusChoice == "Not Paid"{
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-        self.StatusChosen.isMomentary = true
-        self.StatusChosen.selectedSegmentIndex = 0
-        self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-        self.StatusChosen.isMomentary = false
-        self.StatusChosen.isEnabled = true
-        }} else {   DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-        self.StatusChosen.isEnabled = true
-        }//end of fispatch
-        }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            self.StatusChosen.isMomentary = true
+            self.StatusChosen.selectedSegmentIndex = 0
+            self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+            self.StatusChosen.isMomentary = false
+            self.StatusChosen.isEnabled = true
+        }} else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            self.StatusChosen.isEnabled = true
+            }//end of fispatch
+        }//end of else
     
         }//end button clicked
 
@@ -414,6 +407,16 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         }
         isFilterHidden = !isFilterHidden
         }//end of issidemenuhidden
+    
+        //brings the month and day
+        var calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .weekOfYear,.yearForWeekOfYear], from: finManupulated!)
+        let today = calendar.dateComponents([.year, .month, .day, .weekOfYear, .yearForWeekOfYear], from: Date())
+        self.recotdMonth = components.month!
+        self.recordYear = components.year!
+        self.currentMonth = today.month!
+        self.currentYear = today.year!
+
 
             // alerts////////////////////////////////////////////////////////////////////////////////////////////
             func alert30(){
