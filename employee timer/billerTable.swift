@@ -14,17 +14,15 @@ import MessageUI
 
 class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMailComposeViewControllerDelegate {
     
-    let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+    //let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
     let Vimage = UIImage(named: "due")
     let nonVimage = UIImage(named: "emptyV")
     let paidImage = UIImage(named: "paid")
-    let billedImage = UIImage(named: "locked")
-    let billIcon = UIImage(named: "bill")
     let canceledImage = UIImage(named: "cancelled")
     let greenFilter = UIImage(named: "sandWatchGreen")
     let redFilter = UIImage(named: "sandWatchRed")
+    var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
 
-    
     var billItems = [billStruct]()
     static var checkBoxBiller:Int = 0
     var BillArrayStatus = [String]()
@@ -38,7 +36,9 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var billCounter = 0
     var taxCounter = 0.0
     var AmountCounter = 0.0
-    
+    var isFilterHidden = true
+    var filterDecided :String?
+
     @IBOutlet weak var billerConnect: UITableView!
     @IBOutlet weak var thinking: UIActivityIndicatorView!
     @IBOutlet weak var PeriodChosen: UISegmentedControl!
@@ -49,71 +49,62 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var noSign: UIImageView!
     
     //filter
-    
     @IBOutlet weak var filterChoiceImage: UIImageView!
-    var filterDecided :String?
     @IBOutlet weak var filterImageConstrain: NSLayoutConstraint!
-    
-    var isFilterHidden = true
+    @IBOutlet weak var filterConstrain: NSLayoutConstraint!
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var filterBG: UIView!
     @IBOutlet weak var filter: UIButton!
     @IBAction func filter(_ sender: Any) {
-        filterMovement(delay: 0)
+    filterMovement(delay: 0)
     }
-    @IBOutlet weak var filterConstrain: NSLayoutConstraint!
     @IBAction func noneBtn(_ sender: Any) {
-        filterDecided = "None"
-        filterImageConstrain.constant = 20
-        filter.setImage(greenFilter, for: .normal)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            self.filterMovement(delay: 1.3)
-        }
-        }
+    filterDecided = "None"
+    filterImageConstrain.constant = 20
+    filter.setImage(greenFilter, for: .normal)
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+        self.filterMovement(delay: 1.3)
+    }
+    }
     
     @IBAction func currentMonthBtn(_ sender: Any) {
-        filterDecided = "currentMonth"
-        filterImageConstrain.constant = 60
-        filterChoiceImage.reloadInputViews()
+    filterDecided = "currentMonth"
+    filterImageConstrain.constant = 60
+    filterChoiceImage.reloadInputViews()
 
-        filter.setImage(redFilter, for: .normal)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            self.filterMovement(delay: 1.3)
-        }
-        }
+    filter.setImage(redFilter, for: .normal)
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+    self.filterMovement(delay: 1.3)
+    }
+    }
     
     @IBAction func lastMonthBtn(_ sender: Any) {
-        filterImageConstrain.constant = 100
-        filterDecided = "lastMonth"
-        filter.setImage(redFilter, for: .normal)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            self.filterMovement(delay: 1.3)
-        }
-
-        
+    filterImageConstrain.constant = 100
+    filterDecided = "lastMonth"
+    filter.setImage(redFilter, for: .normal)
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+    self.filterMovement(delay: 1.3)
     }
+    }
+    
     @IBAction func currentYearBtn(_ sender: Any) {
-        filterImageConstrain.constant = 140
-        filterDecided = "currentYear"
-        filter.setImage(redFilter, for: .normal)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            self.filterMovement(delay: 1.3)
-        }
-
+    filterImageConstrain.constant = 140
+    filterDecided = "currentYear"
+    filter.setImage(redFilter, for: .normal)
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+    self.filterMovement(delay: 1.3)
     }
+    }
+    
     @IBAction func lastYearBtn(_ sender: Any) {
-        filterImageConstrain.constant = 180
-        filterDecided = "currentYear"
-        filter.setImage(redFilter, for: .normal)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-            self.filterMovement(delay: 1.3)
-        }
-
+    filterImageConstrain.constant = 180
+    filterDecided = "currentYear"
+    filter.setImage(redFilter, for: .normal)
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+    self.filterMovement(delay: 1.3)
+    }
     }
     
-    
-    var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
-
     //variablesfrom main
     var employerID = ""
     var employerFromMain = ""
@@ -132,8 +123,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
        
         super.viewDidLoad()
         noSign.isHidden = true
-        
-        filterConstrain.constant = -240
+                filterConstrain.constant = -240
         blackView.isHidden = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
         blackView.addGestureRecognizer(tap)
@@ -145,7 +135,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         if employerID != "" {  titleLbl = "\(employerFromMain)'s bills" } else {titleLbl = "Bills"}
         
         self.title = titleLbl
-        self.view.insertSubview(backgroundImage, at: 0)
+        //self.view.insertSubview(backgroundImage, at: 0)
         
         //connectivity
         if Reachability.isConnectedToNetwork() == true
@@ -154,14 +144,11 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         print("Internet Connection not Available!")
         }
         
-
-        
         //formatting decimal
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 1
         formatter.roundingMode = .up
-        
         
         //formating the date
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
@@ -172,9 +159,9 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
 
         billerConnect.delegate = self
         billerConnect.dataSource = self
-    }//end of view did load////////////////////...........................................//////////////////////////////////////////////////////
+    }//end of view did load////////////////////////////////////////////////////////////////////////////////////////////
     
-    override func viewDidAppear(_ animated: Bool) {
+        override func viewDidAppear(_ animated: Bool) {
         let connectedRef = FIRDatabase.database().reference(withPath: ".info/connected")
         connectedRef.observe(.value, with: { snapshot in
         if let connected = snapshot.value as? Bool, connected {
@@ -192,7 +179,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         fetchBills()
         print (billItems.count)
         billerConnect.reloadData()
-        
         }//view did appear end
     
         func tableView(_ billerConnect: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -254,53 +240,52 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         self.AmountCounter = 0
 
         self.dbRefEmployees.child(employeeID).child("myBills").observe(.childAdded, with: { (snapshot) in
-            
-            if let dictionary =  snapshot.value as? [String: AnyObject] {
-                print ("snappp\(snapshot.value!)")
 
-                print("!!!!!")
-                let billItem = billStruct()
-                billItem.setValuesForKeys(dictionary)
-                print ("dic :\(dictionary)")
-                
-                if self .employerID != ""{
-                if self.StatusChoice == "Not Paid" && billItem.fBillStatus == "Billed" && billItem.fBillEmployer == self.employerID {
-                self.billItems.append(billItem); self.billCounter+=1 ;self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!
-                ; self.BillArray.append(billItem.fBill!); self.BillArrayStatus.append(billItem.fBillStatus!)
-                }
-                else  if self.StatusChoice == "All" && billItem.fBillEmployer == self.employerID  {self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
-                    print ("billcounter1\(self.billCounter)")
-                    self.taxCounter += Double(billItem.fBillTax!)!}
-                    print ("billcounter1\(self.billCounter)")
-                    ;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
-                }
-                
-                if self .employerID == "" {
-                    if self.StatusChoice == "All"  {self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += (Double(billItem.fBillTotalTotal!)!);  self.taxCounter += Double(billItem.fBillTax!)!};    self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
-                else if self.StatusChoice == "Not Paid" &&  billItem.fBillStatus == "Billed"  {self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
-                }//end of  if self .employerID != ""
+        if let dictionary =  snapshot.value as? [String: AnyObject] {
+        print ("snappp\(snapshot.value!)")
 
-                if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
-                self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
-                self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
-                self.totalTax.text = "Tax \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
-                self.billerConnect.reloadData()
-                print (self.billItems.count)
-                }
-                })
-            
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                if self.billItems.count != self.BillArray.count {
-                print ("Stop")
-                }
-                
-                self.thinking.isHidden = true
-                self.thinking.stopAnimating()
-                self.StatusChosen.isEnabled = true
-                }
+        let billItem = billStruct()
+        billItem.setValuesForKeys(dictionary)
+        print ("dic :\(dictionary)")
 
-                }//end of fetch
-    
+        if self .employerID != ""{
+        if self.StatusChoice == "Not Paid" && billItem.fBillStatus == "Billed" && billItem.fBillEmployer == self.employerID {
+        self.billItems.append(billItem); self.billCounter+=1 ;self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!
+        ; self.BillArray.append(billItem.fBill!); self.BillArrayStatus.append(billItem.fBillStatus!)
+        }
+        else  if self.StatusChoice == "All" && billItem.fBillEmployer == self.employerID  {self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
+        print ("billcounter1\(self.billCounter)")
+        self.taxCounter += Double(billItem.fBillTax!)!}
+        print ("billcounter1\(self.billCounter)")
+        ;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
+        }
+
+        if self .employerID == "" {
+        if self.StatusChoice == "All"  {self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += (Double(billItem.fBillTotalTotal!)!);  self.taxCounter += Double(billItem.fBillTax!)!};    self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
+        else if self.StatusChoice == "Not Paid" &&  billItem.fBillStatus == "Billed"  {self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
+        }//end of  if self .employerID != ""
+
+        if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
+        self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
+        self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
+        self.totalTax.text = "Tax \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
+        self.billerConnect.reloadData()
+        print (self.billItems.count)
+        }
+        })
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+        if self.billItems.count != self.BillArray.count {
+        print ("Stop")
+        }
+
+        self.thinking.isHidden = true
+        self.thinking.stopAnimating()
+        self.StatusChosen.isEnabled = true
+        }
+
+        }//end of fetch
+
         @IBAction func StatusChosen(_ sender: Any) {
         print("pressed")
         //noSign.isHidden = true
@@ -375,63 +360,62 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         self.alert30()
         }
     
-            //func for mail
-            func  configuredMailComposeViewController2() -> MFMailComposeViewController {
-            let mailComposerVC2 = MFMailComposeViewController()
-            mailComposerVC2.mailComposeDelegate = self
-            mailComposerVC2.setSubject("Bill recovery")
-            mailComposerVC2.setMessageBody(recoveredBill!, isHTML: false)
-            mailComposerVC2.setToRecipients([ViewController.fixedemail])
-            return mailComposerVC2
-            }//end of MFMailcomposer
+        //func for mail
+        func  configuredMailComposeViewController2() -> MFMailComposeViewController {
+        let mailComposerVC2 = MFMailComposeViewController()
+        mailComposerVC2.mailComposeDelegate = self
+        mailComposerVC2.setSubject("Bill recovery")
+        mailComposerVC2.setMessageBody(recoveredBill!, isHTML: false)
+        mailComposerVC2.setToRecipients([ViewController.fixedemail])
+        return mailComposerVC2
+        }//end of MFMailcomposer
 
-            func showSendmailErrorAlert() {
-            let sendMailErorrAlert = UIAlertController(title:"Could Not Send Email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.",preferredStyle: .alert)
-            sendMailErorrAlert.message = "error occured"
-            }
+        func showSendmailErrorAlert() {
+        let sendMailErorrAlert = UIAlertController(title:"Could Not Send Email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.",preferredStyle: .alert)
+        sendMailErorrAlert.message = "error occured"
+        }
 
-            func mailComposeController(_ controller: MFMailComposeViewController,
-            didFinishWith result: MFMailComposeResult, error: Error?) {
-            switch result.rawValue {
-            case MFMailComposeResult.cancelled.rawValue:
-            print("Mail cancelled")
-            controller.dismiss(animated: true, completion: nil)
-            case MFMailComposeResult.saved.rawValue:
-            print("Mail saved3")
-            controller.dismiss(animated: true, completion: nil)
-            case MFMailComposeResult.sent.rawValue:
-            print("Mail sent3")
-            controller.dismiss(animated: true, completion: nil)
-            case MFMailComposeResult.failed.rawValue:
-            print("Mail sent failure: %@", [error!.localizedDescription])
-            controller.dismiss(animated: true, completion: nil)
-            default:
-            break
-            }
-            }
+        func mailComposeController(_ controller: MFMailComposeViewController,
+        didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result.rawValue {
+        case MFMailComposeResult.cancelled.rawValue:
+        print("Mail cancelled")
+        controller.dismiss(animated: true, completion: nil)
+        case MFMailComposeResult.saved.rawValue:
+        print("Mail saved3")
+        controller.dismiss(animated: true, completion: nil)
+        case MFMailComposeResult.sent.rawValue:
+        print("Mail sent3")
+        controller.dismiss(animated: true, completion: nil)
+        case MFMailComposeResult.failed.rawValue:
+        print("Mail sent failure: %@", [error!.localizedDescription])
+        controller.dismiss(animated: true, completion: nil)
+        default:
+        break
+        }
+        }
     
-            func handleTap(sender: UITapGestureRecognizer? = nil) {
-                
-                filterMovement(delay: 0)    }
+        func handleTap(sender: UITapGestureRecognizer? = nil) {
+        filterMovement(delay: 0)    }
     
-    func filterMovement(delay:Double){
-            if isFilterHidden {
-            self.blackView.isHidden = false
-            self.filterConstrain.constant = 0
-                UIView.animate(withDuration: (0.4), animations: {
-            self.view.layoutIfNeeded()
-            })
-            }else{
-            self.blackView.isHidden = true
-            filterConstrain.constant = -240
-                UIView.animate(withDuration:(0.4+delay), animations: {
-            self.view.layoutIfNeeded()
-            })
-            }
-            isFilterHidden = !isFilterHidden
-            }//end of issidemenuhidden
+        func filterMovement(delay:Double){
+        if isFilterHidden {
+        self.blackView.isHidden = false
+        self.filterConstrain.constant = 0
+        UIView.animate(withDuration: (0.4), animations: {
+        self.view.layoutIfNeeded()
+        })
+        }else{
+        self.blackView.isHidden = true
+        filterConstrain.constant = -240
+        UIView.animate(withDuration:(0.4+delay), animations: {
+        self.view.layoutIfNeeded()
+        })
+        }
+        isFilterHidden = !isFilterHidden
+        }//end of issidemenuhidden
 
-            // alerts/////////////////////////////////////////////////////////////////////////////////////
+            // alerts////////////////////////////////////////////////////////////////////////////////////////////
             func alert30(){
             let alertController30 = UIAlertController(title: ("No connection") , message: "Currently there is no connection with database. Please try again.", preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
