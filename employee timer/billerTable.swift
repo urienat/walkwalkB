@@ -38,6 +38,13 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var AmountCounter = 0.0
     var isFilterHidden = true
     var filterDecided :String?
+    
+    var calendar = Calendar.current
+    var recotdMonth : Int = 0
+    var recordDay : Int = 0
+    var recordYear : Int = 0
+    var currentMonth : Int = 0
+    var currentYear : Int = 0
 
     @IBOutlet weak var billerConnect: UITableView!
     @IBOutlet weak var thinking: UIActivityIndicatorView!
@@ -149,9 +156,12 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         formatter.maximumFractionDigits = 1
         formatter.roundingMode = .up
         
-        //formating the date
+        //Date
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
+        let today = calendar.dateComponents([.year, .month, .day, .weekOfYear, .yearForWeekOfYear], from: Date())
+        currentMonth = today.month!
+        currentYear = today.year!
 
         self.StatusChoice = "All"
         self.billerConnect.separatorColor = blueColor
@@ -244,7 +254,11 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         let billItem = billStruct()
         billItem.setValuesForKeys(dictionary)
             
-            if Date.current == billItem.fBillDate {
+            let components = self.calendar.dateComponents([.year, .month, .day, .weekOfYear,.yearForWeekOfYear], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
+            self.recotdMonth = components.month!
+            self.recordYear = components.year!
+            
+            if   self.currentMonth != self.recotdMonth{
 
             if self .employerID != ""{
             if self.StatusChoice == "Not Paid" && billItem.fBillStatus == "Billed" && billItem.fBillEmployer == self.employerID {
@@ -408,15 +422,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         isFilterHidden = !isFilterHidden
         }//end of issidemenuhidden
     
-        //brings the month and day
-        var calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month, .day, .weekOfYear,.yearForWeekOfYear], from: finManupulated!)
-        let today = calendar.dateComponents([.year, .month, .day, .weekOfYear, .yearForWeekOfYear], from: Date())
-        self.recotdMonth = components.month!
-        self.recordYear = components.year!
-        self.currentMonth = today.month!
-        self.currentYear = today.year!
-
 
             // alerts////////////////////////////////////////////////////////////////////////////////////////////
             func alert30(){
