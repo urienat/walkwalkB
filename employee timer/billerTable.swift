@@ -37,11 +37,10 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var taxCounter = 0.0
     var AmountCounter = 0.0
     var isFilterHidden = true
-    var filterDecided :String?
+    var filterDecided :Int = 0
     
     var calendar = Calendar.current
-    var recotdMonth : Int = 0
-    var recordDay : Int = 0
+    var recordMonth : Int = 0
     var recordYear : Int = 0
     var currentMonth : Int = 0
     var currentYear : Int = 0
@@ -65,7 +64,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     filterMovement(delay: 0)
     }
     @IBAction func noneBtn(_ sender: Any) {
-    filterDecided = "None"
+    filterDecided = 0
+    fetchBills()
     filterImageConstrain.constant = 20
     filter.setImage(greenFilter, for: .normal)
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
@@ -74,7 +74,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     
     @IBAction func currentMonthBtn(_ sender: Any) {
-    filterDecided = "currentMonth"
+    filterDecided = 1
+        fetchBills()
     filterImageConstrain.constant = 60
     filterChoiceImage.reloadInputViews()
 
@@ -86,7 +87,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     @IBAction func lastMonthBtn(_ sender: Any) {
     filterImageConstrain.constant = 100
-    filterDecided = "lastMonth"
+    filterDecided = 2
+        fetchBills()
     filter.setImage(redFilter, for: .normal)
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
     self.filterMovement(delay: 1.3)
@@ -95,7 +97,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     @IBAction func currentYearBtn(_ sender: Any) {
     filterImageConstrain.constant = 140
-    filterDecided = "currentYear"
+    filterDecided = 3
+        fetchBills()
     filter.setImage(redFilter, for: .normal)
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
     self.filterMovement(delay: 1.3)
@@ -104,7 +107,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     @IBAction func lastYearBtn(_ sender: Any) {
     filterImageConstrain.constant = 180
-    filterDecided = "currentYear"
+    filterDecided = 4
+        fetchBills()
     filter.setImage(redFilter, for: .normal)
     DispatchQueue.main.asyncAfter(deadline: .now() + 1){
     self.filterMovement(delay: 1.3)
@@ -134,7 +138,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
         blackView.addGestureRecognizer(tap)
         blackView.isUserInteractionEnabled = true
-        filterDecided = "None"
+        filterDecided = 0
         filter.setImage(greenFilter, for: .normal)
         
         billerConnect.backgroundColor = UIColor.clear
@@ -255,27 +259,40 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billItem.setValuesForKeys(dictionary)
             
             let components = self.calendar.dateComponents([.year, .month, .day, .weekOfYear,.yearForWeekOfYear], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
-            self.recotdMonth = components.month!
+            self.recordMonth = components.month!
             self.recordYear = components.year!
+            print (self.recordMonth-1,self.recordYear-1)
             
-            if   self.currentMonth != self.recotdMonth{
-
-            if self .employerID != ""{
-            if self.StatusChoice == "Not Paid" && billItem.fBillStatus == "Billed" && billItem.fBillEmployer == self.employerID {
-            self.billItems.append(billItem); self.billCounter+=1 ;self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!
-            ; self.BillArray.append(billItem.fBill!); self.BillArrayStatus.append(billItem.fBillStatus!)
-            }
-            else  if self.StatusChoice == "All" && billItem.fBillEmployer == self.employerID  {self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
-            self.taxCounter += Double(billItem.fBillTax!)!}
-            ;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
-            }//end of spesic employer
-
-            if self .employerID == "" {
-            if self.StatusChoice == "All"  {self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += (Double(billItem.fBillTotalTotal!)!);  self.taxCounter += Double(billItem.fBillTax!)!};    self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
-            else if self.StatusChoice == "Not Paid" &&  billItem.fBillStatus == "Billed"  {self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
-            }//end of  if self .employerID != ""
-            }//end of inFilter
+            func inFilter() {
                 
+                if self .employerID != ""{
+                if self.StatusChoice == "Not Paid" && billItem.fBillStatus == "Billed" && billItem.fBillEmployer == self.employerID {
+                self.billItems.append(billItem); self.billCounter+=1 ;self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!
+                ; self.BillArray.append(billItem.fBill!); self.BillArrayStatus.append(billItem.fBillStatus!)
+                }
+                else  if self.StatusChoice == "All" && billItem.fBillEmployer == self.employerID  {self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
+                self.taxCounter += Double(billItem.fBillTax!)!}
+                ;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
+                }//end of spesic employer
+
+                if self .employerID == "" {
+                if self.StatusChoice == "All"  {self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += (Double(billItem.fBillTotalTotal!)!);  self.taxCounter += Double(billItem.fBillTax!)!};    self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
+                else if self.StatusChoice == "Not Paid" &&  billItem.fBillStatus == "Billed"  {self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
+                }//end of  if self .employerID != ""
+                
+            }//end of in filter
+            
+            switch self.filterDecided {
+            case 0:inFilter()
+            case 1:if self.currentMonth == self.recordMonth && self.currentYear == self.recordYear{inFilter()}
+            case 2:if self.currentMonth-1 == self.recordMonth && self.currentYear == self.recordYear{inFilter()}
+            case 3:if self.currentYear == self.recordYear{inFilter()}
+            case 4:if self.currentYear-1 == self.recordYear {inFilter()}
+            default: inFilter()
+            } //end of switch
+            
+            
+
         if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
         self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
         self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
@@ -421,6 +438,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         }
         isFilterHidden = !isFilterHidden
         }//end of issidemenuhidden
+    
     
 
             // alerts////////////////////////////////////////////////////////////////////////////////////////////
