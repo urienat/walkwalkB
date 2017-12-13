@@ -19,7 +19,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let nonVimage = UIImage(named: "emptyV")
     let paidImage = UIImage(named: "paid")
     let canceledImage = UIImage(named: "cancelled")
-    let greenFilter = UIImage(named: "sandWatchGreen")
+    //let greenFilter = UIImage(named: "sandWatchGreen")
+    let greenFilter = UIImage(named: "sandWatchBig")
     let redFilter = UIImage(named: "sandWatchRed")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
 
