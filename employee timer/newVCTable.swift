@@ -214,7 +214,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         periodChosen.isEnabled = false
         self.thinking.hidesWhenStopped = true
          
-        btn4.setImage(sendBillIcon , for: .normal)
+        //btn4.setImage(sendBillIcon , for: .normal)
+        btn4.setTitle("Bill", for: .normal)
+        btn4.setTitleColor(blueColor, for: .normal)
         btn4.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         btn4.addTarget(self, action:#selector(sendBill), for: UIControlEvents.touchDown)
         billSender.customView = btn4
@@ -605,7 +607,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             if self.idArray.isEmpty == true {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
             print (self.idArray.isEmpty)
             
-        if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions'"} else if self.eventCounter == 1 {self.eventsLbl.text = "\(String(self.eventCounter)) Due session"} else {self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions"}
+        if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions"} else if self.eventCounter == 1 {self.eventsLbl.text = "\(String(self.eventCounter)) Due session"} else {self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions"}
             
         if self.Status == "All" /*|| self.Status == "Paid"*/{self.generalApproval.isHidden = true}
         self.calc = (Double(self.eventCounter))*(self.Employerrate)
