@@ -66,23 +66,29 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         filterDecided = "None"
         filterImageConstrain.constant = 20
         filter.setImage(greenFilter, for: .normal)
-        filterMovement(delay: 1)
-
-    }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            self.filterMovement(delay: 0.5)
+        }
+        }
     
     @IBAction func currentMonthBtn(_ sender: Any) {
         filterDecided = "currentMonth"
         filterImageConstrain.constant = 60
-        filter.setImage(redFilter, for: .normal)
-        filterMovement(delay: 1)
+        filterChoiceImage.reloadInputViews()
 
-    }
+        filter.setImage(redFilter, for: .normal)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            self.filterMovement(delay: 0.5)
+        }
+        }
     
     @IBAction func lastMonthBtn(_ sender: Any) {
         filterImageConstrain.constant = 100
         filterDecided = "lastMonth"
         filter.setImage(redFilter, for: .normal)
-        filterMovement(delay: 1)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            self.filterMovement(delay: 0.5)
+        }
 
         
     }
@@ -90,14 +96,18 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         filterImageConstrain.constant = 140
         filterDecided = "currentYear"
         filter.setImage(redFilter, for: .normal)
-        filterMovement(delay: 1)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            self.filterMovement(delay: 0.5)
+        }
 
     }
     @IBAction func lastYearBtn(_ sender: Any) {
         filterImageConstrain.constant = 180
         filterDecided = "currentYear"
         filter.setImage(redFilter, for: .normal)
-        filterMovement(delay: 1)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            self.filterMovement(delay: 0.5)
+        }
 
     }
     
@@ -414,7 +424,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             }else{
             self.blackView.isHidden = true
             filterConstrain.constant = -240
-                UIView.animate(withDuration:(0.4),delay:delay, animations: {
+                UIView.animate(withDuration:(0.4+delay), animations: {
             self.view.layoutIfNeeded()
             })
             }
