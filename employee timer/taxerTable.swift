@@ -27,8 +27,8 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     
     
     var byMonthTax = [String:Double]()
-    var byMonthTotalTax = [String:Double]()
-
+    var byMonthTotalTax = [String]()
+    var uniqueTaxMonths = [String]()
     var billItems = [billStruct]()
     static var checkBoxBiller:Int = 0
     var BillArrayStatus = [String]()
@@ -208,34 +208,33 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     }
     
     func tableView(_ billerConnect: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print (billItems.count)
-        return billItems.count
+        print (byMonthTax.count)
+        return byMonthTax.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = billerConnect.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! billerCell
-        let billItem = billItems[indexPath.row]
+        let cell = billerConnect.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! taxerCell
+        let billItem = uniqueTaxMonths[indexPath.row]
+        let billItem2 =  byMonthTax[billItem]!
         cell.backgroundColor = UIColor.clear
-        cell.l1.text = ("\(billItem.fBill!) - \(billItem.fBillEmployerName!) ")
-        print ("fuf\(billItem.fBillTotalTotal!)" )
-        print ("fuf2\(billItem.fBillTotalTotal!)" )
+        cell.l1.text = uniqueTaxMonths[indexPath.row]
+        cell.l4.text  = ViewController.fixedCurrency
+        cell.l3.text = String(billItem2) as String
+        
+        
+        /*
         
         if billItem.fBillTotalTotal != "" {cell.l3.text = billItem.fBillTotalTotal} else {cell.l3.text = billItem.fBillSum}
         cell.l4.text  = billItem.fBillCurrency!
-        cell.l6.text = "\(mydateFormat10.string(from: mydateFormat5.date(from: billItem.fBillDate!)!))"
         
-        print("fbillstatus\(billItem.fBillStatus!)")
         
-        if billItem.fBillStatus! == "Billed" { cell.approval.setImage(nonVimage, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
-        if  billItem.fBillStatus!  == "Paid" { cell.approval.setImage(paidImage, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
-        if billItem.fBillStatus! ==  "Cancelled" { cell.approval.setImage(canceledImage,for: .normal);cell.l1.alpha = 0.5;cell.l3.alpha = 0.5;cell.l4.alpha = 0.5;cell.l6.alpha = 0.5}
         
         cell.approval.tag = indexPath.row
         print ("gggggg\(cell.approval.tag)")
         
         cell.approval.removeTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
         cell.approval.addTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
-        
+        */
         return cell
     }
     
@@ -327,6 +326,8 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
         billItems.removeAll()
         BillArray.removeAll()
         BillArrayStatus.removeAll()
+        byMonthTax.removeAll()
+        
         self.billCounter = 0
         self.taxCounter = 0
         self.AmountCounter = 0
@@ -348,8 +349,13 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
                     }else{
                         self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTax!)!
                     }
-                    print (self.byMonthTax)
+                    self.byMonthTotalTax.append(self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!))
+                    self.uniqueTaxMonths = Array(Set(self.byMonthTotalTax))
+
                     
+
+                    print ("hhh\(self.byMonthTotalTax)")
+
                     
                         self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
                             self.taxCounter += Double(billItem.fBillTax!)!}

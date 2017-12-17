@@ -2712,7 +2712,7 @@
                                 <rect key="frame" x="0.0" y="98" width="320" height="310"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="billerId" id="mAy-xd-4xk" customClass="billerCell" customModule="perSession" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="billerId" id="mAy-xd-4xk" customClass="taxerCell" customModule="perSession" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mAy-xd-4xk" id="hGQ-WM-e6v">
@@ -2720,7 +2720,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="izv-uo-lXc">
-                                                    <rect key="frame" x="6" y="2" width="180" height="21.5"/>
+                                                    <rect key="frame" x="6" y="11" width="180" height="21.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="9qc-Xh-9jc"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="d5i-gE-etz"/>
@@ -2729,64 +2729,37 @@
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hcs-gR-OlT">
-                                                    <rect key="frame" x="275" y="2" width="39" height="39"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="l3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="Ndc-z3-KqL" userLabel="l3">
+                                                    <rect key="frame" x="210" y="9" width="50" height="25.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="39" id="7b8-p2-I7o"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="39" id="NeD-2e-yV7"/>
-                                                        <constraint firstAttribute="height" constant="39" id="Qab-a7-bHg"/>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="39" id="bel-vj-8U7"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button" image="emptyV"/>
-                                                    <connections>
-                                                        <action selector="approval:" destination="mAy-xd-4xk" eventType="touchUpInside" id="KU3-ED-bma"/>
-                                                    </connections>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="Ndc-z3-KqL" userLabel="l3">
-                                                    <rect key="frame" x="210" y="13" width="50" height="25.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="DLk-3j-pwO"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="DLk-3j-pwO"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
                                                     <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZp-A2-4fg" userLabel="l4">
-                                                    <rect key="frame" x="193" y="13" width="16" height="25.5"/>
-                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
-                                                    <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l6" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PH7-Iy-B4H" userLabel="l6">
-                                                    <rect key="frame" x="6" y="25.5" width="100" height="21.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="l4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZp-A2-4fg" userLabel="l4">
+                                                    <rect key="frame" x="193" y="9" width="16" height="25.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="NKh-FE-cbX"/>
-                                                        <constraint firstAttribute="height" constant="21" id="mYD-po-YyC"/>
+                                                        <constraint firstAttribute="width" constant="16" id="4bW-lR-6Ty"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
                                                     <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Hcs-gR-OlT" firstAttribute="top" secondItem="hGQ-WM-e6v" secondAttribute="top" constant="2" id="6Gq-G5-384"/>
-                                                <constraint firstItem="jZp-A2-4fg" firstAttribute="top" secondItem="hGQ-WM-e6v" secondAttribute="topMargin" constant="2" id="FWH-hw-80m"/>
-                                                <constraint firstItem="Hcs-gR-OlT" firstAttribute="leading" secondItem="Ndc-z3-KqL" secondAttribute="trailing" constant="15" id="H3Q-l6-gCy"/>
-                                                <constraint firstAttribute="trailing" secondItem="Hcs-gR-OlT" secondAttribute="trailing" constant="6" id="TVU-qM-Ux8"/>
-                                                <constraint firstItem="izv-uo-lXc" firstAttribute="top" secondItem="hGQ-WM-e6v" secondAttribute="top" constant="2" id="VwF-ca-oYq"/>
-                                                <constraint firstItem="PH7-Iy-B4H" firstAttribute="leading" secondItem="izv-uo-lXc" secondAttribute="leading" id="dcF-C2-M23"/>
-                                                <constraint firstItem="Ndc-z3-KqL" firstAttribute="top" secondItem="hGQ-WM-e6v" secondAttribute="topMargin" constant="2" id="klX-xy-mG9"/>
+                                                <constraint firstItem="jZp-A2-4fg" firstAttribute="centerY" secondItem="Ndc-z3-KqL" secondAttribute="centerY" id="6eq-RA-6ID"/>
+                                                <constraint firstItem="Ndc-z3-KqL" firstAttribute="centerY" secondItem="hGQ-WM-e6v" secondAttribute="centerY" id="KEE-3J-nSc"/>
+                                                <constraint firstItem="izv-uo-lXc" firstAttribute="centerY" secondItem="hGQ-WM-e6v" secondAttribute="centerY" id="hZ3-Y8-v7n"/>
                                                 <constraint firstItem="izv-uo-lXc" firstAttribute="leading" secondItem="hGQ-WM-e6v" secondAttribute="leading" constant="6" id="lJI-eg-Sk5"/>
-                                                <constraint firstItem="PH7-Iy-B4H" firstAttribute="top" secondItem="izv-uo-lXc" secondAttribute="bottom" constant="2" id="lde-uD-lZE"/>
                                                 <constraint firstItem="Ndc-z3-KqL" firstAttribute="leading" secondItem="jZp-A2-4fg" secondAttribute="trailing" constant="1" id="yAs-Iy-PmJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="approval" destination="Hcs-gR-OlT" id="lVr-Mz-orj"/>
                                             <outlet property="l1" destination="izv-uo-lXc" id="liE-wx-sNe"/>
                                             <outlet property="l3" destination="Ndc-z3-KqL" id="SAd-qC-bnf"/>
                                             <outlet property="l4" destination="jZp-A2-4fg" id="9PS-jV-ZLy"/>
-                                            <outlet property="l6" destination="PH7-Iy-B4H" id="r85-Zc-geh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
