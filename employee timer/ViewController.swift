@@ -144,7 +144,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     @IBAction func taxationBtn(_ sender: Any) {
     sideMenuMovement()
-    //do nothing
+    performSegue(withIdentifier: "employerForTax", sender: employerToS)
     }
     
     @IBAction func importAllBtn(_ sender: Any) {
@@ -404,10 +404,14 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }//end of else if
         
     else if (segue.identifier == "employerForAllBills"){
-        
     let recordsView = segue.destination as? biller
     recordsView?.employerID = ""//employerIDToS
     recordsView?.employerFromMain = ""//employerToS
+    recordsView?.employeeID = employeeIDToS
+    }//end of else if
+    
+    else if (segue.identifier == "employerForTax"){
+    let recordsView = segue.destination as? taxer
     recordsView?.employeeID = employeeIDToS
     }//end of else if
         
