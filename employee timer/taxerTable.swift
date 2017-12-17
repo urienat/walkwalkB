@@ -25,6 +25,9 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     let redFilter = UIImage(named: "sandWatchRed")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
     
+    
+    var byMonthTax = [Date:Double]()
+
     var billItems = [billStruct]()
     static var checkBoxBiller:Int = 0
     var BillArrayStatus = [String]()
@@ -314,6 +317,67 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
         }
         
     }//end of fetch
+    func taxCalc(){
+        billItems.removeAll()
+        BillArray.removeAll()
+        BillArrayStatus.removeAll()
+        self.billCounter = 0
+        self.taxCounter = 0
+        self.AmountCounter = 0
+        
+        self.dbRefEmployees.child(employeeID).child("myBills").observe(.childAdded, with: { (snapshot) in
+            if let dictionary =  snapshot.value as? [String: AnyObject] {
+                print ("snappp\(snapshot.value!)")
+                let billItem = billStruct()
+                billItem.setValuesForKeys(dictionary)
+                
+                let components = self.calendar.dateComponents([.year, .month, .day, .weekOfYear,.yearForWeekOfYear], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
+                self.recordMonth = components.month!
+                self.recordYear = components.year!
+                print (self.recordMonth-1,self.recordYear-1)
+                
+                func inFilter() {
+                    
+                    self.byMonthTax[self.mydateFormat5.date(from:billItem.fBillDate!)!] = Double(billItem.fBillTax!)!
+                    
+                        self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
+                            self.taxCounter += Double(billItem.fBillTax!)!}
+                            ;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
+                    
+                    
+                }//end of in filter
+                
+                switch self.filterDecided {
+                case 0:inFilter()
+                case 1:if self.currentMonth == self.recordMonth && self.currentYear == self.recordYear{inFilter()}
+                case 2:if self.currentMonth-1 == self.recordMonth && self.currentYear == self.recordYear{inFilter()} else if self.currentMonth == 1 && self.recordMonth == 12 && self.currentYear-1 == self.recordYear{inFilter()}
+                case 3:if self.currentYear == self.recordYear{inFilter()}
+                case 4:if self.currentYear-1 == self.recordYear {inFilter()}
+                default: inFilter()
+                } //end of switch
+                
+                
+                
+                if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
+                self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
+                self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
+                self.totalTax.text = "Tax \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
+                self.billerConnect.reloadData()
+            }//end of if let dic
+        })//end of dbref
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            if self.billItems.count != self.BillArray.count {
+                print ("Stop")
+            }
+            
+            self.thinking.isHidden = true
+            self.thinking.stopAnimating()
+            self.StatusChosen.isEnabled = true
+        }
+        
+    }//end of tacCalc
+    
     
     @IBAction func StatusChosen(_ sender: Any) {
         print("pressed")
