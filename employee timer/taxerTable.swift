@@ -53,7 +53,6 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     
     @IBOutlet weak var billerConnect: UITableView!
     @IBOutlet weak var thinking: UIActivityIndicatorView!
-    @IBOutlet weak var StatusChosen: UISegmentedControl!
     @IBOutlet weak var totalBills: UITextField!
     @IBOutlet weak var totalTax: UITextField!
     @IBOutlet weak var totalAmount: UITextField!
@@ -252,74 +251,7 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
         }//end of if (segue...
     }//end of prepare
     
-    func fetchBills(){
-        billItems.removeAll()
-        BillArray.removeAll()
-        BillArrayStatus.removeAll()
-        self.billCounter = 0
-        self.taxCounter = 0
-        self.AmountCounter = 0
-        
-        self.dbRefEmployees.child(employeeID).child("myBills").observe(.childAdded, with: { (snapshot) in
-            if let dictionary =  snapshot.value as? [String: AnyObject] {
-                print ("snappp\(snapshot.value!)")
-                let billItem = billStruct()
-                billItem.setValuesForKeys(dictionary)
-                
-                let components = self.calendar.dateComponents([.year, .month, .day, .weekOfYear,.yearForWeekOfYear], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
-                self.recordMonth = components.month!
-                self.recordYear = components.year!
-                print (self.recordMonth-1,self.recordYear-1)
-                
-                func inFilter() {
-                    
-                    if self .employerID != ""{
-                        if self.StatusChoice == "Not Paid" && billItem.fBillStatus == "Billed" && billItem.fBillEmployer == self.employerID {
-                            self.billItems.append(billItem); self.billCounter+=1 ;self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!
-                            ; self.BillArray.append(billItem.fBill!); self.BillArrayStatus.append(billItem.fBillStatus!)
-                        }
-                        else  if self.StatusChoice == "All" && billItem.fBillEmployer == self.employerID  {self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
-                            self.taxCounter += Double(billItem.fBillTax!)!}
-                            ;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
-                    }//end of spesic employer
-                    
-                    if self .employerID == "" {
-                        if self.StatusChoice == "All"  {self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += (Double(billItem.fBillTotalTotal!)!);  self.taxCounter += Double(billItem.fBillTax!)!};    self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
-                        else if self.StatusChoice == "Not Paid" &&  billItem.fBillStatus == "Billed"  {self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
-                    }//end of  if self .employerID != ""
-                    
-                }//end of in filter
-                
-                switch self.filterDecided {
-                case 0:inFilter()
-                case 1:if self.currentMonth == self.recordMonth && self.currentYear == self.recordYear{inFilter()}
-                case 2:if self.currentMonth-1 == self.recordMonth && self.currentYear == self.recordYear{inFilter()} else if self.currentMonth == 1 && self.recordMonth == 12 && self.currentYear-1 == self.recordYear{inFilter()}
-                case 3:if self.currentYear == self.recordYear{inFilter()}
-                case 4:if self.currentYear-1 == self.recordYear {inFilter()}
-                default: inFilter()
-                } //end of switch
-                
-                
-                
-                if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
-                self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
-                self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
-                self.totalTax.text = "Tax \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
-                self.billerConnect.reloadData()
-            }//end of if let dic
-        })//end of dbref
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            if self.billItems.count != self.BillArray.count {
-                print ("Stop")
-            }
-            
-            self.thinking.isHidden = true
-            self.thinking.stopAnimating()
-            self.StatusChosen.isEnabled = true
-        }
-        
-    }//end of fetch
+    
     func taxCalc(){
         print ("intaccalc")
         
@@ -390,7 +322,6 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
             
             self.thinking.isHidden = true
             self.thinking.stopAnimating()
-            self.StatusChosen.isEnabled = true
         }
         
     }//end of tacCalc
@@ -402,55 +333,10 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
         //saveToFB() //check why is it here?
         self.thinking.isHidden = false
         self.thinking.startAnimating()
-        StatusChosen.isEnabled = false
-        switch StatusChosen.selectedSegmentIndex {
-        case 0: StatusChoice = "Not Paid"
-        case 1: StatusChoice = "All"
-        default: break
-        } //end of switch
-        //fetchBills()
         taxCalc()
     }
     
     
-    // button on table clicked
-    func  approvalClicked(sender:UIButton!) {
-        self.StatusChosen.isEnabled = false
-        buttonRow = sender.tag
-        
-        if BillArrayStatus[buttonRow] != "Cancelled"
-        { if BillArrayStatus[buttonRow] == "Billed" {  statusTemp = "Paid"
-            self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).updateChildValues(["fBillStatus": statusTemp, "fBillStatusDate":
-                mydateFormat5.string(from: Date())//was 3
-                ], withCompletionBlock: { (error) in}) //end of update.
-            BillArrayStatus[buttonRow] = statusTemp
-        }//end of if billed
-        else if BillArrayStatus[buttonRow] == "Paid" {  if StatusChoice == "Not Paid" { statusTemp = "Billed"
-            self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).updateChildValues(["fBillStatus": statusTemp, "fBillStatusDate":
-                mydateFormat5.string(from: Date())//was 3
-                ], withCompletionBlock: { (error) in}) //end of update.
-            BillArrayStatus[buttonRow] = statusTemp
-        } else { //BillArrayStatus[buttonRow] == "Cancelled"
-            alert3()}
-            }//end of if paid
-            
-        }else {
-            alert9()}// end of if cancelled
-        
-        if StatusChoice == "Not Paid"{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                self.StatusChosen.isMomentary = true
-                self.StatusChosen.selectedSegmentIndex = 0
-                self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-                self.StatusChosen.isMomentary = false
-                self.StatusChosen.isEnabled = true
-            }} else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                self.StatusChosen.isEnabled = true
-            }//end of fispatch
-        }//end of else
-        
-    }//end button clicked
     
     func  reSend(sender:UIButton!) {
         print("resend")
@@ -567,10 +453,6 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
         let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
             biller.checkBoxBiller = 1
             //do nothing
-            self.StatusChosen.isMomentary = true
-            self.StatusChosen.selectedSegmentIndex = 1
-            self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-            self.StatusChosen.isMomentary = false
         }
         
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
@@ -578,12 +460,7 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
             self.BillArrayStatus[self.buttonRow] = self.statusTemp
             self.dbRefEmployees.child(self.employeeID).child("myBills").child(String("-"+self.BillArray[self.buttonRow])).updateChildValues(["fBillStatus": self.statusTemp ,"fBillStatusDate":self.mydateFormat5.string(from: Date())], withCompletionBlock: { (error) in}) //end of update.//was 3
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-                self.StatusChosen.isMomentary = true
-                self.StatusChosen.selectedSegmentIndex = 1
-                self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-                self.StatusChosen.isMomentary = false
-            }
+            
         }
         alertController3.addAction(OKAction)
         alertController3.addAction(CancelAction)
