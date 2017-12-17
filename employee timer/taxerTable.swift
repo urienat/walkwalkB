@@ -26,7 +26,8 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
     
     
-    var byMonthTax = [Date:Double]()
+    var byMonthTax = [String:Double]()
+    var byMonthTotalTax = [String:Double]()
 
     var billItems = [billStruct]()
     static var checkBoxBiller:Int = 0
@@ -70,7 +71,7 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     }
     @IBAction func noneBtn(_ sender: Any) {
         filterDecided = 0
-        fetchBills()
+        taxCalc()
         filterImageConstrain.constant = 20
         filter.setImage(greenFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
@@ -80,7 +81,7 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     
     @IBAction func currentMonthBtn(_ sender: Any) {
         filterDecided = 1
-        fetchBills()
+        taxCalc()
         filterImageConstrain.constant = 60
         filterChoiceImage.reloadInputViews()
         
@@ -93,7 +94,7 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     @IBAction func lastMonthBtn(_ sender: Any) {
         filterImageConstrain.constant = 100
         filterDecided = 2
-        fetchBills()
+        taxCalc()
         filter.setImage(redFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             self.filterMovement(delay: 1.3)
@@ -103,7 +104,7 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     @IBAction func currentYearBtn(_ sender: Any) {
         filterImageConstrain.constant = 140
         filterDecided = 3
-        fetchBills()
+        taxCalc()
         filter.setImage(redFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             self.filterMovement(delay: 1.3)
@@ -113,7 +114,7 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     @IBAction func lastYearBtn(_ sender: Any) {
         filterImageConstrain.constant = 180
         filterDecided = 4
-        fetchBills()
+        taxCalc()
         filter.setImage(redFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1){
             self.filterMovement(delay: 1.3)
@@ -127,6 +128,8 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     
     let mydateFormat5 = DateFormatter()
     let mydateFormat10 = DateFormatter()
+    let mydateFormat20 = DateFormatter()
+
     
     let dbRef = FIRDatabase.database().reference().child("fRecords")
     let dbRefEmployers = FIRDatabase.database().reference().child("fEmployers")
@@ -168,6 +171,7 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
         //Date
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
+        mydateFormat20.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM , yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
         let today = calendar.dateComponents([.year, .month, .day, .weekOfYear, .yearForWeekOfYear], from: Date())
         currentMonth = today.month!
         currentYear = today.year!
@@ -194,7 +198,7 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
                 }}
         })
         
-        fetchBills()
+        taxCalc()
         print (billItems.count)
         billerConnect.reloadData()
     }//view did appear end
@@ -318,6 +322,8 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
         
     }//end of fetch
     func taxCalc(){
+        print ("intaccalc")
+        
         billItems.removeAll()
         BillArray.removeAll()
         BillArrayStatus.removeAll()
@@ -337,8 +343,13 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
                 print (self.recordMonth-1,self.recordYear-1)
                 
                 func inFilter() {
+                    if self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] == nil {
+                                        self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTax!)!
+                    }else{
+                        self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTax!)!
+                    }
+                    print (self.byMonthTax)
                     
-                    self.byMonthTax[self.mydateFormat5.date(from:billItem.fBillDate!)!] = Double(billItem.fBillTax!)!
                     
                         self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
                             self.taxCounter += Double(billItem.fBillTax!)!}
@@ -391,8 +402,10 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
         case 1: StatusChoice = "All"
         default: break
         } //end of switch
-        fetchBills()
+        //fetchBills()
+        taxCalc()
     }
+    
     
     // button on table clicked
     func  approvalClicked(sender:UIButton!) {
