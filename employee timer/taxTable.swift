@@ -145,12 +145,12 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         blackView.isUserInteractionEnabled = true
         filterDecided = 0
         filter.setImage(greenFilter, for: .normal)
+        StatusChosen.isHidden = true
         
         billerConnect.backgroundColor = UIColor.clear
         if employerID != "" {  titleLbl = "\(employerFromMain)'s bills" } else {titleLbl = "Bills"}
         
         self.title = titleLbl
-        //self.view.insertSubview(backgroundImage, at: 0)
         
         //connectivity
         if Reachability.isConnectedToNetwork() == true

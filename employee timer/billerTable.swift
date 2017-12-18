@@ -193,7 +193,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         })
         }}
         })
-            if taxBillsToHandle == false {fetchBills(); StatusChosen.isHidden = false;filter.isHidden = false} else {billsForTaxMonth();StatusChosen.isHidden = true;filter.isHidden = true}
+        if taxBillsToHandle == false {fetchBills(); StatusChosen.isHidden = false;filter.isHidden = false} else {billsForTaxMonth();StatusChosen.isHidden = true;filter.isHidden = true}
         print (billItems.count)
         billerConnect.reloadData()
         }//view did appear end
@@ -224,7 +224,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         if billItem.fBillStatus! == "Billed" { cell.approval.setImage(nonVimage, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
         if  billItem.fBillStatus!  == "Paid" { cell.approval.setImage(paidImage, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
         if billItem.fBillStatus! ==  "Cancelled" { cell.approval.setImage(canceledImage,for: .normal);cell.l1.alpha = 0.5;cell.l3.alpha = 0.5;cell.l4.alpha = 0.5;cell.l6.alpha = 0.5}
-
+        
+        if taxBillsToHandle == false{ cell.approval.isEnabled = true} else {cell.approval.isEnabled=false}
         cell.approval.tag = indexPath.row
         print ("gggggg\(cell.approval.tag)")
         
