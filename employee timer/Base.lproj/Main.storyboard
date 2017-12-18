@@ -2720,7 +2720,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ZTZ-X7-hlv">
-                                                    <rect key="frame" x="6" y="2" width="180" height="21.5"/>
+                                                    <rect key="frame" x="8" y="11" width="180" height="21.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="F3w-4d-Qhz"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="wJq-LU-n2o"/>
@@ -2729,28 +2729,30 @@
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="l3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="X3j-OC-Wq5" userLabel="l3">
-                                                    <rect key="frame" x="210" y="13" width="50" height="25.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="X3j-OC-Wq5" userLabel="l3">
+                                                    <rect key="frame" x="262" y="9" width="50" height="25.5"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="25.5" id="mKE-xk-IIz"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="zRU-yd-QzN"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
                                                     <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="l4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wi7-Bt-Xcm" userLabel="l4">
-                                                    <rect key="frame" x="193" y="13" width="16" height="25.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wi7-Bt-Xcm" userLabel="l4">
+                                                    <rect key="frame" x="245" y="9" width="16" height="25.5"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
                                                     <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="X3j-OC-Wq5" firstAttribute="top" secondItem="qoa-BU-Paj" secondAttribute="topMargin" constant="2" id="0Wl-Pc-27y"/>
                                                 <constraint firstItem="X3j-OC-Wq5" firstAttribute="leading" secondItem="Wi7-Bt-Xcm" secondAttribute="trailing" constant="1" id="9tt-Vv-qRS"/>
-                                                <constraint firstItem="ZTZ-X7-hlv" firstAttribute="leading" secondItem="qoa-BU-Paj" secondAttribute="leading" constant="6" id="VCT-1S-MQv"/>
-                                                <constraint firstItem="Wi7-Bt-Xcm" firstAttribute="top" secondItem="qoa-BU-Paj" secondAttribute="topMargin" constant="2" id="WMH-Z6-wmE"/>
-                                                <constraint firstItem="ZTZ-X7-hlv" firstAttribute="top" secondItem="qoa-BU-Paj" secondAttribute="top" constant="2" id="nJW-fi-hWL"/>
+                                                <constraint firstItem="Wi7-Bt-Xcm" firstAttribute="centerY" secondItem="qoa-BU-Paj" secondAttribute="centerY" id="FJN-g6-RTK"/>
+                                                <constraint firstAttribute="trailing" secondItem="X3j-OC-Wq5" secondAttribute="trailing" constant="8" id="Jce-ff-wtF"/>
+                                                <constraint firstItem="ZTZ-X7-hlv" firstAttribute="leading" secondItem="qoa-BU-Paj" secondAttribute="leading" constant="8" id="VCT-1S-MQv"/>
+                                                <constraint firstItem="ZTZ-X7-hlv" firstAttribute="centerY" secondItem="qoa-BU-Paj" secondAttribute="centerY" id="hBr-lQ-8fY"/>
+                                                <constraint firstItem="X3j-OC-Wq5" firstAttribute="centerY" secondItem="qoa-BU-Paj" secondAttribute="centerY" id="sGc-4Z-vZw"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

@@ -43,6 +43,8 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     var byMonthTax = [String:Double]()
     var byMonthTotalTax = [String]()
     var uniqueTaxMonths = [String]()
+    var monthSorter = [String]()
+    var uniqueTaxMonthsdateFormat = [Date]()
     
     var calendar = Calendar.current
     var recordMonth : Int = 0
@@ -209,7 +211,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     }
     
     func tableView(_ billerConnect: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print (billItems.count)
+
         return uniqueTaxMonths.count
     }
     
@@ -217,10 +219,10 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         let cell = billerConnect.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! taxerCell
         print (uniqueTaxMonths)
         
-         let billItem = uniqueTaxMonths[indexPath.row]
+        let billItem = byMonthTotalTax[indexPath.row]
         let billItem2 =  byMonthTax[billItem]!
         cell.backgroundColor = UIColor.clear
-        cell.l1.text = uniqueTaxMonths[indexPath.row]
+        cell.l1.text = byMonthTotalTax[indexPath.row]
         cell.l4.text  = ViewController.fixedCurrency
             cell.l3.text = String(billItem2) as String
         return cell
@@ -269,12 +271,19 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
                     }else{
                         self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTax!)!
                     }
-                    self.byMonthTotalTax.append(self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!))
-                    self.uniqueTaxMonths = Array(Set(self.byMonthTotalTax))
                     
-                    
-                    
-                    print ("hhh\(self.byMonthTotalTax)")
+
+                    self.monthSorter.append(self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!))
+                    self.uniqueTaxMonths = Array(Set(self.monthSorter))
+                    self.uniqueTaxMonthsdateFormat = self.uniqueTaxMonths.map {self.mydateFormat20.date(from: $0)! }
+
+                    print("111\(self.uniqueTaxMonths)")
+                    self.uniqueTaxMonthsdateFormat.sort { $0.compare($1) == .orderedDescending }
+                    print("222\(self.uniqueTaxMonths)")
+
+                    self.byMonthTotalTax = self.uniqueTaxMonthsdateFormat.map { self.mydateFormat20.string(from: $0)}
+                    print("333\(self.uniqueTaxMonths)")
+                    print ("hhh\(self.uniqueTaxMonths)")
                     
                     
                     self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
