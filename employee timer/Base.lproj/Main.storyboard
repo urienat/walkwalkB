@@ -398,7 +398,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EJU-oN-iQ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4806" y="-655"/>
+            <point key="canvasLocation" x="-5051" y="-769"/>
         </scene>
         <!--100-->
         <scene sceneID="n9L-ln-kzv">
@@ -3033,11 +3033,12 @@
                         <outlet property="totalAmount" destination="6kr-dn-xOY" id="vvO-cG-zIR"/>
                         <outlet property="totalBills" destination="11P-Mq-cL7" id="EM3-9x-IuP"/>
                         <outlet property="totalTax" destination="0Mo-TX-GXF" id="b95-tn-KUg"/>
+                        <segue destination="Grl-4C-vV7" kind="show" identifier="billsForTaxMonth" id="tcR-0J-8bM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Rw-Zc-yWe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3066" y="-284"/>
+            <point key="canvasLocation" x="-4419" y="470"/>
         </scene>
     </scenes>
     <resources>
@@ -3062,7 +3063,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8Bf-Vi-arA"/>
-        <segue reference="vGn-ru-ol3"/>
+        <segue reference="tcR-0J-8bM"/>
         <segue reference="kEl-UY-JOa"/>
         <segue reference="8s0-fg-N01"/>
         <segue reference="1k4-P4-HYk"/>
