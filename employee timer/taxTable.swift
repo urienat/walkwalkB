@@ -1,19 +1,18 @@
 //
-//  taxerTable.swift
+//  taxTable.swift
 //  perSession
 //
-//  Created by Uri Enat on 12/17/17.
+//  Created by Uri Enat on 12/18/17.
 //  Copyright © 2017 אורי עינת. All rights reserved.
 //
 
-import Foundation
 import Foundation
 import UIKit
 import Firebase
 import MessageUI
 
 
-class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMailComposeViewControllerDelegate {
+class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMailComposeViewControllerDelegate {
     
     //let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
     let Vimage = UIImage(named: "due")
@@ -25,10 +24,6 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     let redFilter = UIImage(named: "sandWatchRed")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
     
-    
-    var byMonthTax = [String:Double]()
-    var byMonthTotalTax = [String]()
-    var uniqueTaxMonths = [String]()
     var billItems = [billStruct]()
     static var checkBoxBiller:Int = 0
     var BillArrayStatus = [String]()
@@ -38,12 +33,16 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     var buttonRow = 0
     var recoveredBill:String?
     var titleLbl = ""
-    var cellId = "billerId"
+    var cellId = "taxerId"
     var billCounter = 0
     var taxCounter = 0.0
     var AmountCounter = 0.0
     var isFilterHidden = true
     var filterDecided :Int = 0
+    
+    var byMonthTax = [String:Double]()
+    var byMonthTotalTax = [String]()
+    var uniqueTaxMonths = [String]()
     
     var calendar = Calendar.current
     var recordMonth : Int = 0
@@ -53,6 +52,8 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     
     @IBOutlet weak var billerConnect: UITableView!
     @IBOutlet weak var thinking: UIActivityIndicatorView!
+    
+    @IBOutlet weak var StatusChosen: UISegmentedControl!
     @IBOutlet weak var totalBills: UITextField!
     @IBOutlet weak var totalTax: UITextField!
     @IBOutlet weak var totalAmount: UITextField!
@@ -70,7 +71,7 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     }
     @IBAction func noneBtn(_ sender: Any) {
         filterDecided = 0
-        taxCalc()
+        fetchBills()
         filterImageConstrain.constant = 20
         filter.setImage(greenFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
@@ -80,7 +81,7 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     
     @IBAction func currentMonthBtn(_ sender: Any) {
         filterDecided = 1
-        taxCalc()
+        fetchBills()
         filterImageConstrain.constant = 60
         filterChoiceImage.reloadInputViews()
         
@@ -93,7 +94,7 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     @IBAction func lastMonthBtn(_ sender: Any) {
         filterImageConstrain.constant = 100
         filterDecided = 2
-        taxCalc()
+        fetchBills()
         filter.setImage(redFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             self.filterMovement(delay: 1.3)
@@ -103,7 +104,7 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     @IBAction func currentYearBtn(_ sender: Any) {
         filterImageConstrain.constant = 140
         filterDecided = 3
-        taxCalc()
+        fetchBills()
         filter.setImage(redFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             self.filterMovement(delay: 1.3)
@@ -113,7 +114,7 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     @IBAction func lastYearBtn(_ sender: Any) {
         filterImageConstrain.constant = 180
         filterDecided = 4
-        taxCalc()
+        fetchBills()
         filter.setImage(redFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1){
             self.filterMovement(delay: 1.3)
@@ -171,6 +172,7 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
         mydateFormat20.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM , yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
+
         let today = calendar.dateComponents([.year, .month, .day, .weekOfYear, .yearForWeekOfYear], from: Date())
         currentMonth = today.month!
         currentYear = today.year!
@@ -197,7 +199,7 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
                 }}
         })
         
-        taxCalc()
+        fetchBills()
         print (billItems.count)
         billerConnect.reloadData()
     }//view did appear end
@@ -207,33 +209,20 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
     }
     
     func tableView(_ billerConnect: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print (byMonthTax.count)
-        return byMonthTax.count
+        print (billItems.count)
+        return uniqueTaxMonths.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = billerConnect.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! taxerCell
-        let billItem = uniqueTaxMonths[indexPath.row]
+        print (uniqueTaxMonths)
+        
+         let billItem = uniqueTaxMonths[indexPath.row]
         let billItem2 =  byMonthTax[billItem]!
         cell.backgroundColor = UIColor.clear
         cell.l1.text = uniqueTaxMonths[indexPath.row]
         cell.l4.text  = ViewController.fixedCurrency
-        cell.l3.text = String(billItem2) as String
-        
-        
-        /*
-        
-        if billItem.fBillTotalTotal != "" {cell.l3.text = billItem.fBillTotalTotal} else {cell.l3.text = billItem.fBillSum}
-        cell.l4.text  = billItem.fBillCurrency!
-        
-        
-        
-        cell.approval.tag = indexPath.row
-        print ("gggggg\(cell.approval.tag)")
-        
-        cell.approval.removeTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
-        cell.approval.addTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
-        */
+            cell.l3.text = String(billItem2) as String 
         return cell
     }
     
@@ -251,15 +240,13 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
         }//end of if (segue...
     }//end of prepare
     
-    
-    func taxCalc(){
-        print ("intaccalc")
-        
+    func fetchBills(){
         billItems.removeAll()
         BillArray.removeAll()
         BillArrayStatus.removeAll()
+        byMonthTotalTax.removeAll()
         byMonthTax.removeAll()
-        
+        uniqueTaxMonths.removeAll()
         self.billCounter = 0
         self.taxCounter = 0
         self.AmountCounter = 0
@@ -276,23 +263,23 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
                 print (self.recordMonth-1,self.recordYear-1)
                 
                 func inFilter() {
+                    
                     if self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] == nil {
-                                        self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTax!)!
+                        self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTax!)!
                     }else{
                         self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTax!)!
                     }
                     self.byMonthTotalTax.append(self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!))
                     self.uniqueTaxMonths = Array(Set(self.byMonthTotalTax))
-
                     
-
+                    
+                    
                     print ("hhh\(self.byMonthTotalTax)")
-
                     
-                        self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
-                            self.taxCounter += Double(billItem.fBillTax!)!}
-                            ;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
                     
+                    self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
+                        self.taxCounter += Double(billItem.fBillTax!)!}
+                    ;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
                     
                 }//end of in filter
                 
@@ -322,21 +309,65 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
             
             self.thinking.isHidden = true
             self.thinking.stopAnimating()
+            self.StatusChosen.isEnabled = true
         }
         
-    }//end of tacCalc
-    
+    }//end of fetch
     
     @IBAction func StatusChosen(_ sender: Any) {
+    
         print("pressed")
         //noSign.isHidden = true
         //saveToFB() //check why is it here?
         self.thinking.isHidden = false
         self.thinking.startAnimating()
-        taxCalc()
+        StatusChosen.isEnabled = false
+        switch StatusChosen.selectedSegmentIndex {
+        case 0: StatusChoice = "Not Paid"
+        case 1: StatusChoice = "All"
+        default: break
+        } //end of switch
+        fetchBills()
     }
     
-    
+    // button on table clicked
+    func  approvalClicked(sender:UIButton!) {
+        self.StatusChosen.isEnabled = false
+        buttonRow = sender.tag
+        
+        if BillArrayStatus[buttonRow] != "Cancelled"
+        { if BillArrayStatus[buttonRow] == "Billed" {  statusTemp = "Paid"
+            self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).updateChildValues(["fBillStatus": statusTemp, "fBillStatusDate":
+                mydateFormat5.string(from: Date())//was 3
+                ], withCompletionBlock: { (error) in}) //end of update.
+            BillArrayStatus[buttonRow] = statusTemp
+        }//end of if billed
+        else if BillArrayStatus[buttonRow] == "Paid" {  if StatusChoice == "Not Paid" { statusTemp = "Billed"
+            self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).updateChildValues(["fBillStatus": statusTemp, "fBillStatusDate":
+                mydateFormat5.string(from: Date())//was 3
+                ], withCompletionBlock: { (error) in}) //end of update.
+            BillArrayStatus[buttonRow] = statusTemp
+        } else { //BillArrayStatus[buttonRow] == "Cancelled"
+            alert3()}
+            }//end of if paid
+            
+        }else {
+            alert9()}// end of if cancelled
+        
+        if StatusChoice == "Not Paid"{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                self.StatusChosen.isMomentary = true
+                self.StatusChosen.selectedSegmentIndex = 0
+                self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+                self.StatusChosen.isMomentary = false
+                self.StatusChosen.isEnabled = true
+            }} else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                self.StatusChosen.isEnabled = true
+            }//end of fispatch
+        }//end of else
+        
+    }//end button clicked
     
     func  reSend(sender:UIButton!) {
         print("resend")
@@ -453,6 +484,10 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
         let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
             biller.checkBoxBiller = 1
             //do nothing
+            self.StatusChosen.isMomentary = true
+            self.StatusChosen.selectedSegmentIndex = 1
+            self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+            self.StatusChosen.isMomentary = false
         }
         
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
@@ -460,7 +495,12 @@ class taxer: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMail
             self.BillArrayStatus[self.buttonRow] = self.statusTemp
             self.dbRefEmployees.child(self.employeeID).child("myBills").child(String("-"+self.BillArray[self.buttonRow])).updateChildValues(["fBillStatus": self.statusTemp ,"fBillStatusDate":self.mydateFormat5.string(from: Date())], withCompletionBlock: { (error) in}) //end of update.//was 3
             
-            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+                self.StatusChosen.isMomentary = true
+                self.StatusChosen.selectedSegmentIndex = 1
+                self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+                self.StatusChosen.isMomentary = false
+            }
         }
         alertController3.addAction(OKAction)
         alertController3.addAction(CancelAction)

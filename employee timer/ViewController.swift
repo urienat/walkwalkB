@@ -411,7 +411,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }//end of else if
     
     else if (segue.identifier == "employerForTax"){
-    let recordsView = segue.destination as? taxer
+    let recordsView = segue.destination as? taxCalc
     recordsView?.employeeID = employeeIDToS
     }//end of else if
         

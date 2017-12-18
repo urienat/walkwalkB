@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0010D84E1FC56EF700291FFF /* client_652073679380-so0npi4n865nv8a8a4880g5hqr8pnnfs.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0010D84D1FC56EF600291FFF /* client_652073679380-so0npi4n865nv8a8a4880g5hqr8pnnfs.apps.googleusercontent.com.plist */; };
 		0083889F1FE6574200EFE400 /* taxerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083889E1FE6574200EFE400 /* taxerCell.swift */; };
-		008388A11FE6575200EFE400 /* taxerTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008388A01FE6575200EFE400 /* taxerTable.swift */; };
+		00BE2E951FE78A76000F3AAF /* taxTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BE2E941FE78A76000F3AAF /* taxTable.swift */; };
 		36A03E068C6D6196AD6257CF /* Pods_perSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5756A9D8D83AA717B759692 /* Pods_perSession.framework */; };
 		AE0213491DCF8130006F927F /* setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0213481DCF8130006F927F /* setting.swift */; };
 		AE0B0A7F1E62D461000E539C /* billView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0B0A7E1E62D461000E539C /* billView.swift */; };
@@ -64,7 +64,7 @@
 /* Begin PBXFileReference section */
 		0010D84D1FC56EF600291FFF /* client_652073679380-so0npi4n865nv8a8a4880g5hqr8pnnfs.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_652073679380-so0npi4n865nv8a8a4880g5hqr8pnnfs.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		0083889E1FE6574200EFE400 /* taxerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taxerCell.swift; sourceTree = "<group>"; };
-		008388A01FE6575200EFE400 /* taxerTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taxerTable.swift; sourceTree = "<group>"; };
+		00BE2E941FE78A76000F3AAF /* taxTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taxTable.swift; sourceTree = "<group>"; };
 		3524438E11FB26ADA3170CED /* Pods-perSession.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-perSession.release.xcconfig"; path = "Pods/Target Support Files/Pods-perSession/Pods-perSession.release.xcconfig"; sourceTree = "<group>"; };
 		AE0213481DCF8130006F927F /* setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setting.swift; sourceTree = "<group>"; };
 		AE0B0A7E1E62D461000E539C /* billView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = billView.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				0083889E1FE6574200EFE400 /* taxerCell.swift */,
-				008388A01FE6575200EFE400 /* taxerTable.swift */,
+				00BE2E941FE78A76000F3AAF /* taxTable.swift */,
 			);
 			name = tax;
 			sourceTree = "<group>";
@@ -484,6 +484,7 @@
 				AE84DE8F1E7E638700F08945 /* RebeloperStoreSetup.swift in Sources */,
 				AE26E0981E59FA400044C76B /* billerTable.swift in Sources */,
 				AE7F91851DF53E11000BC8C7 /* tableExt.swift in Sources */,
+				00BE2E951FE78A76000F3AAF /* taxTable.swift in Sources */,
 				AEE95E481D7B092A00093B51 /* ViewController.swift in Sources */,
 				AE4CDC0D1D96430400FE2BB5 /* fetchRecords.swift in Sources */,
 				AE4B0FEC1E82B82F00188B79 /* subs.swift in Sources */,
@@ -494,7 +495,6 @@
 				AECF31DF1E1248660072547C /* AllowedCharsTextField.swift in Sources */,
 				AE26E09A1E5A02180044C76B /* billerCell.swift in Sources */,
 				F42DD2991FB03E6A00BBAE75 /* recordsStructure.swift in Sources */,
-				008388A11FE6575200EFE400 /* taxerTable.swift in Sources */,
 				AE0213491DCF8130006F927F /* setting.swift in Sources */,
 				AEDF47AD1DC22EA0005DB21A /* LoginFile.swift in Sources */,
 				AE84DE8E1E7E638700F08945 /* RebeloperStore.swift in Sources */,
