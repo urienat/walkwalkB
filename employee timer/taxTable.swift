@@ -75,6 +75,8 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
             self.filterMovement(delay: 1.3)
         }
     }
+ //   let btnFilter : UIButton
+  // let filterItem : UIBarButtonItem
     
     @IBAction func currentMonthBtn(_ sender: Any) {
         filterDecided = 1
@@ -148,8 +150,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         StatusChosen.isHidden = true
         
         billerConnect.backgroundColor = UIColor.clear
-        if employerID != "" {  titleLbl = "\(employerFromMain)'s bills" } else {titleLbl = "Bills"}
-        
+        titleLbl = "Tax per Month"
         self.title = titleLbl
         
         //connectivity
@@ -169,6 +170,12 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
         mydateFormat20.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM , yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
+      
+        
+       // btnFilter.setImage (greenFilter, for: .normal)
+       // btnFilter.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        //btnFilter.addTarget(self, action: #selector(filterMovement(delay:)), for: .touchUpInside)
+        //filterItem.customView = btnFilter
 
         let today = calendar.dateComponents([.year, .month, .day, .weekOfYear, .yearForWeekOfYear], from: Date())
         currentMonth = today.month!

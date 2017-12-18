@@ -2699,7 +2699,7 @@
         <!--billerView-->
         <scene sceneID="uRb-u6-eaa">
             <objects>
-                <viewController id="Qsr-md-mj8" userLabel="billerView" customClass="taxCalc" customModule="perSession" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Tax per Month" id="Qsr-md-mj8" userLabel="billerView" customClass="taxCalc" customModule="perSession" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YjM-Xb-Jf3"/>
                         <viewControllerLayoutGuide type="bottom" id="Wqb-HO-1LI"/>
