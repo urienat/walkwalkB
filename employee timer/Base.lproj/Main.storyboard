@@ -2335,7 +2335,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UVZ-2I-f4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5891.25" y="-905"/>
+            <point key="canvasLocation" x="-5732" y="-979"/>
         </scene>
         <!--NewVC Table-->
         <scene sceneID="NSE-n1-xE8">
@@ -2675,7 +2675,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gTn-to-bkz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5891" y="18"/>
+            <point key="canvasLocation" x="-6218" y="-1"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ltX-KL-p2u">
@@ -2759,6 +2759,7 @@
                                             <outlet property="l1" destination="ZTZ-X7-hlv" id="nrw-hJ-4PA"/>
                                             <outlet property="l3" destination="X3j-OC-Wq5" id="HF7-Mv-49Q"/>
                                             <outlet property="l4" destination="Wi7-Bt-Xcm" id="hz2-4j-ltl"/>
+                                            <segue destination="Grl-4C-vV7" kind="show" identifier="billsForTaxMonth" id="GwF-xw-cu7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -3033,7 +3034,6 @@
                         <outlet property="totalAmount" destination="6kr-dn-xOY" id="vvO-cG-zIR"/>
                         <outlet property="totalBills" destination="11P-Mq-cL7" id="EM3-9x-IuP"/>
                         <outlet property="totalTax" destination="0Mo-TX-GXF" id="b95-tn-KUg"/>
-                        <segue destination="Grl-4C-vV7" kind="show" identifier="billsForTaxMonth" id="tcR-0J-8bM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Rw-Zc-yWe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3063,7 +3063,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8Bf-Vi-arA"/>
-        <segue reference="tcR-0J-8bM"/>
+        <segue reference="GwF-xw-cu7"/>
         <segue reference="kEl-UY-JOa"/>
         <segue reference="8s0-fg-N01"/>
         <segue reference="1k4-P4-HYk"/>

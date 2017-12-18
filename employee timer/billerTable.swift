@@ -23,6 +23,10 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let greenFilter = UIImage(named: "sandWatchBig")
     let redFilter = UIImage(named: "sandWatchRed")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
+    
+    var monthToHandle : Int = 0
+    var yearToHandle : Int = 0
+    var taxBillsToHandle:Bool = false
 
     var billItems = [billStruct]()
     static var checkBoxBiller:Int = 0
@@ -189,8 +193,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         })
         }}
         })
-       
-        fetchBills()
+            if taxBillsToHandle == false {fetchBills(); StatusChosen.isHidden = false;filter.isHidden = false} else {billsForTaxMonth();StatusChosen.isHidden = true;filter.isHidden = true}
         print (billItems.count)
         billerConnect.reloadData()
         }//view did appear end
@@ -237,6 +240,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var billRow : IndexPath = self.billerConnect.indexPathForSelectedRow!
         print (billRow)
+            
         if (segue.identifier == "billHandler")
         { let billManager = segue.destination as? billView
         print ("presparesegue")
@@ -313,7 +317,46 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         }
 
         }//end of fetch
+    
+            func billsForTaxMonth(){
+            billItems.removeAll()
+            BillArray.removeAll()
+            BillArrayStatus.removeAll()
+            self.billCounter = 0
+            self.taxCounter = 0
+            self.AmountCounter = 0
 
+            self.dbRefEmployees.child(employeeID).child("myBills").observe(.childAdded, with: { (snapshot) in
+            if let dictionary =  snapshot.value as? [String: AnyObject] {
+            print ("snappp\(snapshot.value!)")
+            let billItem = billStruct()
+            billItem.setValuesForKeys(dictionary)
+
+            let components = self.calendar.dateComponents([.year, .month, .day, .weekOfYear,.yearForWeekOfYear], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
+            self.recordMonth = components.month!
+            self.recordYear = components.year!
+                
+            if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle {
+            self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += (Double(billItem.fBillTotalTotal!)!);  self.taxCounter += Double(billItem.fBillTax!)!};    self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
+            }
+                if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
+            self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
+            self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
+            self.totalTax.text = "Tax \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
+            self.billerConnect.reloadData()
+            }//end of if let dic
+            })//end of dbref
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            if self.billItems.count != self.BillArray.count {
+            print ("Stop")
+            }
+            self.thinking.isHidden = true
+            self.thinking.stopAnimating()
+            self.StatusChosen.isEnabled = true
+            }
+            }//end of bills for tax month
+    
         @IBAction func StatusChosen(_ sender: Any) {
         print("pressed")
         //noSign.isHidden = true
