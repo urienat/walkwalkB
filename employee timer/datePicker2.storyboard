@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,6 +29,13 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grass12" translatesAutoresizingMaskIntoConstraints="NO" id="Ohp-4N-8Ys">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vNaked" translatesAutoresizingMaskIntoConstraints="NO" id="UaV-6l-lVU" userLabel="animationImage">
+                                <rect key="frame" x="85" y="165" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="b70-HV-qbT"/>
+                                    <constraint firstAttribute="height" constant="150" id="l5A-3f-7RH"/>
+                                </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="TimeIN" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="mK9-6d-CXh">
                                 <rect key="frame" x="70" y="84" width="180" height="30"/>
@@ -147,11 +154,13 @@
                             <constraint firstItem="1xg-Ig-RaM" firstAttribute="top" secondItem="Ohp-4N-8Ys" secondAttribute="bottom" id="EwO-9c-Rbm"/>
                             <constraint firstItem="Ydt-wR-B8B" firstAttribute="centerY" secondItem="a1i-tg-2qU" secondAttribute="centerY" id="FGj-s1-dMq"/>
                             <constraint firstItem="yv6-XF-GvY" firstAttribute="leading" secondItem="Znj-aX-FL2" secondAttribute="leadingMargin" priority="750" constant="8" id="GV9-tQ-w53"/>
+                            <constraint firstItem="UaV-6l-lVU" firstAttribute="centerX" secondItem="Znj-aX-FL2" secondAttribute="centerX" id="Kue-cW-Cfo"/>
                             <constraint firstItem="mK9-6d-CXh" firstAttribute="centerX" secondItem="Znj-aX-FL2" secondAttribute="centerX" id="NtN-yA-xKd"/>
                             <constraint firstAttribute="trailing" secondItem="Ohp-4N-8Ys" secondAttribute="trailing" id="R7H-tT-L6O"/>
                             <constraint firstAttribute="trailing" secondItem="eic-ue-SnJ" secondAttribute="trailing" id="Sk8-Db-Fyh"/>
                             <constraint firstItem="Ocl-iC-Ud2" firstAttribute="centerY" secondItem="a1i-tg-2qU" secondAttribute="centerY" id="YPD-eR-Q0r"/>
                             <constraint firstAttribute="trailing" secondItem="V2L-Iv-IDI" secondAttribute="trailing" id="YbN-Ol-6Ih"/>
+                            <constraint firstItem="UaV-6l-lVU" firstAttribute="centerY" secondItem="Znj-aX-FL2" secondAttribute="centerY" id="YsB-0f-jS4"/>
                             <constraint firstItem="a1i-tg-2qU" firstAttribute="height" secondItem="mK9-6d-CXh" secondAttribute="height" id="bfq-KK-tYG"/>
                             <constraint firstItem="mK9-6d-CXh" firstAttribute="top" secondItem="eic-ue-SnJ" secondAttribute="bottom" constant="40" id="fwI-Qr-nkN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yv6-XF-GvY" secondAttribute="trailing" priority="750" constant="8" id="g2x-TC-nQQ"/>
@@ -168,6 +177,7 @@
                     <connections>
                         <outlet property="DatePicker" destination="Zh1-5a-B5S" id="zwk-w8-0pG"/>
                         <outlet property="TimeIN" destination="mK9-6d-CXh" id="eCR-dg-g2H"/>
+                        <outlet property="animationImage" destination="UaV-6l-lVU" id="kdJ-SC-cQi"/>
                         <outlet property="date1button" destination="Ydt-wR-B8B" id="M1q-2Q-Nql"/>
                         <outlet property="datePickerbBackground" destination="yv6-XF-GvY" id="N14-Mo-Rnz"/>
                         <outlet property="deleter" destination="jaO-3a-pGo" id="w7H-FI-CQb"/>
@@ -185,5 +195,6 @@
     <resources>
         <image name="Grass12" width="424" height="282"/>
         <image name="trash" width="50" height="50"/>
+        <image name="vNaked" width="150" height="150"/>
     </resources>
 </document>

@@ -36,6 +36,7 @@ class datePicker2: UIViewController {
     datePickerbBackground .isHidden = false
     }
     
+    @IBOutlet weak var animationImage: UIImageView!
     @IBOutlet weak var topOfStart: NSLayoutConstraint!
     @IBOutlet weak var startLbl: UILabel!
     @IBOutlet weak var extendedDate1Button: UIButton!
@@ -139,7 +140,6 @@ class datePicker2: UIViewController {
     }//end of func
     
     func saveToDB2() {
-    navigationController!.popViewController(animated: true)
 
     if recordToHandle == "" {
     let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fEmployer": String (describing : employerFromMain!),"fIndication3" :"✏️","fStatus" : "Pre","fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID)]
@@ -154,14 +154,47 @@ class datePicker2: UIViewController {
     self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])
     self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])
     } //end of else
-       
+        
+    imageAnimation()
+
     }//end of savetodb2
     
     @IBAction func date1(_ sender: AnyObject) {
     datePickerbBackground .isHidden = false
     }
     
-    
+    func imageAnimation(){
+        self.animationImage.center.x -= self.view.bounds.width
+        self.animationImage.isHidden = false
+        self.animationImage.alpha = 1
+        
+        UIView.animate(withDuration: 2.0, animations:{
+            self.animationImage.center.x += self.view.bounds.width
+        })
+        UIView.animate(withDuration: 2.0, delay :2.0 ,options:[],animations: {
+            self.animationImage.alpha = 0
+            
+        },completion:nil)
+        
+        UIView.animate(withDuration: 1.0, delay :4.0 ,options:[],animations: {
+
+            
+            DispatchQueue.main.asyncAfter(deadline: .now()){
+                UIView.animate(withDuration: 2.0, delay :0.0 ,options:[],animations: {
+                    //self.textAdd.alpha = 1
+                },completion:nil)
+                UIView.animate(withDuration: 2.0, delay :2.0 ,options:[],animations: {
+                   // self.textAdd.alpha = 0
+
+                },completion:nil)
+            }
+
+        
+    })
+        DispatchQueue.main.asyncAfter(deadline: .now()+3){
+            self.navigationController!.popViewController(animated: true)
+
+        }}
   ////alerts////////////////////////////////////////////////////////////////////////////////////////////////////////
     
 //deletealert
