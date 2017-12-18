@@ -270,26 +270,28 @@ print (mydateFormat20.date(from: (arrayOfMonths[(taxMonthRow?.row)!])))
                 let billItem = billStruct()
                 billItem.setValuesForKeys(dictionary)
                 
-                let components = self.calendar.dateComponents([.year, .month, .day, .weekOfYear,.yearForWeekOfYear], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
+                let components = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
                 self.taxMonth = components.month!
                 self.taxYear = components.year!
                 print (self.taxMonth-1,self.taxYear-1)
                 
+                
                 func inFilter() {
-                    
+                    if billItem.fBillStatus != "Cancelled"{
                     if self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] == nil {
                         self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTax!)!
                     }else{
                         self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTax!)!
-                    }
+                        }
+                        }
                     
-
-                    self.monthSorter.append(self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!))
+                    if billItem.fBillStatus != "Cancelled"{
+                        self.monthSorter.append(self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!))
                     self.uniqueTaxMonths = Array(Set(self.monthSorter))
                     self.uniqueTaxMonthsdateFormat = self.uniqueTaxMonths.map {self.mydateFormat20.date(from: $0)! }
                     self.uniqueTaxMonthsdateFormat.sort { $0.compare($1) == .orderedDescending }
                     self.arrayOfMonths = self.uniqueTaxMonthsdateFormat.map { self.mydateFormat20.string(from: $0)}
-                   
+                    }
                     self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
                         self.taxCounter += Double(billItem.fBillTax!)!}
                     ;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
