@@ -222,7 +222,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         cell.backgroundColor = UIColor.clear
         cell.l1.text = uniqueTaxMonths[indexPath.row]
         cell.l4.text  = ViewController.fixedCurrency
-            cell.l3.text = String(billItem2) as String 
+            cell.l3.text = String(billItem2) as String
         return cell
     }
     
