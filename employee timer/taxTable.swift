@@ -150,7 +150,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         StatusChosen.isHidden = true
         
         billerConnect.backgroundColor = UIColor.clear
-        titleLbl = "Tax per Month"
+        titleLbl = "Tax"
         self.title = titleLbl
         
         //connectivity

@@ -811,12 +811,6 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lxT-w2-3r9">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="BWl-6v-Y2T"/>
-                                </constraints>
-                            </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKA-rE-TUN" userLabel="sideMenu">
                                 <rect key="frame" x="0.0" y="50" width="140" height="370"/>
                                 <subviews>
@@ -943,6 +937,12 @@
                                     <constraint firstAttribute="width" constant="40" id="bhH-wa-SU6"/>
                                 </constraints>
                             </imageView>
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lxT-w2-3r9">
+                                <rect key="frame" x="-1" y="0.0" width="320" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="BWl-6v-Y2T"/>
+                                </constraints>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <accessibility key="accessibilityConfiguration">
@@ -2371,8 +2371,11 @@
                                     <constraint firstAttribute="height" constant="60" id="S0K-IT-oY1"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="oYK-pt-rkV"/>
                                     <barButtonItem enabled="NO" title="Bill" id="OJv-uh-gXy" userLabel="billSender">
+                                        <color key="tintColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="oYK-pt-rkV"/>
+                                    <barButtonItem enabled="NO" title="Bill&amp;Pay" id="OzA-Mw-ocR" userLabel="billPaySender">
                                         <color key="tintColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </barButtonItem>
                                 </items>
@@ -2563,6 +2566,7 @@
                     <connections>
                         <outlet property="StatusChosen" destination="7i1-XX-uWr" id="BRf-Vc-Lp3"/>
                         <outlet property="amount" destination="97h-H1-ijY" id="Mqa-rr-PQ7"/>
+                        <outlet property="billPay" destination="OzA-Mw-ocR" id="Wr9-Km-ETk"/>
                         <outlet property="billSender" destination="OJv-uh-gXy" id="Fys-cH-WHz"/>
                         <outlet property="eventsLbl" destination="Kbw-MS-DaF" id="gRA-9v-92S"/>
                         <outlet property="generalApproval" destination="4Fz-k3-QaH" id="yL1-SW-Y32"/>
@@ -3067,6 +3071,6 @@
         <segue reference="vGn-ru-ol3"/>
         <segue reference="kEl-UY-JOa"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="1k4-P4-HYk"/>
+        <segue reference="gfT-By-X34"/>
     </inferredMetricsTieBreakers>
 </document>

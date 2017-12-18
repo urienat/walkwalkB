@@ -193,7 +193,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         })
         }}
         })
-            if taxBillsToHandle == false {fetchBills(); StatusChosen.isHidden = false;filter.isHidden = false} else {billsForTaxMonth();StatusChosen.isHidden = true;filter.isHidden = true;titleLbl = "Bills for \(monthToHandle)-\(yearToHandle)";self.title = titleLbl}
+            if taxBillsToHandle == false {fetchBills(); StatusChosen.isHidden = false;filter.isHidden = false} else {billsForTaxMonth();StatusChosen.isHidden = true;filter.isHidden = true;titleLbl = "\(monthToHandle)-\(yearToHandle)";self.title = titleLbl}
         print (billItems.count)
         billerConnect.reloadData()
         }//view did appear end

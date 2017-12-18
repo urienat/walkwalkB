@@ -59,7 +59,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var paypal: String?
     var billInfo: String?
 
-
+    let btn5 = UIButton(type: .custom)
     let btn4 = UIButton(type: .custom)
     var sendBillIcon = UIImage(named:"sendBillIcon")?.withRenderingMode(.alwaysTemplate )
 
@@ -129,6 +129,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var perEvents: UILabel!
     @IBOutlet weak var noSign: UIImageView!
     
+    @IBOutlet weak var billPay: UIBarButtonItem!
     @IBOutlet weak var billSender: UIBarButtonItem!
     func sendBill() {
         billSender.isEnabled = false
@@ -147,7 +148,25 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             self.releaser = 0
         }
 
-    }//end of approval button
+    }//end of sendBill
+    
+    func billPayProcess(){
+        billSender.isEnabled = false
+        releaser = 1
+        
+        refresh(presser: 1)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+4.4){
+            print(self.appArray.count)
+            if self.appArray.count != 0 {self.thinking.stopAnimating(); self.alert18()}
+            if self.appArray.count == 0 {
+                self.thinking.stopAnimating()
+                self.alert27()
+            }
+            self.billSender.isEnabled = false
+            self.releaser = 0
+        }
+    }
     
     var records = [recordsStruct]()
     
@@ -220,6 +239,12 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         btn4.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         btn4.addTarget(self, action:#selector(sendBill), for: UIControlEvents.touchDown)
         billSender.customView = btn4
+            
+        btn5.setTitle("Bill&Pay", for: .normal)
+        btn5.setTitleColor(blueColor, for: .normal)
+        btn5.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        btn5.addTarget(self, action:#selector(billPayProcess), for: UIControlEvents.touchDown)
+        billPay.customView = btn5
             
         if keeper.integer(forKey: "dueInstruction") != 1 {rememberMe1 = 0 } else { rememberMe1 = 1 }
          
