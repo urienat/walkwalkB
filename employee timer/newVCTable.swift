@@ -771,7 +771,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": "Billed", "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2
         ], withCompletionBlock: { (error) in}) //end of update.//was 0
         self.generalApprovalClicked()
-        //self.alert19()
+        self.navigationController!.popViewController(animated: true)
+
         }//end of if biller
         }
     }
