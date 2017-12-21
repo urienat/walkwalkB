@@ -2531,7 +2531,7 @@
                                     <constraint firstAttribute="height" constant="120" id="uyS-P4-HHY"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="onk-I2-XsT" userLabel="paymentView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="onk-I2-XsT" userLabel="paymentView">
                                 <rect key="frame" x="40" y="160" width="240" height="160"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Payment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LyR-Lg-J0y" userLabel="paymentTitle">

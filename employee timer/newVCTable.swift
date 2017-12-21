@@ -35,8 +35,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var billMessage: String?
     var releaser: Int? = 0
     
-    var paymentMethod: String?
-    var paymentReference: String?
+    var paymentMethod: String? = ""
+    var paymentReference: String? = ""
+    
     
     var midCalc = "0.0"
     var midCalc2 = "0.0"
@@ -105,14 +106,28 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var paymentView: UIView!
     @IBOutlet weak var paymentMethood: UISegmentedControl!
     @IBAction func paymentMethood(_ sender: Any) {
+    print("payment pressed")
+        StatusChosen.isEnabled = false
+        periodChosen.isEnabled = false
+        switch StatusChosen.selectedSegmentIndex {
+        case 0: paymentMethod = "cash"; referenceTxt.isHidden = true
+        case 1: paymentMethod = "check"; referenceTxt.isHidden = false
+        case 2: paymentMethod = "other"; referenceTxt.isHidden = false
+        default: paymentMethod = "None"; referenceTxt.isHidden = true
+        } //end of switch
+        
     }
     @IBOutlet weak var referenceTxt: UITextField!
     @IBAction func savePayment(_ sender: Any) {
         paymentView.isHidden = true
+        self.alert19()
+        print (paymentMethod,paymentReference)
     }
     
     @IBAction func cancelPayment(_ sender: Any) {
         paymentView.isHidden = true
+        paymentReference = ""
+        paymentMethod = ""
 
     }
     //variabled for date filtering
@@ -185,7 +200,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     if self.appArray.count != 0 {self.thinking.stopAnimating();
     //add refernce for the payment
         self.paymentRef()
-        self.alert19()}
+        //self.alert19()
+        
+        }
     if self.appArray.count == 0 {
     self.thinking.stopAnimating()
     self.alert27()
