@@ -278,6 +278,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         if keeper.integer(forKey: "dueInstruction") != 1 {rememberMe1 = 0 } else { rememberMe1 = 1 }
          
         tableConnect.separatorColor = blueColor
+            
+        paymentView.layoutIfNeeded()
+        paymentView.layer.cornerRadius = 10//paymentView.frame.height / 2.0
+        paymentView.layer.masksToBounds = true
+
 
             
         }//end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
