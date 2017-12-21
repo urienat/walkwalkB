@@ -2287,6 +2287,110 @@
                                     <constraint firstItem="3zJ-sW-iik" firstAttribute="centerX" secondItem="WFF-pl-qqA" secondAttribute="centerX" id="zLs-Nr-aoJ"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9c-oL-JGA" userLabel="paymentView">
+                                <rect key="frame" x="40" y="150" width="240" height="180"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Payment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vBU-uW-SVk" userLabel="paymentTitle">
+                                        <rect key="frame" x="84" y="8" width="71" height="20"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="bal-L9-lS9" userLabel="paymentMethod">
+                                        <rect key="frame" x="27" y="40" width="185" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="185" id="CPw-8p-jfr"/>
+                                            <constraint firstAttribute="height" constant="30" id="qPT-ET-NlQ"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Cash"/>
+                                            <segment title="Check"/>
+                                            <segment title="Other"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="paymentMethood:" destination="KQc-zY-Jl3" eventType="valueChanged" id="9MU-em-Bf8"/>
+                                            <action selector="paymentMethood:" destination="Grl-4C-vV7" eventType="valueChanged" id="l4E-jG-eUE"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Reference (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ozL-9e-hkS" userLabel="refernceTxt">
+                                        <rect key="frame" x="27" y="82" width="185" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="185" id="7UG-jR-zP3"/>
+                                            <constraint firstAttribute="height" constant="30" id="wo8-wV-TMC"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9QC-CX-Si0" userLabel="seprationLine">
+                                        <rect key="frame" x="0.0" y="133" width="240" height="1"/>
+                                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="nQJ-fj-VxG"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jcF-3L-tr2" userLabel="seprationLine">
+                                        <rect key="frame" x="119.5" y="133" width="1" height="47"/>
+                                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1" id="I8f-AF-K00"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.2145790309" green="0.45587304229999998" blue="0.84711945060000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0k-Z7-GVQ" userLabel="cancelPayment">
+                                        <rect key="frame" x="30" y="142" width="60" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="SSt-29-9SU"/>
+                                            <constraint firstAttribute="width" constant="60" id="swP-1w-P7q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelPayment:" destination="KQc-zY-Jl3" eventType="touchUpInside" id="SgR-Hx-zjS"/>
+                                            <action selector="cancelPayment:" destination="Grl-4C-vV7" eventType="touchUpInside" id="j4Z-Ax-Ksn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7km-HH-3Gq" userLabel="savePayment">
+                                        <rect key="frame" x="150" y="142" width="60" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="AFS-ub-CMI"/>
+                                            <constraint firstAttribute="width" constant="60" id="JCx-tq-Fi8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="savePayment:" destination="KQc-zY-Jl3" eventType="touchUpInside" id="9X5-uA-Rgp"/>
+                                            <action selector="savePayment:" destination="Grl-4C-vV7" eventType="touchUpInside" id="emV-UK-6LC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="vBU-uW-SVk" firstAttribute="top" secondItem="T9c-oL-JGA" secondAttribute="top" constant="8" id="9du-CZ-V8V"/>
+                                    <constraint firstItem="ozL-9e-hkS" firstAttribute="centerX" secondItem="T9c-oL-JGA" secondAttribute="centerX" id="9kw-21-vFk"/>
+                                    <constraint firstAttribute="bottom" secondItem="jcF-3L-tr2" secondAttribute="bottom" id="COg-Vk-SZv"/>
+                                    <constraint firstItem="jcF-3L-tr2" firstAttribute="top" secondItem="9QC-CX-Si0" secondAttribute="top" id="DcT-LY-kPR"/>
+                                    <constraint firstItem="g0k-Z7-GVQ" firstAttribute="leading" secondItem="T9c-oL-JGA" secondAttribute="leading" constant="30" id="N1t-Pq-dbj"/>
+                                    <constraint firstAttribute="trailing" secondItem="7km-HH-3Gq" secondAttribute="trailing" constant="30" id="O18-uq-4jc"/>
+                                    <constraint firstAttribute="bottom" secondItem="g0k-Z7-GVQ" secondAttribute="bottom" constant="8" id="SRl-dW-C1A"/>
+                                    <constraint firstAttribute="height" constant="180" id="T2v-kw-61T"/>
+                                    <constraint firstItem="ozL-9e-hkS" firstAttribute="top" secondItem="bal-L9-lS9" secondAttribute="bottom" constant="12" id="Yjv-JI-BAG"/>
+                                    <constraint firstItem="9QC-CX-Si0" firstAttribute="leading" secondItem="T9c-oL-JGA" secondAttribute="leading" id="bBq-eN-C7F"/>
+                                    <constraint firstItem="bal-L9-lS9" firstAttribute="top" secondItem="vBU-uW-SVk" secondAttribute="bottom" constant="12" id="fHg-Gj-ksz"/>
+                                    <constraint firstItem="jcF-3L-tr2" firstAttribute="centerX" secondItem="9QC-CX-Si0" secondAttribute="centerX" id="hRw-7w-jsh"/>
+                                    <constraint firstAttribute="bottom" secondItem="7km-HH-3Gq" secondAttribute="bottom" constant="8" id="jXk-dN-2Sf"/>
+                                    <constraint firstAttribute="trailing" secondItem="9QC-CX-Si0" secondAttribute="trailing" id="lUz-Ne-sOc"/>
+                                    <constraint firstItem="7km-HH-3Gq" firstAttribute="top" secondItem="9QC-CX-Si0" secondAttribute="bottom" constant="8" id="nba-LJ-rbe"/>
+                                    <constraint firstItem="vBU-uW-SVk" firstAttribute="centerX" secondItem="T9c-oL-JGA" secondAttribute="centerX" id="qC1-oV-hJo"/>
+                                    <constraint firstAttribute="width" constant="240" id="smT-Bw-CLa"/>
+                                    <constraint firstItem="bal-L9-lS9" firstAttribute="centerX" secondItem="vBU-uW-SVk" secondAttribute="centerX" id="wxS-2B-67h"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -2303,9 +2407,11 @@
                             <constraint firstItem="WFF-pl-qqA" firstAttribute="leading" secondItem="LE5-Ui-4B3" secondAttribute="leading" id="LxG-ob-lwR"/>
                             <constraint firstItem="AE9-S5-B4h" firstAttribute="centerY" secondItem="dos-vv-upu" secondAttribute="centerY" id="WBc-L2-5Xz"/>
                             <constraint firstItem="tR9-cS-rER" firstAttribute="leading" secondItem="LE5-Ui-4B3" secondAttribute="leading" id="YNb-0Z-vZc"/>
+                            <constraint firstItem="T9c-oL-JGA" firstAttribute="centerX" secondItem="LE5-Ui-4B3" secondAttribute="centerX" id="aZP-Jd-m8i"/>
                             <constraint firstItem="WOU-wI-y5F" firstAttribute="leading" secondItem="LE5-Ui-4B3" secondAttribute="leading" id="azG-70-gSK"/>
                             <constraint firstItem="PrW-i7-IuZ" firstAttribute="top" secondItem="fgv-lZ-OY1" secondAttribute="bottom" constant="12" id="cuB-ny-T0b"/>
                             <constraint firstItem="AE9-S5-B4h" firstAttribute="leading" secondItem="dos-vv-upu" secondAttribute="trailing" constant="20" id="gKV-zf-vu7"/>
+                            <constraint firstItem="T9c-oL-JGA" firstAttribute="centerY" secondItem="LE5-Ui-4B3" secondAttribute="centerY" id="gea-7j-G12"/>
                             <constraint firstAttribute="trailing" secondItem="PrW-i7-IuZ" secondAttribute="trailing" id="izT-mK-gro"/>
                             <constraint firstAttribute="trailing" secondItem="WOU-wI-y5F" secondAttribute="trailing" id="lOo-af-2rU"/>
                             <constraint firstItem="n0x-Pz-LMA" firstAttribute="centerY" secondItem="LE5-Ui-4B3" secondAttribute="centerY" id="qXo-Z5-qkE"/>
@@ -2327,6 +2433,9 @@
                         <outlet property="filterConstrain" destination="xS0-JC-fPc" id="bb1-Xr-9pI"/>
                         <outlet property="filterImageConstrain" destination="4Vn-FY-gml" id="vTa-bs-MkQ"/>
                         <outlet property="noSign" destination="xK7-aT-7LI" id="68e-Uo-GDp"/>
+                        <outlet property="paymentMethood" destination="bal-L9-lS9" id="uwe-Wl-yna"/>
+                        <outlet property="paymentView" destination="T9c-oL-JGA" id="7tp-23-Uwm"/>
+                        <outlet property="referenceTxt" destination="ozL-9e-hkS" id="eeQ-Am-MHo"/>
                         <outlet property="thinking" destination="n0x-Pz-LMA" id="ZFn-TC-imW"/>
                         <outlet property="totalAmount" destination="RwY-u5-Vpk" id="nqf-q4-hwd"/>
                         <outlet property="totalBills" destination="ILg-rw-WUw" id="23Y-xA-55y"/>
@@ -3173,7 +3282,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8Bf-Vi-arA"/>
-        <segue reference="vGn-ru-ol3"/>
+        <segue reference="GwF-xw-cu7"/>
         <segue reference="kEl-UY-JOa"/>
         <segue reference="8s0-fg-N01"/>
         <segue reference="gfT-By-X34"/>

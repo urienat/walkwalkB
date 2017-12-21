@@ -27,6 +27,12 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var monthToHandle : Int = 0
     var yearToHandle : Int = 0
     var taxBillsToHandle:Bool = false
+    
+    var paymentSys: String? = ""
+    var paymentReference: String? = ""
+    var paymentDate: String? = ""
+    var billStatus:String? = "Billed"
+    var documentName:String?
 
     var billItems = [billStruct]()
     static var checkBoxBiller:Int = 0
@@ -44,6 +50,52 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var isFilterHidden = true
     var filterDecided :Int = 0
     
+    //payment
+    
+    @IBOutlet weak var paymentView: UIView!
+    @IBOutlet weak var paymentMethood: UISegmentedControl!
+    @IBAction func paymentMethood(_ sender: Any) {
+        print("payment pressed")
+        //paymentMethood.isEnabled = false
+        switch paymentMethood.selectedSegmentIndex {
+        case 0: paymentSys = "cash"; referenceTxt.isHidden = true
+        case 1: paymentSys = "check"; referenceTxt.isHidden = false
+        case 2: paymentSys = "other"; referenceTxt.isHidden = false
+        default: paymentSys = "None"; referenceTxt.isHidden = true
+        } //end of switch
+        
+    }
+    
+    
+    @IBOutlet weak var referenceTxt: UITextField!
+    
+    @IBAction func savePayment(_ sender: Any) {
+        paymentReference = referenceTxt.text
+        paymentDate = mydateFormat5.string(from: Date())
+        billStatus = "Paid"
+        print (paymentSys,paymentReference)
+        
+        
+        paymentView.isHidden = true
+        self.alert19()
+    }
+    
+    @IBAction func cancelPayment(_ sender: Any) {
+        paymentView.isHidden = true
+        paymentReference = ""
+        paymentSys = ""
+        paymentDate = ""
+        billStatus = "Billed"
+    
+        print (paymentSys,paymentReference)
+        self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
+        self.segmentedPressed = 0
+        self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
+        self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+        
+    }
+        
+        
     var calendar = Calendar.current
     var recordMonth : Int = 0
     var recordYear : Int = 0
@@ -521,6 +573,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             self.present(alertController9, animated: true, completion: nil)
             }
 
+    
+    
             func alert3(){
             let alertController3 = UIAlertController(title: ("Bill Alert") , message: "You are about to cancel payment for a bill that was already marked as paid. Are you Sure?", preferredStyle: .alert)
 
