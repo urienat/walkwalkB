@@ -765,14 +765,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             
             if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
             
-            print (self.paymentDate!)
-            print (self.mydateFormat5.date(from: self.paymentDate!))
-            print (self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.paymentDate!)!))
 
-
-            if self.paymentDate != "" { if self.paymentSys != "Other"{self.paymentBlock = "Payment made by \(self.paymentSys!) \(self.refernceBlock) on the \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.paymentDate!)!))"
+            if self.paymentDate != "" { if self.paymentSys != "Other"{self.paymentBlock = "Payment made by \(self.paymentSys!) \(self.refernceBlock) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.paymentDate!)!))"
                 }else{
-                self.paymentBlock = ("Payment made on the \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.paymentDate!)!)) - \(self.refernceBlock) ")
+                self.paymentBlock = ("Payment made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.paymentDate!)!)) - \(self.refernceBlock) ")
                 }
                 
             }else{
