@@ -33,6 +33,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var paymentDate: String? = ""
     var billStatus:String? = "Billed"
     var documentName:String?
+    var segmentedPressed:Int?
+
 
     var billItems = [billStruct]()
     static var checkBoxBiller:Int = 0
@@ -74,10 +76,14 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         paymentDate = mydateFormat5.string(from: Date())
         billStatus = "Paid"
         print (paymentSys,paymentReference)
+        self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).updateChildValues(["fBillStatus": statusTemp, "fBillStatusDate":
+            mydateFormat5.string(from: Date())//was 3
+            ], withCompletionBlock: { (error) in}) //end of update.
+        BillArrayStatus[buttonRow] = statusTemp
         
         
         paymentView.isHidden = true
-        self.alert19()
+       // self.alert19()
     }
     
     @IBAction func cancelPayment(_ sender: Any) {
@@ -88,7 +94,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billStatus = "Billed"
     
         print (paymentSys,paymentReference)
-        self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
+      //  self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
         self.segmentedPressed = 0
         self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
         self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
@@ -431,11 +437,12 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         buttonRow = sender.tag
         
         if BillArrayStatus[buttonRow] != "Cancelled"
-            { if BillArrayStatus[buttonRow] == "Billed" {  statusTemp = "Paid"
-            self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).updateChildValues(["fBillStatus": statusTemp, "fBillStatusDate":
-            mydateFormat5.string(from: Date())//was 3
-            ], withCompletionBlock: { (error) in}) //end of update.
-            BillArrayStatus[buttonRow] = statusTemp
+        { if BillArrayStatus[buttonRow] == "Billed" {  statusTemp = "Paid";
+            paymentView.isHidden = false
+            //self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).updateChildValues(["fBillStatus": statusTemp, "fBillStatusDate":
+           // mydateFormat5.string(from: Date())//was 3
+           // ], withCompletionBlock: { (error) in}) //end of update.
+            //BillArrayStatus[buttonRow] = statusTemp
             }//end of if billed
             else if BillArrayStatus[buttonRow] == "Paid" {  if StatusChoice == "Not Paid" { statusTemp = "Billed"
             self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).updateChildValues(["fBillStatus": statusTemp, "fBillStatusDate":
