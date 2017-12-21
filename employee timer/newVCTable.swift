@@ -869,7 +869,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     self.biller = false
 
-    self.mailSaver = "\(self.mydateFormat3.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n Account: \(self.employerFromMain!)\r\n\(self.billInfo!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) \r\n \(self.perEvents.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\nPayment with paypal: \(self.paypal!)/\(self.midCalc2) \r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\nMade by PerSession app. "
+    self.mailSaver = "\(self.mydateFormat3.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n Account: \(self.employerFromMain!)\r\n\(self.billInfo!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) \r\n \(self.perEvents.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\nPayment with paypal: \(self.paypal!)/\(self.midCalc2)\r\n\(self.paymentBlock) \r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\nMade by PerSession app. "
 
 
     //update bill with DB
@@ -880,9 +880,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     }//end of if biller
     }
-    paymentReference = ""
-    paymentSys = ""
-    paymentDate = ""
+    
         
     }//end of billprocess
     
