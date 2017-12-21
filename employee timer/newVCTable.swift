@@ -39,6 +39,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var paymentReference: String? = ""
     var paymentDate: String? = ""
     var billStatus:String? = "Billed"
+    var documentName:String?
     
     
     var midCalc = "0.0"
@@ -767,13 +768,13 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             
             
             print (self.paymentDate!)
-            if self.paymentDate != "" { if self.paymentSys != "Other"{self.paymentBlock = "Payment made by \(self.paymentSys!) \(self.refernceBlock) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.paymentDate!)!))"
+            if self.paymentDate != "" {self.documentName = "Bill & Payment"; if self.paymentSys != "Other"{self.paymentBlock = "Payment made by \(self.paymentSys!) \(self.refernceBlock) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.paymentDate!)!))"
                 }else{// payment == other
                 self.paymentBlock = ("Payment made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.paymentDate!)!)) - \(self.refernceBlock) ")
                 }
                 
-            }else{ // no payment only bill
-            if self.paypal != "" { self.paymentBlock = ("Payment with paypal: \(self.paypal!)/\(self.midCalc2)")}else {self.paymentBlock = ""}
+            }else{self.documentName = "Bill"; // no payment only bill
+            if self.paypal != "" { self.paymentBlock = ("Payment can be made through Paypal: \(self.paypal!)/\(self.midCalc2)")}else {self.paymentBlock = ""}
             }// end of else  self.paymentDate != ""
             
    
@@ -882,8 +883,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     if self.biller == true {self.dbRefEmployees.child(self.employeeID).updateChildValues(["fCounter": String(describing: (Int(self.counterForMail2!)!+1))])//add counter to invouce #
 
     self.biller = false
-
-    self.mailSaver = "\(self.mydateFormat3.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n Account: \(self.employerFromMain!)\r\n\(self.billInfo!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) \r\n \(self.perEvents.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock) \r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\nMade by PerSession app. "
+        
+        self.mailSaver = "\(self.mydateFormat3.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n Account: \(self.employerFromMain!)\r\n\r\n \(self.billInfo!)r\n\\r\n\(self.documentName)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) \r\n \(self.perEvents.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock) \r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\nMade by PerSession app. "
 
 
     //update bill with DB
