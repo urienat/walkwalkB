@@ -38,6 +38,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var paymentSys: String? = ""
     var paymentReference: String? = ""
     var paymentDate: String? = ""
+    var billStatus:String? = "Billed"
     
     
     var midCalc = "0.0"
@@ -122,7 +123,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var referenceTxt: UITextField!
     @IBAction func savePayment(_ sender: Any) {
         paymentReference = referenceTxt.text
-        paymentDate = String (describing: Date())
+        paymentDate = mydateFormat5.string(from: Date())
+        billStatus = "Paid"
         print (paymentSys,paymentReference)
         
 
@@ -135,6 +137,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         paymentReference = ""
         paymentSys = ""
         paymentDate = ""
+        billStatus = "Billed"
+
         print (paymentSys,paymentReference)
         self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
         self.segmentedPressed = 0
@@ -759,8 +763,21 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
              } else {
             self.taxationBlock = ""}
             
-            if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference)"} else {self.refernceBlock = ""}
-            if self.paymentSys != "" {self.paymentBlock = ("Payment made by \(self.paymentMethood) \(self.refernceBlock) on the \(self.paymentDate)")} else {self.paymentBlock = ""}
+            if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
+            
+            print (self.paymentDate!)
+            print (self.mydateFormat5.date(from: self.paymentDate!))
+            print (self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.paymentDate!)!))
+
+
+            if self.paymentDate != "" { if self.paymentSys != "Other"{self.paymentBlock = "Payment made by \(self.paymentSys!) \(self.refernceBlock) on the \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.paymentDate!)!))"
+                }else{
+                self.paymentBlock = ("Payment made on the \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.paymentDate!)!)) - \(self.refernceBlock) ")
+                }
+                
+            }else{
+            if self.paypal != "" { self.paymentBlock = ("Payment with paypal: \(self.paypal!)/\(self.midCalc2)")}else {self.paymentBlock = ""}
+            }// end of else  self.paymentDate != ""
             
    
             self.counterForMail2 = counterForMail
@@ -869,11 +886,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     self.biller = false
 
-    self.mailSaver = "\(self.mydateFormat3.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n Account: \(self.employerFromMain!)\r\n\(self.billInfo!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) \r\n \(self.perEvents.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\nPayment with paypal: \(self.paypal!)/\(self.midCalc2)\r\n\(self.paymentBlock) \r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\nMade by PerSession app. "
+    self.mailSaver = "\(self.mydateFormat3.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n Account: \(self.employerFromMain!)\r\n\(self.billInfo!)\r\n\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) \r\n \(self.perEvents.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock) \r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\nMade by PerSession app. "
 
 
     //update bill with DB
-        self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": "Billed", "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2,"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference, "fPaymentDate":self.paymentDate
+        self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": self.billStatus!, "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2,"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference, "fPaymentDate":self.paymentDate
     ], withCompletionBlock: { (error) in}) //end of update.//was 0
     self.generalApprovalClicked()
     self.navigationController!.popViewController(animated: true)
@@ -922,6 +939,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.paymentReference = ""
         self.paymentSys = ""
         self.paymentDate = ""
+        self.billStatus = "Billed"
     self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
     self.segmentedPressed = 0
     self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
