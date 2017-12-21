@@ -760,7 +760,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             self.taxationBlock = ""}
             
             if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference)"} else {self.refernceBlock = ""}
-            if self.paymentSys != "" {self.paymentBlock = ("Payment made by \(self.paymentMethood) \(self.refernceBlock) on the \(paymentDate)")} else {self.paymentBlock = ""}
+            if self.paymentSys != "" {self.paymentBlock = ("Payment made by \(self.paymentMethood) \(self.refernceBlock) on the \(self.paymentDate)")} else {self.paymentBlock = ""}
             
    
             self.counterForMail2 = counterForMail
@@ -882,7 +882,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     }
     paymentReference = ""
     paymentSys = ""
-    paymentDate
+    paymentDate = ""
         
     }//end of billprocess
     
@@ -921,9 +921,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     //add printing process
     }
     let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
-    paymentReference = ""
-    paymentSys = ""
-    paymentDate = ""
+        self.paymentReference = ""
+        self.paymentSys = ""
+        self.paymentDate = ""
     self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
     self.segmentedPressed = 0
     self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
