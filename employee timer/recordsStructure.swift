@@ -43,7 +43,10 @@ class billStruct: NSObject{
     var fBillTax: String?
     var fBillTotalTotal: String?
     var fBillStatusDate: String?
-    
+    var fPaymentMethood: String?
+    var fPaymentReference: String?
+    var fPaymentDate: String?
+
     
     
     

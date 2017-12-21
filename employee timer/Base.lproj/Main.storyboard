@@ -2532,7 +2532,7 @@
                                 </constraints>
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="onk-I2-XsT" userLabel="paymentView">
-                                <rect key="frame" x="40" y="160" width="240" height="160"/>
+                                <rect key="frame" x="40" y="150" width="240" height="180"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Payment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LyR-Lg-J0y" userLabel="paymentTitle">
                                         <rect key="frame" x="84" y="8" width="71" height="20"/>
@@ -2555,7 +2555,7 @@
                                             <action selector="paymentMethood:" destination="KQc-zY-Jl3" eventType="valueChanged" id="XG2-xc-fpW"/>
                                         </connections>
                                     </segmentedControl>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Reference (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NDn-4f-pNB" userLabel="refernceTxt">
+                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Reference (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NDn-4f-pNB" userLabel="refernceTxt">
                                         <rect key="frame" x="27" y="82" width="185" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="185" id="COb-wI-3Vh"/>
@@ -2566,7 +2566,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gp7-r5-xEL" userLabel="seprationLine">
-                                        <rect key="frame" x="0.0" y="113" width="240" height="1"/>
+                                        <rect key="frame" x="0.0" y="133" width="240" height="1"/>
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="aDf-fF-YRp"/>
@@ -2576,7 +2576,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OKx-Xg-iEm" userLabel="seprationLine">
-                                        <rect key="frame" x="119.5" y="113" width="1" height="47"/>
+                                        <rect key="frame" x="119.5" y="133" width="1" height="47"/>
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="rc4-jo-wM5"/>
@@ -2586,23 +2586,24 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGz-Sg-nk5" userLabel="cancelPayment">
-                                        <rect key="frame" x="30" y="122" width="60" height="30"/>
+                                        <rect key="frame" x="30" y="142" width="60" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="La5-r4-mZ2"/>
                                             <constraint firstAttribute="height" constant="30" id="Zvp-jc-JO7"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <state key="normal" title="Cancel"/>
                                         <connections>
                                             <action selector="cancelPayment:" destination="KQc-zY-Jl3" eventType="touchUpInside" id="rjj-B8-a6U"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLd-aV-xiS" userLabel="savePayment">
-                                        <rect key="frame" x="150" y="122" width="60" height="30"/>
+                                        <rect key="frame" x="150" y="142" width="60" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="aEK-HA-yRu"/>
                                             <constraint firstAttribute="width" constant="60" id="qaU-f0-2kB"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="Save"/>
                                         <connections>
                                             <action selector="savePayment:" destination="KQc-zY-Jl3" eventType="touchUpInside" id="atY-07-tfY"/>
@@ -2623,7 +2624,7 @@
                                     <constraint firstItem="OKx-Xg-iEm" firstAttribute="centerX" secondItem="gp7-r5-xEL" secondAttribute="centerX" id="a5x-YA-0mP"/>
                                     <constraint firstItem="NDn-4f-pNB" firstAttribute="top" secondItem="TcQ-To-oTL" secondAttribute="bottom" constant="12" id="bWY-ji-ons"/>
                                     <constraint firstAttribute="width" constant="240" id="cbR-al-uvl"/>
-                                    <constraint firstAttribute="height" constant="160" id="kwA-jk-qAt"/>
+                                    <constraint firstAttribute="height" constant="180" id="kwA-jk-qAt"/>
                                     <constraint firstAttribute="bottom" secondItem="OKx-Xg-iEm" secondAttribute="bottom" id="mIJ-cw-fyD"/>
                                     <constraint firstItem="NDn-4f-pNB" firstAttribute="centerX" secondItem="onk-I2-XsT" secondAttribute="centerX" id="o0V-U0-7Tf"/>
                                     <constraint firstItem="NGz-Sg-nk5" firstAttribute="leading" secondItem="onk-I2-XsT" secondAttribute="leading" constant="30" id="tlr-Qh-iru"/>

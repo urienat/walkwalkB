@@ -35,8 +35,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var billMessage: String?
     var releaser: Int? = 0
     
-    var paymentMethod: String? = ""
+    var paymentSys: String? = ""
     var paymentReference: String? = ""
+    var paymentDate: String? = ""
     
     
     var midCalc = "0.0"
@@ -49,7 +50,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var stam3: Double?
 
     var taxationBlock = ""
-    
+    var paymentBlock = ""
+    var refernceBlock = ""
+
     let keeper = UserDefaults.standard
     var rememberMe1 = 0
     
@@ -107,27 +110,37 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var paymentMethood: UISegmentedControl!
     @IBAction func paymentMethood(_ sender: Any) {
     print("payment pressed")
-        StatusChosen.isEnabled = false
-        periodChosen.isEnabled = false
-        switch StatusChosen.selectedSegmentIndex {
-        case 0: paymentMethod = "cash"; referenceTxt.isHidden = true
-        case 1: paymentMethod = "check"; referenceTxt.isHidden = false
-        case 2: paymentMethod = "other"; referenceTxt.isHidden = false
-        default: paymentMethod = "None"; referenceTxt.isHidden = true
+        //paymentMethood.isEnabled = false
+        switch paymentMethood.selectedSegmentIndex {
+        case 0: paymentSys = "cash"; referenceTxt.isHidden = true
+        case 1: paymentSys = "check"; referenceTxt.isHidden = false
+        case 2: paymentSys = "other"; referenceTxt.isHidden = false
+        default: paymentSys = "None"; referenceTxt.isHidden = true
         } //end of switch
         
     }
     @IBOutlet weak var referenceTxt: UITextField!
     @IBAction func savePayment(_ sender: Any) {
+        paymentReference = referenceTxt.text
+        paymentDate = String (describing: Date())
+        print (paymentSys,paymentReference)
+        
+
         paymentView.isHidden = true
         self.alert19()
-        print (paymentMethod,paymentReference)
     }
     
     @IBAction func cancelPayment(_ sender: Any) {
         paymentView.isHidden = true
         paymentReference = ""
-        paymentMethod = ""
+        paymentSys = ""
+        paymentDate = ""
+        print (paymentSys,paymentReference)
+        self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
+        self.segmentedPressed = 0
+        self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
+        self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+
 
     }
     //variabled for date filtering
@@ -746,6 +759,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
              } else {
             self.taxationBlock = ""}
             
+            if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference)"} else {self.refernceBlock = ""}
+            if self.paymentSys != "" {self.paymentBlock = ("Payment made by \(self.paymentMethood) \(self.refernceBlock) on the \(paymentDate)")} else {self.paymentBlock = ""}
+            
    
             self.counterForMail2 = counterForMail
             print("guygug3\(self.counterForMail2!)")
@@ -857,14 +873,18 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
 
     //update bill with DB
-    self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": "Billed", "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2
+        self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": "Billed", "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2,"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference, "fPaymentDate":self.paymentDate
     ], withCompletionBlock: { (error) in}) //end of update.//was 0
     self.generalApprovalClicked()
     self.navigationController!.popViewController(animated: true)
 
     }//end of if biller
     }
-    }
+    paymentReference = ""
+    paymentSys = ""
+    paymentDate
+        
+    }//end of billprocess
     
    
     func alert19(){
@@ -901,6 +921,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     //add printing process
     }
     let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+    paymentReference = ""
+    paymentSys = ""
+    paymentDate = ""
     self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
     self.segmentedPressed = 0
     self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
