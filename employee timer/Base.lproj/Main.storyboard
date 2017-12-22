@@ -937,8 +937,8 @@
                                     <constraint firstAttribute="width" constant="40" id="bhH-wa-SU6"/>
                                 </constraints>
                             </imageView>
-                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lxT-w2-3r9">
-                                <rect key="frame" x="-1" y="0.0" width="320" height="50"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lxT-w2-3r9">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="BWl-6v-Y2T"/>
                                 </constraints>

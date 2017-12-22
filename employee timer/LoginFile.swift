@@ -412,11 +412,13 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             self.employeeRefUpdate =  user.uid}
             print (employeeRefUpdate as Any)
         
-     
-            self.dbRefEmployees.child((employeeRefUpdate)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : fbNname, "fLastName": fbLastName, "femail" : fbEmail, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage":"0" ,"fTaxName":"",  "fSwitcher": "No","fTaxCalc" : "Over", "fDateTime": "DateTime","fLogin":LoginFile.provider,"fLastCalander":"New","fAddress":"","fAddress":"","fProfession": "","fPaypal" : "", "fBillinfo" :"","fCalander" : "None"])
-        
             self.dbRefEmployees.child(employeeRefUpdate!).child("myEmployers").setValue(["New Dog":0])//add employer to my employers of employee
-                
+
+     
+            self.dbRefEmployees.child((employeeRefUpdate)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : fbNname, "fLastName": fbLastName, "femail" : fbEmail, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage":"0" ,"fTaxName":"",  "fSwitcher": "No","fTaxCalc" : "Over", "fDateTime": "DateTime","fLogin":LoginFile.provider,"fLastCalander":"New","fAddress":"","fProfession": "","fPaypal" : "", "fBillinfo" :"","fCalander" : "None"])
+        
+
+
             //storage of pictures //in cache under employeeID
             MyImageCache.sharedCache.setObject(self.pickedImage as AnyObject, forKey: self.employeeRefUpdate as AnyObject)
         
