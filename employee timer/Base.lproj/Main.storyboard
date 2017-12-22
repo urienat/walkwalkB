@@ -2851,22 +2851,36 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sit-Uo-qyF" userLabel="foldedPage">
+                                        <rect key="frame" x="188" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="ERN-aU-4si"/>
+                                            <constraint firstAttribute="height" constant="100" id="VWN-9X-t36"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="foldedPaper"/>
+                                        <connections>
+                                            <action selector="foldedPage:" destination="8gY-C3-V1Z" eventType="touchUpInside" id="UE2-AU-nic"/>
+                                        </connections>
+                                    </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t9p-vy-W3U" userLabel="statusImage">
-                                        <rect key="frame" x="238" y="10" width="40" height="40"/>
+                                        <rect key="frame" x="248" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="5o5-FP-fYD"/>
                                             <constraint firstAttribute="height" constant="40" id="dLA-cj-yLL"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="t9p-vy-W3U" firstAttribute="top" secondItem="pGt-z5-fAP" secondAttribute="top" constant="10" id="CYA-gK-3Bj"/>
+                                    <constraint firstAttribute="trailing" secondItem="Sit-Uo-qyF" secondAttribute="trailing" id="BIj-eF-oXJ"/>
+                                    <constraint firstItem="t9p-vy-W3U" firstAttribute="top" secondItem="pGt-z5-fAP" secondAttribute="top" id="CYA-gK-3Bj"/>
                                     <constraint firstItem="82B-Jq-qRO" firstAttribute="leading" secondItem="pGt-z5-fAP" secondAttribute="leading" id="ErO-mP-QG5"/>
                                     <constraint firstItem="82B-Jq-qRO" firstAttribute="width" secondItem="pGt-z5-fAP" secondAttribute="width" id="Eud-di-PTl"/>
                                     <constraint firstAttribute="trailing" secondItem="82B-Jq-qRO" secondAttribute="trailing" id="Udb-Tr-RfG"/>
-                                    <constraint firstAttribute="trailing" secondItem="t9p-vy-W3U" secondAttribute="trailing" constant="10" id="att-Yc-0vf"/>
+                                    <constraint firstAttribute="trailing" secondItem="t9p-vy-W3U" secondAttribute="trailing" id="att-Yc-0vf"/>
                                     <constraint firstAttribute="bottom" secondItem="82B-Jq-qRO" secondAttribute="bottom" id="hbz-tK-vgq"/>
                                     <constraint firstItem="82B-Jq-qRO" firstAttribute="top" secondItem="pGt-z5-fAP" secondAttribute="top" id="m8W-HA-Jr4"/>
+                                    <constraint firstItem="Sit-Uo-qyF" firstAttribute="top" secondItem="pGt-z5-fAP" secondAttribute="top" id="mPx-fs-43d"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -2887,6 +2901,7 @@
                     </view>
                     <connections>
                         <outlet property="deleteBtn" destination="CkP-hP-qjf" id="9lD-ir-iQQ"/>
+                        <outlet property="foldedPage" destination="Sit-Uo-qyF" id="bPb-Yu-VlG"/>
                         <outlet property="mailText" destination="82B-Jq-qRO" id="sb8-DK-dNv"/>
                         <outlet property="reSend" destination="R6p-At-dlq" id="XI0-Um-Vd6"/>
                         <outlet property="statusImage" destination="t9p-vy-W3U" id="AbV-fs-uch"/>
@@ -3266,6 +3281,7 @@
         <image name="arrow" width="30" height="36"/>
         <image name="billsIcon" width="50" height="50"/>
         <image name="emptyV" width="50" height="45"/>
+        <image name="foldedPaper" width="197" height="197"/>
         <image name="mail" width="50" height="50"/>
         <image name="meluna" width="50" height="50"/>
         <image name="noSign" width="309" height="255"/>

@@ -28,6 +28,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     var billToHandle = String()
     var employerID = ""
     var employeeID = ""
+    var recieptDate: String?
+    var paymentDate: String?
     
     var deleteBill : UIBarButtonItem?
     
@@ -36,6 +38,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     var billStatusForRecovery = ""
 
 
+    @IBOutlet weak var foldedPage: UIButton!
+    @IBAction func foldedPage(_ sender: Any) {
+    }
     
     let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
   
@@ -107,6 +112,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             print(self.recoveredBill)
             self.mailText.text = self.recoveredBill
             self.recoveredStatus = (snapshot.childSnapshot(forPath: "fBillStatus").value! as? String)!
+            self.recieptDate = (snapshot.childSnapshot(forPath: "fRecieptDate").value! as? String)!
+            self.paymentDate = (snapshot.childSnapshot(forPath: "fPaymenttDate").value! as? String)!
+            if self.recieptDate == self.paymentDate {self.foldedPage.isHidden = true} //bill&Pay
+            else {if self.recieptDate == "" {self.foldedPage.isHidden = true} else {self.foldedPage.isHidden = false}}
+
 
             if self.recoveredStatus == "Billed" { self.deleteBtn.isEnabled = true;self.billStatusForRecovery = ""}
             if  self.recoveredStatus  == "Paid" { self.statusImage.image = self.paidImage;self.deleteBtn.isEnabled = true;self.billStatusForRecovery = ""}
