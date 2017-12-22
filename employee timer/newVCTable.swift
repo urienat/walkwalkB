@@ -629,8 +629,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             
         //changing the Total for presentation
             
-        if ViewController.dateTimeFormat == "DateTime" {" \(self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n")
-        } else {" \(self.csv2.append( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n") }
+        if ViewController.dateTimeFormat == "DateTime" {"\(self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n")
+        } else {"  \(self.csv2.append( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n") }
             
         }// end of cases func
                         
@@ -884,7 +884,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     self.biller = false
         
-        self.mailSaver = "\(self.mydateFormat3.string(from: Date()))\r\n ref#: \(self.counterForMail2!)\r\n \(self.documentName!)\r\n Account: \(self.employerFromMain!)\r\n\r\n \(self.billInfo!)\r\n\\r\n\\r\n\r\n Hi, \r\n \r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\n Total Number of sessions: \(self.eventCounter) \r\n \(self.perEvents.text!)\r\n \r\n Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n \(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock) \r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!) \r\n\r\nMade by PerSession app. "
+        self.mailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: \(self.documentName!)-\(self.counterForMail2!)\r\nAccount: \(self.employerFromMain!)\r\n\r\n \(self.billInfo!)\r\n\r\n\r\n\r\nHi, \r\n\r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\nTotal Number of sessions: \(self.eventCounter) \r\n\(self.perEvents.text!)\r\n \r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n\(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock)\r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!)\(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
 
 
     //update bill with DB

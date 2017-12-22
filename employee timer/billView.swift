@@ -113,7 +113,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             self.mailText.text = self.recoveredBill
             self.recoveredStatus = (snapshot.childSnapshot(forPath: "fBillStatus").value! as? String)!
             self.recieptDate = (snapshot.childSnapshot(forPath: "fRecieptDate").value! as? String)!
-            self.paymentDate = (snapshot.childSnapshot(forPath: "fPaymenttDate").value! as? String)!
+            self.paymentDate = (snapshot.childSnapshot(forPath: "fPaymentDate").value! as? String)!
             if self.recieptDate == self.paymentDate {self.foldedPage.isHidden = true} //bill&Pay
             else {if self.recieptDate == "" {self.foldedPage.isHidden = true} else {self.foldedPage.isHidden = false}}
 
