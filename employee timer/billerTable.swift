@@ -53,7 +53,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var filterDecided :Int = 0
     
     //payment
-    var mailSaver : String?
+    var recieptMailSaver : String?
     var refernceBlock :String?
     var taxForBlock : String?
     var taxationBlock :String?
@@ -443,6 +443,15 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         func  approvalClicked(sender:UIButton!) {
         self.StatusChosen.isEnabled = false
         buttonRow = sender.tag
+            
+            self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).observeSingleEvent(of: .value,with: {(snapshot) in
+                self.midCalc = snapshot.childSnapshot(forPath: "fBillSum").value! as? String
+                self.midCalc2 = snapshot.childSnapshot(forPath: "fBillTax").value! as? String
+                self.midCalc3 = snapshot.childSnapshot(forPath: "fBillTotalTotal").value! as? String
+                print (self.midCalc3,self.midCalc2,self.midCalc)
+                
+            })
+            
         
         if BillArrayStatus[buttonRow] != "Cancelled"
         { if BillArrayStatus[buttonRow] == "Billed" {  statusTemp = "Paid";
@@ -506,6 +515,16 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
         return mailComposerVC2
         }//end of MFMailcomposer
+    
+        //func for mail of reciept
+        func  configuredMailComposeViewController3() -> MFMailComposeViewController {
+        let mailComposerVC3 = MFMailComposeViewController()
+        mailComposerVC3.mailComposeDelegate = self
+        mailComposerVC3.setSubject("Reciept")
+        mailComposerVC3.setMessageBody(recieptMailSaver!, isHTML: false)
+        mailComposerVC3.setToRecipients([ViewController.fixedemail])
+        return mailComposerVC3
+        }//end of MFMailcomposer
 
         func showSendmailErrorAlert() {
         let sendMailErorrAlert = UIAlertController(title:"Could Not Send Email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.",preferredStyle: .alert)
@@ -555,17 +574,16 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     func recieptProcess() {
         self.thinking.startAnimating()
         recieptDate = mydateFormat5.string(from: Date())
-        self.billing()
+        self.fetchBillInfo()
         
         DispatchQueue.main.asyncAfter(deadline: .now()+2){
             
-            
-            self.mailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: Reciept-\(self.BillArray[self.buttonRow])\r\nAccount: \(self.employerFromMain)\r\n\r\n \(self.billInfo!)\r\n\r\n\r\n\r\nHi, \r\n\r\n\r\n\\r\n \r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n\(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock)\r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!)\(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
+            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: Reciept-\(self.BillArray[self.buttonRow])\r\nAccount: \(self.employerFromMain)\r\n\r\n \(self.billInfo!)\r\n\r\n\r\n\r\nHi, \r\n\r\n\r\n\\r\n \r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n\(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock)\r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!)\(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
                 
                 
                 //update bill with DB
             self.dbRefEmployees.child(self.employeeID).child("myBills").child(String("-"+self.BillArray[self.buttonRow])).updateChildValues(["fBillStatus": self.statusTemp, "fBillStatusDate":
-                self.self.mydateFormat5.string(from: Date()),"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date())
+                self.self.mydateFormat5.string(from: Date()),"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver
                 ], withCompletionBlock: { (error) in}) //end of update.
                 self.navigationController!.popViewController(animated: true)
                 
@@ -574,32 +592,30 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         
     }//end of billprocess
     
-    func billing(){
+    func fetchBillInfo(){
         taxationBlock = ""
         self.dbRefEmployees.queryOrderedByKey().queryEqual(toValue: self.employeeID).observeSingleEvent(of: .childAdded, with: { (snapshot) in
            
             let counterForMail = (snapshot.childSnapshot(forPath: "fCounter").value as! String)
-            let taxSwitch = (snapshot.childSnapshot(forPath: "").value as! String)
+            let taxSwitch = (snapshot.childSnapshot(forPath: "fSwitcher").value as! String)
             let taxation = (snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String)
             let taxName = (snapshot.childSnapshot(forPath: "fTaxName").value as! String)
             self.billInfo = (snapshot.childSnapshot(forPath: "fBillinfo").value as! String)
-            self.midCalc =  (snapshot.childSnapshot(forPath: "").value as! String)
-            self.midCalc2 =  (snapshot.childSnapshot(forPath: "").value as! String)
-            self.midCalc3 = (snapshot.childSnapshot(forPath: "").value as! String)
             if taxName == "" {self.taxForBlock = "Tax"} else {self.taxForBlock = taxName}
-           
-
+            
+            
+          
+            
+            
             if  taxSwitch == "Yes" {
-                self.taxationBlock = ("\(self.taxForBlock): \(ViewController.fixedCurrency!)\(self.midCalc)\r\n Total (w/\(self.taxForBlock)): \(ViewController.fixedCurrency!)\(self.midCalc2)\r\n")
-            } else {
-                self.taxationBlock = ""}
+            self.taxationBlock = ("\(self.taxForBlock): \(ViewController.fixedCurrency!)\(self.midCalc)\r\n Total (w/\(self.taxForBlock)): \(ViewController.fixedCurrency!)\(self.midCalc2)\r\n")
             
             if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
             if self.paymentSys != "Other"{self.paymentBlock = "Payment made by \(self.paymentSys!) \(self.refernceBlock) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))"
             }else{// payment == other
             self.paymentBlock = ("Payment made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock) ")
             }
-            
+        }
             
         })
     }//end of billing
@@ -678,7 +694,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         let mailAction = UIAlertAction(title: "Mail it", style: .default) { (UIAlertAction) in
             self.recieptProcess()
             DispatchQueue.main.asyncAfter(deadline: .now()+2){
-                let mailComposeViewController2 = self.configuredMailComposeViewController2()
+                let mailComposeViewController2 = self.configuredMailComposeViewController3()
                 if MFMailComposeViewController.canSendMail() {
                     self.present(mailComposeViewController2, animated: true, completion: nil)
                 } //end of if

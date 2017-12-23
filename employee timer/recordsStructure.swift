@@ -40,6 +40,7 @@ class billStruct: NSObject{
     var fBillCurrency: String?
     var fBillEmployerName: String?
     var fBillMailSaver: String?
+    var fBillRecieptMailSaver: String?
     var fBillTax: String?
     var fBillTotalTotal: String?
     var fBillStatusDate: String?
