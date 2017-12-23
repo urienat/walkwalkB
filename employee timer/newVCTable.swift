@@ -38,6 +38,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var paymentSys: String? = ""
     var paymentReference: String? = ""
     var paymentDate: String? = ""
+    var recieptDate: String? = ""
     var billStatus:String? = "Billed"
     var documentName:String?
     
@@ -125,6 +126,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     @IBAction func savePayment(_ sender: Any) {
         paymentReference = referenceTxt.text
         paymentDate = mydateFormat5.string(from: Date())
+        recieptDate = paymentDate
         billStatus = "Paid"
         print (paymentSys,paymentReference)
         
@@ -138,6 +140,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         paymentReference = ""
         paymentSys = ""
         paymentDate = ""
+        recieptDate = ""
         billStatus = "Billed"
 
         print (paymentSys,paymentReference)
@@ -768,9 +771,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             
             
             print (self.paymentDate!)
-            if self.paymentDate != "" {self.documentName = "Bill & Payment"; if self.paymentSys != "Other"{self.paymentBlock = "Payment made by \(self.paymentSys!) \(self.refernceBlock) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.paymentDate!)!))"
+            if self.recieptDate != "" {self.documentName = "Bill & Payment"; if self.paymentSys != "Other"{self.paymentBlock = "Payment made by \(self.paymentSys!) \(self.refernceBlock) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))"
                 }else{// payment == other
-                self.paymentBlock = ("Payment made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.paymentDate!)!)) - \(self.refernceBlock) ")
+                self.paymentBlock = ("Payment made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock) ")
                 }
                 
             }else{self.documentName = "Bill"; // no payment only bill
@@ -876,6 +879,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
     func billProcess() {
     self.thinking.startAnimating()
+        if paymentDate! == "" {paymentDate = mydateFormat5.string(from: Date()) }
     self.billing()
 
     DispatchQueue.main.asyncAfter(deadline: .now()+2){
@@ -888,7 +892,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
 
     //update bill with DB
-        self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": self.billStatus!, "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2,"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference, "fPaymentDate":self.paymentDate, "fDocumentName":self.documentName!,"fRecieptDate":self.paymentDate
+        self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": self.billStatus!, "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2,"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference, "fPaymentDate":self.paymentDate, "fDocumentName":self.documentName!,"fRecieptDate":self.recieptDate!
     ], withCompletionBlock: { (error) in}) //end of update.//was 0
     self.generalApprovalClicked()
     self.navigationController!.popViewController(animated: true)
@@ -937,6 +941,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.paymentReference = ""
         self.paymentSys = ""
         self.paymentDate = ""
+        self.recieptDate = ""
         self.billStatus = "Billed"
     self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
     self.segmentedPressed = 0
