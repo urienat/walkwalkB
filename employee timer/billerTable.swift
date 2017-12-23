@@ -54,8 +54,15 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     //payment
     var mailSaver : String?
+    var refernceBlock :String?
+    var taxForBlock : String?
+    var taxationBlock :String?
+    var paymentBlock :String?
+    var billInfo :String?
+    var midCalc:String?
+    var midCalc2 :String?
+    var  midCalc3 :String?
 
-    
     @IBOutlet weak var paymentTitle: UITextField!
     @IBOutlet weak var paymentView: UIView!
     @IBOutlet weak var paymentMethood: UISegmentedControl!
@@ -553,7 +560,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         DispatchQueue.main.asyncAfter(deadline: .now()+2){
             
             
-            self.mailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: Reciept-\(BillArray[buttonRow])\r\nAccount: \(self.employerFromMain)\r\n\r\n \(self.billInfo!)\r\n\r\n\r\n\r\nHi, \r\n\r\n\r\n\(self.perEvents.text!)\r\n \r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n\(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock)\r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!)\(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
+            self.mailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: Reciept-\(self.BillArray[self.buttonRow])\r\nAccount: \(self.employerFromMain)\r\n\r\n \(self.billInfo!)\r\n\r\n\r\n\r\nHi, \r\n\r\n\r\n\\r\n \r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n\(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock)\r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!)\(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
                 
                 
                 //update bill with DB
@@ -570,29 +577,30 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     func billing(){
         taxationBlock = ""
         self.dbRefEmployees.queryOrderedByKey().queryEqual(toValue: self.employeeID).observeSingleEvent(of: .childAdded, with: { (snapshot) in
+           
             let counterForMail = (snapshot.childSnapshot(forPath: "fCounter").value as! String)
+            let taxSwitch = (snapshot.childSnapshot(forPath: "").value as! String)
             let taxation = (snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String)
             let taxName = (snapshot.childSnapshot(forPath: "fTaxName").value as! String)
-            let billInfo = (snapshot.childSnapshot(forPath: "fBillinfo").value as! String)
-            let midCalc =  String (describing: self.stam!)
-            let midCalc3 =  String(describing: self.stam3!)
+            self.billInfo = (snapshot.childSnapshot(forPath: "fBillinfo").value as! String)
+            self.midCalc =  (snapshot.childSnapshot(forPath: "").value as! String)
+            self.midCalc2 =  (snapshot.childSnapshot(forPath: "").value as! String)
+            self.midCalc3 = (snapshot.childSnapshot(forPath: "").value as! String)
             if taxName == "" {self.taxForBlock = "Tax"} else {self.taxForBlock = taxName}
-            self.midCalc2 =  String(self.stam3! + self.stam!)
+           
 
-            if  self.taxSwitch == "Yes" {
-            self.taxationBlock = ("\(self.taxForBlock): \(ViewController.fixedCurrency!)\(self.midCalc)\r\n Total (w/\(self.taxForBlock)): \(ViewController.fixedCurrency!)\(self.midCalc2)\r\n")
+            if  taxSwitch == "Yes" {
+                self.taxationBlock = ("\(self.taxForBlock): \(ViewController.fixedCurrency!)\(self.midCalc)\r\n Total (w/\(self.taxForBlock)): \(ViewController.fixedCurrency!)\(self.midCalc2)\r\n")
             } else {
-            self.taxationBlock = ""}
+                self.taxationBlock = ""}
             
             if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
-            
-            if self.recieptDate != "" {self.documentName = "Bill & Payment"; if self.paymentSys != "Other"{self.paymentBlock = "Payment made by \(self.paymentSys!) \(self.refernceBlock) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))"
+            if self.paymentSys != "Other"{self.paymentBlock = "Payment made by \(self.paymentSys!) \(self.refernceBlock) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))"
             }else{// payment == other
             self.paymentBlock = ("Payment made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock) ")
             }
-            }else{self.documentName = "Bill"; // no payment only bill
-            }// end of else  self.paymentDate != ""
-           
+            
+            
         })
     }//end of billing
 
