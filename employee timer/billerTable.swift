@@ -53,6 +53,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var filterDecided :Int = 0
     
     //payment
+    var mailSaver : String?
+
     
     @IBOutlet weak var paymentTitle: UITextField!
     @IBOutlet weak var paymentView: UIView!
@@ -76,15 +78,13 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         paymentReference = referenceTxt.text
         billStatus = "Paid"
         print (paymentSys,paymentReference)
-        self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).updateChildValues(["fBillStatus": statusTemp, "fBillStatusDate":
-            mydateFormat5.string(from: Date()),"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":mydateFormat5.string(from: Date())
-            ], withCompletionBlock: { (error) in}) //end of update.
+        
        
         BillArrayStatus[buttonRow] = statusTemp
         
         
         paymentView.isHidden = true
-       // self.alert19()
+        self.alert19()
     }
     
     @IBAction func cancelPayment(_ sender: Any) {
@@ -545,7 +545,56 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         isFilterHidden = !isFilterHidden
         }//end of issidemenuhidden
     
+    func recieptProcess() {
+        self.thinking.startAnimating()
+        recieptDate = mydateFormat5.string(from: Date())
+        self.billing()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+2){
+            
+            
+            self.mailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: Reciept-\(BillArray[buttonRow])\r\nAccount: \(self.employerFromMain)\r\n\r\n \(self.billInfo!)\r\n\r\n\r\n\r\nHi, \r\n\r\n\r\n\(self.perEvents.text!)\r\n \r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n\(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock)\r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!)\(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
+                
+                
+                //update bill with DB
+            self.dbRefEmployees.child(self.employeeID).child("myBills").child(String("-"+self.BillArray[self.buttonRow])).updateChildValues(["fBillStatus": self.statusTemp, "fBillStatusDate":
+                self.self.mydateFormat5.string(from: Date()),"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date())
+                ], withCompletionBlock: { (error) in}) //end of update.
+                self.navigationController!.popViewController(animated: true)
+                
+            }//end of if biller
+        
+        
+    }//end of billprocess
     
+    func billing(){
+        taxationBlock = ""
+        self.dbRefEmployees.queryOrderedByKey().queryEqual(toValue: self.employeeID).observeSingleEvent(of: .childAdded, with: { (snapshot) in
+            let counterForMail = (snapshot.childSnapshot(forPath: "fCounter").value as! String)
+            let taxation = (snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String)
+            let taxName = (snapshot.childSnapshot(forPath: "fTaxName").value as! String)
+            let billInfo = (snapshot.childSnapshot(forPath: "fBillinfo").value as! String)
+            let midCalc =  String (describing: self.stam!)
+            let midCalc3 =  String(describing: self.stam3!)
+            if taxName == "" {self.taxForBlock = "Tax"} else {self.taxForBlock = taxName}
+            self.midCalc2 =  String(self.stam3! + self.stam!)
+
+            if  self.taxSwitch == "Yes" {
+            self.taxationBlock = ("\(self.taxForBlock): \(ViewController.fixedCurrency!)\(self.midCalc)\r\n Total (w/\(self.taxForBlock)): \(ViewController.fixedCurrency!)\(self.midCalc2)\r\n")
+            } else {
+            self.taxationBlock = ""}
+            
+            if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
+            
+            if self.recieptDate != "" {self.documentName = "Bill & Payment"; if self.paymentSys != "Other"{self.paymentBlock = "Payment made by \(self.paymentSys!) \(self.refernceBlock) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))"
+            }else{// payment == other
+            self.paymentBlock = ("Payment made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock) ")
+            }
+            }else{self.documentName = "Bill"; // no payment only bill
+            }// end of else  self.paymentDate != ""
+           
+        })
+    }//end of billing
 
             // alerts////////////////////////////////////////////////////////////////////////////////////////////
             func alert30(){
@@ -612,4 +661,47 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             alertController3.addAction(CancelAction)
             self.present(alertController3, animated: true, completion: nil)
             }
+    func alert19(){
+        
+        let alertController19 = UIAlertController(title: ("Bill") , message: "Register a new reciept." , preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "Just do it", style: .default) { (UIAlertAction) in
+            self.recieptProcess()
+        }
+        let mailAction = UIAlertAction(title: "Mail it", style: .default) { (UIAlertAction) in
+            self.recieptProcess()
+            DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                let mailComposeViewController2 = self.configuredMailComposeViewController2()
+                if MFMailComposeViewController.canSendMail() {
+                    self.present(mailComposeViewController2, animated: true, completion: nil)
+                } //end of if
+                else{ self.showSendmailErrorAlert() }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                    
+                    self.segmentedPressed = 0
+                    self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
+                    self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+                }
+            }
+        }
+        let printAction = UIAlertAction(title: "Print it", style: .default) { (UIAlertAction) in
+            self.recieptProcess()
+            //add printing process
+        }
+        let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+            self.paymentReference = ""
+            self.paymentSys = ""
+            self.recieptDate = ""
+            self.billStatus = "Billed"
+            self.segmentedPressed = 0
+            self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
+            self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+        }
+        
+        alertController19.addAction(OKAction)
+        alertController19.addAction(mailAction)
+        alertController19.addAction(printAction)
+        alertController19.addAction(CancelAction)
+        self.present(alertController19, animated: true, completion: nil)
+    }//end of alert19
             }//end of class
