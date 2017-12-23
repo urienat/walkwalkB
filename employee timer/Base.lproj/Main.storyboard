@@ -2434,6 +2434,7 @@
                         <outlet property="filterImageConstrain" destination="4Vn-FY-gml" id="vTa-bs-MkQ"/>
                         <outlet property="noSign" destination="xK7-aT-7LI" id="68e-Uo-GDp"/>
                         <outlet property="paymentMethood" destination="bal-L9-lS9" id="uwe-Wl-yna"/>
+                        <outlet property="paymentTitle" destination="vBU-uW-SVk" id="8w8-V3-BFg"/>
                         <outlet property="paymentView" destination="T9c-oL-JGA" id="7tp-23-Uwm"/>
                         <outlet property="referenceTxt" destination="ozL-9e-hkS" id="eeQ-Am-MHo"/>
                         <outlet property="thinking" destination="n0x-Pz-LMA" id="ZFn-TC-imW"/>

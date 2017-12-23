@@ -30,7 +30,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     var paymentSys: String? = ""
     var paymentReference: String? = ""
-    var paymentDate: String? = ""
+    var recieptDate: String? = ""
     var billStatus:String? = "Billed"
     var documentName:String?
     var segmentedPressed:Int?
@@ -54,6 +54,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     //payment
     
+    @IBOutlet weak var paymentTitle: UITextField!
     @IBOutlet weak var paymentView: UIView!
     @IBOutlet weak var paymentMethood: UISegmentedControl!
     @IBAction func paymentMethood(_ sender: Any) {
@@ -73,12 +74,12 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     @IBAction func savePayment(_ sender: Any) {
         paymentReference = referenceTxt.text
-        paymentDate = mydateFormat5.string(from: Date())
         billStatus = "Paid"
         print (paymentSys,paymentReference)
         self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).updateChildValues(["fBillStatus": statusTemp, "fBillStatusDate":
-            mydateFormat5.string(from: Date())//was 3
+            mydateFormat5.string(from: Date()),"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":mydateFormat5.string(from: Date())
             ], withCompletionBlock: { (error) in}) //end of update.
+       
         BillArrayStatus[buttonRow] = statusTemp
         
         
@@ -90,7 +91,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         paymentView.isHidden = true
         paymentReference = ""
         paymentSys = ""
-        paymentDate = ""
+        recieptDate = ""
         billStatus = "Billed"
     
         print (paymentSys,paymentReference)
@@ -438,11 +439,12 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         
         if BillArrayStatus[buttonRow] != "Cancelled"
         { if BillArrayStatus[buttonRow] == "Billed" {  statusTemp = "Paid";
+            paymentTitle.text = "Fully pay bill \(BillArray[buttonRow]) by"
             paymentView.isHidden = false
-            //self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).updateChildValues(["fBillStatus": statusTemp, "fBillStatusDate":
+           // self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).updateChildValues(["fBillStatus": statusTemp, "fBillStatusDate":
            // mydateFormat5.string(from: Date())//was 3
-           // ], withCompletionBlock: { (error) in}) //end of update.
-            //BillArrayStatus[buttonRow] = statusTemp
+            //], withCompletionBlock: { (error) in}) //end of update.
+            BillArrayStatus[buttonRow] = statusTemp
             }//end of if billed
             else if BillArrayStatus[buttonRow] == "Paid" {  if StatusChoice == "Not Paid" { statusTemp = "Billed"
             self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).updateChildValues(["fBillStatus": statusTemp, "fBillStatusDate":
@@ -458,10 +460,10 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         
         if StatusChoice == "Not Paid"{
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            self.StatusChosen.isMomentary = true
-            self.StatusChosen.selectedSegmentIndex = 0
-            self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-            self.StatusChosen.isMomentary = false
+            //self.StatusChosen.isMomentary = true
+           // self.StatusChosen.selectedSegmentIndex = 0
+           // self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+           // self.StatusChosen.isMomentary = false
             self.StatusChosen.isEnabled = true
         }} else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
