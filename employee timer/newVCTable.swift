@@ -436,18 +436,15 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         mailComposerVC2.setMessageBody("\(mailSaver!)", isHTML: false)
         mailComposerVC2.setToRecipients([employerMail])
         mailComposerVC2.setCcRecipients([ViewController.fixedemail])
-   
         DispatchQueue.main.asyncAfter(deadline: .now()+2){
-            self.saveBase64StringToPDF(self.mailSaver!)
+        self.saveBase64StringToPDF(self.mailSaver!)
         }
-        
         return mailComposerVC2
         }//end of MFMailcomposer
     
         func showSendmailErrorAlert() {
         let sendMailErorrAlert = UIAlertController(title:"Could Not Send Email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.",preferredStyle: .alert)
             sendMailErorrAlert.message = "error occured"
-            //seems that it does not work check!!!!
         }
     
         func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
@@ -593,7 +590,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             
         //brings the month and day
         var calendar = Calendar.current
-            calendar.firstWeekday = 2 // set the week to start on monday
+           // calendar.firstWeekday = 2 // set the week to start on monday
         let components = calendar.dateComponents([.year, .month, .day, ], from: finManupulated!)
         let today = calendar.dateComponents([.year, .month, .day], from: Date())
         self.recotdMonth = components.month!
@@ -889,50 +886,44 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     DispatchQueue.main.asyncAfter(deadline: .now()){
     self.billSender.isEnabled = false
     self.billPay.isEnabled = false
-
-
-        }
+    }//end of dispatch
 
     let alertController19 = UIAlertController(title: ("Bill") , message: "Register a new Bill and set sessions from 'Due' to 'Billed'." , preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "Just do it", style: .default) { (UIAlertAction) in
     self.billProcess()
     }
-    let mailAction = UIAlertAction(title: "Mail it", style: .default) { (UIAlertAction) in
         
+    let mailAction = UIAlertAction(title: "Mail it", style: .default) { (UIAlertAction) in
     self.billProcess()
-    
     DispatchQueue.main.asyncAfter(deadline: .now()+2){
-
     if MFMailComposeViewController.canSendMail() {
     let mailComposeViewController2 = self.configuredMailComposeViewController2()
-        print (self.presentingViewController)
+    print (self.presentingViewController)
     self.present(mailComposeViewController2, animated: true, completion: nil)
-        
-        
-    } //end of if
-    else{
+    }else{
     print ("can't send")
-    self.showSendmailErrorAlert() }
-
+    self.showSendmailErrorAlert() }//end of else
     self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
     DispatchQueue.main.asyncAfter(deadline: .now()+2){
 
     self.segmentedPressed = 0
     self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
     self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-    }
-    }
-    }
+    }//end of dispatch
+    }//end of dispatch
+    }//end of mail action
+        
     let printAction = UIAlertAction(title: "Print it", style: .default) { (UIAlertAction) in
     self.billProcess()
     //add printing process
     }
+        
     let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
-        self.paymentReference = ""
-        self.paymentSys = ""
-        self.paymentDate = ""
-        self.recieptDate = ""
-        self.billStatus = "Billed"
+    self.paymentReference = ""
+    self.paymentSys = ""
+    self.paymentDate = ""
+    self.recieptDate = ""
+    self.billStatus = "Billed"
     self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
     self.segmentedPressed = 0
     self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
@@ -949,22 +940,21 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     func alert18(){
     DispatchQueue.main.asyncAfter(deadline: .now()){
     self.billSender.isEnabled = false
-        self.billPay.isEnabled = false
-
-        }
+    self.billPay.isEnabled = false
+    }//end of dispatch
         
     let alertController18 = UIAlertController(title: ("Bill") , message: "Register a new Bill and set sessions from 'Due' to 'Billed'." , preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "Just do it", style: .default) { (UIAlertAction) in
     self.billProcess()
-    }
+    }//end of OK
+        
     let mailAction = UIAlertAction(title: "Mail it", style: .default) { (UIAlertAction) in
     self.billProcess()
     DispatchQueue.main.asyncAfter(deadline: .now()+2){
     let mailComposeViewController2 = self.configuredMailComposeViewController2()
     if MFMailComposeViewController.canSendMail() {
     self.present(mailComposeViewController2, animated: true, completion: nil)
-    } //end of if
-    else{ self.showSendmailErrorAlert() }
+    }else{ self.showSendmailErrorAlert() }//end of else
 
     self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
     DispatchQueue.main.asyncAfter(deadline: .now()+2){
@@ -972,19 +962,21 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     self.segmentedPressed = 0
     self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
     self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-    }
-    }
-    }
+    }//end of dispatch
+    }//end of dispatch
+    }//end of mail
+        
     let printAction = UIAlertAction(title: "Print it", style: .default) { (UIAlertAction) in
-        self.billProcess()
-        //add printing process
+    self.billProcess()
+    //add printing process
     }
+        
     let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
     self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
     self.segmentedPressed = 0
     self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
     self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-    }
+    }//end of cancel
         
     alertController18.addAction(OKAction)
     alertController18.addAction(mailAction)
