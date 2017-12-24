@@ -873,7 +873,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": self.billStatus!, "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2,"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference, "fPaymentDate":self.paymentDate, "fDocumentName":self.documentName!,"fRecieptDate":self.recieptDate!,"fBillRecieptMailSaver":""
     ], withCompletionBlock: { (error) in}) //end of update.//was 0
     self.generalApprovalClicked()
-    self.navigationController!.popViewController(animated: true)
+    //self.navigationController!.popViewController(animated: true)
 
     }//end of if biller
     }
@@ -900,16 +900,19 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let mailComposeViewController2 = self.configuredMailComposeViewController2()
     print (self.presentingViewController)
     self.present(mailComposeViewController2, animated: true, completion: nil)
+        
     }else{
     print ("can't send")
     self.showSendmailErrorAlert() }//end of else
     self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
+    /*
     DispatchQueue.main.asyncAfter(deadline: .now()+2){
 
     self.segmentedPressed = 0
     self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
     self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
     }//end of dispatch
+ */
     }//end of dispatch
     }//end of mail action
         
@@ -957,12 +960,14 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     }else{ self.showSendmailErrorAlert() }//end of else
 
     self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
+    /*
     DispatchQueue.main.asyncAfter(deadline: .now()+2){
 
     self.segmentedPressed = 0
     self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
     self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
     }//end of dispatch
+ */
     }//end of dispatch
     }//end of mail
         
