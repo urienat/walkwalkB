@@ -960,14 +960,14 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     }else{ self.showSendmailErrorAlert() }//end of else
 
     self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
-    /*
+    
     DispatchQueue.main.asyncAfter(deadline: .now()+2){
 
     self.segmentedPressed = 0
     self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
     self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
     }//end of dispatch
- */
+
     }//end of dispatch
     }//end of mail
         

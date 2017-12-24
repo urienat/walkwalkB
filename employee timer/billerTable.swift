@@ -597,7 +597,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             self.dbRefEmployees.child(self.employeeID).child("myBills").child(String("-"+self.BillArray[self.buttonRow])).updateChildValues(["fBillStatus": self.statusTemp, "fBillStatusDate":
                 self.self.mydateFormat5.string(from: Date()),"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver
                 ], withCompletionBlock: { (error) in}) //end of update.
-                self.navigationController!.popViewController(animated: true)
+                //self.navigationController!.popViewController(animated: true)
                 
             }//end of if biller
         
@@ -713,21 +713,21 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             
             DispatchQueue.main.asyncAfter(deadline: .now()+2){
                 print ("in mail controller")
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let mailController  =  storyboard.instantiateViewController(withIdentifier: "200")
-                self.present(mailController, animated: false, completion: nil)
+                //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                //let mailController  =  storyboard.instantiateViewController(withIdentifier: "200")
+                //self.present(mailController, animated: false, completion: nil)
                 let mailComposeViewController3 = self.configuredMailComposeViewController3()
                 if MFMailComposeViewController.canSendMail() {
                     self.present(mailComposeViewController3, animated: true, completion: nil)
                 } //end of if
                 else{ self.showSendmailErrorAlert() }
                 
-               /* DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                DispatchQueue.main.asyncAfter(deadline: .now()+2){
                     
                     self.segmentedPressed = 0
                     self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
                     self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-                }*/
+                }
             }
         }
         let printAction = UIAlertAction(title: "Print it", style: .default) { (UIAlertAction) in
