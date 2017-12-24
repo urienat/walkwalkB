@@ -85,13 +85,12 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         paymentReference = referenceTxt.text
         billStatus = "Paid"
         print (paymentSys,paymentReference)
-        
-       
         BillArrayStatus[buttonRow] = statusTemp
-        
-        
         paymentView.isHidden = true
-        self.alert19()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            print ("alert19")
+            self.alert19()}
+        
     }
     
     @IBAction func cancelPayment(_ sender: Any) {
@@ -506,7 +505,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         self.alert30()
         }
     
-        //func for mail
+        //func for mail// ithink not used
         func  configuredMailComposeViewController2() -> MFMailComposeViewController {
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
@@ -523,9 +522,22 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         mailComposerVC3.setSubject("Reciept")
         mailComposerVC3.setMessageBody(recieptMailSaver!, isHTML: false)
         mailComposerVC3.setToRecipients([ViewController.fixedemail])
+        DispatchQueue.main.asyncAfter(deadline: .now()+2){
+        self.saveBase64StringToPDF(self.recieptMailSaver!)
+        }
+            
         return mailComposerVC3
         }//end of MFMailcomposer
 
+    func saveBase64StringToPDF(_ base64String: String) {
+        guard
+            var documentsURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last,
+            let convertedData = Data(base64Encoded: base64String)
+            else {
+                //handle error when getting documents URL
+                return
+        }
+    }
         func showSendmailErrorAlert() {
         let sendMailErorrAlert = UIAlertController(title:"Could Not Send Email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.",preferredStyle: .alert)
         sendMailErorrAlert.message = "error occured"
@@ -686,26 +698,36 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             self.present(alertController3, animated: true, completion: nil)
             }
     func alert19(){
+        print ("in alert19")
         
         let alertController19 = UIAlertController(title: ("Bill") , message: "Register a new reciept." , preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "Just do it", style: .default) { (UIAlertAction) in
             self.recieptProcess()
         }
+        
         let mailAction = UIAlertAction(title: "Mail it", style: .default) { (UIAlertAction) in
-            self.recieptProcess()
+            print ("mail it")
+            
+            self.recieptProcess() 
+            
+            
             DispatchQueue.main.asyncAfter(deadline: .now()+2){
-                let mailComposeViewController2 = self.configuredMailComposeViewController3()
+                print ("in mail controller")
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let mailController  =  storyboard.instantiateViewController(withIdentifier: "200")
+                self.present(mailController, animated: false, completion: nil)
+                let mailComposeViewController3 = self.configuredMailComposeViewController3()
                 if MFMailComposeViewController.canSendMail() {
-                    self.present(mailComposeViewController2, animated: true, completion: nil)
+                    self.present(mailComposeViewController3, animated: true, completion: nil)
                 } //end of if
                 else{ self.showSendmailErrorAlert() }
                 
-                DispatchQueue.main.asyncAfter(deadline: .now()+2){
+               /* DispatchQueue.main.asyncAfter(deadline: .now()+2){
                     
                     self.segmentedPressed = 0
                     self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
                     self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-                }
+                }*/
             }
         }
         let printAction = UIAlertAction(title: "Print it", style: .default) { (UIAlertAction) in

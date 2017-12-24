@@ -42,7 +42,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var billStatus:String? = "Billed"
     var documentName:String?
     
-    
     var midCalc = "0.0"
     var midCalc2 = "0.0"
     var midCalc3 = "0.0"
@@ -74,7 +73,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var sendBillIcon = UIImage(named:"sendBillIcon")?.withRenderingMode(.alwaysTemplate )
 
     var employerMail = ""
-
 
     let space = ""
     
@@ -130,9 +128,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         billStatus = "Paid"
         print (paymentSys,paymentReference)
         
-
         paymentView.isHidden = true
         self.alert19()
+       
     }
     
     @IBAction func cancelPayment(_ sender: Any) {
@@ -282,7 +280,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         tableConnect.delegate = self
         tableConnect.dataSource = self
         
-      
+            
+
         //formating the date
         mydateFormat3.dateFormat = DateFormatter.dateFormat(fromTemplate: "dd-MMM-yyyy",options: 0, locale: nil)!
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
@@ -892,7 +891,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
 
     //update bill with DB
-        self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": self.billStatus!, "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2,"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference, "fPaymentDate":self.paymentDate, "fDocumentName":self.documentName!,"fRecieptDate":self.recieptDate!
+        self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": self.billStatus!, "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2,"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference, "fPaymentDate":self.paymentDate, "fDocumentName":self.documentName!,"fRecieptDate":self.recieptDate!,"fBillRecieptMailSaver":""
     ], withCompletionBlock: { (error) in}) //end of update.//was 0
     self.generalApprovalClicked()
     self.navigationController!.popViewController(animated: true)
@@ -909,6 +908,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     self.billSender.isEnabled = false
     self.billPay.isEnabled = false
 
+
         }
 
     let alertController19 = UIAlertController(title: ("Bill") , message: "Register a new Bill and set sessions from 'Due' to 'Billed'." , preferredStyle: .alert)
@@ -916,13 +916,26 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     self.billProcess()
     }
     let mailAction = UIAlertAction(title: "Mail it", style: .default) { (UIAlertAction) in
+        
     self.billProcess()
+    DispatchQueue.main.asyncAfter(deadline: .now()+1){
+        
+        //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //let mailController  =  storyboard.instantiateViewController(withIdentifier: "500")
+        //self.present(mailController, animated: false, completion: nil)
+        //self.navigationController!.popToViewController(mailController, animated: false)
+        }
     DispatchQueue.main.asyncAfter(deadline: .now()+2){
-    let mailComposeViewController2 = self.configuredMailComposeViewController2()
+
+       // let mailComposeViewController2 = self.configuredMailComposeViewController2()
     if MFMailComposeViewController.canSendMail() {
+    let mailComposeViewController2 = self.configuredMailComposeViewController2()
+     mailComposeViewController2.loadView()
     self.present(mailComposeViewController2, animated: true, completion: nil)
     } //end of if
-    else{ self.showSendmailErrorAlert() }
+    else{
+    print ("can't send")
+    self.showSendmailErrorAlert() }
 
     self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
     DispatchQueue.main.asyncAfter(deadline: .now()+2){
