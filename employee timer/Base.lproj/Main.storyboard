@@ -2785,7 +2785,7 @@
                         <outlet property="generalApproval" destination="4Fz-k3-QaH" id="yL1-SW-Y32"/>
                         <outlet property="noSign" destination="cvq-V7-JIv" id="osH-3A-zXl"/>
                         <outlet property="paymentMethood" destination="TcQ-To-oTL" id="iWm-aD-oZn"/>
-                        <outlet property="paymentView" destination="onk-I2-XsT" id="yVT-fG-XVh"/>
+                        <outlet property="paymentView" destination="onk-I2-XsT" id="6Sg-fo-EWD"/>
                         <outlet property="perEvents" destination="YVF-H5-8sR" id="HyJ-Og-8Wa"/>
                         <outlet property="periodChosen" destination="eCO-la-3hV" id="cwF-hv-Hic"/>
                         <outlet property="referenceTxt" destination="NDn-4f-pNB" id="r6u-yB-s3z"/>

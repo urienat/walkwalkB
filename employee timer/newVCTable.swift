@@ -108,6 +108,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
     //payment
     @IBOutlet weak var paymentView: UIView!
+    
     @IBOutlet weak var paymentMethood: UISegmentedControl!
     @IBAction func paymentMethood(_ sender: Any) {
     print("payment pressed")
@@ -918,20 +919,15 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let mailAction = UIAlertAction(title: "Mail it", style: .default) { (UIAlertAction) in
         
     self.billProcess()
-    DispatchQueue.main.asyncAfter(deadline: .now()+1){
-        
-        //let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //let mailController  =  storyboard.instantiateViewController(withIdentifier: "500")
-        //self.present(mailController, animated: false, completion: nil)
-        //self.navigationController!.popToViewController(mailController, animated: false)
-        }
+    
     DispatchQueue.main.asyncAfter(deadline: .now()+2){
 
-       // let mailComposeViewController2 = self.configuredMailComposeViewController2()
     if MFMailComposeViewController.canSendMail() {
     let mailComposeViewController2 = self.configuredMailComposeViewController2()
-     mailComposeViewController2.loadView()
+        print (self.presentingViewController)
     self.present(mailComposeViewController2, animated: true, completion: nil)
+        
+        
     } //end of if
     else{
     print ("can't send")
