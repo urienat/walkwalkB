@@ -23,10 +23,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let billedImage = UIImage(named: "locked")
     let billIcon = UIImage(named: "bill")
     let sandwatchImage = UIImage(named: "sandWatch")
-    //let sandwatchImageRed = UIImage(named: "sandWatchRed")
-    //let sandwatchImageGreen = UIImage(named: "sandWatchGreen")
     let roundImageRed = UIImage(named: "roundImageRed")
-    //let roundImageGreen = UIImage(named: "roundImageGreen")
     let pencilImage = UIImage(named: "pencilImage")
     let roundImageNormal = UIImage(named: "roundImageNormal")
 
@@ -128,11 +125,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         recieptDate = paymentDate
         billStatus = "Paid"
         print (paymentSys,paymentReference)
-        
         paymentView.isHidden = true
         self.alert19()
-       
-    }
+        }//end of save
     
     @IBAction func cancelPayment(_ sender: Any) {
         paymentView.isHidden = true
@@ -141,21 +136,17 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         paymentDate = ""
         recieptDate = ""
         billStatus = "Billed"
-
         print (paymentSys,paymentReference)
         self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
         self.segmentedPressed = 0
         self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
         self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-
-
-    }
-    //variabled for date filtering
+        }//end of cancel
+    
     let mydateFormat3 = DateFormatter()
     let mydateFormat5 = DateFormatter()
     let mydateFormat10 = DateFormatter()
     let mydateFormat11 = DateFormatter()
-
 
     var counterForMail2: String?
     
@@ -618,20 +609,13 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
                         
         func cases() {
-                            
         self.currentYear = today.year!
         self.currentYearForWeek = today.yearForWeekOfYear!
-
-            
         self.records.append(record)
         self.idArray.append(id)
         self.appArray.append(appStatus!)
         self.tableConnect.reloadData()
-                            
-        //self.eventCounter+=1
-            
-        //changing the Total for presentation
-            
+         
         if ViewController.dateTimeFormat == "DateTime" {"\(self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n")
         } else {"  \(self.csv2.append( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n") }
             
@@ -704,20 +688,19 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         dbRefEmployers.removeAllObservers()
 
         DispatchQueue.main.asyncAfter(deadline: .now()+3){
-        //trial
-            if self.idArray.isEmpty == true {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
-            print (self.idArray.isEmpty)
-            
+        if self.idArray.isEmpty == true {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
+        print (self.idArray.isEmpty)
+
         if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions"} else if self.eventCounter == 1 {self.eventsLbl.text = "\(String(self.eventCounter)) Due session"} else {self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions"}
-            
+
         if self.Status == "All" /*|| self.Status == "Paid"*/{self.generalApproval.isHidden = true}
         self.calc = (Double(self.eventCounter))*(self.Employerrate)
-            
-        self.perEvents.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /session") 
-            
+
+        self.perEvents.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /session")
+
         self.amount.text =  ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")
-            
-            if self.eventCounter != 0 {if self.rememberMe1 == 0 {self.alert90()}; self.generalApproval.isHidden = true;self.generalApproval.isEnabled = true;  if self.releaser == 0 {self.billSender.isEnabled = true;self.billPay.isEnabled = true}
+
+        if self.eventCounter != 0 {if self.rememberMe1 == 0 {self.alert90()}; self.generalApproval.isHidden = true;self.generalApproval.isEnabled = true;  if self.releaser == 0 {self.billSender.isEnabled = true;self.billPay.isEnabled = true}
         }else {
         self.billSender.isEnabled = false
         self.billPay.isEnabled = false
@@ -725,14 +708,12 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.generalApproval.isHidden = true;
         }
         }//end of dispatch
-
         }//end of fetch
     
-    func amountCalc(){
+        func amountCalc(){
         self.calc = (Double(self.eventCounter))*(self.Employerrate)
         self.amount.text =   ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")
-        
-    }
+        }
     
         func noFB() {
         self.thinking.stopAnimating()
