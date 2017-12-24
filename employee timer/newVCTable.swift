@@ -151,16 +151,16 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var counterForMail2: String?
     
     var recotdMonth : Int = 0
-    var recordDay : Int = 0
-    var recordWeek : Int = 0
+   // var recordDay : Int = 0
+   // var recordWeek : Int = 0
     var recordYear : Int = 0
-    var recordYearForWeek : Int = 0
+    //var recordYearForWeek : Int = 0
 
     var currentMonth : Int = 0
-    var currentDay : Int = 0
-    var currentWeek : Int = 0
+  //  var currentDay : Int = 0
+   // var currentWeek : Int = 0
     var currentYear : Int = 0
-    var currentYearForWeek :Int = 0
+    //var currentYearForWeek :Int = 0
 
     let dbRef = FIRDatabase.database().reference().child("fRecords")
     let dbRefEmployers = FIRDatabase.database().reference().child("fEmployers")
@@ -586,7 +586,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         let id = snapshot.key
             let appStatus = record.fStatus
                         
-        let period: Int = self.periodChosen.selectedSegmentIndex
+        let period: Int = 5//self.periodChosen.selectedSegmentIndex
                         
         //handle to string to date of fIN from firbase/
         let finManupulated =  self.mydateFormat5.date(from: record.fIn!) //brings the string as a date
@@ -594,23 +594,23 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         //brings the month and day
         var calendar = Calendar.current
             calendar.firstWeekday = 2 // set the week to start on monday
-        let components = calendar.dateComponents([.year, .month, .day, .weekOfYear,.yearForWeekOfYear], from: finManupulated!)
-        let today = calendar.dateComponents([.year, .month, .day, .weekOfYear, .yearForWeekOfYear], from: Date())
+        let components = calendar.dateComponents([.year, .month, .day, ], from: finManupulated!)
+        let today = calendar.dateComponents([.year, .month, .day], from: Date())
         self.recotdMonth = components.month!
-        self.recordWeek = components.weekOfYear!
+        //self.recordWeek = components.weekOfYear!
         self.recordYear = components.year!
-        self.recordYearForWeek = components.yearForWeekOfYear!
+       // self.recordYearForWeek = components.yearForWeekOfYear!
 
         self.currentMonth = today.month!
-        self.currentWeek = today.weekOfYear!
+        //self.currentWeek = today.weekOfYear!
             
         self.currentYear = today.year!
-        self.currentYearForWeek = today.yearForWeekOfYear!
+        //self.currentYearForWeek = today.yearForWeekOfYear!
 
                         
         func cases() {
         self.currentYear = today.year!
-        self.currentYearForWeek = today.yearForWeekOfYear!
+        //self.currentYearForWeek = today.yearForWeekOfYear!
         self.records.append(record)
         self.idArray.append(id)
         self.appArray.append(appStatus!)
@@ -623,7 +623,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                         
         switch period{
         //current week
-        case 0:
+       /* case 0:
         if self.recordWeek == self.currentWeek && self.recordYearForWeek == self.currentYearForWeek && record.fStatus! == self.Status
         {cases()} else if self.recordWeek == self.currentWeek && self.recordYearForWeek == self.currentYearForWeek  && self.Status == "All"
         {cases() }
@@ -647,7 +647,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         if self.recotdMonth == (self.currentMonth-1) && self.recordYear == self.currentYear && record.fStatus! == self.Status
         {cases()} else if self.recotdMonth == (self.currentMonth-1) && self.recordYear == self.currentYear && self.Status == "All"
         {cases()}
-                            
+         */
         //all periods
         default :
         if self.Status == "Approved" {if record.fStatus == "Approved" {cases()}} else if
