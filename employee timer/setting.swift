@@ -718,7 +718,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     // alert70
     func alert70 () {
-        let alertCotroller70 = UIAlertController(title: ("Welcome on Board") , message: ("You can login and add your first dog. Woof!"), preferredStyle: .alert)
+        let alertCotroller70 = UIAlertController(title: ("Welcome on Board") , message: ("You can login and add your first account."), preferredStyle: .alert)
         let okAction1 = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         self.present((storyboard.instantiateViewController(withIdentifier: "loginScreen")), animated: true, completion: nil)

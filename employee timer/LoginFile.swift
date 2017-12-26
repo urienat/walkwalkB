@@ -15,7 +15,6 @@ import GoogleSignIn
 class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate ,GIDSignInUIDelegate{
 
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
-
     let mydateFormat5 = DateFormatter()
     
     // facebooklogin variables
@@ -36,7 +35,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     var pickedImage:UIImage?
     let picture = UIImage(named: "perSessionImage")
     
-    //facebook functions
+        //facebook functions
         func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print ("logout from facebook")
         LoginFile.provider = "normal"
@@ -47,7 +46,6 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         if error != nil { print ("facebook login error:\(error)");thinking.stopAnimating()
         return
         } else { print ("facebook login succesfuly")
-        rememberMe = 0
         self.ipusKeeper()
 
         FBSDKGraphRequest(graphPath: "/me", parameters: ["fields" : "id, name, email, last_name, first_name"]).start{
@@ -149,6 +147,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     @IBAction func signin(_ sender: Any) {
     signIn.isEnabled = false
     signIn.alpha = 0.5
+    LoginFile.provider = "normal"
     self.keeper.set(self.email.text!, forKey: "userKept")
     self.keeper.set(self.password.text!, forKey: "passwordKept")
     signInProcess()
@@ -162,7 +161,6 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     @IBOutlet weak var create: UIButton! //section for create
     @IBAction func createAccount(_ sender: AnyObject) {
     print ("back in town")
-    // inFireBase()
     try! FIRAuth.auth()?.signOut() // why signout?
     self.performSegue(withIdentifier: "create", sender: Any?.self)
     }//end of create action
@@ -171,33 +169,37 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     override func viewDidLoad() {
-       
+       print ("11")
+        
+        if Reachability.isConnectedToNetwork() == true
+        {print("Internet Connection Available!")}
+        else{alert50() }
+        
         dog.clipsToBounds = true
         dog.layer.cornerRadius = 50
-        
-        mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
-            ,options: 0, locale: nil)!
+                mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         
         //delgate to hide keyboard
         self.email.delegate = self
         self.password.delegate = self
 
-        //logoutGeneral()
+        logoutGeneral()
         
         //google login setting
         let loginButton2 =  GIDSignInButton()
         GIDSignIn.sharedInstance().uiDelegate = self
-        // GIDSignIn.sharedInstance().signIn()
+        print (GIDSignIn.sharedInstance().currentUser)
+
+        
         view.addSubview(loginButton2)
         loginButton2.frame = CGRect(x: view.frame.width/2-104, y: 50, width: 208, height: 45)
-        
-        //add observer
         if GIDSignIn.sharedInstance().currentUser != nil  {
-        thinking.startAnimating()
+            
+          //  GIDSignIn.sharedInstance().signIn()
 
+        thinking.startAnimating()
         print (GIDSignIn.sharedInstance().currentUser)
         inFireBase()
-        print ("after infirebase")
         } else {
         print (GIDSignIn.sharedInstance().currentUser)
         }
@@ -210,13 +212,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         
         super.viewDidLoad()
 
-        if Reachability.isConnectedToNetwork() == true
-        {print("Internet Connection Available!")}
-        else{print("Internet Connection not Available!")
-        alert50() }
-       
         if keeper.integer(forKey: "remember") != 1 {rememberMe = 0 } else { rememberMe = keeper.integer(forKey: "remember")}
-        print("rememberMe:\(rememberMe!)")
       
         if rememberMe == 1 {
         check.setImage(Vimage, for: .normal)
@@ -240,15 +236,14 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         self.checkBox = true
         }//end of else
         
-        //if email.text == "" { forgot.isEnabled = false} else {forgot.isEnabled = true}
         print("rememberMe:\(rememberMe!)")
         
-        if LoginFile.userForCreate != ""{ email.text = LoginFile.userForCreate; password.text = LoginFile.passwordForCreate; LoginFile.userForCreate = "";LoginFile.passwordForCreate = "";signIn.isEnabled = true} else {LoginFile.userForCreate = "";LoginFile.passwordForCreate = ""}
+        if LoginFile.userForCreate != ""{ email.text = LoginFile.userForCreate; password.text = LoginFile.passwordForCreate; LoginFile.userForCreate = "";LoginFile.passwordForCreate = ""} else {LoginFile.userForCreate = "";LoginFile.passwordForCreate = ""}
         
         //self.email.addTarget(self, action: #selector(checkIntial), for: .allEditingEvents )
        // self.password.addTarget(self, action: #selector(checkIntial), for: .allEditingEvents)
 
-        //logoutGeneral()
+        logoutGeneral()
         
         DispatchQueue.main.asyncAfter(deadline: .now() ) {
         if FBSDKAccessToken.current() != nil {        LoginFile.provider = "facebook"
@@ -266,7 +261,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         
         thinking.hidesWhenStopped = true
         
-        } ///end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        } ///end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////
    
         //keyboard hide
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -279,124 +274,100 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         userEmail = email.text!
         userPassword = password.text!
         if userEmail == ""  {self.textForError = ("Missing mail. Please fill in" )
-            alert2()
+        alert2()
         }//end of if useremail
         
-            FIRAuth.auth()?.signIn(withEmail: userEmail!, password: userPassword, completion: { (user, error) in
+        FIRAuth.auth()?.signIn(withEmail: userEmail!, password: userPassword, completion: { (user, error) in
             
         if error != nil
         {print ("something went wrong")
         print(error!)
         if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
-                    
-            switch errCode {
-            case .errorCodeInvalidEmail:
-            self.textForError = ("This is invalid mail.Please correct. or set a 'New Account' if its your first time with us." )
-            self.alert2()
-            case .errorCodeUserNotFound:
-            self.textForError = ("We could not find you in our records. Please check that you used this mail as your account user name or set a 'New Account' if its your first time with us." )
-            self.alert2()
-            case .errorCodeNetworkError:
-            self.textForError = ("There is no connection. Please try later." )
-            self.alert2()
-            case .errorCodeWrongPassword:
-                if self.password.text != "" {
-                    self.textForError = ("This is a wrong Password. Please try again or use 'Forgot password'." ) } else {self.textForError = ("Missing Password. Please try again or use 'Forgot password'." ) }
-            self.alert2()
-            case .errorCodeUserDisabled:
-            self.textForError = ("This user is disabled. Please check with our PerSession support at wwww.homeployer.com." )
-            self.alert2()
-            default:
-            self.textForError = ("There is a login error . Pleasr try again" )
-            self.alert2()
-            print("Create User Error: \(String(describing: error))")
-            }
-            self.alert2()
-            }//end of if let
-            }//end of if error
+        switch errCode {
+        case .errorCodeInvalidEmail:
+        self.textForError = ("This is invalid mail.Please correct. or set a 'New Account' if its your first time with us." )
+        case .errorCodeUserNotFound:
+        self.textForError = ("We could not find you in our records. Please check that you used this mail as your account user name or set a 'New Account' if its your first time with us." )
+        case .errorCodeNetworkError:
+        self.textForError = ("There is no connection. Please try later." )
+        case .errorCodeWrongPassword:
+        if self.password.text != "" {
+        self.textForError = ("This is a wrong Password. Please try again or use 'Forgot password'." ) } else {self.textForError = ("Missing Password. Please try again or use 'Forgot password'." ) }
+        case .errorCodeUserDisabled:
+        self.textForError = ("This user is disabled. Please check with our PerSession support at wwww.homeployer.com." )
+        default:
+        self.textForError = ("There is a login error . Pleasr try again" )
+        print("Create User Error: \(String(describing: error))")
+        }
+        self.alert2()
+        }//end of if let
+        }//end of if error
         
-            else {
-            print("rememberMe:\(self.rememberMe!)")
+        else {
+        print("rememberMe:\(self.rememberMe!)")
 
-            if self.rememberMe == 1{
-                        self.keeper.set(self.email.text!, forKey: "userKept")
-                        self.keeper.set(self.password.text!, forKey: "passwordKept")
-                        self.keeper.set(1, forKey: "remember")
-                        print ("uid\(String(describing: user?.uid))")
-            }//end of if
-            else { self.ipusKeeper()}//end of else
-            
-            self.doSegue()
-            }//end of else
-            })//end of auth
-            }//end of func
+        if self.rememberMe == 1{
+        self.keeper.set(self.email.text!, forKey: "userKept")
+        self.keeper.set(self.password.text!, forKey: "passwordKept")
+        self.keeper.set(1, forKey: "remember")
+        print ("uid\(String(describing: user?.uid))")
+        }//end of if
+        else { self.ipusKeeper()}//end of else
+        
+        self.doSegue()
+        }//end of else
+        })//end of auth
+        }//end of func
     
-    func ipusKeeper(){
+        func ipusKeeper(){
         self.keeper.set("", forKey: "userKept")
         self.keeper.set("", forKey: "passwordKept")
         self.keeper.set(0, forKey: "remember")
-    }
-    
+        }
     
         //google signin
         func inFireBase(){
-            
-            LoginFile.provider = "Google"
-
-            print (self.employeeRefUpdate as Any)
-        
-            DispatchQueue.main.asyncAfter(deadline: .now() ) {
-                self.dbRefEmployees.child(LoginFile.employeeRef2).observeSingleEvent(of: .value, with: { (snapshot) in
-            if snapshot.hasChild("fCounter"){
-            print("exist")
-            //  self.thinking.stopAnimating()
-
-                self.doSegue()
-            }else{
-            print("doesn't exist")
-                
-                if LoginFile.userFromGoole?.profile.givenName == nil {self.fbNname = ""}else {    self.fbNname = (LoginFile.userFromGoole?.profile.givenName!)!}
-                if LoginFile.userFromGoole?.profile.familyName == nil {self.fbLastName = ""} else { self.fbLastName = (LoginFile.userFromGoole?.profile.familyName!)! }
-                if LoginFile.userFromGoole?.profile.email == nil {self.fbEmail = ""} else { self.fbEmail = (LoginFile.userFromGoole?.profile.email!)!}
-                
-            self.accounCreation()
-            //  self.thinking.stopAnimating()
-
-            self.doSegue()
-            }//end of else
-            })
-            }//end of dispatch
-            }//end of infirebase
+        ipusKeeper()
+        LoginFile.provider = "Google"
+        DispatchQueue.main.asyncAfter(deadline: .now() ) {
+        self.dbRefEmployees.child(LoginFile.employeeRef2).observeSingleEvent(of: .value, with: { (snapshot) in
+        if snapshot.hasChild("fCounter"){
+        print("exist")
+        self.doSegue()
+        }else{
+        print("doesn't exist")
+        if LoginFile.userFromGoole?.profile.givenName == nil {self.fbNname = ""}else { self.fbNname = (LoginFile.userFromGoole?.profile.givenName!)!}
+        if LoginFile.userFromGoole?.profile.familyName == nil {self.fbLastName = ""} else { self.fbLastName = (LoginFile.userFromGoole?.profile.familyName!)! }
+        if LoginFile.userFromGoole?.profile.email == nil {self.fbEmail = ""} else { self.fbEmail = (LoginFile.userFromGoole?.profile.email!)!}
+        self.accounCreation()
+        self.doSegue()
+        }//end of else
+        })
+        }//end of dispatch
+        }//end of infirebase
 
     
         func accounCreation() {
-            if let user = FIRAuth.auth()?.currentUser {
-            self.employeeRefUpdate =  user.uid}
-            print (employeeRefUpdate as Any)
-        
-            self.dbRefEmployees.child(employeeRefUpdate!).child("myEmployers").setValue(["New Dog":0])//add employer to my employers of employee
+        if let user = FIRAuth.auth()?.currentUser {
+        self.employeeRefUpdate =  user.uid}
+        self.dbRefEmployees.child(employeeRefUpdate!).child("myEmployers").setValue(["New Dog":0])//add employer to my employers of employee
+        self.dbRefEmployees.child((employeeRefUpdate)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : fbNname, "fLastName": fbLastName, "femail" : fbEmail, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage":"0" ,"fTaxName":"",  "fSwitcher": "No","fTaxCalc" : "Over", "fDateTime": "DateTime","fLogin":LoginFile.provider,"fLastCalander":"New","fAddress":"","fProfession": "","fPaypal" : "", "fBillinfo" :"","fCalander" : "None"])
 
-     
-            self.dbRefEmployees.child((employeeRefUpdate)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : fbNname, "fLastName": fbLastName, "femail" : fbEmail, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage":"0" ,"fTaxName":"",  "fSwitcher": "No","fTaxCalc" : "Over", "fDateTime": "DateTime","fLogin":LoginFile.provider,"fLastCalander":"New","fAddress":"","fProfession": "","fPaypal" : "", "fBillinfo" :"","fCalander" : "None"])
-        
+        //storage of pictures //in cache under employeeID
+        MyImageCache.sharedCache.setObject(self.pickedImage as AnyObject, forKey: self.employeeRefUpdate as AnyObject)
 
-
-            //storage of pictures //in cache under employeeID
-            MyImageCache.sharedCache.setObject(self.pickedImage as AnyObject, forKey: self.employeeRefUpdate as AnyObject)
-        
-            //in firebase under url
-            let dbStorageRef = FIRStorage.storage().reference().child("employeeImages").child(self.employeeRefUpdate!)
-            if let uploadTask = UIImageJPEGRepresentation(self.picture!, CGFloat(0.1)){
-            dbStorageRef.put(uploadTask, metadata: nil, completion: { (metadata, error) in
-            if error != nil {
-            print (error as Any)
-            return
-            }
-            self.dbRefEmployees.child(self.employeeRefUpdate!).updateChildValues(["fImageRef":(metadata?.downloadURL()?.absoluteString)! as Any ])
-            }) //end of dbref
-            }//end of uploadtask
-        
-            }//end of account creation
+        //in firebase under url
+        let dbStorageRef = FIRStorage.storage().reference().child("employeeImages").child(self.employeeRefUpdate!)
+        if let uploadTask = UIImageJPEGRepresentation(self.picture!, CGFloat(0.1)){
+        dbStorageRef.put(uploadTask, metadata: nil, completion: { (metadata, error) in
+        if error != nil {
+        print (error as Any)
+        return
+        }
+        self.dbRefEmployees.child(self.employeeRefUpdate!).updateChildValues(["fImageRef":(metadata?.downloadURL()?.absoluteString)! as Any ])
+        }) //end of dbref
+        }//end of uploadtask
+        }//end of account creation
 
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let middle =  segue.destination as! UINavigationController
@@ -411,25 +382,26 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         print ("nothing")}
         }// end of prepare
     
-    func doSegue(){
+        func doSegue(){
+            if LoginFile.provider == "facebook" || LoginFile.provider == "Google"  {  ipusKeeper()}
         self.performSegue(withIdentifier: "signIn2", sender: Any?.self)
-    }
+        }
     
-    //logout from face book & Google
-    func logoutGeneral(){
-    if LoginFile.logoutchosen == true{let loginManager = FBSDKLoginManager()
-    loginManager.logOut()
-    print ("logout from facebook")
-        
-    let firebaseAuth = FIRAuth.auth()
-    do {try firebaseAuth?.signOut();            print ("logout from Google")
-    } catch let signOutError as NSError {
-    print ("Error signing out: %@", signOutError)
-    }
-    GIDSignIn.sharedInstance().signOut()
-        LoginFile.logoutchosen = false
-    }//end of if
-    }
+        //logout from face book & Google
+        func logoutGeneral(){
+        if LoginFile.logoutchosen == true{let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
+        print ("logout from facebook")
+            
+        let firebaseAuth = FIRAuth.auth()
+        do {try firebaseAuth?.signOut();            print ("logout from Google")
+        } catch let signOutError as NSError {
+        print ("Error signing out: %@", signOutError)
+        }
+        GIDSignIn.sharedInstance().signOut()
+            LoginFile.logoutchosen = false
+        }//end of if
+        }
     //alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     func alert2 () {
