@@ -448,7 +448,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 self.midCalc = snapshot.childSnapshot(forPath: "fBillTax").value! as? String
                 self.midCalc2 = snapshot.childSnapshot(forPath: "fBillTotalTotal").value! as? String
                 self.midCalc3 = snapshot.childSnapshot(forPath: "fBillSum").value! as? String
-                self.account = snapshot.childSnapshot(forPath: "fBillEmployer").value! as? String
+                self.account = snapshot.childSnapshot(forPath: "fBillEmployerName").value! as? String
                 print (self.midCalc3,self.midCalc2,self.midCalc)
                 
             })
@@ -594,7 +594,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         DispatchQueue.main.asyncAfter(deadline: .now()+2){
             print (self.billInfo)
             
-            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: Reciept-\(self.BillArray[self.buttonRow])\r\nAccount: \(self.account)\r\n \(self.billInfo!)\r\n\r\nHi,\r\n\r\n Following is the recipet for payment for Bill-\(self.BillArray[self.buttonRow])\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc2!)\r\n\(self.taxationBlock!)\r\n\(self.paymentBlock!)\r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!)\(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
+            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: Reciept-\(self.BillArray[self.buttonRow])\r\nAccount: \(self.account!)\r\n \(self.billInfo!)\r\n\r\nHi,\r\n\r\n Following is the recipet for payment for Bill-\(self.BillArray[self.buttonRow])\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc2!)\r\n\(self.taxationBlock!)\r\n\(self.paymentBlock!)\r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!)\(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
           
            
             
