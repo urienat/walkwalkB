@@ -459,9 +459,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         { if BillArrayStatus[buttonRow] == "Billed" {  statusTemp = "Paid";
             paymentTitle.text = "Fully pay bill \(BillArray[buttonRow]) by"
             paymentView.isHidden = false
-           // self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).updateChildValues(["fBillStatus": statusTemp, "fBillStatusDate":
-           // mydateFormat5.string(from: Date())//was 3
-            //], withCompletionBlock: { (error) in}) //end of update.
+           
             BillArrayStatus[buttonRow] = statusTemp
             }//end of if billed
             else if BillArrayStatus[buttonRow] == "Paid" {  if StatusChoice == "Not Paid" { statusTemp = "Billed"
@@ -469,7 +467,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             mydateFormat5.string(from: Date())//was 3
             ], withCompletionBlock: { (error) in}) //end of update.
             BillArrayStatus[buttonRow] = statusTemp
-            } else { //BillArrayStatus[buttonRow] == "Cancelled"
+            } else {
             alert3()}
             }//end of if paid
 
@@ -679,10 +677,17 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             self.present(alertController9, animated: true, completion: nil)
             }
 
-    
+        func alert78(){
+        let alertController78 = UIAlertController(title: ("Bill Alert") , message: "You can't cancel  apyment from bill & Pay document - if requiered, you can delete the document and set a new bill.", preferredStyle: .alert)
+        let OkAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+        //do nothing
+        }
+        alertController78.addAction(OkAction)
+        self.present(alertController78, animated: true, completion: nil)
+        }
     
             func alert3(){
-            let alertController3 = UIAlertController(title: ("Bill Alert") , message: "You are about to cancel payment for a bill that was already marked as paid. Are you Sure?", preferredStyle: .alert)
+            let alertController3 = UIAlertController(title: ("Bill Alert") , message: "You are about to cancel reciept. Are you Sure?", preferredStyle: .alert)
 
             let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
             biller.checkBoxBiller = 1
@@ -696,7 +701,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
             self.statusTemp = "Billed"
             self.BillArrayStatus[self.buttonRow] = self.statusTemp
-            self.dbRefEmployees.child(self.employeeID).child("myBills").child(String("-"+self.BillArray[self.buttonRow])).updateChildValues(["fBillStatus": self.statusTemp ,"fBillStatusDate":self.mydateFormat5.string(from: Date())], withCompletionBlock: { (error) in}) //end of update.//was 3
+                self.dbRefEmployees.child(self.employeeID).child("myBills").child(String("-"+self.BillArray[self.buttonRow])).updateChildValues(["fBillStatus": self.statusTemp ,"fBillStatusDate":self.mydateFormat5.string(from: Date()),"fBillrecieptDate":"","fBillRecieptMailSaver":"","fPaymentMethood" :"","fPaymentReference":""], withCompletionBlock: { (error) in}) //end of update.//was 3
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
             self.StatusChosen.isMomentary = true
