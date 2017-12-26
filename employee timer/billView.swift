@@ -42,24 +42,23 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     
     var recieptChosen:Bool = false
 
-
-    @IBOutlet weak var foldedPage: UIButton!
-    @IBAction func foldedPage(_ sender: Any) {
-    print ("foldedpage is pressed")
-    if recieptChosen == false {
-    recieptChosen = true
-    self.mailText.text = self.recoveredReciept
-        self.titleLbl = "Reciept \(documentCounter!)"
-        self.title = self.titleLbl
-    }
-    else {
-    recieptChosen = false
-    self.mailText.text = self.recoveredBill
+    @IBOutlet weak var billReciept: UISegmentedControl!
+    @IBAction func billReciept(_ sender: Any) {
+        switch billReciept.selectedSegmentIndex {
+        case 0:recieptChosen = false
+        self.mailText.text = self.recoveredBill
         self.titleLbl = "\(document!) \(documentCounter!)"
         self.title = self.titleLbl
-    }
+        case 1:recieptChosen = true
+        self.mailText.text = self.recoveredReciept
+        self.titleLbl = "Reciept \(documentCounter!)"
+        self.title = self.titleLbl
+        default:
+          print ("switch is not working") //do nothing
+        } //end of switch
     }
     
+   
     let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
   
     @IBOutlet weak var mailText: UITextView!
@@ -137,8 +136,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             self.document = (snapshot.childSnapshot(forPath: "fDocumentName").value! as? String)!
             self.documentCounter = (snapshot.childSnapshot(forPath: "fBill").value! as? String)!
 
-            if self.recieptDate == self.paymentDate {self.foldedPage.isHidden = true ;print ("biil & Pay")} //bill&Pay
-            else {if self.recieptDate == "" {self.foldedPage.isHidden = true;print ("just bill")} else {self.foldedPage.isHidden = false;print(" bill and then reciept")}}
+            if self.recieptDate == self.paymentDate {self.billReciept.isHidden = true ;print ("biil & Pay")} //bill&Pay
+            else {if self.recieptDate == "" {self.billReciept.isHidden = true;print ("just bill")} else {self.billReciept.isHidden = false;print(" bill and then reciept")}}
            
             self.titleLbl = "\(self.document!) \(self.documentCounter!)"
             self.title = self.titleLbl
