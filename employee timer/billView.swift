@@ -30,16 +30,34 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     var employeeID = ""
     var recieptDate: String?
     var paymentDate: String?
+    var document :String?
+    var documentCounter :String?
     
     var deleteBill : UIBarButtonItem?
     
     var recoveredBill = ""
+    var recoveredReciept = ""
     var recoveredStatus = ""
     var billStatusForRecovery = ""
+    
+    var recieptChosen:Bool = false
 
 
     @IBOutlet weak var foldedPage: UIButton!
     @IBAction func foldedPage(_ sender: Any) {
+    print ("foldedpage is pressed")
+    if recieptChosen == false {
+    recieptChosen = true
+    self.mailText.text = self.recoveredReciept
+        self.titleLbl = "Reciept \(documentCounter!)"
+        self.title = self.titleLbl
+    }
+    else {
+    recieptChosen = false
+    self.mailText.text = self.recoveredBill
+        self.titleLbl = "\(document!) \(documentCounter!)"
+        self.title = self.titleLbl
+    }
     }
     
     let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
@@ -61,7 +79,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var reSend: UIBarButtonItem!
     
     @IBAction func reSend(_ sender: Any) {
-        alert5()
+        if recieptChosen {alert6()} else {  alert5()}
     }
     
     /////////////////////////////////////////////////////////////////  view did load starts///////////////////////
@@ -89,12 +107,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         
      //   self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Grass12")!)
         self.view.insertSubview(backgroundImage, at: 0)
-        self.titleLbl = "Bill"
-        self.title = self.titleLbl
+      
         
         
         reBill()
-        
+       
         
         
     } ///end of did load/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -108,15 +125,23 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         self.dbRefEmployee.child(employeeID).child("myBills").child(billToHandle).observeSingleEvent(of: .value,with: { (snapshot) in
             
             self.recoveredBill = (snapshot.childSnapshot(forPath: "fBillMailSaver").value! as? String)!
+            self.recoveredReciept = (snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String)!
+
             print("recovered234  56")
             print(self.recoveredBill)
             self.mailText.text = self.recoveredBill
+            
             self.recoveredStatus = (snapshot.childSnapshot(forPath: "fBillStatus").value! as? String)!
             self.recieptDate = (snapshot.childSnapshot(forPath: "fRecieptDate").value! as? String)!
             self.paymentDate = (snapshot.childSnapshot(forPath: "fBillDate").value! as? String)!
+            self.document = (snapshot.childSnapshot(forPath: "fDocumentName").value! as? String)!
+            self.documentCounter = (snapshot.childSnapshot(forPath: "fBill").value! as? String)!
+
             if self.recieptDate == self.paymentDate {self.foldedPage.isHidden = true ;print ("biil & Pay")} //bill&Pay
             else {if self.recieptDate == "" {self.foldedPage.isHidden = true;print ("just bill")} else {self.foldedPage.isHidden = false;print(" bill and then reciept")}}
-
+           
+            self.titleLbl = "\(self.document!) \(self.documentCounter!)"
+            self.title = self.titleLbl
 
             if self.recoveredStatus == "Billed" { self.deleteBtn.isEnabled = true;self.billStatusForRecovery = ""}
             if  self.recoveredStatus  == "Paid" { self.statusImage.image = self.paidImage;self.deleteBtn.isEnabled = true;self.billStatusForRecovery = ""}
@@ -124,6 +149,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             
             
         })
+        
         
     }//end rebill clicked
 
@@ -141,6 +167,19 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         
         
         return mailComposerVC2
+    }//end of MFMailcomposer
+    
+    //func for mail4
+    func  configuredMailComposeViewController4() -> MFMailComposeViewController {
+        let mailComposerVC4 = MFMailComposeViewController()
+        mailComposerVC4.mailComposeDelegate = self
+        mailComposerVC4.setSubject("Bill recovery \(billToHandle)")
+        mailComposerVC4.setMessageBody("\(recoveredReciept)\r\n\r\n Reciept-Copy\r\n \(billStatusForRecovery)", isHTML: false)
+        mailComposerVC4.setToRecipients([ViewController.fixedemail])
+        //mailComposerVC4.setCcRecipients([ViewController.fixedemail])
+        
+        
+        return mailComposerVC4
     }//end of MFMailcomposer
     
     func showSendmailErrorAlert() {
@@ -208,6 +247,27 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     }
 
     
+    func alert6(){
+        let alertController5 = UIAlertController(title: ("Reciept Recovery") , message: "Do you want to recover Reciept's copy and send it to yourself?", preferredStyle: .alert)
+        let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+            //do nothing
+        }
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            let mailComposeViewController2 = self.configuredMailComposeViewController4()
+            if MFMailComposeViewController.canSendMail() {
+                
+                self.present(mailComposeViewController2, animated: true, completion: nil)
+            } //end of if
+            else{ self.showSendmailErrorAlert() }
+            // navigationController!.popViewController(animated: true)
+            
+        }
+        
+        alertController5.addAction(CancelAction)
+        alertController5.addAction(OKAction)
+        self.present(alertController5, animated: true, completion: nil)
+    }
+
     //save alert
     func deleteAlert () {
         print("delete")
