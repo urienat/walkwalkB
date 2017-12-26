@@ -271,7 +271,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     //save alert
     func deleteAlert () {
         print("delete")
-        if billReciept.isHidden == true { self.cancelledDocument = "Bill & Recipet ref# \(self.documentCounter!)"} else {self.cancelledDocument = "\(self.document!) ref# \(self.documentCounter!)"}
+        if billReciept.isHidden != true { self.cancelledDocument = "Bill & Recipet ref# \(self.documentCounter!)"} else {self.cancelledDocument = "\(self.document!) ref# \(self.documentCounter!)"}
        
         let alertController = UIAlertController(title: "Delete \(cancelledDocument!)", message: "You are about to delete \(cancelledDocument!) ,though visibilty would remain. Are You Sure?", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
