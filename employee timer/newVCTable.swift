@@ -23,13 +23,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let billedImage = UIImage(named: "locked")
     let billIcon = UIImage(named: "bill")
     let sandwatchImage = UIImage(named: "sandWatch")
-    let roundImageRed = UIImage(named: "roundImageRed")
     let pencilImage = UIImage(named: "pencilImage")
     let roundImageNormal = UIImage(named: "roundImageNormal")
+    var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
 
-    var mailVisit = false
     var mailSaver : String?
-    var billMessage: String?
     var releaser: Int? = 0
     
     var paymentSys: String? = ""
@@ -70,16 +68,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var sendBillIcon = UIImage(named:"sendBillIcon")?.withRenderingMode(.alwaysTemplate )
 
     var employerMail = ""
-
-    let space = ""
-    
-    var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
-    
     var statusTemp:String?
     static var checkBox:Int = 0
     var checkBoxGeneral:Int = 1
     var generalChange = ""
-
     
     var idOfEmployers: [String:AnyObject] = [:]
     var idOfEmployers2: [String:AnyObject] = [:]
@@ -151,38 +143,26 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var counterForMail2: String?
     
     var recotdMonth : Int = 0
-   // var recordDay : Int = 0
-   // var recordWeek : Int = 0
     var recordYear : Int = 0
-    //var recordYearForWeek : Int = 0
-
     var currentMonth : Int = 0
-  //  var currentDay : Int = 0
-   // var currentWeek : Int = 0
     var currentYear : Int = 0
-    //var currentYearForWeek :Int = 0
 
     let dbRef = FIRDatabase.database().reference().child("fRecords")
     let dbRefEmployers = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     
     @IBOutlet weak var eventsLbl: UILabel!
-    
     @IBOutlet weak var amount: UILabel!
     @IBOutlet weak var perEvents: UILabel!
     @IBOutlet weak var noSign: UIImageView!
-    
     @IBOutlet weak var billPay: UIBarButtonItem!
     @IBOutlet weak var billSender: UIBarButtonItem!
     
     func sendBill() {
     billSender.isEnabled = false
     billPay.isEnabled = false
-
     releaser = 1
-
     refresh(presser: 1)
-
     DispatchQueue.main.asyncAfter(deadline: .now()+4.4){
     print(self.appArray.count)
     if self.appArray.count != 0 {self.thinking.stopAnimating(); self.alert18()}
@@ -192,41 +172,32 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }
     self.billSender.isEnabled = false
     self.billPay.isEnabled = false
-
     self.releaser = 0
     }
-
     }//end of sendBill
     
     func billPayProcess(){
     billSender.isEnabled = false
-        billPay.isEnabled = false
-
+    billPay.isEnabled = false
     releaser = 1
-
     refresh(presser: 1)
 
     DispatchQueue.main.asyncAfter(deadline: .now()+4.4){
     print(self.appArray.count)
     if self.appArray.count != 0 {self.thinking.stopAnimating();
-    //add refernce for the payment
-        self.paymentRef()
-        //self.alert19()
-        
-        }
+    self.paymentRef()
+    }
     if self.appArray.count == 0 {
     self.thinking.stopAnimating()
     self.alert27()
     }
     self.billSender.isEnabled = false
-        self.billPay.isEnabled = false
-
+    self.billPay.isEnabled = false
     self.releaser = 0
     }
-    }
+    }//end of billpayprocess
     
     var records = [recordsStruct]()
-    
     @IBOutlet weak var thinking: UIActivityIndicatorView!
     @IBOutlet weak var totalBackground: UIView!
     @IBOutlet weak var generalApproval: UIButton!
@@ -235,14 +206,14 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     if  checkBoxGeneral == 2 {
     refresh(presser: 1)
-        }
+    }
         
     if  checkBoxGeneral == 1         {
     refresh(presser: 1)
     }
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+1){
-            self.alert11()
+    DispatchQueue.main.asyncAfter(deadline: .now()+1){
+    self.alert11()
         }
         
     }//end of approval button
@@ -450,7 +421,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         switch result.rawValue {
         case MFMailComposeResult.cancelled.rawValue:
+        DispatchQueue.main.asyncAfter(deadline: .now()+0){
+            self.alert66() }//it is not function due to window hirerarchy
         print("Mail cancelled")
+
         case MFMailComposeResult.saved.rawValue:
         print("Mail saved3")
         case MFMailComposeResult.sent.rawValue:
@@ -468,7 +442,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }
         
         self.navigationController!.popViewController(animated: true)
-        }
+        }//mfmailcomposercontrollet
     
         func  approvalClicked(sender:UIButton!) {
         
@@ -747,8 +721,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             
             if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
             
-            
-            print (self.paymentDate!)
             if self.recieptDate != "" {self.documentName = "Bill & Payment"; if self.paymentSys != "Other"{self.paymentBlock = "Payment made by \(self.paymentSys!) \(self.refernceBlock) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))"
                 }else{// payment == other
                 self.paymentBlock = ("Payment made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock) ")
@@ -857,7 +829,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
     func billProcess() {
     self.thinking.startAnimating()
-        if paymentDate! == "" {paymentDate = mydateFormat5.string(from: Date()) }
+    if paymentDate! == "" {paymentDate = mydateFormat5.string(from: Date()) }
     self.billing()
 
     DispatchQueue.main.asyncAfter(deadline: .now()+2){
@@ -866,22 +838,17 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     self.biller = false
         
-        self.mailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: \(self.documentName!)-\(self.counterForMail2!)\r\nAccount: \(self.employerFromMain!)\r\n\r\n \(self.billInfo!)\r\n\r\n\r\n\r\nHi, \r\n\r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\nTotal Number of sessions: \(self.eventCounter) \r\n\(self.perEvents.text!)\r\n \r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n\(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock)\r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!)\(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
+    self.mailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: \(self.documentName!)-\(self.counterForMail2!)\r\nAccount: \(self.employerFromMain!)\r\n\r\n \(self.billInfo!)\r\n\r\n\r\n\r\nHi, \r\n\r\nThese are the sessions,  we had together:\r\n\(self.htmlReport!)\r\nTotal Number of sessions: \(self.eventCounter) \r\n\(self.perEvents.text!)\r\n \r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n\(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock)\r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!)\(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
 
 
     //update bill with DB
         self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": self.billStatus!, "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2,"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference, "fPaymentDate":self.paymentDate, "fDocumentName":self.documentName!,"fRecieptDate":self.recieptDate!,"fBillRecieptMailSaver":""
     ], withCompletionBlock: { (error) in}) //end of update.//was 0
     self.generalApprovalClicked()
-    //self.navigationController!.popViewController(animated: true)
-
     }//end of if biller
-    }
-    
-        
+    }//end of dispatch
     }//end of billprocess
     
-   
     func alert19(){
     DispatchQueue.main.asyncAfter(deadline: .now()){
     self.billSender.isEnabled = false
@@ -891,6 +858,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let alertController19 = UIAlertController(title: ("Bill") , message: "Register a new Bill and set sessions from 'Due' to 'Billed'." , preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "Just do it", style: .default) { (UIAlertAction) in
     self.billProcess()
+    self.navigationController!.popViewController(animated: true)
+
     }
         
     let mailAction = UIAlertAction(title: "Mail it", style: .default) { (UIAlertAction) in
@@ -898,9 +867,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     DispatchQueue.main.asyncAfter(deadline: .now()+2){
     if MFMailComposeViewController.canSendMail() {
     let mailComposeViewController2 = self.configuredMailComposeViewController2()
-    print (self.presentingViewController)
     self.present(mailComposeViewController2, animated: true, completion: nil)
-        
     }else{
     print ("can't send")
     self.showSendmailErrorAlert() }//end of else
@@ -912,16 +879,18 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
     self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
     }//end of dispatch
- */
+    */
     }//end of dispatch
     }//end of mail action
         
     let printAction = UIAlertAction(title: "Print it", style: .default) { (UIAlertAction) in
     self.billProcess()
     //add printing process
+    self.navigationController!.popViewController(animated: true)
+
     }
         
-    let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+    let CancelAction = UIAlertAction(title: "Cancel ", style: .cancel) { (UIAlertAction) in
     self.paymentReference = ""
     self.paymentSys = ""
     self.paymentDate = ""
@@ -949,6 +918,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let alertController18 = UIAlertController(title: ("Bill") , message: "Register a new Bill and set sessions from 'Due' to 'Billed'." , preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "Just do it", style: .default) { (UIAlertAction) in
     self.billProcess()
+    self.navigationController!.popViewController(animated: true)
+
+    
     }//end of OK
         
     let mailAction = UIAlertAction(title: "Mail it", style: .default) { (UIAlertAction) in
@@ -961,13 +933,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
     
-    DispatchQueue.main.asyncAfter(deadline: .now()+2){
-
-    self.segmentedPressed = 0
-    self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
-    self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-    }//end of dispatch
-
+   // DispatchQueue.main.asyncAfter(deadline: .now()+2){
+    //self.segmentedPressed = 0
+    //self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
+    //self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+    //}//end of dispatch
     }//end of dispatch
     }//end of mail
         
@@ -993,9 +963,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     func alert27() {
     DispatchQueue.main.asyncAfter(deadline: .now()){
     self.billSender.isEnabled = false
-        self.billPay.isEnabled = false
-
-        }
+    self.billPay.isEnabled = false
+    }
 
     let alertController27 = UIAlertController(title: ("Bill records") , message:" There are no  sessions with 'Due' status. Please mark sessions that you would like to bill by touching the empty square or create new 'sessions'." , preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
@@ -1005,6 +974,17 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     alertController27.addAction(OKAction)
     self.present(alertController27, animated: true, completion: nil)
     }//end of alert27
+    
+    func alert66() {
+        
+        let alertController66 = UIAlertController(title: ("Cancel Mail") , message:" Mail was cancelled, but the bill was registered to send it or print it go to bills" , preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            self.refresh(presser: 0)
+        }
+        
+        alertController66.addAction(OKAction)
+        self.present(alertController66, animated: true, completion: nil)
+    }//end of alert66
 
     func alert12(){
     let alertController12 = UIAlertController(title: ("Change record status") , message: "You can not change status of records that were already billed.", preferredStyle: .alert)

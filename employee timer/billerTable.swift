@@ -505,7 +505,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         self.alert30()
         }
     
-        //func for mail// ithink not used
+    
+    //func for mail// ithink not used
         func  configuredMailComposeViewController2() -> MFMailComposeViewController {
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
