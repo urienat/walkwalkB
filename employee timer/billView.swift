@@ -39,6 +39,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     var recoveredReciept = ""
     var recoveredStatus = ""
     var billStatusForRecovery = ""
+    var cancelledDocument: String?
     
     var recieptChosen:Bool = false
 
@@ -270,12 +271,13 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     //save alert
     func deleteAlert () {
         print("delete")
+        if billReciept.isHidden == false { self.cancelledDocument = "Bill & Recipet ref# \(self.documentCounter!)"} else {self.cancelledDocument = "\(self.document!) ref# \(self.documentCounter!)"}
        
-            let alertController = UIAlertController(title: "Delete", message: "You are about to delete a Bill. Are You Sure?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Delete \(cancelledDocument!)", message: "You are about to delete \(cancelledDocument!) ,though visibilty would remain. Are You Sure?", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
                 //nothing
             }
-            let deleteAction = UIAlertAction(title: "Yes Delete it.", style: .default) { (UIAlertAction) in
+            let deleteAction = UIAlertAction(title: "Delete it.", style: .default) { (UIAlertAction) in
                 self.dbRefEmployee.child(self.employeeID).child("myBills").child(String(self.billToHandle)).updateChildValues([ "fBillStatus":"Cancelled"])
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
