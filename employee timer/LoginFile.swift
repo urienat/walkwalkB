@@ -137,7 +137,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     userEmail = email.text
     FIRAuth.auth()?.sendPasswordReset(withEmail: userEmail!) { (error) in
     if error != nil { print ("erorrr!!!!")
-        self.textForError = ("Sorry. This email is not registered as valid in our records");self.alert2()
+        if self.email.text == "" {self.textForError = "Sorry. Missing email - please fill email."} else {self.textForError = "Sorry. This email is not registered as valid in our records"};self.alert2()
     } else {
     self.alert1()}
     }
@@ -219,7 +219,6 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         print("rememberMe:\(rememberMe!)")
       
         if rememberMe == 1 {
-        signIn.isEnabled = true
         check.setImage(Vimage, for: .normal)
         checkBox = false
         let savedUser = keeper.string(forKey: "userKept")
@@ -227,7 +226,6 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         if savedUser == nil || savedUser == "" {check.setImage(nonVimage, for: .normal)
         rememberMe = 0
         self.checkBox = true
-        signIn.isEnabled = false
         forgot.isEnabled = false
         }//end of if
         email.text = savedUser
@@ -240,17 +238,15 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         check.setImage(nonVimage, for: .normal)
         rememberMe = 0
         self.checkBox = true
-        signIn.isEnabled = false
-        forgot.isEnabled = false
         }//end of else
         
-        if email.text == "" { forgot.isEnabled = false} else {forgot.isEnabled = true}
+        //if email.text == "" { forgot.isEnabled = false} else {forgot.isEnabled = true}
         print("rememberMe:\(rememberMe!)")
         
         if LoginFile.userForCreate != ""{ email.text = LoginFile.userForCreate; password.text = LoginFile.passwordForCreate; LoginFile.userForCreate = "";LoginFile.passwordForCreate = "";signIn.isEnabled = true} else {LoginFile.userForCreate = "";LoginFile.passwordForCreate = ""}
         
-        self.email.addTarget(self, action: #selector(checkIntial), for: .allEditingEvents )
-        self.password.addTarget(self, action: #selector(checkIntial), for: .allEditingEvents)
+        //self.email.addTarget(self, action: #selector(checkIntial), for: .allEditingEvents )
+       // self.password.addTarget(self, action: #selector(checkIntial), for: .allEditingEvents)
 
         //logoutGeneral()
         
@@ -278,9 +274,6 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             password.resignFirstResponder()
             return true}
     
-        func checkIntial() {
-        if  email.text != "" && password.text != "" { signIn.isEnabled = true}
-        if email.text != ""  {forgot.isEnabled = true}}
     
         func signInProcess() {
         userEmail = email.text!
@@ -307,7 +300,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             self.textForError = ("There is no connection. Please try later." )
             self.alert2()
             case .errorCodeWrongPassword:
-            self.textForError = ("This is a wrong Password. Please try again or use 'Forgot password'." )
+                if self.password.text != "" {
+                    self.textForError = ("This is a wrong Password. Please try again or use 'Forgot password'." ) } else {self.textForError = ("Missing Password. Please try again or use 'Forgot password'." ) }
             self.alert2()
             case .errorCodeUserDisabled:
             self.textForError = ("This user is disabled. Please check with our PerSession support at wwww.homeployer.com." )
@@ -317,6 +311,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             self.alert2()
             print("Create User Error: \(String(describing: error))")
             }
+            self.alert2()
             }//end of if let
             }//end of if error
         
