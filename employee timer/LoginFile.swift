@@ -108,7 +108,9 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     let keeper = UserDefaults.standard
     var checkBox : Bool?
     var rememberMe:Int?
-    var userEmail:String! = nil
+    //var userEmail:String! = nil
+    var userEmail:String?
+
     var userPassword:String! = nil
 
     @IBOutlet weak var check: UIButton! // section for rememberme check
@@ -132,9 +134,10 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     @IBOutlet weak var password: UITextField!
     
     @IBAction func forgot(_ sender: Any) {  //section for forgot or change password
-    FIRAuth.auth()?.sendPasswordReset(withEmail: userEmail) { (error) in
+    userEmail = email.text
+    FIRAuth.auth()?.sendPasswordReset(withEmail: userEmail!) { (error) in
     if error != nil { print ("erorrr!!!!")
-    self.alert4()
+        self.textForError = ("Sorry. This email is not registered as valid in our records");self.alert2()
     } else {
     self.alert1()}
     }
@@ -179,14 +182,14 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         self.email.delegate = self
         self.password.delegate = self
 
-        logoutGeneral()
+        //logoutGeneral()
         
         //google login setting
         let loginButton2 =  GIDSignInButton()
         GIDSignIn.sharedInstance().uiDelegate = self
         // GIDSignIn.sharedInstance().signIn()
         view.addSubview(loginButton2)
-        loginButton2.frame = CGRect(x: view.frame.width/2-104, y: 30, width: 208, height: 45)
+        loginButton2.frame = CGRect(x: view.frame.width/2-104, y: 50, width: 208, height: 45)
         
         //add observer
         if GIDSignIn.sharedInstance().currentUser != nil  {
@@ -201,7 +204,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
 
         //Facebook login setting
         view.addSubview(loginButton)
-        loginButton.frame = CGRect(x: view.frame.width/2-100, y: 95, width: 200, height: 45)
+        loginButton.frame = CGRect(x: view.frame.width/2-100, y: 107, width: 200, height: 45)
         loginButton.delegate = self
         loginButton.readPermissions = ["email","public_profile"]
         
@@ -216,7 +219,6 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         print("rememberMe:\(rememberMe!)")
       
         if rememberMe == 1 {
-        signIn.isHidden = false
         signIn.isEnabled = true
         check.setImage(Vimage, for: .normal)
         checkBox = false
@@ -245,28 +247,27 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         if email.text == "" { forgot.isEnabled = false} else {forgot.isEnabled = true}
         print("rememberMe:\(rememberMe!)")
         
-        if LoginFile.userForCreate != ""{ email.text = LoginFile.userForCreate; password.text = LoginFile.passwordForCreate; LoginFile.userForCreate = "";LoginFile.passwordForCreate = "";signIn.isEnabled = true;signIn.isHidden = false} else {LoginFile.userForCreate = "";LoginFile.passwordForCreate = ""}
+        if LoginFile.userForCreate != ""{ email.text = LoginFile.userForCreate; password.text = LoginFile.passwordForCreate; LoginFile.userForCreate = "";LoginFile.passwordForCreate = "";signIn.isEnabled = true} else {LoginFile.userForCreate = "";LoginFile.passwordForCreate = ""}
         
         self.email.addTarget(self, action: #selector(checkIntial), for: .allEditingEvents )
         self.password.addTarget(self, action: #selector(checkIntial), for: .allEditingEvents)
 
-        logoutGeneral()
-       
-        thinking.hidesWhenStopped = true
-       
+        //logoutGeneral()
+        
         DispatchQueue.main.asyncAfter(deadline: .now() ) {
         if FBSDKAccessToken.current() != nil {        LoginFile.provider = "facebook"
         self.doSegue()
         }//end of if
-        }
+        }//end of dispatch
         
         DispatchQueue.main.asyncAfter(deadline: .now() ) {
         print (AccessToken.current as Any)
         
         if AccessToken.current != nil {        LoginFile.provider = "Google"
-            self.doSegue()
+        self.doSegue()
         }//end of if
-        }
+        }//end of dispatch
+        
         thinking.hidesWhenStopped = true
         
         } ///end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -278,19 +279,17 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             return true}
     
         func checkIntial() {
-        if  email.text != "" && password.text != "" { signIn.isHidden = false;signIn.isEnabled = true}
+        if  email.text != "" && password.text != "" { signIn.isEnabled = true}
         if email.text != ""  {forgot.isEnabled = true}}
     
         func signInProcess() {
         userEmail = email.text!
         userPassword = password.text!
-        print("loginInfo:\(userEmail!)")
-        print("loginInfo:\(email.text!)")
         if userEmail == ""  {self.textForError = ("Missing mail. Please fill in" )
             alert2()
         }//end of if useremail
         
-        FIRAuth.auth()?.signIn(withEmail: userEmail, password: userPassword, completion: { (user, error) in
+            FIRAuth.auth()?.signIn(withEmail: userEmail!, password: userPassword, completion: { (user, error) in
             
         if error != nil
         {print ("something went wrong")
@@ -333,8 +332,6 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             else { self.ipusKeeper()}//end of else
             
             self.doSegue()
-            print (self.userEmail)
-            print (self.userPassword)
             }//end of else
             })//end of auth
             }//end of func
@@ -428,6 +425,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     if LoginFile.logoutchosen == true{let loginManager = FBSDKLoginManager()
     loginManager.logOut()
     print ("logout from facebook")
+        
     let firebaseAuth = FIRAuth.auth()
     do {try firebaseAuth?.signOut();            print ("logout from Google")
     } catch let signOutError as NSError {
@@ -438,15 +436,6 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     }//end of if
     }
     //alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    /*
-    func alert() {
-    let alertController3 = UIAlertController(title: ("Login alert") , message: ("Valid mail and password requiered. Please correct accordingly."), preferredStyle: .alert)
-    let okAction3 = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in}
-    alertController3.addAction(okAction3)
-    present(alertController3, animated: true, completion: nil)
-    }//alert end
-     */
     
     func alert2 () {
     let alertController2 = UIAlertController(title: ("Login alert") , message: textForError, preferredStyle: .alert)
@@ -461,13 +450,6 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     let okAction1 = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in}
     alertCotroller1.addAction(okAction1)
     present(alertCotroller1, animated: true, completion: nil)
-    }//alert end
-
-    func alert4 () {
-    let alertCotroller4 = UIAlertController(title: ("email alert") , message: ("Sorry. This email is not registered as valid in our records"), preferredStyle: .alert)
-    let okAction1 = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in}
-    alertCotroller4.addAction(okAction1)
-    present(alertCotroller4, animated: true, completion: nil)
     }//alert end
 
     func alert50(){
