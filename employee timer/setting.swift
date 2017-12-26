@@ -52,6 +52,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBOutlet weak var email: UITextField!
     var emailUpdate = ""
 
+    @IBOutlet weak var addressConstrain: NSLayoutConstraint!
     @IBOutlet weak var address: UITextField!
     var addressUpdate = ""
     
@@ -226,7 +227,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             taxerTitle.isHidden = false
             currencyTitle.isHidden = false
             taxinfoSign.isHidden = false
-            if LoginFile.provider == "facebook" || LoginFile.provider == "Google" {passwordTitle.isHidden = true; reset.isHidden=true} else {
+            if LoginFile.provider == "facebook" || LoginFile.provider == "Google" {passwordTitle.isHidden = true; reset.isHidden=true; addressConstrain.constant = 8} else {addressConstrain.constant = 46
             passwordTitle.isHidden = false;  reset.isHidden = false}
             passWord.isHidden = true
             subscriptionBtn.isHidden = false

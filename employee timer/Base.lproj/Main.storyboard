@@ -1756,6 +1756,7 @@
                     <size key="freeformSize" width="320" height="820"/>
                     <connections>
                         <outlet property="address" destination="Jeh-Sl-RkP" id="tKB-U0-pq4"/>
+                        <outlet property="addressConstrain" destination="VAB-Cc-KPa" id="qYo-aN-DmQ"/>
                         <outlet property="billInfo" destination="KWf-qy-tLB" id="AHT-Mh-i4t"/>
                         <outlet property="calander" destination="rrM-Wg-SYV" id="mHS-R9-ZOU"/>
                         <outlet property="currency" destination="dce-An-tH6" id="qub-gp-JjB"/>
