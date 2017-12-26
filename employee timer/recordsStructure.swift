@@ -48,7 +48,6 @@ class billStruct: NSObject{
     var fPaymentReference: String?
     var fDocumentName: String?
     var fRecieptDate: String?
-
     
     
     

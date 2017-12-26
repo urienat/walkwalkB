@@ -44,6 +44,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var StatusChoice = "Not Paid"
     var buttonRow = 0
     var recoveredBill:String?
+    var recoveredreciept: String?
     var titleLbl = ""
     var cellId = "billerId"
     var billCounter = 0
@@ -452,6 +453,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 self.midCalc2 = snapshot.childSnapshot(forPath: "fBillTotalTotal").value! as? String
                 self.midCalc3 = snapshot.childSnapshot(forPath: "fBillSum").value! as? String
                 self.account = snapshot.childSnapshot(forPath: "fBillEmployerName").value! as? String
+                self.recoveredreciept = snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String
+
 
                 print (self.midCalc3,self.midCalc2,self.midCalc)
                 
@@ -503,6 +506,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         
         self.dbRefEmployees.child(employeeID).child("myBills").child(String(BillArray[buttonRow])).observeSingleEvent(of: .value,with: { (snapshot) in
         self.recoveredBill = snapshot.childSnapshot(forPath: "fBillMailSaver").value! as? String
+        self.recoveredreciept = snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String
+
         print("recovered")
         })
         
@@ -609,6 +614,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             self.dbRefEmployees.child(self.employeeID).child("myBills").child(String("-"+self.BillArray[self.buttonRow])).updateChildValues(["fBillStatus": self.statusTemp, "fBillStatusDate":
                 self.self.mydateFormat5.string(from: Date()),"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver
                 ], withCompletionBlock: { (error) in}) //end of update.
+            self.recoveredreciept = self.recieptMailSaver
                 //self.navigationController!.popViewController(animated: true)
                 
             }//end of if biller
@@ -711,6 +717,10 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             }
 
             let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+                
+            //  save the canceeld reciept within the bill
+                self.dbRefEmployees.child(self.employeeID).child("IrregularLog").child("CancelledReciepts").child(self.mydateFormat5.string(from: Date())).updateChildValues(["fBillRecieptMailSaver":self.recoveredreciept, "fReciept":self.BillArray[self.buttonRow]], withCompletionBlock: { (error) in})
+             //resert the reciept data within the bill
             self.statusTemp = "Billed"
             self.BillArrayStatus[self.buttonRow] = self.statusTemp
                 self.dbRefEmployees.child(self.employeeID).child("myBills").child(String("-"+self.BillArray[self.buttonRow])).updateChildValues(["fBillStatus": self.statusTemp ,"fBillStatusDate":self.mydateFormat5.string(from: Date()),"fRecieptDate":"","fBillRecieptMailSaver":"","fPaymentMethood" :"","fPaymentReference":""], withCompletionBlock: { (error) in}) //end of update.//was 3
