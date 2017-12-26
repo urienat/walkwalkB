@@ -594,7 +594,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         DispatchQueue.main.asyncAfter(deadline: .now()+2){
             print (self.billInfo)
             
-            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: Reciept-\(self.BillArray[self.buttonRow])\r\nAccount: \(self.account!)\r\n \(self.billInfo!)\r\n\r\nHi,\r\n\r\n Following is the recipet for payment for Bill-\(self.BillArray[self.buttonRow])\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc2!)\r\n\(self.taxationBlock!)\r\n\(self.paymentBlock!)\r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!)\(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
+            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: Reciept-\(self.BillArray[self.buttonRow])\r\nAccount: \(self.account!)\r\n\r\n \(self.billInfo!)\r\n\r\nHi,\r\n\r\n Following is payment's recipet for Bill-\(self.BillArray[self.buttonRow])\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc2!)\r\n\(self.taxationBlock!)\r\n\(self.paymentBlock!)\r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!)\(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
           
            
             
@@ -630,7 +630,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             else {self.taxationBlock = ""}
             
             if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
-            if self.paymentSys != "Other"{self.paymentBlock = "Payment made by \(self.paymentSys!) \(self.refernceBlock!) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))"
+            if self.paymentSys != "other"{self.paymentBlock = "Payment made by \(self.paymentSys!) \(self.refernceBlock!) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))"
             }else{// payment == other
             self.paymentBlock = ("Payment made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock!) ")
             }
