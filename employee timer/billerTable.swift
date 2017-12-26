@@ -59,6 +59,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var taxationBlock :String?
     var paymentBlock :String?
     var billInfo :String?
+    var address :String?
     var midCalc:String?
     var midCalc2 :String?
     var  midCalc3 :String?
@@ -594,7 +595,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         DispatchQueue.main.asyncAfter(deadline: .now()+2){
             print (self.billInfo)
             
-            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: Reciept-\(self.BillArray[self.buttonRow])\r\nAccount: \(self.account!)\r\n\r\n \(self.billInfo!)\r\n\r\nHi,\r\n\r\n Following is payment's recipet for Bill-\(self.BillArray[self.buttonRow])\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc2!)\r\n\(self.taxationBlock!)\r\n\(self.paymentBlock!)\r\n\r\n\r\nRegards\r\n\(ViewController.fixedName!)\(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
+            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: Reciept-\(self.BillArray[self.buttonRow])\r\nAccount: \(self.account!)\r\n\r\n \(self.billInfo!)\r\nAddress: \(self.address!)\r\n\r\nHi,\r\n\r\n Following is payment's recipet for Bill-\(self.BillArray[self.buttonRow])\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc2!)\r\n\(self.taxationBlock!)\r\n\(self.paymentBlock!)\r\n\r\nRegards\r\n\(ViewController.fixedName!)\(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
           
            
             
@@ -618,6 +619,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             //let taxation = (snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String)
             let taxName = (snapshot.childSnapshot(forPath: "fTaxName").value as! String)
             self.billInfo = (snapshot.childSnapshot(forPath: "fBillinfo").value as! String)
+            self.address = (snapshot.childSnapshot(forPath: "fAddress").value as! String)
+
             if taxName == "" {self.taxForBlock = "Tax"} else {self.taxForBlock = taxName}
             
             
@@ -625,14 +628,18 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             
             
             if  taxSwitch == "Yes" {
-            self.taxationBlock = ("\(self.taxForBlock): \(ViewController.fixedCurrency!)\(self.midCalc)\r\n Total (w/\(self.taxForBlock)): \(ViewController.fixedCurrency!)\(self.midCalc2)\r\n")
+            self.taxationBlock = ("\(self.taxForBlock): \(ViewController.fixedCurrency!)\(self.midCalc)\r\n Total (w/\(self.taxForBlock)): \(ViewController.fixedCurrency!)\(self.midCalc2)")
             }//if taxswitch = yes
             else {self.taxationBlock = ""}
             
-            if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
-            if self.paymentSys != "other"{self.paymentBlock = "Payment made by \(self.paymentSys!) \(self.refernceBlock!) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))"
-            }else{// payment == other
-            self.paymentBlock = ("Payment made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock!) ")
+
+            print (self.paymentSys!)
+            
+            
+            if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!) -"} else {self.refernceBlock = ""}
+            if self.paymentSys! == "other" || self.paymentSys == ""{// payment == other
+                self.paymentBlock = ("Payment made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))  \(self.refernceBlock!) ")
+            } else {self.paymentBlock = "Payment made by \(self.paymentSys!) \(self.refernceBlock!)  \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))"
             }
         })
     }//end of billing
