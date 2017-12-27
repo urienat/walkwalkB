@@ -35,6 +35,7 @@ class datePicker2: UIViewController {
     @IBAction func extendedDate1Button(_ sender: Any) {
     datePickerbBackground .isHidden = false
     }
+    @IBOutlet weak var navItem: UINavigationItem!
     
     @IBOutlet weak var animationImage: UIImageView!
     @IBOutlet weak var topOfStart: NSLayoutConstraint!
@@ -140,7 +141,9 @@ class datePicker2: UIViewController {
     }//end of func
     
     func saveToDB2() {
-
+        saveRecord?.isEnabled = false
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        
     if recordToHandle == "" {
     let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fEmployer": String (describing : employerFromMain!),"fIndication3" :"✏️","fStatus" : "Pre","fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID)]
     let recordRefence = self.dbRef.childByAutoId()
@@ -192,6 +195,9 @@ class datePicker2: UIViewController {
         
     })
         DispatchQueue.main.asyncAfter(deadline: .now()+3){
+            self.saveRecord?.isEnabled = true
+            self.navItem.hidesBackButton = false
+
             self.navigationController!.popViewController(animated: true)
 
         }}

@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vNaked" translatesAutoresizingMaskIntoConstraints="NO" id="UaV-6l-lVU" userLabel="animationImage">
-                                <rect key="frame" x="85" y="165" width="150" height="150"/>
+                                <rect key="frame" x="85" y="122" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="b70-HV-qbT"/>
                                     <constraint firstAttribute="height" constant="150" id="l5A-3f-7RH"/>
@@ -148,6 +148,7 @@
                             <constraint firstItem="V2L-Iv-IDI" firstAttribute="top" secondItem="yv6-XF-GvY" secondAttribute="bottom" id="1Gc-VS-y9d"/>
                             <constraint firstItem="1xg-Ig-RaM" firstAttribute="top" secondItem="V2L-Iv-IDI" secondAttribute="bottom" id="2Zf-To-lm7"/>
                             <constraint firstItem="eic-ue-SnJ" firstAttribute="leading" secondItem="Znj-aX-FL2" secondAttribute="leading" id="5en-5o-XOk"/>
+                            <constraint firstItem="UaV-6l-lVU" firstAttribute="top" secondItem="mK9-6d-CXh" secondAttribute="bottom" constant="8" id="7zS-ac-lvi"/>
                             <constraint firstItem="a1i-tg-2qU" firstAttribute="centerX" secondItem="mK9-6d-CXh" secondAttribute="centerX" id="8wy-ui-bQI"/>
                             <constraint firstItem="Ydt-wR-B8B" firstAttribute="leading" secondItem="a1i-tg-2qU" secondAttribute="trailing" constant="8" id="AIt-tt-uhC"/>
                             <constraint firstItem="Ohp-4N-8Ys" firstAttribute="top" secondItem="Znj-aX-FL2" secondAttribute="top" id="EZ8-lg-b3J"/>
@@ -160,7 +161,6 @@
                             <constraint firstAttribute="trailing" secondItem="eic-ue-SnJ" secondAttribute="trailing" id="Sk8-Db-Fyh"/>
                             <constraint firstItem="Ocl-iC-Ud2" firstAttribute="centerY" secondItem="a1i-tg-2qU" secondAttribute="centerY" id="YPD-eR-Q0r"/>
                             <constraint firstAttribute="trailing" secondItem="V2L-Iv-IDI" secondAttribute="trailing" id="YbN-Ol-6Ih"/>
-                            <constraint firstItem="UaV-6l-lVU" firstAttribute="centerY" secondItem="Znj-aX-FL2" secondAttribute="centerY" id="YsB-0f-jS4"/>
                             <constraint firstItem="a1i-tg-2qU" firstAttribute="height" secondItem="mK9-6d-CXh" secondAttribute="height" id="bfq-KK-tYG"/>
                             <constraint firstItem="mK9-6d-CXh" firstAttribute="top" secondItem="eic-ue-SnJ" secondAttribute="bottom" constant="40" id="fwI-Qr-nkN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yv6-XF-GvY" secondAttribute="trailing" priority="750" constant="8" id="g2x-TC-nQQ"/>
@@ -183,6 +183,7 @@
                         <outlet property="deleter" destination="jaO-3a-pGo" id="w7H-FI-CQb"/>
                         <outlet property="extendedDate1Button" destination="a1i-tg-2qU" id="9sB-ew-8ta"/>
                         <outlet property="navBar" destination="eic-ue-SnJ" id="FXP-5p-EnQ"/>
+                        <outlet property="navItem" destination="YZC-wy-DVB" id="uKQ-GA-rBQ"/>
                         <outlet property="startLbl" destination="Ocl-iC-Ud2" id="cz8-q2-4w8"/>
                         <outlet property="topOfStart" destination="fwI-Qr-nkN" id="eUg-Ug-4if"/>
                     </connections>
