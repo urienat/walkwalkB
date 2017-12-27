@@ -20,23 +20,20 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     let dbRefEmployer = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployee = FIRDatabase.database().reference().child("fEmployees")
     
-    
     let mydateFormat5 = DateFormatter()
     let mydateFormat6 = DateFormatter()
     let mydateFormat9 = DateFormatter()
-
     
     var calIn = ""
     var calInFB = ""
     
-   var spesific : Bool = false
+    var spesific : Bool = false
     
     var employerFromMain = ""
     var employerIdFromMain = ""
     var employer = ""
     
-    let btn1 = UIButton(type: .custom)
-
+    //let btn1 = UIButton(type: .custom)
 
     var employeeId = ""
     var employerId = ""
@@ -59,14 +56,10 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     @IBAction func done(_ sender: Any) {
     datePicker.maximumDate = Date()
     datePicker.minimumDate = Date() - 24*3600*60
-        
     LastCalander = mydateFormat5.string(from:  datePicker.date)
-    print (LastCalander!)
-        
     datePickerBG.isHidden = true
     alert123()
     }
-    
 
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
@@ -83,57 +76,45 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-
-        
-        mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)"
-            ,options: 0, locale: nil)!
+        mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale:Locale.autoupdatingCurrent )!
         mydateFormat9.dateFormat = DateFormatter.dateFormat(fromTemplate: " dd-MMM-yy", options: 0, locale:Locale.autoupdatingCurrent )!
 
         service.shouldFetchNextPages = true
-
-        let currentUser = FIRAuth.auth()?.currentUser
-        print (currentUser as Any)
-        if currentUser != nil {
-            
-            print(currentUser!.uid)
-            employeeId = (currentUser!.uid)
-            //create zugot
-            
-                self.dbRefEmployee.child(self.employeeId).observeSingleEvent(of: .value , with: { (snapshot) in
-                self.LastCalander = String(describing: snapshot.childSnapshot(forPath: "fLastCalander").value!) as String!
-                print ("self.LastCalander!")
-                print (self.LastCalander!)
-                if self.LastCalander == "New" { self.alert456()} else{
-                self.alert123()
-                }
-            })//end of dbref
-            
-
-            findEmployerId()
-
-        }
         
         // Configure Google Sign-in.
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().scopes = scopes
+        
         if GIDSignIn.sharedInstance().hasAuthInKeychain() == true{
-            
             GIDSignIn.sharedInstance().signInSilently()
             print ("in")
             
-        }
-        else{
+        }else{
             print ("out")
+            
             let signInButton = GIDSignInButton()
             view.addSubview(signInButton)
             signInButton.frame = CGRect(x: view.frame.width/2-104, y: 130, width: 208, height: 45)
-
             //not sign in
-            
         }
+
+        let currentUser = FIRAuth.auth()?.currentUser
+        print (currentUser as Any)
+        if currentUser != nil {
+        print(currentUser!.uid)
+        employeeId = (currentUser!.uid)
+        self.dbRefEmployee.child(self.employeeId).observeSingleEvent(of: .value , with: { (snapshot) in
+        self.LastCalander = String(describing: snapshot.childSnapshot(forPath: "fLastCalander").value!) as String!
+        print ("self.LastCalander!")
+        print (self.LastCalander!)
+        if self.LastCalander == "New" { self.alert456()} else{
+        self.alert123()
+        }
+        })//end of dbref
+        findEmployerId()
+        }// end of if current user is not nil
         
         
         
@@ -145,40 +126,34 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         output.isHidden = true
         //view.addSubview(output);
         
-       
-
         let help =  UIBarButtonItem(title: "Help", style: .plain, target: self, action: #selector(self.helper))
         navigationItem.rightBarButtonItem = help
         
     }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////
     
-    
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
-              withError error: Error!) {
+        func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+        withError error: Error!) {
         if let error = error {
-            showAlert(title: "Authentication Error", message: error.localizedDescription)
-            self.service.authorizer = nil
+        showAlert(title: "Authentication Error", message: error.localizedDescription)
+        self.service.authorizer = nil
         } else {
-      //      self.signInButton.isHidden = true
-            self.output.isHidden = false
-            self.service.authorizer = user.authentication.fetcherAuthorizer()
-            
-            
+        //      self.signInButton.isHidden = true
+        self.output.isHidden = false
+        self.service.authorizer = user.authentication.fetcherAuthorizer()
         }
-    }
+        }
     
     
     
-    // Construct a query and get a list of upcoming events
-    func fetchEvents() {
+        // Construct a query and get a list of upcoming events
+        func fetchEvents() {
         let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")// instard of "primary"
         query.maxResults = 50
-       // DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+        // DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
         print("0.2 \(self.LastCalander!)")
         //query.timeMin = GTLRDateTime(date: (Date()-(3600*24*45)))
         print ("before min \(String(describing: self.LastCalander))")
-            
+
         query.timeMin = GTLRDateTime(date: self.mydateFormat5.date(from: self.LastCalander!)!)
 
         print("222")
@@ -195,12 +170,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         }//end of fetchevents
 
 
-
-    
-    // Display the start dates and event summaries in the UITextView
+        // Display the start dates and event summaries in the UITextView
         func displayResultWithTicket(
         ticket: GTLRServiceTicket,finishedWithObject response :  GTLRCalendar_Events,error : NSError?) {
-        
         if let error = error {
         showAlert(title: "Error", message: error.localizedDescription)
         return
@@ -297,45 +269,42 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             },completion:nil)
 
             }
-
-
             },completion:nil)
-
             }//end of animation
 
     
 
     
-    func updateRead(){
-    let query2 = GTLRCalendarQuery_EventsPatch.query(withObject: self.updater , calendarId: "primary", eventId:id1!)
-    service.executeQuery(query2) { (ticket: GTLRServiceTicket, Any, error) in
-    if let error = error {
-    self.showAlert(title: "Error", message: error.localizedDescription)
-    return
-    }//end of if error
-    }
-    }//end of func
- 
-    func saveToDB2() {
-    let record = ["fIn" : calInFB,  "fEmployer": String (describing : employer),"fIndication3" :"📆","fStatus" : "Pre","fEmployeeRef": String (describing : employeeId),"fEmployerRef":  String (describing : employerId)]
-            
-    let recordRefence = self.dbRef.childByAutoId()
-    recordRefence.setValue(record)
-        
-    self.dbRefEmployee.child(employeeId).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-((self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)!)])
-    self.dbRefEmployer.child(self.employerId).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-((self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)!)])
-        
-    }//end of save
+            func updateRead(){
+            let query2 = GTLRCalendarQuery_EventsPatch.query(withObject: self.updater , calendarId: "primary", eventId:id1!)
+            service.executeQuery(query2) { (ticket: GTLRServiceTicket, Any, error) in
+            if let error = error {
+            self.showAlert(title: "Error", message: error.localizedDescription)
+            return
+            }//end of if error
+            }
+            }//end of func
+
+            func saveToDB2() {
+            let record = ["fIn" : calInFB,  "fEmployer": String (describing : employer),"fIndication3" :"📆","fStatus" : "Pre","fEmployeeRef": String (describing : employeeId),"fEmployerRef":  String (describing : employerId)]
+
+            let recordRefence = self.dbRef.childByAutoId()
+            recordRefence.setValue(record)
+
+            self.dbRefEmployee.child(employeeId).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-((self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)!)])
+            self.dbRefEmployer.child(self.employerId).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-((self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)!)])
+
+            }//end of save
     
-    func findEmployerId(){
+        func findEmployerId(){
         print ("fetch employerId")
-        
+
         employerArray3.removeAll()
         employerArray2.removeAll()
         employerArray.removeAll()
-        
+
         self.dbRefEmployee.child(employeeId).queryOrderedByValue().observeSingleEvent(of: .value, with: { (snapshot) in
-            
+
         self.employerArray = snapshot.childSnapshot(forPath: "myEmployers").value! as! [String:Int]
         self.employerArray2 = Array(self.employerArray.keys) // for Dictionary
         print ("employerArray2\(self.employerArray2)")
@@ -371,90 +340,86 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         
     }
     
-
-   
-    
-    
     
 // alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Helper for showing an alert
-    func showAlert(title : String, message: String) {
-        let alert = UIAlertController(
+            func showAlert(title : String, message: String) {
+            let alert = UIAlertController(
             title: title,
             message: message,
             preferredStyle: UIAlertControllerStyle.alert
-        )
-        let ok = UIAlertAction(
+            )
+            let ok = UIAlertAction(
             title: "OK",
             style: UIAlertActionStyle.default,
             handler: nil
-        )
-        alert.addAction(ok)
-        present(alert, animated: true, completion: nil)
-    }
-    
-    func  alert123(){
+            )
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+            }
 
-        if self.LastCalander == nil {
-        print ("nil and therefore alert456");
-        alert456()
-        } else {
-        if mydateFormat5.date(from: self.LastCalander!)! <=  Date()-(3600*24*60)
-        {self.LastCalander = mydateFormat5.string(from: Date()-(3600*24*60))}
-        }//end of else
-        print (LastCalander!)
+            func  alert123(){
 
-        
-        let alertController123 = UIAlertController(title: ("Import Calander Sessions") , message: "You are about to import calander's sessions occured till now" , preferredStyle: .alert)
+            if self.LastCalander == nil {
+            print ("nil and therefore alert456");
+            alert456()
+            } else {
+            if mydateFormat5.date(from: self.LastCalander!)! <=  Date()-(3600*24*60)
+            {self.LastCalander = mydateFormat5.string(from: Date()-(3600*24*60))}
+            }//end of else
+            print (LastCalander!)
 
-        let spesificAction = UIAlertAction(title: "Import \(employerFromMain)'s only", style: .default) { (UIAlertAction) in
-        self.spesific = true
-        self.fetchEvents()
-        }
-        
-        let allAction = UIAlertAction(title: "Import all accounts", style: .default) { (UIAlertAction) in
-        self.spesific = false
-        self.fetchEvents()
-        }
-        
-        let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
-        self.navigationController!.popViewController(animated: true)
-            //do nothing
-        }
-        
-        if self.employerFromMain != "" {alertController123.addAction(spesificAction)}
-        if self.employerFromMain == "" {alertController123.addAction(allAction)}
-        alertController123.addAction(CancelAction)
-        self.present(alertController123, animated: true, completion: nil)
-        
-        }//end of alert123
-    
-    func  alert456(){
-        
-        if self.LastCalander == nil || self.LastCalander == "New" {self.LastCalander = mydateFormat5.string(from: Date()-(3600*24*31))}
-        print (LastCalander!)
-        
-        
-        let alertController123 = UIAlertController(title: ("Import starting date") , message: "You are about to import calander's sessions for the first time. Default starting date is \(mydateFormat9.string(from: mydateFormat5.date(from: LastCalander!)!))." , preferredStyle: .alert)
-        
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-        self.spesific = false
-        self.fetchEvents()
-        }
-        
-        let dateAction = UIAlertAction(title: "Change starting date", style: .default) { (UIAlertAction) in
-        print("change date")
-        self.datePickerBG.isHidden = false
-        }
-        
-        let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+
+            let alertController123 = UIAlertController(title: ("Import Calander Sessions") , message: "You are about to import calander's sessions occured till now" , preferredStyle: .alert)
+
+            let spesificAction = UIAlertAction(title: "Import \(employerFromMain)'s only", style: .default) { (UIAlertAction) in
+            self.spesific = true
+            self.fetchEvents()
+            }
+
+            let allAction = UIAlertAction(title: "Import all accounts", style: .default) { (UIAlertAction) in
+            self.spesific = false
+            self.fetchEvents()
+            }
+
+            let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
             self.navigationController!.popViewController(animated: true)
             //do nothing
-        }
-        
-        alertController123.addAction(OKAction)
-        alertController123.addAction(dateAction)
-        alertController123.addAction(CancelAction)
-        self.present(alertController123, animated: true, completion: nil)
-        }
-}
+            }
+
+            if self.employerFromMain != "" {alertController123.addAction(spesificAction)}
+            if self.employerFromMain == "" {alertController123.addAction(allAction)}
+            alertController123.addAction(CancelAction)
+            self.present(alertController123, animated: true, completion: nil)
+
+            }//end of alert123
+
+            func  alert456(){
+
+            if self.LastCalander == nil || self.LastCalander == "New" {self.LastCalander = mydateFormat5.string(from: Date()-(3600*24*31))}
+            print (LastCalander!)
+
+
+            let alertController123 = UIAlertController(title: ("Import starting date") , message: "You are about to import calander's sessions for the first time. Default starting date is \(mydateFormat9.string(from: mydateFormat5.date(from: LastCalander!)!))." , preferredStyle: .alert)
+
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            self.spesific = false
+            self.fetchEvents()
+            }
+
+            let dateAction = UIAlertAction(title: "Change starting date", style: .default) { (UIAlertAction) in
+            print("change date")
+            self.datePickerBG.isHidden = false
+            }
+
+            let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+            self.navigationController!.popViewController(animated: true)
+            //do nothing
+            }
+
+            alertController123.addAction(OKAction)
+            alertController123.addAction(dateAction)
+            alertController123.addAction(CancelAction)
+            self.present(alertController123, animated: true, completion: nil)
+            }
+            }

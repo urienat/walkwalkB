@@ -607,8 +607,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             
             self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: Reciept-\(self.BillArray[self.buttonRow])\r\nAccount: \(self.account!)\r\n\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\r\nHi,\r\n\r\n Following is payment's recipet for Bill-\(self.BillArray[self.buttonRow])\r\n\r\n\(self.taxationBlock!)\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc2!)\r\n\r\n\(self.paymentBlock!)\r\n\r\nRegards\r\n\(ViewController.fixedName!)\(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
           
-           
-            
                 
                 //update bill with DB
             self.dbRefEmployees.child(self.employeeID).child("myBills").child(String("-"+self.BillArray[self.buttonRow])).updateChildValues(["fBillStatus": self.statusTemp, "fBillStatusDate":
