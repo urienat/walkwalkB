@@ -1072,7 +1072,7 @@
                                 <rect key="frame" x="10" y="164" width="300" height="320"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSo-ok-U8Y">
-                                        <rect key="frame" x="260" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="252" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="lgE-Tj-ViG"/>
                                             <constraint firstAttribute="height" constant="40" id="vv8-w0-kIz"/>
@@ -1102,7 +1102,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="4M6-Hf-okJ"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="6oC-jy-jjf"/>
-                                    <constraint firstAttribute="trailing" secondItem="fSo-ok-U8Y" secondAttribute="trailing" id="Epa-wg-FoP"/>
+                                    <constraint firstAttribute="trailing" secondItem="fSo-ok-U8Y" secondAttribute="trailing" constant="8" id="Epa-wg-FoP"/>
                                     <constraint firstItem="fSo-ok-U8Y" firstAttribute="top" secondItem="J8i-en-uWZ" secondAttribute="top" id="Tuh-Or-sdg"/>
                                     <constraint firstItem="Alt-nm-btb" firstAttribute="leading" secondItem="J8i-en-uWZ" secondAttribute="leading" constant="15" id="fOS-wl-6Nz"/>
                                     <constraint firstAttribute="trailing" secondItem="Alt-nm-btb" secondAttribute="trailing" constant="15" id="jNj-BQ-dSm"/>
@@ -1114,7 +1114,7 @@
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5k-f3-cxx" userLabel="helpText">
                                         <rect key="frame" x="15" y="15" width="260" height="330"/>
-                                        <mutableString key="text">                   Import sessions from calander is a very powerfull tool.    Only past sessions are imported and only if 'name' or 'last name' or combination of 'name+space+last name' match calandr exactly.   After import is completed a '+' sign is added to calanders' events to avoid double import.</mutableString>
+                                        <mutableString key="text">                   Import sessions from calander is a very powerfull tool.    Only past sessions are imported and only if 'name' or 'last name' or combination of 'name+space+last name' match calandr exactly.   After import process is completed a '+' sign is added to calanders' events to avoid double import.</mutableString>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>

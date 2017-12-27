@@ -114,6 +114,10 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             print ("out")
             GIDSignIn.sharedInstance().signIn()
             }
+        datePickerBG.layer.borderWidth = 0.5
+        datePickerBG.layer.borderColor = blueColor.cgColor
+        datePickerBG.layer.cornerRadius =  15//CGFloat(25)
+        datePickerBG.layoutIfNeeded()
         
         helpTxtView.layer.borderWidth = 0.5
         helpTxtView.layer.borderColor = blueColor.cgColor

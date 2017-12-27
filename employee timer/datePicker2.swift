@@ -15,7 +15,8 @@ class datePicker2: UIViewController {
     let dbRef = FIRDatabase.database().reference().child("fRecords")
     let dbRefEmployer = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployee = FIRDatabase.database().reference().child("fEmployees")
-    
+    var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
+
     var titleLbl = ""
     var recordToHandle = String()
     
@@ -132,6 +133,11 @@ class datePicker2: UIViewController {
         }//end of else
         
         self.title = titleLbl
+        
+        datePickerbBackground.layer.borderWidth = 0.5
+        datePickerbBackground.layer.borderColor = blueColor.cgColor
+        datePickerbBackground.layer.cornerRadius =  15//CGFloat(25)
+        datePickerbBackground.layoutIfNeeded()
  
     } ///end of did load/////////////////////////////////////////////////////////////////////////////////////////////////////
     
