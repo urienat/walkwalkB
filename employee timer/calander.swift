@@ -55,8 +55,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     @IBOutlet weak var helpBackground: UIView!
     
-    @IBAction func doneHelp(_ sender: Any) {helpBackground.isHidden = true
+    @IBAction func doneHelp(_ sender: Any) {
+        print ("done pressed")
+        helpBackground.isHidden = true
     }
+    
     @IBOutlet weak var datePickerBG: UIView!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var animationImage: UIImageView!

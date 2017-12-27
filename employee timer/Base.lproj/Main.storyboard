@@ -1071,15 +1071,15 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8i-en-uWZ" userLabel="View datePicker background">
                                 <rect key="frame" x="10" y="164" width="300" height="320"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bL9-7r-59O">
-                                        <rect key="frame" x="260" y="0.0" width="40" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSo-ok-U8Y">
+                                        <rect key="frame" x="130" y="140" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Anw-Pz-2me"/>
-                                            <constraint firstAttribute="width" constant="40" id="XtH-VD-ox1"/>
+                                            <constraint firstAttribute="width" constant="40" id="lgE-Tj-ViG"/>
+                                            <constraint firstAttribute="height" constant="40" id="vv8-w0-kIz"/>
                                         </constraints>
                                         <state key="normal" title="Done"/>
                                         <connections>
-                                            <action selector="done:" destination="WI7-wY-L03" eventType="touchUpInside" id="sn5-yj-Gmr"/>
+                                            <action selector="done:" destination="WI7-wY-L03" eventType="touchUpInside" id="fqi-iI-H6N"/>
                                         </connections>
                                     </button>
                                     <datePicker tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Alt-nm-btb">
@@ -1101,33 +1101,30 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="4M6-Hf-okJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="bL9-7r-59O" secondAttribute="trailing" id="5tN-cA-W4E"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="6oC-jy-jjf"/>
                                     <constraint firstItem="Alt-nm-btb" firstAttribute="leading" secondItem="J8i-en-uWZ" secondAttribute="leading" constant="15" id="fOS-wl-6Nz"/>
                                     <constraint firstAttribute="trailing" secondItem="Alt-nm-btb" secondAttribute="trailing" constant="15" id="jNj-BQ-dSm"/>
                                     <constraint firstAttribute="bottom" secondItem="Alt-nm-btb" secondAttribute="bottom" constant="15" id="s6q-gA-QZx"/>
-                                    <constraint firstItem="bL9-7r-59O" firstAttribute="top" secondItem="J8i-en-uWZ" secondAttribute="top" id="v2P-jF-3zK"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAj-l2-ljD" userLabel="View help background">
-                                <rect key="frame" x="10" y="124" width="300" height="320"/>
+                                <rect key="frame" x="10" y="164" width="300" height="320"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqn-cl-Yad">
-                                        <rect key="frame" x="250" y="10" width="40" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8g-AY-svQ">
+                                        <rect key="frame" x="260" y="0.0" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="1U7-9N-RyY"/>
-                                            <constraint firstAttribute="width" constant="40" id="LgJ-gj-shG"/>
+                                            <constraint firstAttribute="height" constant="40" id="NTi-Pr-z9V"/>
+                                            <constraint firstAttribute="width" constant="40" id="a9g-5Q-HtF"/>
                                         </constraints>
                                         <state key="normal" title="Done"/>
                                         <connections>
-                                            <action selector="doneHelp:" destination="WI7-wY-L03" eventType="touchUpInside" id="9P7-XH-0xS"/>
+                                            <action selector="doneHelp:" destination="WI7-wY-L03" eventType="touchUpInside" id="SXS-ek-fIM"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5k-f3-cxx" userLabel="helpText">
-                                        <rect key="frame" x="10" y="0.0" width="280" height="320"/>
+                                        <rect key="frame" x="15" y="55" width="270" height="250"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="320" id="J3n-8q-fG3"/>
-                                            <constraint firstAttribute="width" constant="280" id="qDJ-YF-qLy"/>
+                                            <constraint firstAttribute="height" constant="250" id="J3n-8q-fG3"/>
                                         </constraints>
                                         <mutableString key="text">                  Import sessions from calander is a very powefull tool.    Only past sessions are imported and only if 'name' or  'last name' or  combination of 'name+space+last name' match calandr exactly.   After import is completed a '+' sign is added to calanders' events to avoid double import.</mutableString>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
@@ -1136,11 +1133,12 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="6Ew-ls-RoV"/>
+                                    <constraint firstAttribute="trailing" secondItem="F8g-AY-svQ" secondAttribute="trailing" id="ANX-bl-sBF"/>
                                     <constraint firstAttribute="width" constant="300" id="D7s-Yj-HfD"/>
-                                    <constraint firstAttribute="trailing" secondItem="nqn-cl-Yad" secondAttribute="trailing" constant="10" id="KAT-2C-jPP"/>
-                                    <constraint firstItem="nqn-cl-Yad" firstAttribute="top" secondItem="WAj-l2-ljD" secondAttribute="top" constant="10" id="PJn-jh-mD2"/>
-                                    <constraint firstItem="q5k-f3-cxx" firstAttribute="centerY" secondItem="WAj-l2-ljD" secondAttribute="centerY" id="s8Y-nE-G1j"/>
-                                    <constraint firstItem="q5k-f3-cxx" firstAttribute="centerX" secondItem="WAj-l2-ljD" secondAttribute="centerX" id="y2K-vr-lQH"/>
+                                    <constraint firstAttribute="bottom" secondItem="q5k-f3-cxx" secondAttribute="bottom" constant="15" id="Efh-IM-lMW"/>
+                                    <constraint firstAttribute="trailing" secondItem="q5k-f3-cxx" secondAttribute="trailing" constant="15" id="Qfx-nb-DS1"/>
+                                    <constraint firstItem="q5k-f3-cxx" firstAttribute="leading" secondItem="WAj-l2-ljD" secondAttribute="leading" constant="15" id="XBZ-js-r9u"/>
+                                    <constraint firstItem="F8g-AY-svQ" firstAttribute="top" secondItem="WAj-l2-ljD" secondAttribute="top" id="rYW-nd-5ue"/>
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5Rb-jP-Blk" userLabel="textAdd">
@@ -1173,6 +1171,7 @@
                             <constraint firstItem="NnU-L0-TDq" firstAttribute="centerY" secondItem="h2t-9w-Imj" secondAttribute="centerY" id="LDD-ht-PNS"/>
                             <constraint firstItem="jVI-SH-XJ9" firstAttribute="top" secondItem="J8i-en-uWZ" secondAttribute="bottom" constant="40" id="MJJ-3J-8dO"/>
                             <constraint firstItem="WAj-l2-ljD" firstAttribute="centerX" secondItem="h2t-9w-Imj" secondAttribute="centerX" id="RGo-5Z-YdZ"/>
+                            <constraint firstItem="jVI-SH-XJ9" firstAttribute="top" secondItem="WAj-l2-ljD" secondAttribute="bottom" constant="40" id="j8X-fI-VRT"/>
                             <constraint firstItem="J8i-en-uWZ" firstAttribute="centerX" secondItem="h2t-9w-Imj" secondAttribute="centerX" id="lvs-F0-ETV"/>
                             <constraint firstItem="WAj-l2-ljD" firstAttribute="centerY" secondItem="h2t-9w-Imj" secondAttribute="centerY" id="nGy-qr-kzi"/>
                             <constraint firstItem="Ntp-IE-fkf" firstAttribute="leading" secondItem="h2t-9w-Imj" secondAttribute="leading" id="w3A-24-LxJ"/>
