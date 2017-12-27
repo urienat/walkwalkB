@@ -396,12 +396,14 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             print (LastCalander!)
 
 
-            let alertController123 = UIAlertController(title: ("Import starting date") , message: "You are about to import calander's sessions for the first time. Default starting date is \(mydateFormat9.string(from: mydateFormat5.date(from: LastCalander!)!))." , preferredStyle: .alert)
+            let alertController456 = UIAlertController(title: ("Set import starting date") , message: "Import calander's sessions starting from \(mydateFormat9.string(from: mydateFormat5.date(from: LastCalander!)!))." , preferredStyle: .alert)
 
-            let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            let OKAction = UIAlertAction(title: "Starting date is OK", style: .default) { (UIAlertAction) in
             self.minDate = (Date()-(3600*24*45))
-            self.spesific = false
-            self.fetchEvents()
+                self.dbRefEmployee.child(self.employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: self.minDate!)])
+            //self.spesific = false
+                self.alert123()
+            //self.fetchEvents()
             }
 
             let dateAction = UIAlertAction(title: "Change starting date", style: .default) { (UIAlertAction) in
@@ -414,9 +416,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             //do nothing
             }
 
-            alertController123.addAction(OKAction)
-            alertController123.addAction(dateAction)
-            alertController123.addAction(CancelAction)
-            self.present(alertController123, animated: true, completion: nil)
+            alertController456.addAction(OKAction)
+            alertController456.addAction(dateAction)
+            alertController456.addAction(CancelAction)
+            self.present(alertController456, animated: true, completion: nil)
             }
             }
