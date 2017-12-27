@@ -51,6 +51,10 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     var beginDate = Date()
     var helpText : UITextField?
     
+    @IBOutlet weak var helpBackground: UIView!
+    
+    @IBAction func doneHelp(_ sender: Any) {helpBackground.isHidden = true
+    }
     @IBOutlet weak var datePickerBG: UIView!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var animationImage: UIImageView!
@@ -97,23 +101,10 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         }else{
             print ("out")
             GIDSignIn.sharedInstance().signIn()
-            //let signInButton = GIDSignInButton()
-            //signInButton.frame = CGRect(x: view.frame.width/2-104, y: 130, width: 208, height: 45)
-           // view.addSubview(signInButton)
-            //not sign in
             }
         
-                /*/Add a UITextView to display output.
-        output.frame = view.bounds
-        output.isEditable = false
-        output.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-        output.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        output.isHidden = true
-        view.addSubview(output);
-        */
-        
-        let help =  UIBarButtonItem(title: "Help", style: .plain, target: self, action: #selector(self.helper))
-        navigationItem.rightBarButtonItem = help
+       // let help =  UIBarButtonItem(title: "Help", style: .plain, target: self, action: #selector(self.helper))
+        //navigationItem.rightBarButtonItem = help
         
     }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////
     
@@ -128,9 +119,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         self.service.authorizer = user.authentication.fetcherAuthorizer()
         googleCalanderConnected()
         }
-        }
-    
-    
+        }// end of sign func
     
         // Construct a query and get a list of upcoming events
         func fetchEvents() {
@@ -222,25 +211,20 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             self.animationImage.center.x -= self.view.bounds.width
             //self.animationImage.isHidden = false
             self.animationImage.alpha = 1
-
             UIView.animate(withDuration: 2.0, animations:{
             self.animationImage.center.x += self.view.bounds.width
             })
             UIView.animate(withDuration: 2.0, delay :2.0 ,options:[],animations: {
             self.animationImage.alpha = 0
             },completion:nil)
-
             UIView.animate(withDuration: 1.0, delay :4.0 ,options:[],animations: {
-
             DispatchQueue.main.asyncAfter(deadline: .now()){
             UIView.animate(withDuration: 3.0, delay :0.0 ,options:[],animations: {
                 self.textAdd.alpha = 1
             },completion:nil)
             UIView.animate(withDuration: 2.0, delay :3.0 ,options:[],animations: {
                 self.textAdd.alpha = 0
-
             },completion:nil)
-
             }
             },completion:nil)
             }//end of animation
@@ -299,8 +283,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         }//end of find
     
         func helper(){
-        view.addSubview(helpText!)
-        helpText?.frame = CGRect(x: view.frame.width/2-104, y: 130, width: 208, height: 45)
+        self.helpBackground.isHidden = false
         }
     
         func googleCalanderConnected(){
@@ -359,6 +342,10 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             self.spesific = false
             self.fetchEvents()
             }
+            
+            let helpAction = UIAlertAction(title: "Help", style: .default) { (UIAlertAction) in
+            self.helper()
+                }
 
             let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
             self.navigationController!.popViewController(animated: true)
@@ -367,6 +354,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
             if self.employerFromMain != "" {alertController123.addAction(spesificAction)}
             if self.employerFromMain == "" {alertController123.addAction(allAction)}
+            alertController123.addAction(helpAction)
             alertController123.addAction(CancelAction)
             self.present(alertController123, animated: true, completion: nil)
 
