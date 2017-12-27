@@ -137,10 +137,10 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         query.maxResults = 50
         // DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
         print("0.2 \(self.LastCalander!)")
-        //query.timeMin = GTLRDateTime(date: (Date()-(3600*24*45)))
+        query.timeMin = GTLRDateTime(date: (Date()-(3600*24*45)))
         print ("before min \(String(describing: self.LastCalander))")
 
-        query.timeMin = GTLRDateTime(date: self.mydateFormat5.date(from: self.LastCalander!)!)
+        //query.timeMin = GTLRDateTime(date: self.mydateFormat5.date(from: self.LastCalander!)!)
 
         query.timeMax = GTLRDateTime(date: Date())
         query.singleEvents = true
@@ -206,7 +206,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             }//end of for event
             }//end of if let event
             
-            if eventCounter == 0 {animationImage.isHidden = true; self.eventCounterBlock = "No sessions" }else if eventCounter == 1 {animationImage.isHidden = false; self.eventCounterBlock = "One session"} else {"\(String(self.eventCounter)) sessions" }
+            if eventCounter == 0 {animationImage.isHidden = true; self.eventCounterBlock = "No sessions" }else if eventCounter == 1 {animationImage.isHidden = false; self.eventCounterBlock = "One session"} else {self.eventCounterBlock = "\(String(self.eventCounter)) sessions" }
             // save last date
             if spesific == false {textAdd.text = "\(self.eventCounterBlock) imported from calander"
             self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: Date())])}
