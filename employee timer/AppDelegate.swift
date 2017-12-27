@@ -31,18 +31,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         FIRApp.configure()
         FIRDatabase.database().persistenceEnabled = false
     }
-    
+  
     @available(iOS 9.0, *)//added two to avoid clash with FB
     func application2(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
     -> Bool {
-    return GIDSignIn.sharedInstance().handle(url,
-    sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+    return GIDSignIn.sharedInstance().handle(url,sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
     annotation: [:])
     }
-
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-     
         GIDSignIn.sharedInstance().clientID =  FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         RebeloperStore.shared.start()
@@ -81,9 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
     
         func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-    
         let handlded = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String!, annotation: [UIApplicationOpenURLOptionsKey.annotation])
-        
         return handlded
         }
 
@@ -120,7 +115,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
         print ("1234")
             
-            
         guard let authentication = user2.authentication else { return }
         let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
 
@@ -132,14 +126,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginViewController  =  storyboard.instantiateViewController(withIdentifier: "loginScreen")
         let homeViewController  =  storyboard.instantiateViewController(withIdentifier: "homeScreen")
-        // self.window?.rootViewController = homeViewController// inside the app
         self.window?.rootViewController = loginViewController// before the app
-
-        print("homeViewController from the GID")
-        print("loginController from the GID")
         LoginFile.userFromGoole = user2
         LoginFile.employeeRef2 = (user?.uid)!
-
         return
         }
     

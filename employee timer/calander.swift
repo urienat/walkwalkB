@@ -90,41 +90,24 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         if GIDSignIn.sharedInstance().hasAuthInKeychain() == true{
             GIDSignIn.sharedInstance().signInSilently()
             print ("in")
-            
+            googleCalanderConnected()
         }else{
             print ("out")
-            
-            let signInButton = GIDSignInButton()
-            view.addSubview(signInButton)
-            signInButton.frame = CGRect(x: view.frame.width/2-104, y: 130, width: 208, height: 45)
+            GIDSignIn.sharedInstance().signIn()
+            //let signInButton = GIDSignInButton()
+            //signInButton.frame = CGRect(x: view.frame.width/2-104, y: 130, width: 208, height: 45)
+           // view.addSubview(signInButton)
             //not sign in
-        }
-
-        let currentUser = FIRAuth.auth()?.currentUser
-        print (currentUser as Any)
-        if currentUser != nil {
-        print(currentUser!.uid)
-        employeeId = (currentUser!.uid)
-        self.dbRefEmployee.child(self.employeeId).observeSingleEvent(of: .value , with: { (snapshot) in
-        self.LastCalander = String(describing: snapshot.childSnapshot(forPath: "fLastCalander").value!) as String!
-        print ("self.LastCalander!")
-        print (self.LastCalander!)
-        if self.LastCalander == "New" { self.alert456()} else{
-        self.alert123()
-        }
-        })//end of dbref
-        findEmployerId()
-        }// end of if current user is not nil
+            }
         
-        
-        
-        //Add a UITextView to display output.
+                /*/Add a UITextView to display output.
         output.frame = view.bounds
         output.isEditable = false
         output.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
         output.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         output.isHidden = true
-        //view.addSubview(output);
+        view.addSubview(output);
+        */
         
         let help =  UIBarButtonItem(title: "Help", style: .plain, target: self, action: #selector(self.helper))
         navigationItem.rightBarButtonItem = help
@@ -137,9 +120,10 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         showAlert(title: "Authentication Error", message: error.localizedDescription)
         self.service.authorizer = nil
         } else {
-        //      self.signInButton.isHidden = true
-        self.output.isHidden = false
+        //self.signInButton.isHidden = true
+        //self.output.isHidden = false
         self.service.authorizer = user.authentication.fetcherAuthorizer()
+        googleCalanderConnected()
         }
         }
     
@@ -340,6 +324,23 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         
     }
     
+    func googleCalanderConnected(){
+        let currentUser = FIRAuth.auth()?.currentUser
+        print (currentUser as Any)
+        if currentUser != nil {
+            print(currentUser!.uid)
+            employeeId = (currentUser!.uid)
+            self.dbRefEmployee.child(self.employeeId).observeSingleEvent(of: .value , with: { (snapshot) in
+                self.LastCalander = String(describing: snapshot.childSnapshot(forPath: "fLastCalander").value!) as String!
+                print ("self.LastCalander!")
+                print (self.LastCalander!)
+                if self.LastCalander == "New" { self.alert456()} else{
+                    self.alert123()
+                }
+            })//end of dbref
+            findEmployerId()
+        }// end of if current user is not nil
+    }//end of ggc
     
 // alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Helper for showing an alert
