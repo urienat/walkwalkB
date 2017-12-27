@@ -605,7 +605,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         DispatchQueue.main.asyncAfter(deadline: .now()+2){
             print (self.billInfo)
             
-            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: Reciept-\(self.BillArray[self.buttonRow])\r\nAccount: \(self.account!)\r\n\r\n \(self.billInfo!)\r\nAddress: \(self.address!)\r\n\r\nHi,\r\n\r\n Following is payment's recipet for Bill-\(self.BillArray[self.buttonRow])\r\n\(self.taxationBlock!)\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc2!)\r\n\(self.paymentBlock!)\r\n\r\nRegards\r\n\(ViewController.fixedName!)\(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
+            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: Reciept-\(self.BillArray[self.buttonRow])\r\nAccount: \(self.account!)\r\n\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\r\nHi,\r\n\r\n Following is payment's recipet for Bill-\(self.BillArray[self.buttonRow])\r\n\(self.taxationBlock!)\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc2!)\r\n\(self.paymentBlock!)\r\n\r\nRegards\r\n\(ViewController.fixedName!)\(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
           
            
             

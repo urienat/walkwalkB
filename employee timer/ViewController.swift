@@ -179,7 +179,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     //start timer action
     @IBAction func Start(_ sender: AnyObject) {
-    textAdd.text = "Session added: \r\n\r\n\( mydateFormat7.string(from: Date()))"
+    textAdd.text = "Session added: \r\n\( mydateFormat7.string(from: Date()))"
     self.postRoundView()
         
     self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").updateChildValues([(self.employerIDToS):1]) //consider chane font color
@@ -595,22 +595,22 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }
     
     func startBarButtonFadeOut(){
-    UIView.animate(withDuration: 0.3, animations: {
-    self.startButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-    self.importBtn.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+    UIView.animate(withDuration: 0.1, animations: {
+    self.startButton.transform = CGAffineTransform(scaleX: 0.75, y: 0.85)
+    self.importBtn.transform = CGAffineTransform(scaleX: 0.75, y: 0.85)
 
     })
     }
     
     func startBarButtonFadeIn(){
-    UIView.animate(withDuration: 0.3,delay: 0.3, animations: {
+    UIView.animate(withDuration: 0.7,delay: 0.1, animations: {
     self.startButton.alpha = 1
     self.importBtn.alpha = 1
     self.startButton.transform = .identity// CGAffineTransformIdentity
     self.importBtn.transform = .identity// CGAffineTransformIdentity
 
     })
-        
+      /*
     UIView.animate(withDuration: 0.3, delay: 0.6 ,animations: {
     self.startButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
     self.importBtn.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
@@ -619,6 +619,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.startButton.transform = .identity
     self.importBtn.transform = .identity
     })
+ */
     }
     
     func handleTap(sender: UITapGestureRecognizer? = nil) {

@@ -462,7 +462,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
         //delete a dog alert
         func dogDeleteAlert () {
-        let alertController3 = UIAlertController(title: ("Delete") , message: ("This would delete your access to  this client's information including  master data and records. Are You sure?"), preferredStyle: .alert)
+        let alertController3 = UIAlertController(title: ("Delete") , message: ("This would delete your access to this account's information including master data and sessions. Are You sure?"), preferredStyle: .alert)
         let cancelAction3 = UIAlertAction(title: "NO", style: .cancel) { (UIAlertAction) in
         }
         let deleteAction3 = UIAlertAction(title: "YES", style: .default) { (UIAlertAction) in
