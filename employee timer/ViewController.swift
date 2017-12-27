@@ -467,9 +467,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }//end of j loop
                 
 
-        if self.employerIdArray2.isEmpty == true {self.thinking2.stopAnimating();  self.arrow.isHidden = false; self.arrowMove()
+        if self.employerIdArray2.isEmpty == true {self.menuItem.isEnabled = false; self.thinking2.stopAnimating();  self.arrow.isHidden = false; self.arrowMove()
 
     } else {
+    self.menuItem.isEnabled = true
     self.arrow.isHidden = true
     for iIndex in 0...(self.employerIdArray2.count-1){
     self.dbRefEmployer.child(self.employerIdArray2[iIndex] as! String).observeSingleEvent(of: .value, with:{ (snapshot) in
@@ -650,6 +651,11 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         }//end of issidemenuhidden
     
     func arrowMove(){
+        UIView.animate(withDuration: 1.3, delay: 0, options: [.repeat, .autoreverse], animations: {
+            self.arrow.center.y += 13
+        }, completion: nil)
+
+        
         UIView.animate(withDuration: 1.3, delay: 0, options: [.repeat, .autoreverse], animations: {
         self.arrow.center.y -= 20
         }, completion: nil)

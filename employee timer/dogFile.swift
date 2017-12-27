@@ -176,11 +176,11 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         func saveToDB(_ sender: AnyObject) {
         if pRate.text == "" {pRate.text = "0.0"}
        
-        if self.RateUpdate == 0.0 { messageInstruction = " If you would set rate per Session , you would enjoy bill calculation."}
+        if pRate.text == "0.0" { messageInstruction = " If you would set rate per Session , you would enjoy bill calculation. Save anyway?"}
             
-        if self.pLastName.text != "" || self.pName.text != "" { // this check that last nameor name is filled and it is filled
-        
-        if self.RateUpdate == 0.0  {message2 = messageInstruction} else
+        if self.pLastName.text != "" && self.pName.text != "" {
+        if pRate.text == "0.0"
+        {message2 = messageInstruction} else
         { message2 = "Are You Sure?"}
        
         let alertController = UIAlertController(title: ("Save Setting") , message: self.message2, preferredStyle: .alert)
