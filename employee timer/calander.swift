@@ -33,6 +33,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     var employerIdFromMain = ""
     var employer = ""
     
+    var eventCounter = 0
+    var eventCounterBlock = ""
+    
     //let btn1 = UIButton(type: .custom)
 
     var employeeId = ""
@@ -140,8 +143,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
         query.timeMin = GTLRDateTime(date: self.mydateFormat5.date(from: self.LastCalander!)!)
 
-        print("222")
-
         query.timeMax = GTLRDateTime(date: Date())
         query.singleEvents = true
         query.orderBy = kGTLRCalendarOrderByStartTime
@@ -153,7 +154,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
         }//end of fetchevents
 
-
         // Display the start dates and event summaries in the UITextView
         func displayResultWithTicket(
         ticket: GTLRServiceTicket,finishedWithObject response :  GTLRCalendar_Events,error : NSError?) {
@@ -161,13 +161,12 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         showAlert(title: "Error", message: error.localizedDescription)
         return
         }
-
+        eventCounter = 0
         var outputText = ""
         if let events = response.items, !events.isEmpty {
         for event in events {
         let start = event.start!.dateTime ?? event.start!.date!
         //let end = event.end!.dateTime ?? event.start!.date!
-
         calIn = self.mydateFormat6.string(from: start.date)
         calInFB = self.mydateFormat5.string(from: start.date)
         employer = event.summary!
@@ -178,25 +177,20 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         timeStyle: .short)
 
         outputText += "\(calIn) - \(event.summary!)\r\n\r\n"
-        print ("\(event.summary!)")
-        print (employerArray3)
-        print ([employerArray3[event.summary!]] )
         
-            let keyExists = employerArray3[("\(event.summary!)")]
+        let keyExists = employerArray3[("\(event.summary!)")]
 
-            if (keyExists)  != nil {
-                
+        if (keyExists)  != nil {
                 if spesific == false {
                 if (keyExists!) != nil { print ("another all included");employerId = employerArray3[event.summary!]!
                 saveToDB2()
                 //avoid double entry
                 id1 = event.identifier
                 updater.summary = ("\(event.summary!)+")
+                eventCounter += 1
                 updateRead()
                 }//end of if
-
                 } else {
-
                 print ("keyexist\(keyExists)")
                 print ("employerid\(employerIdFromMain)")
                 if (keyExists!) == employerIdFromMain { print ("another spesific included");employerId = employerArray3[event.summary!]!
@@ -204,34 +198,29 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 //avoid double entry
                 id1 = event.identifier
                 updater.summary = ("\(event.summary!)+")
+                eventCounter += 1
                 updateRead()
                 }//end of if
                 }//end of else
-
                 }// end of if key exist != nil
             
             }//end of for event
-            }
-            // save last date
-            if spesific == false {textAdd.text = "Accounts' sessions\r\n\r\n imported from calander"
-                self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: Date())])}
-            else {
-                
-                textAdd.text = "\(employerFromMain)'s sessions\r\n imported from calander"
-
-            }
-            animation()
+            }//end of if let event
             
-            DispatchQueue.main.asyncAfter(deadline: .now()+4){
-
+            if eventCounter == 0 {animationImage.isHidden = true; self.eventCounterBlock = "No sessions" }else if eventCounter == 1 {animationImage.isHidden = false; self.eventCounterBlock = "One session"} else {"\(String(self.eventCounter)) sessions" }
+            // save last date
+            if spesific == false {textAdd.text = "\(self.eventCounterBlock) imported from calander"
+            self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: Date())])}
+            else {textAdd.text = "\(self.eventCounterBlock) for \(employerFromMain) imported from calander"}
+            self.animation()
+            DispatchQueue.main.asyncAfter(deadline: .now()+6){
             self.navigationController!.popViewController(animated: true)
             }
-            
             }//end of function
     
             func animation(){
             self.animationImage.center.x -= self.view.bounds.width
-            self.animationImage.isHidden = false
+            //self.animationImage.isHidden = false
             self.animationImage.alpha = 1
 
             UIView.animate(withDuration: 2.0, animations:{
@@ -256,17 +245,13 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             },completion:nil)
             }//end of animation
 
-    
-
-    
             func updateRead(){
             let query2 = GTLRCalendarQuery_EventsPatch.query(withObject: self.updater , calendarId: "primary", eventId:id1!)
             service.executeQuery(query2) { (ticket: GTLRServiceTicket, Any, error) in
-            if let error = error {
-            self.showAlert(title: "Error", message: error.localizedDescription)
+            if let error = error {self.showAlert(title: "Error", message: error.localizedDescription)
             return
             }//end of if error
-            }
+            }//end of execute
             }//end of func
 
             func saveToDB2() {
@@ -281,28 +266,23 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             }//end of save
     
         func findEmployerId(){
-        print ("fetch employerId")
-
         employerArray3.removeAll()
         employerArray2.removeAll()
         employerArray.removeAll()
 
         self.dbRefEmployee.child(employeeId).queryOrderedByValue().observeSingleEvent(of: .value, with: { (snapshot) in
-
         self.employerArray = snapshot.childSnapshot(forPath: "myEmployers").value! as! [String:Int]
         self.employerArray2 = Array(self.employerArray.keys) // for Dictionary
         print ("employerArray2\(self.employerArray2)")
-          
         print ("match")
+        
         for eachEmployer in 0...(self.employerArray2.count-1){
-            
         self.dbRefEmployer.child(self.employerArray2[eachEmployer]).child("fEmployer").observeSingleEvent(of: .value, with: { (snapshot) in
         self.employerLastNameForGoogle = String(describing: snapshot.value!)
         self.employerArray3[self.employerLastNameForGoogle] = self.employerArray2[eachEmployer]
         print ("tttt1\(self.employerLastNameForGoogle)")
         })
 
-        
         self.dbRefEmployer.child(self.employerArray2[eachEmployer]).child("fName").observeSingleEvent(of: .value, with: { (snapshot) in
         self.employerNameForGoogle = String(describing: snapshot.value!)
         if  self.employerNameForGoogle != ""   {self.employerArray3[self.employerNameForGoogle] = self.employerArray2[eachEmployer] }
@@ -318,32 +298,29 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         })//end of dbref employeeid
         }//end of find
     
-    func helper(){
+        func helper(){
         view.addSubview(helpText!)
         helpText?.frame = CGRect(x: view.frame.width/2-104, y: 130, width: 208, height: 45)
-        
-    }
+        }
     
-    func googleCalanderConnected(){
+        func googleCalanderConnected(){
         let currentUser = FIRAuth.auth()?.currentUser
         print (currentUser as Any)
         if currentUser != nil {
-            print(currentUser!.uid)
-            employeeId = (currentUser!.uid)
-            self.dbRefEmployee.child(self.employeeId).observeSingleEvent(of: .value , with: { (snapshot) in
-                self.LastCalander = String(describing: snapshot.childSnapshot(forPath: "fLastCalander").value!) as String!
-                print ("self.LastCalander!")
-                print (self.LastCalander!)
-                if self.LastCalander == "New" { self.alert456()} else{
-                    self.alert123()
-                }
-            })//end of dbref
-            findEmployerId()
+        print(currentUser!.uid)
+        employeeId = (currentUser!.uid)
+        self.dbRefEmployee.child(self.employeeId).observeSingleEvent(of: .value , with: { (snapshot) in
+        self.LastCalander = String(describing: snapshot.childSnapshot(forPath: "fLastCalander").value!) as String!
+        if self.LastCalander == "New" { self.alert456()} else{
+        self.alert123()
+        }
+        })//end of dbref
+        findEmployerId()
         }// end of if current user is not nil
-    }//end of ggc
+        }//end of ggc
     
 // alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Helper for showing an alert
+            // Helper for showing an alert
             func showAlert(title : String, message: String) {
             let alert = UIAlertController(
             title: title,
