@@ -146,6 +146,10 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         query.maxResults = 50
         // DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
         print("0.2 \(self.LastCalander!)")
+            print (self.minDate)
+            minDate =  NSCalendar.current.startOfDay(for: minDate!)
+            print (self.minDate)
+            
             query.timeMin = GTLRDateTime(date: minDate!)
         print ("before min \(String(describing: self.LastCalander))")
 
@@ -316,7 +320,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         self.LastCalander = String(describing: snapshot.childSnapshot(forPath: "fLastCalander").value!) as String!
         
             
-       // minDate = max between ( GTLRDateTime(date: (Date()-(3600*24*45))) || (  GTLRDateTime(date: (LastCalander()-(3600*24*45))))
         if self.LastCalander == "New" { self.alert456()} else{
         //setting minimum date
         print ((Date()-(3600*24*45)))
