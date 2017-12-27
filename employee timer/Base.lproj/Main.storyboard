@@ -1113,7 +1113,7 @@
                                 <rect key="frame" x="10" y="124" width="300" height="320"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqn-cl-Yad">
-                                        <rect key="frame" x="260" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="240" y="30" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="1U7-9N-RyY"/>
                                             <constraint firstAttribute="width" constant="40" id="LgJ-gj-shG"/>
@@ -1123,24 +1123,22 @@
                                             <action selector="doneHelp:" destination="WI7-wY-L03" eventType="touchUpInside" id="9P7-XH-0xS"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="q5k-f3-cxx" userLabel="helpText">
-                                        <rect key="frame" x="30" y="40" width="240" height="240"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5k-f3-cxx" userLabel="helpText">
+                                        <rect key="frame" x="10" y="0.0" width="280" height="320"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="240" id="J3n-8q-fG3"/>
-                                            <constraint firstAttribute="width" constant="240" id="qDJ-YF-qLy"/>
+                                            <constraint firstAttribute="height" constant="320" id="J3n-8q-fG3"/>
+                                            <constraint firstAttribute="width" constant="280" id="qDJ-YF-qLy"/>
                                         </constraints>
-                                        <string key="text">Import sessions from calander is a powefull tool.    Only past sessions are imported and only if 'name' or 'last name' or 'name+space+last name' match calandr exactly.   After import is completed a '+' sign is added to calander event to avoid double import.</string>
+                                        <mutableString key="text">                   Import sessions from calander is a powefull tool.    Only past sessions are imported and only if 'name' , 'last name' or 'name+space+last name' match calandr exactly.   After import is completed a '+' sign is added to calanders' events to avoid double import.</mutableString>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="6Ew-ls-RoV"/>
                                     <constraint firstAttribute="width" constant="300" id="D7s-Yj-HfD"/>
-                                    <constraint firstAttribute="trailing" secondItem="nqn-cl-Yad" secondAttribute="trailing" id="KAT-2C-jPP"/>
-                                    <constraint firstItem="nqn-cl-Yad" firstAttribute="top" secondItem="WAj-l2-ljD" secondAttribute="top" id="PJn-jh-mD2"/>
+                                    <constraint firstAttribute="trailing" secondItem="nqn-cl-Yad" secondAttribute="trailing" constant="20" id="KAT-2C-jPP"/>
+                                    <constraint firstItem="nqn-cl-Yad" firstAttribute="top" secondItem="WAj-l2-ljD" secondAttribute="top" constant="30" id="PJn-jh-mD2"/>
                                     <constraint firstItem="q5k-f3-cxx" firstAttribute="centerY" secondItem="WAj-l2-ljD" secondAttribute="centerY" id="s8Y-nE-G1j"/>
                                     <constraint firstItem="q5k-f3-cxx" firstAttribute="centerX" secondItem="WAj-l2-ljD" secondAttribute="centerX" id="y2K-vr-lQH"/>
                                 </constraints>
@@ -1187,6 +1185,7 @@
                         <outlet property="datePicker" destination="Alt-nm-btb" id="f0G-jl-gkF"/>
                         <outlet property="datePickerBG" destination="J8i-en-uWZ" id="7vv-pa-PgW"/>
                         <outlet property="helpBackground" destination="WAj-l2-ljD" id="0fa-O7-Jpo"/>
+                        <outlet property="helpTxtView" destination="q5k-f3-cxx" id="Ifm-bA-Aun"/>
                         <outlet property="textAdd" destination="5Rb-jP-Blk" id="vIa-3x-Om3"/>
                     </connections>
                 </viewController>

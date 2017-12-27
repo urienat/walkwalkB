@@ -23,6 +23,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     let mydateFormat5 = DateFormatter()
     let mydateFormat6 = DateFormatter()
     let mydateFormat9 = DateFormatter()
+    var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
+
     
     var calIn = ""
     var calInFB = ""
@@ -59,6 +61,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var animationImage: UIImageView!
     @IBOutlet weak var textAdd: UITextView!
+    @IBOutlet weak var helpTxtView: UITextView!
     
     @IBAction func done(_ sender: Any) {
     datePicker.maximumDate = Date()
@@ -103,8 +106,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             GIDSignIn.sharedInstance().signIn()
             }
         
-       // let help =  UIBarButtonItem(title: "Help", style: .plain, target: self, action: #selector(self.helper))
-        //navigationItem.rightBarButtonItem = help
+        helpTxtView.layer.borderWidth = 0.5
+        helpTxtView.layer.borderColor = blueColor.cgColor
+        helpTxtView.layer.cornerRadius =  15//CGFloat(25)
+        helpTxtView.layoutIfNeeded()
+        //helpTxtView.layer.masksToBounds = true
         
     }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////
     
