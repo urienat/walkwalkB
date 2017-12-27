@@ -1113,7 +1113,7 @@
                                 <rect key="frame" x="10" y="124" width="300" height="320"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqn-cl-Yad">
-                                        <rect key="frame" x="240" y="30" width="40" height="40"/>
+                                        <rect key="frame" x="250" y="10" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="1U7-9N-RyY"/>
                                             <constraint firstAttribute="width" constant="40" id="LgJ-gj-shG"/>
@@ -1129,7 +1129,7 @@
                                             <constraint firstAttribute="height" constant="320" id="J3n-8q-fG3"/>
                                             <constraint firstAttribute="width" constant="280" id="qDJ-YF-qLy"/>
                                         </constraints>
-                                        <mutableString key="text">                   Import sessions from calander is a powefull tool.    Only past sessions are imported and only if 'name' , 'last name' or 'name+space+last name' match calandr exactly.   After import is completed a '+' sign is added to calanders' events to avoid double import.</mutableString>
+                                        <mutableString key="text">                  Import sessions from calander is a very powefull tool.    Only past sessions are imported and only if 'name' or  'last name' or  combination of 'name+space+last name' match calandr exactly.   After import is completed a '+' sign is added to calanders' events to avoid double import.</mutableString>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -1137,8 +1137,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="6Ew-ls-RoV"/>
                                     <constraint firstAttribute="width" constant="300" id="D7s-Yj-HfD"/>
-                                    <constraint firstAttribute="trailing" secondItem="nqn-cl-Yad" secondAttribute="trailing" constant="20" id="KAT-2C-jPP"/>
-                                    <constraint firstItem="nqn-cl-Yad" firstAttribute="top" secondItem="WAj-l2-ljD" secondAttribute="top" constant="30" id="PJn-jh-mD2"/>
+                                    <constraint firstAttribute="trailing" secondItem="nqn-cl-Yad" secondAttribute="trailing" constant="10" id="KAT-2C-jPP"/>
+                                    <constraint firstItem="nqn-cl-Yad" firstAttribute="top" secondItem="WAj-l2-ljD" secondAttribute="top" constant="10" id="PJn-jh-mD2"/>
                                     <constraint firstItem="q5k-f3-cxx" firstAttribute="centerY" secondItem="WAj-l2-ljD" secondAttribute="centerY" id="s8Y-nE-G1j"/>
                                     <constraint firstItem="q5k-f3-cxx" firstAttribute="centerX" secondItem="WAj-l2-ljD" secondAttribute="centerX" id="y2K-vr-lQH"/>
                                 </constraints>
