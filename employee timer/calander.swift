@@ -72,7 +72,10 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     datePicker.maximumDate = Date()
     datePicker.minimumDate = Date() - 24*3600*60
    // LastCalander = mydateFormat5.string(from:  datePicker.date)
+        
     self.minDate = datePicker.date
+        self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: self.minDate!)])
+
     datePickerBG.isHidden = true
     alert123()
     }
@@ -211,7 +214,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             if eventCounter == 0 {animationImage.isHidden = true; self.eventCounterBlock = "No sessions" }else if eventCounter == 1 {animationImage.isHidden = false; self.eventCounterBlock = "One session"} else {self.eventCounterBlock = "\(String(self.eventCounter)) sessions" }
             // save last date
             if spesific == false {textAdd.text = "\(self.eventCounterBlock) imported from calander"
-            //self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: Date())])
                 
             }
             else {textAdd.text = "\(self.eventCounterBlock) for \(employerFromMain) imported from calander"}
