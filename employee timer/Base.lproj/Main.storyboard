@@ -1114,12 +1114,12 @@
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5k-f3-cxx" userLabel="helpText">
                                         <rect key="frame" x="15" y="15" width="260" height="330"/>
-                                        <mutableString key="text">                   Import sessions from calander is a very powefull tool.    Only past sessions are imported and only if 'name' or  'last name' or  combination of 'name+space+last name' match calandr exactly.   After import is completed a '+' sign is added to calanders' events to avoid double import.</mutableString>
+                                        <mutableString key="text">                   Import sessions from calander is a very powerfull tool.    Only past sessions are imported and only if 'name' or 'last name' or combination of 'name+space+last name' match calandr exactly.   After import is completed a '+' sign is added to calanders' events to avoid double import.</mutableString>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8g-AY-svQ">
-                                        <rect key="frame" x="230" y="25" width="40" height="40"/>
+                                        <rect key="frame" x="225" y="25" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="NTi-Pr-z9V"/>
                                             <constraint firstAttribute="width" constant="40" id="a9g-5Q-HtF"/>
@@ -1131,7 +1131,7 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="F8g-AY-svQ" secondAttribute="trailing" constant="20" id="ANX-bl-sBF"/>
+                                    <constraint firstAttribute="trailing" secondItem="F8g-AY-svQ" secondAttribute="trailing" constant="25" id="ANX-bl-sBF"/>
                                     <constraint firstAttribute="bottom" secondItem="q5k-f3-cxx" secondAttribute="bottom" constant="15" id="Efh-IM-lMW"/>
                                     <constraint firstAttribute="trailing" secondItem="q5k-f3-cxx" secondAttribute="trailing" constant="15" id="Qfx-nb-DS1"/>
                                     <constraint firstItem="q5k-f3-cxx" firstAttribute="leading" secondItem="WAj-l2-ljD" secondAttribute="leading" constant="15" id="XBZ-js-r9u"/>

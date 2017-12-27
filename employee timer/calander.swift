@@ -58,6 +58,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     @IBAction func doneHelp(_ sender: Any) {
         print ("done pressed")
         helpBackground.isHidden = true
+        alert123()
     }
     
     @IBOutlet weak var datePickerBG: UIView!
@@ -211,7 +212,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: Date())])}
             else {textAdd.text = "\(self.eventCounterBlock) for \(employerFromMain) imported from calander"}
             self.animation()
-            DispatchQueue.main.asyncAfter(deadline: .now()+6){
+            DispatchQueue.main.asyncAfter(deadline: .now()+4.7){
             self.navigationController!.popViewController(animated: true)
             }
             }//end of function
