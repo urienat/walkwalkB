@@ -37,6 +37,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     var eventCounter = 0
     var eventCounterBlock = ""
+    var minDate:Date?
     
     //let btn1 = UIButton(type: .custom)
 
@@ -70,7 +71,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     @IBAction func done(_ sender: Any) {
     datePicker.maximumDate = Date()
     datePicker.minimumDate = Date() - 24*3600*60
-    LastCalander = mydateFormat5.string(from:  datePicker.date)
+   // LastCalander = mydateFormat5.string(from:  datePicker.date)
+    self.minDate = datePicker.date
     datePickerBG.isHidden = true
     alert123()
     }
@@ -137,7 +139,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         query.maxResults = 50
         // DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
         print("0.2 \(self.LastCalander!)")
-        query.timeMin = GTLRDateTime(date: (Date()-(3600*24*45)))
+            query.timeMin = GTLRDateTime(date: minDate!)
         print ("before min \(String(describing: self.LastCalander))")
 
         //query.timeMin = GTLRDateTime(date: self.mydateFormat5.date(from: self.LastCalander!)!)
@@ -209,7 +211,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             if eventCounter == 0 {animationImage.isHidden = true; self.eventCounterBlock = "No sessions" }else if eventCounter == 1 {animationImage.isHidden = false; self.eventCounterBlock = "One session"} else {self.eventCounterBlock = "\(String(self.eventCounter)) sessions" }
             // save last date
             if spesific == false {textAdd.text = "\(self.eventCounterBlock) imported from calander"
-            self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: Date())])}
+            //self.dbRefEmployee.child(employeeId).updateChildValues(["fLastCalander":self.mydateFormat5.string(from: Date())])
+                
+            }
             else {textAdd.text = "\(self.eventCounterBlock) for \(employerFromMain) imported from calander"}
             self.animation()
             DispatchQueue.main.asyncAfter(deadline: .now()+4.7){
@@ -304,7 +308,14 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         employeeId = (currentUser!.uid)
         self.dbRefEmployee.child(self.employeeId).observeSingleEvent(of: .value , with: { (snapshot) in
         self.LastCalander = String(describing: snapshot.childSnapshot(forPath: "fLastCalander").value!) as String!
+        
+            
+       // minDate = max between ( GTLRDateTime(date: (Date()-(3600*24*45))) || (  GTLRDateTime(date: (LastCalander()-(3600*24*45))))
         if self.LastCalander == "New" { self.alert456()} else{
+        //setting minimum date
+        print ((Date()-(3600*24*45)))
+        print (self.mydateFormat5.date(from: self.LastCalander!)!)
+        if (Date()-(3600*24*45)) > self.mydateFormat5.date(from: self.LastCalander!)! {print ("date is later");self.minDate = (Date()-(3600*24*45))} else {print ("lastcalander is later"); self.minDate = self.mydateFormat5.date(from: self.LastCalander!)!}
         self.alert123()
         }
         })//end of dbref
@@ -372,13 +383,14 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
             func  alert456(){
 
-            if self.LastCalander == nil || self.LastCalander == "New" {self.LastCalander = mydateFormat5.string(from: Date()-(3600*24*31))}
+            if self.LastCalander == nil || self.LastCalander == "New" {self.LastCalander = mydateFormat5.string(from: Date()-(3600*24*45))}
             print (LastCalander!)
 
 
             let alertController123 = UIAlertController(title: ("Import starting date") , message: "You are about to import calander's sessions for the first time. Default starting date is \(mydateFormat9.string(from: mydateFormat5.date(from: LastCalander!)!))." , preferredStyle: .alert)
 
             let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            self.minDate = (Date()-(3600*24*45))
             self.spesific = false
             self.fetchEvents()
             }
