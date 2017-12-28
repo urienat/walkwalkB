@@ -2607,7 +2607,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmf-zH-ULJ">
-                                                    <rect key="frame" x="256" y="4" width="39" height="39"/>
+                                                    <rect key="frame" x="261" y="4" width="39" height="39"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="39" id="Afj-t4-1Qf"/>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="39" id="OPm-vC-Kv4"/>
@@ -2649,7 +2649,7 @@
                                                 <constraint firstItem="RPq-26-PI3" firstAttribute="leading" secondItem="WGK-if-uRa" secondAttribute="trailing" constant="3" id="6n9-be-aPJ"/>
                                                 <constraint firstItem="WGK-if-uRa" firstAttribute="centerY" secondItem="2zf-Oo-Imi" secondAttribute="centerY" id="Ajs-rg-BXD"/>
                                                 <constraint firstItem="RPq-26-PI3" firstAttribute="centerY" secondItem="2zf-Oo-Imi" secondAttribute="centerY" id="SMi-Qg-adm"/>
-                                                <constraint firstAttribute="trailing" secondItem="fmf-zH-ULJ" secondAttribute="trailing" constant="25" id="WaP-ng-Sf2"/>
+                                                <constraint firstAttribute="trailing" secondItem="fmf-zH-ULJ" secondAttribute="trailing" constant="20" id="WaP-ng-Sf2"/>
                                                 <constraint firstItem="fmf-zH-ULJ" firstAttribute="centerY" secondItem="2zf-Oo-Imi" secondAttribute="centerY" id="fw4-mn-WVa"/>
                                                 <constraint firstItem="gCC-uY-Je8" firstAttribute="leading" secondItem="2zf-Oo-Imi" secondAttribute="leading" constant="8" id="psF-rh-r2s"/>
                                                 <constraint firstItem="gCC-uY-Je8" firstAttribute="centerY" secondItem="2zf-Oo-Imi" secondAttribute="centerY" id="vRv-7v-hXG"/>

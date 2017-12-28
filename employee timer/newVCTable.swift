@@ -234,6 +234,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         
             btnGeneral.setImage (nonVimage, for: .normal)
             btnGeneral.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+            btnGeneral.widthAnchor.constraint(equalToConstant: 40.0).isActive = true
+            btnGeneral.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
             btnGeneral.addTarget(self, action: #selector(alert11), for: .touchUpInside)
             generalItem.customView = btnGeneral
             navigationItem.rightBarButtonItem = generalItem
@@ -483,9 +485,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         print ("general approval clicked")
         print (sessionAllChanger)
         
-        if sessionAllChanger == 1 {sessionAllChanger = 0; btnGeneral.setImage (nonVimage, for: .normal)
-        } else {sessionAllChanger = 1;btnGeneral.setImage (Vimage, for: .normal)
-        }
+        //if sessionAllChanger == 1 {sessionAllChanger = 0; btnGeneral.setImage (nonVimage, for: .normal)
+        //} else {sessionAllChanger = 1;btnGeneral.setImage (Vimage, for: .normal)
+        //}
             for h in 0...(appArray.count-1){
             buttonRow = h
             if sessionAllChanger == 1 {  statusTemp = "Approved"} else {  statusTemp = "Pre"; }
@@ -803,6 +805,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     }
     
     func alert11(){
+    if sessionAllChanger == 1 {sessionAllChanger = 0; btnGeneral.setImage (nonVimage, for: .normal)
+    } else {sessionAllChanger = 1;btnGeneral.setImage (Vimage, for: .normal)
+        }
     if appArray.count == 0 {}else {
     let alertController11 = UIAlertController(title: ("Change all sessions ") , message: "You are about to change status for all  sessions. You can 'Undo' spesific record by clicking icon on each record." , preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
@@ -816,6 +821,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     }
     }
     let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+        if self.sessionAllChanger == 1 {self.sessionAllChanger = 0; self.btnGeneral.setImage (self.nonVimage, for: .normal)
+        } else {self.sessionAllChanger = 1;self.btnGeneral.setImage (self.self.Vimage, for: .normal)}
     //do nothing
     }
     alertController11.addAction(OKAction)
