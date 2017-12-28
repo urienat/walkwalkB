@@ -14,7 +14,7 @@ import MessageUI
 
 class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMailComposeViewControllerDelegate {
     
-    let greenFilter = UIImage(named: "sandWatchBig")
+    let greenFilter = UIImage(named: "sandWatchStop")
     let redFilter = UIImage(named: "sandWatchRed")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
     
@@ -62,29 +62,28 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     @IBOutlet weak var filterConstrain: NSLayoutConstraint!
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var filterBG: UIView!
-    @IBOutlet weak var filter: UIButton!
-    @IBAction func filter(_ sender: Any) {
-        filterMovement(delay: 0)
-    }
+    //@IBOutlet weak var filter: UIButton!
+   // @IBAction func filter(_ sender: Any) {
+    //    filterMovement(delay: 0)
+   // }
     @IBAction func noneBtn(_ sender: Any) {
         filterDecided = 0
         fetchBills()
         filterImageConstrain.constant = 20
-        filter.setImage(greenFilter, for: .normal)
+        btnFilter.setImage (greenFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             self.filterMovement(delay: 1.3)
         }
     }
- //   let btnFilter : UIButton
-  // let filterItem : UIBarButtonItem
+    let btnFilter = UIButton()
+    let filterItem = UIBarButtonItem()
     
     @IBAction func currentMonthBtn(_ sender: Any) {
         filterDecided = 1
         fetchBills()
         filterImageConstrain.constant = 60
         filterChoiceImage.reloadInputViews()
-        
-        filter.setImage(redFilter, for: .normal)
+        btnFilter.setImage (redFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             self.filterMovement(delay: 1.3)
         }
@@ -94,7 +93,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         filterImageConstrain.constant = 100
         filterDecided = 2
         fetchBills()
-        filter.setImage(redFilter, for: .normal)
+        btnFilter.setImage (redFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             self.filterMovement(delay: 1.3)
         }
@@ -104,7 +103,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         filterImageConstrain.constant = 140
         filterDecided = 3
         fetchBills()
-        filter.setImage(redFilter, for: .normal)
+        btnFilter.setImage (redFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             self.filterMovement(delay: 1.3)
         }
@@ -114,7 +113,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         filterImageConstrain.constant = 180
         filterDecided = 4
         fetchBills()
-        filter.setImage(redFilter, for: .normal)
+        btnFilter.setImage (redFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1){
             self.filterMovement(delay: 1.3)
         }
@@ -146,13 +145,13 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         blackView.addGestureRecognizer(tap)
         blackView.isUserInteractionEnabled = true
         filterDecided = 0
-        filter.setImage(greenFilter, for: .normal)
         StatusChosen.isHidden = true
         
         billerConnect.backgroundColor = UIColor.clear
         titleLbl = "Tax"
         self.title = titleLbl
-        
+        //navigationItem.rightBarButtonItem = filterItem
+
         //connectivity
         if Reachability.isConnectedToNetwork() == true
         {print("Internet Connection Available!")
@@ -171,11 +170,16 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
         mydateFormat20.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM , yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
       
+    
+        btnFilter.setImage (greenFilter, for: .normal)
+        //btnFilter.frame = CGRect(x: 50, y: 50, width: 10, height: 10)
+        btnFilter.addTarget(self, action: #selector(filterMovement(delay:)), for: .touchUpInside)
+        btnFilter.frame.size = CGSize(width: 20.0, height: 20.0)
+       // btnFilter.translatesAutoresizingMaskIntoConstraints = true
         
-       // btnFilter.setImage (greenFilter, for: .normal)
-       // btnFilter.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-        //btnFilter.addTarget(self, action: #selector(filterMovement(delay:)), for: .touchUpInside)
-        //filterItem.customView = btnFilter
+        filterItem.customView = btnFilter
+        self.navigationItem.setRightBarButton(filterItem, animated: true) 
+
 
         let today = calendar.dateComponents([.year, .month, .day, .weekOfYear, .yearForWeekOfYear], from: Date())
         currentMonth = today.month!

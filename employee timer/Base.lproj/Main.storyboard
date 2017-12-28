@@ -3191,17 +3191,6 @@
                                     <constraint firstAttribute="bottom" secondItem="0Mo-TX-GXF" secondAttribute="bottom" constant="4" id="iHK-6t-jXY"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9B1-be-pw7">
-                                <rect key="frame" x="240" y="34" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Uhw-Ni-fPg"/>
-                                    <constraint firstAttribute="width" constant="40" id="dD6-MM-Nf8"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="sandWatchGreen"/>
-                                <connections>
-                                    <action selector="filter:" destination="Qsr-md-mj8" eventType="touchUpInside" id="sah-E6-SQI"/>
-                                </connections>
-                            </button>
                             <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FjF-mw-84J" userLabel="blackView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="328"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -3349,9 +3338,7 @@
                             <constraint firstItem="heH-PC-ZHp" firstAttribute="top" secondItem="YjM-Xb-Jf3" secondAttribute="bottom" constant="20" id="eL2-Ep-Jz6"/>
                             <constraint firstAttribute="trailing" secondItem="tvP-gm-vBw" secondAttribute="trailing" id="f7Q-gA-0Jk"/>
                             <constraint firstAttribute="trailing" secondItem="Mxy-Rp-79V" secondAttribute="trailing" id="gKF-X0-fPE"/>
-                            <constraint firstItem="9B1-be-pw7" firstAttribute="centerY" secondItem="heH-PC-ZHp" secondAttribute="centerY" id="hs2-5X-Sj5"/>
                             <constraint firstItem="FjF-mw-84J" firstAttribute="leading" secondItem="Jkr-rz-yZd" secondAttribute="leading" id="k2H-qr-R3G"/>
-                            <constraint firstItem="9B1-be-pw7" firstAttribute="leading" secondItem="heH-PC-ZHp" secondAttribute="trailing" constant="20" id="oKE-fQ-uBf"/>
                             <constraint firstItem="zhl-VB-8N9" firstAttribute="centerX" secondItem="Jkr-rz-yZd" secondAttribute="centerX" id="pCA-sT-gaC"/>
                             <constraint firstItem="FjF-mw-84J" firstAttribute="top" secondItem="Jkr-rz-yZd" secondAttribute="top" id="qt7-kK-tne"/>
                             <constraint firstAttribute="trailing" secondItem="sxd-gi-hd6" secondAttribute="trailing" id="qu7-wG-40E"/>
@@ -3364,7 +3351,6 @@
                         <outlet property="StatusChosen" destination="heH-PC-ZHp" id="llY-Yp-r2L"/>
                         <outlet property="billerConnect" destination="tvP-gm-vBw" id="nds-PB-ip8"/>
                         <outlet property="blackView" destination="FjF-mw-84J" id="Hq5-NY-e7e"/>
-                        <outlet property="filter" destination="9B1-be-pw7" id="Nk2-gN-RoH"/>
                         <outlet property="filterBG" destination="sxd-gi-hd6" id="bIh-gT-Kr6"/>
                         <outlet property="filterChoiceImage" destination="5QC-sN-vWI" id="zZf-r7-cGt"/>
                         <outlet property="filterConstrain" destination="2ce-8h-oFY" id="472-Ju-uHE"/>
@@ -3405,7 +3391,6 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="GwF-xw-cu7"/>
         <segue reference="kEl-UY-JOa"/>
