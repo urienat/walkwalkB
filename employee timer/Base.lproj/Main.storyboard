@@ -3026,7 +3026,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tvP-gm-vBw">
-                                <rect key="frame" x="0.0" y="98" width="320" height="354"/>
+                                <rect key="frame" x="0.0" y="60" width="320" height="392"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taxerId" id="bbV-TL-c6c" customClass="taxerCell" customModule="perSession" customModuleProvider="target">
@@ -3107,22 +3107,6 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="fC5-Kd-wE4"/>
                                 </constraints>
                             </activityIndicatorView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="heH-PC-ZHp">
-                                <rect key="frame" x="100" y="40" width="120" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="RWl-k7-h4P"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="cwH-Ko-ni0"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="xgD-LR-Mif"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="Not Paid"/>
-                                    <segment title="All"/>
-                                </segments>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="StatusChosen:" destination="Qsr-md-mj8" eventType="valueChanged" id="GVt-Pk-TCS"/>
-                                </connections>
-                            </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mxy-Rp-79V" userLabel="totalBG">
                                 <rect key="frame" x="0.0" y="464" width="320" height="60"/>
                                 <subviews>
@@ -3308,17 +3292,15 @@
                             <constraint firstItem="zhl-VB-8N9" firstAttribute="centerY" secondItem="Jkr-rz-yZd" secondAttribute="centerY" id="09s-st-Ae3"/>
                             <constraint firstItem="R5x-u4-ThV" firstAttribute="centerX" secondItem="Jkr-rz-yZd" secondAttribute="centerX" id="0ib-cX-KSA"/>
                             <constraint firstItem="tqz-Hu-b1h" firstAttribute="top" secondItem="sxd-gi-hd6" secondAttribute="bottom" id="2ce-8h-oFY"/>
-                            <constraint firstItem="tvP-gm-vBw" firstAttribute="top" secondItem="heH-PC-ZHp" secondAttribute="bottom" constant="30" id="CQj-PQ-Lm3"/>
                             <constraint firstItem="sxd-gi-hd6" firstAttribute="leading" secondItem="Jkr-rz-yZd" secondAttribute="leading" id="DPu-xu-qUg"/>
                             <constraint firstAttribute="trailing" secondItem="Phd-3k-eun" secondAttribute="trailing" id="Eil-lT-uBn"/>
                             <constraint firstItem="Mxy-Rp-79V" firstAttribute="top" secondItem="Phd-3k-eun" secondAttribute="top" id="G0p-Zo-N6v"/>
                             <constraint firstItem="Phd-3k-eun" firstAttribute="leading" secondItem="Jkr-rz-yZd" secondAttribute="leading" id="KuD-3n-RvT"/>
                             <constraint firstItem="Mxy-Rp-79V" firstAttribute="leading" secondItem="Jkr-rz-yZd" secondAttribute="leading" id="Oe0-Y3-baq"/>
-                            <constraint firstItem="heH-PC-ZHp" firstAttribute="centerX" secondItem="Jkr-rz-yZd" secondAttribute="centerX" id="T8W-Wd-9ju"/>
+                            <constraint firstItem="tvP-gm-vBw" firstAttribute="top" secondItem="xHp-ak-1LZ" secondAttribute="bottom" constant="40" id="Smg-hP-vv4"/>
                             <constraint firstItem="tvP-gm-vBw" firstAttribute="leading" secondItem="Jkr-rz-yZd" secondAttribute="leading" id="VsI-s3-47t"/>
                             <constraint firstItem="tqz-Hu-b1h" firstAttribute="top" secondItem="Phd-3k-eun" secondAttribute="bottom" id="XdM-d6-Jyk"/>
                             <constraint firstAttribute="trailing" secondItem="FjF-mw-84J" secondAttribute="trailing" id="aIC-1g-3Ak"/>
-                            <constraint firstItem="heH-PC-ZHp" firstAttribute="top" secondItem="xHp-ak-1LZ" secondAttribute="bottom" constant="20" id="eL2-Ep-Jz6"/>
                             <constraint firstAttribute="trailing" secondItem="tvP-gm-vBw" secondAttribute="trailing" id="f7Q-gA-0Jk"/>
                             <constraint firstAttribute="trailing" secondItem="Mxy-Rp-79V" secondAttribute="trailing" id="gKF-X0-fPE"/>
                             <constraint firstItem="FjF-mw-84J" firstAttribute="leading" secondItem="Jkr-rz-yZd" secondAttribute="leading" id="k2H-qr-R3G"/>
@@ -3333,7 +3315,6 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="StatusChosen" destination="heH-PC-ZHp" id="llY-Yp-r2L"/>
                         <outlet property="billerConnect" destination="tvP-gm-vBw" id="nds-PB-ip8"/>
                         <outlet property="blackView" destination="FjF-mw-84J" id="Hq5-NY-e7e"/>
                         <outlet property="filterBG" destination="sxd-gi-hd6" id="bIh-gT-Kr6"/>

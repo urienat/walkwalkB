@@ -51,7 +51,6 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     @IBOutlet weak var billerConnect: UITableView!
     @IBOutlet weak var thinking: UIActivityIndicatorView!
     
-    @IBOutlet weak var StatusChosen: UISegmentedControl!
     @IBOutlet weak var totalBills: UITextField!
     @IBOutlet weak var totalTax: UITextField!
     @IBOutlet weak var totalAmount: UITextField!
@@ -149,7 +148,6 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         blackView.addGestureRecognizer(tap)
         blackView.isUserInteractionEnabled = true
         filterDecided = 0
-        StatusChosen.isHidden = true
         
         billerConnect.backgroundColor = UIColor.clear
         titleLbl = "Tax"
@@ -335,27 +333,13 @@ print (mydateFormat20.date(from: (arrayOfMonths[(taxMonthRow?.row)!])))
             
             self.thinking.isHidden = true
             self.thinking.stopAnimating()
-            self.StatusChosen.isEnabled = true
         }
         
     }//end of fetch
     
-        @IBAction func StatusChosen(_ sender: Any) {
-        print("pressed")
-        self.thinking.isHidden = false
-        self.thinking.startAnimating()
-        StatusChosen.isEnabled = false
-        switch StatusChosen.selectedSegmentIndex {
-        case 0: StatusChoice = "Not Paid"
-        case 1: StatusChoice = "All"
-        default: break
-        } //end of switch
-        fetchBills()
-        }
     
         // button on table clicked
         func  approvalClicked(sender:UIButton!) {
-        self.StatusChosen.isEnabled = false
         buttonRow = sender.tag
 
         if BillArrayStatus[buttonRow] != "Cancelled"
@@ -378,15 +362,10 @@ print (mydateFormat20.date(from: (arrayOfMonths[(taxMonthRow?.row)!])))
         }// end of if cancelled
 
         if StatusChoice == "Not Paid"{
+            fetchBills()
+   
+    } else {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-        self.StatusChosen.isMomentary = true
-        self.StatusChosen.selectedSegmentIndex = 0
-        self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-        self.StatusChosen.isMomentary = false
-        self.StatusChosen.isEnabled = true
-        }} else {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-        self.StatusChosen.isEnabled = true
         }//end of fispatch
         }//end of else
 
