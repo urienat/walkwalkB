@@ -11,7 +11,6 @@ import UIKit
 import Firebase
 import MessageUI
 
-
 class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMailComposeViewControllerDelegate {
     
     //let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
@@ -34,7 +33,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var billStatus:String? = "Billed"
     var documentName:String?
     var segmentedPressed:Int?
-
 
     var billItems = [billStruct]()
     static var checkBoxBiller:Int = 0

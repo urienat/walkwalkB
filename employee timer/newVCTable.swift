@@ -26,6 +26,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let pencilImage = UIImage(named: "pencilImage")
     let roundImageNormal = UIImage(named: "roundImageNormal")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
+    
+    let btnGeneral = UIButton(type: .custom)
+    let generalItem = UIBarButtonItem()
+
 
     var mailSaver : String?
     var releaser: Int? = 0
@@ -244,7 +248,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         tableConnect.delegate = self
         tableConnect.dataSource = self
         
-            
+            btnGeneral.setImage (nonVimage, for: .normal)
+            btnGeneral.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+            btnGeneral.addTarget(self, action: #selector(generalApproval(_:)), for: .touchUpInside)
+            generalItem.customView = btnGeneral
+            navigationItem.rightBarButtonItem = generalItem
 
         //formating the date
         mydateFormat3.dateFormat = DateFormatter.dateFormat(fromTemplate: "dd-MMM-yyyy",options: 0, locale: nil)!
@@ -479,16 +487,12 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         if appArray.count != 0 {
         for h in 0...(appArray.count-1){
         buttonRow = h
-        
         if checkBoxGeneral == 1 {  statusTemp = "Approved";segmentedPressed = 1 }
         else if checkBoxGeneral == 2 {statusTemp = "Paid";segmentedPressed = 2 }
         else if checkBoxGeneral == 0  { statusTemp = "Paid";segmentedPressed = 2 }
         if statusTemp != appArray[buttonRow] {
             appArray[buttonRow] = statusTemp!
-            
-        print("id\([idArray])")
-        print("status\([appArray])")
-            
+           
         self.dbRef.child(String(idArray[buttonRow])).updateChildValues(["fStatus": statusTemp!], withCompletionBlock: { (error) in}) //end of update.
         }
         if checkBoxGeneral == 2{
@@ -805,13 +809,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     }
     
     func alert11(){
-    generalApproval.isHidden = true;
-    if checkBoxGeneral == 1 {  generalChange =  "You are about to change status for all  records in this list to 'Due'. Records would be added  under their new status. You can 'Undo' spesific record by clicking 'Due' icon on each record."}
-    else if checkBoxGeneral == 2 {generalChange = "Mail with bill of due records is preapred. Sending or saving the mail, would change records to final status of 'Billed'."}
-    else if checkBoxGeneral == 0 { generalChange = "You can not change status of records that were already billed."}
-    if appArray.count == 0 {}
-    else {
-    let alertController11 = UIAlertController(title: ("Change list of records") , message: generalChange , preferredStyle: .alert)
+   // generalApproval.isHidden = true;
+    if appArray.count == 0 {}else {
+    let alertController11 = UIAlertController(title: ("Change all sessions ") , message: "You are about to change status for all  sessions. You can 'Undo' spesific record by clicking icon on each record." , preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
     if self.checkBoxGeneral == 1{
     self.generalApprovalClicked()
@@ -824,14 +824,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     self.generalApproval.isHidden = true;
     }
     let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
-    if self.checkBoxGeneral == 2 {self.segmentedPressed = 1}
-    else if self.checkBoxGeneral == 0 { self.segmentedPressed = 2}
-    else if self.checkBoxGeneral == 1 {self.segmentedPressed = 0 }
-    self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
-    self.generalApproval.isHidden = true;
+    //do nothing
     }
     alertController11.addAction(OKAction)
-    if self.checkBoxGeneral != 0 { alertController11.addAction(CancelAction)}
+    alertController11.addAction(CancelAction)
     self.present(alertController11, animated: true, completion: nil)
     }
     }//end of alert11
