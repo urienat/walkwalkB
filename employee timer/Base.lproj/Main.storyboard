@@ -745,7 +745,7 @@
                                             <action selector="importBtn:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="o1p-tc-uUh"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sandWatch" translatesAutoresizingMaskIntoConstraints="NO" id="l9b-bB-9mb" userLabel="importImage">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="import" translatesAutoresizingMaskIntoConstraints="NO" id="l9b-bB-9mb" userLabel="importImage">
                                         <rect key="frame" x="208.5" y="18" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="qNK-ZQ-ZuS"/>
@@ -814,114 +814,184 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKA-rE-TUN" userLabel="sideMenu">
                                 <rect key="frame" x="0.0" y="50" width="140" height="458"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qc-n2-TDv">
-                                        <rect key="frame" x="8" y="60" width="124" height="30"/>
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="General" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tpo-8d-hm6">
+                                        <rect key="frame" x="8" y="30" width="124" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="qR0-zF-Nee"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="27"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hem-de-86N" userLabel="seprationLine">
+                                        <rect key="frame" x="50" y="80" width="40" height="1"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="f8h-ck-dcT"/>
+                                            <constraint firstAttribute="height" constant="1" id="lck-1d-LsJ"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qc-n2-TDv">
+                                        <rect key="frame" x="41" y="100" width="91" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Wj8-b4-D45"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
                                         <state key="normal" title="Bills">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="billBtn:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="0iZ-sS-PvS"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Apw-du-z4J" userLabel="taxation">
-                                        <rect key="frame" x="8" y="110" width="124" height="30"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="billsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="E9S-bA-Lc5" userLabel="billsIcon">
+                                        <rect key="frame" x="8" y="102.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="9IY-SQ-mRu"/>
+                                            <constraint firstAttribute="height" constant="25" id="bcq-ak-KDq"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Apw-du-z4J" userLabel="taxation">
+                                        <rect key="frame" x="41" y="150" width="91" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="nAi-wH-8QU"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
-                                        <state key="normal" title="Taxation">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Tax">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="taxationBtn:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="mS9-eu-HN7"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paid" translatesAutoresizingMaskIntoConstraints="NO" id="LLa-X3-JYg" userLabel="taxIcon">
+                                        <rect key="frame" x="8" y="152.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="4VQ-gk-74k"/>
+                                            <constraint firstAttribute="height" constant="25" id="OFN-Sg-8lg"/>
+                                        </constraints>
+                                    </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kul-S5-qLg" userLabel="seprationLine">
-                                        <rect key="frame" x="50" y="160" width="40" height="1"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="50" y="200" width="40" height="1"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="7TO-zW-q4U"/>
                                             <constraint firstAttribute="width" constant="40" id="gQe-2E-oCG"/>
                                         </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUE-gp-XN7" userLabel="importAll">
-                                        <rect key="frame" x="8" y="180" width="124" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUE-gp-XN7" userLabel="importAll">
+                                        <rect key="frame" x="41" y="220" width="91" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="GbA-ER-RRg"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
                                         <state key="normal" title="Import ">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="importAllBtn:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="vTj-bc-CmK"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="import" translatesAutoresizingMaskIntoConstraints="NO" id="P3h-0g-hKt" userLabel="importIcon">
+                                        <rect key="frame" x="8" y="222.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="clg-1k-3Mk"/>
+                                            <constraint firstAttribute="height" constant="25" id="r07-pV-eOZ"/>
+                                        </constraints>
+                                    </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rWv-Jm-WnL" userLabel="seprationLine">
-                                        <rect key="frame" x="50" y="229" width="40" height="1"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="50" y="269" width="40" height="1"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="3MB-QP-MC1"/>
                                             <constraint firstAttribute="width" constant="40" id="FxN-vP-sIa"/>
                                         </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVb-jk-U9q" userLabel="logout">
-                                        <rect key="frame" x="8" y="300" width="124" height="30"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cancelled" translatesAutoresizingMaskIntoConstraints="NO" id="CFA-JB-TT6" userLabel="logoutIcon">
+                                        <rect key="frame" x="8" y="342.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="E9X-mU-LcW"/>
+                                            <constraint firstAttribute="width" constant="25" id="niP-9e-wIe"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVb-jk-U9q" userLabel="logout">
+                                        <rect key="frame" x="41" y="340" width="91" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="kvk-Jv-Ex6"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
                                         <state key="normal" title="Logout">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="logoutBtn:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="cY4-0Z-yjJ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2K-IY-bl8" userLabel="setting">
-                                        <rect key="frame" x="8" y="250" width="124" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2K-IY-bl8" userLabel="setting">
+                                        <rect key="frame" x="41" y="290" width="91" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="2eN-cz-Rux"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
                                         <state key="normal" title="Setting">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="settingBtn:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="oDo-gY-Ur5"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting" translatesAutoresizingMaskIntoConstraints="NO" id="PZ9-sh-A1O" userLabel="settingIcon">
+                                        <rect key="frame" x="8" y="292.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="Yxr-Qs-cni"/>
+                                            <constraint firstAttribute="width" constant="25" id="yw1-VY-Tfg"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Tpo-8d-hm6" firstAttribute="leading" secondItem="cKA-rE-TUN" secondAttribute="leading" constant="8" id="2WZ-54-QDl"/>
                                     <constraint firstItem="Apw-du-z4J" firstAttribute="top" secondItem="1Qc-n2-TDv" secondAttribute="bottom" constant="20" id="2t6-vl-hyx"/>
+                                    <constraint firstItem="P3h-0g-hKt" firstAttribute="centerY" secondItem="WUE-gp-XN7" secondAttribute="centerY" id="32x-uC-atH"/>
+                                    <constraint firstItem="PZ9-sh-A1O" firstAttribute="centerY" secondItem="N2K-IY-bl8" secondAttribute="centerY" id="4CL-jZ-4h3"/>
                                     <constraint firstItem="Apw-du-z4J" firstAttribute="leading" secondItem="1Qc-n2-TDv" secondAttribute="leading" id="5c8-xh-7uP"/>
                                     <constraint firstAttribute="trailing" secondItem="1Qc-n2-TDv" secondAttribute="trailing" constant="8" id="Cew-eA-rEP"/>
                                     <constraint firstItem="Kul-S5-qLg" firstAttribute="centerX" secondItem="cKA-rE-TUN" secondAttribute="centerX" id="Fex-iD-8y7"/>
-                                    <constraint firstItem="1Qc-n2-TDv" firstAttribute="leading" secondItem="cKA-rE-TUN" secondAttribute="leading" constant="8" id="I71-So-y4t"/>
-                                    <constraint firstItem="1Qc-n2-TDv" firstAttribute="top" secondItem="cKA-rE-TUN" secondAttribute="top" constant="60" id="JBB-TC-dRd"/>
+                                    <constraint firstItem="1Qc-n2-TDv" firstAttribute="leading" secondItem="E9S-bA-Lc5" secondAttribute="trailing" constant="8" id="Frz-g4-hLz"/>
+                                    <constraint firstItem="Hem-de-86N" firstAttribute="top" secondItem="1Qc-n2-TDv" secondAttribute="top" constant="-20" id="GVb-hh-1ZB"/>
+                                    <constraint firstItem="1Qc-n2-TDv" firstAttribute="top" secondItem="cKA-rE-TUN" secondAttribute="top" constant="100" id="JBB-TC-dRd"/>
+                                    <constraint firstItem="Hem-de-86N" firstAttribute="centerX" secondItem="cKA-rE-TUN" secondAttribute="centerX" id="Jth-AX-eGo"/>
                                     <constraint firstItem="WUE-gp-XN7" firstAttribute="leading" secondItem="Apw-du-z4J" secondAttribute="leading" id="MbK-Uw-Rak"/>
                                     <constraint firstItem="WUE-gp-XN7" firstAttribute="trailing" secondItem="Apw-du-z4J" secondAttribute="trailing" id="O8q-RN-gk3"/>
                                     <constraint firstItem="eVb-jk-U9q" firstAttribute="trailing" secondItem="N2K-IY-bl8" secondAttribute="trailing" id="OXs-vc-7qG"/>
+                                    <constraint firstItem="LLa-X3-JYg" firstAttribute="leading" secondItem="cKA-rE-TUN" secondAttribute="leading" constant="8" id="Ryj-8k-aMl"/>
                                     <constraint firstItem="N2K-IY-bl8" firstAttribute="top" secondItem="rWv-Jm-WnL" secondAttribute="bottom" constant="20" id="SDg-Ag-uGT"/>
                                     <constraint firstItem="N2K-IY-bl8" firstAttribute="leading" secondItem="WUE-gp-XN7" secondAttribute="leading" id="T2O-OW-lAV"/>
                                     <constraint firstItem="eVb-jk-U9q" firstAttribute="leading" secondItem="N2K-IY-bl8" secondAttribute="leading" id="TIS-TG-E3h"/>
+                                    <constraint firstItem="eVb-jk-U9q" firstAttribute="centerY" secondItem="CFA-JB-TT6" secondAttribute="centerY" id="Ucg-dL-Rkl"/>
                                     <constraint firstItem="N2K-IY-bl8" firstAttribute="trailing" secondItem="WUE-gp-XN7" secondAttribute="trailing" id="VHF-kA-9Wk"/>
+                                    <constraint firstItem="P3h-0g-hKt" firstAttribute="leading" secondItem="cKA-rE-TUN" secondAttribute="leading" constant="8" id="WfC-HC-nRm"/>
+                                    <constraint firstItem="PZ9-sh-A1O" firstAttribute="leading" secondItem="cKA-rE-TUN" secondAttribute="leading" constant="8" id="Yej-KK-aIH"/>
                                     <constraint firstItem="WUE-gp-XN7" firstAttribute="top" secondItem="Apw-du-z4J" secondAttribute="bottom" constant="40" id="ckp-Pa-LGG"/>
                                     <constraint firstAttribute="width" constant="140" id="cvI-9M-eSU"/>
+                                    <constraint firstItem="CFA-JB-TT6" firstAttribute="leading" secondItem="cKA-rE-TUN" secondAttribute="leading" constant="8" id="d4R-44-MjQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tpo-8d-hm6" secondAttribute="trailing" constant="8" id="dmz-1Q-2vo"/>
+                                    <constraint firstItem="E9S-bA-Lc5" firstAttribute="leading" secondItem="cKA-rE-TUN" secondAttribute="leading" constant="8" id="gYs-Ic-VRC"/>
                                     <constraint firstItem="eVb-jk-U9q" firstAttribute="top" secondItem="N2K-IY-bl8" secondAttribute="bottom" constant="20" id="hEq-cZ-N1r"/>
+                                    <constraint firstItem="LLa-X3-JYg" firstAttribute="centerY" secondItem="Apw-du-z4J" secondAttribute="centerY" id="lVJ-9Q-vZC"/>
                                     <constraint firstItem="rWv-Jm-WnL" firstAttribute="centerX" secondItem="cKA-rE-TUN" secondAttribute="centerX" id="nin-ke-ux0"/>
+                                    <constraint firstItem="E9S-bA-Lc5" firstAttribute="centerY" secondItem="1Qc-n2-TDv" secondAttribute="centerY" id="ns9-ei-GcL"/>
                                     <constraint firstItem="N2K-IY-bl8" firstAttribute="top" secondItem="WUE-gp-XN7" secondAttribute="bottom" constant="40" id="p19-lv-Z1Y"/>
+                                    <constraint firstItem="Tpo-8d-hm6" firstAttribute="top" secondItem="cKA-rE-TUN" secondAttribute="top" constant="30" id="qGx-Rq-vyA"/>
                                     <constraint firstItem="Apw-du-z4J" firstAttribute="trailing" secondItem="1Qc-n2-TDv" secondAttribute="trailing" id="qv3-xL-BW8"/>
                                     <constraint firstItem="Kul-S5-qLg" firstAttribute="top" secondItem="Apw-du-z4J" secondAttribute="bottom" constant="20" id="xl0-qR-8g7"/>
                                 </constraints>
@@ -3316,22 +3386,26 @@
         <image name="V" width="156" height="141"/>
         <image name="arrow" width="30" height="36"/>
         <image name="billsIcon" width="50" height="50"/>
+        <image name="cancelled" width="50" height="50"/>
         <image name="emptyV" width="50" height="45"/>
+        <image name="import" width="50" height="50"/>
         <image name="mail" width="50" height="50"/>
         <image name="meluna" width="50" height="50"/>
         <image name="noSign" width="309" height="255"/>
+        <image name="paid" width="50" height="50"/>
         <image name="pencilImage" width="100" height="100"/>
         <image name="perSessionImage" width="234" height="225"/>
         <image name="resend" width="50" height="50"/>
         <image name="roundBig" width="100" height="100"/>
-        <image name="sandWatch" width="50" height="50"/>
         <image name="sandWatchGreen" width="100" height="100"/>
+        <image name="setting" width="50" height="50"/>
         <image name="telephone" width="50" height="50"/>
         <image name="trash" width="50" height="50"/>
         <image name="vNaked" width="150" height="150"/>
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="vGn-ru-ol3"/>
         <segue reference="kEl-UY-JOa"/>

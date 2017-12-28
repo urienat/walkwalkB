@@ -22,7 +22,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let paidImage = UIImage(named: "paid")
     let billedImage = UIImage(named: "locked")
     let billIcon = UIImage(named: "bill")
-    let sandwatchImage = UIImage(named: "sandWatch")
+    let sandwatchImage = UIImage(named: "import")
     let pencilImage = UIImage(named: "pencilImage")
     let roundImageNormal = UIImage(named: "roundImageNormal")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
