@@ -2830,14 +2830,6 @@
                                     <constraint firstItem="TcQ-To-oTL" firstAttribute="centerX" secondItem="LyR-Lg-J0y" secondAttribute="centerX" id="yDO-pW-paP"/>
                                 </constraints>
                             </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Fz-k3-QaH" userLabel="generalApproval">
-                                <rect key="frame" x="258" y="14" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="generalApproval:" destination="KQc-zY-Jl3" eventType="touchUpInside" id="9UB-eG-lXN"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2870,7 +2862,6 @@
                         <outlet property="billPay" destination="OzA-Mw-ocR" id="Wr9-Km-ETk"/>
                         <outlet property="billSender" destination="OJv-uh-gXy" id="Fys-cH-WHz"/>
                         <outlet property="eventsLbl" destination="Kbw-MS-DaF" id="gRA-9v-92S"/>
-                        <outlet property="generalApproval" destination="4Fz-k3-QaH" id="yL1-SW-Y32"/>
                         <outlet property="noSign" destination="cvq-V7-JIv" id="osH-3A-zXl"/>
                         <outlet property="paymentMethood" destination="TcQ-To-oTL" id="iWm-aD-oZn"/>
                         <outlet property="paymentView" destination="onk-I2-XsT" id="6Sg-fo-EWD"/>

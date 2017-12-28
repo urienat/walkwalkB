@@ -75,7 +75,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var employerMail = ""
     var statusTemp:String?
     static var checkBox:Int = 0
-    var checkBoxGeneral:Int = 1
+    var checkBoxGeneral:Int = 0
+    var sessionAllChanger : Int = 0
     var generalChange = ""
     
     var idOfEmployers: [String:AnyObject] = [:]
@@ -205,23 +206,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var records = [recordsStruct]()
     @IBOutlet weak var thinking: UIActivityIndicatorView!
     @IBOutlet weak var totalBackground: UIView!
-    @IBOutlet weak var generalApproval: UIButton!
-    @IBAction func generalApproval(_ sender: Any) {
-    generalApproval.isHidden = true
-
-    if  checkBoxGeneral == 2 {
-    refresh(presser: 1)
-    }
-        
-    if  checkBoxGeneral == 1         {
-    refresh(presser: 1)
-    }
-        
-    DispatchQueue.main.asyncAfter(deadline: .now()+1){
-    self.alert11()
-        }
-        
-    }//end of approval button
     
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  view did load
@@ -250,7 +234,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         
             btnGeneral.setImage (nonVimage, for: .normal)
             btnGeneral.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-            btnGeneral.addTarget(self, action: #selector(generalApproval(_:)), for: .touchUpInside)
+            btnGeneral.addTarget(self, action: #selector(alert11), for: .touchUpInside)
             generalItem.customView = btnGeneral
             navigationItem.rightBarButtonItem = generalItem
 
@@ -325,16 +309,15 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             @IBAction func StatusChosen(_ sender: AnyObject) {
             
             print("pressed")
-            generalApproval.isEnabled = false
             self.thinking.isHidden = false
             self.thinking.startAnimating()
             StatusChosen.isEnabled = false
             periodChosen.isEnabled = false
                 switch StatusChosen.selectedSegmentIndex {
-                case 0: Status = "Pre";checkBoxGeneral = 1;generalApproval.isEnabled = true;generalApproval.isEnabled = true
-                case 1: Status = "Approved" ;checkBoxGeneral = 2;  generalApproval.isEnabled = true//print ("status:\(Status)")
-                case 2: Status = "Paid"  ;checkBoxGeneral = 0; generalApproval.isEnabled = false;
-                default: Status = "All";generalApproval.isHidden = true;
+                case 0: Status = "Pre";checkBoxGeneral = 1
+                case 1: Status = "Approved" ;checkBoxGeneral = 2
+                case 2: Status = "Paid"  ;checkBoxGeneral = 0
+                default: Status = "All";
                 } //end of switch
                 print ("status:\(Status)")
             self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
@@ -344,7 +327,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
         @IBOutlet weak var periodChosen: UISegmentedControl!
         @IBAction func PeriodChosen(_ sender: AnyObject) {
-        generalApproval.isEnabled = false
         
         self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
         self.thinking.isHidden = false
@@ -483,25 +465,38 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }//end button clicked
     
         // button  General on table clicked
-        func  generalApprovalClicked() {
+        func  moveSessionToBilled() {
+        print ("moveSessionToBilled")
         if appArray.count != 0 {
         for h in 0...(appArray.count-1){
         buttonRow = h
-        if checkBoxGeneral == 1 {  statusTemp = "Approved";segmentedPressed = 1 }
-        else if checkBoxGeneral == 2 {statusTemp = "Paid";segmentedPressed = 2 }
-        else if checkBoxGeneral == 0  { statusTemp = "Paid";segmentedPressed = 2 }
-        if statusTemp != appArray[buttonRow] {
-            appArray[buttonRow] = statusTemp!
-           
+        statusTemp = "Paid"
+        if statusTemp != appArray[buttonRow] {//i think no need to status temp or to if
+        appArray[buttonRow] = statusTemp!
         self.dbRef.child(String(idArray[buttonRow])).updateChildValues(["fStatus": statusTemp!], withCompletionBlock: { (error) in}) //end of update.
         }
-        if checkBoxGeneral == 2{
-        self.dbRef.child(String(idArray[buttonRow])).updateChildValues(["fBill": counterForMail2!], withCompletionBlock: { (error) in}) //end of update.
-        }
-         
         }//end of loop
         }//end of if
-        }//end button  Generalclicked
+        }//end movesession
+    
+    func  generalApprovalClicked() {
+        print ("general approval clicked")
+        print (sessionAllChanger)
+        
+        if sessionAllChanger == 1 {sessionAllChanger = 0; btnGeneral.setImage (nonVimage, for: .normal)
+        } else {sessionAllChanger = 1;btnGeneral.setImage (Vimage, for: .normal)
+        }
+            for h in 0...(appArray.count-1){
+            buttonRow = h
+            if sessionAllChanger == 1 {  statusTemp = "Approved"} else {  statusTemp = "Pre"; }
+            if statusTemp != appArray[buttonRow] {
+            appArray[buttonRow] = statusTemp!
+            self.dbRef.child(String(idArray[buttonRow])).updateChildValues(["fStatus": statusTemp!], withCompletionBlock: { (error) in}) //end of update.
+            }
+
+
+            }//end of loop
+    }//end button  Generalclicked
     
         func fetch()  {
         
@@ -669,19 +664,18 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
         if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions"} else if self.eventCounter == 1 {self.eventsLbl.text = "\(String(self.eventCounter)) Due session"} else {self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions"}
 
-        if self.Status == "All" /*|| self.Status == "Paid"*/{self.generalApproval.isHidden = true}
+        if self.Status == "All" /*|| self.Status == "Paid"*/{}
         self.calc = (Double(self.eventCounter))*(self.Employerrate)
 
         self.perEvents.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /session")
 
         self.amount.text =  ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")
 
-        if self.eventCounter != 0 {if self.rememberMe1 == 0 {self.alert90()}; self.generalApproval.isHidden = true;self.generalApproval.isEnabled = true;  if self.releaser == 0 {self.billSender.isEnabled = true;self.billPay.isEnabled = true}
+        if self.eventCounter != 0 {if self.rememberMe1 == 0 {self.alert90()};  if self.releaser == 0 {self.billSender.isEnabled = true;self.billPay.isEnabled = true}
         }else {
         self.billSender.isEnabled = false
         self.billPay.isEnabled = false
 
-        self.generalApproval.isHidden = true;
         }
         }//end of dispatch
         }//end of fetch
@@ -809,19 +803,12 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     }
     
     func alert11(){
-   // generalApproval.isHidden = true;
     if appArray.count == 0 {}else {
     let alertController11 = UIAlertController(title: ("Change all sessions ") , message: "You are about to change status for all  sessions. You can 'Undo' spesific record by clicking icon on each record." , preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-    if self.checkBoxGeneral == 1{
     self.generalApprovalClicked()
-    }
-    else if self.checkBoxGeneral == 2{
-    self.billing()
-    }
-    else {//do nothing
-    }
-    self.generalApproval.isHidden = true;
+    self.refresh(presser: 0)//refreshtable
+    
     }
     let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
     //do nothing
@@ -849,7 +836,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     //update bill with DB
         self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": self.billStatus!, "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2,"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference, "fDocumentName":self.documentName!,"fRecieptDate":self.recieptDate!,"fBillRecieptMailSaver":""
     ], withCompletionBlock: { (error) in}) //end of update.//was 0
-    self.generalApprovalClicked()
+    self.moveSessionToBilled()
     }//end of if biller
     }//end of dispatch
     }//end of billprocess
@@ -948,6 +935,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         
     let printAction = UIAlertAction(title: "Print it", style: .default) { (UIAlertAction) in
     self.billProcess()
+
     //add printing process
     }
         
@@ -984,7 +972,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         
         let alertController66 = UIAlertController(title: ("Cancel Mail") , message:" Mail was cancelled, but the bill was registered to send it or print it go to bills" , preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-            self.refresh(presser: 0)
+            self.refresh(presser: 3)
         }
         
         alertController66.addAction(OKAction)
