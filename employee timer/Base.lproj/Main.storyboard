@@ -2250,17 +2250,6 @@
                                     <constraint firstItem="ILg-rw-WUw" firstAttribute="leading" secondItem="tR9-cS-rER" secondAttribute="leading" constant="8" id="fM2-Sa-Ut5"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AE9-S5-B4h">
-                                <rect key="frame" x="240" y="34" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="0tk-LK-cfq"/>
-                                    <constraint firstAttribute="width" constant="40" id="Z1j-QR-6KZ"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="sandWatchGreen"/>
-                                <connections>
-                                    <action selector="filter:" destination="Grl-4C-vV7" eventType="touchUpInside" id="Iph-cI-r3E"/>
-                                </connections>
-                            </button>
                             <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOU-wI-y5F" userLabel="blackView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2507,12 +2496,10 @@
                             <constraint firstItem="tR9-cS-rER" firstAttribute="top" secondItem="PrW-i7-IuZ" secondAttribute="top" id="G2l-Fn-THl"/>
                             <constraint firstAttribute="trailing" secondItem="fgv-lZ-OY1" secondAttribute="trailing" id="Ijc-rw-eXp"/>
                             <constraint firstItem="WFF-pl-qqA" firstAttribute="leading" secondItem="LE5-Ui-4B3" secondAttribute="leading" id="LxG-ob-lwR"/>
-                            <constraint firstItem="AE9-S5-B4h" firstAttribute="centerY" secondItem="dos-vv-upu" secondAttribute="centerY" id="WBc-L2-5Xz"/>
                             <constraint firstItem="tR9-cS-rER" firstAttribute="leading" secondItem="LE5-Ui-4B3" secondAttribute="leading" id="YNb-0Z-vZc"/>
                             <constraint firstItem="T9c-oL-JGA" firstAttribute="centerX" secondItem="LE5-Ui-4B3" secondAttribute="centerX" id="aZP-Jd-m8i"/>
                             <constraint firstItem="WOU-wI-y5F" firstAttribute="leading" secondItem="LE5-Ui-4B3" secondAttribute="leading" id="azG-70-gSK"/>
                             <constraint firstItem="PrW-i7-IuZ" firstAttribute="top" secondItem="fgv-lZ-OY1" secondAttribute="bottom" constant="12" id="cuB-ny-T0b"/>
-                            <constraint firstItem="AE9-S5-B4h" firstAttribute="leading" secondItem="dos-vv-upu" secondAttribute="trailing" constant="20" id="gKV-zf-vu7"/>
                             <constraint firstItem="T9c-oL-JGA" firstAttribute="centerY" secondItem="LE5-Ui-4B3" secondAttribute="centerY" id="gea-7j-G12"/>
                             <constraint firstAttribute="trailing" secondItem="PrW-i7-IuZ" secondAttribute="trailing" id="izT-mK-gro"/>
                             <constraint firstAttribute="trailing" secondItem="WOU-wI-y5F" secondAttribute="trailing" id="lOo-af-2rU"/>
@@ -2529,7 +2516,6 @@
                         <outlet property="StatusChosen" destination="dos-vv-upu" id="Gbn-xO-HWO"/>
                         <outlet property="billerConnect" destination="fgv-lZ-OY1" id="Rx0-B2-O4e"/>
                         <outlet property="blackView" destination="WOU-wI-y5F" id="Cez-do-14d"/>
-                        <outlet property="filter" destination="AE9-S5-B4h" id="g1C-52-BZq"/>
                         <outlet property="filterBG" destination="WFF-pl-qqA" id="PvO-oU-GQe"/>
                         <outlet property="filterChoiceImage" destination="tD7-HZ-3U7" id="0PG-Ew-9ap"/>
                         <outlet property="filterConstrain" destination="xS0-JC-fPc" id="bb1-Xr-9pI"/>
@@ -3193,6 +3179,12 @@
                             </view>
                             <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FjF-mw-84J" userLabel="blackView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="otw-M1-TkK">
+                                        <rect key="frame" x="-8" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    </navigationBar>
+                                </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sxd-gi-hd6" userLabel="filterView">
@@ -3347,9 +3339,7 @@
                             <constraint firstItem="Phd-3k-eun" firstAttribute="top" secondItem="tvP-gm-vBw" secondAttribute="bottom" constant="12" id="zjZ-ed-QNn"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="O3Y-PI-eCr" userLabel="filterItem"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="StatusChosen" destination="heH-PC-ZHp" id="llY-Yp-r2L"/>
@@ -3387,7 +3377,6 @@
         <image name="perSessionImage" width="234" height="225"/>
         <image name="resend" width="50" height="50"/>
         <image name="roundBig" width="100" height="100"/>
-        <image name="sandWatchGreen" width="100" height="100"/>
         <image name="setting" width="50" height="50"/>
         <image name="telephone" width="50" height="50"/>
         <image name="trash" width="50" height="50"/>

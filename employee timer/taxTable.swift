@@ -14,10 +14,11 @@ import MessageUI
 
 class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMailComposeViewControllerDelegate {
     
-    let greenFilter = UIImage(named: "sandWatchStop")
-    let redFilter = UIImage(named: "sandWatchRed")
+    let greenFilter = UIImage(named: "filterBlack")
+    let redFilter = UIImage(named: "filterRed")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
     
+
     var billItems = [billStruct]()
     static var checkBoxBiller:Int = 0
     var BillArrayStatus = [String]()
@@ -57,6 +58,8 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     @IBOutlet weak var noSign: UIImageView!
     
     //filter
+    let btnFilter = UIButton(type: .custom)
+    let filterItem = UIBarButtonItem()
     @IBOutlet weak var filterChoiceImage: UIImageView!
     @IBOutlet weak var filterImageConstrain: NSLayoutConstraint!
     @IBOutlet weak var filterConstrain: NSLayoutConstraint!
@@ -77,8 +80,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     }
     
 
-    let btnFilter = UIButton(type: .custom)
-    let filterItem = UIBarButtonItem()
+    
     
     @IBAction func currentMonthBtn(_ sender: Any) {
         filterDecided = 1
@@ -171,15 +173,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
         mydateFormat20.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM , yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
       
-    /*
-        //btnFilter.imageRect(forContentRect: CGRect(x: 0, y: 0, width: 10, height: 10))
-        btnFilter.setImage (greenFilter, for: .normal)
-        //btnFilter.setTitle("Filter", for: .normal)
-        btnFilter.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
-        btnFilter.addTarget(self, action: #selector(filterMovement(delay:)), for: .touchUpInside)
-       self.filterItem.customView = self.btnFilter
-        navigationItem.rightBarButtonItem = filterItem
-       */
+
         
         btnFilter.setImage (greenFilter, for: .normal)
         btnFilter.frame = CGRect(x: 0, y: 0, width: 0, height: 0)

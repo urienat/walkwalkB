@@ -20,8 +20,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let paidImage = UIImage(named: "paid")
     let canceledImage = UIImage(named: "cancelled")
     //let greenFilter = UIImage(named: "sandWatchGreen")
-    let greenFilter = UIImage(named: "sandWatchBig")
-    let redFilter = UIImage(named: "sandWatchRed")
+    let greenFilter = UIImage(named: "filterBlack")
+    let redFilter = UIImage(named: "filterRed")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
     
     var monthToHandle : Int = 0
@@ -127,20 +127,18 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var noSign: UIImageView!
     
     //filter
+    let btnFilter = UIButton(type: .custom)
+    let filterItem = UIBarButtonItem()
     @IBOutlet weak var filterChoiceImage: UIImageView!
     @IBOutlet weak var filterImageConstrain: NSLayoutConstraint!
     @IBOutlet weak var filterConstrain: NSLayoutConstraint!
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var filterBG: UIView!
-    @IBOutlet weak var filter: UIButton!
-    @IBAction func filter(_ sender: Any) {
-    filterMovement(delay: 0)
-    }
     @IBAction func noneBtn(_ sender: Any) {
     filterDecided = 0
     fetchBills()
     filterImageConstrain.constant = 20
-    filter.setImage(greenFilter, for: .normal)
+    btnFilter.setImage (greenFilter, for: .normal)
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
         self.filterMovement(delay: 1.3)
     }
@@ -152,7 +150,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     filterImageConstrain.constant = 60
     filterChoiceImage.reloadInputViews()
 
-    filter.setImage(redFilter, for: .normal)
+    btnFilter.setImage (redFilter, for: .normal)
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
     self.filterMovement(delay: 1.3)
     }
@@ -162,7 +160,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     filterImageConstrain.constant = 100
     filterDecided = 2
         fetchBills()
-    filter.setImage(redFilter, for: .normal)
+        btnFilter.setImage (redFilter, for: .normal)
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
     self.filterMovement(delay: 1.3)
     }
@@ -172,7 +170,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     filterImageConstrain.constant = 140
     filterDecided = 3
         fetchBills()
-    filter.setImage(redFilter, for: .normal)
+        btnFilter.setImage (redFilter, for: .normal)
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
     self.filterMovement(delay: 1.3)
     }
@@ -182,7 +180,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     filterImageConstrain.constant = 180
     filterDecided = 4
         fetchBills()
-    filter.setImage(redFilter, for: .normal)
+        btnFilter.setImage (redFilter, for: .normal)
     DispatchQueue.main.asyncAfter(deadline: .now() + 1){
     self.filterMovement(delay: 1.3)
     }
@@ -212,7 +210,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         blackView.addGestureRecognizer(tap)
         blackView.isUserInteractionEnabled = true
         filterDecided = 0
-        filter.setImage(greenFilter, for: .normal)
         
         billerConnect.backgroundColor = UIColor.clear
         if employerID != "" {  titleLbl = "\(employerFromMain)'s bills" } else {titleLbl = "Bills"}
@@ -232,6 +229,13 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 1
         formatter.roundingMode = .up
+        
+        
+        btnFilter.setImage (greenFilter, for: .normal)
+        btnFilter.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        btnFilter.addTarget(self, action: #selector(filterMovement(delay:)), for: .touchUpInside)
+        filterItem.customView = btnFilter
+        navigationItem.rightBarButtonItem = filterItem
         
         //Date
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
@@ -260,8 +264,9 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         print("Connected after all")} else  {print("not connected after all");self.noFB()}
         })
         }}
+            
         })
-            if taxBillsToHandle == false {fetchBills(); StatusChosen.isHidden = false;filter.isHidden = false} else {billsForTaxMonth();StatusChosen.isHidden = true;filter.isHidden = true;titleLbl = "\(monthToHandle)-\(yearToHandle)";self.title = titleLbl}
+            if taxBillsToHandle == false {fetchBills(); StatusChosen.isHidden = false} else {billsForTaxMonth();StatusChosen.isHidden = true;titleLbl = "\(monthToHandle)-\(yearToHandle)";self.title = titleLbl}
         print (billItems.count)
         billerConnect.reloadData()
         }//view did appear end
