@@ -150,7 +150,6 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         billerConnect.backgroundColor = UIColor.clear
         titleLbl = "Tax"
         self.title = titleLbl
-        //navigationItem.rightBarButtonItem = filterItem
 
         //connectivity
         if Reachability.isConnectedToNetwork() == true
@@ -172,13 +171,13 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
       
     
         btnFilter.setImage (greenFilter, for: .normal)
-        //btnFilter.frame = CGRect(x: 50, y: 50, width: 10, height: 10)
+        btnFilter.frame = CGRect(x: 50, y: 50, width: 10, height: 10)
         btnFilter.addTarget(self, action: #selector(filterMovement(delay:)), for: .touchUpInside)
-        btnFilter.frame.size = CGSize(width: 20.0, height: 20.0)
+       // btnFilter.frame.size = CGSize(width: 20.0, height: 20.0)
        // btnFilter.translatesAutoresizingMaskIntoConstraints = true
-        
-        filterItem.customView = btnFilter
-        self.navigationItem.setRightBarButton(filterItem, animated: true) 
+        self.filterItem.customView = self.btnFilter
+        //self.navigationItem.setRightBarButton(filterItem, animated: true)
+        navigationItem.rightBarButtonItem = filterItem
 
 
         let today = calendar.dateComponents([.year, .month, .day, .weekOfYear, .yearForWeekOfYear], from: Date())
