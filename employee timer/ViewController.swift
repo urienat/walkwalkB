@@ -52,6 +52,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var meluna = UIImage(named:"meluna")?.withRenderingMode(.alwaysTemplate)
     var billsIcon = UIImage(named:"billsIcon")?.withRenderingMode(.alwaysTemplate)
     var walkerProfile = UIImage(named:"walkerProfile")?.withRenderingMode(.alwaysTemplate)
+    var importBlack = UIImage(named:"import")?.withRenderingMode(.alwaysTemplate)
 
     let mydateFormat2 = DateFormatter()
     let mydateFormat5 = DateFormatter()
@@ -214,7 +215,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     ViewController.checkSubOnce = 1
     DateIn.text = ""
     self.employerList.separatorColor = blueColor
-
 
 
     //connectivity

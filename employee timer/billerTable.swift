@@ -33,6 +33,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var billStatus:String? = "Billed"
     var documentName:String?
     var segmentedPressed:Int?
+    
+    var monthMMM: String?
 
     var billItems = [billStruct]()
     static var checkBoxBiller:Int = 0
@@ -264,7 +266,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         }}
             
         })
-            if taxBillsToHandle == false {fetchBills(); StatusChosen.isHidden = false} else {billsForTaxMonth();StatusChosen.isHidden = true;titleLbl = "\(monthToHandle)-\(yearToHandle)";self.title = titleLbl}
+            if taxBillsToHandle == false {fetchBills(); StatusChosen.isHidden = false} else {monther(monthNumber: monthToHandle); billsForTaxMonth();StatusChosen.isHidden = true;titleLbl = "\(monthMMM!)-\(yearToHandle)";self.title = titleLbl}
         print (billItems.count)
         billerConnect.reloadData()
         }//view did appear end
@@ -655,6 +657,13 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             }
         })
     }//end of billing
+    
+    func monther(monthNumber:Int)  {
+        let fmt = DateFormatter()
+        fmt.dateFormat = "MM"
+        monthMMM = fmt.monthSymbols[monthNumber - 1]
+        return
+    }
 
             // alerts////////////////////////////////////////////////////////////////////////////////////////////
             func alert30(){
