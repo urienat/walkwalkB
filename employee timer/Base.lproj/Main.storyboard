@@ -820,14 +820,14 @@
                                             <constraint firstAttribute="height" constant="30" id="qR0-zF-Nee"/>
                                         </constraints>
                                         <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="27"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="25"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hem-de-86N" userLabel="seprationLine">
-                                        <rect key="frame" x="50" y="80" width="40" height="1"/>
+                                        <rect key="frame" x="35" y="80" width="70" height="1"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="f8h-ck-dcT"/>
+                                            <constraint firstAttribute="width" constant="70" id="f8h-ck-dcT"/>
                                             <constraint firstAttribute="height" constant="1" id="lck-1d-LsJ"/>
                                         </constraints>
                                         <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -875,11 +875,11 @@
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kul-S5-qLg" userLabel="seprationLine">
-                                        <rect key="frame" x="50" y="200" width="40" height="1"/>
+                                        <rect key="frame" x="35" y="200" width="70" height="1"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="7TO-zW-q4U"/>
-                                            <constraint firstAttribute="width" constant="40" id="gQe-2E-oCG"/>
+                                            <constraint firstAttribute="width" constant="70" id="gQe-2E-oCG"/>
                                         </constraints>
                                         <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -906,11 +906,11 @@
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rWv-Jm-WnL" userLabel="seprationLine">
-                                        <rect key="frame" x="50" y="269" width="40" height="1"/>
+                                        <rect key="frame" x="35" y="269" width="70" height="1"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="3MB-QP-MC1"/>
-                                            <constraint firstAttribute="width" constant="40" id="FxN-vP-sIa"/>
+                                            <constraint firstAttribute="width" constant="70" id="FxN-vP-sIa"/>
                                         </constraints>
                                         <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
