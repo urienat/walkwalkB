@@ -806,9 +806,14 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     if appArray.count == 0 {}else {
     let alertController11 = UIAlertController(title: ("Change all sessions ") , message: "You are about to change status for all  sessions. You can 'Undo' spesific record by clicking icon on each record." , preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+        self.thinking.startAnimating()
     self.generalApprovalClicked()
+    DispatchQueue.main.asyncAfter(deadline: .now()+1){
     self.refresh(presser: 0)//refreshtable
-    
+     }
+    DispatchQueue.main.asyncAfter(deadline: .now()+1){
+    self.thinking.startAnimating()
+    }
     }
     let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
     //do nothing
