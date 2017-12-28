@@ -67,6 +67,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var dOut = ""
     var methood = "Normal"
     var pickerlabel =  UILabel.self
+    static var calanderOption: String?
     
     @IBOutlet weak var thinking2: UIActivityIndicatorView!
     @IBOutlet weak var employerList: UITableView!
@@ -128,7 +129,9 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var importBackground: UIView!
     @IBOutlet weak var importBtn: UIButton!
     @IBAction func importBtn(_ sender: Any) {
-    importClicked()
+    print (ViewController.calanderOption!)
+    if ViewController.calanderOption! == "None" {alert32()} else {
+            importClicked()}
     }
     
     @IBOutlet weak var arrow: UIImageView!
@@ -149,7 +152,9 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     @IBAction func importAllBtn(_ sender: Any) {
     sideMenuMovement()
-    importAllClicked()
+    print (ViewController.calanderOption!)
+    if ViewController.calanderOption! == "None" {alert32()} else {
+            importAllClicked()}
     }
     
     @IBAction func otherBtn(_ sender: Any) {
@@ -249,7 +254,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     ViewController.fixedLastName =  String(describing: snapshot.childSnapshot(forPath: "fLastName").value!) as String
     ViewController.fixedemail =  String(describing: snapshot.childSnapshot(forPath: "femail").value!) as String
     ViewController.dateTimeFormat =  String(describing: snapshot.childSnapshot(forPath: "fDateTime").value!) as String
-    //.dateTimeFormat =  String(describing: snapshot.childSnapshot(forPath: "fLastCalander").value!) as String
+    ViewController.calanderOption =  String(describing: snapshot.childSnapshot(forPath: "fCalander").value!) as String
 
     })
     } else {
@@ -695,6 +700,19 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }
     alertController50.addAction(OKAction)
     self.present(alertController50, animated: true, completion: nil)
+    }
+    
+    func alert32(){
+    let alertController32 = UIAlertController(title: ("Define calander") , message: " in your 'Setting' no calander is defined for sessions' import. Define one? ", preferredStyle: .alert)
+    let OKAction = UIAlertAction(title: "Sure", style: .default) { (UIAlertAction) in
+        self.profileClicked()
+    }
+
+    let cancelAction = UIAlertAction(title: "Not now", style: .cancel) { (UIAlertAction) in
+    }
+    alertController32.addAction(OKAction)
+    alertController32.addAction(cancelAction)
+    self.present(alertController32, animated: true, completion: nil)
     }
     
 }/////////////end!!!!!////////////////////////////////////////////////////////////////////////////////////////////////

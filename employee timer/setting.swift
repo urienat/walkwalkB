@@ -99,10 +99,8 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         switch calander.selectedSegmentIndex {
         case 0:
             calanderUpdate = "Google"
-            
         case 1:
             calanderUpdate = "IOS"
-            
         default:
             calanderUpdate = "None"
             print("None")
@@ -487,6 +485,8 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
 
         func saveToDB(_ sender: AnyObject) {
         ViewController.dateTimeFormat = self.dateTimeUpdate
+        ViewController.calanderOption = self.calanderUpdate
+
         let alertController = UIAlertController(title: ("Save Setting") , message: ("Are You Sure?"), preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
         }
