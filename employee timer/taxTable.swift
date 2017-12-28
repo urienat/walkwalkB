@@ -75,7 +75,9 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
             self.filterMovement(delay: 1.3)
         }
     }
-    let btnFilter = UIButton()
+    
+
+    let btnFilter = UIButton(type: .custom)
     let filterItem = UIBarButtonItem()
     
     @IBAction func currentMonthBtn(_ sender: Any) {
@@ -169,16 +171,21 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
         mydateFormat20.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM , yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
       
-    
+    /*
+        //btnFilter.imageRect(forContentRect: CGRect(x: 0, y: 0, width: 10, height: 10))
         btnFilter.setImage (greenFilter, for: .normal)
-        btnFilter.frame = CGRect(x: 50, y: 50, width: 10, height: 10)
+        //btnFilter.setTitle("Filter", for: .normal)
+        btnFilter.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
         btnFilter.addTarget(self, action: #selector(filterMovement(delay:)), for: .touchUpInside)
-       // btnFilter.frame.size = CGSize(width: 20.0, height: 20.0)
-       // btnFilter.translatesAutoresizingMaskIntoConstraints = true
-        self.filterItem.customView = self.btnFilter
-        //self.navigationItem.setRightBarButton(filterItem, animated: true)
+       self.filterItem.customView = self.btnFilter
         navigationItem.rightBarButtonItem = filterItem
-
+       */
+        
+        btnFilter.setImage (greenFilter, for: .normal)
+        btnFilter.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        btnFilter.addTarget(self, action: #selector(filterMovement(delay:)), for: .touchUpInside)
+        filterItem.customView = btnFilter
+        navigationItem.rightBarButtonItem = filterItem
 
         let today = calendar.dateComponents([.year, .month, .day, .weekOfYear, .yearForWeekOfYear], from: Date())
         currentMonth = today.month!

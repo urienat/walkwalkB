@@ -101,9 +101,9 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
 
     
     @IBOutlet weak var menuItem: UIBarButtonItem!
-    @IBAction func menuItem(_ sender: Any) {
-    sideMenuMovement()
-    }//end of menu
+   // @IBAction func menuItem(_ sender: Any) {
+    //sideMenuMovement()
+  //  }//end of menu
 
     @IBOutlet weak var addAccount: UIBarButtonItem!
     @IBAction func addAccount(_ sender: Any) {
