@@ -29,6 +29,8 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
 
     var textForError:String?
     var emailForPasscode = ""
+    let outBtn = UIButton(type: .custom)
+    let outBarIten = UIBarButtonItem()
 
     @IBOutlet weak var pDogImage: UIImageView!
 
@@ -339,9 +341,9 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             obligatoryIn()
             obligatoryOut()
             
-            navigationItem.hidesBackButton = false  // set pet list as disable
-
-            
+            let cancelLogin = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(logout))
+            navigationItem.leftBarButtonItem = cancelLogin
+           
             let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(accounCreation))
             navigationItem.rightBarButtonItem = saveRecord
 
@@ -646,6 +648,11 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         UIView.animate(withDuration: 2.3,delay: 0.3, animations: {
             self.obligatory.transform = .identity// CGAffineTransformIdentity
         })
+    }
+    func logout(){
+        print(logout)
+        self.present((storyboard?.instantiateViewController(withIdentifier: "loginScreen"))!, animated: true, completion: nil)
+
     }
     
     ///alerts///////////////////////////////////////////////////////////////////////////////////
