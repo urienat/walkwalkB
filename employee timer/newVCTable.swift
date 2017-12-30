@@ -356,7 +356,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             //if record.fIndication3 == "⏳" {  cell.l8.image = sandwatchImageRed}
 
      
-            if record.fStatus == "Approved" { cell.approval.setImage(Vimage, for: .normal);eventCounter+=1}
+            if record.fStatus == "Approved" { cell.approval.setImage(Vimage, for: .normal)
+                
+            }
             if record.fStatus == "Pre" { cell.approval.setImage(nonVimage, for: .normal)}
             if record.fStatus == "Paid" { cell.approval.setImage(billedImage, for: .normal)}
             
@@ -557,8 +559,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }else{
         //array for record ID
         let id = snapshot.key
-            let appStatus = record.fStatus
-                        
+        let appStatus = record.fStatus
+            if record.fStatus == "Approved" {self.eventCounter+=1}
+
         let period: Int = 5//self.periodChosen.selectedSegmentIndex
                         
         //handle to string to date of fIN from firbase/
@@ -570,15 +573,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         let components = calendar.dateComponents([.year, .month, .day, ], from: finManupulated!)
         let today = calendar.dateComponents([.year, .month, .day], from: Date())
         self.recotdMonth = components.month!
-        //self.recordWeek = components.weekOfYear!
         self.recordYear = components.year!
-       // self.recordYearForWeek = components.yearForWeekOfYear!
 
         self.currentMonth = today.month!
-        //self.currentWeek = today.weekOfYear!
-            
         self.currentYear = today.year!
-        //self.currentYearForWeek = today.yearForWeekOfYear!
 
                         
         func cases() {

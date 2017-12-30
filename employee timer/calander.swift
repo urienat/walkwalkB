@@ -143,7 +143,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         // Construct a query and get a list of upcoming events
         func fetchEvents() {
         let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")// instard of "primary"
-        query.maxResults = 50
+        query.maxResults = 500
         // DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
         print("0.2 \(self.LastCalander!)")
             print (self.minDate)

@@ -660,7 +660,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     func monther(monthNumber:Int)  {
         let fmt = DateFormatter()
-        fmt.dateFormat = "MM"
+        fmt.dateFormat = "M M"
         monthMMM = fmt.monthSymbols[monthNumber - 1]
         return
     }
