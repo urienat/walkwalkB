@@ -78,7 +78,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jQ1-Rx-gI3" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="102.5" y="122" width="180" height="30"/>
+                                                <rect key="frame" x="111.5" y="122" width="180" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="iaN-1f-Nlc"/>
                                                     <constraint firstAttribute="width" constant="180" id="pgc-V5-7VA"/>
@@ -113,7 +113,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nlo-y1-HI5" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="102.5" y="8" width="124" height="30"/>
+                                                <rect key="frame" x="111.5" y="8" width="124" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="DBN-jM-wD3"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="T2T-lS-tFR"/>
@@ -128,7 +128,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="XXX-XXX-XXXX" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3ey-yI-Stf" customClass="AllowedCharsTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="102.5" y="160" width="124" height="30"/>
+                                                <rect key="frame" x="111.5" y="160" width="124" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="wyT-jT-Qil"/>
                                                 </constraints>
@@ -143,7 +143,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBr-xu-Bqr" userLabel="sendMail">
-                                                <rect key="frame" x="286.5" y="122" width="30" height="30"/>
+                                                <rect key="frame" x="295.5" y="122" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="0i9-9k-Pt3"/>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="30" id="Qvv-Gt-QpU"/>
@@ -154,7 +154,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ohu-yT-NpW" userLabel="makeCall">
-                                                <rect key="frame" x="226.5" y="160" width="30" height="30"/>
+                                                <rect key="frame" x="235.5" y="160" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="30" id="5xw-vY-iA5"/>
                                                     <constraint firstAttribute="height" constant="30" id="lkN-DJ-nnE"/>
@@ -165,7 +165,7 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nxc-fT-4aR" userLabel="Last Name" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="102.5" y="46" width="124" height="30"/>
+                                                <rect key="frame" x="111.5" y="46" width="124" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="O43-UE-AYs"/>
                                                 </constraints>
@@ -178,8 +178,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgN-Sp-vUs">
-                                                <rect key="frame" x="8" y="46" width="85.5" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name*" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgN-Sp-vUs">
+                                                <rect key="frame" x="8" y="46" width="94.5" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Gtu-Hi-5Qt"/>
                                                 </constraints>
@@ -188,7 +188,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Remarks" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9f3-Ix-fua" userLabel="rem" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="102.5" y="236" width="202.5" height="30"/>
+                                                <rect key="frame" x="111.5" y="236" width="193.5" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="xQA-wr-rFV"/>
                                                 </constraints>
@@ -229,7 +229,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="xM3-e2-D0h" userLabel="currencySign">
-                                                <rect key="frame" x="102.5" y="198" width="0.0" height="30"/>
+                                                <rect key="frame" x="111.5" y="198" width="0.0" height="30"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                                 </accessibility>
@@ -241,7 +241,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="right" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="hwh-Qn-68b" customClass="AllowedCharsTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="105.5" y="198" width="56" height="30"/>
+                                                <rect key="frame" x="114.5" y="198" width="56" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="KsT-57-Hws"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="56" id="Ynj-bm-fmx"/>
@@ -257,7 +257,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Clb-ky-rEY" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="102.5" y="84" width="209.5" height="30"/>
+                                                <rect key="frame" x="111.5" y="84" width="200.5" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="ShR-jl-oty"/>
                                                 </constraints>
@@ -270,7 +270,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name &amp; last name  - only obligatory fields" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mf8-Uq-Tl6" userLabel="obligatory">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*  Obligatory fields" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mf8-Uq-Tl6" userLabel="obligatory">
                                                 <rect key="frame" x="4" y="286" width="312" height="19.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="312" id="Dfy-Jw-sja"/>
@@ -286,8 +286,8 @@
                                                     <constraint firstAttribute="width" constant="60" id="IVA-mJ-WTk"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tvj-0H-np8">
-                                                <rect key="frame" x="12" y="8" width="46" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name*" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tvj-0H-np8">
+                                                <rect key="frame" x="12" y="8" width="54.5" height="30"/>
                                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                                 <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1330,7 +1330,7 @@
                                                     <action selector="takePhoto:" destination="bu7-cQ-GBV" eventType="touchUpInside" id="5ih-ak-dlh"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ft4-Fz-x53">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name*" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ft4-Fz-x53">
                                                 <rect key="frame" x="8" y="48" width="92" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="92" id="Deb-Vy-0zJ"/>
@@ -1340,8 +1340,8 @@
                                                 <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zoe-u1-fd0">
-                                                <rect key="frame" x="8" y="10" width="43.5" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name*" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zoe-u1-fd0">
+                                                <rect key="frame" x="8" y="10" width="51.5" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="wci-G1-UCQ"/>
                                                 </constraints>
@@ -1376,8 +1376,8 @@
                                                     <action selector="taxSwitch:" destination="bu7-cQ-GBV" eventType="valueChanged" id="N79-y1-5C5"/>
                                                 </connections>
                                             </switch>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7K-bJ-hKl" userLabel="Password">
-                                                <rect key="frame" x="8" y="124" width="73" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password*" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7K-bJ-hKl" userLabel="Password">
+                                                <rect key="frame" x="8" y="124" width="80.5" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="73" id="79w-WC-Jcu"/>
                                                     <constraint firstAttribute="height" constant="30" id="aCS-Hs-vqb"/>
@@ -1401,8 +1401,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGY-Rx-J7r">
-                                                <rect key="frame" x="8" y="86" width="41" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email*" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGY-Rx-J7r">
+                                                <rect key="frame" x="8" y="86" width="49" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="zMa-yd-1fJ"/>
                                                 </constraints>
@@ -1726,6 +1726,15 @@
                                                 <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*  Obligatory fields" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYr-OB-zn6" userLabel="obligatory">
+                                                <rect key="frame" x="8" y="637" width="312" height="19.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="312" id="Cpy-mC-2od"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="XE2-sS-i4C" firstAttribute="leading" secondItem="eRi-ta-mdX" secondAttribute="leading" id="11d-WP-anE"/>
@@ -1744,6 +1753,7 @@
                                             <constraint firstItem="RzR-xf-ogE" firstAttribute="centerY" secondItem="OXN-FR-NSb" secondAttribute="centerY" id="6TV-Q5-3Ju"/>
                                             <constraint firstItem="CL9-rp-678" firstAttribute="height" secondItem="m6w-AJ-d7e" secondAttribute="height" id="9A2-h1-sEU"/>
                                             <constraint firstItem="X1g-cy-2Lc" firstAttribute="leading" secondItem="m6w-AJ-d7e" secondAttribute="leading" id="9hd-oT-A6G"/>
+                                            <constraint firstItem="dYr-OB-zn6" firstAttribute="centerX" secondItem="MGW-Fk-kb6" secondAttribute="centerX" id="A62-s0-M5Q"/>
                                             <constraint firstItem="dce-An-tH6" firstAttribute="leading" secondItem="voQ-tU-PFp" secondAttribute="leading" id="ARC-zB-qR6"/>
                                             <constraint firstAttribute="trailing" secondItem="03V-OC-j7W" secondAttribute="trailing" constant="14" id="Asw-Lm-gZu"/>
                                             <constraint firstItem="3je-Hd-SEg" firstAttribute="trailing" secondItem="voQ-tU-PFp" secondAttribute="trailing" id="Cnv-pe-87p"/>
@@ -1788,6 +1798,7 @@
                                             <constraint firstItem="25j-eK-VXl" firstAttribute="trailing" secondItem="no1-5P-gIF" secondAttribute="trailing" id="ddp-Jv-LIQ"/>
                                             <constraint firstItem="XCs-4G-KHr" firstAttribute="top" secondItem="d3p-Mh-USA" secondAttribute="top" id="eJ5-Ie-KE3"/>
                                             <constraint firstItem="25j-eK-VXl" firstAttribute="leading" secondItem="Ktd-Fm-ugk" secondAttribute="leading" id="eP2-Vd-6mz"/>
+                                            <constraint firstItem="dYr-OB-zn6" firstAttribute="leading" secondItem="zSX-a2-krK" secondAttribute="leading" id="edm-P1-be0"/>
                                             <constraint firstItem="Ft4-Fz-x53" firstAttribute="leading" secondItem="MGW-Fk-kb6" secondAttribute="leading" constant="8" id="efT-l4-ia8"/>
                                             <constraint firstItem="fDd-KS-fTu" firstAttribute="leading" secondItem="oGz-6p-JzI" secondAttribute="leading" id="fPz-fE-dbp"/>
                                             <constraint firstItem="Y57-Pw-iCW" firstAttribute="leading" secondItem="MGW-Fk-kb6" secondAttribute="leading" constant="20" id="fTe-zG-lTa"/>
@@ -1806,6 +1817,7 @@
                                             <constraint firstItem="abz-bh-Dk7" firstAttribute="centerY" secondItem="Zoe-u1-fd0" secondAttribute="centerY" id="lV6-Az-Qbm"/>
                                             <constraint firstItem="KWf-qy-tLB" firstAttribute="leading" secondItem="CL9-rp-678" secondAttribute="leading" id="lXZ-R8-qK6"/>
                                             <constraint firstItem="m6w-AJ-d7e" firstAttribute="height" secondItem="d3p-Mh-USA" secondAttribute="height" id="ldH-BI-HEF"/>
+                                            <constraint firstItem="dYr-OB-zn6" firstAttribute="top" secondItem="zSX-a2-krK" secondAttribute="bottom" constant="35.5" id="mhg-KH-2K2"/>
                                             <constraint firstItem="Ktd-Fm-ugk" firstAttribute="centerY" secondItem="Ft4-Fz-x53" secondAttribute="centerY" id="nER-Il-pET"/>
                                             <constraint firstItem="Gfv-7f-bWL" firstAttribute="trailing" secondItem="voQ-tU-PFp" secondAttribute="trailing" id="nK9-oj-FDL"/>
                                             <constraint firstItem="eRi-ta-mdX" firstAttribute="leading" secondItem="dce-An-tH6" secondAttribute="leading" id="nOH-zy-tym"/>
@@ -1872,6 +1884,7 @@
                         <outlet property="email" destination="voQ-tU-PFp" id="KQO-dY-XZT"/>
                         <outlet property="lastName" destination="Ktd-Fm-ugk" id="jbU-ah-Egq"/>
                         <outlet property="name" destination="abz-bh-Dk7" id="V8N-SO-u8S"/>
+                        <outlet property="obligatory" destination="dYr-OB-zn6" id="PyG-bt-UEp"/>
                         <outlet property="passWord" destination="03V-OC-j7W" id="rW8-xH-YQA"/>
                         <outlet property="passwordTitle" destination="k7K-bJ-hKl" id="l9i-Iv-EME"/>
                         <outlet property="paypal" destination="CL9-rp-678" id="Fwq-vd-Upc"/>
@@ -3356,7 +3369,6 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="x0P-Ew-8Ag"/>
         <segue reference="kEl-UY-JOa"/>

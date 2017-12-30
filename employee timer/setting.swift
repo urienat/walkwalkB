@@ -33,6 +33,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBOutlet weak var pDogImage: UIImageView!
 
     
+    @IBOutlet weak var obligatory: UILabel!
     @IBOutlet weak var passwordTitle: UILabel!
     @IBOutlet weak var thinking: UIActivityIndicatorView!
     @IBOutlet weak var settingScroller: UIScrollView!
@@ -217,19 +218,11 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.email.text = self.emailUpdate
         self.employeeRefUpdate = user.uid
             
-            currency.isHidden = false
-            taxSwitch.isHidden = false
-            precentage.isHidden = false
-            taxName.isHidden = false;
-            signer.isHidden = false
-            taxerTitle.isHidden = false
-            currencyTitle.isHidden = false
-            taxinfoSign.isHidden = false
+            
             if LoginFile.provider == "facebook" || LoginFile.provider == "Google" {passwordTitle.isHidden = true; reset.isHidden=true; addressConstrain.constant = 8} else {addressConstrain.constant = 46
             passwordTitle.isHidden = false;  reset.isHidden = false}
             passWord.isHidden = true
-            subscriptionBtn.isHidden = false
-            subscriptionLbl.isHidden = false
+
             navigationItem.hidesBackButton = false // set pet list as enable
 
         
@@ -340,20 +333,13 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             keeper.set("", forKey: "passwordKept")
             UserDefaults.standard.synchronize()
 
-            currency.isHidden = true
-            taxSwitch.isHidden = true
-            precentage.isHidden = true
-            taxName.isHidden = true;
-            signer.isHidden = true
-            taxerTitle.isHidden = true
-            currencyTitle.isHidden = true
-            taxinfoSign.isHidden = true
-            reset.isHidden = true
             passWord.isHidden = false
-            subscriptionBtn.isHidden = true
-            subscriptionLbl.isHidden = true
+            reset.isHidden = true
             
-            navigationItem.hidesBackButton = true  // set pet list as disable
+            obligatoryIn()
+            obligatoryOut()
+            
+            navigationItem.hidesBackButton = false  // set pet list as disable
 
             
             let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(accounCreation))
@@ -361,6 +347,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
 
             setting.newEmployee = "NO"
         }else {
+            
             
         }
         
@@ -376,6 +363,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             //{(note)-> void in
             }
 
+      
         
         }//end of viewdid load    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -647,7 +635,20 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         })
         }//end of willhide
     
-    ///alerts
+    func obligatoryIn(){
+        UIView.animate(withDuration: 0.3, animations: {
+            self.obligatory.transform = CGAffineTransform(scaleX: 0.5, y: 0.9)
+        })
+    }
+    
+    // Fade In Buttons
+    func obligatoryOut(){
+        UIView.animate(withDuration: 2.3,delay: 0.3, animations: {
+            self.obligatory.transform = .identity// CGAffineTransformIdentity
+        })
+    }
+    
+    ///alerts///////////////////////////////////////////////////////////////////////////////////
     
     func alert20(){
     let alertController2 = UIAlertController(title: ("Missing fields ") , message: ("Last name is a requiered field."), preferredStyle: .alert)
