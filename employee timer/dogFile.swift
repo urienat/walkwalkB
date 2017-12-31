@@ -162,7 +162,8 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         pDogImage.clipsToBounds = true
         pDogImage.layer.cornerRadius = 30
         
-        let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveToDB(_:)))
+        //let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveToDB(_:)))
+         let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(checkDuplicate))
         navigationItem.rightBarButtonItem = saveRecord
         
         rateTitle.text = "Rate"
@@ -177,6 +178,13 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
     
         func checkDuplicate(){
+            
+        if pRate.text == "" {pRate.text = "0.0"}
+        
+        if self.pLastName.text == "" || self.pName.text == "" {
+        message2 =  "Name & Last name are requiered fields"
+        alert54()
+        } // end of name or  last name is not filled
             
         self.dbRefEmployees.child(employeeID).queryOrderedByValue().observeSingleEvent(of: .value, with: { (snapshot) in
         self.employerArray = snapshot.childSnapshot(forPath: "myEmployers").value! as! [String:Int]
@@ -195,13 +203,15 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         print ("\(self.pName.text!) \(self.pLastName.text!)")
                 
         if self.employerArray3.contains("\(self.pName.text!) \(self.pLastName.text!)") {
-
+            self.message2 = " Can't save account as \(self.pName.text!) \(self.pLastName.text!) account is already set."
             print("contatain"); self.alert54()
         
                 }//if contaons
+        else {}
         })
         }//end of loop
         })
+        
         }//end of func
 
     
@@ -210,15 +220,8 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         func saveToDB(_ sender: AnyObject) {
             
         checkDuplicate()
-        if pRate.text == "" {pRate.text = "0.0"}
-        if pRate.text == "0.0" { messageInstruction = " If you would set rate per Session , you would enjoy bill calculation. Save anyway?"}
-            
-        if self.pLastName.text != "" && self.pName.text != "" {
-        if pRate.text == "0.0"
-        {message2 = messageInstruction} else
-        { message2 = "Are You Sure?"}
-       
-        let alertController = UIAlertController(title: ("Save Setting") , message: self.message2, preferredStyle: .alert)
+        
+        let alertController = UIAlertController(title: ("Save Setting") , message: "Are you Sure?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
         }
         
@@ -286,14 +289,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         alertController.addAction(cancelAction)
         alertController.addAction(updateDBAction)
         self.present(alertController, animated: true, completion: nil)
-        } // end of last name is filled
-        else { //last name is not filled
-        let alertController2 = UIAlertController(title: ("Save Setting") , message: ("Name & Last name are requiered fields"), preferredStyle: .alert)
-        let cancelAction2 = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in
-        }
-        alertController2.addAction(cancelAction2)
-        self.present(alertController2, animated: true, completion: nil)
-        } // end of last name is not filled
+        
         }//end of savetoDB
    
         //photo handling
@@ -574,7 +570,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
     
         func alert54(){
-        let alertController54 = UIAlertController(title: ("Account duplication") , message: " Can't use account with same name.", preferredStyle: .alert)
+        let alertController54 = UIAlertController(title: ("Save error") , message: message2, preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
             
         }
