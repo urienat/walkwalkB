@@ -85,6 +85,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var referenceTxt: UITextField!
     
     @IBAction func savePayment(_ sender: Any) {
+        self.thinking.startAnimating()
+
         paymentReference = referenceTxt.text
         billStatus = "Paid"
         print (paymentSys,paymentReference)
@@ -104,10 +106,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billStatus = "Billed"
     
         print (paymentSys,paymentReference)
-      //  self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
-        self.segmentedPressed = 0
-        self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
-        self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+      refresh(presser: 0)
         
     }
         
@@ -249,6 +248,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
 
         billerConnect.delegate = self
         billerConnect.dataSource = self
+        thinking.hidesWhenStopped = true
     }//end of view did load////////////////////////////////////////////////////////////////////////////////////////////
     
         override func viewDidAppear(_ animated: Bool) {
@@ -497,10 +497,6 @@ print (self.billItems.count)
                  })
         if StatusChoice == "Not Paid"{
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            //self.StatusChosen.isMomentary = true
-           // self.StatusChosen.selectedSegmentIndex = 0
-           // self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-           // self.StatusChosen.isMomentary = false
             self.StatusChosen.isEnabled = true
         }} else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
@@ -609,7 +605,11 @@ print (self.billItems.count)
         }//end of issidemenuhidden
     
     func recieptProcess() {
+        DispatchQueue.main.asyncAfter(deadline: .now()+0){
+        self.thinking.isHidden = false
         self.thinking.startAnimating()
+        }
+        
         fetchBillInfo()
         recieptDate = mydateFormat5.string(from: Date())
         
@@ -625,11 +625,25 @@ print (self.billItems.count)
                 ], withCompletionBlock: { (error) in}) //end of update.
             self.recoveredreciept = self.recieptMailSaver
                 //self.navigationController!.popViewController(animated: true)
-                
+            
+            
+
+            if self.StatusChoice == "Not Paid" {self.refresh(presser: 0)}
+            self.thinking.stopAnimating()
+        
+            
             }//end of if biller
         
         
     }//end of billprocess
+    
+    func refresh(presser:Int){
+        StatusChosen.isMomentary = true
+        segmentedPressed = presser
+        StatusChosen.selectedSegmentIndex = segmentedPressed!
+        StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+        StatusChosen.isMomentary = false
+    }
     
     func fetchBillInfo(){
         self.dbRefEmployees.queryOrderedByKey().queryEqual(toValue: self.employeeID).observeSingleEvent(of: .childAdded, with: { (snapshot) in
@@ -711,10 +725,7 @@ print (self.billItems.count)
         let OkAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
             biller.checkBoxBiller = 1
             //do nothing
-            self.StatusChosen.isMomentary = true
-            self.StatusChosen.selectedSegmentIndex = 1
-            self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-            self.StatusChosen.isMomentary = false
+            self.refresh(presser: 1)
         }
         alertController78.addAction(OkAction)
         self.present(alertController78, animated: true, completion: nil)
@@ -726,10 +737,7 @@ print (self.billItems.count)
             let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
             biller.checkBoxBiller = 1
             //do nothing
-            self.StatusChosen.isMomentary = true
-            self.StatusChosen.selectedSegmentIndex = 1
-            self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-            self.StatusChosen.isMomentary = false
+             self.refresh(presser: 1)
             }
 
             let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
@@ -742,10 +750,7 @@ print (self.billItems.count)
                 self.dbRefEmployees.child(self.employeeID).child("myBills").child(String("-"+self.BillArray[self.buttonRow])).updateChildValues(["fBillStatus": self.statusTemp ,"fBillStatusDate":self.mydateFormat5.string(from: Date()),"fRecieptDate":"","fBillRecieptMailSaver":"","fPaymentMethood" :"","fPaymentReference":""], withCompletionBlock: { (error) in}) //end of update.//was 3
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-            self.StatusChosen.isMomentary = true
-            self.StatusChosen.selectedSegmentIndex = 1
-            self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-            self.StatusChosen.isMomentary = false
+             self.refresh(presser: 1)
             }
             }
             alertController3.addAction(OKAction)
@@ -778,10 +783,7 @@ print (self.billItems.count)
                 else{ self.showSendmailErrorAlert() }
                 
                 DispatchQueue.main.asyncAfter(deadline: .now()+2){
-                    
-                    self.segmentedPressed = 0
-                    self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
-                    self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+                    self.refresh(presser: 0)
                 }
             }
         }
@@ -794,9 +796,7 @@ print (self.billItems.count)
             self.paymentSys = ""
             self.recieptDate = ""
             self.billStatus = "Billed"
-            self.segmentedPressed = 0
-            self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
-            self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+            self.refresh(presser: 0)
         }
         
         alertController19.addAction(OKAction)

@@ -2193,15 +2193,6 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="wjQ-cq-Lhk"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="n0x-Pz-LMA" userLabel="thinking">
-                                <rect key="frame" x="110" y="234" width="100" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="Gcn-L7-jM5"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Kph-XY-fYb"/>
-                                    <constraint firstAttribute="height" constant="100" id="syU-7g-1ly"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="w6E-2j-vcJ"/>
-                                </constraints>
-                            </activityIndicatorView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="dos-vv-upu">
                                 <rect key="frame" x="100" y="40" width="120" height="29"/>
                                 <constraints>
@@ -2495,6 +2486,16 @@
                                     <constraint firstItem="bal-L9-lS9" firstAttribute="centerX" secondItem="vBU-uW-SVk" secondAttribute="centerX" id="wxS-2B-67h"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="n0x-Pz-LMA" userLabel="thinking">
+                                <rect key="frame" x="110" y="234" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Gcn-L7-jM5"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Kph-XY-fYb"/>
+                                    <constraint firstAttribute="height" constant="100" id="syU-7g-1ly"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="w6E-2j-vcJ"/>
+                                </constraints>
+                                <color key="color" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>

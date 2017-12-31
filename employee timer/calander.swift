@@ -123,7 +123,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         helpTxtView.layer.borderColor = blueColor.cgColor
         helpTxtView.layer.cornerRadius =  15//CGFloat(25)
         helpTxtView.layoutIfNeeded()
-        //helpTxtView.layer.masksToBounds = true
         
     }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////
     

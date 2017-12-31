@@ -42,6 +42,10 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     var employerFromMain = ""
     
     var cEmployerRef = ""
+    
+    var employerArray: [String:Int] = [:]
+    var employerArray2: [String] = []
+    var employerArray3: [String] = []
 
     let dbRef = FIRDatabase.database().reference()
     let dbRefEmployers = FIRDatabase.database().reference().child("fEmployers")
@@ -172,10 +176,28 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         super.didReceiveMemoryWarning()
         }
     
+        func checkDuplicate(){
+        self.dbRefEmployees.child(employeeID).queryOrderedByValue().observeSingleEvent(of: .value, with: { (snapshot) in
+        self.employerArray = snapshot.childSnapshot(forPath: "myEmployers").value! as! [String:Int]
+        self.employerArray2 = Array(self.employerArray.keys) // for Dictionary
+
+        for eachEmployer in 0...(self.employerArray2.count-1){
+            self.dbRefEmployers.child(self.employerArray2[eachEmployer]).child("fEmployer").observeSingleEvent(of: .value, with: { (snapshot) in
+        let employerNameforCheck = String(describing: snapshot.value!)
+        let employerLastNameForCheck = String(describing: snapshot.value!)
+        self.employerArray3.append("\(employerNameforCheck) \(employerLastNameForCheck)")
+        })
+        }
+        })
+        let checkAccount = ("\(pName.text) \(pLastName.text)")
+            if checkAccount == accountsArray {alert54()}
+        }
+
     
         func saveToDB(_ sender: AnyObject) {
+            
+        checkDuplicate()
         if pRate.text == "" {pRate.text = "0.0"}
-       
         if pRate.text == "0.0" { messageInstruction = " If you would set rate per Session , you would enjoy bill calculation. Save anyway?"}
             
         if self.pLastName.text != "" && self.pName.text != "" {
@@ -536,6 +558,15 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
                 alertController50.addAction(OKAction)
         self.present(alertController50, animated: true, completion: nil)
+        }
+    
+        func alert54(){
+        let alertController54 = UIAlertController(title: ("Account duplication") , message: " Can't use account with same name.", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            
+        }
+        alertController54.addAction(OKAction)
+        self.present(alertController54, animated: true, completion: nil)
         }
 
 
