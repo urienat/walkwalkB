@@ -23,7 +23,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     var messageInstruction = ""
     var titleInstruction = ""
 
-    
     var adjuster = 0
     
     
@@ -162,8 +161,10 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         pDogImage.clipsToBounds = true
         pDogImage.layer.cornerRadius = 30
         
-        //let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveToDB(_:)))
-         let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(checkDuplicate))
+        let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveProcess))
+        //let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(functionQ(handleComplete:saveToDB)))
+
+        
         navigationItem.rightBarButtonItem = saveRecord
         
         rateTitle.text = "Rate"
@@ -177,9 +178,8 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         super.didReceiveMemoryWarning()
         }
     
-    
-        func checkDuplicate(){
-            
+    func checkDuplicate(handleComplete:(()->())){
+
         if pRate.text == "" {pRate.text = "0.0"}
         
         if self.pLastName.text == "" || self.pName.text == "" {
@@ -208,27 +208,27 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             print("contatain"); self.alert54()
         
                 }//if contaons
-        else {            print ("4")
-}
+        else {
+            if eachEmployer == self.employerArray2.count-1 {self.saveToDB()}
+                }
         })
         }//end of loop
-            print ("2")
-
         })
-            print ("3")
 
-        //self.saveToDB()
-        
-            
         }//end of func
 
-
+    func saveProcess(){
+        self.checkDuplicate() { () -> () in
+            self.saveToDB()
+        }
+    }
+        
     
     
         func saveToDB() {
             
-        checkDuplicate()
-        
+        print ("in savetodb)")
+            
         let alertController = UIAlertController(title: ("Save Setting") , message: "Are you Sure?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
         }
@@ -557,6 +557,8 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.obligatory.transform = .identity// CGAffineTransformIdentity
         })
         }
+    
+    
     
         ///////////////////////////////////////////////////////////////////////////////////////////////////alerts
     
