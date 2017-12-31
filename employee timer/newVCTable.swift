@@ -659,10 +659,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         dbRefEmployers.removeAllObservers()
 
         DispatchQueue.main.asyncAfter(deadline: .now()+3){
-        if self.idArray.isEmpty == true {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
-        print (self.idArray.isEmpty)
+       // if self.idArray.isEmpty == true {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
+       // print (self.idArray.isEmpty)
 
-        if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions"} else if self.eventCounter == 1 {self.eventsLbl.text = "\(String(self.eventCounter)) Due session"} else {self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions"}
+            if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions";self.noSign.isHidden = false} else if self.eventCounter == 1 {self.eventsLbl.text = "\(String(self.eventCounter)) Due session";self.noSign.isHidden = true} else {self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions";self.noSign.isHidden = true}
 
         if self.Status == "All" /*|| self.Status == "Paid"*/{}
         self.calc = (Double(self.eventCounter))*(self.Employerrate)

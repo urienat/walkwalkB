@@ -325,12 +325,14 @@ print (mydateFormat20.date(from: (arrayOfMonths[(taxMonthRow?.row)!])))
                 self.billerConnect.reloadData()
             }//end of if let dic
         })//end of dbref
+
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             if self.billItems.count != self.BillArray.count {
                 print ("Stop")
             }
             
+            if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
             self.thinking.isHidden = true
             self.thinking.stopAnimating()
         }

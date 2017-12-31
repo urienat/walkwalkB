@@ -371,14 +371,18 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             } //end of switch
             
             
-
+print (self.billItems.count)
+            
         if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
+            
         self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
         self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
         self.totalTax.text = "Tax \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
         self.billerConnect.reloadData()
         }//end of if let dic
         })//end of dbref
+            
+
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
         if self.billItems.count != self.BillArray.count {
@@ -387,6 +391,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
 
         self.thinking.isHidden = true
         self.thinking.stopAnimating()
+        if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
+
         self.StatusChosen.isEnabled = true
         }
 
