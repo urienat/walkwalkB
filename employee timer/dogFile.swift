@@ -203,7 +203,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
                 print ("1")
 
                 
-                if self.employerArray3.contains("\(self.pName.text!) \(self.pLastName.text!)") && self.lbl == "New Account" ||  self.lbl != "New Account" && self.employerArray3.contains("\(self.pName.text!) \(self.pLastName.text!)") && ("\(self.pName.text!) \(self.pLastName.text!)") != ("\(self.nameUpdate) \(self.lastNameUpdate)") {
+                if self.employerArray3.contains("\(self.pName.text!) \(self.pLastName.text!)") && self.lbl == "New Account" ||  self.lbl != "New Account" && self.employerArray3.contains("\(self.pName.text!) \(self.pLastName.text!)") &&  ("\(self.pName.text!) \(self.pLastName.text!)") != ("\(self.nameUpdate) \(self.lastNameUpdate)") {
             self.message2 = " Can't save account as \(self.pName.text!) \(self.pLastName.text!) account is already set."
             print("contatain"); self.alert54()
                 }//if contaons
