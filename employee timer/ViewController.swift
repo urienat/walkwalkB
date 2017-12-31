@@ -383,8 +383,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     func importClicked() {performSegue(withIdentifier: "employerForCalander", sender: employerToS)}
     func importAllClicked() {performSegue(withIdentifier: "employerForAllCalander", sender: employerToS)}
     func accountClicked() {performSegue(withIdentifier: "employerForDogFile", sender: employerToS)}
-    func  billsClicked() {performSegue(withIdentifier: "employerForBills", sender: employerToS)}
-    func  profileClicked() {performSegue(withIdentifier: "setting", sender: employerToS)}
+    func billsClicked() {performSegue(withIdentifier: "employerForBills", sender: employerToS)}
+    func profileClicked() {performSegue(withIdentifier: "setting", sender: employerToS)}
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if (segue.identifier == "employerforRecord") {
