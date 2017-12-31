@@ -161,7 +161,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         pDogImage.clipsToBounds = true
         pDogImage.layer.cornerRadius = 30
         
-        let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveProcess))
+        let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(checkDuplicate))
         //let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(functionQ(handleComplete:saveToDB)))
 
         
@@ -178,7 +178,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         super.didReceiveMemoryWarning()
         }
     
-    func checkDuplicate(handleComplete:(()->())){
+    func checkDuplicate(){
 
         if pRate.text == "" {pRate.text = "0.0"}
         
@@ -217,11 +217,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
 
         }//end of func
 
-    func saveProcess(){
-        self.checkDuplicate() { () -> () in
-            self.saveToDB()
-        }
-    }
+    
         
     
     
