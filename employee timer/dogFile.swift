@@ -180,18 +180,30 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.dbRefEmployees.child(employeeID).queryOrderedByValue().observeSingleEvent(of: .value, with: { (snapshot) in
         self.employerArray = snapshot.childSnapshot(forPath: "myEmployers").value! as! [String:Int]
         self.employerArray2 = Array(self.employerArray.keys) // for Dictionary
+            print (self.employerArray)
+            print (self.employerArray2)
+            
 
         for eachEmployer in 0...(self.employerArray2.count-1){
-            self.dbRefEmployers.child(self.employerArray2[eachEmployer]).child("fEmployer").observeSingleEvent(of: .value, with: { (snapshot) in
-        let employerNameforCheck = String(describing: snapshot.value!)
-        let employerLastNameForCheck = String(describing: snapshot.value!)
-        self.employerArray3.append("\(employerNameforCheck) \(employerLastNameForCheck)")
+            self.dbRefEmployers.child(self.employerArray2[eachEmployer]).observeSingleEvent(of: .value, with: { (snapshot) in
+        let employerNameforCheck = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
+        let employerLastNameForCheck = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
+        print (employerNameforCheck,employerLastNameForCheck)
+                
+        self.employerArray3.append("\(employerNameforCheck!) \(employerLastNameForCheck!)")
+        print ("array3c:\(self.employerArray3)")
+        print ("\(self.pName.text!) \(self.pLastName.text!)")
+                
+        if self.employerArray3.contains("\(self.pName.text!) \(self.pLastName.text!)") {
+        //if self.employerArray3.contains("Frank Sinatra") {
+
+            print("contatain"); self.alert54()
+        
+                }//if contaons
         })
-        }
+        }//end of loop
         })
-        let checkAccount = ("\(pName.text) \(pLastName.text)")
-            if checkAccount == accountsArray {alert54()}
-        }
+        }//end of func
 
     
         func saveToDB(_ sender: AnyObject) {
