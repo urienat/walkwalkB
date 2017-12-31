@@ -177,6 +177,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         super.didReceiveMemoryWarning()
         }
     
+    
         func checkDuplicate(){
             
         if pRate.text == "" {pRate.text = "0.0"}
@@ -199,25 +200,32 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         let employerLastNameForCheck = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
                 
         self.employerArray3.append("\(employerNameforCheck!) \(employerLastNameForCheck!)")
-        print ("array3c:\(self.employerArray3)")
-        print ("\(self.pName.text!) \(self.pLastName.text!)")
+                print ("1")
+
                 
         if self.employerArray3.contains("\(self.pName.text!) \(self.pLastName.text!)") {
             self.message2 = " Can't save account as \(self.pName.text!) \(self.pLastName.text!) account is already set."
             print("contatain"); self.alert54()
         
                 }//if contaons
-        else {}
+        else {            print ("4")
+}
         })
         }//end of loop
+            print ("2")
+
         })
+            print ("3")
+
+        //self.saveToDB()
         
+            
         }//end of func
+
 
     
     
-    
-        func saveToDB(_ sender: AnyObject) {
+        func saveToDB() {
             
         checkDuplicate()
         
