@@ -177,6 +177,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
     
         func checkDuplicate(){
+            
         self.dbRefEmployees.child(employeeID).queryOrderedByValue().observeSingleEvent(of: .value, with: { (snapshot) in
         self.employerArray = snapshot.childSnapshot(forPath: "myEmployers").value! as! [String:Int]
         self.employerArray2 = Array(self.employerArray.keys) // for Dictionary
@@ -188,14 +189,12 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             self.dbRefEmployers.child(self.employerArray2[eachEmployer]).observeSingleEvent(of: .value, with: { (snapshot) in
         let employerNameforCheck = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
         let employerLastNameForCheck = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
-        print (employerNameforCheck,employerLastNameForCheck)
                 
         self.employerArray3.append("\(employerNameforCheck!) \(employerLastNameForCheck!)")
         print ("array3c:\(self.employerArray3)")
         print ("\(self.pName.text!) \(self.pLastName.text!)")
                 
         if self.employerArray3.contains("\(self.pName.text!) \(self.pLastName.text!)") {
-        //if self.employerArray3.contains("Frank Sinatra") {
 
             print("contatain"); self.alert54()
         
@@ -205,6 +204,8 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         })
         }//end of func
 
+    
+    
     
         func saveToDB(_ sender: AnyObject) {
             
