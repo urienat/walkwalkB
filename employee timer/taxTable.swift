@@ -39,6 +39,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     var byMonthTotal = [String:Double]()
     var byMonthSessions = [String:Int]()
     var byMonthBills = [String:Int]()
+    var billTxt: String?
 
 
     var arrayOfMonths = [String]()
@@ -233,10 +234,11 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         let totalForMonth =  byMonthTotal[taxMonthItem]!
         let sessionsForMonth =  byMonthSessions[taxMonthItem]!
         let billsForMonth =  byMonthBills[taxMonthItem]!
+        if billsForMonth == 1 {billTxt = "bill"} else {billTxt = "bills"}
 
         cell.backgroundColor = UIColor.clear
         cell.l1.text = arrayOfMonths[indexPath.row]
-        cell.l2.text = "\(billsForMonth) bills - Total \(ViewController.fixedCurrency!)\(totalForMonth)"
+        cell.l2.text = "\(billsForMonth) \(billTxt!) - Total(w/tax): \(ViewController.fixedCurrency!)\(totalForMonth)"
         //cell.l4.text  = ViewController.fixedCurrency
         cell.l3.text = "Tax: \(ViewController.fixedCurrency!)\(String(taxForMonth) as String)"
         return cell
