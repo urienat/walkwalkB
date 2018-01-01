@@ -785,8 +785,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             
         }
     
+   
+    
     func checkDuplicate(){
-        dateDuplicate
+        
+        dateDuplicate that I created
     }
 
   
