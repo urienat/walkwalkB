@@ -191,6 +191,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.employerArray = snapshot.childSnapshot(forPath: "myEmployers").value! as! [String:Int]
         self.employerArray2 = Array(self.employerArray.keys) // for Dictionary
             print (self.employerArray)
+            
             print (self.employerArray2)
             
 

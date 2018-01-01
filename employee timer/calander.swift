@@ -288,11 +288,13 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         self.employerLastNameForGoogle = String(describing: snapshot.value!)
         self.employerArray3[self.employerLastNameForGoogle] = self.employerArray2[eachEmployer]
         print ("tttt1\(self.employerLastNameForGoogle)")
-        })
+            
+       
 
         self.dbRefEmployer.child(self.employerArray2[eachEmployer]).child("fName").observeSingleEvent(of: .value, with: { (snapshot) in
         self.employerNameForGoogle = String(describing: snapshot.value!)
         if  self.employerNameForGoogle != ""   {self.employerArray3[self.employerNameForGoogle] = self.employerArray2[eachEmployer] }
+            
         print ("tttt2\(self.employerNameForGoogle)")
             
         self.employerNameLastNameForGoogle = ("\(self.employerNameForGoogle) \(self.employerLastNameForGoogle)")
@@ -300,7 +302,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         print ("tttt3\(self.employerNameLastNameForGoogle)")
         print("uuuu4\(self.employerArray3)")
         })
-
+        })
         }//end of loop
         })//end of dbref employeeid
         }//end of find

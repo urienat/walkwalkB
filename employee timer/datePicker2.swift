@@ -151,20 +151,22 @@ class datePicker2: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: true)
         
     if recordToHandle == "" {
-    let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fEmployer": String (describing : employerFromMain!),"fIndication3" :"✏️","fStatus" : "Pre","fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID)]
+    let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fEmployer": String (describing : employerFromMain!),"fIndication3" :"✏️","fStatus" : "Approved","fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID)]
     let recordRefence = self.dbRef.childByAutoId()
     recordRefence.setValue(record)
     
     self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-(DatePicker.date.timeIntervalSince1970))])
     self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-(DatePicker.date.timeIntervalSince1970))])
     } else {
-    let record = ["fIn" : mydateFormat5.string(from: DatePicker.date),"fIndication3" :"✏️","fStatus" : "Pre" ]
+    let record = ["fIn" : mydateFormat5.string(from: DatePicker.date),"fIndication3" :"✏️","fStatus" : "Approved" ]
     dbRef.child(recordToHandle).updateChildValues(record)
     self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])
     self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])
     } //end of else
         
-    imageAnimation()
+    //imageAnimation()
+    ViewController.sessionPusher = true
+    self.navigationController!.popViewController(animated: true)
 
     }//end of savetodb2
     
@@ -204,7 +206,7 @@ class datePicker2: UIViewController {
             self.saveRecord?.isEnabled = true
             self.navItem.hidesBackButton = false
 
-            self.navigationController!.popViewController(animated: true)
+            self.navigationController!.popViewController(animated: false)
 
         }}
   ////alerts////////////////////////////////////////////////////////////////////////////////////////////////////////

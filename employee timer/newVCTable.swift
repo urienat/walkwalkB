@@ -238,7 +238,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             btnGeneral.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
             btnGeneral.addTarget(self, action: #selector(alert11), for: .touchUpInside)
             generalItem.customView = btnGeneral
-            navigationItem.rightBarButtonItem = generalItem
+            //navigationItem.rightBarButtonItem = generalItem //to avoid general approval
 
         //formating the date
         mydateFormat3.dateFormat = DateFormatter.dateFormat(fromTemplate: "dd-MMM-yyyy",options: 0, locale: nil)!

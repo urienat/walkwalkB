@@ -28,7 +28,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     static var fixedLastName:String!
     static var fixedemail:String!
     static var dateTimeFormat:String!
-    static var refresh:Bool?
+    static var refresh:Bool? = false
+    static var sessionPusher:Bool?
 
     var RateUpdate = 0.0
     var newRegister = ""
@@ -186,18 +187,21 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     //start timer action
     @IBAction func Start(_ sender: AnyObject) {
     textAdd.text = "Session added: \r\n\( mydateFormat7.string(from: Date()))"
-    self.postRoundView()
+    //self.postRoundView()
         
     self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").updateChildValues([(self.employerIDToS):1]) //consider chane font color
     dIn =  mydateFormat5.string(from: Date()) //brings the a date as a string
     dIn2 = mydateFormat2.string(from: Date()) //brings the a date as a string
     
-    let record = ["fIn" : dIn,"fIndication3": "↺", "fEmployer": String (describing : employerToS),"fEmployeeRef": employeeIDToS,"fEmployerRef": employerIDToS,"fStatus" : "Pre"]
+    let record = ["fIn" : dIn,"fIndication3": "↺", "fEmployer": String (describing : employerToS),"fEmployeeRef": employeeIDToS,"fEmployerRef": employerIDToS,"fStatus" : "Approved"]
     let fInRef = dbRef.childByAutoId()
     fInRef.setValue(record)
         
     self.dbRefEmployee.child(self.employeeIDToS).child("fEmployeeRecords").updateChildValues([fInRef.key:Int(-(self.mydateFormat5.date(from: self.dIn)?.timeIntervalSince1970)!)])
     self.dbRefEmployer.child(self.employerIDToS).child("fEmployerRecords").updateChildValues([fInRef.key:Int(-(self.mydateFormat5.date(from: self.dIn)?.timeIntervalSince1970)!)])
+        
+    self.recordsClicked()
+        
     }//end of start
     
     override func viewDidLoad() {  //view did load/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -293,11 +297,12 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
     blackView.addGestureRecognizer(tap)
     blackView.isUserInteractionEnabled = true
-        
+    ViewController.sessionPusher = false
 
     }// end of viewdidload//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    
     override func viewDidAppear(_ animated: Bool) {
+        
 
     let connectedRef = FIRDatabase.database().reference(withPath: ".info/connected")
     connectedRef.observe(.value, with: { snapshot in
@@ -318,12 +323,18 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     ViewController.refresh = false
     }
         
+       
+    
+    if ViewController.sessionPusher! == true {ViewController.sessionPusher = false;
+    self.recordsClicked()}
+        
     }//end of view did appear
 
    
     //check subscription
     func checkSubs()
-    {print(ViewController.checkSubOnce!,self.employerIdArray2.count)
+    {/*
+    print(ViewController.checkSubOnce!,self.employerIdArray2.count)
     if ViewController.checkSubOnce == 1 && self.employerIdArray2.count > 3 || self.employerIdArray2.count > 2 && addDog == 1    { RebeloperStore.shared.verifyRenewablePurchase(.autoRenewableSubscription1) { (result, resultString) in
     print( result)
     if result == false { ViewController.checkSubOnce = 1;print ("no subscription"); self.alert83() //uncomment to make sure there is a subbscription check
@@ -334,6 +345,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }else {ViewController.checkSubOnce = 2}// alreadu checked checksubonce = 2 or count <2
     ViewController.checkSubOnce = 2//uncomment to enable check
     addDog = 0
+ */
     }//end of func
   
     //Check if user does exists
@@ -547,6 +559,9 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     addAmanualRecord.isHidden = true
     animationImage.isHidden = true
     }//end of func
+    
+    func postRound(){
+    }
     
         func postRoundView() {
         //self.account.isEnabled = true
