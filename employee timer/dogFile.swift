@@ -318,7 +318,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
         //sourcePicker
             func sourcePicPicker(){
-            let picSource = UIAlertController(title: ("Add Pet's Picture") , message: (""), preferredStyle: .alert)
+            let picSource = UIAlertController(title: ("Add Picture") , message: (""), preferredStyle: .alert)
             let cameraAction = UIAlertAction(title: "Camera", style: .default) { (UIAlertAction) in
             self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
             self.present(self.imagePicker, animated:  true, completion: nil)

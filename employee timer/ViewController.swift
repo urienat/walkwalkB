@@ -70,6 +70,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var methood = "Normal"
     var pickerlabel =  UILabel.self
     static var calanderOption: String?
+    static var taxOption : String?
     
     @IBOutlet weak var thinking2: UIActivityIndicatorView!
     @IBOutlet weak var employerList: UITableView!
@@ -149,7 +150,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     @IBAction func taxationBtn(_ sender: Any) {
     sideMenuMovement()
-    performSegue(withIdentifier: "employerForTax", sender: employerToS)
+        if ViewController.taxOption == "No" {self.alert47()} else {
+    performSegue(withIdentifier: "employerForTax", sender: employerToS)}
     }
     
     @IBAction func importAllBtn(_ sender: Any) {
@@ -259,6 +261,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     ViewController.fixedemail =  String(describing: snapshot.childSnapshot(forPath: "femail").value!) as String
     ViewController.dateTimeFormat =  String(describing: snapshot.childSnapshot(forPath: "fDateTime").value!) as String
     ViewController.calanderOption =  String(describing: snapshot.childSnapshot(forPath: "fCalander").value!) as String
+    ViewController.taxOption = String(describing: snapshot.childSnapshot(forPath: "fSwitcher").value!) as String
 
     })
     } else {
@@ -730,6 +733,19 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     alertController32.addAction(OKAction)
     alertController32.addAction(cancelAction)
     self.present(alertController32, animated: true, completion: nil)
+    }
+    
+    func alert47(){
+        let alertController47 = UIAlertController(title: ("Tax") , message: " Tax defintions are missing in your 'Setting'. Define it? ", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            self.profileClicked()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Not now", style: .cancel) { (UIAlertAction) in
+        }
+        alertController47.addAction(OKAction)
+        alertController47.addAction(cancelAction)
+        self.present(alertController47, animated: true, completion: nil)
     }
     
 }/////////////end!!!!!////////////////////////////////////////////////////////////////////////////////////////////////

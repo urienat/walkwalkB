@@ -508,6 +508,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             }//end of uploadtask   
             
         ViewController.fixedCurrency = self.currency.text!
+            ViewController.taxOption = self.taxSwitcherUpdate
         self.navigationController!.popViewController(animated: true)
 
        
@@ -548,32 +549,6 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             picSource.addAction(cameraAction)
             self.present(picSource, animated: true, completion: nil)
             }
-
-    
-    //invitation
-        func invitation() {
-        let alertController2 = UIAlertController(title: ("Invitation") , message: ("Send app link for your pet care?"), preferredStyle: .alert)
-        let cancelAction2 = UIAlertAction(title: "No", style: .cancel) { (UIAlertAction2) in
-        self.navigationController!.popViewController(animated: true)
-        }//end of cancel
-        let updateDBAction2 = UIAlertAction(title: "Yes", style: .default) { (UIAlertAction2) in
-        self.sendMessage()
-        self.navigationController!.popViewController(animated: true)
-        }//end of update DBA
-            
-        alertController2.addAction(cancelAction2)
-        alertController2.addAction(updateDBAction2)
-        self.present(alertController2, animated: true, completion: nil)
-        }
-    
-    //sms
-        func sendMessage() {
-        let messageVC = MFMessageComposeViewController()
-        messageVC.body = " Hi \(self.nameUpdate), I am sending you a link for PerSession application. This way we'll be in touch over my pet care responsibilites."
-       // messageVC.recipients = [self.cellUpdate]
-        messageVC.messageComposeDelegate = self
-        present(messageVC, animated: true, completion: nil)
-        }
     
         
         func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
@@ -684,7 +659,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     }
     
     func alert17(){
-    let alertController17 = UIAlertController(title: ("Taxation") , message: "The precentage of tax you chose would add on top of your pet's bill for 'Over' and would be deducted from your rate for 'Included'. ", preferredStyle: .alert)
+    let alertController17 = UIAlertController(title: ("Taxation") , message: "The precentage of tax you chose would add on top of your bill for 'Over' and would be deducted from your rate for 'Included'. ", preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
     }
     alertController17.addAction(OKAction)
