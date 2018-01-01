@@ -510,7 +510,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.thinking2.stopAnimating()
 
     self.employerList.isUserInteractionEnabled = true
-    if self.employerIdArray2.count < 5 {self.employerListHeiget.priority = 1000 ;self.employerListBottom.priority = 750;self.employerListTop.constant = 60.0; self.employerListHeiget.constant = 265;self.employerListBottom.constant = 285} else {self.employerListBottom.priority = 750; self.employerListHeiget.priority = 1000;self.employerListTop.constant = 30.0;self.employerListHeiget.constant = 315;self.employerListBottom.constant = 285 }
+    self.employerListBottom.priority = 750; self.employerListHeiget.priority = 1000;self.employerListTop.constant = 30.0;self.employerListBottom.constant = 30
         self.employerList.reloadData()
         
         self.employerList.isHidden = false;
