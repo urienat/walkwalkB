@@ -142,9 +142,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
         // Construct a query and get a list of upcoming events
         func fetchEvents() {
-        DispatchQueue.main.asyncAfter(deadline: .now()+0){
         self.navigationItem.setHidesBackButton(true, animated:true);
-        }
         
         let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")// instard of "primary"
         query.maxResults = 500
@@ -283,8 +281,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         employerArray3.removeAll()
         employerArray2.removeAll()
         employerArray.removeAll()
-            
-            
 
         self.dbRefEmployee.child(employeeId).queryOrderedByValue().observeSingleEvent(of: .value, with: { (snapshot) in
         self.employerArray = snapshot.childSnapshot(forPath: "myEmployers").value! as! [String:Int]
@@ -293,7 +289,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         print ("match")
            
             
-            
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
         for eachEmployer in 0...(self.employerArray2.count-1){
             print ("eachEmployer\(eachEmployer)")
 
@@ -309,6 +305,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
         })
         }//end of loop
+        }//end of dispatch
         })//end of dbref employeeid
         }//end of find
     
@@ -371,12 +368,16 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
             let spesificAction = UIAlertAction(title: "Import \(employerFromMain)'s only", style: .default) { (UIAlertAction) in
             self.spesific = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
             self.fetchEvents()
+            }
             }
 
             let allAction = UIAlertAction(title: "Import all accounts", style: .default) { (UIAlertAction) in
             self.spesific = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
             self.fetchEvents()
+            }
             }
             
             let helpAction = UIAlertAction(title: "Help", style: .default) { (UIAlertAction) in
