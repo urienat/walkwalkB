@@ -35,21 +35,6 @@ extension(ViewController){
 
             employerToS = pickerData[indexPath.row]
 
-            if pickerData[indexPath.row] == "Add new dog" {
-            ViewController.checkSubOnce = 1
-            addDog = 1
-
-            DispatchQueue.main.async {
-            self.checkSubs()
-            }
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-            print (ViewController.checkSubOnce!)
-            if ViewController.checkSubOnce == 2 {
-            print (self.employerToS)
-            self.records.isEnabled = false;self.employerToS = "Add new dog" ; self.performSegue(withIdentifier: "employerForDogFile", sender: self.employerToS) }
-            }//end of dispatch
-            }else{
             employerIDToS = employerIdArray2[indexPath.row] as! String
             bringEmployerData()
             if activeData[indexPath.row] != "0" {self.thinking2.stopAnimating(); preStartView()}
@@ -58,7 +43,6 @@ extension(ViewController){
             //set variable for Segue
             employerToS = pickerData[indexPath.row]
             chooseEmployer.isHidden = false
-            }//end of else of  == add new dog
 
             }//end of did select
 

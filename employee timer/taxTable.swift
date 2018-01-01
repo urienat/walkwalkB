@@ -229,18 +229,21 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         let cell = billerConnect.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! taxerCell
         print (uniqueTaxMonths)
         
+//set the in filter
+        
         let taxMonthItem = arrayOfMonths[indexPath.row]
+        print ("taxMonthItem\(taxMonthItem)")
         let taxForMonth =  byMonthTax[taxMonthItem]!
         let totalForMonth =  byMonthTotal[taxMonthItem]!
         let sessionsForMonth =  byMonthSessions[taxMonthItem]!
         let billsForMonth =  byMonthBills[taxMonthItem]!
-        if billsForMonth == 1 {billTxt = "bill"} else {billTxt = "bills"}
+            if billsForMonth == 1 {billTxt = "bill"} else {billTxt = "bills"}
 
         cell.backgroundColor = UIColor.clear
         cell.l1.text = arrayOfMonths[indexPath.row]
         cell.l2.text = "\(billsForMonth) \(billTxt!) - Total(w/tax): \(ViewController.fixedCurrency!)\(totalForMonth)"
         //cell.l4.text  = ViewController.fixedCurrency
-        cell.l3.text = "Tax: \(ViewController.fixedCurrency!)\(String(taxForMonth) as String)"
+            cell.l3.text = "Tax: \(ViewController.fixedCurrency!)\(String(taxForMonth) as String)"
         return cell
     }
     
@@ -341,9 +344,9 @@ print (mydateFormat20.date(from: (arrayOfMonths[(taxMonthRow?.row)!])))
                 
                 
                 if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
-                self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
-                self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
-                self.totalTax.text = "Tax \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
+                self.totalBills.text = "\(String(describing: self.billCounter)) Bills - Total(w/Tax): \(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
+                self.totalAmount.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
+                //self.totalTax.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
                 self.billerConnect.reloadData()
             }//end of if let dic
         })//end of dbref

@@ -3139,13 +3139,12 @@
                                 <rect key="frame" x="0.0" y="464" width="320" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="11P-Mq-cL7" userLabel="totalBills">
-                                        <rect key="frame" x="8" y="4" width="150" height="25"/>
+                                        <rect key="frame" x="8" y="17.5" width="13" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="Tke-sZ-FUZ"/>
                                             <constraint firstAttribute="height" constant="25" id="eLM-Qc-buI"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="25"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="6kr-dn-xOY" userLabel="totalAmount">
@@ -3158,20 +3157,19 @@
                                         <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="30"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="0Mo-TX-GXF" userLabel="totalTax">
-                                        <rect key="frame" x="8" y="31" width="140" height="25"/>
+                                    <textField hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="0Mo-TX-GXF" userLabel="totalTax">
+                                        <rect key="frame" x="8" y="31" width="13" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="140" id="9Po-YG-1u5"/>
                                             <constraint firstAttribute="height" constant="25" id="UDK-23-v75"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="25"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="11P-Mq-cL7" firstAttribute="top" secondItem="Mxy-Rp-79V" secondAttribute="top" constant="4" id="4Nf-D2-TI3"/>
+                                    <constraint firstItem="11P-Mq-cL7" firstAttribute="centerY" secondItem="Mxy-Rp-79V" secondAttribute="centerY" id="23A-KC-b5P"/>
                                     <constraint firstItem="0Mo-TX-GXF" firstAttribute="leading" secondItem="11P-Mq-cL7" secondAttribute="leading" id="92q-By-epC"/>
                                     <constraint firstAttribute="height" constant="60" id="Ijq-Jc-qRK"/>
                                     <constraint firstAttribute="trailing" secondItem="6kr-dn-xOY" secondAttribute="trailing" constant="4" id="Va7-1A-ov6"/>

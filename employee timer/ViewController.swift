@@ -34,7 +34,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var RateUpdate = 0.0
     var newRegister = ""
     var alive:Bool?
-    static var checkSubOnce: Int?
     var addDog: Int?
     var tableRowHeight:Int?
 
@@ -113,7 +112,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     print ("add")
     arrow.isHidden = true
     employerToS = "Add new dog"
-    accountClicked()
+        if employerIdArray.count > 2 {checkSubs()} else {
+            accountClicked() }
     }
 
     @IBOutlet weak var startButton: UIButton!
@@ -218,7 +218,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     bills.isEnabled = false
     account.isEnabled = false
         
-    ViewController.checkSubOnce = 1
     DateIn.text = ""
     self.employerList.separatorColor = blueColor
 
@@ -335,20 +334,16 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
 
    
     //check subscription
-    func checkSubs()
-    {/*
-    print(ViewController.checkSubOnce!,self.employerIdArray2.count)
-    if ViewController.checkSubOnce == 1 && self.employerIdArray2.count > 3 || self.employerIdArray2.count > 2 && addDog == 1    { RebeloperStore.shared.verifyRenewablePurchase(.autoRenewableSubscription1) { (result, resultString) in
+    func checkSubs(){
+    RebeloperStore.shared.verifyRenewablePurchase(.autoRenewableSubscription1) { (result, resultString) in
     print( result)
-    if result == false { ViewController.checkSubOnce = 1;print ("no subscription"); self.alert83() //uncomment to make sure there is a subbscription check
+    if result == false {print ("no subscription"); self.alert83()
     }
-    else {ViewController.checkSubOnce = 2} //end of else  meaning there is subscription
+    else {
+        //do nothing
+        } //end of else  meaning there is subscription
     }//end of subscription result check
-            
-    }else {ViewController.checkSubOnce = 2}// alreadu checked checksubonce = 2 or count <2
-    ViewController.checkSubOnce = 2//uncomment to enable check
-    addDog = 0
- */
+ 
     }//end of func
   
     //Check if user does exists
@@ -517,7 +512,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.employerList.isUserInteractionEnabled = true
     if self.employerIdArray2.count < 5 {self.employerListHeiget.priority = 1000 ;self.employerListBottom.priority = 750;self.employerListTop.constant = 60.0; self.employerListHeiget.constant = 265;self.employerListBottom.constant = 285} else {self.employerListBottom.priority = 750; self.employerListHeiget.priority = 1000;self.employerListTop.constant = 30.0;self.employerListHeiget.constant = 315;self.employerListBottom.constant = 285 }
         self.employerList.reloadData()
-      self.checkSubs()
         
         self.employerList.isHidden = false;
         self.postTimerView()//check if solve the bug of view interaction
@@ -689,15 +683,13 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////alerts
     func  alert83(){
-    let alertController83 = UIAlertController(title: ("Subscription alert") , message: " Adding more than two accounts requires subscription and we couldn't find one. please subscribe with free trial or log again if you have one.", preferredStyle: .alert)
+    let alertController83 = UIAlertController(title: ("Subscription alert") , message: " Adding more accounts requires subscription and we couldn't find one. please subscribe with free trial or log again if you have one.", preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         self.present((storyboard.instantiateViewController(withIdentifier: "subScreen")), animated: true, completion: nil)
     }
     
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
-    ViewController.checkSubOnce = 0
-    self.addDog = 1
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     self.present((storyboard.instantiateViewController(withIdentifier: "subScreen")), animated: true, completion: nil)
     }

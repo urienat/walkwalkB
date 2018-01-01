@@ -105,18 +105,14 @@ class subs: UIViewController {
         
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        if ViewController.checkSubOnce == 3  {
-        
+                
         //let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let homeViewController  =  storyboard.instantiateViewController(withIdentifier: "homeScreen")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
             self.window?.rootViewController = homeViewController
-            ViewController.checkSubOnce = 2
             self.present((storyboard.instantiateViewController(withIdentifier: "homeScreen")), animated: true, completion: nil)
             
         }
-        }//end of if
     }//end of view did appear
 
     func updateUI() {

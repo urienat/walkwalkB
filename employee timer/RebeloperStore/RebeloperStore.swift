@@ -709,7 +709,6 @@ class RebeloperStore  {
             switch purchaseResult {
             case .purchased(let expiresDate):
               print("Product till'\(AppBundleId).\(expiresDate)")
-              //ViewController.checkSubOnce = true
 
               
               completion(true, "Valid:\(mydateFormat.string(from: expiresDate))")
@@ -951,7 +950,6 @@ class RebeloperStore  {
     switch result {
     case .success(let productId):
       print("Purchase Success: \(productId)")
-      ViewController.checkSubOnce = 3
       saveRealPurchaseIntoRebeloperStoreKeychain(productId)
       NotificationCenter.default.post(name: NSNotification.Name(rawValue: iAPStatusChanged), object: nil)
       
