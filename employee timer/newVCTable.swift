@@ -86,6 +86,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var FbArray2: [String] = []
 
     var idArray: [String] = []
+    var dateDuplicate: [String] = []
     var appArray: [String] = []
     var Status: String = "Pre"
     let cellId =  "cellId"
@@ -505,6 +506,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         func fetch()  {
         
         eventCounter = 0
+        self.dateDuplicate.removeAll()
         self.idArray.removeAll()
         self.appArray.removeAll()
         self.records.removeAll()
@@ -560,7 +562,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         //array for record ID
         let id = snapshot.key
         let appStatus = record.fStatus
-            if record.fStatus == "Approved" {self.eventCounter+=1}
+        let dateDuplicate = record.fIn
+            
+        if record.fStatus == "Approved" {self.eventCounter+=1}
 
         let period: Int = 5//self.periodChosen.selectedSegmentIndex
                         
@@ -577,14 +581,17 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
         self.currentMonth = today.month!
         self.currentYear = today.year!
+            
+            
 
                         
         func cases() {
         self.currentYear = today.year!
-        //self.currentYearForWeek = today.yearForWeekOfYear!
         self.records.append(record)
         self.idArray.append(id)
+        self.dateDuplicate.append(dateDuplicate!)
         self.appArray.append(appStatus!)
+            
         self.tableConnect.reloadData()
          
         if ViewController.dateTimeFormat == "DateTime" {"\(self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n")
@@ -777,6 +784,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             paymentView.isHidden = false
             
         }
+    
+    func checkDuplicate(){
+        dateDuplicate
+    }
 
   
     // alerts/////////////////////////////////////////////////////////////////////////////////////

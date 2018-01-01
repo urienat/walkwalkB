@@ -554,7 +554,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
         // alert6
         func alert6 () {
-        let alertCotroller6 = UIAlertController(title: ("Rate change") , message: ("If there are \(employerFromMain)'s sessions not yet billed, new rate would affect."), preferredStyle: .alert)
+        let alertCotroller6 = UIAlertController(title: ("Rate change") , message: ("If there are \(employerFromMain)'s session not yet billed, new rate would affect it."), preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK. I am aware.", style: .default) { (UIAlertAction) in
             self.navigationItem.rightBarButtonItem?.isEnabled = true
 
