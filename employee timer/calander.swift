@@ -25,6 +25,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     let mydateFormat9 = DateFormatter()
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
 
+    @IBOutlet weak var navBar: UINavigationItem!
     
     var calIn = ""
     var calInFB = ""
@@ -141,6 +142,10 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
         // Construct a query and get a list of upcoming events
         func fetchEvents() {
+        DispatchQueue.main.asyncAfter(deadline: .now()+0){
+        self.navigationItem.setHidesBackButton(true, animated:true);
+        }
+        
         let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")// instard of "primary"
         query.maxResults = 500
         // DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
@@ -224,9 +229,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 
             }
             else {textAdd.text = "\(self.eventCounterBlock) for \(employerFromMain) imported from calander"}
+            
             self.animation()
             DispatchQueue.main.asyncAfter(deadline: .now()+3){
             self.navigationController!.popViewController(animated: true)
+                
             }
             }//end of function
     
