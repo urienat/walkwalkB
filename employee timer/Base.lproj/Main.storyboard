@@ -1184,7 +1184,7 @@
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5k-f3-cxx" userLabel="helpText">
                                         <rect key="frame" x="15" y="15" width="260" height="330"/>
-                                        <mutableString key="text">                   Import sessions from calander is a very powerfull tool.    Only past sessions are imported and only if 'name+space+last name' match calandr exactly.   After import process is completed a '+' sign is added to calanders' events to avoid double import.</mutableString>
+                                        <string key="text">                   Import sessions from calander is a very powerfull tool.    Only past sessions are imported and only if 'name+space+last name' match calandr exactly.   After import process is completed a '+' sign is added to calanders' events to avoid double import.</string>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>

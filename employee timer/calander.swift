@@ -294,9 +294,12 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         self.employerLastNameForGoogle = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
         self.employerNameForGoogle = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
     
+        print ("eachEmployerB\(eachEmployer)")
+        print ("self.employerArray2[eachEmployer]\(self.employerArray2[eachEmployer])")
 
         self.employerArray3[("\(self.employerNameForGoogle) \(self.employerLastNameForGoogle)")] = self.employerArray2[eachEmployer]
         print ("array3\(self.employerArray3)")
+
         })
         }//end of loop
         })//end of dbref employeeid

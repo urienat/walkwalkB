@@ -36,6 +36,11 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     var filterDecided :Int = 0
     
     var byMonthTax = [String:Double]()
+    var byMonthTotal = [String:Double]()
+    var byMonthSessions = [String:Int]()
+    var byMonthBills = [String:Int]()
+
+
     var arrayOfMonths = [String]()
     var uniqueTaxMonths = [String]()
     var monthSorter = [String]()
@@ -225,6 +230,10 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         
         let taxMonthItem = arrayOfMonths[indexPath.row]
         let taxForMonth =  byMonthTax[taxMonthItem]!
+        let totalForMonth =  byMonthTotal[taxMonthItem]!
+        let sessionsForMonth =  byMonthSessions[taxMonthItem]!
+        let billsForMonth =  byMonthBills[taxMonthItem]!
+
         cell.backgroundColor = UIColor.clear
         cell.l1.text = arrayOfMonths[indexPath.row]
         cell.l4.text  = ViewController.fixedCurrency
@@ -268,6 +277,9 @@ print (mydateFormat20.date(from: (arrayOfMonths[(taxMonthRow?.row)!])))
         BillArrayStatus.removeAll()
         arrayOfMonths.removeAll()
         byMonthTax.removeAll()
+        byMonthSessions.removeAll()
+        byMonthTotal.removeAll()
+        byMonthBills.removeAll()
         uniqueTaxMonths.removeAll()
         self.billCounter = 0
         self.taxCounter = 0
@@ -288,9 +300,16 @@ print (mydateFormat20.date(from: (arrayOfMonths[(taxMonthRow?.row)!])))
                 func inFilter() {
                     if billItem.fBillStatus != "Cancelled"{
                     if self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] == nil {
-                        self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTax!)!
+                        self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTax!)!;
+                        self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTotalTotal!)!;
+                        self.byMonthSessions[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Int(billItem.fBillEvents!)!
+                        self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = 1
+
                     }else{
-                        self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTax!)!
+                        self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTax!)!;
+                        self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTotalTotal!)!;
+                         self.byMonthSessions[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthSessions[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Int(billItem.fBillEvents!)!
+                        self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + 1
                         }
                         }
                     
