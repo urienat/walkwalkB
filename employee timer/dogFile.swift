@@ -544,6 +544,19 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
         ///////////////////////////////////////////////////////////////////////////////////////////////////alerts
     
+        // alert6
+        func alert6 () {
+        let alertCotroller6 = UIAlertController(title: ("Financial effect change") , message: ("Changes made in tax fields are effective from now onto sessions not billed yet billed.  "), preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK. I am aware.", style: .cancel) { (UIAlertAction) in
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+        }
+        alertCotroller6.addAction(okAction)
+        alertCotroller6.addAction(cancelAction)
+
+        present(alertCotroller6, animated: true, completion: nil)
+        }//alert end
+    
         func alert30(){
         let alertController30 = UIAlertController(title: ("No connection") , message: "Currently there is no connection with database. Please try later.", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in

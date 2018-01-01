@@ -118,8 +118,10 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         case 0:
             taxCalacUpdate = "Included"
             
+            
         case 1:
             taxCalacUpdate = "Over"
+            
             
         default:
             print("nothing")
@@ -234,7 +236,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         print ("user\(user)!")
         print ("email\(user.email!)!")
             
-            let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveToDB(_:)))
+            let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(finChangeHappend))
             navigationItem.rightBarButtonItem = saveRecord
                 
             self.dbRefEmployees.queryOrderedByKey().queryEqual(toValue: user.uid).observeSingleEvent(of: .childAdded, with: { (snapshot) in
@@ -472,8 +474,18 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
 
     }//end of account creation
+    
+    func finChangeHappend(){
+        self.dbRefEmployees.queryOrderedByKey().queryEqual(toValue: self.employeeRefUpdate).observeSingleEvent(of: .childAdded, with: { (snapshot) in
+            if  (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String) != self.taxCalacUpdate  ||
+           snapshot.childSnapshot(forPath: "fSwitcher").value as! String !=  self.taxSwitcherUpdate ||
+            snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String  != self.precentage.text!  ||
+            snapshot.childSnapshot(forPath: "fTaxName").value as! String != self.taxName.text!
+            { self.saveToDB() } else {self.alert6()}
+        })
+    }
 
-        func saveToDB(_ sender: AnyObject) {
+        func saveToDB() {
         ViewController.dateTimeFormat = self.dateTimeUpdate
         ViewController.calanderOption = self.calanderUpdate
 
@@ -633,7 +645,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     ///alerts///////////////////////////////////////////////////////////////////////////////////
     
     func alert20(){
-    let alertController2 = UIAlertController(title: ("Missing fields ") , message: ("Last name is a requiered field."), preferredStyle: .alert)
+    let alertController2 = UIAlertController(title: ("Missing fields ") , message: ("Name and last name is a requiered field."), preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
     }
     alertController2.addAction(OKAction)
@@ -651,7 +663,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
     
     func alert16(){
-    let alertController16 = UIAlertController(title: ("Program") , message: "Intially you would enroll into a three months free trial program. Then you can choose to enroll into a monthly subscription of $2.99 per month.", preferredStyle: .alert)
+    let alertController16 = UIAlertController(title: ("Program") , message: "Intially you would enroll into a month of free trial program. Then you can choose to enroll into a monthly subscription of $2.99 per month.", preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
     }
     alertController16.addAction(OKAction)
@@ -699,6 +711,20 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     }
     alertCotroller4.addAction(okAction1)
     present(alertCotroller4, animated: true, completion: nil)
+    }//alert end
+    
+    // alert6
+    func alert6 () {
+        let alertCotroller6 = UIAlertController(title: ("Financial effect change") , message: ("Changes made in tax fields are effective from now on, to sessions not yet billed."), preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK. I am aware.", style: .default) { (UIAlertAction) in
+            self.saveToDB()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+        }
+        alertCotroller6.addAction(okAction)
+        alertCotroller6.addAction(cancelAction)
+
+        present(alertCotroller6, animated: true, completion: nil)
     }//alert end
     
     // alert70
