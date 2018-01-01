@@ -55,6 +55,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     var beginDate = Date()
     var helpText : UITextField?
     
+    @IBOutlet var thinking: UIActivityIndicatorView!
     @IBOutlet weak var helpBackground: UIView!
     
     @IBAction func doneHelp(_ sender: Any) {
@@ -124,6 +125,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         helpTxtView.layer.borderColor = blueColor.cgColor
         helpTxtView.layer.cornerRadius =  15//CGFloat(25)
         helpTxtView.layoutIfNeeded()
+        thinking.hidesWhenStopped = true
+
         
     }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////
     
@@ -227,7 +230,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 
             }
             else {textAdd.text = "\(self.eventCounterBlock) for \(employerFromMain) imported from calander"}
-            
+            thinking.stopAnimating()
+
             self.animation()
             DispatchQueue.main.asyncAfter(deadline: .now()+3){
             self.navigationController!.popViewController(animated: true)
@@ -368,6 +372,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
             let spesificAction = UIAlertAction(title: "Import \(employerFromMain)'s only", style: .default) { (UIAlertAction) in
             self.spesific = true
+                self.thinking.startAnimating()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
             self.fetchEvents()
             }
@@ -375,6 +380,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
             let allAction = UIAlertAction(title: "Import all accounts", style: .default) { (UIAlertAction) in
             self.spesific = false
+                self.thinking.startAnimating()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
             self.fetchEvents()
             }
