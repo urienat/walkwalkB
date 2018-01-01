@@ -179,6 +179,9 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
     
     func checkDuplicate(){
+        employerArray.removeAll()
+        employerArray2.removeAll()
+        employerArray3.removeAll()
 
         if pRate.text == "" {pRate.text = "0.0"}
         

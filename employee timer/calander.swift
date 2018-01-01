@@ -218,14 +218,14 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             }//end of for event
             }//end of if let event
             
-            if eventCounter == 0 {animationImage.isHidden = true; self.eventCounterBlock = "No sessions" }else if eventCounter == 1 {animationImage.isHidden = false; self.eventCounterBlock = "One session"} else {self.eventCounterBlock = "\(String(self.eventCounter)) sessions" }
+            if eventCounter == 0 {animationImage.isHidden = true; self.eventCounterBlock = "No sessions" ;ViewController.sessionPusher = false}else if eventCounter == 1 {animationImage.isHidden = false; self.eventCounterBlock = "One session";ViewController.sessionPusher = true} else {self.eventCounterBlock = "\(String(self.eventCounter)) sessions";ViewController.sessionPusher = true }
             // save last date
-            if spesific == false {textAdd.text = "\(self.eventCounterBlock) imported from calander"
+            if spesific == false {textAdd.text = "\(self.eventCounterBlock) imported from calander";ViewController.sessionPusher = false
                 
             }
             else {textAdd.text = "\(self.eventCounterBlock) for \(employerFromMain) imported from calander"}
             self.animation()
-            DispatchQueue.main.asyncAfter(deadline: .now()+4.7){
+            DispatchQueue.main.asyncAfter(deadline: .now()+3){
             self.navigationController!.popViewController(animated: true)
             }
             }//end of function
@@ -262,7 +262,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             }//end of func
 
             func saveToDB2() {
-            let record = ["fIn" : calInFB,  "fEmployer": String (describing : employer),"fIndication3" :"📆","fStatus" : "Pre","fEmployeeRef": String (describing : employeeId),"fEmployerRef":  String (describing : employerId)]
+            let record = ["fIn" : calInFB,  "fEmployer": String (describing : employer),"fIndication3" :"📆","fStatus" : "Approved","fEmployeeRef": String (describing : employeeId),"fEmployerRef":  String (describing : employerId)]
 
             let recordRefence = self.dbRef.childByAutoId()
             recordRefence.setValue(record)
@@ -276,32 +276,27 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         employerArray3.removeAll()
         employerArray2.removeAll()
         employerArray.removeAll()
+            
+            
 
         self.dbRefEmployee.child(employeeId).queryOrderedByValue().observeSingleEvent(of: .value, with: { (snapshot) in
         self.employerArray = snapshot.childSnapshot(forPath: "myEmployers").value! as! [String:Int]
         self.employerArray2 = Array(self.employerArray.keys) // for Dictionary
         print ("employerArray2\(self.employerArray2)")
         print ("match")
-        
+           
+            
+            
         for eachEmployer in 0...(self.employerArray2.count-1){
-        self.dbRefEmployer.child(self.employerArray2[eachEmployer]).child("fEmployer").observeSingleEvent(of: .value, with: { (snapshot) in
-        self.employerLastNameForGoogle = String(describing: snapshot.value!)
-        self.employerArray3[self.employerLastNameForGoogle] = self.employerArray2[eachEmployer]
-        print ("tttt1\(self.employerLastNameForGoogle)")
-            
-       
+            print ("eachEmployer\(eachEmployer)")
 
-        self.dbRefEmployer.child(self.employerArray2[eachEmployer]).child("fName").observeSingleEvent(of: .value, with: { (snapshot) in
-        self.employerNameForGoogle = String(describing: snapshot.value!)
-        if  self.employerNameForGoogle != ""   {self.employerArray3[self.employerNameForGoogle] = self.employerArray2[eachEmployer] }
-            
-        print ("tttt2\(self.employerNameForGoogle)")
-            
-        self.employerNameLastNameForGoogle = ("\(self.employerNameForGoogle) \(self.employerLastNameForGoogle)")
-        if  self.employerNameForGoogle != "" {self.employerArray3[self.employerNameLastNameForGoogle] = self.employerArray2[eachEmployer]}
-        print ("tttt3\(self.employerNameLastNameForGoogle)")
-        print("uuuu4\(self.employerArray3)")
-        })
+        self.dbRefEmployer.child(self.employerArray2[eachEmployer]).observeSingleEvent(of: .value, with: { (snapshot) in
+        self.employerLastNameForGoogle = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
+        self.employerNameForGoogle = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
+    
+
+        self.employerArray3[("\(self.employerNameForGoogle) \(self.employerLastNameForGoogle)")] = self.employerArray2[eachEmployer]
+        print ("array3\(self.employerArray3)")
         })
         }//end of loop
         })//end of dbref employeeid

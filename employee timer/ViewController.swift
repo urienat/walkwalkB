@@ -516,7 +516,9 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         self.employerList.reloadData()
       self.checkSubs()
         
-    self.employerList.isHidden = false
+        self.employerList.isHidden = false;
+        self.postTimerView()//check if solve the bug of view interaction
+        
     self.dbRefEmployer.removeAllObservers()
 
     }
