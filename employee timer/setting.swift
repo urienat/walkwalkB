@@ -476,17 +476,23 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     }//end of account creation
     
     func finChangeHappend(){
+        print (self.taxCalacUpdate!,self.taxSwitcherUpdate,self.precentage.text!,self.taxName.text!)
+        
         self.dbRefEmployees.queryOrderedByKey().queryEqual(toValue: self.employeeRefUpdate).observeSingleEvent(of: .childAdded, with: { (snapshot) in
-            if  (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String) != self.taxCalacUpdate  ||
+            
+            print ((snapshot.childSnapshot(forPath: "fTaxCalc").value as! String),snapshot.childSnapshot(forPath: "fSwitcher").value as! String,snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String,snapshot.childSnapshot(forPath: "fTaxName").value as! String )
+            
+            if  (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String) != self.taxCalacUpdate!  ||
            snapshot.childSnapshot(forPath: "fSwitcher").value as! String !=  self.taxSwitcherUpdate ||
             snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String  != self.precentage.text!  ||
             snapshot.childSnapshot(forPath: "fTaxName").value as! String != self.taxName.text!
-            { self.saveToDB() } else {self.alert6()}
+            {self.alert6() } else {self.saveToDB()}
         })
     }
 
         func saveToDB() {
         ViewController.dateTimeFormat = self.dateTimeUpdate
+            
         ViewController.calanderOption = self.calanderUpdate
 
         let alertController = UIAlertController(title: ("Save Setting") , message: ("Are You Sure?"), preferredStyle: .alert)
@@ -720,6 +726,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             self.saveToDB()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+            self.navigationController!.popViewController(animated: true)
         }
         alertCotroller6.addAction(okAction)
         alertCotroller6.addAction(cancelAction)
