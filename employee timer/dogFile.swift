@@ -51,7 +51,14 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     let dbRefcEmployers = FIRDatabase.database().reference().child("cEmployers")
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
 
-
+    @IBAction func rateStartEdit(_ sender: Any) {
+     navigationItem.rightBarButtonItem?.isEnabled = false
+    }
+    @IBAction func rateObserver(_ sender: Any) {
+        alert6()
+    }
+    
+    
     @IBOutlet weak var scrollerView: UIScrollView!
     
     @IBOutlet weak var trash: UIBarButtonItem!
@@ -164,6 +171,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(checkDuplicate))
         //let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(functionQ(handleComplete:saveToDB)))
 
+        //observer
         
         navigationItem.rightBarButtonItem = saveRecord
         
@@ -546,10 +554,15 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
         // alert6
         func alert6 () {
-        let alertCotroller6 = UIAlertController(title: ("Financial effect change") , message: ("\(employerFromMain) rate change is effective on sessions not yet billed from now on.  "), preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK. I am aware.", style: .cancel) { (UIAlertAction) in
+        let alertCotroller6 = UIAlertController(title: ("Rate change") , message: ("If there are \(employerFromMain)'s sessions not yet billed, new rate would affect."), preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK. I am aware.", style: .default) { (UIAlertAction) in
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
+
+        self.navigationController!.popViewController(animated: true)
         }
         alertCotroller6.addAction(okAction)
         alertCotroller6.addAction(cancelAction)

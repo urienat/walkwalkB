@@ -255,6 +255,10 @@
                                                         <integer key="value" value="6"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="rateObserver:" destination="nD7-g7-jdd" eventType="editingDidEnd" id="bEr-VJ-vjW"/>
+                                                    <action selector="rateStartEdit:" destination="nD7-g7-jdd" eventType="editingDidBegin" id="38l-dh-jdN"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Clb-ky-rEY" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
                                                 <rect key="frame" x="111.5" y="84" width="200.5" height="30"/>
