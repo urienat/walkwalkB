@@ -350,15 +350,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         return mailComposerVC
         }//end of configure
     
-        func  invitationMail() -> MFMailComposeViewController {
-        let mailComposerVC = MFMailComposeViewController()
-        mailComposerVC.mailComposeDelegate = self
-        mailComposerVC.setSubject("Invitation to connect through my pet care app.")
-        mailComposerVC.setMessageBody("Hello,\r\n I am using PerSession app to support my pet care activity . You are invited to use it as well, so we can connect and see the same picture. Currently , it is avilable in Apple app-store and soon it would be avilable in Android as well. I attached a download link. .\r\n Bye\(ViewController.fixedName!) \(ViewController.fixedLastName!).", isHTML: false)
-        mailComposerVC.setToRecipients([pEmail.text!])
-        return mailComposerVC
-        }//end of configure
-    
         func showSendmailErrorAlert() {
         let sendMailErorrAlert = UIAlertController(title:"Could Not Send Email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.",preferredStyle: .alert)
         sendMailErorrAlert.message = "jhsgajshgj"
@@ -368,14 +359,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
         }
-    
-        func sendMessage() {
-        let messageVC = MFMessageComposeViewController()
-        messageVC.body = "Hi,\r\n I am using PerSession app to manage my activity . \r\n You are invited to use it as well, so we can connect and see the same picture. \r\n Currently , it is avilable in Apple Appstore and soon it would be avilable in Android as well. I am sending a download link . Bye. \(ViewController.fixedName!) \(ViewController.fixedLastName!) "
-        messageVC.recipients = [pCell.text!]
-        messageVC.messageComposeDelegate = self
-        present(messageVC, animated: true, completion: nil)
-        }//end of send message
     
         func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         switch result.rawValue{
