@@ -236,8 +236,9 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
 
         cell.backgroundColor = UIColor.clear
         cell.l1.text = arrayOfMonths[indexPath.row]
-        cell.l4.text  = ViewController.fixedCurrency
-        cell.l3.text = String(taxForMonth) as String
+        cell.l2.text = "\(billsForMonth) bills - Total \(ViewController.fixedCurrency!)\(totalForMonth)"
+        //cell.l4.text  = ViewController.fixedCurrency
+        cell.l3.text = "Tax: \(ViewController.fixedCurrency!)\(String(taxForMonth) as String)"
         return cell
     }
     
