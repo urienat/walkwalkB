@@ -546,7 +546,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
         // alert6
         func alert6 () {
-        let alertCotroller6 = UIAlertController(title: ("Financial effect change") , message: ("Changes made in tax fields are effective from now onto sessions not billed yet billed.  "), preferredStyle: .alert)
+        let alertCotroller6 = UIAlertController(title: ("Financial effect change") , message: ("\(employerFromMain) rate change is effective on sessions not yet billed from now on.  "), preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK. I am aware.", style: .cancel) { (UIAlertAction) in
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
