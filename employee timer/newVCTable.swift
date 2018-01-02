@@ -800,13 +800,13 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }
     
     
-    
     func checkDuplicate(){
         print ("check dupliates")
         print (dateDuplicate)
         duplicates = Array(Set(dateDuplicate.filter({ (i: String) in dateDuplicate.filter({ $0 == i }).count > 1})))
         print (duplicates)
-        if duplicates.isEmpty == false { alert23();duplicateChecked = true}
+        if duplicates.isEmpty == false {duplicates = duplicates.map{mydateFormat11.string(from: mydateFormat5.date(from: $0)!)};
+            print (duplicates); alert23();duplicateChecked = true}
     }
 
   
@@ -1039,6 +1039,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             }
         let DeleteAction = UIAlertAction(title: "I need to delete it.", style: .cancel) { (UIAlertAction) in
             self.duplicateChecked = false
+           // self.refresh(presser: 3)
         }
         
         alertController23.addAction(OKAction)
