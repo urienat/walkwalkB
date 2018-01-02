@@ -21,6 +21,10 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     let loginButton =  FBSDKLoginButton()
     static var provider = "normal"
     
+    // Googlelogin variables
+    let loginButton2 =  GIDSignInButton()
+
+    
     //facebook & google
     var fbNname = ""
     var fbLastName = ""
@@ -177,7 +181,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         
         dog.clipsToBounds = true
         dog.layer.cornerRadius = 50
-                mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
+        mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         
         //delgate to hide keyboard
         self.email.delegate = self
@@ -186,16 +190,15 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         logoutGeneral()
         
         //google login setting
-        let loginButton2 =  GIDSignInButton()
         GIDSignIn.sharedInstance().uiDelegate = self
         print (GIDSignIn.sharedInstance().currentUser)
-
-        
         
         view.addSubview(loginButton2)
         loginButton2.frame = CGRect(x: view.frame.width/2-104, y: 50, width: 208, height: 45)
+        
+        
         if GIDSignIn.sharedInstance().currentUser != nil  {
-        GIDSignIn.sharedInstance().signInSilently()
+        //GIDSignIn.sharedInstance().signInSilently()
         //  GIDSignIn.sharedInstance().signIn()
 
         thinking.startAnimating()
