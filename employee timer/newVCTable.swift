@@ -32,7 +32,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
 
     var mailSaver : String?
-    var releaser: Int? = 0
     
     var paymentSys: String? = ""
     var paymentReference: String? = ""
@@ -168,9 +167,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var billSender: UIBarButtonItem!
     
     func sendBill() {
+    print (duplicateChecked)
+    if duplicateChecked == false {checkDuplicate()}
     billSender.isEnabled = false
     billPay.isEnabled = false
-    releaser = 1
     refresh(presser: 1)
     DispatchQueue.main.asyncAfter(deadline: .now()+4.4){
     print(self.appArray.count)
@@ -179,16 +179,13 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     self.thinking.stopAnimating()
     self.alert27()
         }
-    self.billSender.isEnabled = false
-    self.billPay.isEnabled = false
-    self.releaser = 0
+    
     }
     }//end of sendBill
     
     func billPayProcess(){
     billSender.isEnabled = false
     billPay.isEnabled = false
-    releaser = 1
     refresh(presser: 1)
 
     DispatchQueue.main.asyncAfter(deadline: .now()+4.4){
@@ -200,9 +197,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     self.thinking.stopAnimating()
     self.alert27()
     }
-    self.billSender.isEnabled = false
-    self.billPay.isEnabled = false
-    self.releaser = 0
+    //self.billSender.isEnabled = false
+    //self.billPay.isEnabled = false
     }
     }//end of billpayprocess
     
@@ -583,10 +579,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
         self.currentMonth = today.month!
         self.currentYear = today.year!
-            
-            
-
-                        
+                       
         func cases() {
         self.currentYear = today.year!
         self.records.append(record)
@@ -609,48 +602,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             else {print ("in else: calc is :\(self.calc)")
                 self.amount.text =  ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")
             }
-        /*
-        switch period{
-        //current week
-       /* case 0:
-        if self.recordWeek == self.currentWeek && self.recordYearForWeek == self.currentYearForWeek && record.fStatus! == self.Status
-        {cases()} else if self.recordWeek == self.currentWeek && self.recordYearForWeek == self.currentYearForWeek  && self.Status == "All"
-        {cases() }
-                            
-        //last week
-        case 1:
-        if self.currentWeek-1 == 0 {self.currentWeek = 53; self.currentYearForWeek = (self.currentYearForWeek - 1)}
-        if self.recordWeek == self.currentWeek-1 && self.recordYearForWeek == self.currentYearForWeek && record.fStatus! == self.Status
-        {cases()} else if self.recordWeek == self.currentWeek-1 && self.recordYearForWeek == self.currentYearForWeek && self.Status == "All"
-        {cases()}
-                            
-        //current month
-        case 2:
-        if self.recotdMonth == self.currentMonth && self.recordYear == self.currentYear && record.fStatus! == self.Status {cases()}
-        else if self.recotdMonth == self.currentMonth && self.recordYear == self.currentYear && self.Status == "All"
-        {cases()}
-                            
-        //last month
-        case 3:
-        if self.currentMonth-1 == 0 {self.currentMonth = 13 ; self.currentYear = (self.currentYear - 1)}
-        if self.recotdMonth == (self.currentMonth-1) && self.recordYear == self.currentYear && record.fStatus! == self.Status
-        {cases()} else if self.recotdMonth == (self.currentMonth-1) && self.recordYear == self.currentYear && self.Status == "All"
-        {cases()}
-         */
-        //all periods
-        default :
-        if self.Status == "Approved" {if record.fStatus == "Approved" {cases()}} else if
-        record.fStatus == "Pre" || record.fStatus == "Approved" {cases()
-        }else if record.fStatus == nil
-        {}
-        else if self.Status == "All"
-        {cases()}
-        else {print ("in else: calc is :\(self.calc)")
-        self.amount.text =  ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")
-        }
-                            
-        }//end of period switch
-  */
+       
         }//end of else of fout is not empty
                     
         }// end of if let dictionary
@@ -662,7 +614,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }//end of loop
         }//end of elseif snapshot.value as? String == nil
 
-        if self.releaser == 0 { self.thinking.stopAnimating()}
+        self.thinking.stopAnimating()
         sleep(UInt32(1))
         self.StatusChosen.isEnabled = true
         self.periodChosen.isEnabled = true
@@ -677,24 +629,14 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         dbRefEmployers.removeAllObservers()
 
         DispatchQueue.main.asyncAfter(deadline: .now()+3){
-       // if self.idArray.isEmpty == true {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
-       // print (self.idArray.isEmpty)
+       
+            if self.eventCounter == 0 {self.billSender.isEnabled = false;self.billPay.isEnabled = false;self.eventsLbl.text = " No Due Sessions";self.noSign.isHidden = false} else if self.eventCounter == 1 {self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) Due session";self.noSign.isHidden = true} else {self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions";self.noSign.isHidden = true}
 
-            if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions";self.noSign.isHidden = false} else if self.eventCounter == 1 {self.eventsLbl.text = "\(String(self.eventCounter)) Due session";self.noSign.isHidden = true} else {self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions";self.noSign.isHidden = true}
+            self.calc = (Double(self.eventCounter))*(self.Employerrate)
 
-        if self.Status == "All" /*|| self.Status == "Paid"*/{}
-        self.calc = (Double(self.eventCounter))*(self.Employerrate)
+            self.perEvents.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /session")
+            self.amount.text =  ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")
 
-        self.perEvents.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /session")
-
-        self.amount.text =  ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")
-
-        if self.eventCounter != 0 {if self.rememberMe1 == 0 {};  if self.releaser == 0 {self.billSender.isEnabled = true;self.billPay.isEnabled = true}
-        }else {
-        self.billSender.isEnabled = false
-        self.billPay.isEnabled = false
-
-        }
             if self.duplicateChecked == false {self.checkDuplicate()}
         }//end of dispatch
         }//end of fetch
@@ -821,12 +763,12 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     }
     
     func alert90(){
-    let alertController90 = UIAlertController(title: ("Preapre Due Records") , message: "You can unmark a session by touching the 'Due' button, to avoid including it in billing process.", preferredStyle: .alert)
+    let alertController90 = UIAlertController(title: ("Sessions") , message: "You can unmark a session by touching the 'Due' button, to avoid including it in billing process.", preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
     self.keeper.set(1, forKey: "dueInstruction")
     self.rememberMe1 = 1
-    self.billSender.isEnabled = true
-    self.billPay.isEnabled = true
+    //self.billSender.isEnabled = true
+    //self.billPay.isEnabled = true
 
     }
     alertController90.addAction(OKAction)
@@ -1039,7 +981,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             }
         let DeleteAction = UIAlertAction(title: "I need to delete it.", style: .cancel) { (UIAlertAction) in
             self.duplicateChecked = false
-           // self.refresh(presser: 3)
+            //self.fetch()
         }
         
         alertController23.addAction(OKAction)
