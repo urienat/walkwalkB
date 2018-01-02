@@ -87,6 +87,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     var idArray: [String] = []
     var dateDuplicate: [String] = []
+    var duplicateChecked:Bool = false
+    var  duplicates: [String] = []
     var appArray: [String] = []
     var Status: String = "Pre"
     let cellId =  "cellId"
@@ -687,12 +689,13 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
         self.amount.text =  ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")
 
-        if self.eventCounter != 0 {if self.rememberMe1 == 0 {self.alert90()};  if self.releaser == 0 {self.billSender.isEnabled = true;self.billPay.isEnabled = true}
+        if self.eventCounter != 0 {if self.rememberMe1 == 0 {};  if self.releaser == 0 {self.billSender.isEnabled = true;self.billPay.isEnabled = true}
         }else {
         self.billSender.isEnabled = false
         self.billPay.isEnabled = false
 
         }
+            if self.duplicateChecked == false {self.checkDuplicate()}
         }//end of dispatch
         }//end of fetch
     
@@ -796,11 +799,14 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             
         }
     
-   
+    
     
     func checkDuplicate(){
-        
-        //dateDuplicate that I created
+        print ("check dupliates")
+        print (dateDuplicate)
+        duplicates = Array(Set(dateDuplicate.filter({ (i: String) in dateDuplicate.filter({ $0 == i }).count > 1})))
+        print (duplicates)
+        if duplicates.isEmpty == false { alert23();duplicateChecked = true}
     }
 
   
@@ -815,7 +821,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     }
     
     func alert90(){
-    let alertController90 = UIAlertController(title: ("Preapre Due Records") , message: "You can mark your Sessions as 'Due' by touching the empty square.", preferredStyle: .alert)
+    let alertController90 = UIAlertController(title: ("Preapre Due Records") , message: "You can unmark a session by touching the 'Due' button, to avoid including it in billing process.", preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
     self.keeper.set(1, forKey: "dueInstruction")
     self.rememberMe1 = 1
@@ -1025,6 +1031,21 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     alertController12.addAction(OKAction)
     self.present(alertController12, animated: true, completion: nil)
     }//end of alert12
+    
+    func alert23(){
+        let alertController23 = UIAlertController(title: ("Double session?") , message: "It seems that following are duplicate sessions: \(self.duplicates). Is that OK? ", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "Yes. I am aware.", style: .default) { (UIAlertAction) in
+            self.duplicateChecked = true
+            }
+        let DeleteAction = UIAlertAction(title: "I need to delete it.", style: .cancel) { (UIAlertAction) in
+            self.duplicateChecked = false
+        }
+        
+        alertController23.addAction(OKAction)
+        alertController23.addAction(DeleteAction)
+
+        self.present(alertController23, animated: true, completion: nil)
+    }//end of alert23
 
     }//end of class//////////////////////////////////////////////////////////////
 
