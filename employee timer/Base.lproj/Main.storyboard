@@ -2155,10 +2155,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l6" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEB-4f-1Nn" userLabel="l6">
-                                                    <rect key="frame" x="6" y="25.5" width="100" height="21.5"/>
+                                                    <rect key="frame" x="6" y="25.5" width="12" height="21.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Cg8-Nd-0mJ"/>
-                                                        <constraint firstAttribute="width" constant="100" id="ZyB-pd-TV4"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                                     <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3380,7 +3379,7 @@
         <image name="cancelled" width="50" height="50"/>
         <image name="emptyV" width="50" height="45"/>
         <image name="import" width="50" height="50"/>
-        <image name="importBig" width="225" height="225"/>
+        <image name="importBig" width="50" height="52"/>
         <image name="mail" width="50" height="50"/>
         <image name="meluna" width="50" height="50"/>
         <image name="noSign" width="309" height="255"/>
@@ -3396,7 +3395,6 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="vGn-ru-ol3"/>
         <segue reference="kEl-UY-JOa"/>
