@@ -168,7 +168,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
     func sendBill() {
     print (duplicateChecked)
-    if duplicateChecked == false {checkDuplicate()}
+        if duplicateChecked == false {checkDuplicate()} else {
     billSender.isEnabled = false
     billPay.isEnabled = false
     refresh(presser: 1)
@@ -179,11 +179,14 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     self.thinking.stopAnimating()
     self.alert27()
         }
-    
-    }
+            }
+            
+        }//end of else
     }//end of sendBill
     
     func billPayProcess(){
+        if duplicateChecked == false {checkDuplicate()} else {
+
     billSender.isEnabled = false
     billPay.isEnabled = false
     refresh(presser: 1)
@@ -200,6 +203,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     //self.billSender.isEnabled = false
     //self.billPay.isEnabled = false
     }
+        }//end of else
     }//end of billpayprocess
     
     var records = [recordsStruct]()
