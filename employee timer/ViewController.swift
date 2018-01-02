@@ -335,15 +335,16 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
    
     //check subscription
     func checkSubs(){
+    /*
     RebeloperStore.shared.verifyRenewablePurchase(.autoRenewableSubscription1) { (result, resultString) in
     print( result)
     if result == false {print ("no subscription"); self.alert83()
     }
     else {
-        //do nothing
-        } //end of else  meaning there is subscription
+    //do nothing
+    } //end of else  meaning there is subscription
     }//end of subscription result check
- 
+    */
     }//end of func
   
     //Check if user does exists

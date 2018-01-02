@@ -598,7 +598,16 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         } else {"  \(self.csv2.append( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n") }
             
         }// end of cases func
-                        
+            if self.Status == "Approved" {if record.fStatus == "Approved" {cases()}} else if
+                record.fStatus == "Pre" || record.fStatus == "Approved" {cases()
+            }else if record.fStatus == nil
+            {}
+            else if self.Status == "All"
+            {cases()}
+            else {print ("in else: calc is :\(self.calc)")
+                self.amount.text =  ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")
+            }
+        /*
         switch period{
         //current week
        /* case 0:
@@ -639,7 +648,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }
                             
         }//end of period switch
-  
+  */
         }//end of else of fout is not empty
                     
         }// end of if let dictionary
@@ -696,6 +705,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.thinking.stopAnimating()
         self.alert30()
         }
+    
+    
     
         func billing(){
         taxationBlock = ""
@@ -789,7 +800,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
     func checkDuplicate(){
         
-        dateDuplicate that I created
+        //dateDuplicate that I created
     }
 
   
