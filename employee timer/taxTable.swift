@@ -70,64 +70,58 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     @IBOutlet weak var filterConstrain: NSLayoutConstraint!
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var filterBG: UIView!
-    //@IBOutlet weak var filter: UIButton!
-   // @IBAction func filter(_ sender: Any) {
-    //    filterMovement(delay: 0)
-   // }
-    @IBAction func noneBtn(_ sender: Any) {
+    
+        @IBAction func noneBtn(_ sender: Any) {
         filterDecided = 0
         fetchBills()
         filterImageConstrain.constant = 20
         btnFilter.setImage (greenFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            self.filterMovement(delay: 1.3)
+        self.filterMovement(delay: 1.3)
         }
-    }
-    
+        }
 
-    
-    
-    @IBAction func currentMonthBtn(_ sender: Any) {
+        @IBAction func currentMonthBtn(_ sender: Any) {
         filterDecided = 1
         fetchBills()
         filterImageConstrain.constant = 60
         filterChoiceImage.reloadInputViews()
         btnFilter.setImage (redFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            self.filterMovement(delay: 1.3)
+        self.filterMovement(delay: 1.3)
         }
-    }
-    
-    @IBAction func lastMonthBtn(_ sender: Any) {
+        }
+
+        @IBAction func lastMonthBtn(_ sender: Any) {
         filterImageConstrain.constant = 100
         filterDecided = 2
         fetchBills()
         btnFilter.setImage (redFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            self.filterMovement(delay: 1.3)
+        self.filterMovement(delay: 1.3)
         }
-    }
-    
-    @IBAction func currentYearBtn(_ sender: Any) {
+        }
+
+        @IBAction func currentYearBtn(_ sender: Any) {
         filterImageConstrain.constant = 140
         filterDecided = 3
         fetchBills()
         btnFilter.setImage (redFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            self.filterMovement(delay: 1.3)
+        self.filterMovement(delay: 1.3)
         }
-    }
-    
-    @IBAction func lastYearBtn(_ sender: Any) {
+        }
+
+        @IBAction func lastYearBtn(_ sender: Any) {
         filterImageConstrain.constant = 180
         filterDecided = 4
         fetchBills()
         btnFilter.setImage (redFilter, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-            self.filterMovement(delay: 1.3)
+        self.filterMovement(delay: 1.3)
         }
-    }
-    
+        }
+
     //variablesfrom main
     var employerID = ""
     var employerFromMain = ""
@@ -177,8 +171,6 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
         mydateFormat20.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM , yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
       
-
-        
         btnFilter.setImage (greenFilter, for: .normal)
         btnFilter.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         btnFilter.addTarget(self, action: #selector(filterMovement(delay:)), for: .touchUpInside)
@@ -196,66 +188,65 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         billerConnect.dataSource = self
     }//end of view did load////////////////////////////////////////////////////////////////////////////////////////////
     
-    override func viewDidAppear(_ animated: Bool) {
+        override func viewDidAppear(_ animated: Bool) {
         let connectedRef = FIRDatabase.database().reference(withPath: ".info/connected")
         connectedRef.observe(.value, with: { snapshot in
-            if let connected = snapshot.value as? Bool, connected {
-                print("Connected")
-            }else {
-                print("Not connected")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 4.0){
-                    connectedRef.observe(.value, with: { snapshot in
-                        if let connected = snapshot.value as? Bool, connected {
-                            print("Connected after all")} else  {print("not connected after all");self.noFB()}
-                    })
-                }}
+        if let connected = snapshot.value as? Bool, connected {
+        print("Connected")
+        }else {
+        print("Not connected")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0){
+        connectedRef.observe(.value, with: { snapshot in
+        if let connected = snapshot.value as? Bool, connected {
+        print("Connected after all")} else  {print("not connected after all");self.noFB()}
+        })
+        }}
         })
         
         fetchBills()
         print (billItems.count)
         billerConnect.reloadData()
-    }//view did appear end
+        }//view did appear end
     
-    func tableView(_ billerConnect: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
-    }
+        func tableView(_ billerConnect: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            return 50
+        }
     
-    func tableView(_ billerConnect: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        func tableView(_ billerConnect: UITableView, numberOfRowsInSection section: Int) -> Int {
         return uniqueTaxMonths.count
-    }
+        }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = billerConnect.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! taxerCell
-        print (uniqueTaxMonths)
-        
-//set the in filter
-        
+        print ("uniqueTaxMonths\(uniqueTaxMonths)")
+
         let taxMonthItem = arrayOfMonths[indexPath.row]
         print ("taxMonthItem\(taxMonthItem)")
+        print ("byMonthTax\(byMonthTax)")
+
         let taxForMonth =  byMonthTax[taxMonthItem]!
         let totalForMonth =  byMonthTotal[taxMonthItem]!
         let sessionsForMonth =  byMonthSessions[taxMonthItem]!
         let billsForMonth =  byMonthBills[taxMonthItem]!
-            if billsForMonth == 1 {billTxt = "bill"} else {billTxt = "bills"}
+        if billsForMonth == 1 {billTxt = "bill"} else {billTxt = "bills"}
 
         cell.backgroundColor = UIColor.clear
         cell.l1.text = arrayOfMonths[indexPath.row]
         cell.l2.text = "\(billsForMonth) \(billTxt!) - Total(w/tax): \(ViewController.fixedCurrency!)\(totalForMonth)"
         //cell.l4.text  = ViewController.fixedCurrency
-            cell.l3.text = "Tax: \(ViewController.fixedCurrency!)\(String(taxForMonth) as String)"
+        cell.l3.text = "Tax: \(ViewController.fixedCurrency!)\(String(taxForMonth) as String)"
         return cell
-    }
+        }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    }
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        }
     
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         taxMonthRow = self.billerConnect.indexPathForSelectedRow!
         print (taxMonthRow)
         print (taxMonthRow?.row)
-            print (arrayOfMonths)
-print (mydateFormat20.date(from: (arrayOfMonths[(taxMonthRow?.row)!])))
+        print (arrayOfMonths)
+        print (mydateFormat20.date(from: (arrayOfMonths[(taxMonthRow?.row)!])))
             
             
         if (segue.identifier == "billsForTaxMonth")
@@ -263,21 +254,19 @@ print (mydateFormat20.date(from: (arrayOfMonths[(taxMonthRow?.row)!])))
         print ("presparesegue")
         print (arrayOfMonths[(taxMonthRow?.row)!])
             
-            
-            
-            let components = self.calendar.dateComponents([.year, .month], from: (mydateFormat20.date(from: (arrayOfMonths[(taxMonthRow?.row)!])))!)
+        let components = self.calendar.dateComponents([.year, .month], from: (mydateFormat20.date(from: (arrayOfMonths[(taxMonthRow?.row)!])))!)
         self.taxMonth =   components.month!
         self.taxYear = components.year!
-            print (self.taxYear,self.taxMonth)
-            
-            billTaxManager?.monthToHandle = components.month!
-            billTaxManager?.yearToHandle = components.year!
+        print (self.taxYear,self.taxMonth)
+
+        billTaxManager?.monthToHandle = components.month!
+        billTaxManager?.yearToHandle = components.year!
         billTaxManager?.employeeID = employeeID
         billTaxManager?.taxBillsToHandle = true
         }//end of if (segue...
         }//end of prepare
     
-    func fetchBills(){
+        func fetchBills(){
         billItems.removeAll()
         BillArray.removeAll()
         BillArrayStatus.removeAll()
@@ -303,38 +292,42 @@ print (mydateFormat20.date(from: (arrayOfMonths[(taxMonthRow?.row)!])))
                 print (self.taxMonth-1,self.taxYear-1)
                 
                 
-                func inFilter() {
+                    func inFilter() {
                     if billItem.fBillStatus != "Cancelled"{
                     if self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] == nil {
-                        self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTax!)!;
-                        self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTotalTotal!)!;
-                        self.byMonthSessions[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Int(billItem.fBillEvents!)!
-                        self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = 1
+                    self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTax!)!;
+                    self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTotalTotal!)!;
+                    self.byMonthSessions[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Int(billItem.fBillEvents!)!
+                    self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = 1
 
                     }else{
-                        self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTax!)!;
-                        self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTotalTotal!)!;
-                         self.byMonthSessions[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthSessions[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Int(billItem.fBillEvents!)!
-                        self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + 1
-                        }
-                        }
-                    
+                    self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTax!)!;
+                    self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTotalTotal!)!;
+                    self.byMonthSessions[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthSessions[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Int(billItem.fBillEvents!)!
+                    self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + 1
+                    }
+                    }
+
                     if billItem.fBillStatus != "Cancelled"{
-                        self.monthSorter.append(self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!))
+                    self.monthSorter.append(self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!))
                     self.uniqueTaxMonths = Array(Set(self.monthSorter))
                     self.uniqueTaxMonthsdateFormat = self.uniqueTaxMonths.map {self.mydateFormat20.date(from: $0)! }
                     self.uniqueTaxMonthsdateFormat.sort { $0.compare($1) == .orderedDescending }
                     self.arrayOfMonths = self.uniqueTaxMonthsdateFormat.map { self.mydateFormat20.string(from: $0)}
                     }
                     self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
-                        self.taxCounter += Double(billItem.fBillTax!)!}
+                    self.taxCounter += Double(billItem.fBillTax!)!}
                     ;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
-                    
-                }//end of in filter
+
+                    }//end of in filter
                 
                 switch self.filterDecided {
                 case 0:inFilter()
-                case 1:if self.currentMonth == self.taxMonth && self.currentYear == self.taxYear{inFilter()}
+                case 1:
+                   print (self.currentMonth,self.taxMonth,self.currentYear,self.taxYear)
+
+                   
+                if self.currentMonth == self.taxMonth && self.currentYear == self.taxYear{inFilter()}
                 case 2:if self.currentMonth-1 == self.taxMonth && self.currentYear == self.taxYear{inFilter()} else if self.currentMonth == 1 && self.taxMonth == 12 && self.currentYear-1 == self.taxYear{inFilter()}
                 case 3:if self.currentYear == self.taxYear{inFilter()}
                 case 4:if self.currentYear-1 == self.taxYear {inFilter()}
