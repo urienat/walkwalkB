@@ -749,7 +749,7 @@
                                             <action selector="importBtn:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="o1p-tc-uUh"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="import" translatesAutoresizingMaskIntoConstraints="NO" id="l9b-bB-9mb" userLabel="importImage">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="importBig" translatesAutoresizingMaskIntoConstraints="NO" id="l9b-bB-9mb" userLabel="importImage">
                                         <rect key="frame" x="208.5" y="18" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="qNK-ZQ-ZuS"/>
@@ -3380,6 +3380,7 @@
         <image name="cancelled" width="50" height="50"/>
         <image name="emptyV" width="50" height="45"/>
         <image name="import" width="50" height="50"/>
+        <image name="importBig" width="225" height="225"/>
         <image name="mail" width="50" height="50"/>
         <image name="meluna" width="50" height="50"/>
         <image name="noSign" width="309" height="255"/>
@@ -3395,10 +3396,11 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="vGn-ru-ol3"/>
         <segue reference="kEl-UY-JOa"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="gfT-By-X34"/>
+        <segue reference="1k4-P4-HYk"/>
     </inferredMetricsTieBreakers>
 </document>
