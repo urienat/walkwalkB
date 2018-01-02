@@ -170,6 +170,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     print (duplicateChecked)
         if duplicateChecked == false {checkDuplicate()} else {
     billSender.isEnabled = false
+            
     billPay.isEnabled = false
     refresh(presser: 1)
     DispatchQueue.main.asyncAfter(deadline: .now()+4.4){
@@ -444,7 +445,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
         func  approvalClicked(sender:UIButton!) {
         
-        billSender.isEnabled = false
+        self.billSender.isEnabled = false
         self.billPay.isEnabled = false
 
         buttonRow = sender.tag
@@ -634,13 +635,14 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
         DispatchQueue.main.asyncAfter(deadline: .now()+3){
        
-            if self.eventCounter == 0 {self.billSender.isEnabled = false;self.billPay.isEnabled = false;self.eventsLbl.text = " No Due Sessions";self.noSign.isHidden = false} else if self.eventCounter == 1 {self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) Due session";self.noSign.isHidden = true} else {self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions";self.noSign.isHidden = true}
+            if self.eventCounter == 0 {self.billSender.isEnabled = false;self.billPay.isEnabled = false;self.eventsLbl.text = " No Due Sessions";self.noSign.isHidden = false}
+            else if self.eventCounter == 1 {self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) Due session";self.noSign.isHidden = true}
+            else {self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions";self.noSign.isHidden = true}
 
             self.calc = (Double(self.eventCounter))*(self.Employerrate)
 
             self.perEvents.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /session")
             self.amount.text =  ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")
-
             if self.duplicateChecked == false {self.checkDuplicate()}
         }//end of dispatch
         }//end of fetch
@@ -752,7 +754,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         duplicates = Array(Set(dateDuplicate.filter({ (i: String) in dateDuplicate.filter({ $0 == i }).count > 1})))
         print (duplicates)
         if duplicates.isEmpty == false {duplicates = duplicates.map{mydateFormat11.string(from: mydateFormat5.date(from: $0)!)};
-            print (duplicates); alert23();duplicateChecked = true}
+            print (duplicates); alert23();duplicateChecked = true} else {duplicateChecked = true
+            
+            print("do nothing")
+            
+        }
     }
 
   

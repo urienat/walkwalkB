@@ -112,8 +112,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     print ("add")
     arrow.isHidden = true
     employerToS = "Add new dog"
-        if employerIdArray.count > 2 {checkSubs()} else {
-            accountClicked() }
+       // if employerIdArray.count > 2 {checkSubs()} else {
+            accountClicked()
+        
+    //}
     }
 
     @IBOutlet weak var startButton: UIButton!
@@ -295,6 +297,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     self.sideMenuConstarin.constant = -140
     self.blackView.isHidden = true
+    self.toolBar.isHidden = false
         
     let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
     blackView.addGestureRecognizer(tap)
@@ -650,23 +653,27 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
         if isSideMenuHidden {
             self.blackView.isHidden = false
-            records.isEnabled = false
-            bills.isEnabled = false
-            account.isEnabled = false
+            self.toolBar.isHidden = true
+
+            //records.isEnabled = false
+            //bills.isEnabled = false
+            //account.isEnabled = false
             self.sideMenuConstarin.constant = 0
             UIView.animate(withDuration: 0.4, animations: {
                self.view.layoutIfNeeded()
             })
         }else{
-            self.blackView.isHidden = true
-            records.isEnabled = true
-            bills.isEnabled = true
-            account.isEnabled = true
-
             sideMenuConstarin.constant = -140
             UIView.animate(withDuration:0.4, animations: {
                 self.view.layoutIfNeeded()
             })
+            self.blackView.isHidden = true
+            self.toolBar.isHidden = false
+
+            //records.isEnabled = true
+            //bills.isEnabled = true
+            //account.isEnabled = true
+            
         }
         isSideMenuHidden = !isSideMenuHidden
         }//end of issidemenuhidden
