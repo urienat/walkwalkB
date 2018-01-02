@@ -309,18 +309,12 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
                     }
 
                     if billItem.fBillStatus != "Cancelled"{
-                        self.monthSorter = Array(self.byMonthTax.keys.map{$0})
-                        print ("monthSorter\(self.monthSorter)")
-                        self.uniqueTaxMonthsdateFormat = self.monthSorter.map {self.mydateFormat20.date(from: $0)! }
-                        self.uniqueTaxMonthsdateFormat.sort { $0.compare($1) == .orderedDescending }
-                        print ("uniqueTaxMonthsdateFormat\(self.uniqueTaxMonthsdateFormat)")
-                        self.arrayOfMonths = self.uniqueTaxMonthsdateFormat.map { self.mydateFormat20.string(from: $0)}
-                        print ("arrayOfMonths\(self.arrayOfMonths)")
-                        if self.arrayOfMonths.isEmpty == true {self.noSign.isHidden = false } else {self.noSign.isHidden = true}
-                        
-                        }
-                        
-                        
+                    self.monthSorter =  Array(self.byMonthTax.keys.map{$0})
+                    self.uniqueTaxMonths = Array(Set(self.monthSorter))
+                    self.uniqueTaxMonthsdateFormat = self.uniqueTaxMonths.map {self.mydateFormat20.date(from: $0)! }
+                    self.uniqueTaxMonthsdateFormat.sort { $0.compare($1) == .orderedDescending }
+                    self.arrayOfMonths = self.uniqueTaxMonthsdateFormat.map { self.mydateFormat20.string(from: $0)}
+                    }
                     self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
                     self.taxCounter += Double(billItem.fBillTax!)!}
                     ;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
