@@ -625,10 +625,10 @@
                                 <rect key="frame" x="0.0" y="219" width="320" height="70"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencilImage" translatesAutoresizingMaskIntoConstraints="NO" id="fJW-rO-BL2" userLabel="pencil">
-                                        <rect key="frame" x="215.5" y="25" width="20" height="20"/>
+                                        <rect key="frame" x="218.5" y="22" width="26" height="26"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="Qqv-fi-RAm"/>
-                                            <constraint firstAttribute="height" constant="20" id="qOV-bF-Lp1"/>
+                                            <constraint firstAttribute="width" constant="26" id="Qqv-fi-RAm"/>
+                                            <constraint firstAttribute="height" constant="26" id="qOV-bF-Lp1"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebM-9e-cve">
@@ -645,7 +645,7 @@
                                 <constraints>
                                     <constraint firstItem="ebM-9e-cve" firstAttribute="centerY" secondItem="FxU-Wn-hMn" secondAttribute="centerY" id="32h-oG-nTP"/>
                                     <constraint firstItem="ebM-9e-cve" firstAttribute="centerX" secondItem="FxU-Wn-hMn" secondAttribute="centerX" constant="-12" id="J12-6Z-YY5"/>
-                                    <constraint firstItem="fJW-rO-BL2" firstAttribute="leading" secondItem="ebM-9e-cve" secondAttribute="trailing" constant="4" id="QMd-OB-R1D"/>
+                                    <constraint firstItem="fJW-rO-BL2" firstAttribute="leading" secondItem="ebM-9e-cve" secondAttribute="trailing" constant="7" id="QMd-OB-R1D"/>
                                     <constraint firstItem="fJW-rO-BL2" firstAttribute="centerY" secondItem="FxU-Wn-hMn" secondAttribute="centerY" id="px6-dR-19r"/>
                                     <constraint firstAttribute="height" constant="70" id="rJe-Bq-da7"/>
                                 </constraints>
@@ -3395,6 +3395,7 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="vGn-ru-ol3"/>
         <segue reference="kEl-UY-JOa"/>

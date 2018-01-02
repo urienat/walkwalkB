@@ -191,11 +191,12 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         print (GIDSignIn.sharedInstance().currentUser)
 
         
+        
         view.addSubview(loginButton2)
         loginButton2.frame = CGRect(x: view.frame.width/2-104, y: 50, width: 208, height: 45)
         if GIDSignIn.sharedInstance().currentUser != nil  {
-            
-          //  GIDSignIn.sharedInstance().signIn()
+        GIDSignIn.sharedInstance().signInSilently()
+        //  GIDSignIn.sharedInstance().signIn()
 
         thinking.startAnimating()
         print (GIDSignIn.sharedInstance().currentUser)
