@@ -680,8 +680,8 @@ print (self.billItems.count)
     
     func monther(monthNumber:Int)  {
         let fmt = DateFormatter()
-        fmt.dateFormat = "M M"
-        monthMMM = fmt.monthSymbols[monthNumber - 1]
+        fmt.dateFormat = "m"
+        monthMMM = fmt.shortMonthSymbols[monthNumber-1]
         return
     }
 

@@ -35,6 +35,10 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     var isFilterHidden = true
     var filterDecided :Int = 0
     
+    var monthMMM: String?
+    var monthTitle : Int = 0
+    var yearTitle : Int = 0
+    
     var byMonthTax = [String:Double]()
     var byMonthTotal = [String:Double]()
     var byMonthSessions = [String:Int]()
@@ -289,6 +293,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
                 let components = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
                 self.taxMonth = components.month!
                 self.taxYear = components.year!
+                
                 print (self.taxMonth-1,self.taxYear-1)
                 
                 
@@ -320,18 +325,13 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
                     ;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
 
                     }//end of in filter
-                
                 switch self.filterDecided {
-                case 0:inFilter()
-                case 1:
-                   print (self.currentMonth,self.taxMonth,self.currentYear,self.taxYear)
-
-                   
-                if self.currentMonth == self.taxMonth && self.currentYear == self.taxYear{inFilter()}
-                case 2:if self.currentMonth-1 == self.taxMonth && self.currentYear == self.taxYear{inFilter()} else if self.currentMonth == 1 && self.taxMonth == 12 && self.currentYear-1 == self.taxYear{inFilter()}
-                case 3:if self.currentYear == self.taxYear{inFilter()}
-                case 4:if self.currentYear-1 == self.taxYear {inFilter()}
-                default: inFilter()
+                case 0:inFilter();self.titleLbl = "Tax";self.title = self.self.titleLbl
+                case 1:if self.currentMonth == self.taxMonth && self.currentYear == self.taxYear{inFilter();self.monther(monthNumber: self.taxMonth);self.titleLbl = "Tax: \(self.monthMMM!)-\(self.taxYear)";self.title = self.titleLbl}
+                case 2:if self.currentMonth-1 == self.taxMonth && self.currentYear == self.taxYear{inFilter();self.monther(monthNumber: (self.taxMonth))} else if self.currentMonth == 1 && self.taxMonth == 12 && self.currentYear-1 == self.taxYear{inFilter();self.monther(monthNumber: (self.taxMonth))};self.titleLbl = "Tax: \(self.monthMMM!)-\(self.taxYear)";self.title = self.titleLbl
+                case 3:if self.currentYear == self.taxYear{inFilter();self.titleLbl = "Tax: \(self.taxYear)";self.title = self.titleLbl}
+                case 4:if self.currentYear-1 == self.taxYear {inFilter();self.self.titleLbl = "Tax: \(self.taxYear)";self.title = self.titleLbl}
+                default: inFilter();self.titleLbl = "Tax";self.title = self.titleLbl
                 } //end of switch
                 
                 
@@ -418,6 +418,13 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         }
         isFilterHidden = !isFilterHidden
         }//end of issidemenuhidden
+    
+    func monther(monthNumber:Int)  {
+        let fmt = DateFormatter()
+        fmt.dateFormat = "MMM"
+        monthMMM = fmt.shortMonthSymbols[monthNumber-1]
+        return
+    }
     
     // alerts////////////////////////////////////////////////////////////////////////////////////////////
     func alert30(){
