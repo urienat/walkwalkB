@@ -32,6 +32,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     var paymentDate: String?
     var document :String?
     var documentCounter :String?
+    var rebillprocess:Bool?
     
     var deleteBill : UIBarButtonItem?
     
@@ -43,6 +44,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     
     var recieptChosen:Bool = false
 
+    @IBOutlet weak var mailView: UITextView!
     @IBOutlet weak var billReciept: UISegmentedControl!
     @IBAction func billReciept(_ sender: Any) {
         switch billReciept.selectedSegmentIndex {
@@ -109,14 +111,21 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         self.view.insertSubview(backgroundImage, at: 0)
       
         
-        
-        reBill()
+        if rebillprocess == true {
+        reBill() }
+        else {presentBill()}
        
         
         
     } ///end of did load/////////////////////////////////////////////////////////////////////////////////////////////////////
     
-
+    func presentBill(){
+        
+            
+        self.mailText.text = self.recoveredBill
+        
+    }
+    
     func  reBill() {
         
         
@@ -226,11 +235,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     
  //alerts//////////////////////////////
     func alert5(){
-        let alertController5 = UIAlertController(title: ("Bill Recovery") , message: "Do you want to recover bill's copy and send it to yourself?", preferredStyle: .alert)
+        let alertController5 = UIAlertController(title: ("Share") , message: "", preferredStyle: .alert)
         let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
             //do nothing
         }
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+        let OKAction = UIAlertAction(title: "Mail", style: .default) { (UIAlertAction) in
             let mailComposeViewController2 = self.configuredMailComposeViewController2()
             if MFMailComposeViewController.canSendMail() {
                 
@@ -241,18 +250,37 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             
         }
         
-        alertController5.addAction(CancelAction)
+        let printAction = UIAlertAction(title: "Print", style: .default) { (UIAlertAction) in
+            let printInfo = UIPrintInfo(dictionary:nil)
+            printInfo.outputType = UIPrintInfoOutputType.general
+            printInfo.jobName = "My Print Job"
+            
+            // Set up print controller
+            let printController = UIPrintInteractionController.shared
+            printController.printInfo = printInfo
+            
+            // Assign a UIImage version of my UIView as a printing iten
+            printController.printingItem =   self.mailView.toImage()
+            
+            // Do it
+            printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
+            
+            
+        }
+        
         alertController5.addAction(OKAction)
+        alertController5.addAction(printAction)
+        alertController5.addAction(CancelAction)
         self.present(alertController5, animated: true, completion: nil)
     }
 
     
     func alert6(){
-        let alertController5 = UIAlertController(title: ("Reciept Recovery") , message: "Do you want to recover Reciept's copy and send it to yourself?", preferredStyle: .alert)
+        let alertController5 = UIAlertController(title: ("Share") , message: "", preferredStyle: .alert)
         let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
             //do nothing
         }
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            let OKAction = UIAlertAction(title: "Mail", style: .default) { (UIAlertAction) in
             let mailComposeViewController2 = self.configuredMailComposeViewController4()
             if MFMailComposeViewController.canSendMail() {
                 
@@ -262,9 +290,26 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             // navigationController!.popViewController(animated: true)
             
         }
-        
-        alertController5.addAction(CancelAction)
+            let printAction = UIAlertAction(title: "Print", style: .default) { (UIAlertAction) in
+            let printInfo = UIPrintInfo(dictionary:nil)
+            printInfo.outputType = UIPrintInfoOutputType.general
+            printInfo.jobName = "My Print Job"
+            
+            // Set up print controller
+            let printController = UIPrintInteractionController.shared
+            printController.printInfo = printInfo
+            
+            // Assign a UIImage version of my UIView as a printing iten
+            printController.printingItem =   self.mailView.toImage()
+            
+            // Do it
+            printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
+            
+            
+        }
         alertController5.addAction(OKAction)
+        alertController5.addAction(printAction)
+        alertController5.addAction(CancelAction)
         self.present(alertController5, animated: true, completion: nil)
     }
 
@@ -303,3 +348,15 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         }
         
 }//end of class
+
+extension UIView {
+    func toImage() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
+        
+        drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
+}

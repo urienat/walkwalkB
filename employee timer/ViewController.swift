@@ -654,10 +654,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         if isSideMenuHidden {
             self.blackView.isHidden = false
             self.toolBar.isHidden = true
-
-            //records.isEnabled = false
-            //bills.isEnabled = false
-            //account.isEnabled = false
             self.sideMenuConstarin.constant = 0
             UIView.animate(withDuration: 0.4, animations: {
                self.view.layoutIfNeeded()
@@ -669,11 +665,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
             })
             self.blackView.isHidden = true
             self.toolBar.isHidden = false
-
-            //records.isEnabled = true
-            //bills.isEnabled = true
-            //account.isEnabled = true
-            
         }
         isSideMenuHidden = !isSideMenuHidden
         }//end of issidemenuhidden

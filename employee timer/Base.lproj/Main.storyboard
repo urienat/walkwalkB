@@ -2896,6 +2896,7 @@
                         <outlet property="referenceTxt" destination="NDn-4f-pNB" id="r6u-yB-s3z"/>
                         <outlet property="tableConnect" destination="G8b-SK-75d" id="t1p-4t-cUa"/>
                         <outlet property="thinking" destination="oMs-Xd-055" id="lYw-6B-Spa"/>
+                        <segue destination="8gY-C3-V1Z" kind="show" identifier="presentBill" id="q4e-3H-dKE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="giE-Q8-AnP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2938,7 +2939,7 @@
                                     <constraint firstAttribute="height" constant="60" id="oq5-oC-ito"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem image="resend" id="R6p-At-dlq">
+                                    <barButtonItem systemItem="action" id="R6p-At-dlq">
                                         <connections>
                                             <action selector="reSend:" destination="8gY-C3-V1Z" id="V6e-y6-VcK"/>
                                         </connections>
@@ -3012,6 +3013,7 @@
                         <outlet property="billReciept" destination="fhI-qh-yut" id="orU-dT-XIL"/>
                         <outlet property="deleteBtn" destination="CkP-hP-qjf" id="9lD-ir-iQQ"/>
                         <outlet property="mailText" destination="82B-Jq-qRO" id="sb8-DK-dNv"/>
+                        <outlet property="mailView" destination="82B-Jq-qRO" id="4Wg-Ah-1tz"/>
                         <outlet property="reSend" destination="R6p-At-dlq" id="XI0-Um-Vd6"/>
                         <outlet property="statusImage" destination="t9p-vy-W3U" id="AbV-fs-uch"/>
                     </connections>
@@ -3386,7 +3388,6 @@
         <image name="paid" width="50" height="50"/>
         <image name="pencilImage" width="100" height="100"/>
         <image name="perSessionImage" width="234" height="225"/>
-        <image name="resend" width="50" height="50"/>
         <image name="roundBig" width="100" height="100"/>
         <image name="setting" width="50" height="50"/>
         <image name="telephone" width="50" height="50"/>
@@ -3395,11 +3396,11 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
+        <segue reference="q4e-3H-dKE"/>
         <segue reference="vGn-ru-ol3"/>
         <segue reference="kEl-UY-JOa"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="1k4-P4-HYk"/>
+        <segue reference="gfT-By-X34"/>
     </inferredMetricsTieBreakers>
 </document>

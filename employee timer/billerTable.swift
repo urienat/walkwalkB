@@ -320,6 +320,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         print ("presparesegue")
         billManager?.billToHandle = "-"+String(BillArray[billRow.row])
         billManager?.employeeID = employeeID
+        billManager?.rebillprocess = true
         }//end of if (segue...
         }//end of prepare
     

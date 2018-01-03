@@ -342,6 +342,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         ;fetch() }
     
     
+    
+    
         func tableView(_ tableConnect: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableConnect.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! newTableCell
@@ -380,15 +382,30 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }//end of func cellforrowat
     
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var recordRow : IndexPath = self.tableConnect.indexPathForSelectedRow!
-        print (recordRow)
+            if (segue.identifier == "presentBill")
+            { let billManager = segue.destination as? billView
+                print ("presparesegue")
+                billManager?.recoveredBill = mailSaver!
+                //billManager?.recoveredReciept =
+                
+            }//end of if (segue...
+            
+       
         if (segue.identifier == "recordHandler")
-        { let recordManager = segue.destination as? datePicker2
+        { var recordRow : IndexPath = self.tableConnect.indexPathForSelectedRow!
+            print (recordRow)
+        let recordManager = segue.destination as? datePicker2
         print ("presparesegue")
         recordManager?.recordToHandle = String(idArray[recordRow.row])
         }//end of if (segue...
+        
+        
         }//end of prepare
 
+    
+
+    
+    
     
         func tableView(_ tableConnect: UITableView, didSelectRowAt indexPath: IndexPath) {}
         // func for transforming int to h:m:"
@@ -830,8 +847,12 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": self.billStatus!, "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2,"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference, "fDocumentName":self.documentName!,"fRecieptDate":self.recieptDate!,"fBillRecieptMailSaver":""
     ], withCompletionBlock: { (error) in}) //end of update.//was 0
     self.moveSessionToBilled()
+    self.performSegue(withIdentifier: "presentBill", sender: self.mailSaver)
+
     }//end of if biller
+
     }//end of dispatch
+        
     }//end of billprocess
     
     func alert19(){
@@ -840,10 +861,13 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     self.billPay.isEnabled = false
     }//end of dispatch
 
-    let alertController19 = UIAlertController(title: ("Bill") , message: "Register a new Bill and set sessions from 'Due' to 'Billed'." , preferredStyle: .alert)
+    let alertController19 = UIAlertController(title: ("Bill") , message: "Register a new Bill & Payment and set sessions from 'Due' to 'Billed'." , preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "Just do it", style: .default) { (UIAlertAction) in
+
     self.billProcess()
-    self.navigationController!.popViewController(animated: true)
+        //self.performSegue(withIdentifier: "presentBill", sender: self.mailSaver)
+
+   // self.navigationController!.popViewController(animated: true)
 
     }
         
@@ -870,8 +894,19 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         
     let printAction = UIAlertAction(title: "Print it", style: .default) { (UIAlertAction) in
     self.billProcess()
-    //add printing process
-    self.navigationController!.popViewController(animated: true)
+        let printInfo = UIPrintInfo(dictionary:nil)
+        printInfo.outputType = UIPrintInfoOutputType.general
+        printInfo.jobName = "My Print Job"
+        
+        // Set up print controller
+        let printController = UIPrintInteractionController.shared
+        printController.printInfo = printInfo
+        
+        // Assign a UIImage version of my UIView as a printing iten
+       // printController.printingItem =   self..toImage()
+        
+        // Do it
+       // printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)    self.navigationController!.popViewController(animated: true)
 
     }
         
@@ -929,8 +964,19 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let printAction = UIAlertAction(title: "Print it", style: .default) { (UIAlertAction) in
     self.billProcess()
 
-    //add printing process
-    }
+        let printInfo = UIPrintInfo(dictionary:nil)
+        printInfo.outputType = UIPrintInfoOutputType.general
+        printInfo.jobName = "My Print Job"
+        
+        // Set up print controller
+        let printController = UIPrintInteractionController.shared
+        printController.printInfo = printInfo
+        
+        // Assign a UIImage version of my UIView as a printing iten
+       // printController.printingItem =   self..toImage()
+        
+        // Do it
+        printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)    }
         
     let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
     self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
