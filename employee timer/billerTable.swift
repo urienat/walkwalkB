@@ -93,8 +93,10 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         BillArrayStatus[buttonRow] = statusTemp
         paymentView.isHidden = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            print ("alert19")
-            self.alert19()}
+            //print ("alert19")
+          self.recieptProcess() // self.alert19()
+            
+        }
         
     }
     
@@ -312,16 +314,27 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         }
     
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var billRow : IndexPath = self.billerConnect.indexPathForSelectedRow!
-        print (billRow)
+        
             
         if (segue.identifier == "billHandler")
-        { let billManager = segue.destination as? billView
+        {
+        var billRow : IndexPath = self.billerConnect.indexPathForSelectedRow!
+        print (billRow)
+        let billManager = segue.destination as? billView
         print ("presparesegue")
         billManager?.billToHandle = "-"+String(BillArray[billRow.row])
         billManager?.employeeID = employeeID
         billManager?.rebillprocess = true
         }//end of if (segue...
+        
+        if (segue.identifier == "presentReciept")
+        { let billManager = segue.destination as? billView
+        print ("presparesegue")
+        billManager?.recoveredReciept = recieptMailSaver!
+        billManager?.rebillprocess = false
+
+        }//end of if (segue...
+            
         }//end of prepare
     
         func fetchBills(){
@@ -625,12 +638,14 @@ print (self.billItems.count)
                 self.self.mydateFormat5.string(from: Date()),"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver
                 ], withCompletionBlock: { (error) in}) //end of update.
             self.recoveredreciept = self.recieptMailSaver
+            self.performSegue(withIdentifier: "presentReciept", sender: self.recieptMailSaver)
+
                 //self.navigationController!.popViewController(animated: true)
             
             
 
-            if self.StatusChoice == "Not Paid" {self.refresh(presser: 0)}
-            self.thinking.stopAnimating()
+           /// if self.StatusChoice == "Not Paid" {self.refresh(presser: 0)}
+           /// self.thinking.stopAnimating()
         
             
             }//end of if biller

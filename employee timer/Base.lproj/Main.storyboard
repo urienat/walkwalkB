@@ -2555,11 +2555,12 @@
                         <outlet property="totalAmount" destination="RwY-u5-Vpk" id="nqf-q4-hwd"/>
                         <outlet property="totalBills" destination="ILg-rw-WUw" id="23Y-xA-55y"/>
                         <outlet property="totalTax" destination="kwr-P5-PJT" id="c7j-YN-9dc"/>
+                        <segue destination="8gY-C3-V1Z" kind="show" identifier="presentReciept" id="Quf-pi-A92"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UVZ-2I-f4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5732" y="-979"/>
+            <point key="canvasLocation" x="-5968" y="-1166"/>
         </scene>
         <!--NewVC Table-->
         <scene sceneID="NSE-n1-xE8">
@@ -3397,7 +3398,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8Bf-Vi-arA"/>
-        <segue reference="q4e-3H-dKE"/>
+        <segue reference="Quf-pi-A92"/>
         <segue reference="vGn-ru-ol3"/>
         <segue reference="kEl-UY-JOa"/>
         <segue reference="8s0-fg-N01"/>

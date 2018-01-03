@@ -386,7 +386,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             { let billManager = segue.destination as? billView
                 print ("presparesegue")
                 billManager?.recoveredBill = mailSaver!
-                //billManager?.recoveredReciept =
+                billManager?.rebillprocess = false
                 
             }//end of if (segue...
             

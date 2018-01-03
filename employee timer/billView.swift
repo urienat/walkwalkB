@@ -110,6 +110,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
      //   self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Grass12")!)
         self.view.insertSubview(backgroundImage, at: 0)
       
+        billReciept.isHidden = false
+
         
         if rebillprocess == true {
         reBill() }
@@ -119,244 +121,239 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         
     } ///end of did load/////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    func presentBill(){
-        
-            
+        func presentBill(){
+        billReciept.isHidden = true
         self.mailText.text = self.recoveredBill
-        
-    }
+        self.mailText.text = self.recoveredReciept
+
+        alert55()
+        }
     
-    func  reBill() {
-        
-        
-        
-        
+        func  reBill() {
+
         self.dbRefEmployee.child(employeeID).child("myBills").child(billToHandle).observeSingleEvent(of: .value,with: { (snapshot) in
-            
-            self.recoveredBill = (snapshot.childSnapshot(forPath: "fBillMailSaver").value! as? String)!
-            self.recoveredReciept = (snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String)!
 
-            print("recovered234  56")
-            print(self.recoveredBill)
-            self.mailText.text = self.recoveredBill
-            
-            self.recoveredStatus = (snapshot.childSnapshot(forPath: "fBillStatus").value! as? String)!
-            self.recieptDate = (snapshot.childSnapshot(forPath: "fRecieptDate").value! as? String)!
-            self.paymentDate = (snapshot.childSnapshot(forPath: "fBillDate").value! as? String)!
-            self.document = (snapshot.childSnapshot(forPath: "fDocumentName").value! as? String)!
-            self.documentCounter = (snapshot.childSnapshot(forPath: "fBill").value! as? String)!
+        self.recoveredBill = (snapshot.childSnapshot(forPath: "fBillMailSaver").value! as? String)!
+        self.recoveredReciept = (snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String)!
 
-            if self.recieptDate == self.paymentDate {self.billReciept.isHidden = true ;print ("biil & Pay")} //bill&Pay
-            else {if self.recieptDate == "" {self.billReciept.isHidden = true;print ("just bill")} else {self.billReciept.isHidden = false;print(" bill and then reciept")}}
-           
-            self.titleLbl = "\(self.document!) \(self.documentCounter!)"
-            self.title = self.titleLbl
+        print("recovered234  56")
+        print(self.recoveredBill)
+        self.mailText.text = self.recoveredBill
 
-            if self.recoveredStatus == "Billed" { self.deleteBtn.isEnabled = true;self.billStatusForRecovery = ""}
-            if  self.recoveredStatus  == "Paid" { self.statusImage.image = self.paidImage;self.deleteBtn.isEnabled = true;self.billStatusForRecovery = ""}
-            if self.recoveredStatus ==  "Cancelled" { self.statusImage.image = self.canceledImage; self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "This bill was cancelled"}
-            
-            
+        self.recoveredStatus = (snapshot.childSnapshot(forPath: "fBillStatus").value! as? String)!
+        self.recieptDate = (snapshot.childSnapshot(forPath: "fRecieptDate").value! as? String)!
+        self.paymentDate = (snapshot.childSnapshot(forPath: "fBillDate").value! as? String)!
+        self.document = (snapshot.childSnapshot(forPath: "fDocumentName").value! as? String)!
+        self.documentCounter = (snapshot.childSnapshot(forPath: "fBill").value! as? String)!
+
+        if self.recieptDate == self.paymentDate {self.billReciept.isHidden = true ;print ("biil & Pay")} //bill&Pay
+        else {if self.recieptDate == "" {self.billReciept.isHidden = true;print ("just bill")} else {self.billReciept.isHidden = false;print(" bill and then reciept")}}
+
+        self.titleLbl = "\(self.document!) \(self.documentCounter!)"
+        self.title = self.titleLbl
+
+        if self.recoveredStatus == "Billed" { self.deleteBtn.isEnabled = true;self.billStatusForRecovery = ""}
+        if  self.recoveredStatus  == "Paid" { self.statusImage.image = self.paidImage;self.deleteBtn.isEnabled = true;self.billStatusForRecovery = ""}
+        if self.recoveredStatus ==  "Cancelled" { self.statusImage.image = self.canceledImage; self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "This bill was cancelled"}
+
+
         })
-        
-        
-    }//end rebill clicked
+
+
+        }//end rebill clicked
 
     
-    ////mail section
-    
-    //func for mail
-    func  configuredMailComposeViewController2() -> MFMailComposeViewController {
+        ////mail section
+
+        //func for mail
+        func  configuredMailComposeViewController2() -> MFMailComposeViewController {
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
         mailComposerVC2.setSubject("Bill recovery \(billToHandle)")
         mailComposerVC2.setMessageBody("\(recoveredBill)\r\n\r\n Bill-Copy\r\n \(billStatusForRecovery)", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
         //mailComposerVC2.setCcRecipients([ViewController.fixedemail])
-        
-        
         return mailComposerVC2
-    }//end of MFMailcomposer
+        }//end of MFMailcomposer
     
-    //func for mail4
-    func  configuredMailComposeViewController4() -> MFMailComposeViewController {
+        //func for mail4
+        func  configuredMailComposeViewController4() -> MFMailComposeViewController {
         let mailComposerVC4 = MFMailComposeViewController()
         mailComposerVC4.mailComposeDelegate = self
         mailComposerVC4.setSubject("Bill recovery \(billToHandle)")
         mailComposerVC4.setMessageBody("\(recoveredReciept)\r\n\r\n Reciept-Copy\r\n \(billStatusForRecovery)", isHTML: false)
         mailComposerVC4.setToRecipients([ViewController.fixedemail])
         //mailComposerVC4.setCcRecipients([ViewController.fixedemail])
-        
-        
         return mailComposerVC4
-    }//end of MFMailcomposer
+        }//end of MFMailcomposer
     
-    func showSendmailErrorAlert() {
+        func showSendmailErrorAlert() {
         let sendMailErorrAlert = UIAlertController(title:"Could Not Send Email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.",preferredStyle: .alert)
         sendMailErorrAlert.message = "error occured"
         //seems that it does not work check!!!!
-    }
+        }
     
-    func mailComposeController(_ controller: MFMailComposeViewController,
-                               didFinishWith result: MFMailComposeResult, error: Error?) {
+        func mailComposeController(_ controller: MFMailComposeViewController,didFinishWith result: MFMailComposeResult, error: Error?) {
         switch result.rawValue {
         case MFMailComposeResult.cancelled.rawValue:
             print("Mail cancelled")
             controller.dismiss(animated: true, completion: nil)
-            
-            
         case MFMailComposeResult.saved.rawValue:
             print("Mail saved3")
             controller.dismiss(animated: true, completion: nil)
-            
-            
-            
         case MFMailComposeResult.sent.rawValue:
             print("Mail sent3")
             controller.dismiss(animated: true, completion: nil)
-            
-            
         case MFMailComposeResult.failed.rawValue:
             print("Mail sent failure: %@", [error!.localizedDescription])
             controller.dismiss(animated: true, completion: nil)
-            
         default:
             break
         }
         // Dismiss the mail compose view controller.
         
-        
         //controller.dismiss(animated: true, completion: nil)
-        
         self.navigationController!.popViewController(animated: true)
-
-    }
+        }
 
     
- //alerts//////////////////////////////
-    func alert5(){
+ //alerts////////////////////////////////////////////
+        func alert5(){
         let alertController5 = UIAlertController(title: ("Share") , message: "", preferredStyle: .alert)
         let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
-            //do nothing
+        //do nothing
         }
         let OKAction = UIAlertAction(title: "Mail", style: .default) { (UIAlertAction) in
-            let mailComposeViewController2 = self.configuredMailComposeViewController2()
-            if MFMailComposeViewController.canSendMail() {
-                
-                self.present(mailComposeViewController2, animated: true, completion: nil)
-            } //end of if
-            else{ self.showSendmailErrorAlert() }
-            // navigationController!.popViewController(animated: true)
-            
+        let mailComposeViewController2 = self.configuredMailComposeViewController2()
+        if MFMailComposeViewController.canSendMail() {
+
+        self.present(mailComposeViewController2, animated: true, completion: nil)
+        } //end of if
+        else{ self.showSendmailErrorAlert() }
+        // navigationController!.popViewController(animated: true)
+
         }
-        
+
         let printAction = UIAlertAction(title: "Print", style: .default) { (UIAlertAction) in
-            let printInfo = UIPrintInfo(dictionary:nil)
-            printInfo.outputType = UIPrintInfoOutputType.general
-            printInfo.jobName = "My Print Job"
-            
-            // Set up print controller
-            let printController = UIPrintInteractionController.shared
-            printController.printInfo = printInfo
-            
-            // Assign a UIImage version of my UIView as a printing iten
-            printController.printingItem =   self.mailView.toImage()
-            
-            // Do it
-            printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
-            
-            
+        let printInfo = UIPrintInfo(dictionary:nil)
+        printInfo.outputType = UIPrintInfoOutputType.general
+        printInfo.jobName = "My Print Job"
+
+        // Set up print controller
+        let printController = UIPrintInteractionController.shared
+        printController.printInfo = printInfo
+
+        // Assign a UIImage version of my UIView as a printing iten
+        printController.printingItem =   self.mailView.toImage()
+
+        // Do it
+        printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
+
+
         }
-        
+
         alertController5.addAction(OKAction)
         alertController5.addAction(printAction)
         alertController5.addAction(CancelAction)
         self.present(alertController5, animated: true, completion: nil)
-    }
+        }
 
     
-    func alert6(){
+        func alert6(){
         let alertController5 = UIAlertController(title: ("Share") , message: "", preferredStyle: .alert)
         let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
-            //do nothing
+        //do nothing
         }
-            let OKAction = UIAlertAction(title: "Mail", style: .default) { (UIAlertAction) in
-            let mailComposeViewController2 = self.configuredMailComposeViewController4()
-            if MFMailComposeViewController.canSendMail() {
-                
-                self.present(mailComposeViewController2, animated: true, completion: nil)
-            } //end of if
-            else{ self.showSendmailErrorAlert() }
-            // navigationController!.popViewController(animated: true)
-            
+        let OKAction = UIAlertAction(title: "Mail", style: .default) { (UIAlertAction) in
+        let mailComposeViewController2 = self.configuredMailComposeViewController4()
+        if MFMailComposeViewController.canSendMail() {
+
+        self.present(mailComposeViewController2, animated: true, completion: nil)
+        } //end of if
+        else{ self.showSendmailErrorAlert() }
+        // navigationController!.popViewController(animated: true)
+
         }
-            let printAction = UIAlertAction(title: "Print", style: .default) { (UIAlertAction) in
-            let printInfo = UIPrintInfo(dictionary:nil)
-            printInfo.outputType = UIPrintInfoOutputType.general
-            printInfo.jobName = "My Print Job"
-            
-            // Set up print controller
-            let printController = UIPrintInteractionController.shared
-            printController.printInfo = printInfo
-            
-            // Assign a UIImage version of my UIView as a printing iten
-            printController.printingItem =   self.mailView.toImage()
-            
-            // Do it
-            printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
-            
-            
+        let printAction = UIAlertAction(title: "Print", style: .default) { (UIAlertAction) in
+        let printInfo = UIPrintInfo(dictionary:nil)
+        printInfo.outputType = UIPrintInfoOutputType.general
+        printInfo.jobName = "My Print Job"
+
+        // Set up print controller
+        let printController = UIPrintInteractionController.shared
+        printController.printInfo = printInfo
+
+        // Assign a UIImage version of my UIView as a printing iten
+        printController.printingItem =   self.mailView.toImage()
+
+        // Do it
+        printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
+
+
         }
         alertController5.addAction(OKAction)
         alertController5.addAction(printAction)
         alertController5.addAction(CancelAction)
         self.present(alertController5, animated: true, completion: nil)
-    }
+        }
 
-    //save alert
-    func deleteAlert () {
+        //save alert
+        func deleteAlert () {
         print("delete")
         if billReciept.isHidden != true { self.cancelledDocument = "Bill & Recipet ref# \(self.documentCounter!)"} else {self.cancelledDocument = "\(self.document!) ref# \(self.documentCounter!)"}
-       
-        let alertController = UIAlertController(title: "Delete \(cancelledDocument!)", message: "You are about to delete \(cancelledDocument!) ,though visibilty would remain. Are You Sure?", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
-                //nothing
-            }
-            let deleteAction = UIAlertAction(title: "Delete it.", style: .default) { (UIAlertAction) in
-                self.dbRefEmployee.child(self.employeeID).child("myBills").child(String(self.billToHandle)).updateChildValues([ "fBillStatus":"Cancelled"])
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
 
-                self.navigationController!.popViewController(animated: true)
-                }
-            }
-            
-            alertController.addAction(cancelAction)
-            alertController.addAction(deleteAction)
-            self.present(alertController, animated: true, completion: nil)
+        let alertController = UIAlertController(title: "Delete \(cancelledDocument!)", message: "You are about to delete \(cancelledDocument!) ,though visibilty would remain. Are You Sure?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+        //nothing
+        }
+        let deleteAction = UIAlertAction(title: "Delete it.", style: .default) { (UIAlertAction) in
+        self.dbRefEmployee.child(self.employeeID).child("myBills").child(String(self.billToHandle)).updateChildValues([ "fBillStatus":"Cancelled"])
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+
+        self.navigationController!.popViewController(animated: true)
+        }
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        self.present(alertController, animated: true, completion: nil)
         }
     
-
+    func alert55() {
+        let alertController55 = UIAlertController(title: "Bill (counter)", message: "Register the bill", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Undo", style: .cancel) { (UIAlertAction) in
+        //undo - delete bill or reciept data
+        // if bill undo records to 'due'
+        }
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+        // do nothing
+        }
+        
+        alertController55.addAction(cancelAction)
+        alertController55.addAction(OKAction)
+        self.present(alertController55, animated: true, completion: nil)
+        }
     
         func alert50(){
-            let alertController50 = UIAlertController(title: ("Internet Connection") , message: " There is no internet - Check communication avilability.", preferredStyle: .alert)
-            let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-            }
-            
-            alertController50.addAction(OKAction)
-            self.present(alertController50, animated: true, completion: nil)
+        let alertController50 = UIAlertController(title: ("Internet Connection") , message: " There is no internet - Check communication avilability.", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
         }
-        
-}//end of class
 
-extension UIView {
-    func toImage() -> UIImage {
+        alertController50.addAction(OKAction)
+        self.present(alertController50, animated: true, completion: nil)
+        }
+
+        }//end of class
+
+        extension UIView {
+        func toImage() -> UIImage {
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
-        
+
         drawHierarchy(in: self.bounds, afterScreenUpdates: true)
-        
+
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image!
-    }
-}
+        }
+        }
