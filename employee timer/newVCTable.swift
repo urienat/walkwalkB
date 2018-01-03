@@ -467,7 +467,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
         buttonRow = sender.tag
         
-        if appArray[buttonRow] == "Pre" { newVCTable.checkBox = 1; statusTemp = "Approved";eventCounter+=1;amountCalc()}
+            if appArray[buttonRow] == "Pre" { newVCTable.checkBox = 1; statusTemp = "Approved";eventCounter+=1;noSign.isHidden = true; amountCalc()}
             else if appArray[buttonRow] == "Approved" { newVCTable.checkBox = 0; statusTemp = "Pre";eventCounter-=1;amountCalc()}
         else if  appArray[buttonRow] == "Paid" {newVCTable.checkBox = 2; statusTemp = "Paid";alert12()}
         print( "apparray buttonarray\(appArray[buttonRow])")
