@@ -126,7 +126,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         billStatus = "Paid"
         print (paymentSys,paymentReference)
         paymentView.isHidden = true
-        self.alert19()
+        billProcess() // previous self.alert19()
         }//end of save
     
     @IBAction func cancelPayment(_ sender: Any) {
@@ -175,7 +175,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     refresh(presser: 1)
     DispatchQueue.main.asyncAfter(deadline: .now()+4.4){
     print(self.appArray.count)
-    if self.appArray.count != 0 {self.thinking.stopAnimating(); self.alert18()}
+        if self.appArray.count != 0 {self.thinking.stopAnimating();self.billProcess()} //self.alert18()}
     if self.appArray.count == 0 {
     self.thinking.stopAnimating()
     self.alert27()
@@ -865,7 +865,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let OKAction = UIAlertAction(title: "Just do it", style: .default) { (UIAlertAction) in
 
     self.billProcess()
-        //self.performSegue(withIdentifier: "presentBill", sender: self.mailSaver)
+    //self.performSegue(withIdentifier: "presentBill", sender: self.mailSaver)
 
    // self.navigationController!.popViewController(animated: true)
 
