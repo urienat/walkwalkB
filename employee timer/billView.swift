@@ -34,6 +34,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     var documentCounter :String?
     var rebillprocess:Bool?
     
+    let mydateFormat5 = DateFormatter()
+
     
     //var deleteBill : UIBarButtonItem?
     
@@ -90,6 +92,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     /////////////////////////////////////////////////////////////////  view did load starts///////////////////////
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
+
         
         //connectivity
         if Reachability.isConnectedToNetwork() == true
@@ -307,7 +312,24 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         if recieptChosen == true { registerTitle = "reciept"} else { registerTitle = self.document}
         let alertController55 = UIAlertController(title: "Register approval", message: "Register \(registerTitle!) - \(documentCounter!)", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Undo", style: .cancel) { (UIAlertAction) in
+        if self.recieptChosen == true {
+            print(self.employeeID)
+            print ((String("-\(self.documentCounter!)"))!)
+            
+            self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).updateChildValues(["fBillStatus": "Billed", "fBillStatusDate":
+                self.mydateFormat5.string(from:Date()),"fPaymentReference":"" ,"fRecieptDate":"","fBillRecieptMailSaver":""
+                ], withCompletionBlock: { (error) in}) //end of update.
+            
+        } else {
+           self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter)")).removeValue()}
+            self.dbRefEmployee.child(self.employeeID).updateChildValues(["fCounter":String(Int(self.documentCounter!)!-1)])
+            
         //undo - delete bill or reciept data
+            
+            
+            
+            
+            
         // if bill undo records to 'due'
         }
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in

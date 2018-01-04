@@ -389,6 +389,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                 billManager?.rebillprocess = false
                 billManager?.document = documentName!
                 billManager?.documentCounter = counterForMail2!
+                billManager?.employeeID = employeeID
+
                 
             }//end of if (segue...
             

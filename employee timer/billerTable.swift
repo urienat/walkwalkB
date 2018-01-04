@@ -335,6 +335,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billManager?.rebillprocess = false
         billManager?.document = documentName!
         billManager?.documentCounter = counterForpresent!
+        billManager?.employeeID = employeeID
+
 
         }//end of if (segue...
             
