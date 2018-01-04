@@ -35,13 +35,15 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     var rebillprocess:Bool?
     
     
-    var deleteBill : UIBarButtonItem?
+    //var deleteBill : UIBarButtonItem?
     
     var recoveredBill = ""
     var recoveredReciept = ""
     var recoveredStatus = ""
     var billStatusForRecovery = ""
     var cancelledDocument: String?
+    
+    var registerTitle : String?
     
     var recieptChosen:Bool = false
 
@@ -89,7 +91,6 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print ("fff")
         //connectivity
         if Reachability.isConnectedToNetwork() == true
         {print("Internet Connection Available!")
@@ -98,24 +99,13 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         alert50()
         }
         
-        navigationItem.leftBarButtonItem = deleteBill
-        deleteBill?.isEnabled = false
+       // navigationItem.leftBarButtonItem = deleteBill
+        //deleteBill?.isEnabled = false
         
         self.view.insertSubview(backgroundImage, at: 0)
-      
-        billReciept.isHidden = false
-
-        print (recoveredReciept)
-
-        
-        
         if rebillprocess == true {
-        reBill() }
-        
-        else {
-            
-            print (recoveredReciept)
-
+        reBill()
+        }else {
         if recoveredReciept != "" {
         print ("in reciept")
         presentReciept()
@@ -123,36 +113,28 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         print ("in bill")
         presentBill()} }
 
-        
-        
     } ///end of did load/////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    func presentReciept(){
+        func presentReciept(){
         billReciept.isHidden = true
         print (recoveredReciept)
         recieptChosen = true
-
         self.mailText.text = self.recoveredReciept
         alert55()
-        
-    }
-    
+
+        }
+
         func presentBill(){
         billReciept.isHidden = true
         self.recieptChosen = false
         self.mailText.text = self.recoveredBill
         alert55()
         }
-    
+
         func  reBill() {
-
         self.dbRefEmployee.child(employeeID).child("myBills").child(billToHandle).observeSingleEvent(of: .value,with: { (snapshot) in
-
         self.recoveredBill = (snapshot.childSnapshot(forPath: "fBillMailSaver").value! as? String)!
         self.recoveredReciept = (snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String)!
-
-        print("recovered234  56")
-        print(self.recoveredBill)
         self.mailText.text = self.recoveredBill
 
         self.recoveredStatus = (snapshot.childSnapshot(forPath: "fBillStatus").value! as? String)!
@@ -170,22 +152,16 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         if self.recoveredStatus == "Billed" { self.deleteBtn.isEnabled = true;self.billStatusForRecovery = ""}
         if  self.recoveredStatus  == "Paid" { self.statusImage.image = self.paidImage;self.deleteBtn.isEnabled = true;self.billStatusForRecovery = ""}
         if self.recoveredStatus ==  "Cancelled" { self.statusImage.image = self.canceledImage; self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "This bill was cancelled"}
-
-
         })
 
-
         }//end rebill clicked
-
-    
-        ////mail section
 
         //func for mail
         func  configuredMailComposeViewController2() -> MFMailComposeViewController {
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
-        mailComposerVC2.setSubject("Bill recovery \(billToHandle)")
-        mailComposerVC2.setMessageBody("\(recoveredBill)\r\n\r\n\r\n \(billStatusForRecovery)", isHTML: false)
+        mailComposerVC2.setSubject("\(document) \(documentCounter!)")
+        mailComposerVC2.setMessageBody("\(recoveredBill)\r\n\r\n\r\n", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
         //mailComposerVC2.setCcRecipients([ViewController.fixedemail])
         return mailComposerVC2
@@ -195,8 +171,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         func  configuredMailComposeViewController4() -> MFMailComposeViewController {
         let mailComposerVC4 = MFMailComposeViewController()
         mailComposerVC4.mailComposeDelegate = self
-        mailComposerVC4.setSubject("Bill recovery \(billToHandle)")
-        mailComposerVC4.setMessageBody("\(recoveredReciept)\r\n\r\n \r\n \(billStatusForRecovery)", isHTML: false)
+        mailComposerVC4.setSubject("Reciept \(documentCounter!)")
+        mailComposerVC4.setMessageBody("\(recoveredReciept)\r\n\r\n \r\n ", isHTML: false)
         mailComposerVC4.setToRecipients([ViewController.fixedemail])
         //mailComposerVC4.setCcRecipients([ViewController.fixedemail])
         return mailComposerVC4
@@ -211,24 +187,22 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         func mailComposeController(_ controller: MFMailComposeViewController,didFinishWith result: MFMailComposeResult, error: Error?) {
         switch result.rawValue {
         case MFMailComposeResult.cancelled.rawValue:
-            print("Mail cancelled")
-            controller.dismiss(animated: true, completion: nil)
+        print("Mail cancelled")
+        controller.dismiss(animated: true, completion: nil)
         case MFMailComposeResult.saved.rawValue:
-            print("Mail saved3")
-            controller.dismiss(animated: true, completion: nil)
+        print("Mail saved3")
+        controller.dismiss(animated: true, completion: nil)
         case MFMailComposeResult.sent.rawValue:
-            print("Mail sent3")
-            controller.dismiss(animated: true, completion: nil)
+        print("Mail sent3")
+        controller.dismiss(animated: true, completion: nil)
         case MFMailComposeResult.failed.rawValue:
-            print("Mail sent failure: %@", [error!.localizedDescription])
-            controller.dismiss(animated: true, completion: nil)
+        print("Mail sent failure: %@", [error!.localizedDescription])
+        controller.dismiss(animated: true, completion: nil)
         default:
-            break
+        break
         }
-        // Dismiss the mail compose view controller.
         
-        //controller.dismiss(animated: true, completion: nil)
-        self.navigationController!.popViewController(animated: true)
+        self.navigationController!.popViewController(animated: true) //check to go one more level
         }
 
     
@@ -238,15 +212,13 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
         //do nothing
         }
-        let OKAction = UIAlertAction(title: "Mail", style: .default) { (UIAlertAction) in
+        let mailAction = UIAlertAction(title: "Mail", style: .default) { (UIAlertAction) in
         let mailComposeViewController2 = self.configuredMailComposeViewController2()
         if MFMailComposeViewController.canSendMail() {
-
         self.present(mailComposeViewController2, animated: true, completion: nil)
         } //end of if
         else{ self.showSendmailErrorAlert() }
         // navigationController!.popViewController(animated: true)
-
         }
 
         let printAction = UIAlertAction(title: "Print", style: .default) { (UIAlertAction) in
@@ -263,11 +235,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
 
         // Do it
         printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
-
-
         }
 
-        alertController5.addAction(OKAction)
+        alertController5.addAction(mailAction)
         alertController5.addAction(printAction)
         alertController5.addAction(CancelAction)
         self.present(alertController5, animated: true, completion: nil)
@@ -279,15 +249,13 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
         //do nothing
         }
-        let OKAction = UIAlertAction(title: "Mail", style: .default) { (UIAlertAction) in
+        let mailAction = UIAlertAction(title: "Mail", style: .default) { (UIAlertAction) in
         let mailComposeViewController2 = self.configuredMailComposeViewController4()
         if MFMailComposeViewController.canSendMail() {
-
         self.present(mailComposeViewController2, animated: true, completion: nil)
         } //end of if
         else{ self.showSendmailErrorAlert() }
         // navigationController!.popViewController(animated: true)
-
         }
         let printAction = UIAlertAction(title: "Print", style: .default) { (UIAlertAction) in
         let printInfo = UIPrintInfo(dictionary:nil)
@@ -306,7 +274,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
 
 
         }
-        alertController5.addAction(OKAction)
+        alertController5.addAction(mailAction)
         alertController5.addAction(printAction)
         alertController5.addAction(CancelAction)
         self.present(alertController5, animated: true, completion: nil)
@@ -336,7 +304,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         }
     
     func alert55() {
-        let alertController55 = UIAlertController(title: "Bill (counter)", message: "Register the bill", preferredStyle: .alert)
+        if recieptChosen == true { registerTitle = "reciept"} else { registerTitle = self.document}
+        let alertController55 = UIAlertController(title: "Register approval", message: "Register \(registerTitle!) - \(documentCounter!)", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Undo", style: .cancel) { (UIAlertAction) in
         //undo - delete bill or reciept data
         // if bill undo records to 'due'

@@ -757,13 +757,13 @@ print (self.billItems.count)
             func alert3(){
             let alertController3 = UIAlertController(title: ("Bill Alert") , message: "You are about to cancel reciept. Are you Sure?", preferredStyle: .alert)
 
-            let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+            let CancelAction = UIAlertAction(title: "No", style: .cancel) { (UIAlertAction) in
             biller.checkBoxBiller = 1
             //do nothing
              self.refresh(presser: 1)
             }
 
-            let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            let OKAction = UIAlertAction(title: "Yes", style: .default) { (UIAlertAction) in
                 
             //  save the canceeld reciept within the bill
                 self.dbRefEmployees.child(self.employeeID).child("IrregularLog").child("CancelledReciepts").child(self.mydateFormat5.string(from: Date())).updateChildValues(["fBillRecieptMailSaver":self.recoveredreciept, "fReciept":self.BillArray[self.buttonRow]], withCompletionBlock: { (error) in})
