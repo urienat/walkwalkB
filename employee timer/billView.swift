@@ -34,6 +34,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     var documentCounter :String?
     var rebillprocess:Bool?
     
+    
     var deleteBill : UIBarButtonItem?
     
     var recoveredBill = ""
@@ -91,41 +92,55 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         print ("fff")
         //connectivity
         if Reachability.isConnectedToNetwork() == true
-        {
-            print("Internet Connection Available!")
+        {print("Internet Connection Available!")
+        }else{
+        print("Internet Connection not Available!")
+        alert50()
         }
-        else
-        {
-            print("Internet Connection not Available!")
-            alert50()
-        }
-        
-        
-        
-      //  deleteBill = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(deleteAlert))
         
         navigationItem.leftBarButtonItem = deleteBill
         deleteBill?.isEnabled = false
         
-     //   self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Grass12")!)
         self.view.insertSubview(backgroundImage, at: 0)
       
         billReciept.isHidden = false
 
+        print (recoveredReciept)
+
+        
         
         if rebillprocess == true {
         reBill() }
-        else {presentBill()}
-       
+        
+        else {
+            
+            print (recoveredReciept)
+
+        if recoveredReciept != "" {
+        print ("in reciept")
+        presentReciept()
+        } else {
+        print ("in bill")
+        presentBill()} }
+
         
         
     } ///end of did load/////////////////////////////////////////////////////////////////////////////////////////////////////
     
+    func presentReciept(){
+        billReciept.isHidden = true
+        print (recoveredReciept)
+        recieptChosen = true
+
+        self.mailText.text = self.recoveredReciept
+        alert55()
+        
+    }
+    
         func presentBill(){
         billReciept.isHidden = true
+        self.recieptChosen = false
         self.mailText.text = self.recoveredBill
-        self.mailText.text = self.recoveredReciept
-
         alert55()
         }
     
@@ -145,9 +160,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         self.paymentDate = (snapshot.childSnapshot(forPath: "fBillDate").value! as? String)!
         self.document = (snapshot.childSnapshot(forPath: "fDocumentName").value! as? String)!
         self.documentCounter = (snapshot.childSnapshot(forPath: "fBill").value! as? String)!
-
-        if self.recieptDate == self.paymentDate {self.billReciept.isHidden = true ;print ("biil & Pay")} //bill&Pay
-        else {if self.recieptDate == "" {self.billReciept.isHidden = true;print ("just bill")} else {self.billReciept.isHidden = false;print(" bill and then reciept")}}
+            
+        //check what is rebilled
+        if self.recoveredReciept == "" {self.billReciept.isHidden = true ;print ("biil & Pay or just bill")} else {self.billReciept.isHidden = false;print(" bill and then reciept")}
 
         self.titleLbl = "\(self.document!) \(self.documentCounter!)"
         self.title = self.titleLbl
@@ -170,7 +185,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
         mailComposerVC2.setSubject("Bill recovery \(billToHandle)")
-        mailComposerVC2.setMessageBody("\(recoveredBill)\r\n\r\n Bill-Copy\r\n \(billStatusForRecovery)", isHTML: false)
+        mailComposerVC2.setMessageBody("\(recoveredBill)\r\n\r\n\r\n \(billStatusForRecovery)", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
         //mailComposerVC2.setCcRecipients([ViewController.fixedemail])
         return mailComposerVC2
@@ -181,7 +196,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         let mailComposerVC4 = MFMailComposeViewController()
         mailComposerVC4.mailComposeDelegate = self
         mailComposerVC4.setSubject("Bill recovery \(billToHandle)")
-        mailComposerVC4.setMessageBody("\(recoveredReciept)\r\n\r\n Reciept-Copy\r\n \(billStatusForRecovery)", isHTML: false)
+        mailComposerVC4.setMessageBody("\(recoveredReciept)\r\n\r\n \r\n \(billStatusForRecovery)", isHTML: false)
         mailComposerVC4.setToRecipients([ViewController.fixedemail])
         //mailComposerVC4.setCcRecipients([ViewController.fixedemail])
         return mailComposerVC4

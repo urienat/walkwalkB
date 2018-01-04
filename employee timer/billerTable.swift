@@ -23,6 +23,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let redFilter = UIImage(named: "filterRed")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
     
+    var counterForpresent:String?
+    
     var monthToHandle : Int = 0
     var yearToHandle : Int = 0
     var taxBillsToHandle:Bool = false
@@ -86,7 +88,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     @IBAction func savePayment(_ sender: Any) {
         self.thinking.startAnimating()
-
         paymentReference = referenceTxt.text
         billStatus = "Paid"
         print (paymentSys,paymentReference)
@@ -330,8 +331,10 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         if (segue.identifier == "presentReciept")
         { let billManager = segue.destination as? billView
         print ("presparesegue")
-        billManager?.recoveredReciept = recieptMailSaver!
+        billManager?.recoveredReciept = recoveredreciept!
         billManager?.rebillprocess = false
+        billManager?.document = documentName!
+        billManager?.documentCounter = counterForpresent!
 
         }//end of if (segue...
             
@@ -473,12 +476,12 @@ print (self.billItems.count)
             
             self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).observeSingleEvent(of: .value,with: {(snapshot) in
                 self.documentName = snapshot.childSnapshot(forPath: "fDocumentName").value! as? String
-
+                self.counterForpresent = snapshot.childSnapshot(forPath: "fBill").value! as? String
                 self.midCalc = snapshot.childSnapshot(forPath: "fBillTax").value! as? String
                 self.midCalc2 = snapshot.childSnapshot(forPath: "fBillTotalTotal").value! as? String
                 self.midCalc3 = snapshot.childSnapshot(forPath: "fBillSum").value! as? String
                 self.account = snapshot.childSnapshot(forPath: "fBillEmployerName").value! as? String
-                self.recoveredreciept = snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String
+               // self.recoveredreciept = snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String
 
 
                 print (self.midCalc3,self.midCalc2,self.midCalc)
@@ -631,13 +634,17 @@ print (self.billItems.count)
             print (self.billInfo)
             
             self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: Reciept-\(self.BillArray[self.buttonRow])\r\nAccount: \(self.account!)\r\n\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\r\n Payment's recipet for Bill-\(self.BillArray[self.buttonRow])\r\n\r\n\(self.taxationBlock!)\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc2!)\r\n\r\n\(self.paymentBlock!)\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
-          
-                
+            
+            self.recoveredreciept = self.recieptMailSaver
+            print (self.recieptMailSaver)
+            print (self.recoveredreciept)
+
                 //update bill with DB
             self.dbRefEmployees.child(self.employeeID).child("myBills").child(String("-"+self.BillArray[self.buttonRow])).updateChildValues(["fBillStatus": self.statusTemp, "fBillStatusDate":
                 self.self.mydateFormat5.string(from: Date()),"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver
                 ], withCompletionBlock: { (error) in}) //end of update.
-            self.recoveredreciept = self.recieptMailSaver
+            
+            
             self.performSegue(withIdentifier: "presentReciept", sender: self.recieptMailSaver)
 
                 //self.navigationController!.popViewController(animated: true)

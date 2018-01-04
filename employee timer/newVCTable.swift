@@ -387,6 +387,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                 print ("presparesegue")
                 billManager?.recoveredBill = mailSaver!
                 billManager?.rebillprocess = false
+                billManager?.document = documentName!
+                billManager?.documentCounter = counterForMail2!
                 
             }//end of if (segue...
             
