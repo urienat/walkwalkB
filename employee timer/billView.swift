@@ -34,6 +34,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     var documentCounter :String?
     var rebillprocess:Bool?
     
+    var undoArray: [String] = []
+
+    
     let mydateFormat5 = DateFormatter()
 
     
@@ -210,6 +213,12 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         self.navigationController!.popViewController(animated: true) //check to go one more level
         }
 
+        func  moveSessionToBilled() {
+        print ("moveSessionToBilled")
+        for h in 0...(undoArray.count-1){
+            self.dbRef.child(String(undoArray[h])).updateChildValues(["fStatus": "Approved"], withCompletionBlock: { (error) in}) //end of update.
+        }//end of loop
+        }//end movesession
     
  //alerts////////////////////////////////////////////
         func alert5(){
@@ -322,13 +331,13 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             
         } else {
             
-           print (String(Int(self.documentCounter!)!-1))
-            
-           self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).removeValue()}
+            print (String(Int(self.documentCounter!)!-1))
+
+            self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).removeValue()}
             self.dbRefEmployee.child(self.employeeID).updateChildValues(["fCounter":String(Int(self.documentCounter!)!)])
-            
-        //undo - delete bill or reciept data
-            
+
+            //undo - undo records
+            self.moveSessionToBilled()
             
             
             

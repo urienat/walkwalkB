@@ -390,6 +390,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                 billManager?.document = documentName!
                 billManager?.documentCounter = counterForMail2!
                 billManager?.employeeID = employeeID
+                billManager?.undoArray = idArray
 
                 
             }//end of if (segue...
