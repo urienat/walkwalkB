@@ -151,7 +151,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
 
         if self.recoveredStatus == "Billed" { self.deleteBtn.isEnabled = true;self.billStatusForRecovery = ""}
         if  self.recoveredStatus  == "Paid" { self.statusImage.image = self.paidImage;self.deleteBtn.isEnabled = true;self.billStatusForRecovery = ""}
-        if self.recoveredStatus ==  "Cancelled" { self.statusImage.image = self.canceledImage; self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "This bill was cancelled"}
+        if self.recoveredStatus ==  "Cancelled" { self.statusImage.image = self.canceledImage; self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "This document was cancelled!!!"}
         })
 
         }//end rebill clicked
@@ -160,7 +160,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         func  configuredMailComposeViewController2() -> MFMailComposeViewController {
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
-        mailComposerVC2.setSubject("\(document) \(documentCounter!)")
+            mailComposerVC2.setSubject("\(billStatusForRecovery)\r\n\r\n\(document) \(documentCounter!)")
         mailComposerVC2.setMessageBody("\(recoveredBill)\r\n\r\n\r\n", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
         //mailComposerVC2.setCcRecipients([ViewController.fixedemail])
@@ -172,7 +172,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         let mailComposerVC4 = MFMailComposeViewController()
         mailComposerVC4.mailComposeDelegate = self
         mailComposerVC4.setSubject("Reciept \(documentCounter!)")
-        mailComposerVC4.setMessageBody("\(recoveredReciept)\r\n\r\n \r\n ", isHTML: false)
+        mailComposerVC4.setMessageBody("\(billStatusForRecovery)\r\n\r\n\(recoveredReciept)\r\n\r\n \r\n ", isHTML: false)
         mailComposerVC4.setToRecipients([ViewController.fixedemail])
         //mailComposerVC4.setCcRecipients([ViewController.fixedemail])
         return mailComposerVC4
