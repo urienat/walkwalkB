@@ -321,8 +321,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
                 ], withCompletionBlock: { (error) in}) //end of update.
             
         } else {
-           self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter)")).removeValue()}
-            self.dbRefEmployee.child(self.employeeID).updateChildValues(["fCounter":String(Int(self.documentCounter!)!-1)])
+            
+           print (String(Int(self.documentCounter!)!-1))
+            
+           self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).removeValue()}
+            self.dbRefEmployee.child(self.employeeID).updateChildValues(["fCounter":String(Int(self.documentCounter!)!)])
             
         //undo - delete bill or reciept data
             

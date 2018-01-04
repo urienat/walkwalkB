@@ -684,7 +684,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         taxationBlock = ""
         biller = true
         self.dbRefEmployees.queryOrderedByKey().queryEqual(toValue: self.employeeID).observeSingleEvent(of: .childAdded, with: { (snapshot) in
-            let counterForMail = (snapshot.childSnapshot(forPath: "fCounter").value as! String)
+            self.counterForMail2 = (snapshot.childSnapshot(forPath: "fCounter").value as! String)
             let taxation = (snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String)
             let taxName = (snapshot.childSnapshot(forPath: "fTaxName").value as! String)
             self.taxCalc = (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String)
@@ -728,7 +728,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             }// end of else  self.paymentDate != ""
             
    
-            self.counterForMail2 = counterForMail
             print("guygug3\(self.counterForMail2!)")
             })
             }//end of billing

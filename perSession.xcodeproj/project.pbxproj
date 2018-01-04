@@ -217,6 +217,7 @@
 			children = (
 				AEC3A7721D7DE20E005E3F1F /* datePicker2.swift */,
 				AEC3A7741D7DE22B005E3F1F /* datePicker2.storyboard */,
+				AEE95E491D7B092A00093B51 /* Main.storyboard */,
 			);
 			name = datePicker;
 			sourceTree = "<group>";
@@ -261,7 +262,6 @@
 				AE84DE891E7E638700F08945 /* RebeloperStore */,
 				AEC3A7711D7DE1C7005E3F1F /* datePicker */,
 				AE5548DC1DA51281009D7085 /* history */,
-				AEE95E491D7B092A00093B51 /* Main.storyboard */,
 				AECF31E01E12496C0072547C /* helpers */,
 				AE577AD31DF9417E00EBE62B /* The Root Program */,
 				008388A21FE6576F00EFE400 /* tax */,
