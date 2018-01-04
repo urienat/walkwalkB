@@ -89,7 +89,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var reSend: UIBarButtonItem!
     
     @IBAction func reSend(_ sender: Any) {
-        if recieptChosen {alert6()} else {  alert5()}
+        if recieptChosen == true {alert6()} else {  alert5()}
     }
     
     /////////////////////////////////////////////////////////////////  view did load starts///////////////////////
@@ -112,8 +112,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         
         self.view.insertSubview(backgroundImage, at: 0)
         if rebillprocess == true {
+        deleteBtn.isEnabled = true
         reBill()
         }else {
+        deleteBtn.isEnabled = false
+
         if recoveredReciept != "" {
         print ("in reciept")
         presentReciept()
@@ -299,7 +302,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         print("delete")
         if billReciept.isHidden != true { self.cancelledDocument = "Bill & Recipet ref# \(self.documentCounter!)"} else {self.cancelledDocument = "\(self.document!) ref# \(self.documentCounter!)"}
 
-        let alertController = UIAlertController(title: "Delete \(cancelledDocument!)", message: "You are about to delete \(cancelledDocument!) ,though visibilty would remain. Are You Sure?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Delete Alert", message: "You are about to delete \(cancelledDocument!). Are You Sure?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
         //nothing
         }
@@ -319,8 +322,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     
     func alert55() {
         if recieptChosen == true { registerTitle = "reciept"} else { registerTitle = self.document}
-        let alertController55 = UIAlertController(title: "Register approval", message: "Register \(registerTitle!) - \(documentCounter!)", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Undo", style: .cancel) { (UIAlertAction) in
+        let alertController55 = UIAlertController(title: "Approval", message: "Do you approve \(registerTitle!) - \(documentCounter!)?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "No", style: .cancel) { (UIAlertAction) in
+            
+            print (self.recieptChosen)
+            
         if self.recieptChosen == true {
             print(self.employeeID)
             print ((String("-\(self.documentCounter!)"))!)
@@ -333,18 +339,20 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             
             print (String(Int(self.documentCounter!)!-1))
 
-            self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).removeValue()}
+            self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).removeValue()
             self.dbRefEmployee.child(self.employeeID).updateChildValues(["fCounter":String(Int(self.documentCounter!)!)])
 
             //undo - undo records
             self.moveSessionToBilled()
+            }
+           
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.0){
+            self.navigationController!.popViewController(animated: true)
+            }
             
-            
-            
-            
-        // if bill undo records to 'due'
         }
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+        let OKAction = UIAlertAction(title: "Yes", style: .default) { (UIAlertAction) in
+            //self.deleteBtn.isEnabled = true
         // do nothing
         }
         

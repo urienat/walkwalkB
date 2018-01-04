@@ -339,6 +339,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         }// end of if current user is not nil
         }//end of ggc
     
+    func pop(alert: UIAlertAction!){
+    self.navigationController!.popViewController(animated: true)
+    }
+    
+    
 // alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////
             // Helper for showing an alert
             func showAlert(title : String, message: String) {
@@ -347,10 +352,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             message: message,
             preferredStyle: UIAlertControllerStyle.alert
             )
-            let ok = UIAlertAction(
+            let ok = UIAlertAction  (
             title: "OK",
             style: UIAlertActionStyle.default,
-            handler: nil
+            handler: self.pop
+        
             )
             alert.addAction(ok)
             present(alert, animated: true, completion: nil)
