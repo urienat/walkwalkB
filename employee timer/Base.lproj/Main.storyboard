@@ -3080,8 +3080,8 @@
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="nGg-1t-Y6j" userLabel="L5">
-                                                    <rect key="frame" x="8" y="15.5" width="0.0" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="nGg-1t-Y6j" userLabel="L5">
+                                                    <rect key="frame" x="8" y="40.5" width="0.0" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="4X1-f0-Xg3"/>
                                                     </constraints>
@@ -3090,7 +3090,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="X3j-OC-Wq5" userLabel="l3">
-                                                    <rect key="frame" x="205" y="8" width="50" height="25.5"/>
+                                                    <rect key="frame" x="235" y="8" width="50" height="25.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="mKE-xk-IIz"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="zRU-yd-QzN"/>
@@ -3100,7 +3100,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wi7-Bt-Xcm" userLabel="l4">
-                                                    <rect key="frame" x="204" y="9.5" width="0.0" height="25.5"/>
+                                                    <rect key="frame" x="234" y="8" width="0.0" height="25.5"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
                                                     <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -3109,14 +3109,15 @@
                                             <constraints>
                                                 <constraint firstItem="IHg-NP-BO1" firstAttribute="leading" secondItem="ZTZ-X7-hlv" secondAttribute="leading" id="7uk-6b-1lG"/>
                                                 <constraint firstItem="X3j-OC-Wq5" firstAttribute="leading" secondItem="Wi7-Bt-Xcm" secondAttribute="trailing" constant="1" id="9tt-Vv-qRS"/>
-                                                <constraint firstItem="Wi7-Bt-Xcm" firstAttribute="centerY" secondItem="qoa-BU-Paj" secondAttribute="centerY" id="FJN-g6-RTK"/>
+                                                <constraint firstItem="nGg-1t-Y6j" firstAttribute="leading" secondItem="ZTZ-X7-hlv" secondAttribute="leading" id="Go3-SO-DBP"/>
                                                 <constraint firstItem="IHg-NP-BO1" firstAttribute="top" secondItem="ZTZ-X7-hlv" secondAttribute="bottom" constant="4" id="JH4-KI-E6A"/>
                                                 <constraint firstItem="ZTZ-X7-hlv" firstAttribute="leading" secondItem="qoa-BU-Paj" secondAttribute="leading" constant="8" id="VCT-1S-MQv"/>
                                                 <constraint firstAttribute="bottom" secondItem="nGg-1t-Y6j" secondAttribute="bottom" constant="8" id="auO-jI-Va2"/>
                                                 <constraint firstItem="ZTZ-X7-hlv" firstAttribute="top" secondItem="qoa-BU-Paj" secondAttribute="top" constant="8" id="bn3-Ci-gca"/>
+                                                <constraint firstItem="Wi7-Bt-Xcm" firstAttribute="centerY" secondItem="X3j-OC-Wq5" secondAttribute="centerY" id="flR-XI-E1x"/>
                                                 <constraint firstItem="X3j-OC-Wq5" firstAttribute="centerY" secondItem="ZTZ-X7-hlv" secondAttribute="centerY" id="qFf-sp-KEN"/>
                                                 <constraint firstItem="Wi7-Bt-Xcm" firstAttribute="height" secondItem="X3j-OC-Wq5" secondAttribute="height" id="rBY-5q-903"/>
-                                                <constraint firstItem="X3j-OC-Wq5" firstAttribute="centerX" secondItem="qoa-BU-Paj" secondAttribute="centerX" constant="70" id="twa-VW-gab"/>
+                                                <constraint firstItem="X3j-OC-Wq5" firstAttribute="centerX" secondItem="qoa-BU-Paj" secondAttribute="centerX" constant="100" id="twa-VW-gab"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
