@@ -462,6 +462,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     func noAccount(){
         btnMenu.setImage (menu, for: .normal)
+        btnMenu.removeTarget(self, action:#selector(noAccount), for: .touchUpInside)
         btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
         homeTitle.title = "Accounts"
         thinking2.startAnimating()

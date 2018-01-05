@@ -31,7 +31,9 @@ extension(ViewController){
             chooseEmployer.titleLabel?.textAlignment = NSTextAlignment.center
             homeTitle.title = (nameData[indexPath.row] + " " + pickerData[indexPath.row])
             btnMenu.setImage (backArrow, for: .normal)
+            btnMenu.removeTarget(self, action:#selector(sideMenuMovement), for: .touchUpInside)
             btnMenu.addTarget(self, action: #selector(noAccount), for: .touchUpInside)
+                
             //chooseEmployer.setTitle( nameData[indexPath.row] + " " + pickerData[indexPath.row] + " ▽", for: UIControlState.normal)
             account.title = "\(pickerData[indexPath.row])'s file"
             records.title =  "\(pickerData[indexPath.row])'s Sessions"

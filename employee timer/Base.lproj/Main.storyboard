@@ -1067,7 +1067,7 @@
                             <constraint firstAttribute="trailing" secondItem="fXg-VA-EDp" secondAttribute="trailing" id="zsc-ne-CXT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="Q5z-uo-p1A">
+                    <navigationItem key="navigationItem" title="Accounts" id="Q5z-uo-p1A">
                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="organize" id="yFh-ig-nQ8" userLabel="menuItem">
                             <connections>
                                 <action selector="menuItem:" destination="Ecy-Z7-2Op" id="nF3-QX-sLd"/>

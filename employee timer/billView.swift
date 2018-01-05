@@ -171,8 +171,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         func  configuredMailComposeViewController2() -> MFMailComposeViewController {
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
-            mailComposerVC2.setSubject("\(billStatusForRecovery)\r\n\r\n\(document) \(documentCounter!)")
-        mailComposerVC2.setMessageBody("\(recoveredBill)\r\n\r\n\r\n", isHTML: false)
+            mailComposerVC2.setSubject("\(document!) \(documentCounter!)")
+        mailComposerVC2.setMessageBody("\(billStatusForRecovery)\r\n\r\n\(recoveredBill)\r\n\r\n\r\n", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
         //mailComposerVC2.setCcRecipients([ViewController.fixedemail])
         return mailComposerVC2
