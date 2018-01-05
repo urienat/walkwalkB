@@ -3090,7 +3090,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="X3j-OC-Wq5" userLabel="l3">
-                                                    <rect key="frame" x="312" y="21.5" width="0.0" height="25.5"/>
+                                                    <rect key="frame" x="312" y="8" width="0.0" height="25.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="mKE-xk-IIz"/>
                                                     </constraints>
@@ -3106,7 +3106,7 @@
                                                 <constraint firstItem="ZTZ-X7-hlv" firstAttribute="leading" secondItem="qoa-BU-Paj" secondAttribute="leading" constant="8" id="VCT-1S-MQv"/>
                                                 <constraint firstAttribute="bottom" secondItem="nGg-1t-Y6j" secondAttribute="bottom" constant="8" id="auO-jI-Va2"/>
                                                 <constraint firstItem="ZTZ-X7-hlv" firstAttribute="top" secondItem="qoa-BU-Paj" secondAttribute="top" constant="8" id="bn3-Ci-gca"/>
-                                                <constraint firstItem="X3j-OC-Wq5" firstAttribute="centerY" secondItem="qoa-BU-Paj" secondAttribute="centerY" id="l0s-8F-Ci9"/>
+                                                <constraint firstItem="X3j-OC-Wq5" firstAttribute="centerY" secondItem="ZTZ-X7-hlv" secondAttribute="centerY" id="maV-xb-nTd"/>
                                                 <constraint firstAttribute="trailing" secondItem="X3j-OC-Wq5" secondAttribute="trailing" constant="8" id="y9X-qe-Bgd"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -3159,22 +3159,22 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="6kr-dn-xOY" userLabel="totalAmount">
-                                        <rect key="frame" x="166" y="10" width="150" height="40"/>
+                                        <rect key="frame" x="85" y="10" width="150" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="0wW-CZ-aco"/>
                                             <constraint firstAttribute="height" constant="40" id="1AW-fg-rQe"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="28"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="30"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="0Mo-TX-GXF" userLabel="totalTax">
-                                        <rect key="frame" x="8" y="31" width="13" height="25"/>
+                                        <rect key="frame" x="8" y="31" width="10" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="UDK-23-v75"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="25"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
@@ -3182,8 +3182,8 @@
                                 <constraints>
                                     <constraint firstItem="11P-Mq-cL7" firstAttribute="centerY" secondItem="Mxy-Rp-79V" secondAttribute="centerY" id="23A-KC-b5P"/>
                                     <constraint firstItem="0Mo-TX-GXF" firstAttribute="leading" secondItem="11P-Mq-cL7" secondAttribute="leading" id="92q-By-epC"/>
+                                    <constraint firstItem="6kr-dn-xOY" firstAttribute="centerX" secondItem="Mxy-Rp-79V" secondAttribute="centerX" id="BBk-Zr-Nkb"/>
                                     <constraint firstAttribute="height" constant="60" id="Ijq-Jc-qRK"/>
-                                    <constraint firstAttribute="trailing" secondItem="6kr-dn-xOY" secondAttribute="trailing" constant="4" id="Va7-1A-ov6"/>
                                     <constraint firstItem="11P-Mq-cL7" firstAttribute="leading" secondItem="Mxy-Rp-79V" secondAttribute="leading" constant="8" id="guN-dk-aNo"/>
                                     <constraint firstItem="6kr-dn-xOY" firstAttribute="centerY" secondItem="Mxy-Rp-79V" secondAttribute="centerY" id="hou-O6-S7m"/>
                                     <constraint firstAttribute="bottom" secondItem="0Mo-TX-GXF" secondAttribute="bottom" constant="4" id="iHK-6t-jXY"/>

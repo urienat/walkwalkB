@@ -238,7 +238,8 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         cell.backgroundColor = UIColor.clear
         cell.l1.text = arrayOfMonths[indexPath.row]
         //cell.l2.text = "\(billsForMonth) \(billTxt!)"
-        cell.l5.text = "Total(w/tax): \(ViewController.fixedCurrency!)\(totalForMonth) - \(billsForMonth) \(billTxt!)"
+        //cell.l5.text = "Total(w/tax): \(ViewController.fixedCurrency!)\(totalForMonth) - \(billsForMonth) \(billTxt!)"
+        cell.l5.text = "\(billsForMonth) \(billTxt!)"
 
         //cell.l4.text  = ViewController.fixedCurrency
         cell.l3.text = "Tax: \(ViewController.fixedCurrency!)\(String(taxForMonth) as String)"
@@ -340,7 +341,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
                 
                 
                 if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
-                self.totalBills.text = "Total(w/Tax): \(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter)) - \(String(describing: self.billCounter)) Bills "
+               // self.totalBills.text = "Total(w/Tax): \(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter)) - \(String(describing: self.billCounter)) Bills "
                 self.totalAmount.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
                 //self.totalTax.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
                 self.billerConnect.reloadData()
