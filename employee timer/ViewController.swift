@@ -295,11 +295,12 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     btnMenu.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
     btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
     menuItem.customView = btnMenu
+    
      
     
     self.sideMenuConstarin.constant = -140
     self.blackView.isHidden = true
-    self.toolBar.isHidden = false
+    //self.toolBar.isHidden = false
         
     let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
     blackView.addGestureRecognizer(tap)
@@ -465,6 +466,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         btnMenu.removeTarget(self, action:#selector(noAccount), for: .touchUpInside)
         btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
         homeTitle.title = "Accounts"
+        toolBar.isHidden = true
         thinking2.startAnimating()
         employerIDToS = ""
         employerToS = ""
@@ -671,7 +673,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
         if isSideMenuHidden {
             self.blackView.isHidden = false
-            self.toolBar.isHidden = true
+            //self.toolBar.isHidden = true
             self.sideMenuConstarin.constant = 0
             UIView.animate(withDuration: 0.4, animations: {
                self.view.layoutIfNeeded()
@@ -682,7 +684,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
                 self.view.layoutIfNeeded()
             })
             self.blackView.isHidden = true
-            self.toolBar.isHidden = false
+           // self.toolBar.isHidden = false
         }
         isSideMenuHidden = !isSideMenuHidden
         }//end of issidemenuhidden

@@ -145,6 +145,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
     let mydateFormat3 = DateFormatter()
     let mydateFormat5 = DateFormatter()
+    let mydateFormat8 = DateFormatter()
     let mydateFormat10 = DateFormatter()
     let mydateFormat11 = DateFormatter()
 
@@ -186,23 +187,25 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     }//end of sendBill
     
     func billPayProcess(){
-        if duplicateChecked == false {checkDuplicate()} else {
+    thinking.startAnimating()
+    if duplicateChecked == false {checkDuplicate()} else {
 
     billSender.isEnabled = false
     billPay.isEnabled = false
     refresh(presser: 1)
-
+    DispatchQueue.main.asyncAfter(deadline: .now()+1){
+        self.thinking.startAnimating()
+    }
     DispatchQueue.main.asyncAfter(deadline: .now()+4.4){
     print(self.appArray.count)
-    if self.appArray.count != 0 {self.thinking.stopAnimating();
+    if self.appArray.count != 0 {
     self.paymentRef()
     }
     if self.appArray.count == 0 {
     self.thinking.stopAnimating()
     self.alert27()
     }
-    //self.billSender.isEnabled = false
-    //self.billPay.isEnabled = false
+    
     }
         }//end of else
     }//end of billpayprocess
@@ -247,6 +250,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         //formating the date
         mydateFormat3.dateFormat = DateFormatter.dateFormat(fromTemplate: "dd-MMM-yyyy",options: 0, locale: nil)!
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
+        mydateFormat8.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
         mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: "EEE-dd-MMM-yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
         mydateFormat11.dateFormat = DateFormatter.dateFormat(fromTemplate: "EEE-dd-MMM-yyyy , (HH,mm)", options: 0, locale: Locale.autoupdatingCurrent)!
 
@@ -844,7 +848,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     self.biller = false
         
-        self.mailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: \(self.documentName!)-\(self.counterForMail2!)\r\nAccount: \(self.employerFromMain!)\r\n\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\r\n\r\nThese are the sessions included:\r\n\(self.htmlReport!)\r\nTotal Number of sessions: \(self.eventCounter) \r\n\(self.perEvents.text!)\r\n \r\n\(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock)\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
+        self.mailSaver = "\(self.mydateFormat8.string(from: Date()))\r\nRef#: \(self.documentName!)-\(self.counterForMail2!)\r\nAccount: \(self.employerFromMain!)\r\n\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\r\n\r\nThese are the sessions included:\r\n\(self.htmlReport!)\r\nTotal Number of sessions: \(self.eventCounter) \r\n\(self.perEvents.text!)\r\n \r\n\(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock)\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
 
 
     //update bill with DB
