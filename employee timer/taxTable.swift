@@ -340,7 +340,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
                 
                 
                 if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
-                self.totalBills.text = "\(String(describing: self.billCounter)) Bills - Total(w/Tax): \(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
+                self.totalBills.text = "Total(w/Tax): \(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter)) - \(String(describing: self.billCounter)) Bills "
                 self.totalAmount.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
                 //self.totalTax.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
                 self.billerConnect.reloadData()
