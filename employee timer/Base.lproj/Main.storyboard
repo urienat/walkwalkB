@@ -3159,9 +3159,8 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="6kr-dn-xOY" userLabel="totalAmount">
-                                        <rect key="frame" x="85" y="10" width="150" height="40"/>
+                                        <rect key="frame" x="153" y="10" width="14" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="0wW-CZ-aco"/>
                                             <constraint firstAttribute="height" constant="40" id="1AW-fg-rQe"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
