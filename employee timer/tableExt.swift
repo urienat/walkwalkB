@@ -29,7 +29,9 @@ extension(ViewController){
 
             chooseEmployer.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
             chooseEmployer.titleLabel?.textAlignment = NSTextAlignment.center
-            chooseEmployer.setTitle( nameData[indexPath.row] + " " + pickerData[indexPath.row] + " ▽", for: UIControlState.normal)
+            homeTitle.title = (nameData[indexPath.row] + " " + pickerData[indexPath.row])
+                btnMenu.setImage (backArrow, for: .normal)
+                btnMenu.addTarget(self, action: #selector(back), for: .touchUpInside)            chooseEmployer.setTitle( nameData[indexPath.row] + " " + pickerData[indexPath.row] + " ▽", for: UIControlState.normal)
             account.title = "\(pickerData[indexPath.row])'s file"
             records.title =  "\(pickerData[indexPath.row])'s Sessions"
 

@@ -37,6 +37,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var addDog: Int?
     var tableRowHeight:Int?
 
+    @IBOutlet weak var homeTitle: UINavigationItem!
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
 
     let Vimage = UIImage(named: "vNaked")
@@ -48,6 +49,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let pencilImage = UIImage(named: "pencilImage")
     var ImageFromFirebase : UIImage?
     var menu = UIImage(named: "menu")
+    var backArrow = UIImage(named: "backArrow")
     var leashImage = UIImage(named:"Leash")?.withRenderingMode(.alwaysTemplate)
     var meluna = UIImage(named:"meluna")?.withRenderingMode(.alwaysTemplate)
     var billsIcon = UIImage(named:"billsIcon")?.withRenderingMode(.alwaysTemplate)
@@ -384,6 +386,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     //chose employer
     @IBAction func chooseEmployerBtn(_ sender: AnyObject) {
+    noAccount()
+        /*
     thinking2.startAnimating()
     employerIDToS = ""
     employerToS = ""
@@ -391,6 +395,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.dbRefEmployee.removeAllObservers()
     postTimerView()
     self.animationImage.alpha = 1
+ */
     }//end of choose employerbtn
     
     func recordsClicked() {performSegue(withIdentifier: "employerforVC", sender: employerToS)}
@@ -455,6 +460,18 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }
     }//end of prepare
     
+    func noAccount(){
+        btnMenu.setImage (menu, for: .normal)
+        btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
+        homeTitle.title = "Accounts"
+        thinking2.startAnimating()
+        employerIDToS = ""
+        employerToS = ""
+        fetchEmployers()
+        self.dbRefEmployee.removeAllObservers()
+        postTimerView()
+        self.animationImage.alpha = 1
+    }
 
     func fetchEmployers() {
        
