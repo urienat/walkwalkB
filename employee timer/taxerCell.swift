@@ -23,6 +23,7 @@ class taxerCell: UITableViewCell{
     
     @IBOutlet weak var l1: UILabel!
     @IBOutlet weak var l2: UILabel!
+    @IBOutlet weak var l5: UILabel!
     
     @IBOutlet weak var l3: UILabel!
     @IBOutlet weak var l4: UILabel!

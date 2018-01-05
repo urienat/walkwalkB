@@ -34,6 +34,7 @@ extension(ViewController){
             btnMenu.removeTarget(self, action:#selector(sideMenuMovement), for: .touchUpInside)
             btnMenu.addTarget(self, action: #selector(noAccount), for: .touchUpInside)
             toolBar.isHidden = false
+            addAccount.isEnabled = false
 
                 
             //chooseEmployer.setTitle( nameData[indexPath.row] + " " + pickerData[indexPath.row] + " ▽", for: UIControlState.normal)

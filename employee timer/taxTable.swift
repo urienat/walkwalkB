@@ -213,7 +213,8 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         }//view did appear end
     
         func tableView(_ billerConnect: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 50
+            return 69
+            
         }
     
         func tableView(_ billerConnect: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -236,7 +237,9 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
 
         cell.backgroundColor = UIColor.clear
         cell.l1.text = arrayOfMonths[indexPath.row]
-        cell.l2.text = "\(billsForMonth) \(billTxt!) - Total(w/tax): \(ViewController.fixedCurrency!)\(totalForMonth)"
+        //cell.l2.text = "\(billsForMonth) \(billTxt!)"
+        cell.l5.text = "Total(w/tax): \(ViewController.fixedCurrency!)\(totalForMonth) - \(billsForMonth) \(billTxt!)"
+
         //cell.l4.text  = ViewController.fixedCurrency
         cell.l3.text = "Tax: \(ViewController.fixedCurrency!)\(String(taxForMonth) as String)"
         return cell

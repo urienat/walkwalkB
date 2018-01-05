@@ -214,7 +214,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         filterDecided = 0
         
         billerConnect.backgroundColor = UIColor.clear
-        if employerID != "" {  titleLbl = "\(employerFromMain)'s bills" } else {titleLbl = "Bills"}
+        if employerID != "" {  titleLbl = "Bills" } else {titleLbl = "All Bills"}
         
         self.title = titleLbl
         //self.view.insertSubview(backgroundImage, at: 0)

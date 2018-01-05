@@ -467,6 +467,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
         homeTitle.title = "Accounts"
         toolBar.isHidden = true
+        addAccount.isEnabled = true
+        
         thinking2.startAnimating()
         employerIDToS = ""
         employerToS = ""

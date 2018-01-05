@@ -221,7 +221,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
            
         tableConnect.backgroundColor = UIColor.clear
         
-        let titleLbl = employerFromMain! + "'s Sessions"
+        let titleLbl = "Sessions"
         self.title = titleLbl
    
         //connectivity

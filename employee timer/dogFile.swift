@@ -156,7 +156,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             obligatoryOut()
             
         } else {
-            self.lbl = ("\(employerFromMain)")
+            self.lbl = ("Profile")
             self.title = lbl
                 
             bringEmployerData()
