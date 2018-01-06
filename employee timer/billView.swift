@@ -13,7 +13,7 @@ import MessageUI
 
 class billView: UIViewController, MFMailComposeViewControllerDelegate {
     
-    var window: UIWindow?
+   // var window: UIWindow?
 
 
     let dbRef = FIRDatabase.database().reference().child("fRecords")
@@ -119,8 +119,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         
         let doneProcess = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(returnToList))
         
-        doneBtn.addTarget(self, action:#selector(returnToList), for: UIControlEvents.touchDown)
-        UIBarButtonSystemItem.done 
+      //  doneBtn.addTarget(self, action:#selector(returnToList), for: UIControlEvents.touchDown)
+        //UIBarButtonSystemItem.done = doneProcess
 
         
         trashBtn.setImage(trashImage , for: .normal)
@@ -176,9 +176,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     
     func returnToList(){
         print ("return")
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let homeViewController  =  storyboard.instantiateViewController(withIdentifier: "homeScreen")
-        self.window?.rootViewController = homeViewController 
+        //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //let homeViewController  =  storyboard.instantiateViewController(withIdentifier: "homeScreen")
+        //self.window?.rootViewController = homeViewController
+        self.present((storyboard?.instantiateViewController(withIdentifier: "homeScreen"))!, animated: true, completion: nil)
+
     }
     
     func undo(){
