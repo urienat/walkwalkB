@@ -12,6 +12,9 @@ import Firebase
 import MessageUI
 
 class billView: UIViewController, MFMailComposeViewControllerDelegate {
+    
+    var window: UIWindow?
+
 
     let dbRef = FIRDatabase.database().reference().child("fRecords")
     let dbRefEmployer = FIRDatabase.database().reference().child("fEmployers")
@@ -173,6 +176,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     
     func returnToList(){
         print ("return")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeViewController  =  storyboard.instantiateViewController(withIdentifier: "homeScreen")
+        self.window?.rootViewController = homeViewController 
     }
     
     func undo(){
