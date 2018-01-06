@@ -130,6 +130,7 @@
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1i-tg-2qU" userLabel="date1Button">
                                 <rect key="frame" x="70" y="84" width="180" height="30"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                 <connections>
                                     <action selector="extendedDate1Button:" destination="4DZ-OI-VHJ" eventType="touchUpInside" id="f3D-qb-o6L"/>
                                 </connections>

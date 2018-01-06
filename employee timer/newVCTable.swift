@@ -268,13 +268,13 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         //btn4.setImage(sendBillIcon , for: .normal)
         btn4.setTitle("Bill", for: .normal)
         btn4.setTitleColor(blueColor, for: .normal)
-        btn4.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        btn4.frame = CGRect(x: 0, y: 0, width: 20, height: 40)
         btn4.addTarget(self, action:#selector(sendBill), for: UIControlEvents.touchDown)
         billSender.customView = btn4
             
         btn5.setTitle("Bill&Pay", for: .normal)
         btn5.setTitleColor(blueColor, for: .normal)
-        btn5.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        btn5.frame = CGRect(x: 0, y: 0, width: 60, height: 40)
         btn5.addTarget(self, action:#selector(billPayProcess), for: UIControlEvents.touchDown)
         billPay.customView = btn5
             

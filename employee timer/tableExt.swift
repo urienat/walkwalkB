@@ -30,6 +30,7 @@ extension(ViewController){
             chooseEmployer.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
             chooseEmployer.titleLabel?.textAlignment = NSTextAlignment.center
             homeTitle.title = (nameData[indexPath.row] + " " + pickerData[indexPath.row])
+            
             btnMenu.setImage (backArrow, for: .normal)
             btnMenu.removeTarget(self, action:#selector(sideMenuMovement), for: .touchUpInside)
             btnMenu.addTarget(self, action: #selector(noAccount), for: .touchUpInside)

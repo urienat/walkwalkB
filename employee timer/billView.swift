@@ -16,13 +16,16 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     let dbRef = FIRDatabase.database().reference().child("fRecords")
     let dbRefEmployer = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployee = FIRDatabase.database().reference().child("fEmployees")
-    
+    var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
+
     let Vimage = UIImage(named: "due")
     let nonVimage = UIImage(named: "emptyV")
     let paidImage = UIImage(named: "paid")
     let billedImage = UIImage(named: "locked")
     let billIcon = UIImage(named: "bill")
     let canceledImage = UIImage(named: "cancelled")
+    let trashImage = UIImage(named: "trash")
+
     
     var titleLbl = ""
     var billToHandle = String()
@@ -35,6 +38,10 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     var rebillprocess:Bool?
     
     var undoArray: [String] = []
+    
+    let undoBtn = UIButton(type: .custom)
+    let trashBtn = UIButton(type: .custom)
+    let doneBtn = UIButton(type: .custom)
 
     
     let mydateFormat5 = DateFormatter()
@@ -107,22 +114,44 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         alert50()
         }
         
-       // navigationItem.leftBarButtonItem = deleteBill
-        //deleteBill?.isEnabled = false
+        let doneProcess = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(returnToList))
+        
+        doneBtn.addTarget(self, action:#selector(returnToList), for: UIControlEvents.touchDown)
+        UIBarButtonSystemItem.done 
+
+        
+        trashBtn.setImage(trashImage , for: .normal)
+        trashBtn.setTitle("Bill", for: .normal)
+        //btn4.setTitleColor(blueColor, for: .normal)
+        //btn4.frame = CGRect(x: 0, y: 0, width: 20, height: 40)
+        trashBtn.addTarget(self, action:#selector(deleteAlert), for: UIControlEvents.touchDown)
+        
+        //undoBtn.setImage(sendBillIcon , for: .normal)
+        undoBtn.setTitle("Undo", for: .normal)
+        undoBtn.setTitleColor(blueColor, for: .normal)
+        //btn4.frame = CGRect(x: 0, y: 0, width: 20, height: 40)
+        undoBtn.addTarget(self, action:#selector(undo), for: UIControlEvents.touchDown)
         
         self.view.insertSubview(backgroundImage, at: 0)
         if rebillprocess == true {
-        deleteBtn.isEnabled = true
+        //deleteBtn.isEnabled = true
+         //   btnMenu.removeTarget(self, action:#selector(sideMenuMovement), for: .touchUpInside)
+
+        deleteBtn.customView = trashBtn
         reBill()
         }else {
-        deleteBtn.isEnabled = false
-
+        //deleteBtn.isEnabled = false
+        deleteBtn.customView = undoBtn
+        navigationItem.rightBarButtonItem = doneProcess
+        navigationItem.hidesBackButton = true
         if recoveredReciept != "" {
         print ("in reciept")
         presentReciept()
         } else {
         print ("in bill")
         presentBill()} }
+        
+        deleteBtn.isEnabled = true
 
     } ///end of did load/////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -131,7 +160,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         print (recoveredReciept)
         recieptChosen = true
         self.mailText.text = self.recoveredReciept
-        alert55()
+        //alert55()
 
         }
 
@@ -139,8 +168,39 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         billReciept.isHidden = true
         self.recieptChosen = false
         self.mailText.text = self.recoveredBill
-        alert55()
+        //alert55()
         }
+    
+    func returnToList(){
+        print ("return")
+    }
+    
+    func undo(){
+        print (self.recieptChosen)
+        
+        if self.recieptChosen == true {
+            print(self.employeeID)
+            print ((String("-\(self.documentCounter!)"))!)
+            
+            self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).updateChildValues(["fBillStatus": "Billed", "fBillStatusDate":
+                self.mydateFormat5.string(from:Date()),"fPaymentReference":"" ,"fRecieptDate":"","fBillRecieptMailSaver":""
+                ], withCompletionBlock: { (error) in}) //end of update.
+            
+        } else {
+            
+            print (String(Int(self.documentCounter!)!-1))
+            
+            self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).removeValue()
+            self.dbRefEmployee.child(self.employeeID).updateChildValues(["fCounter":String(Int(self.documentCounter!)!)])
+            
+            //undo - undo records
+            self.moveSessionToBilled()
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0){
+            self.navigationController!.popViewController(animated: true)
+        }
+    }
 
         func  reBill() {
         self.dbRefEmployee.child(employeeID).child("myBills").child(billToHandle).observeSingleEvent(of: .value,with: { (snapshot) in
@@ -202,9 +262,13 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         controller.dismiss(animated: true, completion: nil)
         case MFMailComposeResult.saved.rawValue:
         print("Mail saved3")
+        deleteBtn.isEnabled = false
+
         controller.dismiss(animated: true, completion: nil)
         case MFMailComposeResult.sent.rawValue:
         print("Mail sent3")
+        deleteBtn.isEnabled = false
+
         controller.dismiss(animated: true, completion: nil)
         case MFMailComposeResult.failed.rawValue:
         print("Mail sent failure: %@", [error!.localizedDescription])
@@ -251,6 +315,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         printController.printingItem =   self.mailView.toImage()
 
         // Do it
+            self.deleteBtn.isEnabled = false
+
         printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
         }
 
@@ -288,6 +354,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
 
         // Do it
         printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
+            self.deleteBtn.isEnabled = false
 
 
         }
@@ -320,46 +387,6 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         self.present(alertController, animated: true, completion: nil)
         }
     
-    func alert55() {
-        if recieptChosen == true { registerTitle = "reciept"} else { registerTitle = self.document}
-        let alertController55 = UIAlertController(title: "Approval", message: "Do you approve \(registerTitle!) - \(documentCounter!)?", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "No", style: .cancel) { (UIAlertAction) in
-            
-            print (self.recieptChosen)
-            
-        if self.recieptChosen == true {
-            print(self.employeeID)
-            print ((String("-\(self.documentCounter!)"))!)
-            
-            self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).updateChildValues(["fBillStatus": "Billed", "fBillStatusDate":
-                self.mydateFormat5.string(from:Date()),"fPaymentReference":"" ,"fRecieptDate":"","fBillRecieptMailSaver":""
-                ], withCompletionBlock: { (error) in}) //end of update.
-            
-        } else {
-            
-            print (String(Int(self.documentCounter!)!-1))
-
-            self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).removeValue()
-            self.dbRefEmployee.child(self.employeeID).updateChildValues(["fCounter":String(Int(self.documentCounter!)!)])
-
-            //undo - undo records
-            self.moveSessionToBilled()
-            }
-           
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.0){
-            self.navigationController!.popViewController(animated: true)
-            }
-            
-        }
-        let OKAction = UIAlertAction(title: "Yes", style: .default) { (UIAlertAction) in
-            //self.deleteBtn.isEnabled = true
-        // do nothing
-        }
-        
-        alertController55.addAction(cancelAction)
-        alertController55.addAction(OKAction)
-        self.present(alertController55, animated: true, completion: nil)
-        }
     
         func alert50(){
         let alertController50 = UIAlertController(title: ("Internet Connection") , message: " There is no internet - Check communication avilability.", preferredStyle: .alert)
