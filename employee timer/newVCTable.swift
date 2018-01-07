@@ -364,7 +364,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             if record.fIndication3 == "✏️"||record.fIndication3 == "Manual" { cell.l8.image = pencilImage}
             if record.fIndication3 == "↺" {  cell.l8.image = roundImageNormal}
 
-            if record.fSpecialItem != nil {cell.l = record.fSpecialItem}
+            if record.fSpecialAmount != nil {cell.l1.text = " \(record.fSpecialItem!)- \(ViewController.fixedCurrency!)\(record.fSpecialAmount!)" }
      
             if record.fStatus == "Approved" { cell.approval.setImage(Vimage, for: .normal)
                 
