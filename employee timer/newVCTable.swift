@@ -540,7 +540,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     }//end button  Generalclicked
     
         func fetch()  {
-        
+        itemSum = 0
         eventCounter = 0
         self.dateDuplicate.removeAll()
         self.idArray.removeAll()
