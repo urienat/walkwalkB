@@ -119,8 +119,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3pe-xh-s5t" userLabel="Itembackground">
                                 <rect key="frame" x="10.5" y="149" width="300" height="320"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X5I-Pz-o4U" userLabel="amount">
-                                        <rect key="frame" x="112.5" y="76" width="50" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X5I-Pz-o4U" userLabel="amount" customClass="AllowedCharsTextField" customModule="perSession" customModuleProvider="target">
+                                        <rect key="frame" x="112.5" y="46" width="50" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="EEI-bl-Xun"/>
                                             <constraint firstAttribute="height" constant="30" id="YQa-34-2RX"/>
@@ -128,9 +128,15 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="allowedChars" value="0123456789."/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCM-Sm-xQr">
-                                        <rect key="frame" x="8" y="38" width="34.5" height="30"/>
+                                        <rect key="frame" x="8" y="8" width="34.5" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="YZi-i2-86V"/>
                                         </constraints>
@@ -139,7 +145,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Js-4i-g59" userLabel="amount">
-                                        <rect key="frame" x="8" y="76" width="61" height="30"/>
+                                        <rect key="frame" x="8" y="46" width="61" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="WLx-j1-xT9"/>
                                         </constraints>
@@ -147,8 +153,8 @@
                                         <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8H6-ZC-44z" userLabel="ItemDescription" customClass="AllowedCharsTextField" customModule="perSession" customModuleProvider="target">
-                                        <rect key="frame" x="112.5" y="38" width="179.5" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8H6-ZC-44z" userLabel="ItemDescription" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
+                                        <rect key="frame" x="112.5" y="8" width="179.5" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="R9T-9g-g8a"/>
                                         </constraints>
@@ -157,18 +163,15 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
-                                                <integer key="value" value="8"/>
+                                                <integer key="value" value="50"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="string" keyPath="allowedChars" value="0123456789."/>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Voe-To-vG2">
-                                        <rect key="frame" x="30" y="144" width="240" height="128"/>
+                                        <rect key="frame" x="8" y="114" width="284" height="198"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="128" id="Tvj-c6-uFa"/>
-                                        </constraints>
-                                        <string key="text">Add an item with a short description and it would added to the billing  process . Fill amount  aligned with the taxation approach of the sessions if any (tax included or over).</string>
+                                        <string key="text">Add an item with a short description to the billing  process . Fill amount aligned with the taxation approach of the sessions if any (tax included or over).</string>
                                         <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -176,14 +179,15 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Voe-To-vG2" firstAttribute="leading" secondItem="3pe-xh-s5t" secondAttribute="leading" constant="30" id="0Fu-rm-RMd"/>
-                                    <constraint firstAttribute="trailing" secondItem="Voe-To-vG2" secondAttribute="trailing" constant="30" id="15a-P8-8nR"/>
                                     <constraint firstItem="X5I-Pz-o4U" firstAttribute="centerY" secondItem="7Js-4i-g59" secondAttribute="centerY" id="3LV-zd-pG0"/>
                                     <constraint firstItem="8H6-ZC-44z" firstAttribute="centerY" secondItem="NCM-Sm-xQr" secondAttribute="centerY" id="BBb-2a-fqE"/>
                                     <constraint firstAttribute="trailing" secondItem="8H6-ZC-44z" secondAttribute="trailing" constant="8" id="HCy-d0-9iK"/>
                                     <constraint firstItem="X5I-Pz-o4U" firstAttribute="leading" secondItem="8H6-ZC-44z" secondAttribute="leading" id="K3e-Sw-mGD"/>
+                                    <constraint firstItem="Voe-To-vG2" firstAttribute="trailing" secondItem="8H6-ZC-44z" secondAttribute="trailing" id="X6F-Z6-xyJ"/>
                                     <constraint firstItem="7Js-4i-g59" firstAttribute="leading" secondItem="NCM-Sm-xQr" secondAttribute="leading" id="aeR-62-jch"/>
-                                    <constraint firstItem="NCM-Sm-xQr" firstAttribute="top" secondItem="3pe-xh-s5t" secondAttribute="top" constant="38" id="keo-MH-2LC"/>
+                                    <constraint firstItem="Voe-To-vG2" firstAttribute="leading" secondItem="7Js-4i-g59" secondAttribute="leading" id="iCw-Cb-NA9"/>
+                                    <constraint firstAttribute="bottom" secondItem="Voe-To-vG2" secondAttribute="bottom" constant="8" id="ja6-QB-kdE"/>
+                                    <constraint firstItem="NCM-Sm-xQr" firstAttribute="top" secondItem="3pe-xh-s5t" secondAttribute="top" constant="8" id="keo-MH-2LC"/>
                                     <constraint firstItem="Voe-To-vG2" firstAttribute="top" secondItem="X5I-Pz-o4U" secondAttribute="bottom" constant="38" id="naS-mf-G6O"/>
                                     <constraint firstItem="NCM-Sm-xQr" firstAttribute="leading" secondItem="3pe-xh-s5t" secondAttribute="leading" constant="8" id="oR7-3P-m3p"/>
                                     <constraint firstItem="7Js-4i-g59" firstAttribute="top" secondItem="NCM-Sm-xQr" secondAttribute="bottom" constant="8" id="rIK-ll-Eew"/>

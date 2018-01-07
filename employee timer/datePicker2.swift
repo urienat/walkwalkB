@@ -20,6 +20,12 @@ class datePicker2: UIViewController {
     var titleLbl = ""
     var recordToHandle = String()
     
+    var sessionMode:Bool?
+    
+    let dateForItem = Date() + 10000000
+    var segmentedPressed:Int?
+    
+    
     //let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
     
     var locker = ""
@@ -41,6 +47,7 @@ class datePicker2: UIViewController {
     @IBAction func sessionItem(_ sender: Any) {
         switch sessionItem.selectedSegmentIndex {
         case 0:   //Session
+        sessionMode = true
          datePickerbBackground .isHidden = false
          startLbl.isHidden = false
          startLbl.text = "Session"
@@ -50,6 +57,7 @@ class datePicker2: UIViewController {
          itemBackground.isHidden = true
             
         case 1: //item
+        sessionMode = false
         datePickerbBackground .isHidden = true
         startLbl.isHidden = true
         date1button.isHidden = true
@@ -107,7 +115,15 @@ class datePicker2: UIViewController {
     let record = recordsStruct()
     record.setValuesForKeys(dictionary)
     print (dictionary)
+        
+        print (self.sessionMode)
     
+        if record.fSpecialAmount != nil {self.sessionMode = false } else {self.sessionMode = true}
+        if self.sessionMode == false {
+            self.amountNumber.text = record.fSpecialAmount!
+            self.itemDescription.text = record.fSpecialItem!
+            self.refresh(presser: 1)
+        } else { self.refresh(presser: 0)}
         
     if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!)} else {self.TimeIN.text = self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) }
     self.inDate = record.fIn!
@@ -126,6 +142,7 @@ class datePicker2: UIViewController {
     }, withCancel: { (Error) in
     print("error from FB123456")
     })
+
     }//end of func bring record
     
     /////////////////////////////////////////////////////////////////  view did load starts///////////////////////
@@ -133,7 +150,7 @@ class datePicker2: UIViewController {
     super.viewDidLoad()
         
     if ViewController.dateTimeFormat == "DateTime" {self.DatePicker.datePickerMode = .dateAndTime } else { self.DatePicker.datePickerMode = .date}
-
+        sessionMode = true
       
         //connectivity
         if Reachability.isConnectedToNetwork() == true
@@ -150,6 +167,7 @@ class datePicker2: UIViewController {
         mydateFormat11.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy , (HH,mm)", options: 0, locale: Locale.autoupdatingCurrent)!
         
         if recordToHandle == "" {
+        sessionItem.isHidden = false
         deleter.isEnabled = false
         if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat11.string(from: Date())} else {self.TimeIN.text = mydateFormat10.string(from: Date()) }
         
@@ -157,8 +175,10 @@ class datePicker2: UIViewController {
          
         self.saveRecord?.isEnabled = false;self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveToDB2) )
         navigationItem.rightBarButtonItem = saveRecord
-        }else{
+        refresh(presser: 0)
             
+        }else{
+        sessionItem.isHidden = true
         deleter.isEnabled = true
         self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveToDB2) )
         self.saveRecord?.isEnabled = false;
@@ -179,11 +199,6 @@ class datePicker2: UIViewController {
         itemBackground.layer.cornerRadius =  15//CGFloat(25)
         itemBackground.layoutIfNeeded()
         
-        sessionItem.isMomentary = true
-        
-        sessionItem.selectedSegmentIndex = 0
-        sessionItem.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-        sessionItem.isMomentary = false
  
     } ///end of did load/////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -197,17 +212,37 @@ class datePicker2: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: true)
         
     if recordToHandle == "" {
+        if sessionMode == true{
     let record = ["fIn" : mydateFormat5.string(from: DatePicker.date), "fEmployer": String (describing : employerFromMain!),"fIndication3" :"✏️","fStatus" : "Approved","fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID)]
     let recordRefence = self.dbRef.childByAutoId()
     recordRefence.setValue(record)
-    
+            
     self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-(DatePicker.date.timeIntervalSince1970))])
     self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-(DatePicker.date.timeIntervalSince1970))])
-    } else {
-    let record = ["fIn" : mydateFormat5.string(from: DatePicker.date),"fIndication3" :"✏️","fStatus" : "Approved" ]
-    dbRef.child(recordToHandle).updateChildValues(record)
-    self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])
-    self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])
+    
+    
+          } //end of session mode
+        else {
+            let record = ["fIn" : mydateFormat5.string(from: dateForItem), "fEmployer": String (describing : employerFromMain!),"fIndication3" :"✏️","fStatus" : "Approved","fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID),"fSpecialItem" : itemDescription.text!,"fSpecialAmount": amountNumber.text!]
+            let recordRefence = self.dbRef.childByAutoId()
+            recordRefence.setValue(record)
+            
+            self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-1000000)])
+            self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-1000000)])
+        }//end of else
+    } // end of recordToHandle == ""
+    else
+    {
+        if sessionMode == true {let record = ["fIn" : mydateFormat5.string(from: DatePicker.date),"fIndication3" :"✏️","fStatus" : "Approved" ]
+            self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])
+            self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])
+            
+        } else
+        {let record = ["fIn" : mydateFormat5.string(from: DatePicker.date),"fIndication3" :"✏️","fStatus" : "Approved","fSpecialItem" : itemDescription.text!,"fSpecialAmount": amountNumber.text!]
+              dbRef.child(recordToHandle).updateChildValues(record)
+        }
+  
+   
     } //end of else
         
     //imageAnimation()
@@ -255,6 +290,14 @@ class datePicker2: UIViewController {
             self.navigationController!.popViewController(animated: false)
 
         }}
+    
+    func refresh(presser:Int){
+        sessionItem.isMomentary = true
+        segmentedPressed = presser
+        sessionItem.selectedSegmentIndex = segmentedPressed!
+        sessionItem.sendActions(for: .valueChanged)
+        sessionItem.isMomentary = false
+    }
   ////alerts////////////////////////////////////////////////////////////////////////////////////////////////////////
     
 //deletealert
