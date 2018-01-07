@@ -231,7 +231,7 @@ class datePicker2: UIViewController {
     
           } //end of session mode
         else {
-            let record = ["fIn" : mydateFormat5.string(from: dateForItem), "fEmployer": String (describing : employerFromMain!),"fIndication3" :"✏️","fStatus" : "Approved","fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID),"fSpecialItem" : itemDescription.text!,"fSpecialAmount": amountNumber.text!]
+            let record = ["fIn" : mydateFormat5.string(from: dateForItem), "fEmployer": String (describing : employerFromMain!),"fIndication3" :"📄","fStatus" : "Approved","fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID),"fSpecialItem" : itemDescription.text!,"fSpecialAmount": amountNumber.text!]
             let recordRefence = self.dbRef.childByAutoId()
             recordRefence.setValue(record)
             
@@ -246,7 +246,7 @@ class datePicker2: UIViewController {
             self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])
             
         } else
-        {let record = ["fIn" : mydateFormat5.string(from: DatePicker.date),"fIndication3" :"✏️","fStatus" : "Approved","fSpecialItem" : itemDescription.text!,"fSpecialAmount": amountNumber.text!]
+        {let record = ["fIn" : mydateFormat5.string(from: DatePicker.date),"fIndication3" :"📄","fStatus" : "Approved","fSpecialItem" : itemDescription.text!,"fSpecialAmount": amountNumber.text!]
               dbRef.child(recordToHandle).updateChildValues(record)
         }
   

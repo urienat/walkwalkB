@@ -85,6 +85,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var FbArray2: [String] = []
 
     var idArray: [String] = []
+    var indicationArray: [String] = []
     var dateDuplicate: [String] = []
     var duplicateChecked:Bool = false
     var  duplicates: [String] = []
@@ -363,6 +364,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             if record.fIndication3 == "📆" { cell.l8.image = sandwatchImage}
             if record.fIndication3 == "✏️"||record.fIndication3 == "Manual" { cell.l8.image = pencilImage}
             if record.fIndication3 == "↺" {  cell.l8.image = roundImageNormal}
+            if record.fIndication3 == "📄" {  cell.l8.image = paidImage}
+
 
             if record.fSpecialAmount != nil {cell.l1.text = " \(record.fSpecialItem!)- \(ViewController.fixedCurrency!)\(record.fSpecialAmount!)" }
      
@@ -476,8 +479,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
         buttonRow = sender.tag
         
-            if appArray[buttonRow] == "Pre" { newVCTable.checkBox = 1; statusTemp = "Approved";eventCounter+=1;noSign.isHidden = true; amountCalc()}
-            else if appArray[buttonRow] == "Approved" { newVCTable.checkBox = 0; statusTemp = "Pre";eventCounter-=1;amountCalc()}
+            if appArray[buttonRow] == "Pre" { newVCTable.checkBox = 1; statusTemp = "Approved";if indicationArray[buttonRow] != "📄" {eventCounter+=1};noSign.isHidden = true; amountCalc()}
+            else if appArray[buttonRow] == "Approved" { newVCTable.checkBox = 0; statusTemp = "Pre";if indicationArray[buttonRow] != "📄" {eventCounter-=1};amountCalc()}
         else if  appArray[buttonRow] == "Paid" {newVCTable.checkBox = 2; statusTemp = "Paid";alert12()}
         print( "apparray buttonarray\(appArray[buttonRow])")
         print( "checkBox\(newVCTable.checkBox)")
@@ -537,6 +540,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         eventCounter = 0
         self.dateDuplicate.removeAll()
         self.idArray.removeAll()
+        self.indicationArray.removeAll()
+
         self.appArray.removeAll()
         self.records.removeAll()
         self.FbArray.removeAll()
@@ -591,9 +596,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         //array for record ID
         let id = snapshot.key
         let appStatus = record.fStatus
+        let indicationItem = record.fIndication3
         let dateDuplicate = record.fIn
             
-        if record.fStatus == "Approved" {self.eventCounter+=1}
+        if record.fStatus == "Approved" && record.fSpecialAmount == nil {self.eventCounter+=1}
 
         let period: Int = 5//self.periodChosen.selectedSegmentIndex
                         
@@ -615,6 +621,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.currentYear = today.year!
         self.records.append(record)
         self.idArray.append(id)
+        self.indicationArray.append(indicationItem!)
         self.dateDuplicate.append(dateDuplicate!)
         self.appArray.append(appStatus!)
             
