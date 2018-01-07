@@ -141,7 +141,7 @@
                                     <constraint firstAttribute="width" constant="46" id="7cF-V7-Y4y"/>
                                     <constraint firstAttribute="height" constant="30" id="h5D-zh-392"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                 <state key="normal" title="📆"/>
                                 <connections>
                                     <action selector="date1:" destination="4DZ-OI-VHJ" eventType="touchUpInside" id="pyS-yg-J7f"/>

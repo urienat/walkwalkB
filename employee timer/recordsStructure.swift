@@ -17,6 +17,9 @@ class recordsStruct: NSObject{
     var fIndication3: String?
     var fStatus:String?
     var fBill:  String?
+    var fSpecialAmount : String?
+    var fSpecialItem : String?
+
     
     
 }

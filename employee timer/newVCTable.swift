@@ -363,8 +363,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             if record.fIndication3 == "📆" { cell.l8.image = sandwatchImage}
             if record.fIndication3 == "✏️"||record.fIndication3 == "Manual" { cell.l8.image = pencilImage}
             if record.fIndication3 == "↺" {  cell.l8.image = roundImageNormal}
-            //if record.fIndication3 == "⏳" {  cell.l8.image = sandwatchImageRed}
 
+            if record.fSpecialItem != nil {cell.l = record.fSpecialItem}
      
             if record.fStatus == "Approved" { cell.approval.setImage(Vimage, for: .normal)
                 

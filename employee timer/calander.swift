@@ -97,6 +97,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Import Calander"
+        
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale:Locale.autoupdatingCurrent )!
         mydateFormat9.dateFormat = DateFormatter.dateFormat(fromTemplate: " dd-MMM-yy", options: 0, locale:Locale.autoupdatingCurrent )!

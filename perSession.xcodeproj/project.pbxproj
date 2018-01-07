@@ -125,8 +125,8 @@
 		008388A21FE6576F00EFE400 /* tax */ = {
 			isa = PBXGroup;
 			children = (
-				0083889E1FE6574200EFE400 /* taxerCell.swift */,
 				00BE2E941FE78A76000F3AAF /* taxTable.swift */,
+				0083889E1FE6574200EFE400 /* taxerCell.swift */,
 			);
 			name = tax;
 			sourceTree = "<group>";
