@@ -55,6 +55,7 @@ class datePicker2: UIViewController {
          timeIn.isHidden = false
          extendedDate1Button.isHidden = false
          itemBackground.isHidden = true
+         saveRecord?.isEnabled = true
             
         case 1: //item
         sessionMode = false
@@ -65,6 +66,7 @@ class datePicker2: UIViewController {
         timeIn.isHidden = true
         itemBackground.isHidden = false
         print (ViewController.fixedCurrency)
+        checkItemDeltails()
         
         
         amount.text = "Rate(\(ViewController.fixedCurrency!))"
@@ -73,6 +75,12 @@ class datePicker2: UIViewController {
         default: break
         } //end of switch
         
+    }
+    @IBAction func itemEdited(_ sender: Any) {
+    checkItemDeltails()
+    }
+    @IBAction func amountEdited(_ sender: Any) {
+    checkItemDeltails()
     }
     
     @IBOutlet weak var itemBackground: UIView!
@@ -297,6 +305,10 @@ class datePicker2: UIViewController {
         sessionItem.selectedSegmentIndex = segmentedPressed!
         sessionItem.sendActions(for: .valueChanged)
         sessionItem.isMomentary = false
+    }
+    
+    func checkItemDeltails(){
+        if itemDescription.text?.isEmpty == true || itemDescription.text == "" || amountNumber.text?.isEmpty == true || amountNumber.text == "" {saveRecord?.isEnabled = false } else {saveRecord?.isEnabled = true}
     }
   ////alerts////////////////////////////////////////////////////////////////////////////////////////////////////////
     
