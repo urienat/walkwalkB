@@ -48,6 +48,7 @@ class datePicker2: UIViewController {
          timeIn.isHidden = false
          extendedDate1Button.isHidden = false
          itemBackground.isHidden = true
+            
         case 1: //item
         datePickerbBackground .isHidden = true
         startLbl.isHidden = true
@@ -55,6 +56,10 @@ class datePicker2: UIViewController {
         extendedDate1Button.isHidden = true
         timeIn.isHidden = true
         itemBackground.isHidden = false
+        print (ViewController.fixedCurrency)
+        
+        
+        amount.text = "\(ViewController.fixedCurrency!)Amount"
 
 
         default: break
@@ -63,9 +68,9 @@ class datePicker2: UIViewController {
     }
     
     @IBOutlet weak var itemBackground: UIView!
-    @IBOutlet weak var amount: UILabel!
     @IBOutlet weak var itemDescription: UITextField!
     @IBOutlet weak var amountNumber: UITextField!
+    @IBOutlet weak var amount: UILabel!
     
     
     @IBOutlet weak var timeIn: UITextField!
@@ -173,6 +178,12 @@ class datePicker2: UIViewController {
         itemBackground.layer.borderColor = blueColor.cgColor
         itemBackground.layer.cornerRadius =  15//CGFloat(25)
         itemBackground.layoutIfNeeded()
+        
+        sessionItem.isMomentary = true
+        
+        sessionItem.selectedSegmentIndex = 0
+        sessionItem.sendActions(for: .valueChanged)            //  StatusChosenis pressed
+        sessionItem.isMomentary = false
  
     } ///end of did load/////////////////////////////////////////////////////////////////////////////////////////////////////
     

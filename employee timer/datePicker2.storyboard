@@ -269,6 +269,7 @@
                     <connections>
                         <outlet property="DatePicker" destination="Zh1-5a-B5S" id="zwk-w8-0pG"/>
                         <outlet property="TimeIN" destination="mK9-6d-CXh" id="eCR-dg-g2H"/>
+                        <outlet property="amount" destination="7Js-4i-g59" id="Lbs-aO-rzE"/>
                         <outlet property="amountNumber" destination="X5I-Pz-o4U" id="pXR-td-jju"/>
                         <outlet property="animationImage" destination="UaV-6l-lVU" id="kdJ-SC-cQi"/>
                         <outlet property="date1button" destination="Ydt-wR-B8B" id="M1q-2Q-Nql"/>
