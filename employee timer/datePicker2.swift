@@ -59,7 +59,7 @@ class datePicker2: UIViewController {
         print (ViewController.fixedCurrency)
         
         
-        amount.text = "\(ViewController.fixedCurrency!)Amount"
+        amount.text = "Rate(\(ViewController.fixedCurrency!))"
 
 
         default: break
