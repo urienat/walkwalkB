@@ -47,12 +47,14 @@ class datePicker2: UIViewController {
          date1button.isHidden = false
          timeIn.isHidden = false
          extendedDate1Button.isHidden = false
+         itemBackground.isHidden = true
         case 1: //item
         datePickerbBackground .isHidden = true
         startLbl.isHidden = true
         date1button.isHidden = true
         extendedDate1Button.isHidden = true
         timeIn.isHidden = true
+        itemBackground.isHidden = false
 
 
         default: break
@@ -60,6 +62,7 @@ class datePicker2: UIViewController {
         
     }
     
+    @IBOutlet weak var itemBackground: UIView!
     @IBOutlet weak var timeIn: UITextField!
     @IBOutlet weak var animationImage: UIImageView!
     @IBOutlet weak var topOfStart: NSLayoutConstraint!
@@ -160,6 +163,11 @@ class datePicker2: UIViewController {
         datePickerbBackground.layer.borderColor = blueColor.cgColor
         datePickerbBackground.layer.cornerRadius =  15//CGFloat(25)
         datePickerbBackground.layoutIfNeeded()
+        
+        itemBackground.layer.borderWidth = 0.5
+        itemBackground.layer.borderColor = blueColor.cgColor
+        itemBackground.layer.cornerRadius =  15//CGFloat(25)
+        itemBackground.layoutIfNeeded()
  
     } ///end of did load/////////////////////////////////////////////////////////////////////////////////////////////////////
     
