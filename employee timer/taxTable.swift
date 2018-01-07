@@ -76,6 +76,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     @IBOutlet weak var filterBG: UIView!
     
         @IBAction func noneBtn(_ sender: Any) {
+        self.title = "Tax"
         filterDecided = 0
         fetchBills()
         filterImageConstrain.constant = 20
@@ -86,6 +87,9 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         }
 
         @IBAction func currentMonthBtn(_ sender: Any) {
+        monther(monthNumber: currentMonth)
+        self.title = "Tax: \(monthMMM!)-\(self.currentYear)"
+
         filterDecided = 1
         fetchBills()
         filterImageConstrain.constant = 60
@@ -97,6 +101,9 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         }
 
         @IBAction func lastMonthBtn(_ sender: Any) {
+
+        if currentMonth == 1 {self.title = "Tax: Dec-\(self.currentYear-1)" } else  {monther(monthNumber: currentMonth-1);self.title = "Tax: \(monthMMM!)-\(self.currentYear)"}
+
         filterImageConstrain.constant = 100
         filterDecided = 2
         fetchBills()
@@ -107,6 +114,8 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         }
 
         @IBAction func currentYearBtn(_ sender: Any) {
+        self.title = "Tax: \(self.currentYear)"
+
         filterImageConstrain.constant = 140
         filterDecided = 3
         fetchBills()
@@ -117,6 +126,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         }
 
         @IBAction func lastYearBtn(_ sender: Any) {
+        self.title = "Tax: \(self.currentYear-1)"
         filterImageConstrain.constant = 180
         filterDecided = 4
         fetchBills()
@@ -247,6 +257,9 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         }
     
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            print (arrayOfMonths)
+            print (taxMonthRow?.row)
+
         }
     
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -330,12 +343,12 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
 
                     }//end of in filter
                 switch self.filterDecided {
-                case 0:inFilter();self.titleLbl = "Tax";self.title = self.self.titleLbl
-                case 1:if self.currentMonth == self.taxMonth && self.currentYear == self.taxYear{inFilter();self.monther(monthNumber: self.taxMonth);self.titleLbl = "Tax: \(self.monthMMM!)-\(self.taxYear)";self.title = self.titleLbl}
-                case 2:if self.currentMonth-1 == self.taxMonth && self.currentYear == self.taxYear{inFilter();self.monther(monthNumber: (self.taxMonth))} else if self.currentMonth == 1 && self.taxMonth == 12 && self.currentYear-1 == self.taxYear{inFilter();self.monther(monthNumber: (self.taxMonth))};self.titleLbl = "Tax: \(self.monthMMM!)-\(self.taxYear)";self.title = self.titleLbl
-                case 3:if self.currentYear == self.taxYear{inFilter();self.titleLbl = "Tax: \(self.taxYear)";self.title = self.titleLbl}
-                case 4:if self.currentYear-1 == self.taxYear {inFilter();self.self.titleLbl = "Tax: \(self.taxYear)";self.title = self.titleLbl}
-                default: inFilter();self.titleLbl = "Tax";self.title = self.titleLbl
+                case 0:inFilter()
+                case 1:if self.currentMonth == self.taxMonth && self.currentYear == self.taxYear{inFilter()}
+                case 2:if self.currentMonth-1 == self.taxMonth && self.currentYear == self.taxYear{inFilter()} else if self.currentMonth == 1 && self.taxMonth == 12 && self.currentYear-1 == self.taxYear{inFilter()}
+                case 3:if self.currentYear == self.taxYear{inFilter()}
+                case 4:if self.currentYear-1 == self.taxYear {inFilter()}
+                default: inFilter()
                 } //end of switch
                 
                 
@@ -427,8 +440,10 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         let fmt = DateFormatter()
         fmt.dateFormat = "MMM"
         monthMMM = fmt.shortMonthSymbols[monthNumber-1]
+        print (monthMMM!)
         return
     }
+    
     
     // alerts////////////////////////////////////////////////////////////////////////////////////////////
     func alert30(){

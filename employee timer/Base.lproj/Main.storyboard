@@ -2937,7 +2937,7 @@
                                     <constraint firstAttribute="height" constant="60" id="oq5-oC-ito"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem systemItem="action" id="R6p-At-dlq">
+                                    <barButtonItem image="share" id="R6p-At-dlq">
                                         <connections>
                                             <action selector="reSend:" destination="8gY-C3-V1Z" id="V6e-y6-VcK"/>
                                         </connections>
@@ -3386,6 +3386,7 @@
         <image name="perSessionImage" width="234" height="225"/>
         <image name="roundBig" width="100" height="100"/>
         <image name="setting" width="50" height="50"/>
+        <image name="share" width="50" height="50"/>
         <image name="telephone" width="50" height="50"/>
         <image name="trash" width="50" height="50"/>
         <image name="vNaked" width="150" height="150"/>
