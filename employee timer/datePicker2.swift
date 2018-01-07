@@ -37,6 +37,19 @@ class datePicker2: UIViewController {
     datePickerbBackground .isHidden = false
     }
     @IBOutlet weak var navItem: UINavigationItem!
+    @IBOutlet weak var sessionItem: UISegmentedControl!
+    @IBAction func sessionItem(_ sender: Any) {
+        switch sessionItem.selectedSegmentIndex {
+        case 0:   //Session
+         datePickerbBackground .isHidden = false
+         startLbl.text = "Session"
+        case 1: //item
+        datePickerbBackground .isHidden = true
+        startLbl.text = "Item"
+        default: break
+        } //end of switch
+        
+    }
     
     @IBOutlet weak var animationImage: UIImageView!
     @IBOutlet weak var topOfStart: NSLayoutConstraint!
@@ -71,7 +84,7 @@ class datePicker2: UIViewController {
     let record = recordsStruct()
     record.setValuesForKeys(dictionary)
     print (dictionary)
-    self.startLbl.text = "Session";self.topOfStart.constant = 60;
+    
         
     if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!)} else {self.TimeIN.text = self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) }
     self.inDate = record.fIn!
@@ -118,7 +131,6 @@ class datePicker2: UIViewController {
         if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat11.string(from: Date())} else {self.TimeIN.text = mydateFormat10.string(from: Date()) }
         
         titleLbl = "Add for " + employerFromMain!
-        startLbl.text = "Session";topOfStart.constant = 60;
          
         self.saveRecord?.isEnabled = false;self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveToDB2) )
         navigationItem.rightBarButtonItem = saveRecord
