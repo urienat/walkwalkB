@@ -42,15 +42,25 @@ class datePicker2: UIViewController {
         switch sessionItem.selectedSegmentIndex {
         case 0:   //Session
          datePickerbBackground .isHidden = false
+         startLbl.isHidden = false
          startLbl.text = "Session"
+         date1button.isHidden = false
+         timeIn.isHidden = false
+         extendedDate1Button.isHidden = false
         case 1: //item
         datePickerbBackground .isHidden = true
-        startLbl.text = "Item"
+        startLbl.isHidden = true
+        date1button.isHidden = true
+        extendedDate1Button.isHidden = true
+        timeIn.isHidden = true
+
+
         default: break
         } //end of switch
         
     }
     
+    @IBOutlet weak var timeIn: UITextField!
     @IBOutlet weak var animationImage: UIImageView!
     @IBOutlet weak var topOfStart: NSLayoutConstraint!
     @IBOutlet weak var startLbl: UILabel!

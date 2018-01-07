@@ -10,9 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="MarkerFeltThin.ttf">
-            <string>MarkerFelt-Thin</string>
-        </array>
         <array key="PingFang.ttc">
             <string>PingFangTC-Regular</string>
         </array>
@@ -51,7 +48,7 @@
                                     <constraint firstAttribute="height" constant="30" id="CWf-GA-4S0"/>
                                 </constraints>
                                 <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V2L-Iv-IDI">
@@ -205,6 +202,7 @@
                         <outlet property="navItem" destination="YZC-wy-DVB" id="uKQ-GA-rBQ"/>
                         <outlet property="sessionItem" destination="vLX-4X-9wI" id="eru-9o-hs8"/>
                         <outlet property="startLbl" destination="Ocl-iC-Ud2" id="cz8-q2-4w8"/>
+                        <outlet property="timeIn" destination="mK9-6d-CXh" id="2p1-EP-BX7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4CN-ka-c4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
