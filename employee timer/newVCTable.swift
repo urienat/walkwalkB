@@ -483,6 +483,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
         buttonRow = sender.tag
         
+            print (indicationArray[buttonRow])
+            
             if appArray[buttonRow] == "Pre" { newVCTable.checkBox = 1; statusTemp = "Approved";if indicationArray[buttonRow] != "📄" {eventCounter+=1};if indicationArray[buttonRow] == "📄" {itemSum += Double(amountArray[buttonRow]) };noSign.isHidden = true; amountCalc()}
             else if appArray[buttonRow] == "Approved" { newVCTable.checkBox = 0; statusTemp = "Pre";if indicationArray[buttonRow] != "📄" {eventCounter-=1}; if indicationArray[buttonRow] == "📄" {itemSum -= Double(amountArray[buttonRow]) }; amountCalc()}
         else if  appArray[buttonRow] == "Paid" {newVCTable.checkBox = 2; statusTemp = "Paid";alert12()}
@@ -634,10 +636,12 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.appArray.append(appStatus!)
             
         self.tableConnect.reloadData()
-         
-        if ViewController.dateTimeFormat == "DateTime" {"\(self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n")
-        } else {"  \(self.csv2.append( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n") }
             
+        if record.fIndication3 == "📄" {"\(self.csv2.append(record.fSpecialItem!))";"\(self.csv2.append("   "))" ;"\(self.csv2.append(record.fSpecialAmount!))"}  else {
+        if ViewController.dateTimeFormat == "DateTime" {"\(self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n")
+        } else {"\(self.csv2.append( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n") }
+        }//end of else
+                
         }// end of cases func
             if self.Status == "Approved" {if record.fStatus == "Approved" {cases()}} else if
                 record.fStatus == "Pre" || record.fStatus == "Approved" {cases()
@@ -689,6 +693,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }//end of fetch
     
         func amountCalc(){
+        print (itemSum)
+        print (eventCounter)
+            
         self.calc = (Double(self.eventCounter))*(self.Employerrate) + itemSum
         self.amount.text =   ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")
         }
