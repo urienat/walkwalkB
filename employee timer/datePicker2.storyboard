@@ -269,12 +269,14 @@
                     <connections>
                         <outlet property="DatePicker" destination="Zh1-5a-B5S" id="zwk-w8-0pG"/>
                         <outlet property="TimeIN" destination="mK9-6d-CXh" id="eCR-dg-g2H"/>
+                        <outlet property="amountNumber" destination="X5I-Pz-o4U" id="pXR-td-jju"/>
                         <outlet property="animationImage" destination="UaV-6l-lVU" id="kdJ-SC-cQi"/>
                         <outlet property="date1button" destination="Ydt-wR-B8B" id="M1q-2Q-Nql"/>
                         <outlet property="datePickerbBackground" destination="yv6-XF-GvY" id="N14-Mo-Rnz"/>
                         <outlet property="deleter" destination="jaO-3a-pGo" id="w7H-FI-CQb"/>
                         <outlet property="extendedDate1Button" destination="a1i-tg-2qU" id="9sB-ew-8ta"/>
                         <outlet property="itemBackground" destination="3pe-xh-s5t" id="4u5-Hb-tx8"/>
+                        <outlet property="itemDescription" destination="8H6-ZC-44z" id="IhE-fR-AK5"/>
                         <outlet property="navBar" destination="eic-ue-SnJ" id="FXP-5p-EnQ"/>
                         <outlet property="navItem" destination="YZC-wy-DVB" id="uKQ-GA-rBQ"/>
                         <outlet property="sessionItem" destination="vLX-4X-9wI" id="eru-9o-hs8"/>

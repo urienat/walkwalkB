@@ -63,6 +63,11 @@ class datePicker2: UIViewController {
     }
     
     @IBOutlet weak var itemBackground: UIView!
+    @IBOutlet weak var amount: UILabel!
+    @IBOutlet weak var itemDescription: UITextField!
+    @IBOutlet weak var amountNumber: UITextField!
+    
+    
     @IBOutlet weak var timeIn: UITextField!
     @IBOutlet weak var animationImage: UIImageView!
     @IBOutlet weak var topOfStart: NSLayoutConstraint!
