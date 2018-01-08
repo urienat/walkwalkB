@@ -33,7 +33,6 @@ extension(ViewController){
                             
             btnMenu.setImage (backArrow, for: .normal)
             btnMenu.removeTarget(self, action:#selector(sideMenuMovement), for: .touchUpInside)
-
             btnMenu.addTarget(self, action: #selector(noAccount), for: .touchUpInside)
             toolBar.isHidden = false
             addAccount.isEnabled = false

@@ -469,7 +469,13 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }//end of prepare
     
     func noAccount(){
-        btnMenu.setImage (menu, for: .normal)
+        self.btnMenu.isHidden = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            self.btnMenu.setImage (self.menu, for: .normal)
+            self.btnMenu.isHidden = false
+
+        }
+        
         btnMenu.removeTarget(self, action:#selector(noAccount), for: .touchUpInside)
         btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
         homeTitle.title = "Accounts"

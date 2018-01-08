@@ -183,7 +183,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             
     billPay.isEnabled = false
     refresh(presser: 1)
-    DispatchQueue.main.asyncAfter(deadline: .now()+4.4){
+    DispatchQueue.main.asyncAfter(deadline: .now()+1.4)//previod 4.4
+    {
     print(self.appArray.count)
         if self.appArray.count != 0 {self.thinking.stopAnimating();self.billProcess()} //self.alert18()}
     if self.appArray.count == 0 {
@@ -610,6 +611,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         let id = snapshot.key
         let appStatus = record.fStatus
         let indicationItem = record.fIndication3
+        print (record.fIndication3)
+       print (record.fSpecialAmount)
+       print (id)
+            
         if record.fIndication3 ==  "📄" {self.amountItem = Double(record.fSpecialAmount!)!} else {self.amountItem = 0.00}
         let dateDuplicate = record.fIn
        

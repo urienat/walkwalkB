@@ -247,6 +247,8 @@ class datePicker2: UIViewController {
     else
     {
         if sessionMode == true {let record = ["fIn" : mydateFormat5.string(from: DatePicker.date),"fIndication3" :"✏️","fStatus" : "Approved" ]
+            dbRef.child(recordToHandle).updateChildValues(record)
+            
             self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])
             self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordToHandle:Int(-(DatePicker.date.timeIntervalSince1970))])
             
