@@ -63,6 +63,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     
     var recieptChosen:Bool = false
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mailView: UITextView!
     @IBOutlet weak var billReciept: UISegmentedControl!
     @IBAction func billReciept(_ sender: Any) {
@@ -208,14 +209,17 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
 
         self.titleLbl = "\(self.document!) \(self.documentCounter!)"
         self.title = self.titleLbl
+            
+        
+            print (self.recoveredStatus)
 
-            if self.recoveredStatus == "Billed" { self.deleteBtn.isEnabled = true;self.billStatusForRecovery = "";self.statusImage.image = self.billDocument;}
+        if self.recoveredStatus == "Billed" { self.deleteBtn.isEnabled = true;self.billStatusForRecovery = "";self.statusImage.image = self.billDocument;}
         if  self.recoveredStatus  == "Paid" { self.statusImage.image = self.paidImage;self.deleteBtn.isEnabled = true;self.billStatusForRecovery = ""}
         if self.recoveredStatus ==  "Cancelled" {
             
             self.statusImage.image = self.canceledImage;
             
-            self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "This document was cancelled!!!"}
+            self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "!!!This document was cancelled!!!"}
         })
 
         }//end rebill clicked
@@ -224,7 +228,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         func  configuredMailComposeViewController2() -> MFMailComposeViewController {
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
-            mailComposerVC2.setSubject("\(document!) \(documentCounter!)")
+        mailComposerVC2.setSubject("\(document!) \(documentCounter!)  -  \(billStatusForRecovery)")
         mailComposerVC2.setMessageBody("\(billStatusForRecovery)\r\n\r\n\(recoveredBill)\r\n\r\n\r\n", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
         //mailComposerVC2.setCcRecipients([ViewController.fixedemail])
@@ -235,7 +239,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         func  configuredMailComposeViewController4() -> MFMailComposeViewController {
         let mailComposerVC4 = MFMailComposeViewController()
         mailComposerVC4.mailComposeDelegate = self
-        mailComposerVC4.setSubject("Reciept \(documentCounter!)")
+        mailComposerVC4.setSubject("Reciept \(documentCounter!)  -  \(billStatusForRecovery)")
         mailComposerVC4.setMessageBody("\(billStatusForRecovery)\r\n\r\n\(recoveredReciept)\r\n\r\n \r\n ", isHTML: false)
         mailComposerVC4.setToRecipients([ViewController.fixedemail])
         //mailComposerVC4.setCcRecipients([ViewController.fixedemail])
@@ -296,6 +300,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         }
 
         let printAction = UIAlertAction(title: "Print", style: .default) { (UIAlertAction) in
+            self.printText()
+        /*
         let printInfo = UIPrintInfo(dictionary:nil)
         printInfo.outputType = UIPrintInfoOutputType.general
         printInfo.jobName = "My Print Job"
@@ -305,12 +311,14 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         printController.printInfo = printInfo
 
         // Assign a UIImage version of my UIView as a printing iten
-        printController.printingItem =   self.mailView.toImage()
+        //printController.printingItem =   self.mailView.toImage()
+        printController.printingItem =   self.scrollView.toImage()
 
         // Do it
             self.deleteBtn.isEnabled = false
 
         printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
+        */
         }
 
         alertController5.addAction(mailAction)
@@ -343,7 +351,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         printController.printInfo = printInfo
 
         // Assign a UIImage version of my UIView as a printing iten
-        printController.printingItem =   self.mailView.toImage()
+        //printController.printingItem =   self.mailView.toImage()
+        printController.printingItem =   self.scrollView.toImage()
 
         // Do it
         printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
@@ -380,7 +389,16 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         self.present(alertController, animated: true, completion: nil)
         }
     
-    
+    func printText(){
+        
+        var pic:UIPrintInteractionController = .shared
+        var viewpf:UIViewPrintFormatter = mailText.viewPrintFormatter()
+        
+        //pic.delegate = self
+        pic.showsPageRange = true
+        pic.printFormatter = viewpf
+        pic.present(animated: true, completionHandler: nil)
+    }
     
 
         }//end of class
@@ -390,11 +408,13 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
 
         drawHierarchy(in: self.bounds, afterScreenUpdates: true)
-
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image!
+            
         }
+            
+            
     
         }//end of extension
 
