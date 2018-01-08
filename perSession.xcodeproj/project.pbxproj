@@ -14,7 +14,6 @@
 		AE0213491DCF8130006F927F /* setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0213481DCF8130006F927F /* setting.swift */; };
 		AE0B0A7F1E62D461000E539C /* billView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0B0A7E1E62D461000E539C /* billView.swift */; };
 		AE1B3DB11DF824E100BB507F /* employerCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1B3DB01DF824E100BB507F /* employerCellTableViewCell.swift */; };
-		AE2185D51E2CA2F80017B958 /* dogBark.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE2185D41E2CA2F80017B958 /* dogBark.wav */; };
 		AE26E0981E59FA400044C76B /* billerTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE26E0971E59FA400044C76B /* billerTable.swift */; };
 		AE26E09A1E5A02180044C76B /* billerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE26E0991E5A02180044C76B /* billerCell.swift */; };
 		AE29BE9D1D972A910066214D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE29BE9C1D972A910066214D /* UIKit.framework */; };
@@ -69,7 +68,6 @@
 		AE0213481DCF8130006F927F /* setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setting.swift; sourceTree = "<group>"; };
 		AE0B0A7E1E62D461000E539C /* billView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = billView.swift; sourceTree = "<group>"; };
 		AE1B3DB01DF824E100BB507F /* employerCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = employerCellTableViewCell.swift; sourceTree = "<group>"; };
-		AE2185D41E2CA2F80017B958 /* dogBark.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dogBark.wav; sourceTree = "<group>"; };
 		AE26E0971E59FA400044C76B /* billerTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = billerTable.swift; sourceTree = "<group>"; };
 		AE26E0991E5A02180044C76B /* billerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = billerCell.swift; sourceTree = "<group>"; };
 		AE2928BC1D943C0B00EB493B /* employee timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "employee timer.entitlements"; sourceTree = "<group>"; };
@@ -226,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				AE854B661E3A388A00C68CFB /* internetConnection.swift */,
-				AE2185D41E2CA2F80017B958 /* dogBark.wav */,
 				AECF31DE1E1248660072547C /* AllowedCharsTextField.swift */,
 				AECF31DC1E1246B80072547C /* MaxLengthField.swift */,
 				AED6564A1E0140A4001691D1 /* cacheImages.swift */,
@@ -373,7 +370,6 @@
 				F4DDD6341FB1C92B00A327D7 /* GoogleService-Info.plist in Resources */,
 				F46C02AA1FB3139D00EBC4A4 /* Assets.xcassets in Resources */,
 				AEE95E4B1D7B092A00093B51 /* Main.storyboard in Resources */,
-				AE2185D51E2CA2F80017B958 /* dogBark.wav in Resources */,
 				AEC3A7751D7DE22B005E3F1F /* datePicker2.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

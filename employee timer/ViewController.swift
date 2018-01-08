@@ -237,13 +237,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.employerList.separatorColor = blueColor
 
 
-    //connectivity
-    if Reachability.isConnectedToNetwork() == true
-    {print("Internet Connection Available!")
-    }else{
-    print("Internet Connection not Available!")
-    alert50()
-    }
+    connectivityCheck()
     
     employerList.backgroundColor = UIColor.clear
         
@@ -748,13 +742,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.present(alertController30, animated: true, completion: nil)
     }
     
-    func alert50(){
-    let alertController50 = UIAlertController(title: ("Internet Connection") , message: " There is no internet - Check communication avilability.", preferredStyle: .alert)
-    let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-    }
-    alertController50.addAction(OKAction)
-    self.present(alertController50, animated: true, completion: nil)
-    }
     
     func alert32(){
     let alertController32 = UIAlertController(title: ("Define calander") , message: " in your 'Setting' no calander is defined for sessions' import. Define one? ", preferredStyle: .alert)

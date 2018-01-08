@@ -136,6 +136,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="amountEdited:" destination="4DZ-OI-VHJ" eventType="editingDidEnd" id="EA2-wT-6lt"/>
+                                            <action selector="amountStartEdit:" destination="4DZ-OI-VHJ" eventType="editingChanged" id="AQP-4J-Hfz"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCM-Sm-xQr">
@@ -172,6 +173,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="itemEdited:" destination="4DZ-OI-VHJ" eventType="editingDidEnd" id="2H0-fn-Rus"/>
+                                            <action selector="itemStartedit:" destination="4DZ-OI-VHJ" eventType="editingChanged" id="hso-Ow-Utd"/>
                                         </connections>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Voe-To-vG2">

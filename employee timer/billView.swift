@@ -28,6 +28,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     let billIcon = UIImage(named: "bill")
     let canceledImage = UIImage(named: "cancelled")
     let trashImage = UIImage(named: "trash")
+    let billDocument = UIImage(named: "billDocument")
 
     
     var titleLbl = ""
@@ -93,8 +94,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     
-    @IBOutlet weak var statusImage: UIImageView!
     
+    @IBOutlet weak var statusImage: UIImageView!
     
     @IBOutlet weak var reSend: UIBarButtonItem!
     
@@ -106,23 +107,13 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        connectivityCheck()
+        
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
-
-        
-        //connectivity
-        if Reachability.isConnectedToNetwork() == true
-        {print("Internet Connection Available!")
-        }else{
-        print("Internet Connection not Available!")
-        alert50()
-        }
-        
+ 
         let doneProcess = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(returnToList))
         
-      //  doneBtn.addTarget(self, action:#selector(returnToList), for: UIControlEvents.touchDown)
-        //UIBarButtonSystemItem.done = doneProcess
-
-        
+      
         trashBtn.setImage(trashImage , for: .normal)
         trashBtn.setTitle("Bill", for: .normal)
         //btn4.setTitleColor(blueColor, for: .normal)
@@ -137,9 +128,6 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         
         self.view.insertSubview(backgroundImage, at: 0)
         if rebillprocess == true {
-        //deleteBtn.isEnabled = true
-         //   btnMenu.removeTarget(self, action:#selector(sideMenuMovement), for: .touchUpInside)
-
         deleteBtn.customView = trashBtn
         reBill()
         }else {
@@ -163,24 +151,17 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         print (recoveredReciept)
         recieptChosen = true
         self.mailText.text = self.recoveredReciept
-        //alert55()
-
         }
 
         func presentBill(){
         billReciept.isHidden = true
         self.recieptChosen = false
         self.mailText.text = self.recoveredBill
-        //alert55()
         }
     
     func returnToList(){
         print ("return")
-        //let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //let homeViewController  =  storyboard.instantiateViewController(withIdentifier: "homeScreen")
-        //self.window?.rootViewController = homeViewController
         self.present((storyboard?.instantiateViewController(withIdentifier: "homeScreen"))!, animated: true, completion: nil)
-
     }
     
     func undo(){
@@ -228,9 +209,13 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         self.titleLbl = "\(self.document!) \(self.documentCounter!)"
         self.title = self.titleLbl
 
-        if self.recoveredStatus == "Billed" { self.deleteBtn.isEnabled = true;self.billStatusForRecovery = ""}
+            if self.recoveredStatus == "Billed" { self.deleteBtn.isEnabled = true;self.billStatusForRecovery = "";self.statusImage.image = self.billDocument;}
         if  self.recoveredStatus  == "Paid" { self.statusImage.image = self.paidImage;self.deleteBtn.isEnabled = true;self.billStatusForRecovery = ""}
-        if self.recoveredStatus ==  "Cancelled" { self.statusImage.image = self.canceledImage; self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "This document was cancelled!!!"}
+        if self.recoveredStatus ==  "Cancelled" {
+            
+            self.statusImage.image = self.canceledImage;
+            
+            self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "This document was cancelled!!!"}
         })
 
         }//end rebill clicked
@@ -396,14 +381,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         }
     
     
-        func alert50(){
-        let alertController50 = UIAlertController(title: ("Internet Connection") , message: " There is no internet - Check communication avilability.", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-        }
-
-        alertController50.addAction(OKAction)
-        self.present(alertController50, animated: true, completion: nil)
-        }
+    
 
         }//end of class
 
@@ -417,4 +395,25 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         UIGraphicsEndImageContext()
         return image!
         }
+    
+        }//end of extension
+
+        extension UIViewController{
+    
+        func connectivityCheck(){
+        if Reachability.isConnectedToNetwork() == true
+        {print("Internet Connection Available!")
+        }else{
+            print("Internet Connection not Available!")
+            alert50()
         }
+        }
+        func alert50(){
+        let alertController50 = UIAlertController(title: ("Internet Connection") , message: " There is no internet - Check communication avilability.", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+        }
+        
+        alertController50.addAction(OKAction)
+        self.present(alertController50, animated: true, completion: nil)
+    }
+    }//end of extension

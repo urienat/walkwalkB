@@ -167,12 +167,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         titleLbl = "Tax"
         self.title = titleLbl
 
-        //connectivity
-        if Reachability.isConnectedToNetwork() == true
-        {print("Internet Connection Available!")
-        }else{
-            print("Internet Connection not Available!")
-        }
+        connectivityCheck()
         
         //formatting decimal
         let formatter = NumberFormatter()

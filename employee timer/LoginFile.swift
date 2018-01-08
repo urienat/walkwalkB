@@ -175,9 +175,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     override func viewDidLoad() {
        print ("11")
         
-        if Reachability.isConnectedToNetwork() == true
-        {print("Internet Connection Available!")}
-        else{alert50() }
+        connectivityCheck()
         
         dog.clipsToBounds = true
         dog.layer.cornerRadius = 50
@@ -423,12 +421,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     present(alertCotroller1, animated: true, completion: nil)
     }//alert end
 
-    func alert50(){
-    let alertController50 = UIAlertController(title: ("Internet Connection") , message: " There is no internet - Check communication avilability.", preferredStyle: .alert)
-    let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-    }
-    alertController50.addAction(OKAction)
-    self.present(alertController50, animated: true, completion: nil)}
+    
     
     // alerts end//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

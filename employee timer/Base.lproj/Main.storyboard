@@ -256,10 +256,6 @@
                                                         <integer key="value" value="6"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="rateObserver:" destination="nD7-g7-jdd" eventType="editingDidEnd" id="bEr-VJ-vjW"/>
-                                                    <action selector="rateStartEdit:" destination="nD7-g7-jdd" eventType="editingDidBegin" id="38l-dh-jdN"/>
-                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Clb-ky-rEY" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
                                                 <rect key="frame" x="111.5" y="84" width="200.5" height="30"/>
@@ -2954,13 +2950,6 @@
                                     <navigationItem title="Bill" id="MBI-O0-3lJ"/>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t9p-vy-W3U" userLabel="statusImage">
-                                <rect key="frame" x="256" y="21.5" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="5o5-FP-fYD"/>
-                                    <constraint firstAttribute="height" constant="40" id="dLA-cj-yLL"/>
-                                </constraints>
-                            </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ka5-D8-Si7">
                                 <rect key="frame" x="0.0" y="508" width="320" height="60"/>
                                 <color key="backgroundColor" red="0.2145790309" green="0.45587304229999998" blue="0.84711945060000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -2994,13 +2983,22 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t9p-vy-W3U" userLabel="statusImage">
+                                        <rect key="frame" x="44" y="100" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="5o5-FP-fYD"/>
+                                            <constraint firstAttribute="height" constant="200" id="dLA-cj-yLL"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="82B-Jq-qRO" firstAttribute="leading" secondItem="pGt-z5-fAP" secondAttribute="leading" id="ErO-mP-QG5"/>
                                     <constraint firstItem="82B-Jq-qRO" firstAttribute="width" secondItem="pGt-z5-fAP" secondAttribute="width" id="Eud-di-PTl"/>
                                     <constraint firstAttribute="trailing" secondItem="82B-Jq-qRO" secondAttribute="trailing" id="Udb-Tr-RfG"/>
+                                    <constraint firstItem="t9p-vy-W3U" firstAttribute="centerX" secondItem="pGt-z5-fAP" secondAttribute="centerX" id="fWo-4a-cLL"/>
                                     <constraint firstAttribute="bottom" secondItem="82B-Jq-qRO" secondAttribute="bottom" id="hbz-tK-vgq"/>
+                                    <constraint firstItem="t9p-vy-W3U" firstAttribute="top" secondItem="pGt-z5-fAP" secondAttribute="top" constant="100" id="hhT-rl-CVD"/>
                                     <constraint firstItem="82B-Jq-qRO" firstAttribute="top" secondItem="pGt-z5-fAP" secondAttribute="top" id="m8W-HA-Jr4"/>
                                 </constraints>
                             </scrollView>
@@ -3022,7 +3020,6 @@
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="pGt-z5-fAP" firstAttribute="centerX" secondItem="HQ1-0g-rV4" secondAttribute="centerX" id="18U-81-JAe"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="t9p-vy-W3U" secondAttribute="trailing" constant="8" id="5b8-wn-oe6"/>
                             <constraint firstItem="pGt-z5-fAP" firstAttribute="top" secondItem="bgJ-kM-9CK" secondAttribute="bottom" constant="70" id="7F7-CJ-ngy"/>
                             <constraint firstItem="fhI-qh-yut" firstAttribute="centerX" secondItem="HQ1-0g-rV4" secondAttribute="centerX" id="HTM-HD-vDY"/>
                             <constraint firstAttribute="trailing" secondItem="bgJ-kM-9CK" secondAttribute="trailing" id="MlA-YV-UeN"/>
@@ -3033,7 +3030,6 @@
                             <constraint firstItem="l5T-Jp-zwX" firstAttribute="top" secondItem="Ka5-D8-Si7" secondAttribute="bottom" id="asf-Ow-LrZ"/>
                             <constraint firstItem="fhI-qh-yut" firstAttribute="top" secondItem="AIL-1V-QIk" secondAttribute="bottom" constant="8" id="bcY-IZ-Lxt"/>
                             <constraint firstItem="bgJ-kM-9CK" firstAttribute="top" secondItem="HQ1-0g-rV4" secondAttribute="top" id="eQS-mR-9E2"/>
-                            <constraint firstItem="t9p-vy-W3U" firstAttribute="centerY" secondItem="fhI-qh-yut" secondAttribute="centerY" id="qz4-Dc-0tJ"/>
                             <constraint firstItem="bgJ-kM-9CK" firstAttribute="leading" secondItem="HQ1-0g-rV4" secondAttribute="leading" id="wCm-x0-RgH"/>
                             <constraint firstItem="Ka5-D8-Si7" firstAttribute="leading" secondItem="HQ1-0g-rV4" secondAttribute="leading" id="xkD-WX-YTk"/>
                         </constraints>
@@ -3044,7 +3040,7 @@
                         <outlet property="mailText" destination="82B-Jq-qRO" id="sb8-DK-dNv"/>
                         <outlet property="mailView" destination="82B-Jq-qRO" id="4Wg-Ah-1tz"/>
                         <outlet property="reSend" destination="R6p-At-dlq" id="XI0-Um-Vd6"/>
-                        <outlet property="statusImage" destination="t9p-vy-W3U" id="AbV-fs-uch"/>
+                        <outlet property="statusImage" destination="t9p-vy-W3U" id="9AP-3a-nI4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gTn-to-bkz" userLabel="First Responder" sceneMemberID="firstResponder"/>

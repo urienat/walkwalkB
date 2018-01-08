@@ -220,12 +220,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         self.title = titleLbl
         //self.view.insertSubview(backgroundImage, at: 0)
         
-        //connectivity
-        if Reachability.isConnectedToNetwork() == true
-        {print("Internet Connection Available!")
-        }else{
-        print("Internet Connection not Available!")
-        }
+        connectivityCheck()
         
         //formatting decimal
         let formatter = NumberFormatter()

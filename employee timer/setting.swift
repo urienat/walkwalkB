@@ -201,13 +201,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         picture.layer.cornerRadius = 15
         
         
-        //connectivity
-        if Reachability.isConnectedToNetwork() == true
-        { print("Internet Connection Available!")
-        } else {
-        print("Internet Connection not Available!")
-        alert50()
-        }
+        connectivityCheck()
         
             let currentUser = FIRAuth.auth()?.currentUser
             if (currentUser != nil) {
@@ -684,13 +678,6 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     self.present(alertController17, animated: true, completion: nil)
     }
     
-    func alert50(){
-    let alertController50 = UIAlertController(title: ("Internet Connection") , message: " There is no internet - Check communication avilability.", preferredStyle: .alert)
-    let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-    }
-    alertController50.addAction(OKAction)
-    self.present(alertController50, animated: true, completion: nil)
-    }
     
     // alert2
     func alert2 () {

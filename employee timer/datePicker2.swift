@@ -76,6 +76,11 @@ class datePicker2: UIViewController {
         } //end of switch
         
     }
+    
+    @IBAction func itemStartedit(_ sender: Any) {
+    
+    checkItemDeltails()
+    }
     @IBAction func itemEdited(_ sender: Any) {
     checkItemDeltails()
     }
@@ -83,6 +88,10 @@ class datePicker2: UIViewController {
     checkItemDeltails()
     }
     
+    @IBAction func amountStartEdit(_ sender: Any) {
+    
+        checkItemDeltails()
+    }
     @IBOutlet weak var itemBackground: UIView!
     @IBOutlet weak var itemDescription: UITextField!
     @IBOutlet weak var amountNumber: UITextField!
@@ -160,13 +169,7 @@ class datePicker2: UIViewController {
     if ViewController.dateTimeFormat == "DateTime" {self.DatePicker.datePickerMode = .dateAndTime } else { self.DatePicker.datePickerMode = .date}
         //sessionMode = true
       
-        //connectivity
-        if Reachability.isConnectedToNetwork() == true
-        {print("Internet Connection Available!")
-        }else{
-        print("Internet Connection not Available!")
-        alert50()
-        }
+      connectivityCheck()
         
       
         //formating the date
@@ -175,16 +178,17 @@ class datePicker2: UIViewController {
         mydateFormat11.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy , (HH,mm)", options: 0, locale: Locale.autoupdatingCurrent)!
         
         if recordToHandle == "" {
-        if sessionMode == true { refresh(presser: 0)} else { refresh(presser: 1)}
         sessionItem.isHidden = true//false
         deleter.isEnabled = false
         if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat11.string(from: Date())} else {self.TimeIN.text = mydateFormat10.string(from: Date()) }
         
         titleLbl = "Add"
          
-        self.saveRecord?.isEnabled = false;self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveToDB2) )
+        self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveToDB2) )
         navigationItem.rightBarButtonItem = saveRecord
-       
+        self.saveRecord?.isEnabled = false
+        if sessionMode == true { refresh(presser: 0)} else { refresh(presser: 1)}
+
             
         }else{
         sessionItem.isHidden = true
@@ -309,7 +313,9 @@ class datePicker2: UIViewController {
     }
     
     func checkItemDeltails(){
-        if itemDescription.text?.isEmpty == true || itemDescription.text == "" || amountNumber.text?.isEmpty == true || amountNumber.text == "" {saveRecord?.isEnabled = false } else {saveRecord?.isEnabled = true}
+    print ("checked")
+        
+        if itemDescription.text?.isEmpty == true || itemDescription.text == "" || amountNumber.text?.isEmpty == true {saveRecord?.isEnabled = false } else {saveRecord?.isEnabled = true}
     }
   ////alerts////////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -337,15 +343,7 @@ self.present(alertController, animated: true, completion: nil)
 }
 }//end of func alert
 
- 
-func alert50(){
-let alertController50 = UIAlertController(title: ("Internet Connection") , message: " There is no internet - Check communication avilability.", preferredStyle: .alert)
-let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-}
 
-alertController50.addAction(OKAction)
-self.present(alertController50, animated: true, completion: nil)
-}
     
 
 }///end!!!//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
