@@ -31,6 +31,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let btnGeneral = UIButton(type: .custom)
     let generalItem = UIBarButtonItem()
 
+    var firstTime:Bool?
+    var firstTimeGeneral:Bool?
 
     var mailSaver : String?
     
@@ -51,6 +53,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var stam3: Double?
 
     var taxationBlock = ""
+    var sessionBlock = ""
     var paymentBlock = ""
     var refernceBlock = ""
 
@@ -373,7 +376,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             if record.fIndication3 == "📄" {  cell.l8.image = paidImage}
 
 
-            if record.fSpecialAmount != nil {cell.l1.text = " \(record.fSpecialItem!)- \(ViewController.fixedCurrency!)\(record.fSpecialAmount!)"; cell.backgroundColor =  UIColor.white }
+            if record.fSpecialAmount != nil {cell.l1.text = " \(record.fSpecialItem!)- \(ViewController.fixedCurrency!)\(record.fSpecialAmount!)"; cell.l1.textColor =  UIColor.red }
      
             if record.fStatus == "Approved" { cell.approval.setImage(Vimage, for: .normal)
                 
@@ -554,6 +557,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.records.removeAll()
         self.FbArray.removeAll()
         self.FbArray2.removeAll()
+        self.firstTime = true
+        self.firstTimeGeneral = true
         htmlReport = nil
         
         //self.csv2.append( ("Sessions:\r\n"))
@@ -640,13 +645,20 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.amountArray.append(self.amountItem)
         self.dateDuplicate.append(dateDuplicate!)
         self.appArray.append(appStatus!)
+
             
         self.tableConnect.reloadData()
-            
+        /*
             if record.fIndication3 == "📄" {"\(self.csv2.append(record.fSpecialItem!))";"\(self.csv2.append("   "))" ;self.csv2.append(ViewController.fixedCurrency!); self.csv2.append(record.fSpecialAmount!)}  else {
         if ViewController.dateTimeFormat == "DateTime" {"\(self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n")
         } else {"\(self.csv2.append( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n") }
         }//end of else
+        */
+            if record.fIndication3 == "📄" {if self.firstTimeGeneral == true {self.csv2.append("There are general Items Included:\r\n");self.firstTimeGeneral = false };"\(self.csv2.append(record.fSpecialItem!))";"\(self.csv2.append("                          "))" ;self.csv2.append(ViewController.fixedCurrency!); self.csv2.append(record.fSpecialAmount!);self.csv2.append("\r\n\r\n")}  else {if self.firstTime == true {self.csv2.append("These are the sessions included:\r\n");self.firstTime = false}
+                
+                if ViewController.dateTimeFormat == "DateTime" {"\(self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n")
+                } else {"\(self.csv2.append( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n") }
+            }//end of else
                 
         }// end of cases func
             if self.Status == "Approved" {if record.fStatus == "Approved" {cases()}} else if
@@ -715,6 +727,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
         func billing(){
         taxationBlock = ""
+        sessionBlock = ""
         biller = true
         self.dbRefEmployees.queryOrderedByKey().queryEqual(toValue: self.employeeID).observeSingleEvent(of: .childAdded, with: { (snapshot) in
             self.counterForMail2 = (snapshot.childSnapshot(forPath: "fCounter").value as! String)
@@ -725,6 +738,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             self.paypal = (snapshot.childSnapshot(forPath: "fPaypal").value as! String)
             self.billInfo = (snapshot.childSnapshot(forPath: "fBillinfo").value as! String)
             self.address = (snapshot.childSnapshot(forPath: "fAddress").value as! String)
+            
+            if self.eventCounter == 0 {self.sessionBlock = "\r\n"} else {self.sessionBlock = "Total Number of sessions: \(self.eventCounter) \r\n\(self.perEvents.text!)"}
 
             if  self.taxSwitch == "Yes" {
             if self.self.taxCalc == "Over" {self.self.stam =  Double(Double(taxation)!*self.calc*0.01).roundTo(places: 2)}  else  { self.stam = Double((self.calc / Double(Double(taxation)!*0.01+1)) * Double(Double(taxation)!*0.01)).roundTo(places: 2)}
@@ -738,7 +753,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                 print (self.midCalc3)
             self.midCalc2 =  String(self.stam3! + self.stam!)
             
-                self.taxationBlock = ("Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n\(self.taxForBlock): \(ViewController.fixedCurrency!)\(self.midCalc)\r\n Total (w/\(self.taxForBlock)): \(ViewController.fixedCurrency!)\(self.midCalc2)")
+                self.taxationBlock = ("Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n\(self.taxForBlock): \(ViewController.fixedCurrency!)\(self.midCalc)\r\nTotal (w/\(self.taxForBlock)): \(ViewController.fixedCurrency!)\(self.midCalc2)")
              } else {
                 print (self.calc,self.calc.roundTo(places: 2))
                 
@@ -876,7 +891,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     self.biller = false
         
-        self.mailSaver = "\(self.mydateFormat8.string(from: Date()))\r\nRef#: \(self.documentName!)-\(self.counterForMail2!)\r\nAccount: \(self.employerFromMain!)\r\n\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\r\n\r\nThese are the sessions included:\r\n\(self.htmlReport!)\r\nTotal Number of sessions: \(self.eventCounter) \r\n\(self.perEvents.text!)\r\n \r\n\(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock)\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
+        self.mailSaver = "\(self.mydateFormat8.string(from: Date()))\r\nRef#: \(self.documentName!)-\(self.counterForMail2!)\r\nAccount: \(self.employerFromMain!)\r\n\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\r\n\r\n\(self.htmlReport!)\r\n\(self.sessionBlock)\r\n\(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock)\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
 
 
     //update bill with DB
