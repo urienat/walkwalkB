@@ -219,6 +219,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 updater.summary = ("\(event.summary!)+")
                 eventCounter += 1
                 updateRead()
+                
                 }//end of if
                 }//end of else
                 }// end of if key exist != nil

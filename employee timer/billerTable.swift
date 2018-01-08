@@ -648,6 +648,8 @@ print (self.billItems.count)
                 ], withCompletionBlock: { (error) in}) //end of update.
             
             self.dbRefEmployers.child(self.employerID).updateChildValues(["fLast":"Last paid: \(self.mydateFormat10.string(from: Date()))"], withCompletionBlock: { (error) in})
+            
+            self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([(self.employerID):Int((self.mydateFormat5.date(from: self.mydateFormat5.string(from: Date()))?.timeIntervalSince1970)!)]) 
 
             
             

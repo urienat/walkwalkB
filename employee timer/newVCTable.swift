@@ -881,6 +881,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         
     self.dbRefEmployers.child(self.employerID).updateChildValues(["fLast":"Last billed: \(self.mydateFormat8.string(from: Date()))"], withCompletionBlock: { (error) in})
         
+        self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([(self.employerID):Int((self.mydateFormat5.date(from: self.mydateFormat5.string(from: Date()))?.timeIntervalSince1970)!)]) 
+        
     self.moveSessionToBilled()
     self.performSegue(withIdentifier: "presentBill", sender: self.mailSaver)
 

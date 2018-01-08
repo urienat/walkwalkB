@@ -68,7 +68,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var profileImageUrl = ""
     var dogItem = ""
     var lastDocumentItem = ""
-    var activeItem = ""
+    var activeItem:Bool?
     var employerIdRef = ""
     var dOut = ""
     var methood = "Normal"
@@ -86,7 +86,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var pickerData: [String] = [String]()
     var nameData: [String] = [String]()
     var lastDocument:  [String] = [String]()
-    var activeData: [String] = [String]()
+    var activeData: [Bool] = [Bool]()
 
     var employerIdArray: [AnyObject] = []
     var employerIdArray2: [AnyObject] = []
@@ -205,9 +205,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     textAdd.text = "Session added: \r\n\( mydateFormat7.string(from: Date()))"
     //self.postRoundView()
         
-    self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").updateChildValues([(self.employerIDToS):1]) //consider chane font color
+   
     dIn =  mydateFormat5.string(from: Date()) //brings the a date as a string
     dIn2 = mydateFormat2.string(from: Date()) //brings the a date as a string
+     self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").updateChildValues([(self.employerIDToS):Int((self.mydateFormat5.date(from: mydateFormat5.string(from: Date()))?.timeIntervalSince1970)!)]) //consider chane font color
     
     let record = ["fIn" : dIn,"fIndication3": "↺", "fEmployer": String (describing : employerToS),"fEmployeeRef": employeeIDToS,"fEmployerRef": employerIDToS,"fStatus" : "Approved"]
     let fInRef = dbRef.childByAutoId()
@@ -538,8 +539,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.nameData.append(self.dogItem  )
     self.lastDocument.append(self.lastDocumentItem)
 
-    self.activeItem = String(describing: snapshot.childSnapshot(forPath: "fActive").value!) as String!
-    self.activeData.append(String(describing: self.activeItem) )
+        self.activeItem =  snapshot.childSnapshot(forPath: "fActive").value as? Bool
+        self.activeData.append(self.activeItem! )
                         
     self.profileImageUrl = snapshot.childSnapshot(forPath: "fImageRef").value as! String!
     //  self.profileImageUrl = "https://firebasestorage.googleapis.com/v0/b/persession-45987.appspot.com/o/Myprofile.png?alt=media&token=263c8fdb-9cca-4256-9d3b-b794774bf4e1"
