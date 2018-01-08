@@ -533,7 +533,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     
         
-    if String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String! != nil {self.lastDocumentItem = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!} else {self.lastDocumentItem = ""}
+    if String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String! != "" {self.lastDocumentItem = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!} else {self.lastDocumentItem = ""}
     self.dogItem = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
     self.nameData.append(self.dogItem  )
     self.lastDocument.append(self.lastDocumentItem)
