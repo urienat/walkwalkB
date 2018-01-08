@@ -647,6 +647,9 @@ print (self.billItems.count)
                 self.self.mydateFormat5.string(from: Date()),"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver
                 ], withCompletionBlock: { (error) in}) //end of update.
             
+            self.dbRefEmployers.child(self.employerID).updateChildValues(["fLast":"Last paid: \(self.mydateFormat10.string(from: Date()))"], withCompletionBlock: { (error) in})
+
+            
             
             self.performSegue(withIdentifier: "presentReciept", sender: self.recieptMailSaver)
 

@@ -13,6 +13,7 @@ class employerCellTableViewCell: UITableViewCell {
     //@IBOutlet weak var employerName: UILabel!
     @IBOutlet weak var dogImage: UIImageView!
     @IBOutlet weak var employerFirst: UILabel!
+    @IBOutlet weak var lastDocument: UILabel!
     
   
     

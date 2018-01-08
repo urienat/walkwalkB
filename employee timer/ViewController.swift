@@ -67,6 +67,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var employerItem = ""
     var profileImageUrl = ""
     var dogItem = ""
+    var lastDocumentItem = ""
     var activeItem = ""
     var employerIdRef = ""
     var dOut = ""
@@ -84,6 +85,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     var pickerData: [String] = [String]()
     var nameData: [String] = [String]()
+    var lastDocument:  [String] = [String]()
     var activeData: [String] = [String]()
 
     var employerIdArray: [AnyObject] = []
@@ -495,6 +497,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.pickerData.removeAll()
     self.imageArray.removeAll()
     self.nameData.removeAll()
+    self.lastDocument.removeAll()
     self.activeData.removeAll()
         
     self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").observeSingleEvent(of: .value, with:{(snapshot) in
@@ -530,9 +533,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     
         
-
+    if String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String! != nil {self.lastDocumentItem = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!} else {self.lastDocumentItem = ""}
     self.dogItem = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
     self.nameData.append(self.dogItem  )
+    self.lastDocument.append(self.lastDocumentItem)
 
     self.activeItem = String(describing: snapshot.childSnapshot(forPath: "fActive").value!) as String!
     self.activeData.append(String(describing: self.activeItem) )
