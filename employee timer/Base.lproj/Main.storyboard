@@ -678,7 +678,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KUx-wf-FBc" userLabel="employerFirst">
-                                                    <rect key="frame" x="75" y="11.5" width="205" height="18"/>
+                                                    <rect key="frame" x="75" y="15.5" width="205" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Xns-zP-XJo"/>
                                                         <constraint firstAttribute="height" constant="18" id="gV9-bI-J9Y"/>
@@ -688,7 +688,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8XH-ri-dRv" userLabel="lastDocument">
-                                                    <rect key="frame" x="75" y="43.5" width="200" height="18"/>
+                                                    <rect key="frame" x="75" y="39.5" width="200" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="AuW-Ix-P70"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Daq-te-UCY"/>
@@ -699,12 +699,12 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="8XH-ri-dRv" firstAttribute="bottom" secondItem="86m-f8-5r4" secondAttribute="bottom" id="1GL-Re-9tm"/>
+                                                <constraint firstItem="8XH-ri-dRv" firstAttribute="bottom" secondItem="86m-f8-5r4" secondAttribute="bottom" constant="-4" id="1GL-Re-9tm"/>
                                                 <constraint firstItem="8XH-ri-dRv" firstAttribute="leading" secondItem="KUx-wf-FBc" secondAttribute="leading" id="8IY-Vx-kjn"/>
                                                 <constraint firstItem="86m-f8-5r4" firstAttribute="centerY" secondItem="i8b-rx-fpw" secondAttribute="centerY" id="GdD-mc-zPE"/>
                                                 <constraint firstAttribute="trailing" secondItem="KUx-wf-FBc" secondAttribute="trailing" id="JnF-ph-YBR"/>
                                                 <constraint firstItem="KUx-wf-FBc" firstAttribute="leading" secondItem="86m-f8-5r4" secondAttribute="trailing" constant="25" id="PyH-cs-PKZ"/>
-                                                <constraint firstItem="KUx-wf-FBc" firstAttribute="top" secondItem="86m-f8-5r4" secondAttribute="top" id="gvc-z3-sdW"/>
+                                                <constraint firstItem="KUx-wf-FBc" firstAttribute="top" secondItem="86m-f8-5r4" secondAttribute="top" constant="4" id="gvc-z3-sdW"/>
                                                 <constraint firstItem="86m-f8-5r4" firstAttribute="leading" secondItem="i8b-rx-fpw" secondAttribute="leading" id="n9b-vP-JdJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -3424,7 +3424,6 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="q4e-3H-dKE"/>
         <segue reference="x0P-Ew-8Ag"/>
