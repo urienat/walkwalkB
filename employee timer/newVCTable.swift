@@ -16,7 +16,7 @@ import Intents
 class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var tableConnect: UITableView!
-   
+    let star = UIImage(named: "star")
     let billDocument = UIImage(named: "billDocument")
     let Vimage = UIImage(named: "due")
     let nonVimage = UIImage(named: "emptyV")
@@ -370,10 +370,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             if record.fIndication3 == "📆" { cell.l8.image = sandwatchImage}
             if record.fIndication3 == "✏️"||record.fIndication3 == "Manual" { cell.l8.image = pencilImage}
             if record.fIndication3 == "↺" {  cell.l8.image = roundImageNormal}
-            if record.fIndication3 == "📄" {  cell.l8.image = paidImage}
+            if record.fIndication3 == "📄" {  cell.l8.image = star}
 
 
-            if record.fSpecialAmount != nil {cell.l1.text = " \(record.fSpecialItem!)- \(ViewController.fixedCurrency!)\(record.fSpecialAmount!)"; cell.l1.textColor =  UIColor.red }
+            if record.fSpecialAmount != nil {cell.l1.text = " \(record.fSpecialItem!)"; cell.l9.text = "\(ViewController.fixedCurrency!)\(record.fSpecialAmount!)"}//; cell.l1.textColor =  UIColor.red }
      
             if record.fStatus == "Approved" { cell.approval.setImage(Vimage, for: .normal)
                 

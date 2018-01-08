@@ -25,6 +25,7 @@ class newTableCell: UITableViewCell {
     @IBOutlet weak var l1: UILabel!
     @IBOutlet weak var l7: UILabel!
     @IBOutlet weak var l8: UIImageView!
+    @IBOutlet weak var l9: UILabel!
     @IBOutlet weak var approval: UIButton! 
 
     
