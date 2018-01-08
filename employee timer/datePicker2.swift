@@ -175,7 +175,7 @@ class datePicker2: UIViewController {
         mydateFormat11.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy , (HH,mm)", options: 0, locale: Locale.autoupdatingCurrent)!
         
         if recordToHandle == "" {
-        sessionItem.isHidden = false
+        sessionItem.isHidden = true//false
         deleter.isEnabled = false
         if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat11.string(from: Date())} else {self.TimeIN.text = mydateFormat10.string(from: Date()) }
         

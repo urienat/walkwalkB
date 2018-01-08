@@ -109,7 +109,7 @@ extension(ViewController){
         print ("employerfrom main:\(employerToS)")
         if self.employerToS != "Add new dog" {
         dbRefEmployer.child(self.employerIDToS).child("myEmployees").queryOrderedByKey().queryEqual(toValue: employeeIDToS).observeSingleEvent(of:.childAdded, with: { (snapshot) in
-        self.startButton.setTitle("Session", for: .normal);self.startImage.image = self.roundImageBig
+        self.startButton.setTitle("Session Now", for: .normal);self.startImage.image = self.roundImageBig
         self.RateUpdate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)
         if self.RateUpdate != 0.0 { } else {}
         })

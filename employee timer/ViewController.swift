@@ -122,6 +122,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     //}
     }
 
+    @IBOutlet weak var special: UIButton!
     @IBAction func special(_ sender: Any) {
         sessionModeSegue = false
         performSegue(withIdentifier: "employerforRecord", sender: employerToS)
@@ -573,6 +574,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.workedFor.isHidden = true
     self.startBackground.isHidden = false
     self.importBackground.isHidden = false
+    self.special.isHidden = false
     
         
     //self.account.isEnabled = true;
@@ -588,6 +590,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     bills.isEnabled = false
     chooseEmployer.isHidden = true
     startBackground.isHidden = true
+        self.special.isHidden = true
+
      self.importBackground.isHidden = true
 
     addAmanualRecord.isHidden = true
@@ -601,6 +605,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         //self.account.isEnabled = true
         self.animationImage.isHidden = false
         self.startBackground.isHidden = true
+            self.special.isHidden = true
+
         self.importBackground.isHidden = true
 
         self.DateIn.isHidden = false;
