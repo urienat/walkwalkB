@@ -13,6 +13,7 @@ import MessageUI
 
 class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMailComposeViewControllerDelegate {
     
+    let billDocument = UIImage(named: "billDocument")
     //let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
     let Vimage = UIImage(named: "due")
     let nonVimage = UIImage(named: "emptyV")
@@ -297,7 +298,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         
         print("fbillstatus\(billItem.fBillStatus!)")
         
-        if billItem.fBillStatus! == "Billed" { cell.approval.setImage(nonVimage, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
+        if billItem.fBillStatus! == "Billed" { cell.approval.setImage(billDocument, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
         if  billItem.fBillStatus!  == "Paid" { cell.approval.setImage(paidImage, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
         if billItem.fBillStatus! ==  "Cancelled" { cell.approval.setImage(canceledImage,for: .normal);cell.l1.alpha = 0.5;cell.l3.alpha = 0.5;cell.l4.alpha = 0.5;cell.l6.alpha = 0.5}
         

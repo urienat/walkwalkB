@@ -37,7 +37,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var addDog: Int?
     var tableRowHeight:Int?
     
-    var sessionModeSegue:Bool?
+    var sessionModeSegue:Bool? = true
 
     @IBOutlet weak var homeTitle: UINavigationItem!
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
@@ -420,7 +420,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     secondView?.employerFromMain = employerToS
     secondView?.employerID = employerIDToS
     secondView?.employeeID = employeeIDToS
-    if self.sessionModeSegue != false {sessionModeSegue = true}
+    if self.sessionModeSegue! != false {sessionModeSegue = true}
     secondView?.sessionMode = sessionModeSegue
     }//end of if
     

@@ -19,6 +19,7 @@ class billerCell: UITableViewCell{
     let billedImage = UIImage(named: "locked")
     let billIcon = UIImage(named: "bill")
     let canceledImage = UIImage(named: "cancelled")
+    let billDocument = UIImage(named: "billDocument")
 
     
     @IBOutlet weak var l1: UILabel!
@@ -31,7 +32,7 @@ class billerCell: UITableViewCell{
     
     @IBAction func approval(_ sender: Any) {
         if approval.image (for: .normal) != canceledImage {
-        if approval.image(for: .normal) == nonVimage {biller.checkBoxBiller = 0 } else {biller.checkBoxBiller = 1}
+        if approval.image(for: .normal) == billDocument {biller.checkBoxBiller = 0 } else {biller.checkBoxBiller = 1}
         if biller.checkBoxBiller == 0 {biller.checkBoxBiller = 1} else {biller.checkBoxBiller = 0}
         
     

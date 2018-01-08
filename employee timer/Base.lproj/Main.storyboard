@@ -768,7 +768,7 @@
                                     <constraint firstAttribute="height" constant="30" id="iUy-zA-iaL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="17"/>
-                                <state key="normal" title="I want to bill something special...">
+                                <state key="normal" title="Bill something else (not a session)">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>

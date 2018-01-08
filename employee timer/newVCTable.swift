@@ -17,6 +17,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
     @IBOutlet weak var tableConnect: UITableView!
    
+    let billDocument = UIImage(named: "billDocument")
     let Vimage = UIImage(named: "due")
     let nonVimage = UIImage(named: "emptyV")
     let paidImage = UIImage(named: "paid")
@@ -270,7 +271,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         periodChosen.isEnabled = false
         self.thinking.hidesWhenStopped = true
          
-        btn4.setImage(nonVimage , for: .normal)
+        btn4.setImage(billDocument , for: .normal)
         btn4.setTitle("You Owe Me", for: .normal)
         btn4.setTitleColor(blueColor, for: .normal)
         btn4.frame = CGRect(x: 0, y: 0, width: 0, height: 40)

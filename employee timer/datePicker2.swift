@@ -141,7 +141,7 @@ class datePicker2: UIViewController {
     if self.locker == "Paid" {self.deleter.isEnabled = false;self.date1button.isEnabled = false; self.extendedDate1Button.isEnabled = false }
     else {self.deleter.isEnabled = true;self.date1button.isEnabled = true; self.extendedDate1Button.isEnabled = true}
     
-    self.titleLbl = "Edit Session"
+    self.titleLbl = "Edit"
     self.title = self.titleLbl
     
     self.employerID = record.fEmployerRef!
@@ -158,7 +158,7 @@ class datePicker2: UIViewController {
     super.viewDidLoad()
         
     if ViewController.dateTimeFormat == "DateTime" {self.DatePicker.datePickerMode = .dateAndTime } else { self.DatePicker.datePickerMode = .date}
-        sessionMode = true
+        //sessionMode = true
       
         //connectivity
         if Reachability.isConnectedToNetwork() == true
@@ -175,15 +175,16 @@ class datePicker2: UIViewController {
         mydateFormat11.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy , (HH,mm)", options: 0, locale: Locale.autoupdatingCurrent)!
         
         if recordToHandle == "" {
+        if sessionMode == true { refresh(presser: 0)} else { refresh(presser: 1)}
         sessionItem.isHidden = true//false
         deleter.isEnabled = false
         if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat11.string(from: Date())} else {self.TimeIN.text = mydateFormat10.string(from: Date()) }
         
-        titleLbl = "Add for " + employerFromMain!
+        titleLbl = "Add"
          
         self.saveRecord?.isEnabled = false;self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveToDB2) )
         navigationItem.rightBarButtonItem = saveRecord
-        refresh(presser: 0)
+       
             
         }else{
         sessionItem.isHidden = true
@@ -235,8 +236,8 @@ class datePicker2: UIViewController {
             let recordRefence = self.dbRef.childByAutoId()
             recordRefence.setValue(record)
             
-            self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-1000000)])
-            self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-1000000)])
+            self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(10000000)])
+            self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(10000000)])
         }//end of else
     } // end of recordToHandle == ""
     else
