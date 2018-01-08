@@ -22,7 +22,7 @@ class datePicker2: UIViewController {
     
     var sessionMode:Bool?
     
-    let dateForItem = Date() + 10000000
+    let dateForItem = Date()
     var segmentedPressed:Int?
     
     
@@ -236,8 +236,8 @@ class datePicker2: UIViewController {
             let recordRefence = self.dbRef.childByAutoId()
             recordRefence.setValue(record)
             
-            self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(10000000)])
-            self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(10000000)])
+            self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-3200000000)])
+            self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-3200000000)])
         }//end of else
     } // end of recordToHandle == ""
     else

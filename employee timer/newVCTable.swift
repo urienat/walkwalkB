@@ -279,7 +279,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         billSender.customView = btn4
             
         btn5.setImage(paidImage , for: .normal)
-        btn5.setTitle("Pay Day", for: .normal)
+        btn5.setTitle(" PayDay", for: .normal)
         btn5.setTitleColor(blueColor, for: .normal)
         btn5.frame = CGRect(x: 0, y: 0, width: 0, height: 40)
         btn5.addTarget(self, action:#selector(billPayProcess), for: UIControlEvents.touchDown)
@@ -582,8 +582,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         print (splitItem)
         let split2    = splitItem.0
         print (split2)
+            
         self.FbArray2.append(split2)
         }
+        
+            print (self.FbArray2)
            
         for i in 0...(self.FbArray2.count-1)  {
 
@@ -592,13 +595,14 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.thinking.startAnimating()
         }
                 
-        if i == (self.FbArray2.count-1 ){
-            }
+        //if i == (self.FbArray2.count-1 ){
+          //  }
         self.dbRef.child((self.FbArray2[i])).observeSingleEvent(of: .value, with: { (snapshot) in
         if let dictionary = snapshot.value as? [String: AnyObject] {
         let record = recordsStruct()
         record.setValuesForKeys(dictionary)
-        if record.fStatus == "W" || record.fEmployeeRef != self.employeeID {
+        if record.fEmployeeRef != self.employeeID {
+            
         //do nothing
         }else{
         //array for record ID
