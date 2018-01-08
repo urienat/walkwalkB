@@ -270,16 +270,17 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         periodChosen.isEnabled = false
         self.thinking.hidesWhenStopped = true
          
-        //btn4.setImage(sendBillIcon , for: .normal)
-        btn4.setTitle("Bill", for: .normal)
+        btn4.setImage(nonVimage , for: .normal)
+        btn4.setTitle("You Owe Me", for: .normal)
         btn4.setTitleColor(blueColor, for: .normal)
-        btn4.frame = CGRect(x: 0, y: 0, width: 20, height: 40)
+        btn4.frame = CGRect(x: 0, y: 0, width: 0, height: 40)
         btn4.addTarget(self, action:#selector(sendBill), for: UIControlEvents.touchDown)
         billSender.customView = btn4
             
-        btn5.setTitle("Bill&Pay", for: .normal)
+        btn5.setImage(paidImage , for: .normal)
+        btn5.setTitle("Pay Day", for: .normal)
         btn5.setTitleColor(blueColor, for: .normal)
-        btn5.frame = CGRect(x: 0, y: 0, width: 60, height: 40)
+        btn5.frame = CGRect(x: 0, y: 0, width: 0, height: 40)
         btn5.addTarget(self, action:#selector(billPayProcess), for: UIControlEvents.touchDown)
         billPay.customView = btn5
             
@@ -554,7 +555,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.FbArray2.removeAll()
         htmlReport = nil
         
-        self.csv2.append( ("Sessions:\r\n"))
+        //self.csv2.append( ("Sessions:\r\n"))
         self.tableConnect.reloadData()
         dbRefEmployers.child(self.employerID).child("myEmployees").queryOrderedByKey().queryEqual(toValue: employeeID).observeSingleEvent(of: .childAdded, with:  {(snapshot) in
         self.Employerrate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)
@@ -637,7 +638,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             
         self.tableConnect.reloadData()
             
-        if record.fIndication3 == "📄" {"\(self.csv2.append(record.fSpecialItem!))";"\(self.csv2.append("   "))" ;"\(self.csv2.append(record.fSpecialAmount!))"}  else {
+            if record.fIndication3 == "📄" {"\(self.csv2.append(record.fSpecialItem!))";"\(self.csv2.append("   "))" ;self.csv2.append(ViewController.fixedCurrency!); self.csv2.append(record.fSpecialAmount!)}  else {
         if ViewController.dateTimeFormat == "DateTime" {"\(self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n")
         } else {"\(self.csv2.append( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n") }
         }//end of else

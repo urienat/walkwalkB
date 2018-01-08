@@ -618,19 +618,19 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FxU-Wn-hMn" userLabel="add a button view">
-                                <rect key="frame" x="0.0" y="219" width="320" height="70"/>
+                                <rect key="frame" x="0.0" y="169" width="320" height="70"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencilImage" translatesAutoresizingMaskIntoConstraints="NO" id="fJW-rO-BL2" userLabel="pencil">
-                                        <rect key="frame" x="218.5" y="22" width="26" height="26"/>
+                                        <rect key="frame" x="242.5" y="22" width="26" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="26" id="Qqv-fi-RAm"/>
                                             <constraint firstAttribute="height" constant="26" id="qOV-bF-Lp1"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebM-9e-cve">
-                                        <rect key="frame" x="85.5" y="15" width="126" height="40"/>
+                                        <rect key="frame" x="61.5" y="15" width="174" height="40"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
-                                        <state key="normal" title="Add a session">
+                                        <state key="normal" title="Session - Not Now">
                                             <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                         </state>
                                         <connections>
@@ -647,7 +647,7 @@
                                 </constraints>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wkx-Tt-3io" userLabel="DateIn">
-                                <rect key="frame" x="0.0" y="244" width="320" height="22"/>
+                                <rect key="frame" x="0.0" y="194" width="320" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="EB2-xY-uTN"/>
                                 </constraints>
@@ -703,12 +703,12 @@
                                 </prototypes>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45C-VX-M18" userLabel="startBackground">
-                                <rect key="frame" x="0.0" y="168" width="320" height="76"/>
+                                <rect key="frame" x="0.0" y="118" width="320" height="76"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cq4-SE-U6N">
-                                        <rect key="frame" x="59.5" y="0.0" width="156" height="76"/>
+                                        <rect key="frame" x="7" y="0.0" width="261" height="76"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="45"/>
-                                        <state key="normal" title="Session">
+                                        <state key="normal" title="Session Now">
                                             <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                         </state>
                                         <connections>
@@ -716,7 +716,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="roundBig" translatesAutoresizingMaskIntoConstraints="NO" id="Chx-Kf-Bii" userLabel="startImage">
-                                        <rect key="frame" x="221.5" y="18" width="40" height="40"/>
+                                        <rect key="frame" x="274" y="18" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Meh-8R-FfI"/>
                                             <constraint firstAttribute="width" constant="40" id="S8d-Jr-c3n"/>
@@ -733,7 +733,7 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9U-e8-FEx" userLabel="importBackground">
-                                <rect key="frame" x="0.0" y="333" width="320" height="76"/>
+                                <rect key="frame" x="0.0" y="283" width="320" height="76"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgz-2X-N9Q" userLabel="import">
                                         <rect key="frame" x="72.5" y="0.0" width="130" height="76"/>
@@ -762,20 +762,33 @@
                                     <constraint firstAttribute="bottom" secondItem="bgz-2X-N9Q" secondAttribute="bottom" id="ysd-2q-JJH"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="POY-PZ-Iwq" userLabel="special">
+                                <rect key="frame" x="24" y="428" width="272" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="iUy-zA-iaL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
+                                <state key="normal" title="I want to bill something special...">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="special:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="Fcc-P9-99Q"/>
+                                </connections>
+                            </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Worked for" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXg-VA-EDp">
-                                <rect key="frame" x="0.0" y="274" width="320" height="25"/>
+                                <rect key="frame" x="0.0" y="224" width="320" height="25"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="23"/>
                                 <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XDi-hZ-CdO" userLabel="textAdd">
-                                <rect key="frame" x="85" y="168" width="150" height="76"/>
+                                <rect key="frame" x="85" y="118" width="150" height="76"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vNaked" translatesAutoresizingMaskIntoConstraints="NO" id="M0C-iW-AVD" userLabel="animationImage">
-                                <rect key="frame" x="85" y="218" width="150" height="150"/>
+                                <rect key="frame" x="85" y="168" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="UNQ-wl-NLM"/>
                                     <constraint firstAttribute="width" constant="150" id="zuu-ll-odg"/>
@@ -1041,7 +1054,7 @@
                             <constraint firstItem="45C-VX-M18" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="RgB-xL-tIk"/>
                             <constraint firstItem="Wkx-Tt-3io" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="TAL-qv-Umm"/>
                             <constraint firstItem="fqn-dL-iFO" firstAttribute="top" secondItem="TkC-Ep-x4X" secondAttribute="bottom" constant="45" id="TbV-z0-ich"/>
-                            <constraint firstItem="45C-VX-M18" firstAttribute="top" secondItem="fqn-dL-iFO" secondAttribute="bottom" constant="50" id="U8j-Aa-dZf"/>
+                            <constraint firstItem="45C-VX-M18" firstAttribute="top" secondItem="fqn-dL-iFO" secondAttribute="bottom" id="U8j-Aa-dZf"/>
                             <constraint firstItem="tbR-QL-TgX" firstAttribute="top" secondItem="lxT-w2-3r9" secondAttribute="bottom" constant="30" id="WI7-6r-u9D"/>
                             <constraint firstItem="yHg-YC-CqC" firstAttribute="top" secondItem="cKA-rE-TUN" secondAttribute="bottom" id="WUw-vo-Uj3"/>
                             <constraint firstItem="9Fh-da-mJL" firstAttribute="bottom" secondItem="cKA-rE-TUN" secondAttribute="bottom" id="XbM-1d-XN2"/>
@@ -1050,6 +1063,8 @@
                             <constraint firstItem="lxT-w2-3r9" firstAttribute="top" secondItem="uv4-gs-ESI" secondAttribute="top" id="f3E-b2-6a4"/>
                             <constraint firstItem="yHg-YC-CqC" firstAttribute="top" secondItem="tbR-QL-TgX" secondAttribute="bottom" priority="750" id="iQn-al-QjX"/>
                             <constraint firstItem="9Fh-da-mJL" firstAttribute="top" secondItem="cKA-rE-TUN" secondAttribute="top" id="jW5-YC-j89"/>
+                            <constraint firstItem="yHg-YC-CqC" firstAttribute="top" secondItem="POY-PZ-Iwq" secondAttribute="bottom" constant="50" id="kmy-A9-QtK"/>
+                            <constraint firstItem="POY-PZ-Iwq" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leadingMargin" constant="8" id="l4C-wb-YBd"/>
                             <constraint firstAttribute="trailing" secondItem="FxU-Wn-hMn" secondAttribute="trailing" id="la0-LF-LtB"/>
                             <constraint firstItem="tbR-QL-TgX" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leadingMargin" constant="4" id="lj5-TB-d6x"/>
                             <constraint firstItem="fXg-VA-EDp" firstAttribute="top" secondItem="Wkx-Tt-3io" secondAttribute="bottom" constant="8" id="nYN-0S-YLS"/>
@@ -1060,6 +1075,7 @@
                             <constraint firstAttribute="trailing" secondItem="b9U-e8-FEx" secondAttribute="trailing" id="rbS-aw-AKs"/>
                             <constraint firstItem="cKA-rE-TUN" firstAttribute="top" secondItem="lxT-w2-3r9" secondAttribute="bottom" id="s6C-Qf-AA6"/>
                             <constraint firstItem="yHg-YC-CqC" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="sRk-0I-EqB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="POY-PZ-Iwq" secondAttribute="trailing" constant="8" id="uQY-tk-9UG"/>
                             <constraint firstItem="b9U-e8-FEx" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="vj3-WL-TM5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tbR-QL-TgX" secondAttribute="trailing" constant="4" id="xkR-pN-ggA"/>
                             <constraint firstItem="FxU-Wn-hMn" firstAttribute="leading" secondItem="uv4-gs-ESI" secondAttribute="leading" id="xnN-uG-pY9"/>
@@ -2103,7 +2119,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fgv-lZ-OY1">
-                                <rect key="frame" x="0.0" y="98" width="320" height="354"/>
+                                <rect key="frame" x="0.0" y="98" width="320" height="398"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="billerId" id="oUk-dv-frm" customClass="billerCell" customModule="perSession" customModuleProvider="target">
@@ -2186,7 +2202,7 @@
                                 </prototypes>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PrW-i7-IuZ">
-                                <rect key="frame" x="0.0" y="464" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="508" width="320" height="60"/>
                                 <color key="backgroundColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="NWC-gi-XYE"/>
@@ -2219,7 +2235,7 @@
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tR9-cS-rER" userLabel="totalBG">
-                                <rect key="frame" x="0.0" y="464" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="508" width="320" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ILg-rw-WUw" userLabel="totalBills">
                                         <rect key="frame" x="8" y="4" width="150" height="25"/>
@@ -2264,11 +2280,11 @@
                                 </constraints>
                             </view>
                             <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOU-wI-y5F" userLabel="blackView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="328"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFF-pl-qqA" userLabel="filterView">
-                                <rect key="frame" x="0.0" y="284" width="320" height="240"/>
+                                <rect key="frame" x="0.0" y="328" width="320" height="240"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42o-9O-q03">
                                         <rect key="frame" x="8" y="20" width="304" height="40"/>
@@ -3395,7 +3411,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="q4e-3H-dKE"/>
-        <segue reference="GwF-xw-cu7"/>
+        <segue reference="vGn-ru-ol3"/>
         <segue reference="kEl-UY-JOa"/>
         <segue reference="8s0-fg-N01"/>
         <segue reference="gfT-By-X34"/>
