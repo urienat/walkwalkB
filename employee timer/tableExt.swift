@@ -69,18 +69,24 @@ extension(ViewController){
             func tableView(_ employerList: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell2 = employerList.dequeueReusableCell(withIdentifier: "employerList", for: indexPath) as! employerCellTableViewCell
             print(activeData[indexPath.row])
+            print (lastDocument[indexPath.row])
                 
             if pickerData[indexPath.row] != "Add new dog" {            cell2.backgroundColor = UIColor.clear
-                ;cell2.employerFirst.isHidden = false; cell2.employerFirst?.text = nameData[indexPath.row];
-            if activeData[indexPath.row] == false {
+                ;cell2.employerFirst.isHidden = false; cell2.employerFirst?.text = nameData[indexPath.row]
+           
+                
+                if activeData[indexPath.row] == false {
              print ("alpha")
                 cell2.employerFirst.alpha = 0.4;cell2.lastDocument.alpha = 0.4}
                 
-                else{ cell2.employerFirst.alpha = 1;cell2.lastDocument.alpha = 1 }}
+                else{ cell2.employerFirst.alpha = 1;cell2.lastDocument.alpha = 1 }
+                
+                }//end of if
             
-                if activeData[indexPath.row] == false { cell2.employerFirst?.text =  "\(nameData[indexPath.row]) \(pickerData[indexPath.row]) - Inactive"} else {cell2.employerFirst?.text =  "\(nameData[indexPath.row]) \(pickerData[indexPath.row])"}
+                
+
+                if activeData[indexPath.row] == false {cell2.lastDocument?.text = "\(lastDocument[indexPath.row])"; cell2.employerFirst?.text =  "\(nameData[indexPath.row]) \(pickerData[indexPath.row]) - Inactive"} else{cell2.employerFirst?.text =  "\(nameData[indexPath.row]) \(pickerData[indexPath.row])";cell2.lastDocument?.text = "\(lastDocument[indexPath.row])"}
             
-            cell2.lastDocument?.text = "\(lastDocument[indexPath.row])"
            
                 cell2.dogImage.clipsToBounds = true
             cell2.dogImage.layer.cornerRadius = CGFloat(25)

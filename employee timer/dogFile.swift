@@ -245,7 +245,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if self.employerFromMain != "Add new dog" {
         if self.activeEmployerSwitch == true {self.activeEmployerSwitch = false} else {self.activeEmployerSwitch = true}
             
-            self.dbRefEmployers.child(self.employerID).updateChildValues(["fName" : self.pName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!, "fRem" : self.pRem.text!, "fEmployer":self.pLastName.text!,"fActive" : self.activeEmployerSwitch!, "fLast":""])
+            self.dbRefEmployers.child(self.employerID).updateChildValues(["fName" : self.pName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!, "fRem" : self.pRem.text!, "fEmployer":self.pLastName.text!,"fActive" : self.activeEmployerSwitch!])
            
             //in firebase under url
             print ("employerId to store cache and FB:\(self.employerID)")
@@ -273,7 +273,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         } // end of update of an existed employer
         else{
         let employerRefence = self.dbRefEmployers.childByAutoId()
-        employerRefence.setValue(["fName" : self.pName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!, "fRem" : self.pRem.text!,  "fEmployer":self.pLastName.text!, "fEmployerReg":employerRefence.key, "fActive" : true, "fImageRef":"https://firebasestorage.googleapis.com/v0/b/employeetimer.appspot.com/o/employerImages%2F47574737_s.jpg?alt=media&token=48983dc3-ca8d-4d9f-9b6d-3df6d756c480"
+            employerRefence.setValue(["fName" : self.pName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!, "fRem" : self.pRem.text!,  "fEmployer":self.pLastName.text!, "fEmployerReg":employerRefence.key,"fLast":"", "fActive" : true, "fImageRef":"https://firebasestorage.googleapis.com/v0/b/employeetimer.appspot.com/o/employerImages%2F47574737_s.jpg?alt=media&token=48983dc3-ca8d-4d9f-9b6d-3df6d756c480"
         ])//end of set value
             
         //update pic in chache for new employee
@@ -406,6 +406,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.activeEmployerSwitch = false} else {self.activeEmployer.image = self.emptyVimage
         self.activeButton.setTitle("Inactive", for: .normal)
         self.activeEmployerSwitch = true}
+            
     
         self.emailUpdate = snapshot.childSnapshot(forPath: "fMail").value! as! String //probelm when set on connect it i sdeleted
         self.pEmail.text = self.emailUpdate

@@ -532,9 +532,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.employerItem = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
     self.pickerData.append(self.employerItem  )
     
-    
+    print(String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!)
         
-    if String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String! != "" {self.lastDocumentItem = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!} else {self.lastDocumentItem = ""}
+        
+    if String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String! != "" {self.lastDocumentItem = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!} //else {self.lastDocumentItem = ""}
     self.dogItem = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
     self.nameData.append(self.dogItem  )
     self.lastDocument.append(self.lastDocumentItem)
