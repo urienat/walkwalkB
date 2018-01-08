@@ -772,7 +772,7 @@
                                     <constraint firstAttribute="bottom" secondItem="bgz-2X-N9Q" secondAttribute="bottom" id="ysd-2q-JJH"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="uHI-Qf-dgk" userLabel="star">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="uHI-Qf-dgk" userLabel="star">
                                 <rect key="frame" x="291" y="430.5" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="wro-vk-ge6"/>
@@ -1137,6 +1137,7 @@
                         <outlet property="sideMenu" destination="cKA-rE-TUN" id="ZO5-OH-NyS"/>
                         <outlet property="sideMenuConstarin" destination="Qng-b0-SRL" id="STP-FC-cVD"/>
                         <outlet property="special" destination="POY-PZ-Iwq" id="wTy-fl-J4x"/>
+                        <outlet property="star" destination="uHI-Qf-dgk" id="EHj-aN-62B"/>
                         <outlet property="startBackground" destination="45C-VX-M18" id="DnN-Lg-IRl"/>
                         <outlet property="startButton" destination="Cq4-SE-U6N" id="ULk-SV-W07"/>
                         <outlet property="startImage" destination="Chx-Kf-Bii" id="Tqx-Za-zgy"/>
@@ -3442,11 +3443,12 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="q4e-3H-dKE"/>
         <segue reference="x0P-Ew-8Ag"/>
         <segue reference="kEl-UY-JOa"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="gfT-By-X34"/>
+        <segue reference="1k4-P4-HYk"/>
     </inferredMetricsTieBreakers>
 </document>

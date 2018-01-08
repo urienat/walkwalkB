@@ -72,6 +72,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var paymentTitle: UITextField!
     @IBOutlet weak var paymentView: UIView!
     @IBOutlet weak var paymentMethood: UISegmentedControl!
+    
     @IBAction func paymentMethood(_ sender: Any) {
         print("payment pressed")
         //paymentMethood.isEnabled = false
@@ -92,7 +93,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         paymentReference = referenceTxt.text
         billStatus = "Paid"
         print (paymentSys,paymentReference)
-        BillArrayStatus[buttonRow] = statusTemp
+        //BillArrayStatus[buttonRow] = statusTemp
         paymentView.isHidden = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             //print ("alert19")

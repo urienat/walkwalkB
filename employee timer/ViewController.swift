@@ -39,6 +39,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     var sessionModeSegue:Bool? = true
 
+    @IBOutlet weak var star: UIImageView!
     @IBOutlet weak var homeTitle: UINavigationItem!
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
 
@@ -581,7 +582,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.startBackground.isHidden = false
     self.importBackground.isHidden = false
     self.special.isHidden = false
-    
+    self.star.isHidden = false
         
     //self.account.isEnabled = true;
     self.chooseEmployer.isUserInteractionEnabled = true
@@ -597,6 +598,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     chooseEmployer.isHidden = true
     startBackground.isHidden = true
         self.special.isHidden = true
+        self.star.isHidden = true
 
      self.importBackground.isHidden = true
 
@@ -612,7 +614,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         self.animationImage.isHidden = false
         self.startBackground.isHidden = true
             self.special.isHidden = true
-
+            self.star.isHidden = true
         self.importBackground.isHidden = true
 
         self.DateIn.isHidden = false;
