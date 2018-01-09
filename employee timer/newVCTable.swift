@@ -404,6 +404,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                 billManager?.documentCounter = counterForMail2!
                 billManager?.employeeID = employeeID
                 billManager?.undoArray = idArray
+                billManager?.employerID = employerID
 
                 
             }//end of if (segue...
@@ -616,7 +617,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
        print (id)
             
         if record.fIndication3 ==  "📄" {self.amountItem = Double(record.fSpecialAmount!)!} else {self.amountItem = 0.00}
-        let dateDuplicate = record.fIn
+       let dateDuplicate = record.fIn
        
             
         if record.fStatus == "Approved" && record.fSpecialAmount == nil {self.eventCounter+=1}
@@ -644,7 +645,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.idArray.append(id)
         self.indicationArray.append(indicationItem!)
         self.amountArray.append(self.amountItem)
-        self.dateDuplicate.append(dateDuplicate!)
+            if record.fIndication3 !=  "📄"  {self.dateDuplicate.append(dateDuplicate!)}
         self.appArray.append(appStatus!)
 
             

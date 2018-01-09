@@ -258,7 +258,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             
             self.dbRefEmployers.child(self.employerID).child("myEmployees").child(self.employeeID).updateChildValues(["fEmployerRate": Double( self.pRate.text!)!])//add employer rate per employee
             
-            if self.activeEmployerSwitch == false {  self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([self.employerID:1000000000000])}
+            if self.activeEmployerSwitch == false {  self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([self.employerID:4000000000000])}
             else {self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([self.employerID:-1000])}
         
         self.navigationController!.popViewController(animated: true)

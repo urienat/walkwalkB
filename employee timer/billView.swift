@@ -49,6 +49,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
 
     
     let mydateFormat5 = DateFormatter()
+    let mydateFormat8 = DateFormatter()
 
     
     //var deleteBill : UIBarButtonItem?
@@ -58,6 +59,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     var recoveredStatus = ""
     var billStatusForRecovery = ""
     var cancelledDocument: String?
+    
+    var lastPrevious = ""
     
     var registerTitle : String?
     
@@ -69,11 +72,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     @IBAction func billReciept(_ sender: Any) {
         switch billReciept.selectedSegmentIndex {
         case 0:recieptChosen = false
-        self.mailText.text = self.recoveredBill
+        self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
         self.titleLbl = "\(document!) \(documentCounter!)"
         self.title = self.titleLbl
         case 1:recieptChosen = true
-        self.mailText.text = self.recoveredReciept
+        self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredReciept)"
         self.titleLbl = "Reciept \(documentCounter!)"
         self.title = self.titleLbl
         default:
@@ -111,7 +114,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         connectivityCheck()
         
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
- 
+        mydateFormat8.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
+
         let doneProcess = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(returnToList))
         
       
@@ -144,7 +148,10 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         presentBill()} }
         
         deleteBtn.isEnabled = true
-
+        
+        self.dbRefEmployer.child(employerID).observeSingleEvent(of: .value, with:{ (snapshot) in
+        self.lastPrevious = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!
+        })
     } ///end of did load/////////////////////////////////////////////////////////////////////////////////////////////////////
     
         func presentReciept(){
@@ -176,6 +183,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
                 self.mydateFormat5.string(from:Date()),"fPaymentReference":"" ,"fRecieptDate":"","fBillRecieptMailSaver":""
                 ], withCompletionBlock: { (error) in}) //end of update.
             
+
+            
         } else {
             
             print (String(Int(self.documentCounter!)!-1))
@@ -185,8 +194,13 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             
             //undo - undo records
             self.moveSessionToBilled()
+            
+
         }
+        print (lastPrevious)
         
+        self.dbRefEmployer.child(self.employerID).updateChildValues(["fLast":lastPrevious], withCompletionBlock: { (error) in})
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.0){
             self.navigationController!.popViewController(animated: true)
         }
@@ -196,7 +210,6 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         self.dbRefEmployee.child(employeeID).child("myBills").child(billToHandle).observeSingleEvent(of: .value,with: { (snapshot) in
         self.recoveredBill = (snapshot.childSnapshot(forPath: "fBillMailSaver").value! as? String)!
         self.recoveredReciept = (snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String)!
-        self.mailText.text = self.recoveredBill
 
         self.recoveredStatus = (snapshot.childSnapshot(forPath: "fBillStatus").value! as? String)!
         self.recieptDate = (snapshot.childSnapshot(forPath: "fRecieptDate").value! as? String)!
@@ -219,7 +232,10 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             
             self.statusImage.image = self.canceledImage;
             
-            self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "!!!This document was cancelled!!!"}
+            self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "!!!!!!!!!!This document was cancelled!!!!!!!!!!"}
+            
+            self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
+
         })
 
         }//end rebill clicked
@@ -228,8 +244,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         func  configuredMailComposeViewController2() -> MFMailComposeViewController {
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
-        mailComposerVC2.setSubject("\(document!) \(documentCounter!)  -  \(billStatusForRecovery)")
-        mailComposerVC2.setMessageBody("\(billStatusForRecovery)\r\n\r\n\(recoveredBill)\r\n\r\n\r\n", isHTML: false)
+        mailComposerVC2.setSubject("\(document!) \(documentCounter!)")
+        mailComposerVC2.setMessageBody("\(recoveredBill)\r\n\r\n\r\n", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
         //mailComposerVC2.setCcRecipients([ViewController.fixedemail])
         return mailComposerVC2
@@ -239,8 +255,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         func  configuredMailComposeViewController4() -> MFMailComposeViewController {
         let mailComposerVC4 = MFMailComposeViewController()
         mailComposerVC4.mailComposeDelegate = self
-        mailComposerVC4.setSubject("Reciept \(documentCounter!)  -  \(billStatusForRecovery)")
-        mailComposerVC4.setMessageBody("\(billStatusForRecovery)\r\n\r\n\(recoveredReciept)\r\n\r\n \r\n ", isHTML: false)
+        mailComposerVC4.setSubject("Reciept \(documentCounter!)")
+        mailComposerVC4.setMessageBody("\(recoveredReciept)\r\n\r\n \r\n ", isHTML: false)
         mailComposerVC4.setToRecipients([ViewController.fixedemail])
         //mailComposerVC4.setCcRecipients([ViewController.fixedemail])
         return mailComposerVC4
@@ -393,10 +409,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         
         var pic:UIPrintInteractionController = .shared
         var viewpf:UIViewPrintFormatter = mailText.viewPrintFormatter()
-        
+        //var viewpf2:UIViewPrintFormatter = scrollView.viewPrintFormatter()
+
         //pic.delegate = self
-        pic.showsPageRange = true
         pic.printFormatter = viewpf
+        //pic.printFormatter = viewpf2
         pic.present(animated: true, completionHandler: nil)
     }
     

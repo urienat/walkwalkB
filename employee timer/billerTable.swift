@@ -93,10 +93,11 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         paymentReference = referenceTxt.text
         billStatus = "Paid"
         print (paymentSys,paymentReference)
-        //BillArrayStatus[buttonRow] = statusTemp
+        BillArrayStatus[buttonRow] = statusTemp
         paymentView.isHidden = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            //print ("alert19")
+            print ("alert19")
+            
           self.recieptProcess() // self.alert19()
             
         }
@@ -418,6 +419,7 @@ print (self.billItems.count)
             billItems.removeAll()
             BillArray.removeAll()
             BillArrayStatus.removeAll()
+                
             self.billCounter = 0
             self.taxCounter = 0
             self.AmountCounter = 0
@@ -480,6 +482,7 @@ print (self.billItems.count)
                 self.midCalc2 = snapshot.childSnapshot(forPath: "fBillTotalTotal").value! as? String
                 self.midCalc3 = snapshot.childSnapshot(forPath: "fBillSum").value! as? String
                 self.account = snapshot.childSnapshot(forPath: "fBillEmployerName").value! as? String
+                //self.employerID = (snapshot.childSnapshot(forPath: "fBillEmployer").value! as? String)!
                // self.recoveredreciept = snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String
 
 
@@ -626,7 +629,13 @@ print (self.billItems.count)
         self.thinking.startAnimating()
         }
         
+        
         fetchBillInfo()
+        
+        self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).observeSingleEvent(of: .value,with: {(snapshot) in
+            self.employerID = (snapshot.childSnapshot(forPath: "fBillEmployer").value! as? String)!
+            })
+        
         recieptDate = mydateFormat5.string(from: Date())
         
         DispatchQueue.main.asyncAfter(deadline: .now()+2){
@@ -642,6 +651,9 @@ print (self.billItems.count)
             self.dbRefEmployees.child(self.employeeID).child("myBills").child(String("-"+self.BillArray[self.buttonRow])).updateChildValues(["fBillStatus": self.statusTemp, "fBillStatusDate":
                 self.self.mydateFormat5.string(from: Date()),"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver
                 ], withCompletionBlock: { (error) in}) //end of update.
+            
+            print (self.employerID)
+            print(self.mydateFormat10.string(from: Date()))
             
             self.dbRefEmployers.child(self.employerID).updateChildValues(["fLast":"Last paid: \(self.mydateFormat10.string(from: Date()))"], withCompletionBlock: { (error) in})
             
@@ -681,7 +693,6 @@ print (self.billItems.count)
             let taxName = (snapshot.childSnapshot(forPath: "fTaxName").value as! String)
             self.billInfo = (snapshot.childSnapshot(forPath: "fBillinfo").value as! String)
             self.address = (snapshot.childSnapshot(forPath: "fAddress").value as! String)
-
             if taxName == "" {self.taxForBlock = "Tax"} else {self.taxForBlock = taxName}
             
             
