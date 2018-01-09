@@ -185,7 +185,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             
     billPay.isEnabled = false
     refresh(presser: 1)
-    DispatchQueue.main.asyncAfter(deadline: .now()+1.4)//previod 4.4
+    DispatchQueue.main.asyncAfter(deadline: .now()+4)//previod 4.4
     {
     print(self.appArray.count)
         if self.appArray.count != 0 {self.thinking.stopAnimating();self.billProcess()} //self.alert18()}

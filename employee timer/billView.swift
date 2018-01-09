@@ -171,38 +171,46 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     func undo(){
-        print (self.recieptChosen)
-        
-        if self.recieptChosen == true {
+            print (self.recieptChosen)
+
+            if self.recieptChosen == true {
             print(self.employeeID)
             print ((String("-\(self.documentCounter!)"))!)
-            
-            self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).updateChildValues(["fBillStatus": "Billed", "fBillStatusDate":
-                self.mydateFormat5.string(from:Date()),"fPaymentReference":"" ,"fRecieptDate":"","fBillRecieptMailSaver":""
-                ], withCompletionBlock: { (error) in}) //end of update.
-            
 
-            
-        } else {
-            
+            self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).updateChildValues(["fBillStatus": "Billed", "fBillStatusDate":
+            self.mydateFormat5.string(from:Date()),"fPaymentReference":"" ,"fRecieptDate":"","fBillRecieptMailSaver":""
+            ], withCompletionBlock: { (error) in}) //end of update.
+
+
+
+            } else {
+
             print (String(Int(self.documentCounter!)!-1))
-            
+
             self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).removeValue()
             self.dbRefEmployee.child(self.employeeID).updateChildValues(["fCounter":String(Int(self.documentCounter!)!)])
-            
+
             //undo - undo records
             self.moveSessionToBilled()
-            
 
-        }
-        print (lastPrevious)
-        
-        self.dbRefEmployer.child(self.employerID).updateChildValues(["fLast":lastPrevious], withCompletionBlock: { (error) in})
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0){
+            }
+            print (lastPrevious)
+
+            self.dbRefEmployer.child(self.employerID).updateChildValues(["fLast":lastPrevious], withCompletionBlock: { (error) in})
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.0){
+
+            if self.recieptChosen == true {
+
             self.navigationController!.popViewController(animated: true)
-        }
-    }
+            } else {
+            self.navigationController!.popToRootViewController(animated: true)
+
+
+            }
+            }
+            }
 
         func  reBill() {
         self.dbRefEmployee.child(employeeID).child("myBills").child(billToHandle).observeSingleEvent(of: .value,with: { (snapshot) in

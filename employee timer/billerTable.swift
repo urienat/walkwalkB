@@ -25,6 +25,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
     
     var counterForpresent:String?
+    var lastPrevious = ""
+
     
     var monthToHandle : Int = 0
     var yearToHandle : Int = 0
@@ -246,7 +248,12 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
 
         self.StatusChoice = "All"
         self.billerConnect.separatorColor = blueColor
-
+        
+        if employerID != "" {
+        dbRefEmployers.child(self.employerID).observeSingleEvent(of:.value, with: {(snapshot) in
+        self.lastPrevious = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!
+        })
+        }//end of if
         billerConnect.delegate = self
         billerConnect.dataSource = self
         thinking.hidesWhenStopped = true
@@ -334,7 +341,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billManager?.document = documentName!
         billManager?.documentCounter = counterForpresent!
         billManager?.employeeID = employeeID
-
+        billManager?.employerID = employerID
+        billManager?.lastPrevious = lastPrevious
 
         }//end of if (segue...
             
