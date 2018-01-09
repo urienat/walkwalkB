@@ -13,6 +13,8 @@ import Firebase
 import Google
 import GoogleSignIn
 import GoogleAPIClientForREST
+import EventKit
+
 
 class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
    
@@ -92,6 +94,10 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     var id1: String?
 
     
+    //apple
+    var eventStore = EKEventStore()
+    var calendars:Array<EKCalendar> = []
+    
     
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     override func viewDidLoad() {
@@ -130,6 +136,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         helpTxtView.layer.cornerRadius =  15//CGFloat(25)
         helpTxtView.layoutIfNeeded()
         thinking.hidesWhenStopped = true
+        
+        //apple
+        checkCalendarAuthorizationStatus()
 
         
     }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////
@@ -346,6 +355,24 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     func pop(alert: UIAlertAction!){
     self.navigationController!.popViewController(animated: true)
+    }
+    
+    //apple
+    func checkCalendarAuthorizationStatus() {
+        let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
+        
+        switch (status) {
+        case EKAuthorizationStatus.notDetermined:
+            // This happens on first-run
+            requestAccessToCalendar()
+        case EKAuthorizationStatus.authorized:
+            // Things are in line with being able to show the calendars in the table view
+            loadCalendars()
+            refreshTableView()
+        case EKAuthorizationStatus.restricted, EKAuthorizationStatus.denied:
+            // We need to help them give us permission
+            needPermissionView.fadeIn()
+        }
     }
     
     
