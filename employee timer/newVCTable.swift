@@ -30,6 +30,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
     let btnGeneral = UIButton(type: .custom)
     let generalItem = UIBarButtonItem()
+    
+    var lastPrevious = ""
 
     var firstTime:Bool?
     var firstTimeGeneral:Bool?
@@ -262,6 +264,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
         dbRefEmployers.child(self.employerID).observeSingleEvent(of:.value, with: {(snapshot) in
         self.employerMail = String(describing: snapshot.childSnapshot(forPath: "fMail").value!) as String!
+        self.lastPrevious = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!
         })
   
         self.thinking.color = self.blueColor
@@ -405,6 +408,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                 billManager?.employeeID = employeeID
                 billManager?.undoArray = idArray
                 billManager?.employerID = employerID
+                billManager?.lastPrevious = lastPrevious
 
                 
             }//end of if (segue...
@@ -563,7 +567,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.tableConnect.reloadData()
         dbRefEmployers.child(self.employerID).child("myEmployees").queryOrderedByKey().queryEqual(toValue: employeeID).observeSingleEvent(of: .childAdded, with:  {(snapshot) in
         self.Employerrate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)
-        
+
         self.dbRefEmployers.child(self.employerID).child("fEmployerRecords").queryOrderedByValue().observeSingleEvent(of: .value, with: { (snapshot) in
         print("id of employers34\(String(describing: snapshot.value))")
           
@@ -735,7 +739,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             self.paypal = (snapshot.childSnapshot(forPath: "fPaypal").value as! String)
             self.billInfo = (snapshot.childSnapshot(forPath: "fBillinfo").value as! String)
             self.address = (snapshot.childSnapshot(forPath: "fAddress").value as! String)
-            
+
             if self.eventCounter == 0 {self.sessionBlock = "\r\n"} else {self.sessionBlock = "Total Number of sessions: \(self.eventCounter) \r\n\(self.perEvents.text!)"}
 
             if  self.taxSwitch == "Yes" {
@@ -879,6 +883,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
     func billProcess() {
     self.thinking.startAnimating()
+    
+
+        
     if paymentDate! == "" {paymentDate = mydateFormat5.string(from: Date()) }
     self.billing()
 
@@ -897,7 +904,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         
     self.dbRefEmployers.child(self.employerID).updateChildValues(["fLast":"Last billed: \(self.mydateFormat8.string(from: Date()))"], withCompletionBlock: { (error) in})
         
-        self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([(self.employerID):Int((self.mydateFormat5.date(from: self.mydateFormat5.string(from: Date()))?.timeIntervalSince1970)!)]) 
+    self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([(self.employerID):Int((self.mydateFormat5.date(from: self.mydateFormat5.string(from: Date()))?.timeIntervalSince1970)!)])
         
     self.moveSessionToBilled()
     self.performSegue(withIdentifier: "presentBill", sender: self.mailSaver)

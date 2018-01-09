@@ -149,9 +149,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         
         deleteBtn.isEnabled = true
         
-        self.dbRefEmployer.child(employerID).observeSingleEvent(of: .value, with:{ (snapshot) in
-        self.lastPrevious = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!
-        })
+        
     } ///end of did load/////////////////////////////////////////////////////////////////////////////////////////////////////
     
         func presentReciept(){
