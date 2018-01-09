@@ -17,6 +17,7 @@ import EventKit
 
 
 class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
+    
    
     let dbRef = FIRDatabase.database().reference().child("fRecords")
     let dbRefEmployer = FIRDatabase.database().reference().child("fEmployers")
@@ -96,8 +97,10 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     //apple
     var eventStore = EKEventStore()
-    var calendars:Array<EKCalendar> = []
-    
+    //var calendars:Array<EKCalendar> = []
+    var calendars: [EKCalendar]?
+
+
     
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     override func viewDidLoad() {
@@ -110,6 +113,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale:Locale.autoupdatingCurrent )!
         mydateFormat9.dateFormat = DateFormatter.dateFormat(fromTemplate: " dd-MMM-yy", options: 0, locale:Locale.autoupdatingCurrent )!
+        
+        if ViewController.calanderOption == "Google" {
 
         service.shouldFetchNextPages = true
         
@@ -126,6 +131,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             print ("out")
             GIDSignIn.sharedInstance().signIn()
             }
+        }//end of Google
+        else if ViewController.calanderOption == "IOS" {
+        //apple
+        checkCalendarAuthorizationStatus()
+    }//end of apple
         datePickerBG.layer.borderWidth = 0.5
         datePickerBG.layer.borderColor = blueColor.cgColor
         datePickerBG.layer.cornerRadius =  15//CGFloat(25)
@@ -137,8 +147,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         helpTxtView.layoutIfNeeded()
         thinking.hidesWhenStopped = true
         
-        //apple
-        checkCalendarAuthorizationStatus()
+        
 
         
     }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////
@@ -358,23 +367,106 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     }
     
     //apple
+    func fetchEventsFromApple() {
+        self.navigationItem.setHidesBackButton(true, animated:true);
+        
+        let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")// instard of "primary"
+        query.maxResults = 500
+        // DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+        print("0.2 \(self.LastCalander!)")
+        print (self.minDate)
+        minDate =  NSCalendar.current.startOfDay(for: minDate!)
+        print (self.minDate)
+        
+        query.timeMin = GTLRDateTime(date: minDate!)
+        print ("before min \(String(describing: self.LastCalander))")
+        
+        //query.timeMin = GTLRDateTime(date: self.mydateFormat5.date(from: self.LastCalander!)!)
+        
+        query.timeMax = GTLRDateTime(date: Date())
+        query.singleEvents = true
+        query.orderBy = kGTLRCalendarOrderByStartTime
+        self.service.executeQuery(
+            query,
+            delegate: self,
+            didFinish: #selector(self.displayResultWithTicket(ticket:finishedWithObject:error:)))
+        //}//end of dispatch
+        
+    }//end of fetchevents
+    
+    func appleCalanderConnected(){
+        let currentUser = FIRAuth.auth()?.currentUser
+       print (currentUser as Any)
+        if currentUser != nil {
+            print(currentUser!.uid)
+            employeeId = (currentUser!.uid)
+            self.dbRefEmployee.child(self.employeeId).observeSingleEvent(of: .value , with: { (snapshot) in
+                self.LastCalander = String(describing: snapshot.childSnapshot(forPath: "fLastCalander").value!) as String!
+                
+                
+                if self.LastCalander == "New" { self.alert456()} else{
+                    //setting minimum date
+                    print ((Date()-(3600*24*45)))
+                    print (self.mydateFormat5.date(from: self.LastCalander!)!)
+                    if (Date()-(3600*24*45)) > self.mydateFormat5.date(from: self.LastCalander!)! {print ("date is later");self.minDate = (Date()-(3600*24*45))} else {print ("lastcalander is later"); self.minDate = self.mydateFormat5.date(from: self.LastCalander!)!}
+                    self.alert123()
+                }
+            })//end of dbref
+            findEmployerId()
+        }// end of if current user is not nil
+    }//end of ggc
+    
     func checkCalendarAuthorizationStatus() {
         let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
         
         switch (status) {
         case EKAuthorizationStatus.notDetermined:
+            print ("This happens on first-run")
             // This happens on first-run
             requestAccessToCalendar()
         case EKAuthorizationStatus.authorized:
             // Things are in line with being able to show the calendars in the table view
-            loadCalendars()
-            refreshTableView()
+            let event = EKEvent(eventStore: eventStore)
+            event.calendar = eventStore.defaultCalendarForNewEvents
+            appleCalanderConnected()
+           /// loadCalendars()
+           /// refreshTableView()
         case EKAuthorizationStatus.restricted, EKAuthorizationStatus.denied:
+            print ("denied")
             // We need to help them give us permission
-            needPermissionView.fadeIn()
+          ////  needPermissionView.fadeIn()
         }
     }
     
+    func requestAccessToCalendar() {
+        eventStore.requestAccess(to: EKEntityType.event, completion: {
+            (accessGranted: Bool, error: Error?) in
+            
+            if accessGranted == true {
+                DispatchQueue.main.async(execute: {
+                    self.checkCalendarAuthorizationStatus()
+
+                  //  self.loadCalendars()
+                 ///   self.refreshTableView()
+                })
+            } else {
+                DispatchQueue.main.async(execute: {
+         ////           self.needPermissionView.fadeIn()
+                })
+            }
+        })
+    }
+    
+    
+    func loadCalendars() {
+        self.calendars = eventStore.calendars(for: EKEntityType.event)
+    }
+    
+    func refreshTableView() {
+        print ("refresh")
+        ////calendarsTableView.isHidden = false
+       ///// calendarsTableView.reloadData()
+    }
     
 // alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////
             // Helper for showing an alert
@@ -412,7 +504,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             self.spesific = true
                 self.thinking.startAnimating()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-            self.fetchEvents()
+                if ViewController.calanderOption == "Google"  {self.fetchEvents()}
+                if ViewController.calanderOption == "IOS" {self.fetchEventsFromApple()}
             }
             }
 
@@ -420,8 +513,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             self.spesific = false
                 self.thinking.startAnimating()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-            self.fetchEvents()
-            }
+                if ViewController.calanderOption == "Google"  {self.fetchEvents()}
+                if ViewController.calanderOption == "IOS" {self.fetchEventsFromApple()}            }
             }
             
             let helpAction = UIAlertAction(title: "Help", style: .default) { (UIAlertAction) in
