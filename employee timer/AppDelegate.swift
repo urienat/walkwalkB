@@ -115,9 +115,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         return
         }
         print ("1234")
-            
+        
         guard let authentication = user2.authentication else { return }
         let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        
+   //     if  LoginFile.provider == "Google" && calander.calanderLogin != true {
 
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
         if let error = error {
@@ -131,8 +133,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         LoginFile.userFromGoole = user2
         LoginFile.employeeRef2 = (user?.uid)!
         return
-        }
-    
+ //       }
+    }//end of if
         func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
         // ...

@@ -185,14 +185,15 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             
     billPay.isEnabled = false
     refresh(presser: 1)
-    DispatchQueue.main.asyncAfter(deadline: .now()+4)//previod 4.4
+    thinking.startAnimating()
+    DispatchQueue.main.asyncAfter(deadline: .now()+5)//previod 4.4
     {
     print(self.appArray.count)
-        if self.appArray.count != 0 {self.thinking.stopAnimating();self.billProcess()} //self.alert18()}
-    if self.appArray.count == 0 {
-    self.thinking.stopAnimating()
-    self.alert27()
-        }
+        if self.appArray.count == 0 {
+            self.thinking.stopAnimating()
+            self.alert27()
+        } else {self.thinking.stopAnimating();self.billProcess()} //self.alert18()}
+    
             }
             
         }//end of else
@@ -461,7 +462,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         switch result.rawValue {
         case MFMailComposeResult.cancelled.rawValue:
         DispatchQueue.main.asyncAfter(deadline: .now()+0){
-            self.alert66() }//it is not function due to window hirerarchy
+             }//it is not function due to window hirerarchy
         print("Mail cancelled")
 
         case MFMailComposeResult.saved.rawValue:
@@ -1058,7 +1059,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     self.billPay.isEnabled = false
     }
 
-    let alertController27 = UIAlertController(title: ("Bill records") , message:" There are no  sessions with 'Due' status. Please mark sessions that you would like to bill by touching the empty square or create new 'sessions'." , preferredStyle: .alert)
+    let alertController27 = UIAlertController(title: ("Bill records") , message:" There is no 'Due' sessionsto bill. Please mark sessions that you would like to bill by touching the empty square or create new 'sessions'." , preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
     self.refresh(presser: 0)
     }
@@ -1067,16 +1068,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     self.present(alertController27, animated: true, completion: nil)
     }//end of alert27
     
-    func alert66() {
-        
-        let alertController66 = UIAlertController(title: ("Cancel Mail") , message:" Mail was cancelled, but the bill was registered to send it or print it go to bills" , preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-            self.refresh(presser: 3)
-        }
-        
-        alertController66.addAction(OKAction)
-        self.present(alertController66, animated: true, completion: nil)
-    }//end of alert66
 
     func alert12(){
     let alertController12 = UIAlertController(title: ("Change record status") , message: "You can not change status of records that were already billed.", preferredStyle: .alert)

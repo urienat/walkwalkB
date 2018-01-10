@@ -1168,6 +1168,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="import" translatesAutoresizingMaskIntoConstraints="NO" id="5yD-hq-D2T" userLabel="calander">
+                                <rect key="frame" x="196" y="84" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="SCi-He-fes"/>
+                                    <constraint firstAttribute="width" constant="100" id="uN7-1G-uNc"/>
+                                </constraints>
+                            </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vNaked" translatesAutoresizingMaskIntoConstraints="NO" id="NnU-L0-TDq" userLabel="animationImage">
                                 <rect key="frame" x="85" y="209" width="150" height="150"/>
                                 <constraints>
@@ -1278,9 +1285,11 @@
                             <constraint firstItem="NnU-L0-TDq" firstAttribute="centerY" secondItem="h2t-9w-Imj" secondAttribute="centerY" id="LDD-ht-PNS"/>
                             <constraint firstItem="DTS-vf-6eL" firstAttribute="top" secondItem="J8i-en-uWZ" secondAttribute="bottom" constant="40" id="MJJ-3J-8dO"/>
                             <constraint firstItem="WAj-l2-ljD" firstAttribute="centerX" secondItem="h2t-9w-Imj" secondAttribute="centerX" id="Pl7-fg-Qdb"/>
+                            <constraint firstItem="5yD-hq-D2T" firstAttribute="top" secondItem="Ntp-IE-fkf" secondAttribute="bottom" constant="40" id="Yc4-dC-C7H"/>
                             <constraint firstItem="WAj-l2-ljD" firstAttribute="leading" secondItem="h2t-9w-Imj" secondAttribute="leading" constant="15" id="bqb-lS-Ryz"/>
                             <constraint firstItem="DTS-vf-6eL" firstAttribute="top" secondItem="WAj-l2-ljD" secondAttribute="bottom" constant="60" id="j8X-fI-VRT"/>
                             <constraint firstItem="J8i-en-uWZ" firstAttribute="centerX" secondItem="h2t-9w-Imj" secondAttribute="centerX" id="lvs-F0-ETV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5yD-hq-D2T" secondAttribute="trailing" constant="8" id="ve8-Bx-nBi"/>
                             <constraint firstItem="Ntp-IE-fkf" firstAttribute="leading" secondItem="h2t-9w-Imj" secondAttribute="leading" id="w3A-24-LxJ"/>
                         </constraints>
                     </view>
@@ -1288,6 +1297,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="animationImage" destination="NnU-L0-TDq" id="NpE-46-bOL"/>
+                        <outlet property="calanderImage" destination="5yD-hq-D2T" id="Kth-FO-KpG"/>
                         <outlet property="datePicker" destination="Alt-nm-btb" id="f0G-jl-gkF"/>
                         <outlet property="datePickerBG" destination="J8i-en-uWZ" id="7vv-pa-PgW"/>
                         <outlet property="helpBackground" destination="WAj-l2-ljD" id="0fa-O7-Jpo"/>
@@ -3443,7 +3453,6 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="3Wx-xY-sDh"/>
         <segue reference="vGn-ru-ol3"/>

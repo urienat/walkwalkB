@@ -28,6 +28,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     let mydateFormat9 = DateFormatter()
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
 
+    static var calanderLogin:Bool?
+    
     @IBOutlet weak var navBar: UINavigationItem!
     
     var calIn = ""
@@ -58,6 +60,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     var beginDate = Date()
     var helpText : UITextField?
     
+    @IBOutlet weak var calanderImage: UIImageView!
     @IBOutlet var thinking: UIActivityIndicatorView!
     @IBOutlet weak var helpBackground: UIView!
     
@@ -98,7 +101,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     //apple
     var eventStore = EKEventStore()
     //var calendars:Array<EKCalendar> = []
-    var calendars: [EKCalendar]?
+   // var calendars: [EKCalendar]?
 
 
     
@@ -107,7 +110,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         super.viewDidLoad()
         
         connectivityCheck()
-        
+        calander.calanderLogin = true
         title = "Import Calander"
         
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
@@ -197,7 +200,12 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         func displayResultWithTicket(
         ticket: GTLRServiceTicket,finishedWithObject response :  GTLRCalendar_Events,error : NSError?) {
         if let error = error {
-        showAlert(title: "Error", message: error.localizedDescription)
+        print (error.code)
+            if error.code == 403 {
+                
+                
+            } else {
+        showAlert(title: "Error", message: error.localizedDescription) }
         return
         }
         eventCounter = 0
@@ -370,27 +378,38 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     func fetchEventsFromApple() {
         self.navigationItem.setHidesBackButton(true, animated:true);
         
-        let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")// instard of "primary"
-        query.maxResults = 500
-        // DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-        print("0.2 \(self.LastCalander!)")
-        print (self.minDate)
+        print ("in fetcheventapple")
+        
         minDate =  NSCalendar.current.startOfDay(for: minDate!)
         print (self.minDate)
         
-        query.timeMin = GTLRDateTime(date: minDate!)
-        print ("before min \(String(describing: self.LastCalander))")
+        var titles : [String] = []
+        var startDates : [Date] = [] // mindate
+        var endDates : [Date] = [] //today
         
-        //query.timeMin = GTLRDateTime(date: self.mydateFormat5.date(from: self.LastCalander!)!)
+        let calendars = eventStore.calendars(for: .event)
         
-        query.timeMax = GTLRDateTime(date: Date())
-        query.singleEvents = true
-        query.orderBy = kGTLRCalendarOrderByStartTime
-        self.service.executeQuery(
-            query,
-            delegate: self,
-            didFinish: #selector(self.displayResultWithTicket(ticket:finishedWithObject:error:)))
-        //}//end of dispatch
+        for calendar in calendars {
+            if calendar.title != "Work" {
+                
+    let predicate = eventStore.predicateForEvents(withStart: minDate!, end: Date(), calendars: [calendar])
+                
+                var events = eventStore.events(matching: predicate)
+                
+                
+                for event in events {
+                    print (event.title)
+
+                    titles.append(event.title)
+                    startDates.append(event.startDate)
+                    endDates.append(event.endDate)
+                }
+            }
+        }
+        
+        
+
+           // didFinish: #selector(self.displayResultWithTicket(ticket:finishedWithObject:error:)))
         
     }//end of fetchevents
     
@@ -459,13 +478,21 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     
     func loadCalendars() {
-        self.calendars = eventStore.calendars(for: EKEntityType.event)
+    ////    self.calendars = eventStore.calendars(for: EKEntityType.event)
     }
     
     func refreshTableView() {
         print ("refresh")
         ////calendarsTableView.isHidden = false
        ///// calendarsTableView.reloadData()
+    }
+    
+    func importAnimation(){
+        
+        UIView.animate(withDuration: 0.3, delay :0.0 ,options:[.autoreverse],animations: {
+            self.calanderImage.alpha = 0.7
+        },completion:nil)
+        
     }
     
 // alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -501,6 +528,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             let alertController123 = UIAlertController(title: ("Import Calander Sessions") , message: "You are about to import calander's sessions occured till now" , preferredStyle: .alert)
 
             let spesificAction = UIAlertAction(title: "Import \(employerFromMain)'s only", style: .default) { (UIAlertAction) in
+                self.importAnimation()
             self.spesific = true
                 self.thinking.startAnimating()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
@@ -510,6 +538,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             }
 
             let allAction = UIAlertAction(title: "Import all accounts", style: .default) { (UIAlertAction) in
+                self.importAnimation()
+
             self.spesific = false
                 self.thinking.startAnimating()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
