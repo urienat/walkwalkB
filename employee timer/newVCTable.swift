@@ -189,11 +189,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     DispatchQueue.main.asyncAfter(deadline: .now()+5)//previod 4.4
     {
     print(self.appArray.count)
-        if self.appArray.count == 0 {
-            self.thinking.stopAnimating()
-            self.alert27()
-        } else {self.thinking.stopAnimating();self.billProcess()} //self.alert18()}
-    
+        if self.appArray.count != 0 {self.thinking.stopAnimating();self.billProcess()} //self.alert18()}
+    if self.appArray.count == 0 {
+    self.thinking.stopAnimating()
+    self.alert27()
+        }
             }
             
         }//end of else
@@ -462,7 +462,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         switch result.rawValue {
         case MFMailComposeResult.cancelled.rawValue:
         DispatchQueue.main.asyncAfter(deadline: .now()+0){
-             }//it is not function due to window hirerarchy
+            self.alert66() }//it is not function due to window hirerarchy
         print("Mail cancelled")
 
         case MFMailComposeResult.saved.rawValue:
@@ -746,7 +746,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             if  self.taxSwitch == "Yes" {
             if self.self.taxCalc == "Over" {self.self.stam =  Double(Double(taxation)!*self.calc*0.01).roundTo(places: 2)}  else  { self.stam = Double((self.calc / Double(Double(taxation)!*0.01+1)) * Double(Double(taxation)!*0.01)).roundTo(places: 2)}
 
-            if self.self.taxCalc == "Over" {self.stam3 = Double(self.calc).roundTo(places: 2)}  else  { self.stam3 =  self.calc -  Double((self.calc / Double(Double(taxation)!*0.01+1)) * Double(Double(taxation)!*0.01)).roundTo(places: 2)}
+            if self.taxCalc == "Over" {self.stam3 = Double(self.calc).roundTo(places: 2)}  else  { self.stam3 =  self.calc -  Double((self.calc / Double(Double(taxation)!*0.01+1)) * Double(Double(taxation)!*0.01)).roundTo(places: 2)}
               
             self.midCalc =  String (describing: self.stam!)
             self.midCalc3 =  String(describing: self.stam3!)
@@ -1068,6 +1068,16 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     self.present(alertController27, animated: true, completion: nil)
     }//end of alert27
     
+    func alert66() {
+        
+        let alertController66 = UIAlertController(title: ("Cancel Mail") , message:" Mail was cancelled, but the bill was registered to send it or print it go to bills" , preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            self.refresh(presser: 3)
+        }
+        
+        alertController66.addAction(OKAction)
+        self.present(alertController66, animated: true, completion: nil)
+    }//end of alert66
 
     func alert12(){
     let alertController12 = UIAlertController(title: ("Change record status") , message: "You can not change status of records that were already billed.", preferredStyle: .alert)
