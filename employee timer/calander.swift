@@ -100,6 +100,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     //apple
     var eventStore = EKEventStore()
+    var eventId: String?
+   // let updaterApple = EKEvent.
+
     //var calendars:Array<EKCalendar> = []
    // var calendars: [EKCalendar]?
 
@@ -202,7 +205,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         if let error = error {
         print (error.code)
             if error.code == 403 {
-                
+        showAlert(title: "Error", message: error.localizedDescription)
                 
             } else {
         showAlert(title: "Error", message: error.localizedDescription) }
@@ -374,44 +377,68 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     self.navigationController!.popViewController(animated: true)
     }
     
-    //apple
-    func fetchEventsFromApple() {
-        self.navigationItem.setHidesBackButton(true, animated:true);
-        
-        print ("in fetcheventapple")
-        
-        minDate =  NSCalendar.current.startOfDay(for: minDate!)
-        print (self.minDate)
-        
-        var titles : [String] = []
-        var startDates : [Date] = [] // mindate
-        var endDates : [Date] = [] //today
-        
-        let calendars = eventStore.calendars(for: .event)
-        
-        for calendar in calendars {
-            if calendar.title != "Work" {
-                
-    let predicate = eventStore.predicateForEvents(withStart: minDate!, end: Date(), calendars: [calendar])
-                
-                var events = eventStore.events(matching: predicate)
-                
-                
-                for event in events {
-                    print (event.title)
+                    //apple
+                    func fetchEventsFromApple() {
+                    self.navigationItem.setHidesBackButton(true, animated:true);
 
-                    titles.append(event.title)
-                    startDates.append(event.startDate)
-                    endDates.append(event.endDate)
-                }
-            }
-        }
-        
-        
+                    print ("in fetcheventapple")
 
-           // didFinish: #selector(self.displayResultWithTicket(ticket:finishedWithObject:error:)))
-        
-    }//end of fetchevents
+                    minDate =  NSCalendar.current.startOfDay(for: minDate!) - (24*3600*30)
+                    print (self.minDate)
+
+                    let calendars = eventStore.calendars(for: .event)
+                    for calendar in calendars {
+                    let predicate = eventStore.predicateForEvents(withStart: minDate!, end: Date(), calendars: [calendar])
+                    var events = eventStore.events(matching: predicate)
+                    for event in events {
+                    let start = event.startDate
+                    calIn = self.mydateFormat6.string(from: start)
+                    calInFB = self.mydateFormat5.string(from: start)
+                    employer = event.title
+
+                    let keyExists = employerArray3[("\(event.title)")]
+                    if (keyExists)  != nil {
+                    if spesific == false {
+                    if (keyExists!) != nil { print ("another all included");employerId = employerArray3[event.title]!
+                    saveToDB2()
+                    //avoid double entry
+                    eventId = event.eventIdentifier
+                    print (eventId)
+                        
+                    eventCounter += 1
+                        updateEvent( event: event, title: ("\(event.title)+"))
+
+                        }//end of if
+                    } else {
+                    if (keyExists!) == employerIdFromMain { print ("another spesific included");employerId = employerArray3[event.title]!
+                    saveToDB2()
+                    //avoid double entry
+                        eventId = event.eventIdentifier
+                        print (eventId)
+
+                    eventCounter += 1
+                        
+                    updateEvent( event: event, title: ("\(event.title)+"))
+
+                    }//end of else
+                    }// end of if key exist != nil
+
+                    }//end of for event
+                    }//end of if let event
+
+                    }// end of calanders loop
+                    if eventCounter == 0 {animationImage.isHidden = true; self.eventCounterBlock = "No sessions" ;ViewController.sessionPusher = false}else if eventCounter == 1 {animationImage.isHidden = false; self.eventCounterBlock = "One session";ViewController.sessionPusher = true} else {self.eventCounterBlock = "\(String(self.eventCounter)) sessions";ViewController.sessionPusher = true }
+                    // save last date
+                    if spesific == false {textAdd.text = "\(self.eventCounterBlock) imported from calander";ViewController.sessionPusher = false
+                    }
+                    else {textAdd.text = "\(self.eventCounterBlock) for \(employerFromMain) imported from calander"}
+                    thinking.stopAnimating()
+
+                    self.animation()
+                    DispatchQueue.main.asyncAfter(deadline: .now()+3){
+                    self.navigationController!.popViewController(animated: true)
+                    }//end of dispatch
+                    }//end of fetchevents
     
     func appleCalanderConnected(){
         let currentUser = FIRAuth.auth()?.currentUser
@@ -486,6 +513,22 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         ////calendarsTableView.isHidden = false
        ///// calendarsTableView.reloadData()
     }
+    
+   
+        
+            func updateEvent(event: EKEvent, title: String) {
+            do {
+            event.title = title
+            try (eventStore.save(event, span: EKSpan.thisEvent))
+
+            } catch{
+
+            print(error)
+
+            }
+            }//end of func
+    
+    
     
     func importAnimation(){
         
