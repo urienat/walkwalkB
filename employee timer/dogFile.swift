@@ -56,8 +56,10 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         alert6()
     }
     
-    @IBOutlet weak var studentNameText: UITextField!
-    @IBOutlet weak var studentNameLabel: UILabel!
+    @IBOutlet weak var studentParentNameText: UITextField!
+    var studentParentUpdate = ""
+    
+    @IBOutlet weak var studentParentNameLabel: UILabel!
     
     @IBOutlet weak var scrollerView: UIScrollView!
     
@@ -131,9 +133,9 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         NotificationCenter.default.addObserver(self, selector: #selector(self.KeyboardNotificationwillHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: self.view.window)
         
         if self.employerFromMain == "Add new dog" {
+            if ViewController.professionControl == "Tutor" {self.studentParentNameText.text = ""}
             self.lbl = "New Account"
             self.title = lbl
-
             self.pName.text = ""
             self.pLastName.text = ""
             self.pEmail.text = ""
@@ -173,7 +175,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         rateTitle.text = "Rate"
         if ViewController.fixedCurrency != nil {currencySign.text = (ViewController.fixedCurrency!)} else {currencySign.text = ""}
         
-        if  ViewController.professionControl! == "Tutor" {addressTop.constant = 46.0; studentNameText.isHidden = false; studentNameLabel.isHidden = false } else {addressTop.constant = 8.0; studentNameText.isHidden = true; studentNameLabel.isHidden = true }
+        if  ViewController.professionControl! == "Tutor" {addressTop.constant = 46.0; studentParentNameText.isHidden = false; studentParentNameLabel.isHidden = false } else {addressTop.constant = 8.0; studentParentNameText.isHidden = true; studentParentNameLabel.isHidden = true }
         
         
     }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -244,6 +246,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if self.activeEmployerSwitch == true {self.activeEmployerSwitch = false} else {self.activeEmployerSwitch = true}
             
             self.dbRefEmployers.child(self.employerID).updateChildValues(["fName" : self.pName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!, "fRem" : self.pRem.text!, "fEmployer":self.pLastName.text!,"fActive" : self.activeEmployerSwitch!])
+            if ViewController.professionControl == "Tutor" {self.dbRefEmployers.child(self.employerID).updateChildValues(["fParent" : self.studentParentNameText.text!])}
            
             //in firebase under url
             print ("employerId to store cache and FB:\(self.employerID)")
@@ -271,7 +274,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         } // end of update of an existed employer
         else{
         let employerRefence = self.dbRefEmployers.childByAutoId()
-            employerRefence.setValue(["fName" : self.pName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!, "fRem" : self.pRem.text!,  "fEmployer":self.pLastName.text!, "fEmployerReg":employerRefence.key,"fLast":"", "fActive" : true, "fImageRef":"https://firebasestorage.googleapis.com/v0/b/employeetimer.appspot.com/o/employerImages%2F47574737_s.jpg?alt=media&token=48983dc3-ca8d-4d9f-9b6d-3df6d756c480"
+            employerRefence.setValue(["fName" : self.pName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!, "fRem" : self.pRem.text!,  "fEmployer":self.pLastName.text!, "fEmployerReg":employerRefence.key,"fLast":"", "fActive" : true, "fImageRef":"https://firebasestorage.googleapis.com/v0/b/employeetimer.appspot.com/o/employerImages%2F47574737_s.jpg?alt=media&token=48983dc3-ca8d-4d9f-9b6d-3df6d756c480", "fParent" : self.studentParentNameText.text!
         ])//end of set value
             
         //update pic in chache for new employee
@@ -394,7 +397,8 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         dbRefEmployers.queryOrderedByKey().queryEqual(toValue: employerID).observeSingleEvent(of: .childAdded, with: { (snapshot) in
         self.nameUpdate = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
         self.lastNameUpdate = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
-
+            if ViewController.professionControl == "Tutor" { if String(describing: snapshot.childSnapshot(forPath: "fParent").value!) as String! != nil {  self.studentParentUpdate = String(describing: snapshot.childSnapshot(forPath: "fParent").value!) as String!} else {self.studentParentUpdate = ""}}
+            
         self.addressUpdate = String(describing: snapshot.childSnapshot(forPath: "fAddress").value!) as String!
         self.cellUpdate = String(describing: snapshot.childSnapshot(forPath: "fCell").value!) as String!
         
@@ -418,6 +422,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             
         
         self.pLastName.text = self.lastNameUpdate; self.pLastName.isEnabled = true
+            self.studentParentNameText.text = self.studentParentUpdate;  self.studentParentNameText.isEnabled = true
         
         self.pAddress.text = self.addressUpdate; self.pAddress.isEnabled = true
         
@@ -430,7 +435,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.pLastName.text = self.lastNameUpdate; self.pLastName.isEnabled = true
         self.pAddress.text = self.addressUpdate;self.pAddress.isEnabled = true
         self.pCell.text = self.cellUpdate; self.pCell.isEnabled = true
-        
+            self.studentParentNameText.isEnabled = true; self.studentParentNameText.text = self.studentParentUpdate
         
             
             
