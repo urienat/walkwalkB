@@ -383,7 +383,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
                     print ("in fetcheventapple")
 
-                    minDate =  NSCalendar.current.startOfDay(for: minDate!) - (24*3600*30)
+                    minDate =  NSCalendar.current.startOfDay(for: minDate!)// - (24*3600*30)
                     print (self.minDate)
 
                     let calendars = eventStore.calendars(for: .event)

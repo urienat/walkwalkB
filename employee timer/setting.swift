@@ -13,8 +13,11 @@ import FirebaseDatabase
 import FirebaseStorage
 import MessageUI
 
-class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate, MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate {
+class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate, MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource {
     
+    
+    var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
+
     //keepקר variables
     let keeper = UserDefaults.standard
     
@@ -34,6 +37,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
 
     @IBOutlet weak var pDogImage: UIImageView!
 
+    let professions = ["Tutor","Psychologist","Therapist","Other"]
     
     @IBOutlet weak var obligatory: UILabel!
     @IBOutlet weak var passwordTitle: UILabel!
@@ -132,7 +136,20 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBOutlet weak var taxerTitle: UILabel!
     var taxSwitcherUpdate = "No"
     var taxSwitchTemp = "No"
+    
 
+    @IBOutlet weak var professionalPicker: UIView!
+    @IBAction func donePicker(_ sender: Any) {
+        professionalPicker.isHidden = true
+    }
+    
+    @IBAction func startProfessionEdit(_ sender: Any) {
+    
+        professionalPicker.isHidden = false
+
+    }
+    
+    
     @IBOutlet weak var taxName: MaxLengthTextField!
     var taxNamerUpdate = ""
     
@@ -361,7 +378,10 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             //{(note)-> void in
             }
 
-      
+        professionalPicker.layer.borderWidth = 0.5
+        professionalPicker.layer.borderColor = blueColor.cgColor
+        professionalPicker.layer.cornerRadius =  15//CGFloat(25)
+        professionalPicker.layoutIfNeeded()
         
         }//end of viewdid load    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -640,6 +660,23 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         print(logout)
         self.present((storyboard?.instantiateViewController(withIdentifier: "loginScreen"))!, animated: true, completion: nil)
 
+    }
+    
+    //picker methods
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return professions.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return professions[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        profession.text =  professions[row]
     }
     
     ///alerts///////////////////////////////////////////////////////////////////////////////////

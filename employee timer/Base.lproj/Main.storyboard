@@ -1483,15 +1483,15 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Profession " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RzR-xf-ogE" userLabel="profession" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="112" y="200.5" width="194" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Profession " minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RzR-xf-ogE" userLabel="profession" customClass="AllowedCharsTextField" customModule="perSession" customModuleProvider="target">
+                                                <rect key="frame" x="112" y="200.5" width="93" height="30"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                                 </accessibility>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="3zG-s6-QqF"/>
                                                 </constraints>
-                                                <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1499,6 +1499,9 @@
                                                         <integer key="value" value="50"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="startProfessionEdit:" destination="bu7-cQ-GBV" eventType="editingDidBegin" id="nct-ip-sZH"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="http://PayPal.Me/MyAccount " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CL9-rp-678" userLabel="payPal" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
                                                 <rect key="frame" x="112" y="403.5" width="194" height="30"/>
@@ -1791,6 +1794,42 @@
                                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUc-OR-mxX" userLabel="professionPickerView">
+                                                <rect key="frame" x="10" y="238" width="300" height="250"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0X-K4-Jco">
+                                                        <rect key="frame" x="252" y="0.0" width="40" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="QEb-Fm-9qD"/>
+                                                            <constraint firstAttribute="height" constant="40" id="jFu-mb-6Ii"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Done"/>
+                                                        <connections>
+                                                            <action selector="donePicker:" destination="bu7-cQ-GBV" eventType="touchUpInside" id="yXO-bR-20E"/>
+                                                        </connections>
+                                                    </button>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0GZ-cz-Pex" userLabel="professionPicker">
+                                                        <rect key="frame" x="15" y="-15" width="270" height="250"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="250" id="qWm-Uu-reF"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="bu7-cQ-GBV" id="wnB-e3-adl"/>
+                                                            <outlet property="delegate" destination="bu7-cQ-GBV" id="sKh-WM-3F9"/>
+                                                        </connections>
+                                                    </pickerView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="1wt-VZ-5ql"/>
+                                                    <constraint firstAttribute="height" constant="250" id="4a3-zK-irh"/>
+                                                    <constraint firstAttribute="trailing" secondItem="u0X-K4-Jco" secondAttribute="trailing" constant="8" id="G24-50-ymp"/>
+                                                    <constraint firstItem="0GZ-cz-Pex" firstAttribute="leading" secondItem="kUc-OR-mxX" secondAttribute="leading" constant="15" id="JwE-XT-bEm"/>
+                                                    <constraint firstAttribute="bottom" secondItem="0GZ-cz-Pex" secondAttribute="bottom" constant="15" id="NTL-yS-erY"/>
+                                                    <constraint firstItem="u0X-K4-Jco" firstAttribute="top" secondItem="kUc-OR-mxX" secondAttribute="top" id="eGl-ot-S0y"/>
+                                                    <constraint firstAttribute="trailing" secondItem="0GZ-cz-Pex" secondAttribute="trailing" constant="15" id="hEO-Km-71z"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="XE2-sS-i4C" firstAttribute="leading" secondItem="eRi-ta-mdX" secondAttribute="leading" id="11d-WP-anE"/>
@@ -1857,7 +1896,6 @@
                                             <constraint firstItem="fDd-KS-fTu" firstAttribute="leading" secondItem="oGz-6p-JzI" secondAttribute="leading" id="fPz-fE-dbp"/>
                                             <constraint firstItem="Y57-Pw-iCW" firstAttribute="leading" secondItem="MGW-Fk-kb6" secondAttribute="leading" constant="20" id="fTe-zG-lTa"/>
                                             <constraint firstItem="Gfv-7f-bWL" firstAttribute="leading" secondItem="voQ-tU-PFp" secondAttribute="leading" id="g1K-FE-JU5"/>
-                                            <constraint firstItem="RzR-xf-ogE" firstAttribute="width" secondItem="voQ-tU-PFp" secondAttribute="width" id="gBs-5G-g3V"/>
                                             <constraint firstItem="d3p-Mh-USA" firstAttribute="top" secondItem="TBg-ht-L1l" secondAttribute="bottom" constant="8" id="gMU-u0-h3N"/>
                                             <constraint firstItem="TBg-ht-L1l" firstAttribute="top" secondItem="OXN-FR-NSb" secondAttribute="bottom" constant="64" id="gQH-Qq-TVt"/>
                                             <constraint firstItem="4Wg-qF-OrD" firstAttribute="height" secondItem="jGY-Rx-J7r" secondAttribute="height" id="h0U-vs-jlh"/>
@@ -1869,9 +1907,11 @@
                                             <constraint firstItem="Jeh-Sl-RkP" firstAttribute="leading" secondItem="voQ-tU-PFp" secondAttribute="leading" id="ifa-om-jxa"/>
                                             <constraint firstItem="fDd-KS-fTu" firstAttribute="height" secondItem="oGz-6p-JzI" secondAttribute="height" id="imT-Db-pV4"/>
                                             <constraint firstItem="iho-r5-Jit" firstAttribute="leading" secondItem="NdQ-LL-HGn" secondAttribute="trailing" constant="4" id="kYR-up-mmq"/>
+                                            <constraint firstItem="kUc-OR-mxX" firstAttribute="centerX" secondItem="MGW-Fk-kb6" secondAttribute="centerX" id="lGO-Ua-bE3"/>
                                             <constraint firstItem="abz-bh-Dk7" firstAttribute="centerY" secondItem="Zoe-u1-fd0" secondAttribute="centerY" id="lV6-Az-Qbm"/>
                                             <constraint firstItem="KWf-qy-tLB" firstAttribute="leading" secondItem="CL9-rp-678" secondAttribute="leading" id="lXZ-R8-qK6"/>
                                             <constraint firstItem="m6w-AJ-d7e" firstAttribute="height" secondItem="d3p-Mh-USA" secondAttribute="height" id="ldH-BI-HEF"/>
+                                            <constraint firstItem="kUc-OR-mxX" firstAttribute="top" secondItem="dYr-OB-zn6" secondAttribute="top" id="lyD-z1-rYi"/>
                                             <constraint firstItem="Ktd-Fm-ugk" firstAttribute="centerY" secondItem="Ft4-Fz-x53" secondAttribute="centerY" id="nER-Il-pET"/>
                                             <constraint firstItem="Gfv-7f-bWL" firstAttribute="trailing" secondItem="voQ-tU-PFp" secondAttribute="trailing" id="nK9-oj-FDL"/>
                                             <constraint firstItem="eRi-ta-mdX" firstAttribute="leading" secondItem="dce-An-tH6" secondAttribute="leading" id="nOH-zy-tym"/>
@@ -1947,6 +1987,7 @@
                         <outlet property="picture" destination="3je-Hd-SEg" id="ac5-tx-cBh"/>
                         <outlet property="precentage" destination="NdQ-LL-HGn" id="Qa6-2q-ylH"/>
                         <outlet property="profession" destination="RzR-xf-ogE" id="pq3-xP-xWD"/>
+                        <outlet property="professionalPicker" destination="kUc-OR-mxX" id="dGF-Uh-Zxv"/>
                         <outlet property="reset" destination="Gfv-7f-bWL" id="EG7-M1-oKt"/>
                         <outlet property="settingScroller" destination="dcj-3g-ZF0" id="1CG-li-obX"/>
                         <outlet property="signer" destination="iho-r5-Jit" id="oCn-S9-mpK"/>
