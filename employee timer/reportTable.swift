@@ -80,7 +80,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var filterBG: UIView!
     
     @IBAction func noneBtn(_ sender: Any) {
-        self.title = "Report"
+        self.title = " General Report"
         
         filterDecided = 0
         fetchBills()
@@ -107,7 +107,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     @IBAction func lastMonthBtn(_ sender: Any) {
         
-        if currentMonth == 1 {self.title = "Dec-\(self.currentYear-1)" } else  {monther(monthNumber: currentMonth-1);self.title = "Report: \(monthMMM!)-\(self.currentYear)"}
+        if currentMonth == 1 {self.title = "Dec-\(self.currentYear-1)" } else  {monther(monthNumber: currentMonth-1);self.title = "\(monthMMM!)-\(self.currentYear)"}
         
         filterImageConstrain.constant = 100
         filterDecided = 2
@@ -169,7 +169,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         filterDecided = 0
         
         billerConnect.backgroundColor = UIColor.clear
-        titleLbl = "Report"
+        titleLbl = " General Report"
         self.title = titleLbl
         
         connectivityCheck()
@@ -252,10 +252,10 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         cell.l2.text = "\(sessionsForMonth) sessions" //sessions
         
         cell.l3.text = "\(ViewController.fixedCurrency!)\(totalForMonth)"// total with tax
-        if ViewController.taxOption != "No" {
-        cell.l4.text = "Tax:\(ViewController.fixedCurrency!)\(taxForMonth)"//  tax
+        if ViewController.taxOption! != "No" {
+        cell.l4.text = "Tax: \(ViewController.fixedCurrency!)\(taxForMonth)"//  tax
         let totalWithOut = totalForMonth-taxForMonth
-        cell.l6.text = "w/o Tax:\(ViewController.fixedCurrency!)\(totalWithOut)"//  taxtotal w/o
+        cell.l6.text = "w/o Tax: \(ViewController.fixedCurrency!)\(totalWithOut)"//  taxtotal w/o
         }//end of if
         return cell
     }
@@ -362,9 +362,9 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"// - \(String(describing: self.billCounter)) Bills "
                 print (ViewController.taxOption)
                 
-                if ViewController.taxOption != "No" {
+                if ViewController.taxOption! != "No" {
                 self.totalTax.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
-                self.totalWO.text = "w/o Tax:\(String(self.AmountCounter - self.taxCounter))"
+                self.totalWO.text = "w/o Tax: \(String(self.AmountCounter - self.taxCounter))"
                 }
                 self.totalBills.text  = "\(String (describing: self.billCounter)) bills"
                 self.totalSessions.text = "\(String (describing: self.sessionCounter)) sessions"

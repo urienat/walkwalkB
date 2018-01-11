@@ -3595,18 +3595,18 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Tms-fu-rZV" firstAttribute="centerY" secondItem="ZLo-nL-6CE" secondAttribute="centerY" id="4gg-hd-jqC"/>
-                                                <constraint firstItem="Tl5-DR-ahr" firstAttribute="centerY" secondItem="uQh-bO-TN4" secondAttribute="centerY" id="64Z-Ok-8RN"/>
+                                                <constraint firstAttribute="bottom" secondItem="Tms-fu-rZV" secondAttribute="bottom" constant="4" id="AKI-Vc-6up"/>
                                                 <constraint firstItem="uQh-bO-TN4" firstAttribute="leading" secondItem="u2u-UI-lc3" secondAttribute="leading" id="AfJ-5R-bNG"/>
                                                 <constraint firstItem="u2u-UI-lc3" firstAttribute="leading" secondItem="M8T-cL-Km4" secondAttribute="leading" constant="8" id="NhP-cg-x01"/>
                                                 <constraint firstItem="v4a-WK-xgd" firstAttribute="centerX" secondItem="M8T-cL-Km4" secondAttribute="centerX" id="Q3M-Jc-Mg0"/>
+                                                <constraint firstItem="v4a-WK-xgd" firstAttribute="top" secondItem="M8T-cL-Km4" secondAttribute="top" constant="8" id="T3y-zh-4Eu"/>
                                                 <constraint firstItem="u2u-UI-lc3" firstAttribute="top" secondItem="M8T-cL-Km4" secondAttribute="top" constant="8" id="ZAF-GE-agc"/>
                                                 <constraint firstItem="ZLo-nL-6CE" firstAttribute="leading" secondItem="u2u-UI-lc3" secondAttribute="leading" id="bm3-O3-Bcl"/>
                                                 <constraint firstItem="Tl5-DR-ahr" firstAttribute="leading" secondItem="v4a-WK-xgd" secondAttribute="leading" id="cg4-IH-40Z"/>
                                                 <constraint firstItem="Tms-fu-rZV" firstAttribute="leading" secondItem="v4a-WK-xgd" secondAttribute="leading" id="d6j-CE-vxF"/>
                                                 <constraint firstAttribute="bottom" secondItem="ZLo-nL-6CE" secondAttribute="bottom" constant="4" id="dZJ-19-pZW"/>
-                                                <constraint firstItem="v4a-WK-xgd" firstAttribute="centerY" secondItem="u2u-UI-lc3" secondAttribute="centerY" id="dbh-1c-hOq"/>
                                                 <constraint firstItem="uQh-bO-TN4" firstAttribute="top" secondItem="u2u-UI-lc3" secondAttribute="bottom" constant="8" id="gXw-MF-RIG"/>
+                                                <constraint firstItem="Tl5-DR-ahr" firstAttribute="top" secondItem="v4a-WK-xgd" secondAttribute="bottom" constant="8" id="tP0-Qr-btR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
