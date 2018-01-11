@@ -61,10 +61,13 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var billerConnect: UITableView!
     @IBOutlet weak var thinking: UIActivityIndicatorView!
     
+    @IBOutlet weak var totalLbl: UITextField!
     @IBOutlet weak var totalBills: UITextField!
     @IBOutlet weak var totalTax: UITextField!
     @IBOutlet weak var totalAmount: UITextField!
     @IBOutlet weak var noSign: UIImageView!
+    @IBOutlet weak var totalWO: UITextField!
+    @IBOutlet weak var totalSessions: UITextField!
     
     //filter
     let btnFilter = UIButton(type: .custom)
@@ -77,6 +80,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     @IBAction func noneBtn(_ sender: Any) {
         self.title = "Total report"
+        
         filterDecided = 0
         fetchBills()
         filterImageConstrain.constant = 20
@@ -246,10 +250,10 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         cell.l5.text = "\(billsForMonth) \(billTxt!)" //bills
         cell.l2.text = "\(sessionsForMonth) sessions" //sessions
         
-        cell.l3.text = "Total(w/tax): \(ViewController.fixedCurrency!)\(totalForMonth)"// total with tax
+        cell.l3.text = "\(ViewController.fixedCurrency!)\(totalForMonth)"// total with tax
         cell.l4.text = "Tax:\(ViewController.fixedCurrency!)\(taxForMonth)"//  tax
-        let totalWithOut =  totalForMonth-taxForMonth
-        cell.l6.text = "Total w/o Tax:\(ViewController.fixedCurrency!)\(totalWithOut)"//  taxtotal w/o
+        let totalWithOut = totalForMonth-taxForMonth
+        cell.l6.text = "w/o Tax:\(ViewController.fixedCurrency!)\(totalWithOut)"//  taxtotal w/o
     
         return cell
     }
@@ -352,9 +356,15 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 
                 
                 if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
-                // self.totalBills.text = "Total(w/Tax): \(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter)) - \(String(describing: self.billCounter)) Bills "
-                self.totalAmount.text = "Total Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
-                //self.totalTax.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
+                self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"// - \(String(describing: self.billCounter)) Bills "
+                self.totalTax.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
+                self.totalWO.text = "w/o Tax:\(String(self.AmountCounter - self.taxCounter))"
+                
+                self.totalBills.text  = "\(String (describing: self.billCounter)) bills)"
+                self.totalSessions.text = "\(String (describing: self.billCounter)) sessions"
+                self.totalLbl.text = self.title
+                
+                
                 self.billerConnect.reloadData()
             }//end of if let dic
         })//end of dbref
