@@ -3523,7 +3523,7 @@
                                 <rect key="frame" x="0.0" y="60" width="320" height="392"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taxerId" id="MO6-Uc-01D" customClass="taxerCell" customModule="perSession" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taxerId" id="MO6-Uc-01D" customClass="reportCell" customModule="perSession" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="69"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MO6-Uc-01D" id="M8T-cL-Km4">
@@ -3539,19 +3539,19 @@
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ZLo-nL-6CE" userLabel="L2">
-                                                    <rect key="frame" x="8" y="37" width="0.0" height="21.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="uQh-bO-TN4" userLabel="L5">
+                                                    <rect key="frame" x="8" y="41" width="0.0" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="Dzm-vd-i9q"/>
+                                                        <constraint firstAttribute="height" constant="20" id="T3v-NX-xGq"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="uQh-bO-TN4" userLabel="L5">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ZLo-nL-6CE" userLabel="L2">
                                                     <rect key="frame" x="8" y="40.5" width="0.0" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="T3v-NX-xGq"/>
+                                                        <constraint firstAttribute="height" constant="20" id="Dzm-vd-i9q"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3566,23 +3566,47 @@
                                                     <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Tl5-DR-ahr" userLabel="L4">
+                                                    <rect key="frame" x="312" y="41" width="0.0" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="98u-5q-CDY"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Tms-fu-rZV" userLabel="L6">
+                                                    <rect key="frame" x="312" y="40.5" width="0.0" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="MYw-VE-XWX"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="uQh-bO-TN4" secondAttribute="bottom" constant="8" id="2mW-KC-HOa"/>
+                                                <constraint firstItem="Tms-fu-rZV" firstAttribute="centerY" secondItem="ZLo-nL-6CE" secondAttribute="centerY" id="4gg-hd-jqC"/>
+                                                <constraint firstItem="Tl5-DR-ahr" firstAttribute="centerY" secondItem="uQh-bO-TN4" secondAttribute="centerY" id="64Z-Ok-8RN"/>
                                                 <constraint firstItem="uQh-bO-TN4" firstAttribute="leading" secondItem="u2u-UI-lc3" secondAttribute="leading" id="AfJ-5R-bNG"/>
                                                 <constraint firstAttribute="trailing" secondItem="v4a-WK-xgd" secondAttribute="trailing" constant="8" id="FdY-jG-gyf"/>
                                                 <constraint firstItem="u2u-UI-lc3" firstAttribute="leading" secondItem="M8T-cL-Km4" secondAttribute="leading" constant="8" id="NhP-cg-x01"/>
-                                                <constraint firstItem="ZLo-nL-6CE" firstAttribute="top" secondItem="u2u-UI-lc3" secondAttribute="bottom" constant="4" id="REf-oh-HDM"/>
                                                 <constraint firstItem="u2u-UI-lc3" firstAttribute="top" secondItem="M8T-cL-Km4" secondAttribute="top" constant="8" id="ZAF-GE-agc"/>
                                                 <constraint firstItem="ZLo-nL-6CE" firstAttribute="leading" secondItem="u2u-UI-lc3" secondAttribute="leading" id="bm3-O3-Bcl"/>
+                                                <constraint firstItem="Tl5-DR-ahr" firstAttribute="leading" secondItem="v4a-WK-xgd" secondAttribute="leading" id="cg4-IH-40Z"/>
+                                                <constraint firstItem="Tms-fu-rZV" firstAttribute="leading" secondItem="v4a-WK-xgd" secondAttribute="leading" id="d6j-CE-vxF"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZLo-nL-6CE" secondAttribute="bottom" constant="8" id="dZJ-19-pZW"/>
                                                 <constraint firstItem="v4a-WK-xgd" firstAttribute="centerY" secondItem="u2u-UI-lc3" secondAttribute="centerY" id="dbh-1c-hOq"/>
+                                                <constraint firstItem="uQh-bO-TN4" firstAttribute="top" secondItem="u2u-UI-lc3" secondAttribute="bottom" constant="8" id="gXw-MF-RIG"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="l1" destination="u2u-UI-lc3" id="ueD-Xs-nlT"/>
                                             <outlet property="l2" destination="ZLo-nL-6CE" id="ax1-hV-nqv"/>
                                             <outlet property="l3" destination="v4a-WK-xgd" id="wZ2-5v-HgM"/>
+                                            <outlet property="l4" destination="Tl5-DR-ahr" id="0i5-bg-Vux"/>
                                             <outlet property="l5" destination="uQh-bO-TN4" id="osF-gl-f7R"/>
+                                            <outlet property="l6" destination="Tms-fu-rZV" id="yvt-lZ-LBi"/>
                                             <segue destination="Grl-4C-vV7" kind="show" identifier="billsForMonth" id="mzv-XJ-96f"/>
                                         </connections>
                                     </tableViewCell>

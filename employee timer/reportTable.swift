@@ -218,7 +218,8 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }//view did appear end
     
     func tableView(_ billerConnect: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 69
+        return 97
+        
         
     }
     
@@ -227,7 +228,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = billerConnect.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! taxerCell
+        let cell = billerConnect.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! reportCell
         print ("uniqueTaxMonths\(uniqueTaxMonths)")
         
         let taxMonthItem = arrayOfMonths[indexPath.row]
@@ -241,11 +242,13 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         if billsForMonth == 1 {billTxt = "bill"} else {billTxt = "bills"}
         
         cell.backgroundColor = UIColor.clear
-        cell.l1.text = arrayOfMonths[indexPath.row]
-        //cell.l2.text = "\(billsForMonth) \(billTxt!)"
-        cell.l3.text = "Total(w/tax): \(ViewController.fixedCurrency!)\(totalForMonth)"// - \(billsForMonth) \(billTxt!)"
-        cell.l5.text = "\(billsForMonth) \(billTxt!)"
+        cell.l1.text = arrayOfMonths[indexPath.row] // month
+        cell.l5.text = "\(billsForMonth) \(billTxt!)" //bills
+        cell.l2.text = "\(sessionsForMonth) sessions" //sessions
         
+        cell.l3.text = "Total(w/tax): \(ViewController.fixedCurrency!)\(totalForMonth)"// total with tax
+        cell.l4.text = "Tax:\(ViewController.fixedCurrency!)\(taxForMonth)"//  tax
+        cell.l6.text = "Total w/o Tax:\(ViewController.fixedCurrency!)\(taxForMonth)"//  taxtotal w/o
         //cell.l4.text  = ViewController.fixedCurrency
         //cell.l3.text = "Tax: \(ViewController.fixedCurrency!)\(String(taxForMonth) as String)"
         return cell
