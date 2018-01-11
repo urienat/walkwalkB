@@ -80,7 +80,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var filterBG: UIView!
     
     @IBAction func noneBtn(_ sender: Any) {
-        self.title = " General Report"
+        self.title = "All Periods"
         
         filterDecided = 0
         fetchBills()
@@ -169,7 +169,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         filterDecided = 0
         
         billerConnect.backgroundColor = UIColor.clear
-        titleLbl = " General Report"
+        titleLbl = " All Periods"
         self.title = titleLbl
         
         connectivityCheck()
