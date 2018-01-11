@@ -248,9 +248,9 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         
         cell.l3.text = "Total(w/tax): \(ViewController.fixedCurrency!)\(totalForMonth)"// total with tax
         cell.l4.text = "Tax:\(ViewController.fixedCurrency!)\(taxForMonth)"//  tax
-        cell.l6.text = "Total w/o Tax:\(ViewController.fixedCurrency!)\(taxForMonth)"//  taxtotal w/o
-        //cell.l4.text  = ViewController.fixedCurrency
-        //cell.l3.text = "Tax: \(ViewController.fixedCurrency!)\(String(taxForMonth) as String)"
+        let totalWithOut =  totalForMonth-taxForMonth
+        cell.l6.text = "Total w/o Tax:\(ViewController.fixedCurrency!)\(totalWithOut)"//  taxtotal w/o
+    
         return cell
     }
     
