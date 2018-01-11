@@ -1808,17 +1808,6 @@
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUc-OR-mxX" userLabel="professionPickerView">
                                                 <rect key="frame" x="10" y="238" width="300" height="300"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0X-K4-Jco">
-                                                        <rect key="frame" x="212" y="0.0" width="80" height="80"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="80" id="QEb-Fm-9qD"/>
-                                                            <constraint firstAttribute="height" constant="80" id="jFu-mb-6Ii"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Done"/>
-                                                        <connections>
-                                                            <action selector="donePicker:" destination="bu7-cQ-GBV" eventType="touchUpInside" id="yXO-bR-20E"/>
-                                                        </connections>
-                                                    </button>
                                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0GZ-cz-Pex" userLabel="professionPicker">
                                                         <rect key="frame" x="15" y="35" width="270" height="250"/>
                                                         <constraints>
@@ -1829,6 +1818,17 @@
                                                             <outlet property="delegate" destination="bu7-cQ-GBV" id="sKh-WM-3F9"/>
                                                         </connections>
                                                     </pickerView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0X-K4-Jco">
+                                                        <rect key="frame" x="212" y="8" width="80" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="80" id="QEb-Fm-9qD"/>
+                                                            <constraint firstAttribute="height" constant="50" id="jFu-mb-6Ii"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Done"/>
+                                                        <connections>
+                                                            <action selector="donePicker:" destination="bu7-cQ-GBV" eventType="touchUpInside" id="yXO-bR-20E"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -1837,7 +1837,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="u0X-K4-Jco" secondAttribute="trailing" constant="8" id="G24-50-ymp"/>
                                                     <constraint firstItem="0GZ-cz-Pex" firstAttribute="leading" secondItem="kUc-OR-mxX" secondAttribute="leading" constant="15" id="JwE-XT-bEm"/>
                                                     <constraint firstAttribute="bottom" secondItem="0GZ-cz-Pex" secondAttribute="bottom" constant="15" id="NTL-yS-erY"/>
-                                                    <constraint firstItem="u0X-K4-Jco" firstAttribute="top" secondItem="kUc-OR-mxX" secondAttribute="top" id="eGl-ot-S0y"/>
+                                                    <constraint firstItem="u0X-K4-Jco" firstAttribute="top" secondItem="kUc-OR-mxX" secondAttribute="top" constant="8" id="eGl-ot-S0y"/>
                                                     <constraint firstAttribute="trailing" secondItem="0GZ-cz-Pex" secondAttribute="trailing" constant="15" id="hEO-Km-71z"/>
                                                 </constraints>
                                             </view>
