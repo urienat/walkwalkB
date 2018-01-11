@@ -45,6 +45,8 @@
 		F4C0629E1FCAF927005B2A08 /* calander.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C0629D1FCAF927005B2A08 /* calander.swift */; };
 		F4D0683C1FA9C5920079CA88 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D0683B1FA9C5920079CA88 /* StoreKit.framework */; };
 		F4DDD6341FB1C92B00A327D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4DDD6331FB1C92B00A327D7 /* GoogleService-Info.plist */; };
+		F4EAE2522007872400BB448C /* reportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EAE2512007872400BB448C /* reportCell.swift */; };
+		F4EAE2542007873900BB448C /* reportTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EAE2532007873900BB448C /* reportTable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -104,6 +106,8 @@
 		F4C0629D1FCAF927005B2A08 /* calander.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calander.swift; sourceTree = "<group>"; };
 		F4D0683B1FA9C5920079CA88 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F4DDD6331FB1C92B00A327D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F4EAE2512007872400BB448C /* reportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = reportCell.swift; path = reports/reportCell.swift; sourceTree = "<group>"; };
+		F4EAE2532007873900BB448C /* reportTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reportTable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,7 @@
 			children = (
 				00BE2E941FE78A76000F3AAF /* taxTable.swift */,
 				0083889E1FE6574200EFE400 /* taxerCell.swift */,
+				F4EAE2552007874500BB448C /* reports */,
 			);
 			name = tax;
 			sourceTree = "<group>";
@@ -271,6 +276,15 @@
 				AEE95E511D7B092A00093B51 /* Info.plist */,
 			);
 			path = "employee timer";
+			sourceTree = "<group>";
+		};
+		F4EAE2552007874500BB448C /* reports */ = {
+			isa = PBXGroup;
+			children = (
+				F4EAE2512007872400BB448C /* reportCell.swift */,
+				F4EAE2532007873900BB448C /* reportTable.swift */,
+			);
+			name = reports;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -476,7 +490,9 @@
 			files = (
 				AE854B671E3A388B00C68CFB /* internetConnection.swift in Sources */,
 				F448229F1FCEC6C5006880E4 /* recordsOld.swift in Sources */,
+				F4EAE2542007873900BB448C /* reportTable.swift in Sources */,
 				AE1B3DB11DF824E100BB507F /* employerCellTableViewCell.swift in Sources */,
+				F4EAE2522007872400BB448C /* reportCell.swift in Sources */,
 				AE84DE8F1E7E638700F08945 /* RebeloperStoreSetup.swift in Sources */,
 				AE26E0981E59FA400044C76B /* billerTable.swift in Sources */,
 				AE7F91851DF53E11000BC8C7 /* tableExt.swift in Sources */,
