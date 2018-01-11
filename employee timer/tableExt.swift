@@ -44,10 +44,11 @@ extension(ViewController){
 
             employerToS = pickerData[indexPath.row]
 
+                
             employerIDToS = employerIdArray2[indexPath.row] as! String
             bringEmployerData()
-            if activeData[indexPath.row] != false {self.thinking2.stopAnimating(); preStartView()}
-            else { chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating()}
+                if activeData[indexPath.row] != false {self.thinking2.stopAnimating(); preStartView()}
+                else { chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating();alert670()}
 
             //set variable for Segue
             employerToS = pickerData[indexPath.row]

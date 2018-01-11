@@ -27,7 +27,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var StatusChoice = "Not Paid"
     var buttonRow = 0
     var recoveredBill:String?
-    var titleLbl = ""
+    var title2  = ""
     var cellId = "taxerId"
     var billCounter = 0
     var sessionCounter = 0
@@ -80,7 +80,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var filterBG: UIView!
     
     @IBAction func noneBtn(_ sender: Any) {
-        self.title = "All Periods"
+        self.title2 = "All Periods"
         
         filterDecided = 0
         fetchBills()
@@ -93,7 +93,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     @IBAction func currentMonthBtn(_ sender: Any) {
         monther(monthNumber: currentMonth)
-        self.title = "\(monthMMM!)-\(self.currentYear)"
+        self.title2 = "\(monthMMM!)-\(self.currentYear)"
         
         filterDecided = 1
         fetchBills()
@@ -107,7 +107,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     @IBAction func lastMonthBtn(_ sender: Any) {
         
-        if currentMonth == 1 {self.title = "Dec-\(self.currentYear-1)" } else  {monther(monthNumber: currentMonth-1);self.title = "\(monthMMM!)-\(self.currentYear)"}
+        if currentMonth == 1 {self.title2 = "Dec-\(self.currentYear-1)" } else  {monther(monthNumber: currentMonth-1);self.title2 = "\(monthMMM!)-\(self.currentYear)"}
         
         filterImageConstrain.constant = 100
         filterDecided = 2
@@ -119,7 +119,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     
     @IBAction func currentYearBtn(_ sender: Any) {
-        self.title = "\(self.currentYear)"
+        self.title2 = "\(self.currentYear)"
         
         filterImageConstrain.constant = 140
         filterDecided = 3
@@ -131,7 +131,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     
     @IBAction func lastYearBtn(_ sender: Any) {
-        self.title = "\(self.currentYear-1)"
+        self.title2 = "\(self.currentYear-1)"
         filterImageConstrain.constant = 180
         filterDecided = 4
         fetchBills()
@@ -169,9 +169,8 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         filterDecided = 0
         
         billerConnect.backgroundColor = UIColor.clear
-        titleLbl = " All Periods"
-        self.title = titleLbl
-        
+        self.title2 = "All Periods"
+        title = "Report"
         connectivityCheck()
         
         //formatting decimal
@@ -368,7 +367,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 }
                 self.totalBills.text  = "\(String (describing: self.billCounter)) bills"
                 self.totalSessions.text = "\(String (describing: self.sessionCounter)) sessions"
-                self.totalLbl.text = self.title
+                self.totalLbl.text = self.title2
                 
                 
                 self.billerConnect.reloadData()

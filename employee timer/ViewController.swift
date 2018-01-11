@@ -775,6 +775,14 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.present(alertController30, animated: true, completion: nil)
     }
     
+    func alert670(){
+        let alertController67 = UIAlertController(title: ("Inactive alert") , message: "This is an inactive account. You can only see past bills and sessions but not add new ones. You can reactivate the account at 'Profile'.", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+        }
+        alertController67.addAction(OKAction)
+        self.present(alertController67, animated: true, completion: nil)
+    }
+    
     
     func alert32(){
     let alertController32 = UIAlertController(title: ("Define calander") , message: " in your 'Setting' no calander is defined for sessions' import. Define one? ", preferredStyle: .alert)
