@@ -273,6 +273,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     ViewController.calanderOption =  String(describing: snapshot.childSnapshot(forPath: "fCalander").value!) as String
     ViewController.taxOption = String(describing: snapshot.childSnapshot(forPath: "fSwitcher").value!) as String
     ViewController.professionControl =  String(describing: snapshot.childSnapshot(forPath: "fProfessionControl").value!) as String
+        
+        if  ViewController.professionControl! == "Tutor" { self.homeTitle.title = "Students"} else {self.homeTitle.title = "Accounts"}
 
     })
     } else {
@@ -314,7 +316,9 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     blackView.addGestureRecognizer(tap)
     blackView.isUserInteractionEnabled = true
     ViewController.sessionPusher = false
-
+        
+        
+        
     }// end of viewdidload//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    
     override func viewDidAppear(_ animated: Bool) {
@@ -483,7 +487,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
         btnMenu.removeTarget(self, action:#selector(noAccount), for: .touchUpInside)
         btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
-        homeTitle.title = "Accounts"
+        if  ViewController.professionControl! == "Tutor" { homeTitle.title = "Students"} else {homeTitle.title = "Accounts"}
         toolBar.isHidden = true
         addAccount.isEnabled = true
         

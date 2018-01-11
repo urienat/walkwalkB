@@ -56,6 +56,8 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         alert6()
     }
     
+    @IBOutlet weak var studentNameText: UITextField!
+    @IBOutlet weak var studentNameLabel: UILabel!
     
     @IBOutlet weak var scrollerView: UIScrollView!
     
@@ -171,7 +173,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         rateTitle.text = "Rate"
         if ViewController.fixedCurrency != nil {currencySign.text = (ViewController.fixedCurrency!)} else {currencySign.text = ""}
         
-        if  ViewController.professionControl! == "Tutor" {addressTop.constant = 46.0 } else {addressTop.constant = 8.0 }
+        if  ViewController.professionControl! == "Tutor" {addressTop.constant = 46.0; studentNameText.isHidden = false; studentNameLabel.isHidden = false } else {addressTop.constant = 8.0; studentNameText.isHidden = true; studentNameLabel.isHidden = true }
         
         
     }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
