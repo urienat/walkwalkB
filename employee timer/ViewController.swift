@@ -30,7 +30,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     static var dateTimeFormat:String!
     static var refresh:Bool? = false
     static var sessionPusher:Bool?
-
+    static  var professionControl: String?
+    
     var RateUpdate = 0.0
     var newRegister = ""
     var alive:Bool?
@@ -271,6 +272,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     ViewController.dateTimeFormat =  String(describing: snapshot.childSnapshot(forPath: "fDateTime").value!) as String
     ViewController.calanderOption =  String(describing: snapshot.childSnapshot(forPath: "fCalander").value!) as String
     ViewController.taxOption = String(describing: snapshot.childSnapshot(forPath: "fSwitcher").value!) as String
+    ViewController.professionControl =  String(describing: snapshot.childSnapshot(forPath: "fProfessionControl").value!) as String
 
     })
     } else {

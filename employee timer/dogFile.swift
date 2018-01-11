@@ -93,7 +93,8 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBOutlet weak var currencySign: UILabel!
     
     
-
+    @IBOutlet weak var addressTop: NSLayoutConstraint!
+    
     
 
     @IBOutlet weak var pRem: UITextField!
@@ -169,6 +170,9 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         
         rateTitle.text = "Rate"
         if ViewController.fixedCurrency != nil {currencySign.text = (ViewController.fixedCurrency!)} else {currencySign.text = ""}
+        
+        if  ViewController.professionControl! == "Tutor" {addressTop.constant = 46.0 } else {addressTop.constant = 8.0 }
+        
         
     }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
