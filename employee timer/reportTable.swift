@@ -252,10 +252,11 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         cell.l2.text = "\(sessionsForMonth) sessions" //sessions
         
         cell.l3.text = "\(ViewController.fixedCurrency!)\(totalForMonth)"// total with tax
+        if ViewController.taxOption != "No" {
         cell.l4.text = "Tax:\(ViewController.fixedCurrency!)\(taxForMonth)"//  tax
         let totalWithOut = totalForMonth-taxForMonth
         cell.l6.text = "w/o Tax:\(ViewController.fixedCurrency!)\(totalWithOut)"//  taxtotal w/o
-    
+        }//end of if
         return cell
     }
     
@@ -359,9 +360,12 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 
                 if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
                 self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"// - \(String(describing: self.billCounter)) Bills "
+                print (ViewController.taxOption)
+                
+                if ViewController.taxOption != "No" {
                 self.totalTax.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
                 self.totalWO.text = "w/o Tax:\(String(self.AmountCounter - self.taxCounter))"
-                
+                }
                 self.totalBills.text  = "\(String (describing: self.billCounter)) bills"
                 self.totalSessions.text = "\(String (describing: self.sessionCounter)) sessions"
                 self.totalLbl.text = self.title

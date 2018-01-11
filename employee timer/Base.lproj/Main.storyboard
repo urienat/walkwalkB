@@ -3656,25 +3656,25 @@
                                             <constraint firstAttribute="height" constant="25" id="F9H-d5-a4F"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="25"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="25"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="sBn-fl-kdU" userLabel="totalBills">
-                                        <rect key="frame" x="8" y="41" width="11" height="25"/>
+                                        <rect key="frame" x="8" y="41" width="9" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="fbj-dL-oJp"/>
+                                            <constraint firstAttribute="height" constant="20" id="fbj-dL-oJp"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="FCs-8X-QuT" userLabel="totalSessions">
-                                        <rect key="frame" x="8" y="70" width="11" height="25"/>
+                                        <rect key="frame" x="8" y="65" width="10" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="y7O-14-VPe"/>
+                                            <constraint firstAttribute="height" constant="20" id="y7O-14-VPe"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="s2D-XW-ZF2" userLabel="totalAmount">
@@ -3683,22 +3683,22 @@
                                             <constraint firstAttribute="height" constant="25" id="Vbo-Gf-xRx"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="25"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="25"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="taV-Cc-kZm" userLabel="totalTax">
-                                        <rect key="frame" x="153.5" y="41" width="10" height="25"/>
+                                        <rect key="frame" x="153.5" y="41" width="10" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="fqy-yL-2gT"/>
+                                            <constraint firstAttribute="height" constant="20" id="fqy-yL-2gT"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZyX-6e-P7B" userLabel="totalWO">
-                                        <rect key="frame" x="153.5" y="70" width="10" height="25"/>
+                                        <rect key="frame" x="153.5" y="65" width="10" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="DeP-Dj-dnR"/>
+                                            <constraint firstAttribute="height" constant="20" id="DeP-Dj-dnR"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
