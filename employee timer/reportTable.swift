@@ -76,7 +76,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var filterBG: UIView!
     
     @IBAction func noneBtn(_ sender: Any) {
-        self.title = "Tax"
+        self.title = "Total report"
         filterDecided = 0
         fetchBills()
         filterImageConstrain.constant = 20
@@ -88,7 +88,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     @IBAction func currentMonthBtn(_ sender: Any) {
         monther(monthNumber: currentMonth)
-        self.title = "Tax: \(monthMMM!)-\(self.currentYear)"
+        self.title = "Report: \(monthMMM!)-\(self.currentYear)"
         
         filterDecided = 1
         fetchBills()
@@ -102,7 +102,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     @IBAction func lastMonthBtn(_ sender: Any) {
         
-        if currentMonth == 1 {self.title = "Tax: Dec-\(self.currentYear-1)" } else  {monther(monthNumber: currentMonth-1);self.title = "Tax: \(monthMMM!)-\(self.currentYear)"}
+        if currentMonth == 1 {self.title = "Report: Dec-\(self.currentYear-1)" } else  {monther(monthNumber: currentMonth-1);self.title = "Report: \(monthMMM!)-\(self.currentYear)"}
         
         filterImageConstrain.constant = 100
         filterDecided = 2
@@ -114,7 +114,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     
     @IBAction func currentYearBtn(_ sender: Any) {
-        self.title = "Tax: \(self.currentYear)"
+        self.title = "Report: \(self.currentYear)"
         
         filterImageConstrain.constant = 140
         filterDecided = 3
@@ -126,7 +126,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     
     @IBAction func lastYearBtn(_ sender: Any) {
-        self.title = "Tax: \(self.currentYear-1)"
+        self.title = "Report: \(self.currentYear-1)"
         filterImageConstrain.constant = 180
         filterDecided = 4
         fetchBills()
@@ -164,7 +164,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         filterDecided = 0
         
         billerConnect.backgroundColor = UIColor.clear
-        titleLbl = "Tax"
+        titleLbl = "Report"
         self.title = titleLbl
         
         connectivityCheck()
@@ -243,11 +243,11 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         cell.backgroundColor = UIColor.clear
         cell.l1.text = arrayOfMonths[indexPath.row]
         //cell.l2.text = "\(billsForMonth) \(billTxt!)"
-        //cell.l5.text = "Total(w/tax): \(ViewController.fixedCurrency!)\(totalForMonth) - \(billsForMonth) \(billTxt!)"
+        cell.l3.text = "Total(w/tax): \(ViewController.fixedCurrency!)\(totalForMonth)"// - \(billsForMonth) \(billTxt!)"
         cell.l5.text = "\(billsForMonth) \(billTxt!)"
         
         //cell.l4.text  = ViewController.fixedCurrency
-        cell.l3.text = "Tax: \(ViewController.fixedCurrency!)\(String(taxForMonth) as String)"
+        //cell.l3.text = "Tax: \(ViewController.fixedCurrency!)\(String(taxForMonth) as String)"
         return cell
     }
     
@@ -265,7 +265,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         print (mydateFormat20.date(from: (arrayOfMonths[(taxMonthRow?.row)!])))
         
         
-        if (segue.identifier == "billsForTaxMonth")
+        if (segue.identifier == "billsForMonth")
         { let billTaxManager = segue.destination as? biller
             print ("presparesegue")
             print (arrayOfMonths[(taxMonthRow?.row)!])

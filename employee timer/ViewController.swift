@@ -170,6 +170,11 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     performSegue(withIdentifier: "employerForTax", sender: employerToS)}
     }
     
+    @IBAction func reports(_ sender: Any) {
+        sideMenuMovement()
+        reportsClicked()
+
+    }
     @IBAction func importAllBtn(_ sender: Any) {
     sideMenuMovement()
     print (ViewController.calanderOption!)
@@ -419,6 +424,13 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
         performSegue(withIdentifier: "employerForBills", sender: employerToS)}
     func profileClicked() {performSegue(withIdentifier: "setting", sender: employerToS)}
+    
+    func reportsClicked(){
+        print ("report clicked")
+        
+        performSegue(withIdentifier: "reports", sender: employerToS)}
+        
+   
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if (segue.identifier == "employerforRecord") {
@@ -454,6 +466,11 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     else if (segue.identifier == "employerForTax"){
     let recordsView = segue.destination as? taxCalc
     recordsView?.employeeID = employeeIDToS
+    }//end of else if
+        
+    else if (segue.identifier == "reports"){
+        let recordsView = segue.destination as? report
+        recordsView?.employeeID = employeeIDToS
     }//end of else if
         
     else if (segue.identifier == "employerForCalander"){
