@@ -3558,7 +3558,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ZLo-nL-6CE" userLabel="L2">
-                                                    <rect key="frame" x="8" y="40.5" width="0.0" height="20"/>
+                                                    <rect key="frame" x="8" y="44.5" width="0.0" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="Dzm-vd-i9q"/>
                                                     </constraints>
@@ -3585,7 +3585,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Tms-fu-rZV" userLabel="L6">
-                                                    <rect key="frame" x="160" y="40.5" width="0.0" height="20"/>
+                                                    <rect key="frame" x="160" y="44.5" width="0.0" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="MYw-VE-XWX"/>
                                                     </constraints>
@@ -3604,7 +3604,7 @@
                                                 <constraint firstItem="ZLo-nL-6CE" firstAttribute="leading" secondItem="u2u-UI-lc3" secondAttribute="leading" id="bm3-O3-Bcl"/>
                                                 <constraint firstItem="Tl5-DR-ahr" firstAttribute="leading" secondItem="v4a-WK-xgd" secondAttribute="leading" id="cg4-IH-40Z"/>
                                                 <constraint firstItem="Tms-fu-rZV" firstAttribute="leading" secondItem="v4a-WK-xgd" secondAttribute="leading" id="d6j-CE-vxF"/>
-                                                <constraint firstAttribute="bottom" secondItem="ZLo-nL-6CE" secondAttribute="bottom" constant="8" id="dZJ-19-pZW"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZLo-nL-6CE" secondAttribute="bottom" constant="4" id="dZJ-19-pZW"/>
                                                 <constraint firstItem="v4a-WK-xgd" firstAttribute="centerY" secondItem="u2u-UI-lc3" secondAttribute="centerY" id="dbh-1c-hOq"/>
                                                 <constraint firstItem="uQh-bO-TN4" firstAttribute="top" secondItem="u2u-UI-lc3" secondAttribute="bottom" constant="8" id="gXw-MF-RIG"/>
                                             </constraints>
@@ -3669,7 +3669,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="FCs-8X-QuT" userLabel="totalSessions">
-                                        <rect key="frame" x="8" y="74" width="11" height="25"/>
+                                        <rect key="frame" x="8" y="70" width="11" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="y7O-14-VPe"/>
                                         </constraints>
@@ -3696,7 +3696,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZyX-6e-P7B" userLabel="totalWO">
-                                        <rect key="frame" x="153.5" y="74" width="10" height="25"/>
+                                        <rect key="frame" x="153.5" y="70" width="10" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="DeP-Dj-dnR"/>
                                         </constraints>
@@ -3715,8 +3715,8 @@
                                     <constraint firstItem="sBn-fl-kdU" firstAttribute="top" secondItem="Jkf-VZ-e1J" secondAttribute="bottom" constant="8" id="eY7-ai-lAi"/>
                                     <constraint firstItem="taV-Cc-kZm" firstAttribute="leading" secondItem="s2D-XW-ZF2" secondAttribute="leading" id="fZi-oT-MVX"/>
                                     <constraint firstAttribute="height" constant="89" id="hAm-Fe-PtK"/>
-                                    <constraint firstItem="FCs-8X-QuT" firstAttribute="top" secondItem="sBn-fl-kdU" secondAttribute="bottom" constant="8" id="hRR-gN-9o0"/>
-                                    <constraint firstItem="ZyX-6e-P7B" firstAttribute="top" secondItem="taV-Cc-kZm" secondAttribute="bottom" constant="8" id="kJP-ho-0U3"/>
+                                    <constraint firstItem="FCs-8X-QuT" firstAttribute="top" secondItem="sBn-fl-kdU" secondAttribute="bottom" constant="4" id="hRR-gN-9o0"/>
+                                    <constraint firstItem="ZyX-6e-P7B" firstAttribute="top" secondItem="taV-Cc-kZm" secondAttribute="bottom" constant="4" id="kJP-ho-0U3"/>
                                     <constraint firstItem="s2D-XW-ZF2" firstAttribute="top" secondItem="rts-ul-jAc" secondAttribute="top" constant="8" id="oBU-XR-He7"/>
                                     <constraint firstItem="taV-Cc-kZm" firstAttribute="top" secondItem="s2D-XW-ZF2" secondAttribute="bottom" constant="8" id="qy9-1x-Tsa"/>
                                     <constraint firstItem="Jkf-VZ-e1J" firstAttribute="top" secondItem="rts-ul-jAc" secondAttribute="top" constant="8" id="wuF-Yj-kK2"/>

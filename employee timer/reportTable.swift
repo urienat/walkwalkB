@@ -30,6 +30,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var titleLbl = ""
     var cellId = "taxerId"
     var billCounter = 0
+    var sessionCounter = 0
     var taxCounter = 0.0
     var AmountCounter = 0.0
     var isFilterHidden = true
@@ -79,7 +80,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var filterBG: UIView!
     
     @IBAction func noneBtn(_ sender: Any) {
-        self.title = "Total report"
+        self.title = "Report"
         
         filterDecided = 0
         fetchBills()
@@ -92,7 +93,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     @IBAction func currentMonthBtn(_ sender: Any) {
         monther(monthNumber: currentMonth)
-        self.title = "Report: \(monthMMM!)-\(self.currentYear)"
+        self.title = "\(monthMMM!)-\(self.currentYear)"
         
         filterDecided = 1
         fetchBills()
@@ -106,7 +107,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     @IBAction func lastMonthBtn(_ sender: Any) {
         
-        if currentMonth == 1 {self.title = "Report: Dec-\(self.currentYear-1)" } else  {monther(monthNumber: currentMonth-1);self.title = "Report: \(monthMMM!)-\(self.currentYear)"}
+        if currentMonth == 1 {self.title = "Dec-\(self.currentYear-1)" } else  {monther(monthNumber: currentMonth-1);self.title = "Report: \(monthMMM!)-\(self.currentYear)"}
         
         filterImageConstrain.constant = 100
         filterDecided = 2
@@ -118,7 +119,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     
     @IBAction func currentYearBtn(_ sender: Any) {
-        self.title = "Report: \(self.currentYear)"
+        self.title = "\(self.currentYear)"
         
         filterImageConstrain.constant = 140
         filterDecided = 3
@@ -130,7 +131,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     
     @IBAction func lastYearBtn(_ sender: Any) {
-        self.title = "Report: \(self.currentYear-1)"
+        self.title = "\(self.currentYear-1)"
         filterImageConstrain.constant = 180
         filterDecided = 4
         fetchBills()
@@ -222,7 +223,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }//view did appear end
     
     func tableView(_ billerConnect: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 97
+        return 89
         
         
     }
@@ -300,6 +301,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         byMonthBills.removeAll()
         uniqueTaxMonths.removeAll()
         self.billCounter = 0
+        self.sessionCounter = 0
         self.taxCounter = 0
         self.AmountCounter = 0
         
@@ -339,7 +341,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                         self.uniqueTaxMonthsdateFormat.sort { $0.compare($1) == .orderedDescending }
                         self.arrayOfMonths = self.uniqueTaxMonthsdateFormat.map { self.mydateFormat20.string(from: $0)}
                     }
-                    self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
+                    self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.sessionCounter += Int(billItem.fBillEvents!)!;self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
                         self.taxCounter += Double(billItem.fBillTax!)!}
                     ;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
                     
@@ -360,8 +362,8 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 self.totalTax.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
                 self.totalWO.text = "w/o Tax:\(String(self.AmountCounter - self.taxCounter))"
                 
-                self.totalBills.text  = "\(String (describing: self.billCounter)) bills)"
-                self.totalSessions.text = "\(String (describing: self.billCounter)) sessions"
+                self.totalBills.text  = "\(String (describing: self.billCounter)) bills"
+                self.totalSessions.text = "\(String (describing: self.sessionCounter)) sessions"
                 self.totalLbl.text = self.title
                 
                 
