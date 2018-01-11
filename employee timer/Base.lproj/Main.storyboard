@@ -1483,7 +1483,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Profession " minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RzR-xf-ogE" userLabel="profession" customClass="AllowedCharsTextField" customModule="perSession" customModuleProvider="target">
+                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Profession " minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RzR-xf-ogE" userLabel="profession" customClass="AllowedCharsTextField" customModule="perSession" customModuleProvider="target">
                                                 <rect key="frame" x="112" y="200.5" width="93" height="30"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1767,6 +1767,17 @@
                                                     <constraint firstAttribute="width" constant="68" id="rDz-oz-YPd"/>
                                                 </constraints>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y86-pk-mAr" userLabel="professionBtn">
+                                                <rect key="frame" x="8" y="200" width="79" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <state key="normal" title="Profession">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="professionBtn:" destination="bu7-cQ-GBV" eventType="touchUpInside" id="fga-1s-WyJ"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profession" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXN-FR-NSb">
                                                 <rect key="frame" x="8" y="200" width="79" height="30"/>
                                                 <constraints>
@@ -1795,13 +1806,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUc-OR-mxX" userLabel="professionPickerView">
-                                                <rect key="frame" x="10" y="238" width="300" height="250"/>
+                                                <rect key="frame" x="10" y="238" width="300" height="300"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0X-K4-Jco">
-                                                        <rect key="frame" x="252" y="0.0" width="40" height="40"/>
+                                                        <rect key="frame" x="212" y="0.0" width="80" height="80"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="40" id="QEb-Fm-9qD"/>
-                                                            <constraint firstAttribute="height" constant="40" id="jFu-mb-6Ii"/>
+                                                            <constraint firstAttribute="width" constant="80" id="QEb-Fm-9qD"/>
+                                                            <constraint firstAttribute="height" constant="80" id="jFu-mb-6Ii"/>
                                                         </constraints>
                                                         <state key="normal" title="Done"/>
                                                         <connections>
@@ -1809,7 +1820,7 @@
                                                         </connections>
                                                     </button>
                                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0GZ-cz-Pex" userLabel="professionPicker">
-                                                        <rect key="frame" x="15" y="-15" width="270" height="250"/>
+                                                        <rect key="frame" x="15" y="35" width="270" height="250"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="250" id="qWm-Uu-reF"/>
                                                         </constraints>
@@ -1822,7 +1833,7 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="1wt-VZ-5ql"/>
-                                                    <constraint firstAttribute="height" constant="250" id="4a3-zK-irh"/>
+                                                    <constraint firstAttribute="height" constant="300" id="4a3-zK-irh"/>
                                                     <constraint firstAttribute="trailing" secondItem="u0X-K4-Jco" secondAttribute="trailing" constant="8" id="G24-50-ymp"/>
                                                     <constraint firstItem="0GZ-cz-Pex" firstAttribute="leading" secondItem="kUc-OR-mxX" secondAttribute="leading" constant="15" id="JwE-XT-bEm"/>
                                                     <constraint firstAttribute="bottom" secondItem="0GZ-cz-Pex" secondAttribute="bottom" constant="15" id="NTL-yS-erY"/>
@@ -1906,6 +1917,8 @@
                                             <constraint firstItem="rrM-Wg-SYV" firstAttribute="height" secondItem="25j-eK-VXl" secondAttribute="height" id="iH9-mI-vO4"/>
                                             <constraint firstItem="Jeh-Sl-RkP" firstAttribute="leading" secondItem="voQ-tU-PFp" secondAttribute="leading" id="ifa-om-jxa"/>
                                             <constraint firstItem="fDd-KS-fTu" firstAttribute="height" secondItem="oGz-6p-JzI" secondAttribute="height" id="imT-Db-pV4"/>
+                                            <constraint firstItem="y86-pk-mAr" firstAttribute="height" secondItem="RzR-xf-ogE" secondAttribute="height" id="j6Y-XV-CWN"/>
+                                            <constraint firstItem="y86-pk-mAr" firstAttribute="centerY" secondItem="RzR-xf-ogE" secondAttribute="centerY" id="jaA-dH-lv8"/>
                                             <constraint firstItem="iho-r5-Jit" firstAttribute="leading" secondItem="NdQ-LL-HGn" secondAttribute="trailing" constant="4" id="kYR-up-mmq"/>
                                             <constraint firstItem="kUc-OR-mxX" firstAttribute="centerX" secondItem="MGW-Fk-kb6" secondAttribute="centerX" id="lGO-Ua-bE3"/>
                                             <constraint firstItem="abz-bh-Dk7" firstAttribute="centerY" secondItem="Zoe-u1-fd0" secondAttribute="centerY" id="lV6-Az-Qbm"/>
@@ -1917,6 +1930,7 @@
                                             <constraint firstItem="eRi-ta-mdX" firstAttribute="leading" secondItem="dce-An-tH6" secondAttribute="leading" id="nOH-zy-tym"/>
                                             <constraint firstItem="03V-OC-j7W" firstAttribute="leading" secondItem="voQ-tU-PFp" secondAttribute="leading" id="nhZ-pT-KbQ"/>
                                             <constraint firstItem="Gfv-7f-bWL" firstAttribute="centerY" secondItem="k7K-bJ-hKl" secondAttribute="centerY" id="nkp-gS-xvJ"/>
+                                            <constraint firstItem="y86-pk-mAr" firstAttribute="width" secondItem="RzR-xf-ogE" secondAttribute="width" id="nmn-ir-kt6"/>
                                             <constraint firstAttribute="trailing" secondItem="Gfv-7f-bWL" secondAttribute="trailing" constant="14" id="oog-ni-0Zc"/>
                                             <constraint firstItem="KWf-qy-tLB" firstAttribute="height" secondItem="CL9-rp-678" secondAttribute="height" id="pXr-kt-91v"/>
                                             <constraint firstItem="Ft4-Fz-x53" firstAttribute="top" secondItem="Zoe-u1-fd0" secondAttribute="bottom" constant="8" id="paA-Pa-nLT"/>
@@ -1937,6 +1951,7 @@
                                             <constraint firstItem="m6w-AJ-d7e" firstAttribute="leading" secondItem="d3p-Mh-USA" secondAttribute="leading" id="wdZ-Kk-zvg"/>
                                             <constraint firstItem="RzR-xf-ogE" firstAttribute="leading" secondItem="voQ-tU-PFp" secondAttribute="leading" id="x06-qg-9ak"/>
                                             <constraint firstItem="iho-r5-Jit" firstAttribute="centerY" secondItem="NdQ-LL-HGn" secondAttribute="centerY" id="xO6-JF-Ep0"/>
+                                            <constraint firstItem="y86-pk-mAr" firstAttribute="centerX" secondItem="RzR-xf-ogE" secondAttribute="centerX" id="xaT-bH-VBI"/>
                                             <constraint firstItem="Jeh-Sl-RkP" firstAttribute="height" secondItem="4Wg-qF-OrD" secondAttribute="height" id="xhn-Xz-1RW"/>
                                             <constraint firstItem="RzR-xf-ogE" firstAttribute="height" secondItem="voQ-tU-PFp" secondAttribute="height" id="xxa-Jz-bRd"/>
                                             <constraint firstItem="abz-bh-Dk7" firstAttribute="leading" secondItem="Ktd-Fm-ugk" secondAttribute="leading" id="yAg-Of-21k"/>
@@ -1987,6 +2002,7 @@
                         <outlet property="picture" destination="3je-Hd-SEg" id="ac5-tx-cBh"/>
                         <outlet property="precentage" destination="NdQ-LL-HGn" id="Qa6-2q-ylH"/>
                         <outlet property="profession" destination="RzR-xf-ogE" id="pq3-xP-xWD"/>
+                        <outlet property="professionBtn" destination="y86-pk-mAr" id="7ga-sy-PER"/>
                         <outlet property="professionalPicker" destination="kUc-OR-mxX" id="dGF-Uh-Zxv"/>
                         <outlet property="reset" destination="Gfv-7f-bWL" id="EG7-M1-oKt"/>
                         <outlet property="settingScroller" destination="dcj-3g-ZF0" id="1CG-li-obX"/>

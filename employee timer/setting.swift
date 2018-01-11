@@ -138,6 +138,11 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     var taxSwitchTemp = "No"
     
 
+    @IBAction func professionBtn(_ sender: Any) {
+        professionalPicker.isHidden = false
+
+    }
+    @IBOutlet weak var professionBtn: UIButton!
     @IBOutlet weak var professionalPicker: UIView!
     @IBAction func donePicker(_ sender: Any) {
         professionalPicker.isHidden = true
@@ -382,6 +387,11 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         professionalPicker.layer.borderColor = blueColor.cgColor
         professionalPicker.layer.cornerRadius =  15//CGFloat(25)
         professionalPicker.layoutIfNeeded()
+        
+       // professionBtn.backgroundColor = .clear
+        professionBtn.layer.cornerRadius = 5
+        professionBtn.layer.borderWidth = 1
+        professionBtn.layer.borderColor = blueColor.cgColor
         
         }//end of viewdid load    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -677,6 +687,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         profession.text =  professions[row]
+        professionBtn.setTitle(professions[row], for: .normal)
     }
     
     ///alerts///////////////////////////////////////////////////////////////////////////////////
