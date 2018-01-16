@@ -36,9 +36,6 @@ extension(ViewController){
             btnMenu.addTarget(self, action: #selector(noAccount), for: .touchUpInside)
             toolBar.isHidden = false
             addAccount.isEnabled = false
-
-                
-            //chooseEmployer.setTitle( nameData[indexPath.row] + " " + pickerData[indexPath.row] + " ▽", for: UIControlState.normal)
             account.title = "\(pickerData[indexPath.row])'s file"
             records.title =  "\(pickerData[indexPath.row])'s Sessions"
 
@@ -47,8 +44,8 @@ extension(ViewController){
                 
             employerIDToS = employerIdArray2[indexPath.row] as! String
             bringEmployerData()
-                if activeData[indexPath.row] != false {self.thinking2.stopAnimating(); preStartView()}
-                else { chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating();alert670()}
+                if activeData[indexPath.row] != false {self.thinking2.stopAnimating(); preStartView();records.isEnabled = true}
+                else { chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating();alert670();records.isEnabled = false}
 
             //set variable for Segue
             employerToS = pickerData[indexPath.row]

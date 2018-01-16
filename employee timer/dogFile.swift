@@ -527,17 +527,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
     
     
-        func noFB() {
-        let connectedRef = FIRDatabase.database().reference(withPath: ".info/connected")
-        connectedRef.observe(.value, with: { snapshot in
-        if let connected = snapshot.value as? Bool, connected {
-        print("Connected1")
-        } else {
-        print("Not connected1")
-        self.alert30()
-        }
-        })
-        }
+        
     
         func obligatoryIn(){
         UIView.animate(withDuration: 0.3, animations: {
@@ -574,14 +564,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         present(alertCotroller6, animated: true, completion: nil)
         }//alert end
     
-        func alert30(){
-        let alertController30 = UIAlertController(title: ("No connection") , message: "Currently there is no connection with database. Please try later.", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-        }
         
-        alertController30.addAction(OKAction)
-        self.present(alertController30, animated: true, completion: nil)
-        }
     
     
         func alert54(){

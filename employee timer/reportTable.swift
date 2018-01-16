@@ -202,19 +202,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }//end of view did load////////////////////////////////////////////////////////////////////////////////////////////
     
     override func viewDidAppear(_ animated: Bool) {
-        let connectedRef = FIRDatabase.database().reference(withPath: ".info/connected")
-        connectedRef.observe(.value, with: { snapshot in
-            if let connected = snapshot.value as? Bool, connected {
-                print("Connected")
-            }else {
-                print("Not connected")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 4.0){
-                    connectedRef.observe(.value, with: { snapshot in
-                        if let connected = snapshot.value as? Bool, connected {
-                            print("Connected after all")} else  {print("not connected after all");self.noFB()}
-                    })
-                }}
-        })
+      
         
         fetchBills()
         print (billItems.count)
@@ -423,10 +411,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     
     
-    func noFB() {
-        self.thinking.stopAnimating()
-        self.alert30()
-    }
+    
     
     
     func handleTap(sender: UITapGestureRecognizer? = nil) {
@@ -459,13 +444,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     
     // alerts////////////////////////////////////////////////////////////////////////////////////////////
-    func alert30(){
-        let alertController30 = UIAlertController(title: ("No connection") , message: "Currently there is no connection with database. Please try again.", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-        }
-        alertController30.addAction(OKAction)
-        self.present(alertController30, animated: true, completion: nil)
-    }
+
     
 }//end of class
 

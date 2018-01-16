@@ -329,22 +329,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }// end of viewdidload//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    
     override func viewDidAppear(_ animated: Bool) {
-        
-
-    let connectedRef = FIRDatabase.database().reference(withPath: ".info/connected")
-    connectedRef.observe(.value, with: { snapshot in
-    if let connected = snapshot.value as? Bool, connected {
-    print("Connected")
-    }else {
-    print("Not connected")
-    DispatchQueue.main.asyncAfter(deadline: .now() + 4.0){
-    connectedRef.observe(.value, with: { snapshot in
-    if let connected = snapshot.value as? Bool, connected {
-    print("Connected after all")} else  {print("not connected after all");self.noFB()}
-    })
-    }}
-    })
-        
     if ViewController.refresh == true ||  employerToS ==  "Add new dog" {
     chooseEmployer.sendActions(for: .touchUpInside)
     ViewController.refresh = false
@@ -684,10 +668,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         }//end of func oost round view
     
     
-    func noFB() {
-    self.thinking2.stopAnimating()
-   // self.alert30()
-    }
+   
     
     func startBarButtonFadeOut(){
     UIView.animate(withDuration: 0.1, animations: {
@@ -769,13 +750,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.present(alertController83, animated: true, completion: nil)
     }//end of alert83
 
-    func alert30(){
-    let alertController30 = UIAlertController(title: ("No connection") , message: "Currently there is no connection with database. Please try again.", preferredStyle: .alert)
-    let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-    }
-    alertController30.addAction(OKAction)
-    self.present(alertController30, animated: true, completion: nil)
-    }
+    
     
     func alert670(){
         let alertController67 = UIAlertController(title: ("Inactive alert") , message: "This is an inactive account. You can only see past bills and sessions but not add new ones. You can reactivate the account at 'Profile'.", preferredStyle: .alert)
