@@ -109,18 +109,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
 
         func sign(_ signIn: GIDSignIn!, didSignInFor user2: GIDGoogleUser!, withError error: Error?) {
-        // ...
         if let error = error {
-        // ...
         return
         }
+            
         print ("1234")
-        
         guard let authentication = user2.authentication else { return }
         let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-        
-   //     if  LoginFile.provider == "Google" && calander.calanderLogin != true {
-
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
         if let error = error {
         print (error)
@@ -129,12 +124,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginViewController  =  storyboard.instantiateViewController(withIdentifier: "loginScreen")
         let homeViewController  =  storyboard.instantiateViewController(withIdentifier: "homeScreen")
-        self.window?.rootViewController = loginViewController// before the app
+        self.window?.rootViewController = homeViewController// before the app
         LoginFile.userFromGoole = user2
         LoginFile.employeeRef2 = (user?.uid)!
         return
- //       }
-    }//end of if
+        }//end of if
+            
         func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
         // ...

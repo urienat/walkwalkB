@@ -161,6 +161,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
    
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
+    
     override func viewDidLoad() {
         connectivityCheck()
         
@@ -171,61 +172,78 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         //delgate to hide keyboard
         self.email.delegate = self
         self.password.delegate = self
-
+        
         logoutGeneral()
         
-        //google login setting
+        //set the buttons
         GIDSignIn.sharedInstance().uiDelegate = self
         view.addSubview(loginButton2)
         loginButton2.frame = CGRect(x: view.frame.width/2-104, y: 50, width: 208, height: 45)
-        if GIDSignIn.sharedInstance().currentUser != nil  {
-        thinking.startAnimating()
-        print (GIDSignIn.sharedInstance().currentUser)
-        inFireBase()
-        } else {
-        print (GIDSignIn.sharedInstance().currentUser)
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() ) {
-        if AccessToken.current != nil {        LoginFile.provider = "Google"
-        self.doSegue()
-        }//end of if
-        }//end of dispatch
-
-        //Facebook login setting
+        
         view.addSubview(loginButton)
         loginButton.frame = CGRect(x: view.frame.width/2-100, y: 107, width: 200, height: 45)
         loginButton.delegate = self
         loginButton.readPermissions = ["email","public_profile"]
+        print(FBSDKAccessToken.current())
+        
+        //quick facebook
         DispatchQueue.main.asyncAfter(deadline: .now() ) {
-        if FBSDKAccessToken.current() != nil {        LoginFile.provider = "facebook"
-        self.doSegue()
-        }//end of if
+            if FBSDKAccessToken.current() != nil {
+                LoginFile.provider = "facebook"
+                print (LoginFile.provider)
+                self.doSegue()
+                //inFireBase()
+            }//end of if
         }//end of dispatch
         
+        print (keeper.integer(forKey: "remember"))
         
         if keeper.integer(forKey: "remember") != 1 {rememberMe = 0 } else { rememberMe = keeper.integer(forKey: "remember")}
         if rememberMe == 1 {
-        check.setImage(Vimage, for: .normal)
-        checkBox = false
-        let savedUser = keeper.string(forKey: "userKept")
-        let savedPassword = keeper.string(forKey: "passwordKept")
-        if savedUser == nil || savedUser == "" {ipusKeeper()
-        }//end of if
-        email.text = savedUser
-        password.text = savedPassword
+            LoginFile.provider = "normal"
+            check.setImage(Vimage, for: .normal)
+            checkBox = false
+            let savedUser = keeper.string(forKey: "userKept")
+            let savedPassword = keeper.string(forKey: "passwordKept")
+            //if savedUser == nil || savedUser == "" {ipusKeeper()
+            // }//end of if
+            email.text = savedUser
+            password.text = savedPassword
             print (LoginFile.logoutchosen)
+            if LoginFile.logoutchosen == true {
+                //do nothing
+            } else  {signInProcess() }
+        } else{check.setImage(nonVimage, for: .normal)
+            checkBox = false}
+        print(FBSDKAccessToken.current())
+        
+        if FBSDKAccessToken.current() == nil {
             
-        if LoginFile.logoutchosen == true {
-        //do nothing
-        } else {signInProcess() }
-        } else {
-        ipusKeeper()
-        }//end of else
+            print (GIDSignIn.sharedInstance().currentUser)
+            print (AccessToken.current)
+            
+            if GIDSignIn.sharedInstance().currentUser != nil  {
+                thinking.startAnimating()
+                print (GIDSignIn.sharedInstance().currentUser)
+                inFireBase()
+            } else {
+                print (GIDSignIn.sharedInstance().currentUser)
+            }
+        }// end of else if
+        /*
+         DispatchQueue.main.asyncAfter(deadline: .now() ) {
+         
+         
+         if AccessToken.current != nil {        LoginFile.provider = "Google"
+         self.doSegue()
+         }//end of if
+         }//end of dispatch
+         */
+        
         
         if LoginFile.userForCreate != ""{ email.text = LoginFile.userForCreate; password.text = LoginFile.passwordForCreate; LoginFile.userForCreate = "";LoginFile.passwordForCreate = ""} else {LoginFile.userForCreate = "";LoginFile.passwordForCreate = ""}
         
         thinking.hidesWhenStopped = true
-        
         } ///end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////
    
         //keyboard hide
