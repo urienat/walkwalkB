@@ -176,7 +176,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         logoutGeneral()
         
         //set the buttons
-        signIn.layer.cornerRadius =  2
+        signIn.layer.cornerRadius =  5
         signIn.layoutIfNeeded()
 
         GIDSignIn.sharedInstance().uiDelegate = self
@@ -407,7 +407,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     }//alert2 end
 
     func alert1 () {
-    let alertCotroller1 = UIAlertController(title: ("Password alert") , message: ("An email with password instructions was sent to your email adrress"), preferredStyle: .alert)
+    let alertCotroller1 = UIAlertController(title: ("Password alert") , message: ("An email with password's instructions was sent to your email adrress"), preferredStyle: .alert)
     let okAction1 = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in}
     alertCotroller1.addAction(okAction1)
     present(alertCotroller1, animated: true, completion: nil)

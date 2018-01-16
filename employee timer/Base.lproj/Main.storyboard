@@ -2132,7 +2132,7 @@
                                     <constraint firstAttribute="width" constant="200" id="F52-oR-lhd"/>
                                     <constraint firstAttribute="height" constant="45" id="tjw-8A-D7P"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -2181,6 +2181,21 @@
                                     <action selector="forgot:" destination="QwA-1e-1p4" eventType="touchUpInside" id="klS-48-Gkc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" OR " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onV-o8-Fmx">
+                                <rect key="frame" x="147" y="163" width="27.5" height="18.5"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perSessionImage" translatesAutoresizingMaskIntoConstraints="NO" id="HNh-Jn-nzq">
+                                <rect key="frame" x="67" y="275" width="30" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6p4-DW-p7Z"/>
+                                    <constraint firstAttribute="width" constant="30" id="Mkv-WB-HeI"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -2197,12 +2212,16 @@
                             <constraint firstItem="apK-xN-ZsM" firstAttribute="top" secondItem="NTs-3R-g9p" secondAttribute="bottom" constant="12" id="SX6-eL-OYB"/>
                             <constraint firstItem="apK-xN-ZsM" firstAttribute="centerY" secondItem="wuq-GZ-v5C" secondAttribute="centerY" id="VX9-zI-q9V"/>
                             <constraint firstItem="qQ5-M2-yCT" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="W02-Mv-Uw8"/>
+                            <constraint firstItem="HNh-Jn-nzq" firstAttribute="centerY" secondItem="NTs-3R-g9p" secondAttribute="centerY" id="WXt-cC-Xu1"/>
                             <constraint firstItem="wuq-GZ-v5C" firstAttribute="leading" secondItem="apK-xN-ZsM" secondAttribute="trailing" constant="8" id="YBV-cg-IOf"/>
                             <constraint firstItem="Rnh-XI-hKH" firstAttribute="top" secondItem="qKH-jT-XhF" secondAttribute="bottom" constant="164" id="ZiZ-qp-GIK"/>
                             <constraint firstItem="AiQ-AU-mU3" firstAttribute="top" secondItem="Jpb-a2-c4I" secondAttribute="top" constant="-30" id="gnu-WG-UGR"/>
                             <constraint firstItem="Jpb-a2-c4I" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="i0q-OP-KW4"/>
+                            <constraint firstItem="onV-o8-Fmx" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="iad-G5-pKR"/>
                             <constraint firstItem="IJY-5Y-cpH" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="mmI-FT-y7E"/>
+                            <constraint firstItem="NTs-3R-g9p" firstAttribute="leading" secondItem="HNh-Jn-nzq" secondAttribute="trailing" constant="-37" id="r98-YT-os6"/>
                             <constraint firstItem="NTs-3R-g9p" firstAttribute="top" secondItem="Pog-dx-X7C" secondAttribute="bottom" constant="12" id="stn-97-IEN"/>
+                            <constraint firstItem="onV-o8-Fmx" firstAttribute="centerY" secondItem="IJY-5Y-cpH" secondAttribute="centerY" id="tRE-dC-9jv"/>
                             <constraint firstItem="SW0-cP-SJB" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="u0U-IH-U2n"/>
                             <constraint firstItem="AiQ-AU-mU3" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="xgX-QQ-Ewz"/>
                             <constraint firstItem="Pog-dx-X7C" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="zfg-t6-OgU"/>

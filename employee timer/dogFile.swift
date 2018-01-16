@@ -43,15 +43,12 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     alert6()
     }
     
-    @IBOutlet weak var studentParentNameText: UITextField!
-    var studentParentUpdate = ""
-        @IBOutlet weak var studentParentNameLabel: UILabel!
     
     @IBOutlet weak var scrollerView: UIScrollView!
     
     @IBOutlet weak var trash: UIBarButtonItem!
     @IBOutlet weak var obligatory: UILabel!
-    @IBAction func deleteAdog(_ sender: Any) {dogDeleteAlert()}  //for deleting an employer
+    @IBAction func deleteAdog(_ sender: Any) {DeleteAlert()}  //for deleting an employer
     @IBOutlet weak var activeButton: UIButton!
     @IBAction func activeButton(_ sender: Any) {
             if activeEmployerSwitch == true { activeEmployer.image = Vimage
@@ -70,6 +67,11 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     @IBOutlet weak var pEmail: UITextField!
     var emailUpdate = ""
+    
+    @IBOutlet weak var studentParentNameText: UITextField!
+    var studentParentUpdate = ""
+    @IBOutlet weak var studentParentNameLabel: UILabel!
+
     
     @IBOutlet weak var pCell: UITextField!
     var cellUpdate = ""
@@ -100,7 +102,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     @IBAction func sendMail(_ sender: Any) {alert()}
     
-    override func viewDidLoad() { ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    override func viewDidLoad(){ //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
         ViewController.refresh = false
         
@@ -112,9 +114,9 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         NotificationCenter.default.addObserver(self, selector: #selector(self.KeyboardNotificationwillHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: self.view.window)
         
         if self.employerFromMain == "Add Account" {
-            if ViewController.professionControl == "Tutor" {self.studentParentNameText.text = ""}
             self.lbl = "New Account"
             self.title = lbl
+            if ViewController.professionControl == "Tutor" {self.studentParentNameText.text = ""}
             self.pName.text = ""
             self.pLastName.text = ""
             self.pEmail.text = ""
@@ -129,19 +131,18 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             trash.isEnabled = false
             obligatory .isHidden = false
             
-        } else {
+            } else {
             self.lbl = ("Profile")
             self.title = lbl
-                
             bringEmployerData()
             trash.isEnabled = true
             obligatory .isHidden = true
-        }
+            }
+        
         pDogImage.clipsToBounds = true
         pDogImage.layer.cornerRadius = 30
         
         let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(checkDuplicate))
-        
         navigationItem.rightBarButtonItem = saveRecord
         
         rateTitle.text = "Rate"
@@ -149,7 +150,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         
         if  ViewController.professionControl! == "Tutor" {addressTop.constant = 46.0; studentParentNameText.isHidden = false; studentParentNameLabel.isHidden = false } else {addressTop.constant = 8.0; studentParentNameText.isHidden = true; studentParentNameLabel.isHidden = true }
         
-    }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    }//end of view did load /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
         deinit {NotificationCenter.default.removeObserver(self) }
 
@@ -168,10 +169,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.dbRefEmployees.child(employeeID).queryOrderedByValue().observeSingleEvent(of: .value, with: { (snapshot) in
         self.employerArray = snapshot.childSnapshot(forPath: "myEmployers").value! as! [String:Int]
         self.employerArray2 = Array(self.employerArray.keys) // for Dictionary
-        print (self.employerArray)
-
-        print (self.employerArray2)
-
 
         for eachEmployer in 0...(self.employerArray2.count-1){
         self.dbRefEmployers.child(self.employerArray2[eachEmployer]).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -182,7 +179,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         print ("1")
 
 
-        if self.employerArray3.contains("\(self.pName.text!) \(self.pLastName.text!)") && self.lbl == "New Account" ||  self.lbl != "New Account" && self.employerArray3.contains("\(self.pName.text!) \(self.pLastName.text!)") &&  ("\(self.pName.text!) \(self.pLastName.text!)") != ("\(self.nameUpdate) \(self.lastNameUpdate)") {
+        if self.employerArray3.contains("\(self.pName.text!) \(self.pLastName.text!)") && self.lbl == "New Account" || self.lbl != "New Account" && self.employerArray3.contains("\(self.pName.text!) \(self.pLastName.text!)") &&  ("\(self.pName.text!) \(self.pLastName.text!)") != ("\(self.nameUpdate) \(self.lastNameUpdate)") {
         self.message2 = " Can't save account as \(self.pName.text!) \(self.pLastName.text!) account is already set."
         print("contatain"); self.alert54()
         }//if contaons
@@ -202,7 +199,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         
         let updateDBAction = UIAlertAction(title: "Yes", style: .default) { (UIAlertAction) in
         ViewController.refresh = true
-        if self.employerFromMain != "Add new dog" {
+        if self.employerFromMain != "Add Account" {
         if self.activeEmployerSwitch == true {self.activeEmployerSwitch = false} else {self.activeEmployerSwitch = true}
             
             self.dbRefEmployers.child(self.employerID).updateChildValues(["fName" : self.pName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!, "fRem" : self.pRem.text!, "fEmployer":self.pLastName.text!,"fActive" : self.activeEmployerSwitch!])
@@ -275,7 +272,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
 
         //storage of pictures
         //in cache under employerID
-        //if employerFromMain != "Add new dog" { MyImageCache.sharedCache.setObject(pickedImage as AnyObject, forKey: employerID as AnyObject)}
+        //if employerFromMain != "Add Account" { MyImageCache.sharedCache.setObject(pickedImage as AnyObject, forKey: employerID as AnyObject)}
     
         }//end of if let picked image
         imagePicker.dismiss(animated: true, completion: nil )
@@ -342,7 +339,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }//end of func message compose
     
         func bringEmployerData() {
-        if employerFromMain != "Add new dog" {
+        if employerFromMain != "Add Account" {
         dbRefEmployers.child(self.employerID).child("myEmployees").queryOrderedByKey().queryEqual(toValue: employeeID).observeSingleEvent(of:.childAdded, with: { (snapshot) in
         self.RateUpdate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)
         if self.RateUpdate != 0.0 { self.pRate.text = String(self.RateUpdate)} else {self.pRate.text = ""}
@@ -447,7 +444,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
         ///////////////////////////////////////////////////////////////////////////////////////////////////alerts
         //delete a dog alert
-        func dogDeleteAlert () {
+        func DeleteAlert () {
         let alertController3 = UIAlertController(title: ("Delete") , message: ("This would delete your access to this account's information including master data and sessions. Are You sure?"), preferredStyle: .alert)
         let cancelAction3 = UIAlertAction(title: "NO", style: .cancel) { (UIAlertAction) in
         }
