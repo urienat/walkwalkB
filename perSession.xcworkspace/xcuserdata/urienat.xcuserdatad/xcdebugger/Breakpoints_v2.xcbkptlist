@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/LoginFile.swift"
-            timestampString = "537781359.940461"
+            timestampString = "537781865.871654"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
             landmarkName = "LoginFile"
             landmarkType = "3">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/LoginFile.swift"
-            timestampString = "537781359.940864"
+            timestampString = "537781865.8720191"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
             landmarkName = "inFireBase()"
             landmarkType = "7">
             <Locations>
@@ -74,23 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/LoginFile.swift"
-            timestampString = "537781359.941133"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "334"
-            endingLineNumber = "334"
-            landmarkName = "accounCreation()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "employee timer/LoginFile.swift"
-            timestampString = "537781359.9413821"
+            timestampString = "537781865.872272"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "337"
@@ -106,11 +90,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/LoginFile.swift"
-            timestampString = "537781359.941641"
+            timestampString = "537781865.872521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "398"
-            endingLineNumber = "398">
+            startingLineNumber = "340"
+            endingLineNumber = "340"
+            landmarkName = "accounCreation()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "employee timer/LoginFile.swift"
+            timestampString = "537781865.872768"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "401"
+            endingLineNumber = "401">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -152,11 +152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/LoginFile.swift"
-            timestampString = "537781359.941829"
+            timestampString = "537781865.872981"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "accounCreation()"
             landmarkType = "7">
          </BreakpointContent>
@@ -168,11 +168,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/LoginFile.swift"
-            timestampString = "537781359.942048"
+            timestampString = "537781865.873229"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -184,11 +184,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/LoginFile.swift"
-            timestampString = "537781359.942263"
+            timestampString = "537781865.8734699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "354"
-            endingLineNumber = "354"
+            startingLineNumber = "357"
+            endingLineNumber = "357"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -200,11 +200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/LoginFile.swift"
-            timestampString = "537781359.942476"
+            timestampString = "537781865.873722"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
+            startingLineNumber = "327"
+            endingLineNumber = "327"
             landmarkName = "accounCreation()"
             landmarkType = "7">
          </BreakpointContent>
@@ -216,11 +216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/LoginFile.swift"
-            timestampString = "537781359.942687"
+            timestampString = "537781865.873966"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "398"
-            endingLineNumber = "398">
+            startingLineNumber = "401"
+            endingLineNumber = "401">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -230,11 +230,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/LoginFile.swift"
-            timestampString = "537781359.942871"
+            timestampString = "537781865.874176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "391"
-            endingLineNumber = "391"
+            startingLineNumber = "394"
+            endingLineNumber = "394"
             landmarkName = "alert1()"
             landmarkType = "7">
             <Locations>
@@ -358,7 +358,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/LoginFile.swift"
-            timestampString = "537781359.943121"
+            timestampString = "537781865.874465"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "185"
@@ -710,7 +710,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/LoginFile.swift"
-            timestampString = "537781359.943485"
+            timestampString = "537781865.87488"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
@@ -726,7 +726,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/LoginFile.swift"
-            timestampString = "537781359.943698"
+            timestampString = "537781865.875128"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "179"
@@ -742,7 +742,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/LoginFile.swift"
-            timestampString = "537781359.943904"
+            timestampString = "537781865.87537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "162"
@@ -758,7 +758,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/LoginFile.swift"
-            timestampString = "537781359.944113"
+            timestampString = "537781865.875607"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "181"
@@ -998,7 +998,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/ViewController.swift"
-            timestampString = "537781359.944442"
+            timestampString = "537781865.875939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "134"
@@ -1062,7 +1062,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/LoginFile.swift"
-            timestampString = "537781359.944513"
+            timestampString = "537781865.876009"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "217"
@@ -1074,11 +1074,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/ViewController.swift"
-            timestampString = "537781359.944719"
+            timestampString = "537781865.876217"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "199"

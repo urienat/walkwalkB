@@ -276,10 +276,13 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         self.keeper.set(self.password.text!, forKey: "passwordKept")
         self.keeper.set(1, forKey: "remember")
         print ("uid\(String(describing: user?.uid))")
-        }//end of if
-        else { self.ipusKeeper()}//end of else
-        
         self.doSegue()
+
+        }//end of if
+        else {
+            self.doSegue()
+            self.ipusKeeper()}//end of else
+        
         }//end of else
         })//end of auth
         }//end of func
