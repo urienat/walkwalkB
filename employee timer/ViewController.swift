@@ -119,7 +119,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBAction func addAccount(_ sender: Any) {
     print ("add")
     arrow.isHidden = true
-    employerToS = "Add new dog"
+    employerToS = "Add Account"
        // if employerIdArray.count > 2 {checkSubs()} else {
             accountClicked()
         
@@ -329,7 +329,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }// end of viewdidload//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    
     override func viewDidAppear(_ animated: Bool) {
-    if ViewController.refresh == true ||  employerToS ==  "Add new dog" {
+    if ViewController.refresh == true ||  employerToS ==  "Add Account" {
     chooseEmployer.sendActions(for: .touchUpInside)
     ViewController.refresh = false
     }

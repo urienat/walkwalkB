@@ -13,28 +13,21 @@ import FirebaseAuth
 
 class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate, MFMailComposeViewControllerDelegate ,MFMessageComposeViewControllerDelegate {
 
+    let dbRef = FIRDatabase.database().reference()
+    let dbRefEmployers = FIRDatabase.database().reference().child("fEmployers")
+    let dbRefcEmployers = FIRDatabase.database().reference().child("cEmployers")
+    let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
+
     let Vimage = UIImage(named: "V")
     let emptyVimage = UIImage(named: "emptyV")
     var perSessionImage = UIImage(named:"perSessionImage")?.withRenderingMode(.alwaysTemplate)
-
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
-
-
-    var messageInstruction = ""
-    var titleInstruction = ""
-
-    var adjuster = 0
-    
-    
-    var wrongField:String?
     
     var message :String?
     var message2 :String?
-    var message3 :String?
     
     var activeEmployerSwitch: Bool?
-    
-    var employerID = ""
+        var employerID = ""
     var EmployerRef = ""
     var lbl = ""
     var employeeID = ""
@@ -46,20 +39,13 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     var employerArray2: [String] = []
     var employerArray3: [String] = []
 
-    let dbRef = FIRDatabase.database().reference()
-    let dbRefEmployers = FIRDatabase.database().reference().child("fEmployers")
-    let dbRefcEmployers = FIRDatabase.database().reference().child("cEmployers")
-    let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
-
-    
     @IBAction func rateObserver(_ sender: Any) {
-        alert6()
+    alert6()
     }
     
     @IBOutlet weak var studentParentNameText: UITextField!
     var studentParentUpdate = ""
-    
-    @IBOutlet weak var studentParentNameLabel: UILabel!
+        @IBOutlet weak var studentParentNameLabel: UILabel!
     
     @IBOutlet weak var scrollerView: UIScrollView!
     
@@ -96,11 +82,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     var RateUpdate = 0.0
     @IBOutlet weak var currencySign: UILabel!
     
-    
     @IBOutlet weak var addressTop: NSLayoutConstraint!
-    
-    
-
     @IBOutlet weak var pRem: UITextField!
     var remUpdate = ""
     
@@ -120,19 +102,17 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     override func viewDidLoad() { ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
-        super.viewDidLoad()
         ViewController.refresh = false
         
         connectivityCheck()
         
         self.dbRef.removeAllObservers()
         
-        
         //keyboard adjustment
         NotificationCenter.default.addObserver(self, selector: #selector(self.KeyboardNotificationwillShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: self.view.window)
         NotificationCenter.default.addObserver(self, selector: #selector(self.KeyboardNotificationwillHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: self.view.window)
         
-        if self.employerFromMain == "Add new dog" {
+        if self.employerFromMain == "Add Account" {
             if ViewController.professionControl == "Tutor" {self.studentParentNameText.text = ""}
             self.lbl = "New Account"
             self.title = lbl
@@ -141,7 +121,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             self.pEmail.text = ""
             self.pCell.text = ""
             self.pAddress.text = ""
-            self.pRate .text = ""
+            self.pRate.text = ""
             self .pRem.text = ""
             activeEmployer.image = Vimage
             activeButton.setTitle("", for: .normal)
@@ -149,8 +129,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             
             trash.isEnabled = false
             obligatory .isHidden = false
-            obligatoryIn()
-            obligatoryOut()
             
         } else {
             self.lbl = ("Profile")
@@ -160,15 +138,10 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             trash.isEnabled = true
             obligatory .isHidden = true
         }
-
-
         pDogImage.clipsToBounds = true
         pDogImage.layer.cornerRadius = 30
         
         let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(checkDuplicate))
-        //let saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(functionQ(handleComplete:saveToDB)))
-
-        //observer
         
         navigationItem.rightBarButtonItem = saveRecord
         
@@ -177,65 +150,53 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         
         if  ViewController.professionControl! == "Tutor" {addressTop.constant = 46.0; studentParentNameText.isHidden = false; studentParentNameLabel.isHidden = false } else {addressTop.constant = 8.0; studentParentNameText.isHidden = true; studentParentNameLabel.isHidden = true }
         
-        
     }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
         deinit {NotificationCenter.default.removeObserver(self) }
 
-        override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        }
-    
-    func checkDuplicate(){
+        func checkDuplicate(){
         employerArray.removeAll()
         employerArray2.removeAll()
         employerArray3.removeAll()
 
         if pRate.text == "" {pRate.text = "0.0"}
-        
+
         if self.pLastName.text == "" || self.pName.text == "" {
         message2 =  "Name & Last name are requiered fields"
         alert54()
         } // end of name or  last name is not filled
-            
+
         self.dbRefEmployees.child(employeeID).queryOrderedByValue().observeSingleEvent(of: .value, with: { (snapshot) in
         self.employerArray = snapshot.childSnapshot(forPath: "myEmployers").value! as! [String:Int]
         self.employerArray2 = Array(self.employerArray.keys) // for Dictionary
-            print (self.employerArray)
-            
-            print (self.employerArray2)
-            
+        print (self.employerArray)
+
+        print (self.employerArray2)
+
 
         for eachEmployer in 0...(self.employerArray2.count-1){
-            self.dbRefEmployers.child(self.employerArray2[eachEmployer]).observeSingleEvent(of: .value, with: { (snapshot) in
+        self.dbRefEmployers.child(self.employerArray2[eachEmployer]).observeSingleEvent(of: .value, with: { (snapshot) in
         let employerNameforCheck = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
         let employerLastNameForCheck = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
-                
-        self.employerArray3.append("\(employerNameforCheck!) \(employerLastNameForCheck!)")
-                print ("1")
 
-                
-                if self.employerArray3.contains("\(self.pName.text!) \(self.pLastName.text!)") && self.lbl == "New Account" ||  self.lbl != "New Account" && self.employerArray3.contains("\(self.pName.text!) \(self.pLastName.text!)") &&  ("\(self.pName.text!) \(self.pLastName.text!)") != ("\(self.nameUpdate) \(self.lastNameUpdate)") {
-            self.message2 = " Can't save account as \(self.pName.text!) \(self.pLastName.text!) account is already set."
-            print("contatain"); self.alert54()
-                }//if contaons
+        self.employerArray3.append("\(employerNameforCheck!) \(employerLastNameForCheck!)")
+        print ("1")
+
+
+        if self.employerArray3.contains("\(self.pName.text!) \(self.pLastName.text!)") && self.lbl == "New Account" ||  self.lbl != "New Account" && self.employerArray3.contains("\(self.pName.text!) \(self.pLastName.text!)") &&  ("\(self.pName.text!) \(self.pLastName.text!)") != ("\(self.nameUpdate) \(self.lastNameUpdate)") {
+        self.message2 = " Can't save account as \(self.pName.text!) \(self.pLastName.text!) account is already set."
+        print("contatain"); self.alert54()
+        }//if contaons
         else {
-            if eachEmployer == self.employerArray2.count-1 {self.saveToDB()}
-                }
+        if eachEmployer == self.employerArray2.count-1 {self.saveToDB()}
+        }
         })
         }//end of loop
         })
-
         }//end of func
 
     
-        
-    
-    
         func saveToDB() {
-            
-        print ("in savetodb)")
-            
         let alertController = UIAlertController(title: ("Save Setting") , message: "Are you Sure?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
         }
@@ -326,21 +287,21 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
     
         //sourcePicker
-            func sourcePicPicker(){
-            let picSource = UIAlertController(title: ("Add Picture") , message: (""), preferredStyle: .alert)
-            let cameraAction = UIAlertAction(title: "Camera", style: .default) { (UIAlertAction) in
-            self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-            self.present(self.imagePicker, animated:  true, completion: nil)
-            }
-            let AlbumAction = UIAlertAction(title: "Album", style: .default) { (UIAlertAction) in
-            self.imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-            self.present(self.imagePicker, animated:  true, completion: nil)
-            }
-    
-            picSource.addAction(AlbumAction)
-            picSource.addAction(cameraAction)
-            self.present(picSource, animated: true, completion: nil)
-            }//end of source picker
+        func sourcePicPicker(){
+        let picSource = UIAlertController(title: ("Add Picture") , message: (""), preferredStyle: .alert)
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (UIAlertAction) in
+        self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+        self.present(self.imagePicker, animated:  true, completion: nil)
+        }
+        let AlbumAction = UIAlertAction(title: "Album", style: .default) { (UIAlertAction) in
+        self.imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        self.present(self.imagePicker, animated:  true, completion: nil)
+        }
+
+        picSource.addAction(AlbumAction)
+        picSource.addAction(cameraAction)
+        self.present(picSource, animated: true, completion: nil)
+        }//end of source picker
     
     
         @IBAction func call(_ sender: Any) {
@@ -361,8 +322,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
         func showSendmailErrorAlert() {
         let sendMailErorrAlert = UIAlertController(title:"Could Not Send Email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.",preferredStyle: .alert)
-        sendMailErorrAlert.message = "jhsgajshgj"
-        //seems that it does not work check!!!!
         }//end of error alert
     
         func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
@@ -372,80 +331,62 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         switch result.rawValue{
         case MessageComposeResult.cancelled.rawValue :
-            print ("message cancelled")
+        print ("message cancelled")
         case MessageComposeResult.failed.rawValue :
-            print ("message failed")
+        print ("message failed")
         case MessageComposeResult.sent.rawValue :
-            print ("message sent")
+        print ("message sent")
         default: break
         }//end of switch
             
         controller.dismiss(animated: true, completion: nil)
         }//end of func message compose
     
-    
-    
         func bringEmployerData() {
         if employerFromMain != "Add new dog" {
         dbRefEmployers.child(self.employerID).child("myEmployees").queryOrderedByKey().queryEqual(toValue: employeeID).observeSingleEvent(of:.childAdded, with: { (snapshot) in
-            
         self.RateUpdate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)
         if self.RateUpdate != 0.0 { self.pRate.text = String(self.RateUpdate)} else {self.pRate.text = ""}
-                
         })//end of dbrefemployers
             
         dbRefEmployers.queryOrderedByKey().queryEqual(toValue: employerID).observeSingleEvent(of: .childAdded, with: { (snapshot) in
         self.nameUpdate = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
         self.lastNameUpdate = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
-            if ViewController.professionControl == "Tutor" { if String(describing: snapshot.childSnapshot(forPath: "fParent").value!) as String! != nil {  self.studentParentUpdate = String(describing: snapshot.childSnapshot(forPath: "fParent").value!) as String!} else {self.studentParentUpdate = ""}}
+        if ViewController.professionControl == "Tutor" { if String(describing: snapshot.childSnapshot(forPath: "fParent").value!) as String! != nil {  self.studentParentUpdate = String(describing: snapshot.childSnapshot(forPath: "fParent").value!) as String!} else {self.studentParentUpdate = ""}}
             
         self.addressUpdate = String(describing: snapshot.childSnapshot(forPath: "fAddress").value!) as String!
         self.cellUpdate = String(describing: snapshot.childSnapshot(forPath: "fCell").value!) as String!
-        
         self.activeEmployerSwitch =  snapshot.childSnapshot(forPath: "fActive").value! as? Bool
         if self.activeEmployerSwitch == true { self.activeEmployer.image = self.Vimage
         self.activeButton.setTitle("", for: .normal)
         self.activeEmployerSwitch = false} else {self.activeEmployer.image = self.emptyVimage
         self.activeButton.setTitle("Inactive", for: .normal)
         self.activeEmployerSwitch = true}
-            
     
         self.emailUpdate = snapshot.childSnapshot(forPath: "fMail").value! as! String //probelm when set on connect it i sdeleted
         self.pEmail.text = self.emailUpdate
-        print("hfghgfh0\(self.cEmployerRef)")
-
       
-    
+    /*
         self.dbRefcEmployers.queryOrderedByKey().queryEqual(toValue:self.cEmployerRef).observeSingleEvent(of: .childAdded, with: { (snapshot) in
-        
         self.pName.text = self.nameUpdate; self.pName.isEnabled = true
-            
-        
         self.pLastName.text = self.lastNameUpdate; self.pLastName.isEnabled = true
-            self.studentParentNameText.text = self.studentParentUpdate;  self.studentParentNameText.isEnabled = true
-        
+        self.studentParentNameText.text = self.studentParentUpdate;  self.studentParentNameText.isEnabled = true
         self.pAddress.text = self.addressUpdate; self.pAddress.isEnabled = true
-        
-       self.pCell.text = self.cellUpdate; self.pCell.isEnabled = true
-            
+        self.pCell.text = self.cellUpdate; self.pCell.isEnabled = true
         //})//end of dbref from dbRefcEmployers.queryOrdered(byChild: "cMail").queryEqual(toValue: "mikaenat@gmail.com")
         })//end of    self.dbRefcEmployers.queryOrderedByKey().queryEqual(toValue:self.cEmployerRef)
-                
+        */
         self.pName.text = self.nameUpdate; self.pName.isEnabled = true
         self.pLastName.text = self.lastNameUpdate; self.pLastName.isEnabled = true
         self.pAddress.text = self.addressUpdate;self.pAddress.isEnabled = true
         self.pCell.text = self.cellUpdate; self.pCell.isEnabled = true
-            self.studentParentNameText.isEnabled = true; self.studentParentNameText.text = self.studentParentUpdate
+        self.studentParentNameText.isEnabled = true; self.studentParentNameText.text = self.studentParentUpdate
         
-            
-            
         self.remUpdate = snapshot.childSnapshot(forPath: "fRem").value as! String
         self.pRem.text = self.remUpdate
         
         self.EmployerRef = self.lastNameUpdate
-
-                
-                
+            
         //bring image
         if let cachedImage = MyImageCache.sharedCache.object(forKey: self.employerID as AnyObject) as? UIImage //bring from cache
         { DispatchQueue.main.async {
@@ -480,8 +421,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         func KeyboardNotificationwillShow(notification: NSNotification){
         if pRate .isEditing || pRem.isEditing
         {UIView.animate(withDuration: 0.8, animations: {Void in
-
-        //   scroller
         self.scrollerView.contentOffset.y = 150
         })
         }
@@ -493,6 +432,21 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         })
         }//end of willhide
     
+        //validation
+        func isValidEmail(testStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
+        }
+        //phone Validation
+        func validate(value: String) -> Bool {
+        let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        let result =  phoneTest.evaluate(with: value)
+        return result
+        }
+    
+        ///////////////////////////////////////////////////////////////////////////////////////////////////alerts
         //delete a dog alert
         func dogDeleteAlert () {
         let alertController3 = UIAlertController(title: ("Delete") , message: ("This would delete your access to this account's information including master data and sessions. Are You sure?"), preferredStyle: .alert)
@@ -511,71 +465,28 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         present(alertController3, animated: true, completion: nil)
         }//delete dog alert end
     
-    
-        //validation
-        func isValidEmail(testStr:String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: testStr)
-        }
-        //phone Validation
-        func validate(value: String) -> Bool {
-        let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
-        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
-        let result =  phoneTest.evaluate(with: value)
-        return result
-        }
-    
-    
-        
-    
-        func obligatoryIn(){
-        UIView.animate(withDuration: 0.3, animations: {
-        self.obligatory.transform = CGAffineTransform(scaleX: 0.5, y: 0.9)
-        })
-        }
-    
-        // Fade In Buttons
-        func obligatoryOut(){
-        UIView.animate(withDuration: 2.3,delay: 0.3, animations: {
-        self.obligatory.transform = .identity// CGAffineTransformIdentity
-        })
-        }
-    
-    
-    
-        ///////////////////////////////////////////////////////////////////////////////////////////////////alerts
-    
-        // alert6
+    // alert6
         func alert6 () {
         let alertCotroller6 = UIAlertController(title: ("Rate change") , message: ("If there are \(employerFromMain)'s session not yet billed, new rate would affect it."), preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK. I am aware.", style: .default) { (UIAlertAction) in
             self.navigationItem.rightBarButtonItem?.isEnabled = true
-
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
         self.navigationItem.rightBarButtonItem?.isEnabled = true
-
         self.navigationController!.popViewController(animated: true)
         }
         alertCotroller6.addAction(okAction)
         alertCotroller6.addAction(cancelAction)
-
         present(alertCotroller6, animated: true, completion: nil)
         }//alert end
-    
-        
-    
     
         func alert54(){
         let alertController54 = UIAlertController(title: ("Save error") , message: message2, preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-            
-        }
+                    }
         alertController54.addAction(OKAction)
         self.present(alertController54, animated: true, completion: nil)
         }
-
 
         //mail export
         func alert () {
