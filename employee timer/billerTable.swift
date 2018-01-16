@@ -417,6 +417,7 @@ print (self.billItems.count)
             billItems.removeAll()
             BillArray.removeAll()
             BillArrayStatus.removeAll()
+            filterItem.isEnabled = false
                 
             self.billCounter = 0
             self.taxCounter = 0
@@ -433,19 +434,29 @@ print (self.billItems.count)
             self.recordMonth = components.month!
             self.recordYear = components.year!
             
-            let components2 = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillStatusDate!)!)
-            self.recordMonthCancelled = components2.month!
-            self.recordYearCancelled = components2.year!
                 
                 if billItem.fBillStatus != "Cancelled" {
             if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle {
             self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += (Double(billItem.fBillTotalTotal!)!); self.taxCounter += Double(billItem.fBillTax!)!};   self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
             }// end of != cancelled
                 else {
-                    if self.recordMonthCancelled == self.monthToHandle && self.recordYearCancelled == self.yearToHandle {
-                        self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += (Double(billItem.fBillTotalTotal!)!); self.taxCounter += Double(billItem.fBillTax!)!};   self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
-                }
+                    let components2 = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillStatusDate!)!)
+                    self.recordMonthCancelled = components2.month!
+                    self.recordYearCancelled = components2.year!
+                    
+                    if self.recordMonthCancelled == self.monthToHandle && self.recordYearCancelled == self.yearToHandle  {
+                        self.billItems.append(billItem); self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
+                        if self.recordMonthCancelled == self.recordMonth && self.recordYearCancelled == self.recordYear {
+                         //do nothing
+                        } else {//
+                        self.AmountCounter -= (Double(billItem.fBillTotalTotal!)!); self.taxCounter -= Double(billItem.fBillTax!)!//self.billCounter+=1;
+                        }}
+                        if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle {
+                        self.billItems.append(billItem); self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
+                        self.AmountCounter += (Double(billItem.fBillTotalTotal!)!); self.taxCounter += Double(billItem.fBillTax!)!//self.billCounter+=1;
+                        }
                 
+                }//end of else
                 
                 
                 if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
