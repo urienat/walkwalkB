@@ -16,28 +16,26 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
 
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     let mydateFormat5 = DateFormatter()
-    
-    // facebooklogin variables
-    let loginButton =  FBSDKLoginButton()
-    static var provider = "normal"
-    
-    // Googlelogin variables
-    let loginButton2 =  GIDSignInButton()
-
+    let Vimage = UIImage(named: "V")
+    let nonVimage = UIImage(named: "emptyV")
     
     //facebook & google
+    let loginButton =  FBSDKLoginButton()// facebooklogin variables
+    let loginButton2 =  GIDSignInButton()    // Googlelogin variables
+    static var provider = "normal"
     var fbNname = ""
     var fbLastName = ""
     var fbEmail = ""
     static var userFromGoole : GIDGoogleUser?
+    
     static var employeeRef2 = "" {
     didSet {    //called when employeeref2 changed
     print("changed")
     }
     }
     
-    var pickedImage:UIImage?
-    let picture = UIImage(named: "perSessionImage")
+        var pickedImage:UIImage?
+        let picture = UIImage(named: "perSessionImage")
     
         //facebook functions
         func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
@@ -90,56 +88,47 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         })//end of firauth
         }//end fbsdkrequest
         }//end of else
-
         }//end of func login button
 
-    var textForError:String?
-    var employeeRefUpdate:String?
+        var textForError:String?
+        var employeeRefUpdate:String?
 
-    let Vimage = UIImage(named: "V")
-    let nonVimage = UIImage(named: "emptyV")
-    
-    var cu = Locale.current.currencySymbol
-    static var logoutchosen:Bool = false
+    static var logoutchosen = false
     static var userForCreate = ""
     static var passwordForCreate = ""
-    
-    //regulaer login
+    var cu = Locale.current.currencySymbol
 
+    //regulaer login
+    @IBOutlet weak var dog: UIImageView!
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
     //Keeper variables
     let keeper = UserDefaults.standard
     var checkBox : Bool?
     var rememberMe:Int?
-    //var userEmail:String! = nil
     var userEmail:String?
-
     var userPassword:String! = nil
 
     @IBOutlet weak var check: UIButton! // section for rememberme check
     @IBAction func checkBox(_ sender: Any) {
-        
     if checkBox! == true {check.setImage(Vimage, for: .normal)
     checkBox = false
     keeper.set(1, forKey: "remember")
     rememberMe = 1
-    UserDefaults.standard.synchronize()
-    } else  {check.setImage(nonVimage, for: .normal)
-    self.checkBox = true
-    rememberMe = 0
+    //UserDefaults.standard.synchronize()
+    } else  {
     self.ipusKeeper()
-    UserDefaults.standard.synchronize()
+    //UserDefaults.standard.synchronize()
     }//end of else
     }//end of action checkbox
     
-    @IBOutlet weak var dog: UIImageView!
-    @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var password: UITextField!
+   
     
     @IBAction func forgot(_ sender: Any) {  //section for forgot or change password
     userEmail = email.text
     FIRAuth.auth()?.sendPasswordReset(withEmail: userEmail!) { (error) in
     if error != nil { print ("erorrr!!!!")
-        if self.email.text == "" {self.textForError = "Sorry. Missing email - please fill email."} else {self.textForError = "Sorry. This email is not registered as valid in our records"};self.alert2()
+    if self.email.text == "" {self.textForError = "Sorry. Missing email - please fill email."} else {self.textForError = "Sorry. This email is not registered as valid in our records"};self.alert2()
     } else {
     self.alert1()}
     }
@@ -173,8 +162,6 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     override func viewDidLoad() {
-       print ("11")
-        
         connectivityCheck()
         
         dog.clipsToBounds = true
@@ -189,77 +176,53 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         
         //google login setting
         GIDSignIn.sharedInstance().uiDelegate = self
-        print (GIDSignIn.sharedInstance().currentUser)
-        
         view.addSubview(loginButton2)
         loginButton2.frame = CGRect(x: view.frame.width/2-104, y: 50, width: 208, height: 45)
-        
-        
         if GIDSignIn.sharedInstance().currentUser != nil  {
-        //GIDSignIn.sharedInstance().signInSilently()
-        //  GIDSignIn.sharedInstance().signIn()
-
         thinking.startAnimating()
         print (GIDSignIn.sharedInstance().currentUser)
         inFireBase()
         } else {
         print (GIDSignIn.sharedInstance().currentUser)
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() ) {
+        if AccessToken.current != nil {        LoginFile.provider = "Google"
+        self.doSegue()
+        }//end of if
+        }//end of dispatch
 
         //Facebook login setting
         view.addSubview(loginButton)
         loginButton.frame = CGRect(x: view.frame.width/2-100, y: 107, width: 200, height: 45)
         loginButton.delegate = self
         loginButton.readPermissions = ["email","public_profile"]
-        
-        super.viewDidLoad()
-
-        if keeper.integer(forKey: "remember") != 1 {rememberMe = 0 } else { rememberMe = keeper.integer(forKey: "remember")}
-      
-        if rememberMe == 1 {
-        check.setImage(Vimage, for: .normal)
-        checkBox = false
-        let savedUser = keeper.string(forKey: "userKept")
-        let savedPassword = keeper.string(forKey: "passwordKept")
-        if savedUser == nil || savedUser == "" {check.setImage(nonVimage, for: .normal)
-        rememberMe = 0
-        self.checkBox = true
-        forgot.isEnabled = false
-        }//end of if
-        email.text = savedUser
-        password.text = savedPassword
-        if LoginFile.logoutchosen == true {
-        LoginFile.provider = "normal"
-        print ("quickin")
-        }
-        } else {
-        check.setImage(nonVimage, for: .normal)
-        rememberMe = 0
-        self.checkBox = true
-        }//end of else
-        
-        print("rememberMe:\(rememberMe!)")
-        
-        if LoginFile.userForCreate != ""{ email.text = LoginFile.userForCreate; password.text = LoginFile.passwordForCreate; LoginFile.userForCreate = "";LoginFile.passwordForCreate = ""} else {LoginFile.userForCreate = "";LoginFile.passwordForCreate = ""}
-        
-        //self.email.addTarget(self, action: #selector(checkIntial), for: .allEditingEvents )
-       // self.password.addTarget(self, action: #selector(checkIntial), for: .allEditingEvents)
-
-        logoutGeneral()
-        
         DispatchQueue.main.asyncAfter(deadline: .now() ) {
         if FBSDKAccessToken.current() != nil {        LoginFile.provider = "facebook"
         self.doSegue()
         }//end of if
         }//end of dispatch
         
-        DispatchQueue.main.asyncAfter(deadline: .now() ) {
-        print (AccessToken.current as Any)
         
-        if AccessToken.current != nil {        LoginFile.provider = "Google"
-        self.doSegue()
+        if keeper.integer(forKey: "remember") != 1 {rememberMe = 0 } else { rememberMe = keeper.integer(forKey: "remember")}
+        if rememberMe == 1 {
+        check.setImage(Vimage, for: .normal)
+        checkBox = false
+        let savedUser = keeper.string(forKey: "userKept")
+        let savedPassword = keeper.string(forKey: "passwordKept")
+        if savedUser == nil || savedUser == "" {ipusKeeper()
         }//end of if
-        }//end of dispatch
+        email.text = savedUser
+        password.text = savedPassword
+            print (LoginFile.logoutchosen)
+            
+        if LoginFile.logoutchosen == true {
+        //do nothing
+        } else {signInProcess() }
+        } else {
+        ipusKeeper()
+        }//end of else
+        
+        if LoginFile.userForCreate != ""{ email.text = LoginFile.userForCreate; password.text = LoginFile.passwordForCreate; LoginFile.userForCreate = "";LoginFile.passwordForCreate = ""} else {LoginFile.userForCreate = "";LoginFile.passwordForCreate = ""}
         
         thinking.hidesWhenStopped = true
         
@@ -267,9 +230,9 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
    
         //keyboard hide
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            email.resignFirstResponder()
-            password.resignFirstResponder()
-            return true}
+        email.resignFirstResponder()
+        password.resignFirstResponder()
+        return true}
     
     
         func signInProcess() {
@@ -325,6 +288,12 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         self.keeper.set("", forKey: "userKept")
         self.keeper.set("", forKey: "passwordKept")
         self.keeper.set(0, forKey: "remember")
+        email.text = nil
+        password.text = nil
+        rememberMe = 0
+        check.setImage(nonVimage, for: .normal)
+        self.checkBox = true
+        rememberMe = 0
         }
     
         //google signin
@@ -396,12 +365,12 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         print ("logout from facebook")
             
         let firebaseAuth = FIRAuth.auth()
-        do {try firebaseAuth?.signOut();            print ("logout from Google")
+        do {try firebaseAuth?.signOut();            print ("logout from firebase")
         } catch let signOutError as NSError {
         print ("Error signing out: %@", signOutError)
         }
-        GIDSignIn.sharedInstance().signOut()
-            LoginFile.logoutchosen = false
+            GIDSignIn.sharedInstance().signOut();  print ("logout from google")
+            //LoginFile.logoutchosen = false
         }//end of if
         }
     //alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

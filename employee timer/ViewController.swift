@@ -195,6 +195,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBAction func logoutBtn(_ sender: Any) {
     sideMenuMovement()
     LoginFile.logoutchosen = true
+        print (LoginFile.logoutchosen)
+
     try! FIRAuth.auth()?.signOut()
 
     self.present((storyboard?.instantiateViewController(withIdentifier: "loginScreen"))!, animated: true, completion: nil)
