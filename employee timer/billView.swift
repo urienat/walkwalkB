@@ -443,6 +443,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
 
         extension UIViewController{
     
+
+            
         func connectivityCheck(){
         if Reachability.isConnectedToNetwork() == true
         {print("Internet Connection Available!");

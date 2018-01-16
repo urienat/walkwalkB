@@ -176,6 +176,9 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         logoutGeneral()
         
         //set the buttons
+        signIn.layer.cornerRadius =  2
+        signIn.layoutIfNeeded()
+
         GIDSignIn.sharedInstance().uiDelegate = self
         view.addSubview(loginButton2)
         loginButton2.frame = CGRect(x: view.frame.width/2-104, y: 50, width: 208, height: 45)
@@ -192,7 +195,6 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
                 LoginFile.provider = "facebook"
                 print (LoginFile.provider)
                 self.doSegue()
-                //inFireBase()
             }//end of if
         }//end of dispatch
         
@@ -214,7 +216,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
                 //do nothing
             } else  {signInProcess() }
         } else{check.setImage(nonVimage, for: .normal)
-            checkBox = false}
+            checkBox = true}
         print(FBSDKAccessToken.current())
         
         if FBSDKAccessToken.current() == nil {

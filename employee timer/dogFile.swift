@@ -106,8 +106,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         
         connectivityCheck()
         
-        self.dbRef.removeAllObservers()
-        
+ 
         //keyboard adjustment
         NotificationCenter.default.addObserver(self, selector: #selector(self.KeyboardNotificationwillShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: self.view.window)
         NotificationCenter.default.addObserver(self, selector: #selector(self.KeyboardNotificationwillHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: self.view.window)
