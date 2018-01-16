@@ -426,6 +426,7 @@ print (self.billItems.count)
             let billItem = billStruct()
             billItem.setValuesForKeys(dictionary)
 
+            if
             let components = self.calendar.dateComponents([.year, .month, .day, .weekOfYear,.yearForWeekOfYear], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
             self.recordMonth = components.month!
             self.recordYear = components.year!
