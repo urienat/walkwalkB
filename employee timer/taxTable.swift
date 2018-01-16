@@ -75,66 +75,66 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var filterBG: UIView!
     
-        @IBAction func noneBtn(_ sender: Any) {
-        self.title = "Tax"
-        filterDecided = 0
-        fetchBills()
-        filterImageConstrain.constant = 20
-        btnFilter.setImage (greenFilter, for: .normal)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-        self.filterMovement(delay: 1.3)
-        }
-        }
+            @IBAction func noneBtn(_ sender: Any) {
+            self.title = "Tax"
+            filterDecided = 0
+            fetchBills()
+            filterImageConstrain.constant = 20
+            btnFilter.setImage (greenFilter, for: .normal)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            self.filterMovement(delay: 1.3)
+            }
+            }
 
-        @IBAction func currentMonthBtn(_ sender: Any) {
-        monther(monthNumber: currentMonth)
-        self.title = "Tax: \(monthMMM!)-\(self.currentYear)"
+            @IBAction func currentMonthBtn(_ sender: Any) {
+            monther(monthNumber: currentMonth)
+            self.title = "Tax: \(monthMMM!)-\(self.currentYear)"
 
-        filterDecided = 1
-        fetchBills()
-        filterImageConstrain.constant = 60
-        filterChoiceImage.reloadInputViews()
-        btnFilter.setImage (redFilter, for: .normal)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-        self.filterMovement(delay: 1.3)
-        }
-        }
+            filterDecided = 1
+            fetchBills()
+            filterImageConstrain.constant = 60
+            filterChoiceImage.reloadInputViews()
+            btnFilter.setImage (redFilter, for: .normal)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            self.filterMovement(delay: 1.3)
+            }
+            }
 
-        @IBAction func lastMonthBtn(_ sender: Any) {
+            @IBAction func lastMonthBtn(_ sender: Any) {
 
-        if currentMonth == 1 {self.title = "Tax: Dec-\(self.currentYear-1)" } else  {monther(monthNumber: currentMonth-1);self.title = "Tax: \(monthMMM!)-\(self.currentYear)"}
+            if currentMonth == 1 {self.title = "Tax: Dec-\(self.currentYear-1)" } else  {monther(monthNumber: currentMonth-1);self.title = "Tax: \(monthMMM!)-\(self.currentYear)"}
 
-        filterImageConstrain.constant = 100
-        filterDecided = 2
-        fetchBills()
-        btnFilter.setImage (redFilter, for: .normal)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-        self.filterMovement(delay: 1.3)
-        }
-        }
+            filterImageConstrain.constant = 100
+            filterDecided = 2
+            fetchBills()
+            btnFilter.setImage (redFilter, for: .normal)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            self.filterMovement(delay: 1.3)
+            }
+            }
 
-        @IBAction func currentYearBtn(_ sender: Any) {
-        self.title = "Tax: \(self.currentYear)"
+            @IBAction func currentYearBtn(_ sender: Any) {
+            self.title = "Tax: \(self.currentYear)"
 
-        filterImageConstrain.constant = 140
-        filterDecided = 3
-        fetchBills()
-        btnFilter.setImage (redFilter, for: .normal)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-        self.filterMovement(delay: 1.3)
-        }
-        }
+            filterImageConstrain.constant = 140
+            filterDecided = 3
+            fetchBills()
+            btnFilter.setImage (redFilter, for: .normal)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            self.filterMovement(delay: 1.3)
+            }
+            }
 
-        @IBAction func lastYearBtn(_ sender: Any) {
-        self.title = "Tax: \(self.currentYear-1)"
-        filterImageConstrain.constant = 180
-        filterDecided = 4
-        fetchBills()
-        btnFilter.setImage (redFilter, for: .normal)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-        self.filterMovement(delay: 1.3)
-        }
-        }
+            @IBAction func lastYearBtn(_ sender: Any) {
+            self.title = "Tax: \(self.currentYear-1)"
+            filterImageConstrain.constant = 180
+            filterDecided = 4
+            fetchBills()
+            btnFilter.setImage (redFilter, for: .normal)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            self.filterMovement(delay: 1.3)
+            }
+            }
 
     //variablesfrom main
     var employerID = ""
@@ -171,9 +171,12 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         
         //formatting decimal
         let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 1
+        //formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
         formatter.roundingMode = .up
+        formatter.minimumFractionDigits = 2
+        formatter.numberStyle = .currencyAccounting
+        
         
         //Date
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
