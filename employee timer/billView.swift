@@ -178,7 +178,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             print ((String("-\(self.documentCounter!)"))!)
 
             self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).updateChildValues(["fBillStatus": "Billed", "fBillStatusDate":
-            self.mydateFormat5.string(from:Date()),"fPaymentReference":"" ,"fRecieptDate":"","fBillRecieptMailSaver":""
+            "","fPaymentReference":"" ,"fRecieptDate":"","fBillRecieptMailSaver":""
             ], withCompletionBlock: { (error) in}) //end of update.
 
 
@@ -398,7 +398,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         //nothing
         }
         let deleteAction = UIAlertAction(title: "Delete it.", style: .default) { (UIAlertAction) in
-        self.dbRefEmployee.child(self.employeeID).child("myBills").child(String(self.billToHandle)).updateChildValues([ "fBillStatus":"Cancelled"])
+            self.dbRefEmployee.child(self.employeeID).child("myBills").child(String(self.billToHandle)).updateChildValues([ "fBillStatus":"Cancelled","fBillStatusDate": self.mydateFormat5.string(from: Date())])
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
 
