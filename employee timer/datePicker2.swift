@@ -215,7 +215,7 @@ class datePicker2: UIViewController {
         
         if ViewController.taxOption == "No" {self.taxForSpecial = "Fill amount" } else {self.taxForSpecial = "Fill amount aligned with your taxation approach ( rate with tax included or excluded)." }
         
-        textForSpecial.text = "Add an item with a short description to the billing  process. \(String(describing: taxForSpecial))"
+        textForSpecial.text = "Add an item with a short description to the billing  process. \(String(describing: taxForSpecial!))"
  
     } ///end of did load/////////////////////////////////////////////////////////////////////////////////////////////////////
     

@@ -30,8 +30,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     static var dateTimeFormat:String!
     static var refresh:Bool? = false
     static var sessionPusher:Bool?
-    static  var professionControl: String?
-    
+    static var professionControl: String?
+    static var calanderOption: String?
+    static var taxOption : String?
+
     var RateUpdate = 0.0
     var newRegister = ""
     var alive:Bool?
@@ -75,8 +77,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var dOut = ""
     var methood = "Normal"
     var pickerlabel =  UILabel.self
-    static var calanderOption: String?
-    static var taxOption : String?
     
     @IBOutlet weak var thinking2: UIActivityIndicatorView!
     @IBOutlet weak var employerList: UITableView!
