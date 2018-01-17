@@ -267,7 +267,11 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         override func viewDidAppear(_ animated: Bool) {
         firebaseConnectivity()
             
-            if taxBillsToHandle == false {fetchBills(); StatusChosen.isHidden = false} else {monther(monthNumber: monthToHandle); billsForTaxMonth();StatusChosen.isHidden = true;titleLbl = "\(monthMMM!)-\(yearToHandle)";self.title = titleLbl}
+            if taxBillsToHandle == false {
+                
+                fetchBills(); StatusChosen.isHidden = false} else {filterDecided = 7 ;monther(monthNumber: monthToHandle);
+                
+                billsForTaxMonth();StatusChosen.isHidden = true;titleLbl = "\(monthMMM!)-\(yearToHandle)";self.title = titleLbl}
         print (billItems.count)
         billerConnect.reloadData()
         }//view did appear end
@@ -336,10 +340,13 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
             
+            
         if (segue.identifier == "billHandler")
         {
         var billRow : IndexPath = self.billerConnect.indexPathForSelectedRow!
-        print (billRow)
+        print (billRow.row)
+        print (BillArray)
+            
         let billManager = segue.destination as? billView
         print ("presparesegue")
         billManager?.billToHandle = "-"+String(BillArray[billRow.row])
@@ -457,16 +464,19 @@ print (self.billItems.count)
             let components = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
             self.recordMonth = components.month!
             self.recordYear = components.year!
-            
                 
+                if billItem.fBillStatusDate != nil {
+             let components2 = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillStatusDate!)!)
+                self.recordMonthCancelled = components2.month!
+                self.recordYearCancelled = components2.year! }
+                
+                func inFilter(){
                 if billItem.fBillStatus != "Cancelled" {
-            if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle {
-            self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += (Double(billItem.fBillTotalTotal!)!); self.taxCounter += Double(billItem.fBillTax!)!};   self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
+                    if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle {self.BillArray.append(billItem.fBill!);
+                self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += (Double(billItem.fBillTotalTotal!)!); self.taxCounter += Double(billItem.fBillTax!)! ;self.BillArrayStatus.append(billItem.fBillStatus!)}
             }// end of != cancelled
                 else {
-                    let components2 = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillStatusDate!)!)
-                    self.recordMonthCancelled = components2.month!
-                    self.recordYearCancelled = components2.year!
+                    
                     
                     if self.recordMonthCancelled == self.monthToHandle && self.recordYearCancelled == self.yearToHandle  {
                         self.billItems.append(billItem); self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
@@ -480,6 +490,13 @@ print (self.billItems.count)
                         }
                 
                 }//end of else
+                }//end of infilter
+               
+                switch self.filterDecided {
+                case 7: if self.monthToHandle == self.recordMonth && self.yearToHandle == self.recordYear  || self.monthToHandle == self.recordMonthCancelled && self.yearToHandle == self.recordYearCancelled {inFilter()}
+
+                default: inFilter()
+                } //end of switch
                 
                 
                 if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
