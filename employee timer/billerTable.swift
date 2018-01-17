@@ -424,7 +424,8 @@ print (self.billItems.count)
             
         self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
         self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
-        self.totalTax.text = "Tax \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
+        if ViewController.taxOption == "Yes"{ self.totalTax.text = "* Total included tax"} else { self.totalTax.text = "* Cancelled bills excluded"}
+            
         self.billerConnect.reloadData()
         }//end of if let dic
         })//end of dbref
@@ -484,10 +485,12 @@ print (self.billItems.count)
                         if self.recordMonthCancelled == self.recordMonth && self.recordYearCancelled == self.recordYear {
                          //do nothing
                         } else {//
-                        self.AmountCounter -= (Double(billItem.fBillTotalTotal!)!); self.taxCounter -= Double(billItem.fBillTax!)!//self.billCounter+=1;
+                        //self.AmountCounter -= (Double(billItem.fBillTotalTotal!)!);
+                            self.taxCounter -= Double(billItem.fBillTax!)!//self.billCounter+=1;
                         }} else if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle { if  self.recordMonth != self.recordMonthCancelled  || self.recordYear != self.recordYearCancelled{
                         self.billItems.append(billItem); self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
-                        self.AmountCounter += (Double(billItem.fBillTotalTotal!)!); self.taxCounter += Double(billItem.fBillTax!)!}//self.billCounter+=1;
+                       // self.AmountCounter += (Double(billItem.fBillTotalTotal!)!);
+                        self.taxCounter += Double(billItem.fBillTax!)!}//self.billCounter+=1;
                         }
                 
                 }//end of else
