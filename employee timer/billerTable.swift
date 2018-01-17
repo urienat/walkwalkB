@@ -302,16 +302,13 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         self.recordYearCancelled = components2.year!
             print (billItem.fBill,recordMonth,recordMonthCancelled,monthToHandle)
             
-        if self.recordMonthCancelled == self.monthToHandle && self.recordYearCancelled == self.yearToHandle  {
-        if self.recordMonthCancelled == self.recordMonth && self.recordYearCancelled == self.recordYear {
-        cell.l3.text = "0"
-        } else {cell.l3.text = "-\(billItem.fBillTax!)"
-        }}
-        if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle {
-        cell.l3.text = (billItem.fBillTax!)
-        }
-        }
-            
+            if self.recordMonthCancelled == self.recordMonth && self.recordYearCancelled == self.recordYear {
+            cell.l3.text = "0"
+            } else  if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle {
+            cell.l3.text = (billItem.fBillTax!)
+            } else {cell.l3.text = "-\(billItem.fBillTax!)"}
+            }//end of cancelled
+
         cell.l4.text  = billItem.fBillCurrency!
            
             if taxBillsToHandle == false {cell.l6.text = "#\(billItem.fBill!) - \(mydateFormat10.string(from: mydateFormat5.date(from: billItem.fBillDate!)!))"} else {
