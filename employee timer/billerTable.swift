@@ -202,7 +202,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
 
     let mydateFormat5 = DateFormatter()
     let mydateFormat10 = DateFormatter()
-
+    let mydateFormat12 = DateFormatter()
+    
     let dbRef = FIRDatabase.database().reference().child("fRecords")
     let dbRefEmployers = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
@@ -244,6 +245,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         //Date
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
+        mydateFormat12.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy", options: 0, locale: Locale.autoupdatingCurrent)!
+
         let today = calendar.dateComponents([.year, .month, .day, .weekOfYear, .yearForWeekOfYear], from: Date())
         currentMonth = today.month!
         currentYear = today.year!
@@ -282,14 +285,38 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         let cell = billerConnect.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! billerCell
         let billItem = billItems[indexPath.row]
         cell.backgroundColor = UIColor.clear
-        cell.l1.text = ("\(billItem.fBillEmployerName!) - \(billItem.fBillEvents!) ses. ")
+            if taxBillsToHandle == false {cell.l1.text = ("\(billItem.fBillEmployerName!) - \(billItem.fBillEvents!) ses. ") } else {
+            cell.l1.text = ("#\(billItem.fBill!) - \(billItem.fBillEmployerName!)")}
         print ("fuf\(billItem.fBillTotalTotal!)" )
         print ("fuf2\(billItem.fBillTotalTotal!)" )
-        
-        if billItem.fBillTotalTotal != "" {cell.l3.text = billItem.fBillTotalTotal} else {cell.l3.text = billItem.fBillSum}
+            if taxBillsToHandle == false {
+                if billItem.fBillTotalTotal != "" {cell.l3.text = billItem.fBillTotalTotal} else {cell.l3.text = billItem.fBillSum} } else{
+                cell.l3.text = billItem.fBillTax}
+       
+        if billItem.fBillStatus == "Cancelled"{
+        let components3 = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
+        self.recordMonth = components3.month!
+        self.recordYear = components3.year!
+        let components2 = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillStatusDate!)!)
+        self.recordMonthCancelled = components2.month!
+        self.recordYearCancelled = components2.year!
+            print (billItem.fBill,recordMonth,recordMonthCancelled,monthToHandle)
+            
+        if self.recordMonthCancelled == self.monthToHandle && self.recordYearCancelled == self.yearToHandle  {
+        if self.recordMonthCancelled == self.recordMonth && self.recordYearCancelled == self.recordYear {
+        cell.l3.text = "0"
+        } else {cell.l3.text = "-\(billItem.fBillTax!)"
+        }}
+        if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle {
+        cell.l3.text = (billItem.fBillTax!)
+        }
+        }
+            
         cell.l4.text  = billItem.fBillCurrency!
-            cell.l6.text = "#\(billItem.fBill!) - \(mydateFormat10.string(from: mydateFormat5.date(from: billItem.fBillDate!)!))"
-        
+           
+            if taxBillsToHandle == false {cell.l6.text = "#\(billItem.fBill!) - \(mydateFormat10.string(from: mydateFormat5.date(from: billItem.fBillDate!)!))"} else {
+                if billItem.fBillStatus == "Cancelled" {cell.l6.text = "\(mydateFormat10.string(from: mydateFormat5.date(from: billItem.fBillDate!)!))- cancelled:\(mydateFormat12.string(from: mydateFormat5.date(from: billItem.fBillStatusDate!)!))"} else {cell.l6.text = "\(mydateFormat10.string(from: self.mydateFormat5.date(from: billItem.fBillDate!)!))" }}
+
         print("fbillstatus\(billItem.fBillStatus!)")
         
         if billItem.fBillStatus! == "Billed" { cell.approval.setImage(billDocument, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
@@ -352,7 +379,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         let billItem = billStruct()
         billItem.setValuesForKeys(dictionary)
             
-            let components = self.calendar.dateComponents([.year, .month, .day, .weekOfYear,.yearForWeekOfYear], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
+            let components = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
             self.recordMonth = components.month!
             self.recordYear = components.year!
             print (self.recordMonth-1,self.recordYear-1)

@@ -258,7 +258,6 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         { let billTaxManager = segue.destination as? biller
         print ("presparesegue")
         print (arrayOfMonths[(taxMonthRow?.row)!])
-            
         let components = self.calendar.dateComponents([.year, .month], from: (mydateFormat20.date(from: (arrayOfMonths[(taxMonthRow?.row)!])))!)
         self.taxMonth =   components.month!
         self.taxYear = components.year!
