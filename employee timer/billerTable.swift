@@ -499,10 +499,11 @@ print (self.billItems.count)
                 } //end of switch
                 
                 
-                if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
-            self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
-            self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
-            self.totalTax.text = "Tax \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
+            if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
+            //self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
+            //self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
+                self.totalAmount.text = "Total Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
+            //self.totalTax.text = "Tax \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
             self.billerConnect.reloadData()
             }//end of if let dic
             })//end of dbref

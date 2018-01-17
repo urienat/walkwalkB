@@ -2257,7 +2257,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fgv-lZ-OY1">
-                                <rect key="frame" x="0.0" y="98" width="320" height="398"/>
+                                <rect key="frame" x="0.0" y="98" width="320" height="354"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="billerId" id="oUk-dv-frm" customClass="billerCell" customModule="perSession" customModuleProvider="target">
@@ -2340,7 +2340,7 @@
                                 </prototypes>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PrW-i7-IuZ">
-                                <rect key="frame" x="0.0" y="508" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="464" width="320" height="60"/>
                                 <color key="backgroundColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="NWC-gi-XYE"/>
@@ -2373,7 +2373,7 @@
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tR9-cS-rER" userLabel="totalBG">
-                                <rect key="frame" x="0.0" y="508" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="464" width="320" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ILg-rw-WUw" userLabel="totalBills">
                                         <rect key="frame" x="8" y="4" width="150" height="25"/>
@@ -2386,9 +2386,8 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="RwY-u5-Vpk" userLabel="totalAmount">
-                                        <rect key="frame" x="166" y="10" width="150" height="40"/>
+                                        <rect key="frame" x="302" y="10" width="14" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="42G-6B-sY0"/>
                                             <constraint firstAttribute="height" constant="40" id="uCJ-iO-QJc"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2418,11 +2417,11 @@
                                 </constraints>
                             </view>
                             <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOU-wI-y5F" userLabel="blackView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="328"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFF-pl-qqA" userLabel="filterView">
-                                <rect key="frame" x="0.0" y="328" width="320" height="240"/>
+                                <rect key="frame" x="0.0" y="284" width="320" height="240"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42o-9O-q03">
                                         <rect key="frame" x="8" y="20" width="304" height="40"/>
@@ -3090,7 +3089,7 @@
                                 </items>
                             </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ka5-D8-Si7">
-                                <rect key="frame" x="0.0" y="508" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="464" width="320" height="60"/>
                                 <color key="backgroundColor" red="0.2145790309" green="0.45587304229999998" blue="0.84711945060000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="oq5-oC-ito"/>
@@ -3110,7 +3109,7 @@
                                 </items>
                             </toolbar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pGt-z5-fAP">
-                                <rect key="frame" x="16" y="114" width="288" height="363"/>
+                                <rect key="frame" x="16" y="114" width="288" height="319"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82B-Jq-qRO">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="1100"/>
@@ -3230,7 +3229,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ZTZ-X7-hlv">
-                                                    <rect key="frame" x="8" y="8" width="0.0" height="25"/>
+                                                    <rect key="frame" x="8" y="22" width="0.0" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="F3w-4d-Qhz"/>
                                                     </constraints>
@@ -3238,7 +3237,7 @@
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="IHg-NP-BO1" userLabel="L2">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="IHg-NP-BO1" userLabel="L2">
                                                     <rect key="frame" x="8" y="37" width="0.0" height="21.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="TfD-4M-JOH"/>
@@ -3257,7 +3256,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="X3j-OC-Wq5" userLabel="l3">
-                                                    <rect key="frame" x="312" y="8" width="0.0" height="25.5"/>
+                                                    <rect key="frame" x="312" y="22" width="0.0" height="25.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="mKE-xk-IIz"/>
                                                     </constraints>
@@ -3269,11 +3268,10 @@
                                             <constraints>
                                                 <constraint firstItem="IHg-NP-BO1" firstAttribute="leading" secondItem="ZTZ-X7-hlv" secondAttribute="leading" id="7uk-6b-1lG"/>
                                                 <constraint firstItem="nGg-1t-Y6j" firstAttribute="leading" secondItem="ZTZ-X7-hlv" secondAttribute="leading" id="Go3-SO-DBP"/>
-                                                <constraint firstItem="IHg-NP-BO1" firstAttribute="top" secondItem="ZTZ-X7-hlv" secondAttribute="bottom" constant="4" id="JH4-KI-E6A"/>
                                                 <constraint firstItem="ZTZ-X7-hlv" firstAttribute="leading" secondItem="qoa-BU-Paj" secondAttribute="leading" constant="8" id="VCT-1S-MQv"/>
                                                 <constraint firstAttribute="bottom" secondItem="nGg-1t-Y6j" secondAttribute="bottom" constant="8" id="auO-jI-Va2"/>
-                                                <constraint firstItem="ZTZ-X7-hlv" firstAttribute="top" secondItem="qoa-BU-Paj" secondAttribute="top" constant="8" id="bn3-Ci-gca"/>
                                                 <constraint firstItem="X3j-OC-Wq5" firstAttribute="centerY" secondItem="ZTZ-X7-hlv" secondAttribute="centerY" id="maV-xb-nTd"/>
+                                                <constraint firstItem="ZTZ-X7-hlv" firstAttribute="centerY" secondItem="qoa-BU-Paj" secondAttribute="centerY" id="tMx-iX-aSa"/>
                                                 <constraint firstAttribute="trailing" secondItem="X3j-OC-Wq5" secondAttribute="trailing" constant="8" id="y9X-qe-Bgd"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -3952,8 +3950,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8Bf-Vi-arA"/>
-        <segue reference="q4e-3H-dKE"/>
-        <segue reference="vGn-ru-ol3"/>
+        <segue reference="3Wx-xY-sDh"/>
+        <segue reference="mzv-XJ-96f"/>
         <segue reference="kEl-UY-JOa"/>
         <segue reference="8s0-fg-N01"/>
         <segue reference="1k4-P4-HYk"/>

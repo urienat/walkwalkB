@@ -233,10 +233,10 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         cell.l1.text = arrayOfMonths[indexPath.row]
         //cell.l2.text = "\(billsForMonth) \(billTxt!)"
         //cell.l5.text = "Total(w/tax): \(ViewController.fixedCurrency!)\(totalForMonth) - \(billsForMonth) \(billTxt!)"
-        cell.l5.text = "\(billsForMonth) \(billTxt!)"
+       // cell.l5.text = "\(billsForMonth) \(billTxt!)"
 
         //cell.l4.text  = ViewController.fixedCurrency
-        cell.l3.text = "Tax: \(ViewController.fixedCurrency!)\(String(taxForMonth) as String)"
+        cell.l3.text = "\(ViewController.fixedCurrency!)\(String(taxForMonth) as String)"
         return cell
         }
     
