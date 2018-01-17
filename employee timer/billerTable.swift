@@ -31,6 +31,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var monthToHandle : Int = 0
     var yearToHandle : Int = 0
     var taxBillsToHandle:Bool = false
+    var reportMode:Bool = false
     
     var paymentSys: String? = ""
     var paymentReference: String? = ""
@@ -289,11 +290,11 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         let cell = billerConnect.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! billerCell
         let billItem = billItems[indexPath.row]
         cell.backgroundColor = UIColor.clear
-            if taxBillsToHandle == false {cell.l1.text = ("\(billItem.fBillEmployerName!) - \(billItem.fBillEvents!) ses. ") } else {
+            if taxBillsToHandle == false || reportMode  == true {cell.l1.text = ("\(billItem.fBillEmployerName!) - \(billItem.fBillEvents!) ses. ") } else {
             cell.l1.text = ("#\(billItem.fBill!) - \(billItem.fBillEmployerName!)")}
         print ("fuf\(billItem.fBillTotalTotal!)" )
         print ("fuf2\(billItem.fBillTotalTotal!)" )
-            if taxBillsToHandle == false {
+            if taxBillsToHandle == false || reportMode  == true {
                 if billItem.fBillTotalTotal != "" {cell.l3.text = billItem.fBillTotalTotal} else {cell.l3.text = billItem.fBillSum} } else{
                 
        
@@ -315,7 +316,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             
                 cell.l4.text  = billItem.fBillCurrency!
            
-            if taxBillsToHandle == false {cell.l6.text = "#\(billItem.fBill!) - \(mydateFormat10.string(from: mydateFormat5.date(from: billItem.fBillDate!)!))"} else {
+            if taxBillsToHandle == false || reportMode  == true {cell.l6.text = "#\(billItem.fBill!) - \(mydateFormat10.string(from: mydateFormat5.date(from: billItem.fBillDate!)!))"} else {
                 if billItem.fBillStatus == "Cancelled" {cell.l6.text = "\(mydateFormat12.string(from: mydateFormat5.date(from: billItem.fBillDate!)!))- cancelled:\(mydateFormat12.string(from: mydateFormat5.date(from: billItem.fBillStatusDate!)!))"} else {cell.l6.text = "\(mydateFormat12.string(from: self.mydateFormat5.date(from: billItem.fBillDate!)!))" }}
 
         print("fbillstatus\(billItem.fBillStatus!)")
@@ -324,7 +325,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         if  billItem.fBillStatus!  == "Paid" { cell.approval.setImage(paidImage, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
         if billItem.fBillStatus! ==  "Cancelled" { cell.approval.setImage(canceledImage,for: .normal);cell.l1.alpha = 0.5;cell.l3.alpha = 0.5;cell.l4.alpha = 0.5;cell.l6.alpha = 0.5}
         
-        if taxBillsToHandle == false{ cell.approval.isEnabled = true} else {cell.approval.isEnabled=false}
+        if taxBillsToHandle == false || reportMode  == true{ cell.approval.isEnabled = true} else {cell.approval.isEnabled=false}
         cell.approval.tag = indexPath.row
         print ("gggggg\(cell.approval.tag)")
         
@@ -500,9 +501,13 @@ print (self.billItems.count)
                 
                 
             if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
-            //self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
-            //self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
-                self.totalAmount.text = "Total Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
+                if self.reportMode != true {
+                    self.totalAmount.text = "Total Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"}
+                else {
+                    self.totalAmount.text = "Total: \(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
+                    self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
+                    if ViewController.taxOption == "Yes"{ self.totalTax.text = "* Total included tax"} else { self.totalTax.text = "* Cancelled bills excluded"}
+                }
             //self.totalTax.text = "Tax \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
             self.billerConnect.reloadData()
             }//end of if let dic

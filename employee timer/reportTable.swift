@@ -275,6 +275,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             billTaxManager?.yearToHandle = components.year!
             billTaxManager?.employeeID = employeeID
             billTaxManager?.taxBillsToHandle = true
+            billTaxManager?.reportMode = true
         }//end of if (segue...
     }//end of prepare
     
