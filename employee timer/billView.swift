@@ -59,6 +59,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     var recoveredStatus = ""
     var billStatusForRecovery = ""
     var cancelledDocument: String?
+    var statusCanclledDate: String?
     
     var lastPrevious = ""
     
@@ -216,7 +217,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         self.dbRefEmployee.child(employeeID).child("myBills").child(billToHandle).observeSingleEvent(of: .value,with: { (snapshot) in
         self.recoveredBill = (snapshot.childSnapshot(forPath: "fBillMailSaver").value! as? String)!
         self.recoveredReciept = (snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String)!
-
+        if (snapshot.childSnapshot(forPath: "fBillStatusDate").value! as? String) != nil {self.statusCanclledDate = (snapshot.childSnapshot(forPath: "fBillStatusDate").value! as? String)!}
         self.recoveredStatus = (snapshot.childSnapshot(forPath: "fBillStatus").value! as? String)!
         self.recieptDate = (snapshot.childSnapshot(forPath: "fRecieptDate").value! as? String)!
         self.paymentDate = (snapshot.childSnapshot(forPath: "fBillDate").value! as? String)!
@@ -238,7 +239,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             
             self.statusImage.image = self.canceledImage;
             
-            self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "!!!!!!!!!!This document was cancelled!!!!!!!!!!"}
+            self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "!!!!!!!!!!This document was cancelled: \(self.mydateFormat8.string(from: self.mydateFormat5.date(from: self.statusCanclledDate!)! ))!!!!!!!!!!"}
             
             self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
 
