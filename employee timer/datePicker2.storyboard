@@ -27,9 +27,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grass12" translatesAutoresizingMaskIntoConstraints="NO" id="Ohp-4N-8Ys">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vNaked" translatesAutoresizingMaskIntoConstraints="NO" id="UaV-6l-lVU" userLabel="animationImage">
                                 <rect key="frame" x="85" y="147" width="150" height="150"/>
                                 <constraints>
@@ -180,7 +177,7 @@
                                         <rect key="frame" x="8" y="114" width="284" height="198"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Add an item with a short description to the billing  process . Fill amount aligned with the taxation approach of the sessions if any (tax included or over).</string>
-                                        <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -244,6 +241,7 @@
                                 </connections>
                             </segmentedControl>
                         </subviews>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="1xg-Ig-RaM" firstAttribute="top" secondItem="V2L-Iv-IDI" secondAttribute="bottom" id="2Zf-To-lm7"/>
                             <constraint firstItem="eic-ue-SnJ" firstAttribute="leading" secondItem="Znj-aX-FL2" secondAttribute="leading" id="5en-5o-XOk"/>
@@ -252,14 +250,11 @@
                             <constraint firstItem="a1i-tg-2qU" firstAttribute="centerX" secondItem="mK9-6d-CXh" secondAttribute="centerX" id="8wy-ui-bQI"/>
                             <constraint firstItem="vLX-4X-9wI" firstAttribute="centerX" secondItem="Znj-aX-FL2" secondAttribute="centerX" id="91b-BX-JIQ"/>
                             <constraint firstItem="Ydt-wR-B8B" firstAttribute="leading" secondItem="a1i-tg-2qU" secondAttribute="trailing" constant="8" id="AIt-tt-uhC"/>
-                            <constraint firstItem="Ohp-4N-8Ys" firstAttribute="top" secondItem="Znj-aX-FL2" secondAttribute="top" id="EZ8-lg-b3J"/>
-                            <constraint firstItem="1xg-Ig-RaM" firstAttribute="top" secondItem="Ohp-4N-8Ys" secondAttribute="bottom" id="EwO-9c-Rbm"/>
                             <constraint firstItem="Ydt-wR-B8B" firstAttribute="centerY" secondItem="a1i-tg-2qU" secondAttribute="centerY" id="FGj-s1-dMq"/>
                             <constraint firstItem="yv6-XF-GvY" firstAttribute="leading" secondItem="Znj-aX-FL2" secondAttribute="leadingMargin" priority="750" constant="8" id="GV9-tQ-w53"/>
                             <constraint firstItem="3pe-xh-s5t" firstAttribute="width" secondItem="yv6-XF-GvY" secondAttribute="width" id="HWx-5W-vKh"/>
                             <constraint firstItem="UaV-6l-lVU" firstAttribute="centerX" secondItem="Znj-aX-FL2" secondAttribute="centerX" id="Kue-cW-Cfo"/>
                             <constraint firstItem="mK9-6d-CXh" firstAttribute="centerX" secondItem="Znj-aX-FL2" secondAttribute="centerX" id="NtN-yA-xKd"/>
-                            <constraint firstAttribute="trailing" secondItem="Ohp-4N-8Ys" secondAttribute="trailing" id="R7H-tT-L6O"/>
                             <constraint firstAttribute="trailing" secondItem="eic-ue-SnJ" secondAttribute="trailing" id="Sk8-Db-Fyh"/>
                             <constraint firstItem="3pe-xh-s5t" firstAttribute="centerY" secondItem="yv6-XF-GvY" secondAttribute="centerY" id="TDh-sB-t3n"/>
                             <constraint firstItem="vLX-4X-9wI" firstAttribute="top" secondItem="eic-ue-SnJ" secondAttribute="bottom" constant="30" id="YCq-M5-m1t"/>
@@ -271,7 +266,6 @@
                             <constraint firstItem="V2L-Iv-IDI" firstAttribute="leading" secondItem="Znj-aX-FL2" secondAttribute="leading" id="nlf-05-fDH"/>
                             <constraint firstItem="a1i-tg-2qU" firstAttribute="width" secondItem="mK9-6d-CXh" secondAttribute="width" id="q4C-yv-Lvd"/>
                             <constraint firstItem="yv6-XF-GvY" firstAttribute="centerX" secondItem="Znj-aX-FL2" secondAttribute="centerX" id="q6y-fc-uOA"/>
-                            <constraint firstItem="Ohp-4N-8Ys" firstAttribute="leading" secondItem="Znj-aX-FL2" secondAttribute="leading" id="rBH-8U-QtV"/>
                             <constraint firstItem="a1i-tg-2qU" firstAttribute="centerY" secondItem="mK9-6d-CXh" secondAttribute="centerY" id="tcP-pi-N06"/>
                             <constraint firstItem="3pe-xh-s5t" firstAttribute="centerX" secondItem="yv6-XF-GvY" secondAttribute="centerX" id="vdE-dw-QrC"/>
                             <constraint firstItem="yv6-XF-GvY" firstAttribute="centerY" secondItem="Znj-aX-FL2" secondAttribute="centerY" constant="25" id="wXQ-Ya-TNe"/>
@@ -305,7 +299,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Grass12" width="424" height="282"/>
         <image name="trash" width="50" height="50"/>
         <image name="vNaked" width="150" height="150"/>
     </resources>

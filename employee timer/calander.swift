@@ -116,6 +116,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         calander.calanderLogin = true
         title = "Import Calander"
         
+        findEmployerId()
+
+        
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale:Locale.autoupdatingCurrent )!
         mydateFormat9.dateFormat = DateFormatter.dateFormat(fromTemplate: " dd-MMM-yy", options: 0, locale:Locale.autoupdatingCurrent )!
@@ -144,15 +147,17 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     }//end of apple
         datePickerBG.layer.borderWidth = 0.5
         datePickerBG.layer.borderColor = blueColor.cgColor
-        datePickerBG.layer.cornerRadius =  15//CGFloat(25)
-        datePickerBG.layoutIfNeeded()
         
         helpTxtView.layer.borderWidth = 0.5
         helpTxtView.layer.borderColor = blueColor.cgColor
-        helpTxtView.layer.cornerRadius =  15//CGFloat(25)
+        helpTxtView.layer.cornerRadius =  10//CGFloat(25)
         helpTxtView.layoutIfNeeded()
-        thinking.hidesWhenStopped = true
         
+        //helpBackground.layer.borderWidth = 0.5
+        //helpBackground.layer.borderColor = blueColor.cgColor
+        //helpBackground.layer.cornerRadius =  10//CGFloat(25)
+        //helpBackground.layoutIfNeeded()
+        thinking.hidesWhenStopped = true
         
 
         
@@ -323,10 +328,12 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         self.dbRefEmployee.child(employeeId).queryOrderedByValue().observeSingleEvent(of: .value, with: { (snapshot) in
         self.employerArray = snapshot.childSnapshot(forPath: "myEmployers").value! as! [String:Int]
         self.employerArray2 = Array(self.employerArray.keys) // for Dictionary
+        print ("employerArray\(self.employerArray)")
+
         print ("employerArray2\(self.employerArray2)")
         print ("match")
            
-            
+           
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
         for eachEmployer in 0...(self.employerArray2.count-1){
             print ("eachEmployer\(eachEmployer)")
@@ -336,6 +343,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         self.employerNameForGoogle = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
     
         print ("eachEmployerB\(eachEmployer)")
+            print (self.employerArray2)
+            
         print ("self.employerArray2[eachEmployer]\(self.employerArray2[eachEmployer])")
 
         self.employerArray3[("\(self.employerNameForGoogle) \(self.employerLastNameForGoogle)")] = self.employerArray2[eachEmployer]
@@ -369,7 +378,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         self.alert123()
         }
         })//end of dbref
-        findEmployerId()
+        //findEmployerId()
         }// end of if current user is not nil
         }//end of ggc
     
@@ -458,7 +467,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                     self.alert123()
                 }
             })//end of dbref
-            findEmployerId()
+          //  findEmployerId()
         }// end of if current user is not nil
     }//end of ggc
     

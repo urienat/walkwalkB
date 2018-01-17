@@ -177,7 +177,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }
     @IBAction func importAllBtn(_ sender: Any) {
     sideMenuMovement()
-    print (ViewController.calanderOption!)
+    //print (ViewController.calanderOption!)
     if ViewController.calanderOption! == "None" {alert32()} else {
             importAllClicked()}
     }
@@ -463,14 +463,14 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let recordsView = segue.destination as? calander
     recordsView?.employerIdFromMain = employerIDToS
     recordsView?.employerFromMain = employerToS
-    //recordsView?.employeeID = employeeIDToS
+    recordsView?.employeeId = employeeIDToS
     }//end of else if
     
     else if (segue.identifier == "employerForAllCalander"){
     let recordsView = segue.destination as? calander
     recordsView?.employerIdFromMain = ""//employerIDToS
     recordsView?.employerFromMain = ""//employerToS
-    //recordsView?.employeeID = employeeIDToS
+    recordsView?.employeeId = employeeIDToS
     }//end of else if
 
     else{let recordsView = segue.destination as? newVCTable

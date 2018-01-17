@@ -293,10 +293,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
          
         tableConnect.separatorColor = blueColor
             
-        paymentView.layoutIfNeeded()
         paymentView.layer.cornerRadius = 10//paymentView.frame.height / 2.0
         paymentView.layer.masksToBounds = true
-
+        paymentView.layer.borderWidth = 0.5
+        paymentView.layer.borderColor = blueColor.cgColor
+        paymentView.layoutIfNeeded()
 
             
         }//end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

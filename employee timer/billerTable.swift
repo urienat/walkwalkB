@@ -263,6 +263,11 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billerConnect.delegate = self
         billerConnect.dataSource = self
         thinking.hidesWhenStopped = true
+        
+        paymentView.layer.borderWidth = 0.5
+        paymentView.layer.borderColor = blueColor.cgColor
+        paymentView.layer.cornerRadius =  10//CGFloat(25)
+        paymentView.layoutIfNeeded()
     }//end of view did load////////////////////////////////////////////////////////////////////////////////////////////
     
         override func viewDidAppear(_ animated: Bool) {

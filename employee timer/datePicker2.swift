@@ -204,12 +204,12 @@ class datePicker2: UIViewController {
         
         datePickerbBackground.layer.borderWidth = 0.5
         datePickerbBackground.layer.borderColor = blueColor.cgColor
-        datePickerbBackground.layer.cornerRadius =  15//CGFloat(25)
+        datePickerbBackground.layer.cornerRadius =  10//CGFloat(25)
         datePickerbBackground.layoutIfNeeded()
         
         itemBackground.layer.borderWidth = 0.5
         itemBackground.layer.borderColor = blueColor.cgColor
-        itemBackground.layer.cornerRadius =  15//CGFloat(25)
+        itemBackground.layer.cornerRadius =  10//CGFloat(25)
         itemBackground.layoutIfNeeded()
         
  
