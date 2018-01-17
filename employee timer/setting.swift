@@ -161,7 +161,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if self.taxSwitchTemp == "No" {taxCalac.isHidden = true; self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true; taxName.isHidden = true; signer.isHidden = true;taxSwitchTemp = "Yes";taxSwitcherUpdate = "No";taxPrecentageUpdate = "0";precentage.text = taxPrecentageUpdate; taxNamerUpdate = ""; taxName.text = taxNamerUpdate
         
     } else {
-            self.taxSwitch.setOn(true, animated: true);taxCalac.isHidden = false;self.precentage.isHidden = false; taxName.isHidden = false; signer.isHidden = false;taxSwitchTemp = "No";taxSwitcherUpdate = "Yes";alert17();if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0}}   }
+            self.taxSwitch.setOn(true, animated: true);taxCalac.isHidden = false;self.precentage.isHidden = false; taxName.isHidden = true; signer.isHidden = false;taxSwitchTemp = "No";taxSwitcherUpdate = "Yes";alert17();if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0}}   }
     
     
     @IBAction func taxationInfo(_ sender: Any) {
@@ -285,7 +285,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             if self.taxSwitchTemp == "No" {self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true; self.taxCalac.isHidden = true; self.taxName.isHidden = true; self.signer.isHidden = true;self.taxSwitchTemp = "Yes";
 
             } else {
-            self.taxSwitch.setOn(true, animated: true);self.taxCalac.isHidden = false; self.precentage.isHidden = false; self.taxName.isHidden = false; self.signer.isHidden = false;self.taxSwitchTemp = "No";self.taxSwitcherUpdate = "Yes"; if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0} }
+            self.taxSwitch.setOn(true, animated: true);self.taxCalac.isHidden = false; self.precentage.isHidden = false; self.taxName.isHidden = true; self.signer.isHidden = false;self.taxSwitchTemp = "No";self.taxSwitcherUpdate = "Yes"; if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0} }
 
             self.taxPrecentageUpdate  = snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String
             self.precentage.text = self.taxPrecentageUpdate

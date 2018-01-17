@@ -174,9 +174,11 @@
                                         </connections>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Voe-To-vG2">
-                                        <rect key="frame" x="8" y="114" width="284" height="198"/>
+                                        <rect key="frame" x="8" y="114" width="284" height="130"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <string key="text">Add an item with a short description to the billing  process . Fill amount aligned with the taxation approach of the sessions if any (tax included or over).</string>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="130" id="Mbj-Hi-grG"/>
+                                        </constraints>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -191,7 +193,6 @@
                                     <constraint firstItem="Voe-To-vG2" firstAttribute="trailing" secondItem="8H6-ZC-44z" secondAttribute="trailing" id="X6F-Z6-xyJ"/>
                                     <constraint firstItem="7Js-4i-g59" firstAttribute="leading" secondItem="NCM-Sm-xQr" secondAttribute="leading" id="aeR-62-jch"/>
                                     <constraint firstItem="Voe-To-vG2" firstAttribute="leading" secondItem="7Js-4i-g59" secondAttribute="leading" id="iCw-Cb-NA9"/>
-                                    <constraint firstAttribute="bottom" secondItem="Voe-To-vG2" secondAttribute="bottom" constant="8" id="ja6-QB-kdE"/>
                                     <constraint firstItem="NCM-Sm-xQr" firstAttribute="top" secondItem="3pe-xh-s5t" secondAttribute="top" constant="8" id="keo-MH-2LC"/>
                                     <constraint firstItem="Voe-To-vG2" firstAttribute="top" secondItem="X5I-Pz-o4U" secondAttribute="bottom" constant="38" id="naS-mf-G6O"/>
                                     <constraint firstItem="NCM-Sm-xQr" firstAttribute="leading" secondItem="3pe-xh-s5t" secondAttribute="leading" constant="8" id="oR7-3P-m3p"/>
@@ -290,6 +291,7 @@
                         <outlet property="navItem" destination="YZC-wy-DVB" id="uKQ-GA-rBQ"/>
                         <outlet property="sessionItem" destination="vLX-4X-9wI" id="eru-9o-hs8"/>
                         <outlet property="startLbl" destination="Ocl-iC-Ud2" id="cz8-q2-4w8"/>
+                        <outlet property="textForSpecial" destination="Voe-To-vG2" id="3WG-kz-YBU"/>
                         <outlet property="timeIn" destination="mK9-6d-CXh" id="2p1-EP-BX7"/>
                     </connections>
                 </viewController>

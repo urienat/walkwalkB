@@ -21,7 +21,7 @@ class datePicker2: UIViewController {
     var recordToHandle = String()
     
     var sessionMode:Bool?
-    
+    var taxForSpecial: String?
     let dateForItem = Date()
     var segmentedPressed:Int?
     
@@ -98,6 +98,7 @@ class datePicker2: UIViewController {
     @IBOutlet weak var amount: UILabel!
     
     
+    @IBOutlet weak var textForSpecial: UITextView!
     @IBOutlet weak var timeIn: UITextField!
     @IBOutlet weak var animationImage: UIImageView!
     @IBOutlet weak var topOfStart: NSLayoutConstraint!
@@ -212,6 +213,9 @@ class datePicker2: UIViewController {
         itemBackground.layer.cornerRadius =  10//CGFloat(25)
         itemBackground.layoutIfNeeded()
         
+        if ViewController.taxOption == "No" {self.taxForSpecial = "Fill amount" } else {self.taxForSpecial = "Fill amount aligned with your taxation approach ( rate with tax included or excluded)." }
+        
+        textForSpecial.text = "Add an item with a short description to the billing  process. \(String(describing: taxForSpecial))"
  
     } ///end of did load/////////////////////////////////////////////////////////////////////////////////////////////////////
     

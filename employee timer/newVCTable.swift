@@ -51,6 +51,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var taxForBlock = ""
     var taxSwitch: String?
     var taxCalc: String?
+    var taxation: String?
+    var taxName :String?
     var stam: Double?
     var stam3: Double?
 
@@ -721,8 +723,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         biller = true
         self.dbRefEmployees.queryOrderedByKey().queryEqual(toValue: self.employeeID).observeSingleEvent(of: .childAdded, with: { (snapshot) in
             self.counterForMail2 = (snapshot.childSnapshot(forPath: "fCounter").value as! String)
-            let taxation = (snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String)
-            let taxName = (snapshot.childSnapshot(forPath: "fTaxName").value as! String)
+            self.taxation = (snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String)
+            self.taxName = (snapshot.childSnapshot(forPath: "fTaxName").value as! String)
             self.taxCalc = (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String)
             self.taxSwitch = (snapshot.childSnapshot(forPath: "fSwitcher").value as! String)
             self.paypal = (snapshot.childSnapshot(forPath: "fPaypal").value as! String)
@@ -732,14 +734,14 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             if self.eventCounter == 0 {self.sessionBlock = "\r\n"} else {self.sessionBlock = "Total Number of sessions: \(self.eventCounter) \r\n\(self.perEvents.text!)"}
 
             if  self.taxSwitch == "Yes" {
-            if self.self.taxCalc == "Over" {self.self.stam =  Double(Double(taxation)!*self.calc*0.01).roundTo(places: 2)}  else  { self.stam = Double((self.calc / Double(Double(taxation)!*0.01+1)) * Double(Double(taxation)!*0.01)).roundTo(places: 2)}
+                if self.self.taxCalc == "Over" {self.self.stam =  Double(Double(self.taxation!)!*self.calc*0.01).roundTo(places: 2)}  else  { self.stam = Double((self.calc / Double(Double(self.taxation!)!*0.01+1)) * Double(Double(self.taxation!)!*0.01)).roundTo(places: 2)}
 
-            if self.taxCalc == "Over" {self.stam3 = Double(self.calc).roundTo(places: 2)}  else  { self.stam3 =  self.calc -  Double((self.calc / Double(Double(taxation)!*0.01+1)) * Double(Double(taxation)!*0.01)).roundTo(places: 2)}
+                if self.taxCalc == "Over" {self.stam3 = Double(self.calc).roundTo(places: 2)}  else  { self.stam3 =  self.calc -  Double((self.calc / Double(Double(self.taxation!)!*0.01+1)) * Double(Double(self.taxation!)!*0.01)).roundTo(places: 2)}
               
             self.midCalc =  String (describing: self.stam!)
             self.midCalc3 =  String(describing: self.stam3!)
                 print (self.midCalc)
-            if taxName == "" {self.taxForBlock = "Tax"} else {self.taxForBlock = taxName}
+                if self.taxName == "" {self.taxForBlock = "VAT"} else {self.taxForBlock = self.taxName!}
                 print (self.midCalc3)
             self.midCalc2 =  String(self.stam3! + self.stam!)
             
