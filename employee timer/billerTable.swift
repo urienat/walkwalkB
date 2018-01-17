@@ -474,9 +474,9 @@ print (self.billItems.count)
                          //do nothing
                         } else {//
                         self.AmountCounter -= (Double(billItem.fBillTotalTotal!)!); self.taxCounter -= Double(billItem.fBillTax!)!//self.billCounter+=1;
-                        }} else if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle && self.recordMonth != self.recordMonthCancelled && self.recordYear != self.recordYearCancelled{
+                        }} else if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle { if  self.recordMonth != self.recordMonthCancelled  || self.recordYear != self.recordYearCancelled{
                         self.billItems.append(billItem); self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
-                        self.AmountCounter += (Double(billItem.fBillTotalTotal!)!); self.taxCounter += Double(billItem.fBillTax!)!//self.billCounter+=1;
+                        self.AmountCounter += (Double(billItem.fBillTotalTotal!)!); self.taxCounter += Double(billItem.fBillTax!)!}//self.billCounter+=1;
                         }
                 
                 }//end of else
