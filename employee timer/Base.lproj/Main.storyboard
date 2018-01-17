@@ -1290,7 +1290,7 @@
                                             <constraint firstAttribute="width" constant="280" id="1ya-7Y-hl2"/>
                                             <constraint firstAttribute="height" constant="340" id="scQ-X1-Zp4"/>
                                         </constraints>
-                                        <mutableString key="text">                   Import sessions from calander is a very powerfull tool.    Only past sessions are imported and only if 'name+space+last name' match calandr exactly.   After import process is completed a '+' sign is added to indicate events was imported. </mutableString>
+                                        <mutableString key="text">                   Import sessions from calander is a very powerfull tool.    Only past sessions are imported and only if 'name+space+last name' match calendar exactly.   After import process is completed a '+' sign is added to indicate events was imported. </mutableString>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
