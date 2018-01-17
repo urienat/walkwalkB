@@ -291,7 +291,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         print ("fuf2\(billItem.fBillTotalTotal!)" )
             if taxBillsToHandle == false {
                 if billItem.fBillTotalTotal != "" {cell.l3.text = billItem.fBillTotalTotal} else {cell.l3.text = billItem.fBillSum} } else{
-                cell.l3.text = billItem.fBillTax}
+                
        
         if billItem.fBillStatus == "Cancelled"{
         let components3 = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
@@ -300,19 +300,19 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         let components2 = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillStatusDate!)!)
         self.recordMonthCancelled = components2.month!
         self.recordYearCancelled = components2.year!
-            print (billItem.fBill,recordMonth,recordMonthCancelled,monthToHandle)
+        if self.recordMonthCancelled == self.recordMonth && self.recordYearCancelled == self.recordYear {
+        cell.l3.text = "0"
+        } else  if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle {
+        cell.l3.text = (billItem.fBillTax!)
+        } else {cell.l3.text = "-\(billItem.fBillTax!)"}
+        }//end of cancelled
+        else { cell.l3.text = billItem.fBillTax}
+        }// end of else tax bil to handle
             
-            if self.recordMonthCancelled == self.recordMonth && self.recordYearCancelled == self.recordYear {
-            cell.l3.text = "0"
-            } else  if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle {
-            cell.l3.text = (billItem.fBillTax!)
-            } else {cell.l3.text = "-\(billItem.fBillTax!)"}
-            }//end of cancelled
-
-        cell.l4.text  = billItem.fBillCurrency!
+                cell.l4.text  = billItem.fBillCurrency!
            
             if taxBillsToHandle == false {cell.l6.text = "#\(billItem.fBill!) - \(mydateFormat10.string(from: mydateFormat5.date(from: billItem.fBillDate!)!))"} else {
-                if billItem.fBillStatus == "Cancelled" {cell.l6.text = "\(mydateFormat10.string(from: mydateFormat5.date(from: billItem.fBillDate!)!))- cancelled:\(mydateFormat12.string(from: mydateFormat5.date(from: billItem.fBillStatusDate!)!))"} else {cell.l6.text = "\(mydateFormat10.string(from: self.mydateFormat5.date(from: billItem.fBillDate!)!))" }}
+                if billItem.fBillStatus == "Cancelled" {cell.l6.text = "\(mydateFormat12.string(from: mydateFormat5.date(from: billItem.fBillDate!)!))- cancelled:\(mydateFormat12.string(from: mydateFormat5.date(from: billItem.fBillStatusDate!)!))"} else {cell.l6.text = "\(mydateFormat12.string(from: self.mydateFormat5.date(from: billItem.fBillDate!)!))" }}
 
         print("fbillstatus\(billItem.fBillStatus!)")
         
@@ -474,8 +474,7 @@ print (self.billItems.count)
                          //do nothing
                         } else {//
                         self.AmountCounter -= (Double(billItem.fBillTotalTotal!)!); self.taxCounter -= Double(billItem.fBillTax!)!//self.billCounter+=1;
-                        }}
-                        if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle {
+                        }} else if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle && self.recordMonth != self.recordMonthCancelled && self.recordYear != self.recordYearCancelled{
                         self.billItems.append(billItem); self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
                         self.AmountCounter += (Double(billItem.fBillTotalTotal!)!); self.taxCounter += Double(billItem.fBillTax!)!//self.billCounter+=1;
                         }
@@ -674,6 +673,8 @@ print (self.billItems.count)
         
         
         fetchBillInfo()
+        print (buttonRow)
+        print (BillArray[buttonRow])
         
         self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).observeSingleEvent(of: .value,with: {(snapshot) in
             self.employerID = (snapshot.childSnapshot(forPath: "fBillEmployer").value! as? String)!
