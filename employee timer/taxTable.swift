@@ -117,6 +117,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
 
             filterImageConstrain.constant = 140
             filterDecided = 3
+            
             fetchBills()
             btnFilter.setImage (redFilter, for: .normal)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
@@ -228,15 +229,18 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         let totalForMonth =  byMonthTotal[taxMonthItem]!
         let billsForMonth =  byMonthBills[taxMonthItem]!
         if billsForMonth == 1 {billTxt = "bill"} else {billTxt = "bills"}
+            
 
         cell.backgroundColor = UIColor.clear
-        cell.l1.text = arrayOfMonths[indexPath.row]
-        //cell.l2.text = "\(billsForMonth) \(billTxt!)"
-        //cell.l5.text = "Total(w/tax): \(ViewController.fixedCurrency!)\(totalForMonth) - \(billsForMonth) \(billTxt!)"
-       // cell.l5.text = "\(billsForMonth) \(billTxt!)"
-
-        //cell.l4.text  = ViewController.fixedCurrency
-        cell.l3.text = "\(ViewController.fixedCurrency!)\(String(taxForMonth) as String)"
+                cell.l1.text = taxMonthItem//arrayOfMonths[indexPath.row]
+                //cell.l2.text = "\(billsForMonth) \(billTxt!)"
+                //cell.l5.text = "Total(w/tax): \(ViewController.fixedCurrency!)\(totalForMonth) - \(billsForMonth) \(billTxt!)"
+                // cell.l5.text = "\(billsForMonth) \(billTxt!)"
+                //cell.l4.text  = ViewController.fixedCurrency
+                cell.l3.text = "\(ViewController.fixedCurrency!)\(String(taxForMonth) as String)"
+            
+            
+            
         return cell
         }
     
@@ -333,6 +337,8 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
                     ;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
 
                     }//end of in filter
+                
+                
                 switch self.filterDecided {
                 case 0:inFilter()
                 case 1:if self.currentMonth == self.taxMonth && self.currentYear == self.taxYear{inFilter()}
