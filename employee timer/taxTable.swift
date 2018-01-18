@@ -54,6 +54,8 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     var calendar = Calendar.current
     var taxMonth : Int = 0
     var taxYear : Int = 0
+    var taxMonth2 : Int = 0
+    var taxYear2 : Int = 0
     var currentMonth : Int = 0
     var currentYear : Int = 0
     
@@ -297,6 +299,11 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
                 self.taxMonth = components.month!
                 self.taxYear = components.year!
                 
+                if billItem.fBillStatusDate != nil { let components2 = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillStatusDate!)!)
+                self.taxMonth2 = components2.month!
+                self.taxYear2 = components2.year!
+                } else  {self.taxMonth2 = 0;self.taxYear2 = 0}
+                
                 print (self.taxMonth-1,self.taxYear-1)
                 
                 
@@ -343,7 +350,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
                 case 0:inFilter()
                 case 1:if self.currentMonth == self.taxMonth && self.currentYear == self.taxYear{inFilter()}
                 case 2:if self.currentMonth-1 == self.taxMonth && self.currentYear == self.taxYear{inFilter()} else if self.currentMonth == 1 && self.taxMonth == 12 && self.currentYear-1 == self.taxYear{inFilter()}
-                case 3:if self.currentYear == self.taxYear{inFilter()}
+                case 3:if (self.currentYear == self.taxYear && self.currentYear == self.taxYear2) || (self.currentYear == self.taxYear && self.taxYear2 == 0) {inFilter()}
                 case 4:if self.currentYear-1 == self.taxYear {inFilter()}
                 default: inFilter()
                 } //end of switch
