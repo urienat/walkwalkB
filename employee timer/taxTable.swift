@@ -87,37 +87,11 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
             }
             }
 
-            @IBAction func currentMonthBtn(_ sender: Any) {
-            monther(monthNumber: currentMonth)
-            self.title = "Tax: \(monthMMM!)-\(self.currentYear)"
-
-            filterDecided = 1
-            fetchBills()
-            filterImageConstrain.constant = 60
-            filterChoiceImage.reloadInputViews()
-            btnFilter.setImage (redFilter, for: .normal)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            self.filterMovement(delay: 1.3)
-            }
-            }
-
-            @IBAction func lastMonthBtn(_ sender: Any) {
-
-            if currentMonth == 1 {self.title = "Tax: Dec-\(self.currentYear-1)" } else  {monther(monthNumber: currentMonth-1);self.title = "Tax: \(monthMMM!)-\(self.currentYear)"}
-
-            filterImageConstrain.constant = 100
-            filterDecided = 2
-            fetchBills()
-            btnFilter.setImage (redFilter, for: .normal)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            self.filterMovement(delay: 1.3)
-            }
-            }
 
             @IBAction func currentYearBtn(_ sender: Any) {
             self.title = "Tax: \(self.currentYear)"
 
-            filterImageConstrain.constant = 140
+            filterImageConstrain.constant = 100
             filterDecided = 3
             
             fetchBills()
@@ -306,58 +280,76 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
                 
                 print (self.taxMonth-1,self.taxYear-1)
                 
+                func inFilterBilldate() {
+                    if self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] == nil {
+                        self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTax!)!; self.taxCounter += Double(billItem.fBillTax!)!
+                        self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTotalTotal!)!;
+                        self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = 1
+                        
+                    }else{
+                        self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTax!)!; self.taxCounter += Double(billItem.fBillTax!)!
+                        self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTotalTotal!)!;
+                        self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + 1
+                    }
+                }//end of infiltermain
+                
+                func inFilterBillStatusDate() {
+                    if billItem.fBillStatus == "Cancelled"{
+                        if self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] == nil {
+                            self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = -Double(billItem.fBillTax!)!; self.taxCounter -= Double(billItem.fBillTax!)!
+                            self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = -Double(billItem.fBillTotalTotal!)!;
+                            self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = 1
+                            
+                        }else{
+                            
+                            self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)]! - Double(billItem.fBillTax!)!; self.taxCounter -= Double(billItem.fBillTax!)!
+                            self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)]! - Double(billItem.fBillTotalTotal!)!;
+                            self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)]! - 1
+                        }
+                    }
+                }
                 
                     func inFilter() {
-                    if self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] == nil {
-                    self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTax!)!;
-                    self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTotalTotal!)!;
-                    self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = 1
+                        if self.self.filterDecided == 3 && self.taxYear == self.currentYear {inFilterBilldate()}
+                        if self.self.filterDecided == 4 && self.taxYear == self.currentYear-1 {inFilterBilldate()}
+                        if self.filterDecided == 0  {inFilterBilldate()}
 
-                    }else{
-                    self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTax!)!;
-                    self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTotalTotal!)!;
-                    self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + 1
-                    }
-                    
-                    if billItem.fBillStatus == "Cancelled"{
-                    if self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] == nil {
-                    self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = -Double(billItem.fBillTax!)!;
-                    self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = -Double(billItem.fBillTotalTotal!)!;
-                    self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = 1
-                    }else{
-                    self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)]! - Double(billItem.fBillTax!)!;
-                    self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)]! - Double(billItem.fBillTotalTotal!)!;
-                    self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)]! - 1
-                    }
-                    }
+                        if self.self.filterDecided == 3 && self.taxYear2 == self.currentYear {inFilterBillStatusDate()}
+                        if self.self.filterDecided == 4 && self.taxYear2 == self.currentYear-1 {inFilterBillStatusDate()}
+                        if self.filterDecided == 0  {inFilterBillStatusDate()}
 
 
-                    if billItem.fBillStatus != "Cancelled"{
+
+                   // if billItem.fBillStatus != "Cancelled"{
                     self.monthSorter =  Array(self.byMonthTax.keys.map{$0})
                     self.uniqueTaxMonths = Array(Set(self.monthSorter))
                     self.uniqueTaxMonthsdateFormat = self.uniqueTaxMonths.map {self.mydateFormat20.date(from: $0)! }
                     self.uniqueTaxMonthsdateFormat.sort { $0.compare($1) == .orderedDescending }
                     self.arrayOfMonths = self.uniqueTaxMonthsdateFormat.map { self.mydateFormat20.string(from: $0)}
-                    }
-                    self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
-                    self.taxCounter += Double(billItem.fBillTax!)!}
-                    ;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
+                    //}
+                    
+                        
+                    //self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
+                   // self.taxCounter += Double(billItem.fBillTax!)!}
+                   // ;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
+                    //self.taxCounter += Double(billItem.fBillTax!)!}
+
 
                     }//end of in filter
                 
                 
                 switch self.filterDecided {
                 case 0:inFilter()
-                case 1:if self.currentMonth == self.taxMonth && self.currentYear == self.taxYear{inFilter()}
-                case 2:if self.currentMonth-1 == self.taxMonth && self.currentYear == self.taxYear{inFilter()} else if self.currentMonth == 1 && self.taxMonth == 12 && self.currentYear-1 == self.taxYear{inFilter()}
-                case 3:if (self.currentYear == self.taxYear && self.currentYear == self.taxYear2) || (self.currentYear == self.taxYear && self.taxYear2 == 0) {inFilter()}
-                case 4:if self.currentYear-1 == self.taxYear {inFilter()}
-                default: inFilter()
+                //case 1:if self.currentMonth == self.taxMonth && self.currentYear == self.taxYear{inFilter()}
+               // case 2:if self.currentMonth-1 == self.taxMonth && self.currentYear == self.taxYear{inFilter()} else if self.currentMonth == 1 && self.taxMonth == 12 && self.currentYear-1 == self.taxYear{inFilter()}
+                case 3:if (self.currentYear == self.taxYear || self.currentYear == self.taxYear2) {inFilter()}
+                case 4:if self.currentYear-1 == self.taxYear || self.currentYear == self.taxYear2-1 {inFilter()}
+                default: print ("nothing")
                 } //end of switch
                 
                 
-                
-                if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
+                print (self.taxCounter)
+                if self.taxCounter == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
                // self.totalBills.text = "Total(w/Tax): \(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter)) - \(String(describing: self.billCounter)) Bills "
                 self.totalAmount.text = "Total Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
                 //self.totalTax.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
