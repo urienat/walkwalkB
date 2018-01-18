@@ -288,7 +288,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     bills.customView = btn3
         
     btnMenu.setImage (menu, for: .normal)
-    btnMenu.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+    btnMenu.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
     btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
     menuItem.customView = btnMenu
     
