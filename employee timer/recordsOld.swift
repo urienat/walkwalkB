@@ -43,33 +43,5 @@ extension(newVCTable){
 
     
     
-    func alert6 () {
-        print("export")
-        let alertController6 = UIAlertController(title: "Mail to \(employerFromMain!) their due records", message: "Are You Sure?", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
-            //nothing
-            self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
-            self.segmentedPressed = 0
-            self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
-            self.StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
-        }//end of cancel action
-        
-        let exportAction = UIAlertAction(title: "Yes, prepare mail.", style: .default) { (UIAlertAction) in
-            print ("Send it")
-            self.htmlReport = self.csv2 as String!
-            let mailComposeViewController2 = self.configuredMailComposeViewController2()
-            if MFMailComposeViewController.canSendMail() {
-                self.present(mailComposeViewController2, animated: true, completion: nil)
-                self.thinking.stopAnimating()
-            } //end of if
-            else{ self.thinking.stopAnimating()
-                ;self.showSendmailErrorAlert() }
-            self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
-        }//end of export action
-        
-        alertController6.addAction(cancelAction)
-        alertController6.addAction(exportAction)
-        present(alertController6, animated: true, completion: nil)
-    } //end of func alert (mail export)
-
+   
 }

@@ -348,8 +348,8 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
                 } //end of switch
                 
                 
-                print (self.taxCounter)
-                if self.taxCounter == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
+                //print (self.taxCounter)
+                //if self.taxCounter == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
                // self.totalBills.text = "Total(w/Tax): \(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter)) - \(String(describing: self.billCounter)) Bills "
                 self.totalAmount.text = "Total Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
                 //self.totalTax.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
@@ -363,7 +363,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
                 print ("Stop")
             }
             
-            if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
+            if self.taxCounter == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
             self.thinking.isHidden = true
             self.thinking.stopAnimating()
         }
