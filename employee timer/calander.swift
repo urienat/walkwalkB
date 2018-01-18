@@ -600,7 +600,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             }
             
             let helpAction = UIAlertAction(title: "Help", style: .default) { (UIAlertAction) in
-            self.helper()
+                self.alert72()//self.helper()
                 }
 
             let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
@@ -647,4 +647,13 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             alertController456.addAction(CancelAction)
             self.present(alertController456, animated: true, completion: nil)
             }
+    
+    func alert72(){
+            let alertController72 = UIAlertController(title: ("Help") , message: "Import sessions from calendar is a powerful tool.  Only past sessions are imported and only if 'name+space+last name' combination matches calendar exactly.  After import process is completed a '+' sign is added to calendar's event to indicate it was imported.", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+                self.alert123()
+            }
+                        alertController72.addAction(OKAction)
+            self.present(alertController72, animated: true, completion: nil)
+    }
             }
