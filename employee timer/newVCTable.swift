@@ -208,8 +208,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         refresh(presser: 1)        //// When your task completes
         myGroup.notify(queue: DispatchQueue.main) {
             if self.appArray.count != 0 {self.thinking.stopAnimating();self.billProcess()}
-            print("Queue2")
-            //self.thinking.stopAnimating()
             if self.appArray.count == 0 {
                 self.thinking.stopAnimating()
                 self.alert27()
@@ -599,8 +597,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }//end of loop
         }//end of elseif snapshot.value as? String == nil
 
-        if self.billStarted != true { self.thinking.stopAnimating()}
-        if self.billPayStarted != true { self.thinking.stopAnimating()}
+        
         sleep(UInt32(1))
         self.StatusChosen.isEnabled = true
         self.periodChosen.isEnabled = true
@@ -614,8 +611,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         dbRef.removeAllObservers()
         dbRefEmployers.removeAllObservers()
 
-        DispatchQueue.main.asyncAfter(deadline: .now()+3){
-       
+        DispatchQueue.main.asyncAfter(deadline: .now()+4){
+            if self.billStarted != true   { self.thinking.stopAnimating()}
+           // if self.billPayStarted != true { self.thinking.stopAnimating()}
+            
             if self.eventCounter == 0 {self.billSender.isEnabled = false;self.billPay.isEnabled = false;self.eventsLbl.text = " No Due Sessions";self.noSign.isHidden = false}
             else if self.eventCounter == 1 {self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) Due session";self.noSign.isHidden = true}
             else {self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions";self.noSign.isHidden = true}
