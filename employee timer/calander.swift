@@ -262,15 +262,21 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             
             }//end of for event
             }//end of if let event
+          
+            
             
             if eventCounter == 0 {animationImage.isHidden = true; self.eventCounterBlock = "No sessions" ;ViewController.sessionPusher = false}else if eventCounter == 1 {animationImage.isHidden = false; self.eventCounterBlock = "One session";ViewController.sessionPusher = true} else {self.eventCounterBlock = "\(String(self.eventCounter)) sessions";ViewController.sessionPusher = true }
             // save last date
             if spesific == false {textAdd.text = "\(self.eventCounterBlock) imported from calander";ViewController.sessionPusher = false
                 
-            }
-            else {textAdd.text = "\(self.eventCounterBlock) for \(employerFromMain) imported from calander"}
-            thinking.stopAnimating()
 
+            }
+            else {textAdd.text = "\(self.eventCounterBlock) for \(employerFromMain) imported from calander";
+                
+
+            }
+            calanderImage.layer.removeAllAnimations()
+            thinking.stopAnimating()
             self.animation()
             DispatchQueue.main.asyncAfter(deadline: .now()+3){
             self.navigationController!.popViewController(animated: true)
@@ -442,6 +448,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                     }
                     else {textAdd.text = "\(self.eventCounterBlock) for \(employerFromMain) imported from calander"}
                     thinking.stopAnimating()
+                    calanderImage.layer.removeAllAnimations()
 
                     self.animation()
                     DispatchQueue.main.asyncAfter(deadline: .now()+3){
@@ -537,15 +544,13 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             }
             }//end of func
     
-    
-    
-    func importAnimation(){
-        
-        UIView.animate(withDuration: 0.3, delay :0.0 ,options:[.autoreverse],animations: {
-            self.calanderImage.alpha = 0.7
+    func ImportAnimation(alpha:CGFloat){
+        UIView.animate(withDuration: 0.75, delay :0.0 ,options:[.repeat,.autoreverse],animations: {
+            self.calanderImage.alpha = alpha
         },completion:nil)
-        
     }
+    
+    
     
 // alerts/////////////////////////////////////////////////////////////////////////////////////////////////////////
             // Helper for showing an alert
@@ -580,21 +585,24 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             let alertController123 = UIAlertController(title: ("Import Calander Sessions") , message: "You are about to import calander's sessions occured till now" , preferredStyle: .alert)
 
             let spesificAction = UIAlertAction(title: "Import \(employerFromMain)'s only", style: .default) { (UIAlertAction) in
-                self.importAnimation()
-            self.spesific = true
+                self.calanderImage.alpha = 0.8
+                self.ImportAnimation(alpha: 0.5)
+                self.spesific = true
                 self.thinking.startAnimating()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0){
                 if ViewController.calanderOption == "Google"  {self.fetchEvents()}
                 if ViewController.calanderOption == "IOS" {self.fetchEventsFromApple()}
             }
             }
 
             let allAction = UIAlertAction(title: "Import all accounts", style: .default) { (UIAlertAction) in
-                self.importAnimation()
+                self.calanderImage.alpha = 0.8
+
+                self.ImportAnimation(alpha: 0.5)
 
             self.spesific = false
                 self.thinking.startAnimating()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0){
                 if ViewController.calanderOption == "Google"  {self.fetchEvents()}
                 if ViewController.calanderOption == "IOS" {self.fetchEventsFromApple()}            }
             }
