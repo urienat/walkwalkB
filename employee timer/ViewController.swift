@@ -237,40 +237,18 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
 
     employerList.dataSource = self
     employerList.delegate = self
+    ViewController.sessionPusher = false
     
-    records.isEnabled = false
-    bills.isEnabled = false
-    account.isEnabled = false
         
     DateIn.text = ""
-    self.employerList.separatorColor = blueColor
-
-
     connectivityCheck()
     
     employerList.backgroundColor = UIColor.clear
         
-    //application did become active
-    NotificationCenter.default.addObserver(self, selector: #selector(ViewController.applicationDidBecomeActive(notification:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(ViewController.applicationDidBecomeActive(notification:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-   
-    //application stop active
-    NotificationCenter.default.addObserver(self, selector: #selector(ViewController.applicationDidBecomePassive(notification:)), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(ViewController.applicationDidBecomePassive(notification:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
-
     let currentUser = FIRAuth.auth()?.currentUser
-    print (currentUser as Any)
     if currentUser != nil {
-    print(currentUser!.uid)
     self.employeeIDToS = (currentUser!.uid)
-    self.fetchEmployers()
-    self.dbRefEmployee.removeAllObservers()
     
-    //formating the date
-    mydateFormat2.dateFormat = DateFormatter.dateFormat(fromTemplate:  " HH:mm", options: 0, locale: nil)!
-    mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
-    mydateFormat7.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd MMM, (HH:mm)",options: 0, locale: nil)!
-       
     self.dbRefEmployee.queryOrderedByKey().queryEqual(toValue: currentUser?.uid).observeSingleEvent(of: .childAdded, with: { (snapshot) in
     ViewController.fixedCurrency = String(describing: snapshot.childSnapshot(forPath: "fCurrency").value!) as String
     ViewController.fixedName =  String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String
@@ -284,6 +262,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         if  ViewController.professionControl! == "Tutor" { self.homeTitle.title = "Students"} else {self.homeTitle.title = "Accounts"}
 
     })
+    self.fetchEmployers()
     } else {
     print ("newreg\(newRegister)")
     if  newRegister == "YES" {
@@ -313,7 +292,9 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
     menuItem.customView = btnMenu
     
-     
+        records.isEnabled = false
+        bills.isEnabled = false
+        account.isEnabled = false
     
     self.sideMenuConstarin.constant = -140
     self.blackView.isHidden = true
@@ -322,8 +303,23 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
     blackView.addGestureRecognizer(tap)
     blackView.isUserInteractionEnabled = true
-    ViewController.sessionPusher = false
+     
+        //application did become active
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.applicationDidBecomeActive(notification:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.applicationDidBecomeActive(notification:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
+        //application stop active
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.applicationDidBecomePassive(notification:)), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.applicationDidBecomePassive(notification:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        
+        self.employerList.separatorColor = blueColor
+        
+        //formating the date
+        mydateFormat2.dateFormat = DateFormatter.dateFormat(fromTemplate:  " HH:mm", options: 0, locale: nil)!
+        mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
+        mydateFormat7.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd MMM, (HH:mm)",options: 0, locale: nil)!
+        
+
         
         
     }// end of viewdidload//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
