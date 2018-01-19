@@ -129,7 +129,6 @@
 			children = (
 				00BE2E941FE78A76000F3AAF /* taxTable.swift */,
 				0083889E1FE6574200EFE400 /* taxerCell.swift */,
-				F4EAE2552007874500BB448C /* reports */,
 			);
 			name = tax;
 			sourceTree = "<group>";
@@ -266,6 +265,7 @@
 				AE5548DC1DA51281009D7085 /* history */,
 				AECF31E01E12496C0072547C /* helpers */,
 				AE577AD31DF9417E00EBE62B /* The Root Program */,
+				F4EAE2552007874500BB448C /* reports */,
 				008388A21FE6576F00EFE400 /* tax */,
 				AE29E6221E59BFDC00797267 /* bill */,
 				AE6AA8531DEFFB9000E424FF /* recordsTable */,

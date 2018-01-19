@@ -185,7 +185,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         mydateFormat20.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM , yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
         
         btnFilter.setImage (greenFilter, for: .normal)
-        btnFilter.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        btnFilter.frame = CGRect(x: 0, y: 0, width: 60, height: 30)
         btnFilter.addTarget(self, action: #selector(filterMovement(delay:)), for: .touchUpInside)
         filterItem.customView = btnFilter
         navigationItem.rightBarButtonItem = filterItem

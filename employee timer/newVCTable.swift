@@ -287,7 +287,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.thinking.hidesWhenStopped = true
             
         btnGeneral.setImage (nonVimage, for: .normal)
-        btnGeneral.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        btnGeneral.frame = CGRect(x: 0, y: 0, width: 120, height: 30)
         btnGeneral.widthAnchor.constraint(equalToConstant: 40.0).isActive = true
         btnGeneral.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
         btnGeneral.addTarget(self, action: #selector(alert11), for: .touchUpInside)
@@ -297,14 +297,14 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         btn4.setImage(billDocument , for: .normal)
         btn4.setTitle("You Owe Me", for: .normal)
         btn4.setTitleColor(blueColor, for: .normal)
-        btn4.frame = CGRect(x: 0, y: 0, width: 0, height: 40)
+        btn4.frame = CGRect(x: 0, y: 0, width: 150, height: 30)
         btn4.addTarget(self, action:#selector(sendBill), for: UIControlEvents.touchDown)
         billSender.customView = btn4
             
         btn5.setImage(paidImage , for: .normal)
         btn5.setTitle(" PayDay", for: .normal)
         btn5.setTitleColor(blueColor, for: .normal)
-        btn5.frame = CGRect(x: 0, y: 0, width: 0, height: 40)
+        btn5.frame = CGRect(x: 0, y: 0, width: 140, height: 30)
         btn5.addTarget(self, action:#selector(billPayProcess), for: UIControlEvents.touchDown)
         billPay.customView = btn5
             
