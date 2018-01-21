@@ -800,7 +800,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     if self.biller == true {self.dbRefEmployees.child(self.employeeID).updateChildValues(["fCounter": String(describing: (Int(self.counterForMail2!)!+1))])//add counter to invoice #
     self.biller = false
         
-        self.mailSaver = "\(self.mydateFormat8.string(from: Date()))\r\n\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\(self.seprator)\r\n\r\nBill to:\r\n\(self.accountName) \(self.employerFromMain!) - \(self.accountParnet)\r\n\(self.accountAdress)\r\n\(self.seprator)\r\n\r\n\(self.htmlReport!)\r\n\(self.sessionBlock)\r\n\r\n\r\n\(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock)\r\n\r\n\r\nMade by PerSession app. "
+        self.mailSaver = "\(self.mydateFormat8.string(from: Date()))\r\n\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\(self.seprator)\(self.seprator)\r\n\r\nBill to:\r\n\(self.accountName) \(self.employerFromMain!) - \(self.accountParnet)\r\n\(self.accountAdress)\r\n\(self.seprator)\r\n\r\n\(self.htmlReport!)\r\n\(self.sessionBlock)\r\n\r\n\r\n\(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock)\r\n\r\n\r\nMade by PerSession app. "
         
      // (self.documentName!)-\(self.counterForMail2!)
 

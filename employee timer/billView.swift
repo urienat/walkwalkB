@@ -35,7 +35,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     //let largeTextString = "Here is some large, bold text"
     
     
-    let largeFont = UIFont(name: "PingFang TC", size: 50.0)!
+    let largeFont = UIFont(name: "PingFang TC", size: 30.0)!
     let smallFont = UIFont(name: "PingFang TC", size: 17.0)!
     
     
@@ -280,6 +280,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         
         self.mailText.attributedText = attrText
         //saveBase64StringToPDF(textString)
+        imageFromTextView(textView: mailText)
         
     }
 
@@ -346,6 +347,28 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             self.dbRef.child(String(undoArray[h])).updateChildValues(["fStatus": "Approved"], withCompletionBlock: { (error) in}) //end of update.
         }//end of loop
         }//end movesession
+    
+    func imageFromTextView(textView: UITextView) -> UIImage {
+        
+        // Make a copy of the textView first so that it can be resized
+        // without affecting the original.
+        let textViewCopy = UITextView(frame: textView.frame)
+        textViewCopy.attributedText = textView.attributedText
+        
+        // resize if the contentView is larger than the frame
+        if textViewCopy.contentSize.height > textViewCopy.frame.height {
+            textViewCopy.frame = CGRect(origin:CGPoint(), size: textViewCopy.contentSize)
+        }
+        
+        // draw the text view to an image
+        UIGraphicsBeginImageContextWithOptions(textViewCopy.bounds.size, false, UIScreen.main.scale)
+        textViewCopy.drawHierarchy(in: textViewCopy.bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        print ("image:\(image!)")
+        return image!
+    }
+
     
     func saveBase64StringToPDF(_ base64String: String) {
         guard

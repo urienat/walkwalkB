@@ -735,7 +735,7 @@ print (self.billItems.count)
         DispatchQueue.main.asyncAfter(deadline: .now()+2){
             print (self.billInfo)
             
-            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\(self.seprator)\r\n\r\nSent to:\r\n\(self.accountName) \(self.accountLastName) - \(self.accountParnet)\r\n\(self.accountAdress)\r\n\(self.seprator)\r\nPayment's recipet for Bill-\(self.BillArray[self.buttonRow])\r\n\r\n\(self.taxationBlock!)\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc2!)\r\n\r\n\(self.paymentBlock!)\r\n\r\nMade by PerSession app. "
+            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\(self.seprator)\(self.seprator)\r\n\r\nSent to:\r\n\(self.accountName) \(self.accountLastName) - \(self.accountParnet)\r\n\(self.accountAdress)\r\n\(self.seprator)\r\nPayment's recipet for Bill-\(self.BillArray[self.buttonRow])\r\n\r\n\(self.taxationBlock!)\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc2!)\r\n\r\n\(self.paymentBlock!)\r\n\r\nMade by PerSession app. "
             
             
            
