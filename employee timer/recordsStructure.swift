@@ -31,6 +31,11 @@ class employersStruct: NSObject{
     var fImageRef: String?
     var fActive: Bool?
     var fLast: String?
+    var fName: String?
+    var fCell: String?
+    var fParent: String?
+    var fAddress: String?
+    var fmail: String?
 
 }
 

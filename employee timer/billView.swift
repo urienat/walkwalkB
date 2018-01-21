@@ -29,6 +29,21 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     let canceledImage = UIImage(named: "cancelled")
     let trashImage = UIImage(named: "trash")
     let billDocument = UIImage(named: "billDocument")
+    
+    let largeTextString = "Here is some large, bold text"
+    
+    
+    let largeFont = UIFont(name: "Arial-BoldMT", size: 50.0)!
+    let smallFont = UIFont(name: "Arial", size: 30.0)!
+    
+    //  Convert textString to NSString because attrText.addAttribute takes an NSRange.
+    let largeTextRange = (textString as NSString).rangeOfString(largeTextString)
+    let smallTextRange = (textString as NSString).rangeOfString(smallTextString)
+    
+    attrText.addAttribute(NSFontAttributeName, value: largeFont, range: largeTextRange)
+    attrText.addAttribute(NSFontAttributeName, value: smallFont, range: smallTextRange)
+    
+    textView.attributedText = attrText
 
     
     var titleLbl = ""
@@ -241,6 +256,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             
             self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "!!!!!!!!!!This document was cancelled: \(self.mydateFormat8.string(from: self.mydateFormat5.date(from: self.statusCanclledDate!)! ))!!!!!!!!!!"}
             
+            //self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
+            let attrText = NSMutableAttributedString(string: textString)
             self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
 
         })
