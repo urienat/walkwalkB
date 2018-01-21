@@ -35,7 +35,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     //let largeTextString = "Here is some large, bold text"
     
     
-    let largeFont = UIFont(name: "PingFang TC", size: 30.0)!
+    let largeFont = UIFont(name: "PingFang TC", size: 24.0)!
     let smallFont = UIFont(name: "PingFang TC", size: 17.0)!
     
     
