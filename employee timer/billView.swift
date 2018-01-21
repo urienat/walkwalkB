@@ -449,7 +449,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         func connectivityCheck(){
         if Reachability.isConnectedToNetwork() == true
         {print("Internet Connection Available!");
-            firebaseConnectivity()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
+                self.firebaseConnectivity()
+            }
         }else{
             print("Internet Connection not Available!")
             alert50()

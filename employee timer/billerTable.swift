@@ -765,10 +765,10 @@ print (self.billItems.count)
             let counterForMail = (snapshot.childSnapshot(forPath: "fCounter").value as! String)
             let taxSwitch = (snapshot.childSnapshot(forPath: "fSwitcher").value as! String)
             //let taxation = (snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String)
-            let taxName = (snapshot.childSnapshot(forPath: "fTaxName").value as! String)
+            let taxId = (snapshot.childSnapshot(forPath: "fTaxId").value as! String)
             self.billInfo = (snapshot.childSnapshot(forPath: "fBillinfo").value as! String)
             self.address = (snapshot.childSnapshot(forPath: "fAddress").value as! String)
-            if taxName == "" {self.taxForBlock = "Tax"} else {self.taxForBlock = taxName}
+            self.taxForBlock = "VAT"
             
             
           
