@@ -716,7 +716,7 @@ print (self.billItems.count)
         DispatchQueue.main.asyncAfter(deadline: .now()+2){
             print (self.billInfo)
             
-            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: Reciept-\(self.BillArray[self.buttonRow])\r\nAccount: \(self.account!)\r\n\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\r\n Payment's recipet for Bill-\(self.BillArray[self.buttonRow])\r\n\r\n\(self.taxationBlock!)\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc2!)\r\n\r\n\(self.paymentBlock!)\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
+            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: Reciept-\(self.BillArray[self.buttonRow])\r\nAccount: \(self.account!)\r\n\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\r\nPayment's recipet for Bill-\(self.BillArray[self.buttonRow])\r\n\r\n\(self.taxationBlock!)\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc2!)\r\n\r\n\(self.paymentBlock!)\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
             
             self.recoveredreciept = self.recieptMailSaver
             print (self.recieptMailSaver)
@@ -775,7 +775,7 @@ print (self.billItems.count)
             
             
             if  taxSwitch == "Yes" {
-            self.taxationBlock = (" Total (without \(self.taxForBlock!)): \(ViewController.fixedCurrency!)\(self.midCalc3!)\r\n\(self.taxForBlock!): \(ViewController.fixedCurrency!)\(self.midCalc!)")
+            self.taxationBlock = ("Total (without \(self.taxForBlock!)): \(ViewController.fixedCurrency!)\(self.midCalc3!)\r\n\(self.taxForBlock!): \(ViewController.fixedCurrency!)\(self.midCalc!)")
             }//if taxswitch = yes
             else {self.taxationBlock = ""}
             

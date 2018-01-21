@@ -30,16 +30,12 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     let trashImage = UIImage(named: "trash")
     let billDocument = UIImage(named: "billDocument")
     
-    let largeTextString = "Here is some large, bold text"
+    //let largeTextString = "Here is some large, bold text"
     
     
     let largeFont = UIFont(name: "PingFang TC", size: 50.0)!
     let smallFont = UIFont(name: "PingFang TC", size: 17.0)!
     
-    
-    
-   
-
     
     var titleLbl = ""
     var billToHandle = String()
@@ -83,13 +79,18 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     @IBAction func billReciept(_ sender: Any) {
         switch billReciept.selectedSegmentIndex {
         case 0:recieptChosen = false
-        self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
+        
+        //self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
         self.titleLbl = "\(document!) \(documentCounter!)"
         self.title = self.titleLbl
+        self.attributedText(attributed: self.recoveredBill)
+
         case 1:recieptChosen = true
-        self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredReciept)"
+        //self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredReciept)"
         self.titleLbl = "Reciept \(documentCounter!)"
         self.title = self.titleLbl
+        self.attributedText(attributed: self.recoveredReciept)
+
         default:
           print ("switch is not working") //do nothing
         } //end of switch
@@ -167,13 +168,17 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         billReciept.isHidden = true
         print (recoveredReciept)
         recieptChosen = true
-        self.mailText.text = self.recoveredReciept
+       // self.mailText.text = self.recoveredReciept
+            self.attributedText(attributed: self.recoveredReciept)
+
         }
 
         func presentBill(){
         billReciept.isHidden = true
         self.recieptChosen = false
-        self.mailText.text = self.recoveredBill
+       // self.mailText.text = self.recoveredBill
+            self.attributedText(attributed: self.recoveredBill)
+
         }
     
     func returnToList(){
@@ -251,23 +256,27 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             
             self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "!!!!!!!!!!This document was cancelled: \(self.mydateFormat8.string(from: self.mydateFormat5.date(from: self.statusCanclledDate!)! ))!!!!!!!!!!"}
             
-            //self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
-            let textString = "Invoice \r\n\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
-            let attrText = NSMutableAttributedString(string: textString)
-            let  normalText = "(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
-
-            //  Convert textString to NSString because attrText.addAttribute takes an NSRange.
-            let largeTextRange = (textString as NSString).range(of: "Invoice")
-            let smallTextRange = (textString as NSString).range(of: self.largeTextString)
-            
-            attrText.addAttribute(NSFontAttributeName, value: self.largeFont, range: largeTextRange)
-            attrText.addAttribute(NSFontAttributeName, value: self.smallFont, range: smallTextRange)
-            
-            self.mailText.attributedText = attrText
+            self.attributedText(attributed: self.recoveredBill)
             
         })
 
         }//end rebill clicked
+    
+    func attributedText(attributed:String) {
+        //self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
+        let textString = "\(self.document!)-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"
+        let attrText = NSMutableAttributedString(string: textString)
+        let  normalText = "(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
+        
+        //  Convert textString to NSString because attrText.addAttribute takes an NSRange.
+        let largeTextRange = (textString as NSString).range(of: "\(self.document!)-\(self.documentCounter!)")
+        //let smallTextRange = (textString as NSString).range(of: "")
+        
+        attrText.addAttribute(NSFontAttributeName, value: self.largeFont, range: largeTextRange)
+        //attrText.addAttribute(NSFontAttributeName, value: self.smallFont, range: smallTextRange)
+        
+        self.mailText.attributedText = attrText
+    }
 
         //func for mail
         func  configuredMailComposeViewController2() -> MFMailComposeViewController {
@@ -276,6 +285,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         mailComposerVC2.setSubject("\(document!) \(documentCounter!)")
         mailComposerVC2.setMessageBody("\(recoveredBill)\r\n\r\n\r\n", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
+        //mailComposerVC2.addAttachmentData(<#T##attachment: Data##Data#>, mimeType: <#T##String#>, fileName: <#T##String#>)
+            
         //mailComposerVC2.setCcRecipients([ViewController.fixedemail])
         return mailComposerVC2
         }//end of MFMailcomposer
@@ -287,6 +298,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         mailComposerVC4.setSubject("Reciept \(documentCounter!)")
         mailComposerVC4.setMessageBody("\(recoveredReciept)\r\n\r\n \r\n ", isHTML: false)
         mailComposerVC4.setToRecipients([ViewController.fixedemail])
+        //mailComposerVC2.addAttachmentData(<#T##attachment: Data##Data#>, mimeType: <#T##String#>, fileName: <#T##String#>)
+
         //mailComposerVC4.setCcRecipients([ViewController.fixedemail])
         return mailComposerVC4
         }//end of MFMailcomposer

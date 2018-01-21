@@ -27,6 +27,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let pencilImage = UIImage(named: "pencilImage")
     let roundImageNormal = UIImage(named: "roundImageNormal")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
+    var seprator = "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
     
     
     let myGroup = DispatchGroup()
@@ -581,7 +582,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
        
             if record.fIndication3 == "📄" {if self.firstTimeGeneral == true {self.csv2.append("There are general Items Included:\r\n");self.firstTimeGeneral = false };"\(self.csv2.append(record.fSpecialItem!))";
                 
-                "\(self.csv2.append("                          "))" ;self.csv2.append(ViewController.fixedCurrency!); self.csv2.append(record.fSpecialAmount!);self.csv2.append("\r\n")}  else {if self.firstTime == true {self.csv2.append("\r\nThese are the sessions included:\r\n");self.firstTime = false}
+                "\(self.csv2.append("                          "))" ;self.csv2.append(ViewController.fixedCurrency!); self.csv2.append(record.fSpecialAmount!);self.csv2.append("\(self.seprator)\r\n")}  else {if self.firstTime == true {self.csv2.append("\r\nThese are the sessions included:\r\n");self.firstTime = false}
                 
                 if ViewController.dateTimeFormat == "DateTime" {"\(self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n")
                 } else {"\(self.csv2.append( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n") }
@@ -662,7 +663,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             self.billInfo = (snapshot.childSnapshot(forPath: "fBillinfo").value as! String)
             self.address = (snapshot.childSnapshot(forPath: "fAddress").value as! String)
 
-            if self.eventCounter == 0 {self.sessionBlock = "\r\n"} else {self.sessionBlock = "Total Number of sessions: \(self.eventCounter)  -   \(self.perEvents.text!)"}
+            if self.eventCounter == 0 {self.sessionBlock = "\r\n"} else {self.sessionBlock = "\r\nTotal Number of sessions: \(self.eventCounter)  -   \(self.perEvents.text!)\r\n\(self.seprator)"}
 
             if  self.taxSwitch == "Yes" {
                 if self.self.taxCalc == "Over" {self.self.stam =  Double(Double(self.taxation!)!*self.calc*0.01).roundTo(places: 2)}  else  { self.stam = Double((self.calc / Double(Double(self.taxation!)!*0.01+1)) * Double(Double(self.taxation!)!*0.01)).roundTo(places: 2)}
@@ -676,15 +677,15 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                 print (self.midCalc3)
             self.midCalc2 =  String(self.stam3! + self.stam!)
             
-                self.taxationBlock = ("Total: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n\(self.taxForBlock)(%\(self.taxation!)): \(ViewController.fixedCurrency!)\(self.midCalc)\r\nTotal (w/\(self.taxForBlock)): \(ViewController.fixedCurrency!)\(self.midCalc2)")
+                self.taxationBlock = ("\(self.seprator)\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n\(self.taxForBlock)(%\(self.taxation!)): \(ViewController.fixedCurrency!)\(self.midCalc)\r\nTotal (w/\(self.taxForBlock)): \(ViewController.fixedCurrency!)\(self.midCalc2)")
              } else {
-                print (self.calc,self.calc.roundTo(places: 2))
+               
                 
                 self.midCalc =  "0"
                 self.midCalc2 =  String (describing:self.calc.roundTo(places: 2))
                 self.midCalc3 = String (describing:self.calc.roundTo(places: 2))
                 
-                self.taxationBlock = "Total: \(ViewController.fixedCurrency!)\(self.midCalc3)"}
+                self.taxationBlock = "\(self.seprator)\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc3)"}
             
             if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
             
@@ -695,7 +696,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                 }
                 
             }else{if self.taxSwitch == "Yes"{self.documentName = "VAT Invoice"} else {self.documentName = "Invoice"}; // no payment only bill
-            if self.paypal != "" { self.paymentBlock = ("Payment can be made through Paypal: \(self.paypal!)/\(self.midCalc2)")}else {self.paymentBlock = ""}
+            if self.paypal != "" { self.paymentBlock = ("\(self.seprator)\r\nPayment can be made through Paypal: \(self.paypal!)/\(self.midCalc2)")}else {self.paymentBlock = ""}
             }// end of else  self.paymentDate != ""
             
    
@@ -799,9 +800,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     if self.biller == true {self.dbRefEmployees.child(self.employeeID).updateChildValues(["fCounter": String(describing: (Int(self.counterForMail2!)!+1))])//add counter to invoice #
     self.biller = false
         
-        self.mailSaver = "\(self.mydateFormat8.string(from: Date()))\r\n\r\n\(self.documentName!)-\(self.counterForMail2!)\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\r\n\r\nAccount: \(self.accountName) \(self.employerFromMain!) - \(self.accountParnet)\r\n\(self.accountAdress)\r\n\r\n\(self.htmlReport!)\r\n\(self.sessionBlock)\r\n\r\n\r\n\(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock)\r\n\r\n\r\nMade by PerSession app. "
+        self.mailSaver = "\(self.mydateFormat8.string(from: Date()))\r\n\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\(self.seprator)\r\n\r\nBill to:\r\n\(self.accountName) \(self.employerFromMain!) - \(self.accountParnet)\r\n\(self.accountAdress)\r\n\(self.seprator)\r\n\r\n\(self.htmlReport!)\r\n\(self.sessionBlock)\r\n\r\n\r\n\(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock)\r\n\r\n\r\nMade by PerSession app. "
         
-        
+     // (self.documentName!)-\(self.counterForMail2!)
 
     //update bill with DB
         self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": self.billStatus!, "fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2,"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference, "fDocumentName":self.documentName!,"fRecieptDate":self.recieptDate!,"fBillRecieptMailSaver":""
