@@ -35,7 +35,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     //let largeTextString = "Here is some large, bold text"
     
     
-    let largeFont = UIFont(name: "PingFang TC", size: 24.0)!
+    let largeFont = UIFont(name: "PingFang TC", size: 34.0)!
     let smallFont = UIFont(name: "PingFang TC", size: 17.0)!
     
     
@@ -267,7 +267,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     func attributedText(attributed:String) {
         //self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
         
-        if recieptChosen == false { self.textString = "\(self.document!)-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"} else {  self.textString = "Reciept for \(self.document!)-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"}
+        if recieptChosen == false { self.textString = "\(self.document!)-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"} else {  self.textString = "Reciept for \(self.document!)-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)\r\n\r\n\r\n\r\n\\r\n\r\n\\r\n\r\n\\r\n\r\n\\r\n\r\n\\r\n\r\n\\r\n\r\n"}
         let attrText = NSMutableAttributedString(string: textString)
         //let  normalText = "(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
         
@@ -496,6 +496,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         alertController.addAction(deleteAction)
         self.present(alertController, animated: true, completion: nil)
         }
+    
     
     func printText(){
         
