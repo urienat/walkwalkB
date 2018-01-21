@@ -27,7 +27,14 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var counterForpresent:String?
     var lastPrevious = ""
 
+    var accountAdress = ""
+    var accountName = ""
+    var accountLastName = ""
+    var accountParnet = ""
+
     
+    var seprator = "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
     var monthToHandle : Int = 0
     var yearToHandle : Int = 0
     var taxBillsToHandle:Bool = false
@@ -258,6 +265,11 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         if employerID != "" {
         dbRefEmployers.child(self.employerID).observeSingleEvent(of:.value, with: {(snapshot) in
         self.lastPrevious = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!
+        self.accountAdress = String(describing: snapshot.childSnapshot(forPath: "fAddress").value!) as String!
+        self.accountName = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
+        self.accountLastName = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
+        self.accountParnet = String(describing: snapshot.childSnapshot(forPath: "fParent").value!) as String!
+            
         })
         }//end of if
         billerConnect.delegate = self
@@ -709,6 +721,13 @@ print (self.billItems.count)
         
         self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).observeSingleEvent(of: .value,with: {(snapshot) in
             self.employerID = (snapshot.childSnapshot(forPath: "fBillEmployer").value! as? String)!
+            self.dbRefEmployers.child(self.employerID).observeSingleEvent(of:.value, with: {(snapshot) in
+                //self.lastPrevious = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!
+                self.accountAdress = String(describing: snapshot.childSnapshot(forPath: "fAddress").value!) as String!
+                self.accountName = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
+                self.accountLastName = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
+                self.accountParnet = String(describing: snapshot.childSnapshot(forPath: "fParent").value!) as String!
+            })
             })
         
         recieptDate = mydateFormat5.string(from: Date())
@@ -716,8 +735,12 @@ print (self.billItems.count)
         DispatchQueue.main.asyncAfter(deadline: .now()+2){
             print (self.billInfo)
             
-            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\nRef#: Reciept-\(self.BillArray[self.buttonRow])\r\nAccount: \(self.account!)\r\n\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\r\nPayment's recipet for Bill-\(self.BillArray[self.buttonRow])\r\n\r\n\(self.taxationBlock!)\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc2!)\r\n\r\n\(self.paymentBlock!)\r\n\r\nRegards\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\r\nMade by PerSession app. "
+            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\(self.seprator)\r\n\r\nSent to:\r\n\(self.accountName) \(self.accountLastName) - \(self.accountParnet)\r\n\(self.accountAdress)\r\n\(self.seprator)\r\nPayment's recipet for Bill-\(self.BillArray[self.buttonRow])\r\n\r\n\(self.taxationBlock!)\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc2!)\r\n\r\n\(self.paymentBlock!)\r\n\r\nMade by PerSession app. "
             
+            
+           
+            
+            //Reciept-\(self.BillArray[self.buttonRow])
             self.recoveredreciept = self.recieptMailSaver
             print (self.recieptMailSaver)
             print (self.recoveredreciept)

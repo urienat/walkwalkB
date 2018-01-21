@@ -29,6 +29,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     let canceledImage = UIImage(named: "cancelled")
     let trashImage = UIImage(named: "trash")
     let billDocument = UIImage(named: "billDocument")
+    var textString = ""
     
     //let largeTextString = "Here is some large, bold text"
     
@@ -177,7 +178,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         billReciept.isHidden = true
         self.recieptChosen = false
        // self.mailText.text = self.recoveredBill
-            self.attributedText(attributed: self.recoveredBill)
+        self.attributedText(attributed: self.recoveredBill)
 
         }
     
@@ -264,9 +265,10 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     
     func attributedText(attributed:String) {
         //self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
-        let textString = "\(self.document!)-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"
+        if recieptChosen == true { self.document = "Reciept for \(self.document!)"}
+         self.textString = "\(self.document!)-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"
         let attrText = NSMutableAttributedString(string: textString)
-        let  normalText = "(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
+        //let  normalText = "(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
         
         //  Convert textString to NSString because attrText.addAttribute takes an NSRange.
         let largeTextRange = (textString as NSString).range(of: "\(self.document!)-\(self.documentCounter!)")
@@ -276,6 +278,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         //attrText.addAttribute(NSFontAttributeName, value: self.smallFont, range: smallTextRange)
         
         self.mailText.attributedText = attrText
+        //saveBase64StringToPDF(textString)
+        
     }
 
         //func for mail
@@ -341,6 +345,28 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             self.dbRef.child(String(undoArray[h])).updateChildValues(["fStatus": "Approved"], withCompletionBlock: { (error) in}) //end of update.
         }//end of loop
         }//end movesession
+    
+    func saveBase64StringToPDF(_ base64String: String) {
+        guard
+            var documentsURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last,
+            let convertedData = Data(base64Encoded: base64String)
+            else {
+                //handle error when getting documents URL
+                return
+        }
+        
+        //name your file however you prefer
+        documentsURL.appendPathComponent("yourFileName.pdf")
+        do {
+            try convertedData.write(to: documentsURL)
+        } catch {
+            //handle write error here
+        }
+        //if you want to get a quick output of where your
+        //file was saved from the simulator on your machine
+        //just print the documentsURL and go there in Finder
+        print("url\(documentsURL)")
+    }
     
  //alerts////////////////////////////////////////////
         func alert5(){
