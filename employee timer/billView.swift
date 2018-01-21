@@ -30,6 +30,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     let trashImage = UIImage(named: "trash")
     let billDocument = UIImage(named: "billDocument")
     var textString = ""
+    var largeTextRange:NSRange?
     
     //let largeTextString = "Here is some large, bold text"
     
@@ -265,16 +266,16 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     
     func attributedText(attributed:String) {
         //self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
-        if recieptChosen == true { self.document = "Reciept for \(self.document!)"}
-         self.textString = "\(self.document!)-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"
+        
+        if recieptChosen == false { self.textString = "\(self.document!)-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"} else {  self.textString = "Reciept for \(self.document!)-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"}
         let attrText = NSMutableAttributedString(string: textString)
         //let  normalText = "(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
         
         //  Convert textString to NSString because attrText.addAttribute takes an NSRange.
-        let largeTextRange = (textString as NSString).range(of: "\(self.document!)-\(self.documentCounter!)")
+        if recieptChosen == false { self.largeTextRange = (textString as NSString).range(of: "\(self.document!)-\(self.documentCounter!)")} else {self.largeTextRange = (textString as NSString).range(of: "Reciept for \(self.document!)-\(self.documentCounter!)")}
         //let smallTextRange = (textString as NSString).range(of: "")
         
-        attrText.addAttribute(NSFontAttributeName, value: self.largeFont, range: largeTextRange)
+        attrText.addAttribute(NSFontAttributeName, value: self.largeFont, range: largeTextRange!)
         //attrText.addAttribute(NSFontAttributeName, value: self.smallFont, range: smallTextRange)
         
         self.mailText.attributedText = attrText
