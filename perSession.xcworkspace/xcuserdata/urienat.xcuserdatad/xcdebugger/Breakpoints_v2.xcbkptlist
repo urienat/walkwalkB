@@ -500,7 +500,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/newVCTable.swift"
-            timestampString = "537989309.227391"
+            timestampString = "538317195.258015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "412"
@@ -756,12 +756,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/newVCTable.swift"
-            timestampString = "537989309.227661"
+            timestampString = "538317195.25857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "637"
             endingLineNumber = "637"
-            landmarkName = "amountCalc()"
+            landmarkName = "fetch()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -900,7 +900,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/ViewController.swift"
-            timestampString = "537992989.087406"
+            timestampString = "538316713.620537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "134"
@@ -916,12 +916,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/newVCTable.swift"
-            timestampString = "537989309.2286381"
+            timestampString = "538317195.258939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "425"
             endingLineNumber = "425"
-            landmarkName = "approvalClicked(sender:)"
+            landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -948,7 +948,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/ViewController.swift"
-            timestampString = "537992989.091321"
+            timestampString = "538316713.621087"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "199"
@@ -1417,38 +1417,6 @@
             endingLineNumber = "709"
             landmarkName = "recieptProcess()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "perSession.biller.recieptProcess() -&gt; ()"
-                  moduleName = "perSession"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/urienat/myApps/perSessionMB2/employee%20timer/billerTable.swift"
-                  timestampString = "537992989.34278"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "710"
-                  endingLineNumber = "710"
-                  offsetFromSymbolStart = "772">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (__ObjC.FIRDataSnapshot) -&gt; () in perSession.biller.recieptProcess() -&gt; ()"
-                  moduleName = "perSession"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/urienat/myApps/perSessionMB2/employee%20timer/billerTable.swift"
-                  timestampString = "537992989.344178"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "711"
-                  endingLineNumber = "711"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1634,7 +1602,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/newVCTable.swift"
-            timestampString = "537989309.229647"
+            timestampString = "538317195.259505"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "625"
@@ -1650,13 +1618,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/newVCTable.swift"
-            timestampString = "537989309.229704"
+            timestampString = "538317195.259776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
             endingLineNumber = "148"
-            landmarkName = "savePayment(_:)"
-            landmarkType = "7">
+            landmarkName = "newVCTable"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
