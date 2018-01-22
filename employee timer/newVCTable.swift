@@ -28,7 +28,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let roundImageNormal = UIImage(named: "roundImageNormal")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
     var seprator = "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-    
+    var seprator2 = "⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶"
+
     
     let myGroup = DispatchGroup()
     let myGroupBillPay = DispatchGroup()
@@ -692,11 +693,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
             if self.recieptDate != "" {if self.taxSwitch == "Yes"{self.documentName = "VAT Invoice"} else {self.documentName = "Invoice"}; if self.paymentSys == "other" || self.paymentSys == ""{self.paymentBlock = ("Payment of \(ViewController.fixedCurrency!)\(self.midCalc2) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock) ")
                 }
-            else{self.paymentBlock = "Payment of \(ViewController.fixedCurrency!)\(self.midCalc2) made by \(self.paymentSys!) \(self.refernceBlock) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))"
+            else{self.paymentBlock = "\(self.seprator2)\(self.seprator2)\r\nPayment of \(ViewController.fixedCurrency!)\(self.midCalc2) made by \(self.paymentSys!) \(self.refernceBlock) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))"
                 }
                 
             }else{if self.taxSwitch == "Yes"{self.documentName = "VAT Invoice"} else {self.documentName = "Invoice"}; // no payment only bill
-            if self.paypal != "" { self.paymentBlock = ("\(self.seprator)\(self.seprator)\r\nPayment can be made through Paypal: \(self.paypal!)/\(self.midCalc2)")}else {self.paymentBlock = ""}
+            if self.paypal != "" { self.paymentBlock = ("\(self.seprator2)\(self.seprator2)\r\nPayment can be made through Paypal: \(self.paypal!)/\(self.midCalc2)")}else {self.paymentBlock = ""}
             }// end of else  self.paymentDate != ""
             
    
@@ -800,7 +801,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     if self.biller == true {self.dbRefEmployees.child(self.employeeID).updateChildValues(["fCounter": String(describing: (Int(self.counterForMail2!)!+1))])//add counter to invoice #
     self.biller = false
         
-        self.mailSaver = "\(self.mydateFormat8.string(from: Date()))\r\n\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\(self.seprator)\(self.seprator)\r\n\r\nBill to:\r\n\(self.accountName) \(self.employerFromMain!) - \(self.accountParnet)\r\n\(self.accountAdress)\r\n\(self.seprator)\r\n\(self.seprator)\r\n\(self.htmlReport!)\(self.sessionBlock)\r\n\r\n\r\n\(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock)\r\n\r\n\r\nMade by PerSession app. "
+        self.mailSaver = "\(self.mydateFormat8.string(from: Date()))\r\n\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\(self.seprator2)\(self.seprator2)\r\n\r\nBill to:\r\n\(self.accountName) \(self.employerFromMain!) - \(self.accountParnet)\r\n\(self.accountAdress)\r\n\(self.seprator2)\r\n\(self.htmlReport!)\(self.sessionBlock)\r\n\r\n\r\n\(self.taxationBlock)\r\n\r\n\r\n\(self.paymentBlock)\r\n\r\n\r\nMade by PerSession app. "
         
      // (self.documentName!)-\(self.counterForMail2!)
 
