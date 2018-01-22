@@ -267,11 +267,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     func attributedText(attributed:String) {
         //self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
         
-        if recieptChosen == false { self.textString = "\(self.document!)-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"} else {  self.textString = "Reciept for \(self.document!)-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"}
+        if recieptChosen == false { self.textString = "\(self.document!)-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"} else {  self.textString = "Reciept-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"}
         var attrText = NSMutableAttributedString(string: textString)
         
         //  Convert textString to NSString because attrText.addAttribute takes an NSRange.
-        if recieptChosen == false { self.largeTextRange = (textString as NSString).range(of: "\(self.document!)-\(self.documentCounter!)"); self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")} else {self.largeTextRange = (textString as NSString).range(of: "Reciept for \(self.document!)-\(self.documentCounter!)");self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")}
+        if recieptChosen == false { self.largeTextRange = (textString as NSString).range(of: "\(self.document!)-\(self.documentCounter!)"); self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")} else {self.largeTextRange = (textString as NSString).range(of: "Reciept-\(self.documentCounter!)");self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")}
         
         paragraph.alignment = .center
         let attributes: [String : Any] = [NSParagraphStyleAttributeName: paragraph, NSFontAttributeName:largeFont]
