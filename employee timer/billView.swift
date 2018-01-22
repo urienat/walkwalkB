@@ -470,21 +470,33 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         // navigationController!.popViewController(animated: true)
         }
         let printAction = UIAlertAction(title: "Print", style: .default) { (UIAlertAction) in
-        let printInfo = UIPrintInfo(dictionary:nil)
-        printInfo.outputType = UIPrintInfoOutputType.general
-        printInfo.jobName = "My Print Job"
-
-        // Set up print controller
-        let printController = UIPrintInteractionController.shared
-        printController.printInfo = printInfo
-
-        // Assign a UIImage version of my UIView as a printing iten
-        //printController.printingItem =   self.mailView.toImage()
-        printController.printingItem =   self.scrollView.toImage()
-
-        // Do it
-        printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
+            //self.printText()
+            
+            let printInfo = UIPrintInfo(dictionary:nil)
+            printInfo.outputType = UIPrintInfoOutputType.general
+            printInfo.jobName = "My Print Job"
+            
+            // Set up print controller
+            let printController = UIPrintInteractionController.shared
+            
+            printController.printInfo = printInfo
+            
+            
+            // Assign a UIImage version of my UIView as a printing iten
+            printController.printingItem =   self.mailView.toImage()
+            self.billForImage.image = self.mailView.toImage()
+            
+            
+            
+            // Do it
             self.deleteBtn.isEnabled = false
+            
+            var viewpf:UIViewPrintFormatter = self.billForImage.viewPrintFormatter()
+            
+            printController.printFormatter = viewpf
+            printController.present(animated: true, completionHandler: nil)
+            
+            //printController.present(from: self.view.frame, in:  self.view, animated: true, completionHandler: nil)
 
 
         }

@@ -316,7 +316,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             }//end of func
 
             func saveToDB2() {
-            let record = ["fIn" : calInFB,  "fEmployer": String (describing : employer),"fIndication3" :"📆","fStatus" : "Approved","fEmployeeRef": String (describing : employeeId),"fEmployerRef":  String (describing : employerId)]
+                let record = ["fIn" : calInFB,  "fEmployer": String (describing : employer),"fIndication3" :"📆","fStatus" : "Approved","fEmployeeRef": String (describing : employeeId),"fEmployerRef":  String (describing : employerId),"fSessionCreated":self.mydateFormat5.string(from: Date()) ]
 
             let recordRefence = self.dbRef.childByAutoId()
             recordRefence.setValue(record)
