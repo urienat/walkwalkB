@@ -31,9 +31,11 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var accountName = ""
     var accountLastName = ""
     var accountParnet = ""
+    var balance:String?
 
-    
     var seprator = "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+    var seprator2 = "⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶"
+
 
     var monthToHandle : Int = 0
     var yearToHandle : Int = 0
@@ -722,6 +724,8 @@ print (self.billItems.count)
         
         self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).observeSingleEvent(of: .value,with: {(snapshot) in
             self.employerID = (snapshot.childSnapshot(forPath: "fBillEmployer").value! as? String)!
+            if  (snapshot.childSnapshot(forPath: "fBalance").value! as? String)! != nil { self.balance = (snapshot.childSnapshot(forPath: "fBalance").value! as? String)!} else {self.balance = "999"}
+            
             self.dbRefEmployers.child(self.employerID).observeSingleEvent(of:.value, with: {(snapshot) in
                 //self.lastPrevious = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!
                 self.accountAdress = String(describing: snapshot.childSnapshot(forPath: "fAddress").value!) as String!
@@ -736,10 +740,10 @@ print (self.billItems.count)
         DispatchQueue.main.asyncAfter(deadline: .now()+2){
             print (self.billInfo)
             
-            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.address!)\r\n\(self.seprator)\(self.seprator)\r\n\r\nSent to:\r\n\(self.accountName) \(self.accountLastName) - \(self.accountParnet)\r\n\(self.accountAdress)\r\n\(self.seprator)\r\nPayment's recipet for Bill-\(self.BillArray[self.buttonRow])\r\n\r\n\(self.taxationBlock!)\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc2!)\r\n\r\n\(self.paymentBlock!)\r\n\r\nMade by PerSession app. "
+            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\n\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.taxId!)\r\n\(self.address!)\r\n\(self.seprator2)\(self.seprator2)\r\n\r\nRecieved from:\r\n\(self.accountName) \(self.accountLastName) - \(self.accountParnet)\r\n\(self.accountAdress)\r\n\(self.seprator2)\r\nBalance: \(ViewController.fixedCurrency!)\(self.balance)\r\n\r\n\(self.paymentBlock!)\r\n\r\n\r\nMade by PerSession app. "
             
             
-           
+           // Payment's recipet for Bill-\(self.BillArray[self.buttonRow])\r\
             
             //Reciept-\(self.BillArray[self.buttonRow])
             self.recoveredreciept = self.recieptMailSaver
@@ -793,6 +797,7 @@ print (self.billItems.count)
             if snapshot.childSnapshot(forPath: "fTaxId").value as! String != nil {self.taxId = "Tax Id:\(snapshot.childSnapshot(forPath: "fTaxId").value as! String)"} else {self.taxId = ""}
             self.address = (snapshot.childSnapshot(forPath: "fAddress").value as! String)
             self.taxForBlock = "VAT"
+            
             
             
           
