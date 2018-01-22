@@ -35,6 +35,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     let largeFont = UIFont(name: "PingFang TC", size: 16.0)!
     let smallFont = UIFont(name: "PingFang TC", size: 8.0)!
     let paragraph = NSMutableParagraphStyle()
+    let formmatter = UIPrintFormatter()
     
     
     var titleLbl = ""
@@ -415,8 +416,10 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         }
 
         let printAction = UIAlertAction(title: "Print", style: .default) { (UIAlertAction) in
-            self.printText()
-        /*
+           //self.printText()
+            
+        
+        
         let printInfo = UIPrintInfo(dictionary:nil)
         printInfo.outputType = UIPrintInfoOutputType.general
         printInfo.jobName = "My Print Job"
@@ -424,16 +427,22 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         // Set up print controller
         let printController = UIPrintInteractionController.shared
         printController.printInfo = printInfo
-
+            
+            
         // Assign a UIImage version of my UIView as a printing iten
-        //printController.printingItem =   self.mailView.toImage()
-        printController.printingItem =   self.scrollView.toImage()
+        printController.printingItem =   self.mailView.toImage()
+        //printController.printingItem =   self.scrollView.toImage()
 
         // Do it
             self.deleteBtn.isEnabled = false
+             
+             var viewpf:UIViewPrintFormatter = mailText.viewPrintFormatter()
+             
+             pic.printFormatter = viewpf
+             pic.present(animated: true, completionHandler: nil)
 
-        printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
-        */
+        printController.present(from: self.view.frame, in:  self.view, animated: true, completionHandler: nil)
+ 
         }
 
         alertController5.addAction(mailAction)
@@ -444,7 +453,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
 
     
         func alert6(){
-        let alertController5 = UIAlertController(title: ("Share") , message: "", preferredStyle: .alert)
+        let alertController6 = UIAlertController(title: ("Share") , message: "", preferredStyle: .alert)
         let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
         //do nothing
         }
@@ -475,10 +484,10 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
 
 
         }
-        alertController5.addAction(mailAction)
-        alertController5.addAction(printAction)
-        alertController5.addAction(CancelAction)
-        self.present(alertController5, animated: true, completion: nil)
+        alertController6.addAction(mailAction)
+        alertController6.addAction(printAction)
+        alertController6.addAction(CancelAction)
+        self.present(alertController6, animated: true, completion: nil)
         }
 
         //save alert
