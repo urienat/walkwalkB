@@ -116,7 +116,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3pe-xh-s5t" userLabel="Itembackground">
                                 <rect key="frame" x="10.5" y="149" width="300" height="320"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X5I-Pz-o4U" userLabel="amount" customClass="AllowedCharsTextField" customModule="perSession" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="natural" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="X5I-Pz-o4U" userLabel="amount" customClass="AllowedCharsTextField" customModule="perSession" customModuleProvider="target">
                                         <rect key="frame" x="112.5" y="46" width="90" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="90" id="EEI-bl-Xun"/>
@@ -124,7 +124,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="allowedChars" value="0123456789."/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
@@ -154,7 +154,7 @@
                                         <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8H6-ZC-44z" userLabel="ItemDescription" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item description" textAlignment="natural" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="8H6-ZC-44z" userLabel="ItemDescription" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
                                         <rect key="frame" x="112.5" y="8" width="179.5" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="R9T-9g-g8a"/>
@@ -164,7 +164,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
-                                                <integer key="value" value="50"/>
+                                                <integer key="value" value="26"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="string" keyPath="allowedChars" value="0123456789."/>
                                         </userDefinedRuntimeAttributes>
