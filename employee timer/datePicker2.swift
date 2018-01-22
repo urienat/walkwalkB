@@ -240,7 +240,7 @@ class datePicker2: UIViewController {
     
           } //end of session mode
         else {
-            let record = ["fIn" : mydateFormat5.string(from: dateForItem), "fEmployer": String (describing : employerFromMain!),"fIndication3" :"📄","fStatus" : "Approved","fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID),"fSpecialItem" : itemDescription.text!,"fSpecialAmount": amountNumber.text!]
+            let record = ["fIn" : mydateFormat5.string(from: dateForItem), "fEmployer": String (describing : employerFromMain!),"fIndication3" :"📄","fStatus" : "Approved","fEmployeeRef": String (describing : employeeID),"fEmployerRef":  String (describing : employerID),"fSpecialItem" : itemDescription.text!,"fSpecialAmount": amountNumber.text!,"fSessionCreated": self.mydateFormat5.string(from: Date())]
             let recordRefence = self.dbRef.childByAutoId()
             recordRefence.setValue(record)
             

@@ -219,7 +219,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     dIn2 = mydateFormat2.string(from: Date()) //brings the a date as a string
      self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").updateChildValues([(self.employerIDToS):Int((self.mydateFormat5.date(from: mydateFormat5.string(from: Date()))?.timeIntervalSince1970)!)]) //consider chane font color
     
-    let record = ["fIn" : dIn,"fIndication3": "↺", "fEmployer": String (describing : employerToS),"fEmployeeRef": employeeIDToS,"fEmployerRef": employerIDToS,"fStatus" : "Approved"]
+        let record = ["fIn" : dIn,"fIndication3": "↺", "fEmployer": String (describing : employerToS),"fEmployeeRef": employeeIDToS,"fEmployerRef": employerIDToS,"fStatus" : "Approved","fSessionCreated":self.mydateFormat5.string(from: Date()) ]
     let fInRef = dbRef.childByAutoId()
     fInRef.setValue(record)
         

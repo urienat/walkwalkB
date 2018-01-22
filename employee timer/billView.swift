@@ -32,8 +32,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     var textString = ""
     var largeTextRange:NSRange?
     var smallTextRange:NSRange?
-    let largeFont = UIFont(name: "PingFang TC", size: 16.0)!
-    let smallFont = UIFont(name: "PingFang TC", size: 8.0)!
+    let largeFont = UIFont(name: "PingFang TC", size: 20.0)!
+    let smallFont = UIFont(name: "PingFang TC", size: 12.0)!
     let paragraph = NSMutableParagraphStyle()
     let formmatter = UIPrintFormatter()
     
@@ -99,7 +99,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     
    
     let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-  
+    let billForImage = UIImageView(frame:CGRect(x: 0, y: 0, width: 595, height: 802))
+
     @IBOutlet weak var mailText: UITextView!
  
 
@@ -425,23 +426,26 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         printInfo.jobName = "My Print Job"
 
         // Set up print controller
-        let printController = UIPrintInteractionController.shared
+       let printController = UIPrintInteractionController.shared
+            
         printController.printInfo = printInfo
             
             
         // Assign a UIImage version of my UIView as a printing iten
         printController.printingItem =   self.mailView.toImage()
-        //printController.printingItem =   self.scrollView.toImage()
+            self.billForImage.image = self.mailView.toImage()
+        
+            
 
         // Do it
             self.deleteBtn.isEnabled = false
              
-             var viewpf:UIViewPrintFormatter = mailText.viewPrintFormatter()
+             var viewpf:UIViewPrintFormatter = self.billForImage.viewPrintFormatter()
              
-             pic.printFormatter = viewpf
-             pic.present(animated: true, completionHandler: nil)
+            printController.printFormatter = viewpf
+            printController.present(animated: true, completionHandler: nil)
 
-        printController.present(from: self.view.frame, in:  self.view, animated: true, completionHandler: nil)
+        //printController.present(from: self.view.frame, in:  self.view, animated: true, completionHandler: nil)
  
         }
 
