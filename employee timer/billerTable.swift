@@ -810,7 +810,15 @@ print (self.billItems.count)
             
 
             print (self.paymentSys!)
+            if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
             
+            
+            self.documentName = "Reciept"; if self.paymentSys == "other" || self.paymentSys == ""{self.paymentBlock = ("Payment of \(ViewController.fixedCurrency!)\(self.balance) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock) ")
+           
+            
+                
+            }
+
             
             if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!) -"} else {self.refernceBlock = ""}
             if self.paymentSys! == "other" || self.paymentSys == ""{// payment == other

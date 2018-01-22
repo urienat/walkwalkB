@@ -695,11 +695,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
             if self.recieptDate != "" {if self.taxSwitch == "Yes"{self.documentName = "VAT Invoice"} else {self.documentName = "Invoice"}; if self.paymentSys == "other" || self.paymentSys == ""{self.paymentBlock = ("Payment of \(ViewController.fixedCurrency!)\(self.midCalc2) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock) ")
                 }
-            else{self.paymentBlock = "\(self.seprator2)\(self.seprator2)\r\nPayment of \(ViewController.fixedCurrency!)\(self.midCalc2) made by \(self.paymentSys!) \(self.refernceBlock) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))\r\nBalance due:\(ViewController.fixedCurrency!)\(self.PaymentBlalnce)"
+            else{self.paymentBlock = "\(self.seprator2)\(self.seprator2)\r\nPayment of \(ViewController.fixedCurrency!)\(self.midCalc2) made by \(self.paymentSys!) \(self.refernceBlock) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))\r\nBalance due:\(ViewController.fixedCurrency!)\(self.PaymentBlalnce!)"
                 }
                 
             }else{if self.taxSwitch == "Yes"{self.documentName = "VAT Invoice"} else {self.documentName = "Invoice"}; // no payment only bill
-                if self.paypal != "" {self.paymentBlock = ("\r\n\(self.seprator2)\(self.seprator2)\r\nBalance due:\(ViewController.fixedCurrency!)\(self.PaymentBlalnce)\r\nPayment can be made through Paypal: \(self.paypal!)/\(self.midCalc2)")}else {self.paymentBlock = ""}
+                if self.paypal != "" {self.paymentBlock = ("\r\n\(self.seprator2)\(self.seprator2)\r\nBalance due:\(ViewController.fixedCurrency!)\(self.PaymentBlalnce!)\r\nPayment can be made through Paypal: \(self.paypal!)/\(self.midCalc2)")}else {self.paymentBlock = ""}
             }// end of else  self.paymentDate != ""
             
    
@@ -795,7 +795,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     func billProcess() {
     self.thinking.startAnimating()
     
-        if paymentDate! == "" {paymentDate = mydateFormat5.string(from: Date());PaymentBlalnce = "0"} else {PaymentBlalnce = self.midCalc2}
+        if paymentDate! == "" {paymentDate = mydateFormat5.string(from: Date());PaymentBlalnce = self.midCalc2} else { PaymentBlalnce = "0"}
     self.billing()
 
     DispatchQueue.main.asyncAfter(deadline: .now()+2){
