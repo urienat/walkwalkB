@@ -73,6 +73,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var taxationBlock :String?
     var paymentBlock :String?
     var billInfo :String?
+    var taxId: String?
     var address :String?
     var midCalc:String?
     var midCalc2 :String?
@@ -788,8 +789,8 @@ print (self.billItems.count)
             let counterForMail = (snapshot.childSnapshot(forPath: "fCounter").value as! String)
             let taxSwitch = (snapshot.childSnapshot(forPath: "fSwitcher").value as! String)
             //let taxation = (snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String)
-            let taxId = (snapshot.childSnapshot(forPath: "fTaxId").value as! String)
-            self.billInfo = (snapshot.childSnapshot(forPath: "fBillinfo").value as! String)
+            if snapshot.childSnapshot(forPath: "fBillinfo").value as! String != nil {self.billInfo = "\(snapshot.childSnapshot(forPath: "fBillinfo").value as! String)"} else {self.billInfo = ""}
+            if snapshot.childSnapshot(forPath: "fTaxId").value as! String != nil {self.taxId = "Tax Id:\(snapshot.childSnapshot(forPath: "fTaxId").value as! String)"} else {self.taxId = ""}
             self.address = (snapshot.childSnapshot(forPath: "fAddress").value as! String)
             self.taxForBlock = "VAT"
             
