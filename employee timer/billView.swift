@@ -31,12 +31,10 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     let billDocument = UIImage(named: "billDocument")
     var textString = ""
     var largeTextRange:NSRange?
-    
-    //let largeTextString = "Here is some large, bold text"
-    
-    
-    let largeFont = UIFont(name: "PingFang TC", size: 34.0)!
-    let smallFont = UIFont(name: "PingFang TC", size: 17.0)!
+    var smallTextRange:NSRange?
+    let largeFont = UIFont(name: "PingFang TC", size: 16.0)!
+    let smallFont = UIFont(name: "PingFang TC", size: 8.0)!
+    let paragraph = NSMutableParagraphStyle()
     
     
     var titleLbl = ""
@@ -272,13 +270,19 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         //let  normalText = "(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
         
         //  Convert textString to NSString because attrText.addAttribute takes an NSRange.
-        if recieptChosen == false { self.largeTextRange = (textString as NSString).range(of: "\(self.document!)-\(self.documentCounter!)")} else {self.largeTextRange = (textString as NSString).range(of: "Reciept for \(self.document!)-\(self.documentCounter!)")}
-        //let smallTextRange = (textString as NSString).range(of: "")
+        if recieptChosen == false { self.largeTextRange = (textString as NSString).range(of: "\(self.document!)-\(self.documentCounter!)"); self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")} else {self.largeTextRange = (textString as NSString).range(of: "Reciept for \(self.document!)-\(self.documentCounter!)");self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")}
         
+        paragraph.alignment = .center
+        let attributes: [String : Any] = [NSParagraphStyleAttributeName: paragraph, NSFontAttributeName:largeFont]
+        let attStringSaySomething = NSAttributedString(string: "Say something", attributes: attributes)
+        
+        attrText.addAttribute(NSFontAttributeName, value: self.smallFont, range: smallTextRange!)
         attrText.addAttribute(NSFontAttributeName, value: self.largeFont, range: largeTextRange!)
-        //attrText.addAttribute(NSFontAttributeName, value: self.smallFont, range: smallTextRange)
+
+        let attrString = NSAttributedString(string:textString, attributes: attributes)
         
-        self.mailText.attributedText = attrText
+        self.mailText.attributedText =  attrString
+        
         //saveBase64StringToPDF(textString)
         imageFromTextView(textView: mailText)
         
