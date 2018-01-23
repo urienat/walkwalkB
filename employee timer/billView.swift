@@ -53,7 +53,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     var A4ImageToPrint = UIImage()
     var documentsFileName: String?
     let pdfData = NSMutableData()
-    var documentPdfDate: NSMutableData?
+    var documentPdfData: NSMutableData?
+    var documentsURL: String?
 
 
     var undoArray: [String] = []
@@ -110,8 +111,6 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     let billForImage = UIImageView(frame:CGRect(x: 0, y: 0, width: 595, height: 802))
 
     @IBOutlet weak var mailText: UITextView!
-    //var webView: WKWebView!
-
     @IBOutlet weak var webView2: UIWebView!
     
     @IBOutlet weak var deleteBtn: UIBarButtonItem!
@@ -193,16 +192,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.attributedText(attributed: self.recoveredBill)
 
         }
-    
-    //override func loadView() {
-       // let webConfiguration = WKWebViewConfiguration()
-        //webView.frame = CGRect(x:20,y:20,width:mailText.frame.size.width-40, height:mailText.frame.size.height-40)
-
-        //webView = WKWebView(frame: .zero , configuration: webConfiguration)
-    //    webView.uiDelegate = self
-      //  view = webView
-  //  }
-    
+   
     
     func returnToList(){
         print ("return")
@@ -304,21 +294,13 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         attrText.addAttribute(NSFontAttributeName, value: self.largeFont, range: largeTextRange!)
         attrText.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: largeTextRange!)
 
-      // self.mailText.attributedText = attrText
+        // self.mailText.attributedText = attrText
 
-        //generate PDF file from attributed
-       self.documentPdfDate =  createPDFFilea(atext: attrText)
+       self.documentPdfData =  createPDFFilea(atext: attrText)
         
-        let myURL = URL(string: "https://www.apple.com")
-        let myRequest = URLRequest(url: myURL!)
+        //let myURL = URL(string: "https://www.apple.com")
         
-        webView2.loadRequest(myRequest)
         
-        //saveBase64StringToPDF(base64String: attrText)
-        //createPdfFromView(aView: mailText, saveToDocumentsWithFileName: "PdfTest")
-        //presentPdf()
-        //imageFromTextView(textView: mailText)
-       //A4ImageToPrint = resizeImage(image: imageFromTextView(textView: mailText), targetSize: A4size)
     }
 
         //func for mail
@@ -410,19 +392,26 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     }
 
     
-    func saveBase64StringToPDF(_ base64String: String) {
+    
+    
+    func createURL() {
         guard
-            var documentsURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last,
-            let convertedData = Data(base64Encoded: base64String)
+            var documentsURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last
             else {
                 //handle error when getting documents URL
                 return
         }
         
         //name your file however you prefer
-        documentsURL.appendPathComponent("yourFileName.pdf")
+        documentsURL.appendPathComponent("BillToWebView.pdf")
         do {
-            try convertedData.write(to: documentsURL)
+            try pdfData.write(to: documentsURL)
+            
+            let myURL = documentsURL //URL(string:document"BillToWebView.pdf" )
+            
+            let myRequest = URLRequest(url: myURL)
+            webView2.loadRequest(myRequest)
+
         } catch {
             //handle write error here
         }
@@ -430,33 +419,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         //file was saved from the simulator on your machine
         //just print the documentsURL and go there in Finder
         print("url\(documentsURL)")
+        
+        
     }
     
-    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
-        let size = image.size
-        
-        let widthRatio  = targetSize.width  / size.width
-        let heightRatio = targetSize.height / size.height
-        
-        // Figure out what our orientation is, and use that to form the rectangle
-        var newSize: CGSize
-        if(widthRatio > heightRatio) {
-            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
-        } else {
-            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
-        }
-        
-        // This is the rect that we've calculated out and this is what is actually used below
-        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-        
-        // Actually do the resizing to the rect using the ImageContext stuff
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-        image.draw(in: rect)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage!
-    }
+    
    /*
     func createPdfFromView(aView: UITextView, saveToDocumentsWithFileName fileName: String)
     {
@@ -513,6 +480,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         debugPrint(documentsFileName)
 
         pdfData.write(toFile: documentsFileName!, atomically: true)
+        createURL()
         //}
 
         return pdfData
