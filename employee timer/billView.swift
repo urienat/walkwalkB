@@ -10,8 +10,9 @@ import Foundation
 import UIKit
 import Firebase
 import MessageUI
+import WebKit
 
-class billView: UIViewController, MFMailComposeViewControllerDelegate {
+class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelegate{
     
    // var window: UIWindow?
 
@@ -108,7 +109,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     let billForImage = UIImageView(frame:CGRect(x: 0, y: 0, width: 595, height: 802))
 
     @IBOutlet weak var mailText: UITextView!
- 
+    var webView: WKWebView!
+
 
     @IBOutlet weak var deleteBtn: UIBarButtonItem!
     
@@ -188,6 +190,14 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         self.attributedText(attributed: self.recoveredBill)
 
         }
+    /*
+    override func loadView() {
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero , configuration: webConfiguration)
+        webView.uiDelegate = self
+        view = webView
+    }
+    */
     
     func returnToList(){
         print ("return")
@@ -280,6 +290,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         if recieptChosen == false { self.largeTextRange = (textString as NSString).range(of: "\(self.document!)-\(self.documentCounter!)"); self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")
             
         } else {
+            
         self.largeTextRange = (textString as NSString).range(of: "Reciept-\(self.documentCounter!)");self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")}
         
         paragraph.alignment = .center
@@ -288,10 +299,14 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         attrText.addAttribute(NSFontAttributeName, value: self.largeFont, range: largeTextRange!)
         attrText.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: largeTextRange!)
 
-       self.mailText.attributedText = attrText
+      // self.mailText.attributedText = attrText
 
+        //generate PDF file from attributed
+       let documentPdfDate =  createPDFFilea(atext: attrText)
         
-        
+        let myURL = URL(string: "https://www.apple.com")
+        let myRequest = URLRequest(url: myURL!)
+        //webView.load(myRequest)
         
         //saveBase64StringToPDF(base64String: attrText)
         //createPdfFromView(aView: mailText, saveToDocumentsWithFileName: "PdfTest")
@@ -309,7 +324,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
          //   if let fileData = NSData(contentsOf: pdfURL) {
             //    print("File data loaded.")
-        mailComposerVC2.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: documentsFileName!)
+        mailComposerVC2.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: "Invoice")
            // }
         
             
@@ -476,6 +491,19 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     
     
     }
+    }
+    
+    func createPDFFilea(atext: NSAttributedString) -> NSMutableData {
+        
+       // let pdfData = NSMutableData()
+        let paperRect = CGRect(x: 0, y: 0, width: 595.2, height: 841.8);
+        UIGraphicsBeginPDFContextToData(pdfData, paperRect, nil)
+        UIGraphicsBeginPDFPage()
+        
+        atext.draw(in: paperRect)
+        UIGraphicsEndPDFContext()
+        
+        return pdfData
     }
  //alerts////////////////////////////////////////////
         func alert5(){
