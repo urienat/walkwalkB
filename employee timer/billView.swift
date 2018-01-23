@@ -271,30 +271,31 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         }//end rebill clicked
     
     func attributedText(attributed:String) {
-        //self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
+        if recieptChosen == false { self.textString = "\(self.document!)-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"
+        } else {
+        self.textString = "Reciept-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"}
         
-        if recieptChosen == false { self.textString = "\(self.document!)-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"} else {  self.textString = "Reciept-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"}
         var attrText = NSMutableAttributedString(string: textString)
         
-        //  Convert textString to NSString because attrText.addAttribute takes an NSRange.
-        if recieptChosen == false { self.largeTextRange = (textString as NSString).range(of: "\(self.document!)-\(self.documentCounter!)"); self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")} else {self.largeTextRange = (textString as NSString).range(of: "Reciept-\(self.documentCounter!)");self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")}
+        if recieptChosen == false { self.largeTextRange = (textString as NSString).range(of: "\(self.document!)-\(self.documentCounter!)"); self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")
+            
+        } else {
+        self.largeTextRange = (textString as NSString).range(of: "Reciept-\(self.documentCounter!)");self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")}
         
         paragraph.alignment = .center
         let attributes: [String : Any] = [NSParagraphStyleAttributeName: paragraph, NSFontAttributeName:largeFont]
-        
-        attrText.addAttribute(NSFontAttributeName, value: self.smallFont, range: smallTextRange!)
+                attrText.addAttribute(NSFontAttributeName, value: self.smallFont, range: smallTextRange!)
         attrText.addAttribute(NSFontAttributeName, value: self.largeFont, range: largeTextRange!)
         attrText.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: largeTextRange!)
 
-       // attrText = NSMutableAttributedString(string:"\(self.document!)-\(self.documentCounter!)" , attributes: attributes)
-        
        self.mailText.attributedText = attrText
 
         
-        saveBase64StringToPDF(base64String: attrText)
-        createPdfFromView(aView: mailText, saveToDocumentsWithFileName: "PdfTest")
-        presentPdf()
-
+        
+        
+        //saveBase64StringToPDF(base64String: attrText)
+        //createPdfFromView(aView: mailText, saveToDocumentsWithFileName: "PdfTest")
+        //presentPdf()
         //imageFromTextView(textView: mailText)
        //A4ImageToPrint = resizeImage(image: imageFromTextView(textView: mailText), targetSize: A4size)
     }
@@ -389,13 +390,10 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     }
 
     
-    func saveBase64StringToPDF(base64String:NSMutableAttributedString) {
+    func saveBase64StringToPDF(_ base64String: String) {
         guard
             var documentsURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last,
-            let converteddata = base64String.da dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-
-
-            //let convertedData = Data(base64Encoded: base64String)
+            let convertedData = Data(base64Encoded: base64String)
             else {
                 //handle error when getting documents URL
                 return
@@ -404,7 +402,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         //name your file however you prefer
         documentsURL.appendPathComponent("yourFileName.pdf")
         do {
-            try converteddata.write(to: documentsURL)
+            try convertedData.write(to: documentsURL)
         } catch {
             //handle write error here
         }
