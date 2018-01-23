@@ -110,9 +110,10 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     let billForImage = UIImageView(frame:CGRect(x: 0, y: 0, width: 595, height: 802))
 
     @IBOutlet weak var mailText: UITextView!
-    var webView: WKWebView!
+    //var webView: WKWebView!
 
-
+    @IBOutlet weak var webView2: UIWebView!
+    
     @IBOutlet weak var deleteBtn: UIBarButtonItem!
     
     @IBAction func deleteBtn(_ sender: Any) {
@@ -172,6 +173,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         
         deleteBtn.isEnabled = true
         
+
         
     } ///end of did load/////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -191,14 +193,16 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.attributedText(attributed: self.recoveredBill)
 
         }
-    /*
-    override func loadView() {
-        let webConfiguration = WKWebViewConfiguration()
-        webView = WKWebView(frame: .zero , configuration: webConfiguration)
-        webView.uiDelegate = self
-        view = webView
-    }
-    */
+    
+    //override func loadView() {
+       // let webConfiguration = WKWebViewConfiguration()
+        //webView.frame = CGRect(x:20,y:20,width:mailText.frame.size.width-40, height:mailText.frame.size.height-40)
+
+        //webView = WKWebView(frame: .zero , configuration: webConfiguration)
+    //    webView.uiDelegate = self
+      //  view = webView
+  //  }
+    
     
     func returnToList(){
         print ("return")
@@ -307,7 +311,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         
         let myURL = URL(string: "https://www.apple.com")
         let myRequest = URLRequest(url: myURL!)
-        //webView.load(myRequest)
+        
+        webView2.loadRequest(myRequest)
         
         //saveBase64StringToPDF(base64String: attrText)
         //createPdfFromView(aView: mailText, saveToDocumentsWithFileName: "PdfTest")
@@ -472,7 +477,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             pdfData.write(toFile: documentsFileName!, atomically: true)
         }
     }
-    */
+ 
     func presentPdf(){
         print (self.documentsFileName!)
     //if let  pdfURL = Bundle.main.url(forResource: self.documentsFileName, withExtension: "pdf") {
@@ -492,7 +497,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     
     }
     }
-    
+    */
         func createPDFFilea(atext: NSAttributedString) -> NSMutableData {
         let paperRect = CGRect(x: 0, y: 0, width: 595.2, height: 841.8);
         UIGraphicsBeginPDFContextToData(pdfData, paperRect, nil)
