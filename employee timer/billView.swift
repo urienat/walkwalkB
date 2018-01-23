@@ -28,13 +28,13 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     let canceledImage = UIImage(named: "cancelled")
     let trashImage = UIImage(named: "trash")
     let billDocument = UIImage(named: "billDocument")
+    
     var textString = ""
     var largeTextRange:NSRange?
     var smallTextRange:NSRange?
     let largeFont = UIFont(name: "PingFang TC", size: 20.0)!
     let smallFont = UIFont(name: "PingFang TC", size: 12.0)!
     let paragraph = NSMutableParagraphStyle()
-    let formmatter = UIPrintFormatter()
     
     var titleLbl = ""
     var billToHandle = String()
@@ -46,8 +46,6 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     var documentCounter :String?
     var rebillprocess:Bool?
     
-    let A4size = CGSize(width: 595, height: 842)
-    var A4ImageToPrint = UIImage()
     var documentsFileName: String?
     let pdfData = NSMutableData()
     var documentPdfData: NSMutableData?
@@ -165,46 +163,35 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             self.attributedText(attributed: self.recoveredBill)
             }
    
-    
-            func returnToList(){
+                func returnToList(){
             print ("return")
             self.present((storyboard?.instantiateViewController(withIdentifier: "homeScreen"))!, animated: true, completion: nil)
             }
     
             func undo(){
             print (self.recieptChosen)
-
             if self.recieptChosen == true {
-            print(self.employeeID)
-            print ((String("-\(self.documentCounter!)"))!)
-
+            
             self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).updateChildValues(["fBillStatus": "Billed", "fBillStatusDate":
-            "","fPaymentReference":"" ,"fRecieptDate":"","fBillRecieptMailSaver":"" ///take care of balance
+            "","fPaymentReference":"" ,"fRecieptDate":"","fBillRecieptMailSaver":"" ///take care of balance!!!!!!!!!!!!
             ], withCompletionBlock: { (error) in}) //end of update.
-
             } else {
-
             print (String(Int(self.documentCounter!)!-1))
-
             self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).removeValue()
             self.dbRefEmployee.child(self.employeeID).updateChildValues(["fCounter":String(Int(self.documentCounter!)!)])
-
             //undo - undo records
             self.moveSessionToBilled()
-
-            }
+            }//end of else
             print (lastPrevious)
-
             self.dbRefEmployer.child(self.employerID).updateChildValues(["fLast":lastPrevious], withCompletionBlock: { (error) in})
-
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.0){
             if self.recieptChosen == true {
             self.navigationController!.popViewController(animated: true)
             } else {
             self.navigationController!.popToRootViewController(animated: true)
-            }
-            }
-            }
+            }//end of else
+            }//end of dispatch
+            }//end of undo
 
         func  reBill() {
         self.dbRefEmployee.child(employeeID).child("myBills").child(billToHandle).observeSingleEvent(of: .value,with: { (snapshot) in
@@ -222,21 +209,16 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
 
         self.titleLbl = "\(self.document!) \(self.documentCounter!)"
         self.title = self.titleLbl
-            
-        print (self.recoveredStatus)
-
+         
         if self.recoveredStatus == "Billed" { self.deleteBtn.isEnabled = true;self.billStatusForRecovery = "";self.statusImage.image = self.billDocument;}
         if  self.recoveredStatus  == "Paid" { self.statusImage.image = self.paidImage;self.deleteBtn.isEnabled = true;self.billStatusForRecovery = ""}
         if self.recoveredStatus ==  "Cancelled" {
             
-            self.statusImage.image = self.canceledImage;
-            
-            self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "!!!!!!!!!!This document was cancelled: \(self.mydateFormat8.string(from: self.mydateFormat5.date(from: self.statusCanclledDate!)! ))!!!!!!!!!!"}
-            
-            self.attributedText(attributed: self.recoveredBill)
-            
-        })
+        self.statusImage.image = self.canceledImage;
+        self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "!!!!!!!!!!This document was cancelled: \(self.mydateFormat8.string(from: self.mydateFormat5.date(from: self.statusCanclledDate!)! ))!!!!!!!!!!"}
 
+        self.attributedText(attributed: self.recoveredBill)
+        })
         }//end rebill clicked
     
         func attributedText(attributed:String) {
@@ -247,9 +229,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         var attrText = NSMutableAttributedString(string: textString)
         
         if recieptChosen == false { self.largeTextRange = (textString as NSString).range(of: "\(self.document!)-\(self.documentCounter!)"); self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")
-            
         } else {
-            
         self.largeTextRange = (textString as NSString).range(of: "Reciept-\(self.documentCounter!)");self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")}
         
         paragraph.alignment = .center
@@ -260,7 +240,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
 
         // self.mailText.attributedText = attrText
        self.documentPdfData =  createPDFFilea(atext: attrText)
-        }
+        }//end of attributed
 
         //func for mail
         func  configuredMailComposeViewController2() -> MFMailComposeViewController {
@@ -270,7 +250,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         mailComposerVC2.setMessageBody("\(recoveredBill)\r\n\r\n\r\n", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
         mailComposerVC2.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: "Invoice")
-                return mailComposerVC2
+        return mailComposerVC2
         }//end of MFMailcomposer
     
         //func for mail4
@@ -298,12 +278,10 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         case MFMailComposeResult.saved.rawValue:
         print("Mail saved3")
         deleteBtn.isEnabled = false
-
         controller.dismiss(animated: true, completion: nil)
         case MFMailComposeResult.sent.rawValue:
         print("Mail sent3")
         deleteBtn.isEnabled = false
-
         controller.dismiss(animated: true, completion: nil)
         case MFMailComposeResult.failed.rawValue:
         print("Mail sent failure: %@", [error!.localizedDescription])
@@ -321,18 +299,15 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         }//end of loop
         }//end movesession
     
-    
         func createURL() {
         guard
         var documentsURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last
-        else {
-        //handle error when getting documents URL
+        else {//handle error when getting documents URL
         return
         }
         documentsURL.appendPathComponent("BillToWebView.pdf")
         do {
         try pdfData.write(to: documentsURL)
-
         let myURL = documentsURL //URL(string:document"BillToWebView.pdf" )
         let myRequest = URLRequest(url: myURL  )
         webView2.loadRequest(myRequest)
@@ -342,27 +317,21 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         print("url\(documentsURL)")
         }
     
-            func createPDFFilea(atext: NSAttributedString) -> NSMutableData {
+        func createPDFFilea(atext: NSAttributedString) -> NSMutableData {
         let paperRect = CGRect(x: 0, y: 0, width: 595.2, height: 841.8);
         UIGraphicsBeginPDFContextToData(pdfData, paperRect, nil)
         UIGraphicsBeginPDFPage()
-
         atext.draw(in: paperRect)
         UIGraphicsEndPDFContext()
-
-        //if let documentDirectories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
-        //self.documentsFileName = documentDirectories + "/" + "document.pdf"
         self.documentsFileName = "document.pdf"
-
         debugPrint(documentsFileName)
-
         pdfData.write(toFile: documentsFileName!, atomically: true)
         createURL()
         //}
-
         return pdfData
-        }
- //alerts////////////////////////////////////////////
+        }// end of create pdf
+ 
+    //alerts//////////////////////////////////////////////////
         func alert5(){
         let alertController5 = UIAlertController(title: ("Share") , message: "", preferredStyle: .alert)
         let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
@@ -459,7 +428,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.present(alertController, animated: true, completion: nil)
         }
     
-            }//end of class
+        }//end of class///////////////////////////////////////////////////////////////////////////////////////
 
         extension UIView {
         func toImage() -> UIImage {
@@ -472,7 +441,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             
         }
           
-        }//end of extension
+        }//end of extension////////////////////////////////////////////
 
         extension UIViewController{
             
