@@ -283,8 +283,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         self.largeTextRange = (textString as NSString).range(of: "Reciept-\(self.documentCounter!)");self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")}
         
         paragraph.alignment = .center
-        let attributes: [String : Any] = [NSParagraphStyleAttributeName: paragraph, NSFontAttributeName:largeFont]
-                attrText.addAttribute(NSFontAttributeName, value: self.smallFont, range: smallTextRange!)
+        //let attributes: [String : Any] = [NSParagraphStyleAttributeName: paragraph, NSFontAttributeName:largeFont]
+        attrText.addAttribute(NSFontAttributeName, value: self.smallFont, range: smallTextRange!)
         attrText.addAttribute(NSFontAttributeName, value: self.largeFont, range: largeTextRange!)
         attrText.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: largeTextRange!)
 
