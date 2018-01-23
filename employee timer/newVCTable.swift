@@ -663,7 +663,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             self.taxSwitch = (snapshot.childSnapshot(forPath: "fSwitcher").value as! String)
             self.paypal = (snapshot.childSnapshot(forPath: "fPaypal").value as! String)
             if snapshot.childSnapshot(forPath: "fBillinfo").value as! String != nil {self.billInfo = "\(snapshot.childSnapshot(forPath: "fBillinfo").value as! String)"} else {self.billInfo = ""}
-            if snapshot.childSnapshot(forPath: "fTaxId").value as! String != nil {self.taxId = "Tax Id:\(snapshot.childSnapshot(forPath: "fTaxId").value as! String)"} else {self.taxId = ""}
+            if snapshot.childSnapshot(forPath: "fTaxId").value as! String != nil {self.taxId = "Vat no.:\(snapshot.childSnapshot(forPath: "fTaxId").value as! String)"} else {self.taxId = ""}
             self.address = (snapshot.childSnapshot(forPath: "fAddress").value as! String)
 
 

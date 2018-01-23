@@ -48,6 +48,12 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     var documentCounter :String?
     var rebillprocess:Bool?
     
+    let A4size = CGSize(width: 595, height: 842)
+    var A4ImageToPrint = UIImage()
+    var documentsFileName: String?
+    let pdfData = NSMutableData()
+
+
     var undoArray: [String] = []
     
     let undoBtn = UIButton(type: .custom)
@@ -196,7 +202,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             print ((String("-\(self.documentCounter!)"))!)
 
             self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).updateChildValues(["fBillStatus": "Billed", "fBillStatusDate":
-            "","fPaymentReference":"" ,"fRecieptDate":"","fBillRecieptMailSaver":""
+            "","fPaymentReference":"" ,"fRecieptDate":"","fBillRecieptMailSaver":"" ///take care of balance
             ], withCompletionBlock: { (error) in}) //end of update.
 
 
@@ -280,17 +286,17 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         attrText.addAttribute(NSFontAttributeName, value: self.largeFont, range: largeTextRange!)
         attrText.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: largeTextRange!)
 
-        
-        
-       
        // attrText = NSMutableAttributedString(string:"\(self.document!)-\(self.documentCounter!)" , attributes: attributes)
         
-        self.mailText.attributedText = attrText
+       self.mailText.attributedText = attrText
 
         
         //saveBase64StringToPDF(textString)
-        imageFromTextView(textView: mailText)
-        
+        createPdfFromView(aView: mailText, saveToDocumentsWithFileName: "PdfTest")
+        presentPdf()
+
+        //imageFromTextView(textView: mailText)
+       //A4ImageToPrint = resizeImage(image: imageFromTextView(textView: mailText), targetSize: A4size)
     }
 
         //func for mail
@@ -300,7 +306,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         mailComposerVC2.setSubject("\(document!) \(documentCounter!)")
         mailComposerVC2.setMessageBody("\(recoveredBill)\r\n\r\n\r\n", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
-        //mailComposerVC2.addAttachmentData(<#T##attachment: Data##Data#>, mimeType: <#T##String#>, fileName: <#T##String#>)
+         //   if let fileData = NSData(contentsOf: pdfURL) {
+            //    print("File data loaded.")
+        mailComposerVC2.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: documentsFileName!)
+           // }
+        
             
         //mailComposerVC2.setCcRecipients([ViewController.fixedemail])
         return mailComposerVC2
@@ -401,6 +411,71 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         print("url\(documentsURL)")
     }
     
+    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / size.width
+        let heightRatio = targetSize.height / size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
+   
+    func createPdfFromView(aView: UITextView, saveToDocumentsWithFileName fileName: String)
+    {
+        //let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, aView.bounds, nil)
+        UIGraphicsBeginPDFPage()
+        
+        guard let pdfContext = UIGraphicsGetCurrentContext() else { return }
+        
+        aView.layer.render(in: pdfContext)
+        UIGraphicsEndPDFContext()
+        
+        if let documentDirectories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
+            self.documentsFileName = documentDirectories + "/" + fileName + ".pdf"
+            debugPrint(documentsFileName)
+            print(documentsFileName)
+            
+            pdfData.write(toFile: documentsFileName!, atomically: true)
+        }
+    }
+    
+    func presentPdf(){
+        print (self.documentsFileName!)
+    if let  pdfURL = Bundle.main.url(forResource: self.documentsFileName, withExtension: "pdf") {
+    //if let pdfURL = Bundle.main.url(forResource: self.documentsFileName!, withExtension: nil, subdirectory: nil, localization: nil)  {
+    do {
+    let data = try Data(contentsOf: pdfURL)
+    let webView = UIWebView(frame: CGRect(x:20,y:20,width:view.frame.size.width-40, height:view.frame.size.height-40))
+        webView.load(data, mimeType: "application/pdf", textEncodingName:"", baseURL: pdfURL.deletingLastPathComponent())
+    view.addSubview(webView)
+    
+    
+    }
+    catch {
+    // catch errors here
+    }
+    
+    
+    }
+    }
  //alerts////////////////////////////////////////////
         func alert5(){
         let alertController5 = UIAlertController(title: ("Share") , message: "", preferredStyle: .alert)
@@ -418,9 +493,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
 
         let printAction = UIAlertAction(title: "Print", style: .default) { (UIAlertAction) in
            //self.printText()
-            
-        
-        
+         
         let printInfo = UIPrintInfo(dictionary:nil)
         printInfo.outputType = UIPrintInfoOutputType.general
         printInfo.jobName = "My Print Job"
@@ -432,17 +505,24 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
             
             
         // Assign a UIImage version of my UIView as a printing iten
-        printController.printingItem =   self.mailView.toImage()
-            self.billForImage.image = self.mailView.toImage()
-        
+            
+        //self.A4ImageToPrint = self.resizeImage(image: self.imageFromTextView(textView: self.mailText), targetSize: self.A4size)
+
+        //printController.printingItem =  self.A4ImageToPrint //self.mailView.toImage()
+            
+        //self.billForImage.image =  self.A4ImageToPrint //self.mailView.toImage()
+            //printController.printingItem = self.documentsFileName
+
             
 
         // Do it
             self.deleteBtn.isEnabled = false
-             
-             var viewpf:UIViewPrintFormatter = self.billForImage.viewPrintFormatter()
-             
-            printController.printFormatter = viewpf
+            //var viewpf:UIViewPrintFormatter = self.documentsFileName.viewPrintFormatter()
+
+             var viewpf:UIViewPrintFormatter = self.mailView.viewPrintFormatter()
+             printController.printFormatter = viewpf
+
+           // printController.printFormatter = viewpf
             printController.present(animated: true, completionHandler: nil)
 
         //printController.present(from: self.view.frame, in:  self.view, animated: true, completionHandler: nil)

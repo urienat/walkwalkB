@@ -724,7 +724,7 @@ print (self.billItems.count)
         
         self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).observeSingleEvent(of: .value,with: {(snapshot) in
             self.employerID = (snapshot.childSnapshot(forPath: "fBillEmployer").value! as? String)!
-            if  (snapshot.childSnapshot(forPath: "fBalance").value! as? String)! != nil { self.balance = (snapshot.childSnapshot(forPath: "fBalance").value! as? String)!} else {self.balance = "999"}
+            if  (snapshot.childSnapshot(forPath: "fBalance").value! as? String) != nil { self.balance = (snapshot.childSnapshot(forPath: "fBalance").value! as? String)!} else {self.balance = (self.midCalc2!)}
             
             self.dbRefEmployers.child(self.employerID).observeSingleEvent(of:.value, with: {(snapshot) in
                 //self.lastPrevious = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!
