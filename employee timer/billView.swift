@@ -8,15 +8,13 @@
 
 import Foundation
 import UIKit
+
 import Firebase
 import MessageUI
 import WebKit
 
 class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelegate{
     
-   // var window: UIWindow?
-
-
     let dbRef = FIRDatabase.database().reference().child("fRecords")
     let dbRefEmployer = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployee = FIRDatabase.database().reference().child("fEmployees")
@@ -34,10 +32,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     var largeTextRange:NSRange?
     var smallTextRange:NSRange?
     let largeFont = UIFont(name: "PingFang TC", size: 20.0)!
-    let smallFont = UIFont(name: "PingFang TC", size: 8.0)!
+    let smallFont = UIFont(name: "PingFang TC", size: 12.0)!
     let paragraph = NSMutableParagraphStyle()
     let formmatter = UIPrintFormatter()
-    
     
     var titleLbl = ""
     var billToHandle = String()
@@ -56,78 +53,60 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     var documentPdfData: NSMutableData?
     var documentsURL: String?
 
-
     var undoArray: [String] = []
     
     let undoBtn = UIButton(type: .custom)
     let trashBtn = UIButton(type: .custom)
     let doneBtn = UIButton(type: .custom)
-
-    
     let mydateFormat5 = DateFormatter()
     let mydateFormat8 = DateFormatter()
 
-    
-    //var deleteBill : UIBarButtonItem?
-    
     var recoveredBill = ""
     var recoveredReciept = ""
     var recoveredStatus = ""
     var billStatusForRecovery = ""
     var cancelledDocument: String?
     var statusCanclledDate: String?
-    
-    var lastPrevious = ""
-    
+        var lastPrevious = ""
     var registerTitle : String?
-    
     var recieptChosen:Bool = false
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mailView: UITextView!
     @IBOutlet weak var billReciept: UISegmentedControl!
     @IBAction func billReciept(_ sender: Any) {
-        switch billReciept.selectedSegmentIndex {
-        case 0:recieptChosen = false
-        
-        //self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
-        self.titleLbl = "\(document!) \(documentCounter!)"
-        self.title = self.titleLbl
-        self.attributedText(attributed: self.recoveredBill)
+    switch billReciept.selectedSegmentIndex {
+    case 0:recieptChosen = false
 
-        case 1:recieptChosen = true
-        //self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredReciept)"
-        self.titleLbl = "Reciept \(documentCounter!)"
-        self.title = self.titleLbl
-        self.attributedText(attributed: self.recoveredReciept)
+    //self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
+    self.titleLbl = "\(document!) \(documentCounter!)"
+    self.title = self.titleLbl
+    self.attributedText(attributed: self.recoveredBill)
 
-        default:
-          print ("switch is not working") //do nothing
-        } //end of switch
+    case 1:recieptChosen = true
+    //self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredReciept)"
+    self.titleLbl = "Reciept \(documentCounter!)"
+    self.title = self.titleLbl
+    self.attributedText(attributed: self.recoveredReciept)
+
+    default:
+    print ("switch is not working") //do nothing
+    } //end of switch
     }
     
-   
     let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-    let billForImage = UIImageView(frame:CGRect(x: 0, y: 0, width: 595, height: 802))
-
     @IBOutlet weak var mailText: UITextView!
     @IBOutlet weak var webView2: UIWebView!
     
     @IBOutlet weak var deleteBtn: UIBarButtonItem!
-    
-    @IBAction func deleteBtn(_ sender: Any) {
-        deleteAlert()
-        
+        @IBAction func deleteBtn(_ sender: Any) {
+    deleteAlert()
     }
     
-    
-    
     @IBOutlet weak var statusImage: UIImageView!
-    
     @IBOutlet weak var reSend: UIBarButtonItem!
-    
     @IBAction func reSend(_ sender: Any) {
-        if recieptChosen == true {alert6()} else {  alert5()}
+    if recieptChosen == true {alert6()} else {  alert5()}
     }
     
     /////////////////////////////////////////////////////////////////  view did load starts///////////////////////
@@ -140,8 +119,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         mydateFormat8.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
 
         let doneProcess = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(returnToList))
-        
-      
+
         trashBtn.setImage(trashImage , for: .normal)
         trashBtn.setTitle("Bill", for: .normal)
         //btn4.setTitleColor(blueColor, for: .normal)
@@ -172,34 +150,28 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         
         deleteBtn.isEnabled = true
         
-
-        
     } ///end of did load/////////////////////////////////////////////////////////////////////////////////////////////////////
     
-        func presentReciept(){
-        billReciept.isHidden = true
-        print (recoveredReciept)
-        recieptChosen = true
-       // self.mailText.text = self.recoveredReciept
+            func presentReciept(){
+            billReciept.isHidden = true
+            print (recoveredReciept)
+            recieptChosen = true
             self.attributedText(attributed: self.recoveredReciept)
+            }
 
-        }
-
-        func presentBill(){
-        billReciept.isHidden = true
-        self.recieptChosen = false
-       // self.mailText.text = self.recoveredBill
-        self.attributedText(attributed: self.recoveredBill)
-
-        }
+            func presentBill(){
+            billReciept.isHidden = true
+            self.recieptChosen = false
+            self.attributedText(attributed: self.recoveredBill)
+            }
    
     
-    func returnToList(){
-        print ("return")
-        self.present((storyboard?.instantiateViewController(withIdentifier: "homeScreen"))!, animated: true, completion: nil)
-    }
+            func returnToList(){
+            print ("return")
+            self.present((storyboard?.instantiateViewController(withIdentifier: "homeScreen"))!, animated: true, completion: nil)
+            }
     
-    func undo(){
+            func undo(){
             print (self.recieptChosen)
 
             if self.recieptChosen == true {
@@ -209,8 +181,6 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).updateChildValues(["fBillStatus": "Billed", "fBillStatusDate":
             "","fPaymentReference":"" ,"fRecieptDate":"","fBillRecieptMailSaver":"" ///take care of balance
             ], withCompletionBlock: { (error) in}) //end of update.
-
-
 
             } else {
 
@@ -222,21 +192,16 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             //undo - undo records
             self.moveSessionToBilled()
 
-
             }
             print (lastPrevious)
 
             self.dbRefEmployer.child(self.employerID).updateChildValues(["fLast":lastPrevious], withCompletionBlock: { (error) in})
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.0){
-
             if self.recieptChosen == true {
-
             self.navigationController!.popViewController(animated: true)
             } else {
             self.navigationController!.popToRootViewController(animated: true)
-
-
             }
             }
             }
@@ -258,8 +223,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.titleLbl = "\(self.document!) \(self.documentCounter!)"
         self.title = self.titleLbl
             
-        
-            print (self.recoveredStatus)
+        print (self.recoveredStatus)
 
         if self.recoveredStatus == "Billed" { self.deleteBtn.isEnabled = true;self.billStatusForRecovery = "";self.statusImage.image = self.billDocument;}
         if  self.recoveredStatus  == "Paid" { self.statusImage.image = self.paidImage;self.deleteBtn.isEnabled = true;self.billStatusForRecovery = ""}
@@ -275,7 +239,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
 
         }//end rebill clicked
     
-    func attributedText(attributed:String) {
+        func attributedText(attributed:String) {
         if recieptChosen == false { self.textString = "\(self.document!)-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"
         } else {
         self.textString = "Reciept-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"}
@@ -295,13 +259,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         attrText.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: largeTextRange!)
 
         // self.mailText.attributedText = attrText
-
        self.documentPdfData =  createPDFFilea(atext: attrText)
-        
-        //let myURL = URL(string: "https://www.apple.com")
-        
-        
-    }
+        }
 
         //func for mail
         func  configuredMailComposeViewController2() -> MFMailComposeViewController {
@@ -310,13 +269,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         mailComposerVC2.setSubject("\(document!) \(documentCounter!)")
         mailComposerVC2.setMessageBody("\(recoveredBill)\r\n\r\n\r\n", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
-         
         mailComposerVC2.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: "Invoice")
-        
-        
-            
-        //mailComposerVC2.setCcRecipients([ViewController.fixedemail])
-        return mailComposerVC2
+                return mailComposerVC2
         }//end of MFMailcomposer
     
         //func for mail4
@@ -326,9 +280,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         mailComposerVC4.setSubject("Reciept \(documentCounter!)")
         mailComposerVC4.setMessageBody("\(recoveredReciept)\r\n\r\n \r\n ", isHTML: false)
         mailComposerVC4.setToRecipients([ViewController.fixedemail])
-        //mailComposerVC2.addAttachmentData(<#T##attachment: Data##Data#>, mimeType: <#T##String#>, fileName: <#T##String#>)
-
-        //mailComposerVC4.setCcRecipients([ViewController.fixedemail])
+        mailComposerVC4.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: "Reciept")
         return mailComposerVC4
         }//end of MFMailcomposer
     
@@ -359,7 +311,6 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         default:
         break
         }
-        
         self.navigationController!.popViewController(animated: true) //check to go one more level
         }
 
@@ -370,102 +321,28 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         }//end of loop
         }//end movesession
     
-    func imageFromTextView(textView: UITextView) -> UIImage {
-        
-        // Make a copy of the textView first so that it can be resized
-        // without affecting the original.
-        let textViewCopy = UITextView(frame: textView.frame)
-        textViewCopy.attributedText = textView.attributedText
-        
-        // resize if the contentView is larger than the frame
-        if textViewCopy.contentSize.height > textViewCopy.frame.height {
-            textViewCopy.frame = CGRect(origin:CGPoint(), size: textViewCopy.contentSize)
-        }
-        
-        // draw the text view to an image
-        UIGraphicsBeginImageContextWithOptions(textViewCopy.bounds.size, false, UIScreen.main.scale)
-        textViewCopy.drawHierarchy(in: textViewCopy.bounds, afterScreenUpdates: true)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        print ("image:\(image!)")
-        return image!
-    }
-
     
-    
-    
-    func createURL() {
+        func createURL() {
         guard
-            var documentsURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last
-            else {
-                //handle error when getting documents URL
-                return
+        var documentsURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last
+        else {
+        //handle error when getting documents URL
+        return
         }
-        
-        //name your file however you prefer
         documentsURL.appendPathComponent("BillToWebView.pdf")
         do {
-            try pdfData.write(to: documentsURL)
-            
-            let myURL = documentsURL //URL(string:document"BillToWebView.pdf" )
-            
-            let myRequest = URLRequest(url: myURL)
-            webView2.loadRequest(myRequest)
+        try pdfData.write(to: documentsURL)
 
+        let myURL = documentsURL //URL(string:document"BillToWebView.pdf" )
+        let myRequest = URLRequest(url: myURL  )
+        webView2.loadRequest(myRequest)
         } catch {
-            //handle write error here
+        //handle write error here
         }
-        //if you want to get a quick output of where your
-        //file was saved from the simulator on your machine
-        //just print the documentsURL and go there in Finder
         print("url\(documentsURL)")
-        
-        
-    }
-    
-    
-   /*
-    func createPdfFromView(aView: UITextView, saveToDocumentsWithFileName fileName: String)
-    {
-        //let pdfData = NSMutableData()
-        UIGraphicsBeginPDFContextToData(pdfData, aView.bounds, nil)
-        UIGraphicsBeginPDFPage()
-        
-        guard let pdfContext = UIGraphicsGetCurrentContext() else { return }
-        
-        aView.layer.render(in: pdfContext)
-        UIGraphicsEndPDFContext()
-        
-        if let documentDirectories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
-            self.documentsFileName = documentDirectories + "/" + fileName + ".pdf"
-            debugPrint(documentsFileName)
-            print(documentsFileName)
-            
-            pdfData.write(toFile: documentsFileName!, atomically: true)
         }
-    }
- 
-    func presentPdf(){
-        print (self.documentsFileName!)
-    //if let  pdfURL = Bundle.main.url(forResource: self.documentsFileName, withExtension: "pdf") {
-        if let pdfURL = Bundle.main.url(forResource:documentsFileName, withExtension: nil, subdirectory: nil, localization: nil)  {
-    do {
-    let data = try Data(contentsOf: pdfURL)
-    let webView = UIWebView(frame: CGRect(x:20,y:20,width:view.frame.size.width-40, height:view.frame.size.height-40))
-        webView.load(data, mimeType: "application/pdf", textEncodingName:"", baseURL: pdfURL.deletingLastPathComponent())
-    view.addSubview(webView)
     
-    
-    }
-    catch {
-    // catch errors here
-    }
-    
-    
-    }
-    }
-    */
-        func createPDFFilea(atext: NSAttributedString) -> NSMutableData {
+            func createPDFFilea(atext: NSAttributedString) -> NSMutableData {
         let paperRect = CGRect(x: 0, y: 0, width: 595.2, height: 841.8);
         UIGraphicsBeginPDFContextToData(pdfData, paperRect, nil)
         UIGraphicsBeginPDFPage()
@@ -501,42 +378,20 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         }
 
         let printAction = UIAlertAction(title: "Print", style: .default) { (UIAlertAction) in
-           //self.printText()
-         
         let printInfo = UIPrintInfo(dictionary:nil)
         printInfo.outputType = UIPrintInfoOutputType.general
         printInfo.jobName = "My Print Job"
 
-        // Set up print controller
        let printController = UIPrintInteractionController.shared
-            
         printController.printInfo = printInfo
+        printController.printingItem =  self.pdfData
+        
+        self.deleteBtn.isEnabled = false
             
-            
-        // Assign a UIImage version of my UIView as a printing iten
-            
-        //self.A4ImageToPrint = self.resizeImage(image: self.imageFromTextView(textView: self.mailText), targetSize: self.A4size)
-
-        printController.printingItem =  self.pdfData//self.documentsFileName
-            
-        //self.billForImage.image =  self.A4ImageToPrint //self.mailView.toImage()
-            //printController.printingItem = self.documentsFileName
-
-            
-
-        // Do it
-            self.deleteBtn.isEnabled = false
-            
-            //var viewpf:UIViewPrintFormatter = self.documentsFileName.viewPrintFormatter()
-
-           //  var viewpf:UIViewPrintFormatter = self.mailView.viewPrintFormatter()
-             //printController.printFormatter = viewpf
-
-           // printController.printFormatter = viewpf
-            printController.present(animated: true, completionHandler: nil)
-
-        //printController.present(from: self.view.frame, in:  self.view, animated: true, completionHandler: nil)
- 
+        //var viewpf:UIViewPrintFormatter = self.documentsFileName.viewPrintFormatter()
+        //  var viewpf:UIViewPrintFormatter = self.mailView.viewPrintFormatter()
+        //printController.printFormatter = viewpf
+        printController.present(animated: true, completionHandler: nil)
         }
 
         alertController5.addAction(mailAction)
@@ -560,35 +415,20 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         // navigationController!.popViewController(animated: true)
         }
         let printAction = UIAlertAction(title: "Print", style: .default) { (UIAlertAction) in
-            //self.printText()
-            
             let printInfo = UIPrintInfo(dictionary:nil)
             printInfo.outputType = UIPrintInfoOutputType.general
             printInfo.jobName = "My Print Job"
             
-            // Set up print controller
             let printController = UIPrintInteractionController.shared
-            
             printController.printInfo = printInfo
+            printController.printingItem =  self.pdfData
             
-            
-            // Assign a UIImage version of my UIView as a printing iten
-            printController.printingItem =   self.mailView.toImage()
-            self.billForImage.image = self.mailView.toImage()
-            
-            
-            
-            // Do it
             self.deleteBtn.isEnabled = false
             
-            var viewpf:UIViewPrintFormatter = self.billForImage.viewPrintFormatter()
-            
-            printController.printFormatter = viewpf
+            //var viewpf:UIViewPrintFormatter = self.documentsFileName.viewPrintFormatter()
+            //  var viewpf:UIViewPrintFormatter = self.mailView.viewPrintFormatter()
+            //printController.printFormatter = viewpf
             printController.present(animated: true, completionHandler: nil)
-            
-            //printController.present(from: self.view.frame, in:  self.view, animated: true, completionHandler: nil)
-
-
         }
         alertController6.addAction(mailAction)
         alertController6.addAction(printAction)
@@ -619,21 +459,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.present(alertController, animated: true, completion: nil)
         }
     
-    
-    func printText(){
-        
-        var pic:UIPrintInteractionController = .shared
-        var viewpf:UIViewPrintFormatter = mailText.viewPrintFormatter()
-        //var viewpf2:UIViewPrintFormatter = scrollView.viewPrintFormatter()
-
-        //pic.delegate = self
-        pic.printFormatter = viewpf
-        //pic.printFormatter = viewpf2
-        pic.present(animated: true, completionHandler: nil)
-    }
-    
-
-        }//end of class
+            }//end of class
 
         extension UIView {
         func toImage() -> UIImage {
@@ -645,14 +471,10 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         return image!
             
         }
-            
-            
-    
+          
         }//end of extension
 
         extension UIViewController{
-    
-
             
         func connectivityCheck(){
         if Reachability.isConnectedToNetwork() == true
@@ -685,8 +507,6 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             self.alert30()
             }
 
-        
-            
         func alert30(){
         let alertController30 = UIAlertController(title: ("No connection") , message: "Currently there is no connection with database. Please try again in few minutes.", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
