@@ -322,7 +322,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         let pageWithMargin = CGRect(x: 0, y: 0, width: paperA4.width-50, height: paperA4.height-50);
 
         let paperRect = CGRect(x: 30, y: 30, width: 535.2, height: 781.8);
-        UIGraphicsBeginPDFContextToData(pdfData, paperRect, nil)
+        UIGraphicsBeginPDFContextToData(pdfData, pageWithMargin, nil)
         UIGraphicsBeginPDFPage()
         atext.draw(in: paperRect)
         UIGraphicsEndPDFContext()
