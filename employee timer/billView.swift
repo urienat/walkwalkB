@@ -291,7 +291,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
        self.mailText.attributedText = attrText
 
         
-        //saveBase64StringToPDF(textString)
+        saveBase64StringToPDF(base64String: attrText)
         createPdfFromView(aView: mailText, saveToDocumentsWithFileName: "PdfTest")
         presentPdf()
 
@@ -389,10 +389,13 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
     }
 
     
-    func saveBase64StringToPDF(_ base64String: String) {
+    func saveBase64StringToPDF(base64String:NSMutableAttributedString) {
         guard
             var documentsURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last,
-            let convertedData = Data(base64Encoded: base64String)
+            let converteddata = base64String.da dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+
+
+            //let convertedData = Data(base64Encoded: base64String)
             else {
                 //handle error when getting documents URL
                 return
@@ -401,7 +404,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate {
         //name your file however you prefer
         documentsURL.appendPathComponent("yourFileName.pdf")
         do {
-            try convertedData.write(to: documentsURL)
+            try converteddata.write(to: documentsURL)
         } catch {
             //handle write error here
         }
