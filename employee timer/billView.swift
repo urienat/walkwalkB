@@ -34,7 +34,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     var largeTextRange:NSRange?
     var smallTextRange:NSRange?
     let largeFont = UIFont(name: "PingFang TC", size: 20.0)!
-    let smallFont = UIFont(name: "PingFang TC", size: 12.0)!
+    let smallFont = UIFont(name: "PingFang TC", size: 8.0)!
     let paragraph = NSMutableParagraphStyle()
     let formmatter = UIPrintFormatter()
     
@@ -53,6 +53,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     var A4ImageToPrint = UIImage()
     var documentsFileName: String?
     let pdfData = NSMutableData()
+    var documentPdfDate: NSMutableData?
 
 
     var undoArray: [String] = []
@@ -302,7 +303,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
       // self.mailText.attributedText = attrText
 
         //generate PDF file from attributed
-       let documentPdfDate =  createPDFFilea(atext: attrText)
+       self.documentPdfDate =  createPDFFilea(atext: attrText)
         
         let myURL = URL(string: "https://www.apple.com")
         let myRequest = URLRequest(url: myURL!)
@@ -322,10 +323,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         mailComposerVC2.setSubject("\(document!) \(documentCounter!)")
         mailComposerVC2.setMessageBody("\(recoveredBill)\r\n\r\n\r\n", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
-         //   if let fileData = NSData(contentsOf: pdfURL) {
-            //    print("File data loaded.")
+         
         mailComposerVC2.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: "Invoice")
-           // }
+        
         
             
         //mailComposerVC2.setCcRecipients([ViewController.fixedemail])
@@ -452,7 +452,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         
         return newImage!
     }
-   
+   /*
     func createPdfFromView(aView: UITextView, saveToDocumentsWithFileName fileName: String)
     {
         //let pdfData = NSMutableData()
@@ -472,11 +472,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             pdfData.write(toFile: documentsFileName!, atomically: true)
         }
     }
-    
+    */
     func presentPdf(){
         print (self.documentsFileName!)
-    if let  pdfURL = Bundle.main.url(forResource: self.documentsFileName, withExtension: "pdf") {
-    //if let pdfURL = Bundle.main.url(forResource: self.documentsFileName!, withExtension: nil, subdirectory: nil, localization: nil)  {
+    //if let  pdfURL = Bundle.main.url(forResource: self.documentsFileName, withExtension: "pdf") {
+        if let pdfURL = Bundle.main.url(forResource:documentsFileName, withExtension: nil, subdirectory: nil, localization: nil)  {
     do {
     let data = try Data(contentsOf: pdfURL)
     let webView = UIWebView(frame: CGRect(x:20,y:20,width:view.frame.size.width-40, height:view.frame.size.height-40))
@@ -493,18 +493,25 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     }
     }
     
-    func createPDFFilea(atext: NSAttributedString) -> NSMutableData {
-        
-       // let pdfData = NSMutableData()
+        func createPDFFilea(atext: NSAttributedString) -> NSMutableData {
         let paperRect = CGRect(x: 0, y: 0, width: 595.2, height: 841.8);
         UIGraphicsBeginPDFContextToData(pdfData, paperRect, nil)
         UIGraphicsBeginPDFPage()
-        
+
         atext.draw(in: paperRect)
         UIGraphicsEndPDFContext()
-        
+
+        //if let documentDirectories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
+        //self.documentsFileName = documentDirectories + "/" + "document.pdf"
+        self.documentsFileName = "document.pdf"
+
+        debugPrint(documentsFileName)
+
+        pdfData.write(toFile: documentsFileName!, atomically: true)
+        //}
+
         return pdfData
-    }
+        }
  //alerts////////////////////////////////////////////
         func alert5(){
         let alertController5 = UIAlertController(title: ("Share") , message: "", preferredStyle: .alert)
@@ -537,7 +544,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             
         //self.A4ImageToPrint = self.resizeImage(image: self.imageFromTextView(textView: self.mailText), targetSize: self.A4size)
 
-        //printController.printingItem =  self.A4ImageToPrint //self.mailView.toImage()
+        printController.printingItem =  self.pdfData//self.documentsFileName
             
         //self.billForImage.image =  self.A4ImageToPrint //self.mailView.toImage()
             //printController.printingItem = self.documentsFileName
@@ -546,10 +553,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
 
         // Do it
             self.deleteBtn.isEnabled = false
+            
             //var viewpf:UIViewPrintFormatter = self.documentsFileName.viewPrintFormatter()
 
-             var viewpf:UIViewPrintFormatter = self.mailView.viewPrintFormatter()
-             printController.printFormatter = viewpf
+           //  var viewpf:UIViewPrintFormatter = self.mailView.viewPrintFormatter()
+             //printController.printFormatter = viewpf
 
            // printController.printFormatter = viewpf
             printController.present(animated: true, completionHandler: nil)
