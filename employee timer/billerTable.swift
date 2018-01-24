@@ -487,8 +487,9 @@ print (self.billItems.count)
             self.recordMonth = components.month!
             self.recordYear = components.year!
                 
-                if billItem.fBillStatusDate! != nil {
+                if billItem.fBillStatusDate != nil {
                     print (billItem.fBillStatusDate!)
+                    
              let components2 = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillStatusDate!)!)
                 self.recordMonthCancelled = components2.month!
                 self.recordYearCancelled = components2.year! }
