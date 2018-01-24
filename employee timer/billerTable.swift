@@ -487,7 +487,8 @@ print (self.billItems.count)
             self.recordMonth = components.month!
             self.recordYear = components.year!
                 
-                if billItem.fBillStatusDate != nil {
+                if billItem.fBillStatusDate! != nil {
+                    print (billItem.fBillStatusDate!)
              let components2 = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillStatusDate!)!)
                 self.recordMonthCancelled = components2.month!
                 self.recordYearCancelled = components2.year! }
@@ -820,7 +821,7 @@ print (self.billItems.count)
             }
 
             
-            if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!) -"} else {self.refernceBlock = ""}
+            if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
             if self.paymentSys! == "other" || self.paymentSys == ""{// payment == other
                 self.paymentBlock = ("Payment of \(ViewController.fixedCurrency!)\(self.midCalc2!) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))  \(self.refernceBlock!) ")
             } else {self.paymentBlock = "Payment of \(ViewController.fixedCurrency!)\(self.midCalc2!) made by \(self.paymentSys!) \(self.refernceBlock!) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))"

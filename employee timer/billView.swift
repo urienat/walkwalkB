@@ -309,7 +309,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         do {
         try pdfData.write(to: documentsURL)
         let myURL = documentsURL //URL(string:document"BillToWebView.pdf" )
-        let myRequest = URLRequest(url: myURL  )
+        let myRequest = URLRequest(url: myURL)
+        webView2.scalesPageToFit = true 
         webView2.loadRequest(myRequest)
         } catch {
         //handle write error here
