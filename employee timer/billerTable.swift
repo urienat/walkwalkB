@@ -390,7 +390,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billManager?.employerID = employerID
         billManager?.lastPrevious = lastPrevious
         if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "(\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
-            billManager?.contactForMail = "(\(self.accountName) \(self.accountLastName)"}
+        billManager?.contactForMail = "(\(self.accountName) \(self.accountLastName)"}
 
         
 

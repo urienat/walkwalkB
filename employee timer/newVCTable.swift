@@ -415,7 +415,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                 billManager?.undoArray = idArray
                 billManager?.employerID = employerID
                 billManager?.lastPrevious = lastPrevious
-                billManager?.rebillprocess = true
                 if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "(\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
                     billManager?.contactForMail = "(\(self.accountName) \(self.accountLastName)"
                 }
