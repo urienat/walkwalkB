@@ -12,6 +12,7 @@ import UIKit
 import Firebase
 import MessageUI
 import WebKit
+import CoreGraphics
 
 class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelegate{
     
@@ -326,10 +327,19 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
 
         let paperRect = CGRect(x: 30, y: 30, width: 535.2, height: 781.8);
         UIGraphicsBeginPDFContextToData(pdfData, pageWithMargin, nil)
-        
+        //UIGraphicsBeginPDFContextToData(pdfData, paperRect, nil)
+        let currentContext = UIGraphicsGetCurrentContext()
+
         UIGraphicsBeginPDFPage()
-            
+        currentContext?.setFillColor(red: 22, green: 131, blue: 248, alpha: 0.2)
+        currentContext?.fill(paperRect)
+        currentContext?.addEllipse(in: paperRect)
+        currentContext?.move(to: CGPoint.zero)
+        currentContext?.stroke(paperRect)
+        
         atext.draw(in: paperRect)
+
+        //atext.draw(in: pageWithMargin)
         UIGraphicsEndPDFContext()
         self.documentsFileName = "document.pdf"
         debugPrint(documentsFileName)
