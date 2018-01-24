@@ -332,7 +332,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }//end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
         override func viewDidAppear(_ animated: Bool) {
-        connectivityCheck()
+        //connectivityCheck()
         eventCounter = 0
         fetch()
         }//view did appear end

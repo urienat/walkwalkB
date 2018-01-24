@@ -326,7 +326,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
 
         let paperRect = CGRect(x: 30, y: 30, width: 535.2, height: 781.8);
         UIGraphicsBeginPDFContextToData(pdfData, pageWithMargin, nil)
+        
         UIGraphicsBeginPDFPage()
+            
         atext.draw(in: paperRect)
         UIGraphicsEndPDFContext()
         self.documentsFileName = "document.pdf"
@@ -360,7 +362,6 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
        let printController = UIPrintInteractionController.shared
         printController.printInfo = printInfo
         printController.printingItem =  self.pdfData
-        
         
             
         //var viewpf:UIViewPrintFormatter = self.documentsFileName.viewPrintFormatter()
