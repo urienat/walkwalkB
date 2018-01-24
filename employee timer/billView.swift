@@ -12,7 +12,7 @@ import UIKit
 import Firebase
 import MessageUI
 import WebKit
-import CoreGraphics
+//import CoreGraphics
 
 class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelegate{
     
@@ -250,7 +250,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
         mailComposerVC2.setSubject("\(document!) \(documentCounter!)")
-        mailComposerVC2.setMessageBody("Dear \(contactForMail)\r\n\r\nThe invoice is attached for your records. Please don't hesitate to contact me with any questions.\r\n\r\nRegards \(ViewController.fixedName) \(ViewController.fixedLastName)", isHTML: false)
+        mailComposerVC2.setMessageBody("Dear \(contactForMail!)\r\n\r\nThe invoice is attached for your records. Please don't hesitate to contact me with any questions.\r\n\r\nRegards \(ViewController.fixedName!) \(ViewController.fixedLastName!)", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
         mailComposerVC2.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: "Invoice")
         return mailComposerVC2
@@ -261,7 +261,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         let mailComposerVC4 = MFMailComposeViewController()
         mailComposerVC4.mailComposeDelegate = self
         mailComposerVC4.setSubject("Reciept \(documentCounter!)")
-            mailComposerVC4.setMessageBody("Dear \(contactForMail)\r\n\r\nThe reciept for your payment is attached for your records. Please don't hesitate to contact me with any questions.\r\n\r\nRegards \(ViewController.fixedName) \(ViewController.fixedLastName) ", isHTML: false)
+            mailComposerVC4.setMessageBody("Dear \(contactForMail!)\r\n\r\nThe reciept for your payment is attached for your records. Please don't hesitate to contact me with any questions.\r\n\r\nRegards \(ViewController.fixedName!) \(ViewController.fixedLastName!) ", isHTML: false)
         mailComposerVC4.setToRecipients([ViewController.fixedemail])
         mailComposerVC4.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: "Reciept")
         return mailComposerVC4
@@ -302,6 +302,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         }//end of loop
         }//end movesession
     
+    
         func createURL() {
         guard
         var documentsURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last
@@ -321,22 +322,22 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         print("url\(documentsURL)")
         }
     
+    
         func createPDFFilea(atext: NSAttributedString) -> NSMutableData {
         let paperA4 = CGRect(x: -25, y: 25, width: 612, height: 892);
         let pageWithMargin = CGRect(x: 0, y: 0, width: paperA4.width-50, height: paperA4.height-50);
 
-        let paperRect = CGRect(x: 30, y: 30, width: 535.2, height: 781.8);
+        let paperRect = CGRect(x: 30, y: 30, width: 512, height: 781.8);
         UIGraphicsBeginPDFContextToData(pdfData, pageWithMargin, nil)
         //UIGraphicsBeginPDFContextToData(pdfData, paperRect, nil)
-        let currentContext = UIGraphicsGetCurrentContext()
 
         UIGraphicsBeginPDFPage()
+        let currentContext = UIGraphicsGetCurrentContext()
         currentContext?.setFillColor(red: 22, green: 131, blue: 248, alpha: 0.2)
         currentContext?.fill(paperRect)
-        currentContext?.addEllipse(in: paperRect)
+            
         currentContext?.move(to: CGPoint.zero)
-        currentContext?.stroke(paperRect)
-        
+        currentContext?.draw(currentLayer!, in: paperRect)
         atext.draw(in: paperRect)
 
         //atext.draw(in: pageWithMargin)
