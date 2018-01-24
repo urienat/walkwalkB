@@ -183,12 +183,11 @@ class datePicker2: UIViewController {
         deleter.isEnabled = false
         if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat11.string(from: Date())} else {self.TimeIN.text = mydateFormat10.string(from: Date()) }
         
-        titleLbl = "Add"
          
         self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveToDB2) )
         navigationItem.rightBarButtonItem = saveRecord
         self.saveRecord?.isEnabled = false
-        if sessionMode == true { refresh(presser: 0)} else { refresh(presser: 1)}
+            if sessionMode == true {titleLbl = "Add session" ;refresh(presser: 0)} else {titleLbl = "Add other item" ;refresh(presser: 1)}
 
             
         }else{

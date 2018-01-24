@@ -36,6 +36,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     let smallFont = UIFont(name: "PingFang TC", size: 12.0)!
     let paragraph = NSMutableParagraphStyle()
     
+    var contactForMail: String?
+    
     var titleLbl = ""
     var billToHandle = String()
     var employerID = ""
@@ -247,7 +249,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
         mailComposerVC2.setSubject("\(document!) \(documentCounter!)")
-        mailComposerVC2.setMessageBody("\(recoveredBill)\r\n\r\n\r\n", isHTML: false)
+        mailComposerVC2.setMessageBody("Dear \(contactForMail)\r\n\r\nThe invoice is attached for your records. Please don't hesitate to contact me with any questions.\r\n\r\nRegards \(ViewController.fixedName) \(ViewController.fixedLastName)", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
         mailComposerVC2.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: "Invoice")
         return mailComposerVC2
@@ -258,7 +260,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         let mailComposerVC4 = MFMailComposeViewController()
         mailComposerVC4.mailComposeDelegate = self
         mailComposerVC4.setSubject("Reciept \(documentCounter!)")
-        mailComposerVC4.setMessageBody("\(recoveredReciept)\r\n\r\n \r\n ", isHTML: false)
+            mailComposerVC4.setMessageBody("Dear \(contactForMail)\r\n\r\nThe reciept for your payment is attached for your records. Please don't hesitate to contact me with any questions.\r\n\r\nRegards \(ViewController.fixedName) \(ViewController.fixedLastName) ", isHTML: false)
         mailComposerVC4.setToRecipients([ViewController.fixedemail])
         mailComposerVC4.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: "Reciept")
         return mailComposerVC4
@@ -359,12 +361,23 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         printController.printInfo = printInfo
         printController.printingItem =  self.pdfData
         
-        self.deleteBtn.isEnabled = false
+        
             
         //var viewpf:UIViewPrintFormatter = self.documentsFileName.viewPrintFormatter()
         //  var viewpf:UIViewPrintFormatter = self.mailView.viewPrintFormatter()
         //printController.printFormatter = viewpf
-        printController.present(animated: true, completionHandler: nil)
+        printController.present(animated: true) { (controller, success, error) -> Void in
+                if success {
+                    // Printed successfully
+                    if      self.rebillprocess != true {    self.deleteBtn.isEnabled = false
+                        self.navigationController!.popViewController(animated: true)
+
+                    }
+                } else {
+                    // Printing failed, report error ...
+                }
+            }//end of present
+            
         }
 
         alertController5.addAction(mailAction)
@@ -401,8 +414,20 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             //var viewpf:UIViewPrintFormatter = self.documentsFileName.viewPrintFormatter()
             //  var viewpf:UIViewPrintFormatter = self.mailView.viewPrintFormatter()
             //printController.printFormatter = viewpf
-            printController.present(animated: true, completionHandler: nil)
-        }
+            printController.present(animated: true) { (controller, success, error) -> Void in
+                if success {
+                    // Printed successfully
+                    if      self.rebillprocess != true {    self.deleteBtn.isEnabled = false
+                        self.navigationController!.popViewController(animated: true)
+
+                    }
+                  
+                } else {
+                    // Printing failed, report error ...
+                }
+            }//end of present
+            
+            }
         alertController6.addAction(mailAction)
         alertController6.addAction(printAction)
         alertController6.addAction(CancelAction)

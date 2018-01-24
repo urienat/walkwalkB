@@ -373,6 +373,10 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billManager?.billToHandle = "-"+String(BillArray[billRow.row])
         billManager?.employeeID = employeeID
         billManager?.rebillprocess = true
+        if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "(\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
+                billManager?.contactForMail = "(\(self.accountName) \(self.accountLastName)"
+        }
+
         }//end of if (segue...
         
         if (segue.identifier == "presentReciept")
@@ -385,6 +389,10 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billManager?.employeeID = employeeID
         billManager?.employerID = employerID
         billManager?.lastPrevious = lastPrevious
+        if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "(\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
+            billManager?.contactForMail = "(\(self.accountName) \(self.accountLastName)"}
+
+        
 
         }//end of if (segue...
             
