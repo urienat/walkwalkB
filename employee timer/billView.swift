@@ -324,22 +324,26 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     
     
         func createPDFFilea(atext: NSAttributedString) -> NSMutableData {
-        let paperA4 = CGRect(x: -25, y: 25, width: 612, height: 892);
-        let pageWithMargin = CGRect(x: 0, y: 0, width: paperA4.width-50, height: (paperA4.height-50)*2);
-
-        let paperRect = CGRect(x: 30, y: 30, width: 512, height:(781.8)*2);
-        UIGraphicsBeginPDFContextToData(pdfData, pageWithMargin, nil)
+        //let paperA4 = CGRect(x: -25, y: 25, width: 612, height: 892);
+        //let pageWithMargin = CGRect(x: 0, y: 0, width: paperA4.width-50, height: (paperA4.height-50)*2);
+        //let paperRect = CGRect(x: 30, y: 30, width: 512, height:(781.8));
             
-        UIGraphicsBeginPDFPage()
-        atext.draw(in: paperRect)
-        UIGraphicsEndPDFContext()
+        let mutableData = createPDFwithAttributedString(atext)
+            
+       // UIGraphicsBeginPDFContextToData(pdfData, pageWithMargin, nil)
+            
+        //UIGraphicsBeginPDFPage()
+      //  atext.draw(in: paperRect)
+        //UIGraphicsEndPDFContext()
         createURL()
         return pdfData
         }// end of create pdf
     
+    
+    
     func createPDFwithAttributedString(_ currentText: NSAttributedString) -> NSMutableData {
         
-        let pdfData = NSMutableData()
+        //let pdfData = NSMutableData()
         
         // Create the PDF context using the default page size of 612 x 792.
         UIGraphicsBeginPDFContextToData(pdfData, CGRect.zero, nil)
@@ -369,7 +373,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         
         // Close the PDF context and write the contents out.
         UIGraphicsEndPDFContext();
-        return pdfData
+       return pdfData
     }
     
     func renderPagewithTextRange (currentRange: inout CFRange,  framesetter: CTFramesetter) {
