@@ -50,7 +50,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     var rebillprocess:Bool?
     
     var documentsFileName: String?
-    let pdfData = NSMutableData()
+    var pdfData = NSMutableData()
     var documentPdfData: NSMutableData?
     var documentsURL: String?
 
@@ -242,7 +242,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         attrText.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: largeTextRange!)
 
         // self.mailText.attributedText = attrText
-       self.documentPdfData =  createPDFFilea(atext: attrText)
+       self.pdfData =  createPDFFilea(atext: attrText)
         }//end of attributed
 
         //func for mail
@@ -332,12 +332,10 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         //UIGraphicsBeginPDFContextToData(pdfData, paperRect, nil)
 
         UIGraphicsBeginPDFPage()
-        let currentContext = UIGraphicsGetCurrentContext()
-        currentContext?.setFillColor(red: 22, green: 131, blue: 248, alpha: 0.2)
-        currentContext?.fill(paperRect)
+        //let currentContext = UIGraphicsGetCurrentContext()
+        //currentContext?.setFillColor(red: 22, green: 131, blue: 248, alpha: 0.2)
+        //currentContext?.fill(paperRect)
             
-        currentContext?.move(to: CGPoint.zero)
-        currentContext?.draw(currentLayer!, in: paperRect)
         atext.draw(in: paperRect)
 
         //atext.draw(in: pageWithMargin)
