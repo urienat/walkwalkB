@@ -325,26 +325,15 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     
         func createPDFFilea(atext: NSAttributedString) -> NSMutableData {
         let paperA4 = CGRect(x: -25, y: 25, width: 612, height: 892);
-        let pageWithMargin = CGRect(x: 0, y: 0, width: paperA4.width-50, height: paperA4.height-50);
+        let pageWithMargin = CGRect(x: 0, y: 0, width: paperA4.width-50, height: (paperA4.height-50)*2);
 
-        let paperRect = CGRect(x: 30, y: 30, width: 512, height: 781.8);
+        let paperRect = CGRect(x: 30, y: 30, width: 512, height:(781.8)*2);
         UIGraphicsBeginPDFContextToData(pdfData, pageWithMargin, nil)
-        //UIGraphicsBeginPDFContextToData(pdfData, paperRect, nil)
 
         UIGraphicsBeginPDFPage()
-        //let currentContext = UIGraphicsGetCurrentContext()
-        //currentContext?.setFillColor(red: 22, green: 131, blue: 248, alpha: 0.2)
-        //currentContext?.fill(paperRect)
-            
         atext.draw(in: paperRect)
-
-        //atext.draw(in: pageWithMargin)
         UIGraphicsEndPDFContext()
-       /// self.documentsFileName = "document.pdf"
-        ///debugPrint(documentsFileName)
-       /// pdfData.write(toFile: documentsFileName!, atomically: true)
         createURL()
-        //}
         return pdfData
         }// end of create pdf
  
