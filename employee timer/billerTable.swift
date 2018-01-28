@@ -608,6 +608,7 @@ print (self.billItems.count)
                 self.midCalc2 = snapshot.childSnapshot(forPath: "fBillTotalTotal").value! as? String
                 self.midCalc3 = snapshot.childSnapshot(forPath: "fBillSum").value! as? String
                 self.account = snapshot.childSnapshot(forPath: "fBillEmployerName").value! as? String
+                self.balance = snapshot.childSnapshot(forPath: "fBalance").value! as? String
                 //self.employerID = (snapshot.childSnapshot(forPath: "fBillEmployer").value! as? String)!
                // self.recoveredreciept = snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String
 
@@ -618,8 +619,10 @@ print (self.billItems.count)
             
         
                 if self.BillArrayStatus[self.buttonRow] != "Cancelled"
-                { if self.BillArrayStatus[self.buttonRow] == "Billed" {  self.statusTemp = "Paid";
-                    self.paymentTitle.text = "Fully pay invoice \(self.BillArray[self.buttonRow]) (\(ViewController.fixedCurrency!)\(self.midCalc2!))"
+                { if self.BillArrayStatus[self.buttonRow] == "Billed"  || self.BillArrayStatus[self.buttonRow] == "Partially" {  self.statusTemp = "Paid";
+                    if self.balance?.isEmpty == true { self.paymentTitle.text = "Fully pay #\(self.BillArray[self.buttonRow]) (\(ViewController.fixedCurrency!)\(self.midCalc2!))"} else {
+                        self.paymentTitle.text = "Final balance #\(self.BillArray[self.buttonRow]) (\(ViewController.fixedCurrency!)\(self.balance!))"
+                    }
                     self.partiallyPaymentTitle.text = "Partially pay: \(ViewController.fixedCurrency!)"
 
                     self.paymentView.isHidden = false
