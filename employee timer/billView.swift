@@ -37,6 +37,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     let smallFont = UIFont(name: "PingFang TC", size: 12.0)!
     let paragraph = NSMutableParagraphStyle()
     
+    var recieptsArray: [String:AnyObject] = [:]
+    var recieptsArray2 = [String]()
+
     var contactForMail: String?
     
     var titleLbl = ""
@@ -71,6 +74,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         var lastPrevious = ""
     var registerTitle : String?
     var recieptChosen:Bool = false
+    var recieptStatus :String?
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mailView: UITextView!
@@ -78,14 +82,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     @IBAction func billReciept(_ sender: Any) {
     switch billReciept.selectedSegmentIndex {
     case 0:recieptChosen = false
-
-    //self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredBill)"
     self.titleLbl = "\(document!) \(documentCounter!)"
     self.title = self.titleLbl
     self.attributedText(attributed: self.recoveredBill)
 
     case 1:recieptChosen = true
-    //self.mailText.text = "\(self.billStatusForRecovery)\r\n\r\n\(self.recoveredReciept)"
     self.titleLbl = "Reciept \(documentCounter!)"
     self.title = self.titleLbl
     self.attributedText(attributed: self.recoveredReciept)
@@ -196,8 +197,26 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             }//end of else
             }//end of dispatch
             }//end of undo
+    
+    func reReciept(){
+   
+    self.dbRefEmployee.child(employeeID).child("myReciepts").child("filldates").child(billToHandle).observeSingleEvent(of: .value,with: { (snapshot) in
+    self.recoveredReciept = (snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String)!
+    self.recieptDate = (snapshot.childSnapshot(forPath: "fRecieptDate").value! as? String)!
+    self.recieptStatus = (snapshot.childSnapshot(forPath: "fActive").value! as? String)!
+    self.document = (snapshot.childSnapshot(forPath: "fDocument").value! as? String)!
+    self.documentCounter = (snapshot.childSnapshot(forPath: "fBill").value! as? String)!
+        
+       // self.titleLbl = "Reciept \(documentCounter!)"
+       // self.title = self.titleLbl
+        self.attributedText(attributed: self.recoveredReciept)
+    
+    })
+    }//end of rerreciept
 
         func  reBill() {
+        recieptsArray2.removeAll()
+            
         self.dbRefEmployee.child(employeeID).child("myBills").child(billToHandle).observeSingleEvent(of: .value,with: { (snapshot) in
         self.recoveredBill = (snapshot.childSnapshot(forPath: "fBillMailSaver").value! as? String)!
         self.recoveredReciept = (snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String)!
@@ -207,7 +226,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.paymentDate = (snapshot.childSnapshot(forPath: "fBillDate").value! as? String)!
         self.document = (snapshot.childSnapshot(forPath: "fDocumentName").value! as? String)!
         self.documentCounter = (snapshot.childSnapshot(forPath: "fBill").value! as? String)!
-            
+        
         //check what is rebilled
         if self.recoveredReciept == "" {self.billReciept.isHidden = true ;print ("biil & Pay or just bill")} else {self.billReciept.isHidden = false;print(" bill and then reciept")}
 
@@ -222,9 +241,34 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "!!!!!!!!!!This document was cancelled: \(self.mydateFormat8.string(from: self.mydateFormat5.date(from: self.statusCanclledDate!)! ))!!!!!!!!!!"}
 
         self.attributedText(attributed: self.recoveredBill)
+        
+        //build reciepts
+          
+
+            
+            self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(self.billToHandle).observeSingleEvent(of: .value ,with: { (snapshot) in
+            let recieptItem = snapshot.key
+            self.recieptsArray2.append(snapshot.key)
+            print (self.recieptsArray2)
+            
+                if self.recieptsArray2.isEmpty{
+            print (" (self.recieptsArray)is empty")
+
+        }else{
+        print ("create reciepts segments")
+                    // remove all current segments to make sure it is empty:
+                    self.billReciept.removeAllSegments()
+                    self.billReciept.insertSegment(withTitle: "Invoice", at: 0, animated: true)
+                    // adding your segments, using the "for" loop is just for demonstration:
+                    for index in 0...self.recieptsArray2.count-1 {
+                        self.billReciept.insertSegment(withTitle: "Reciept \(index + 1)", at: index, animated: false)
+                    }
+        }
+        })
+ 
         })
         }//end rebill clicked
-    
+ 
         func attributedText(attributed:String) {
         if recieptChosen == false { self.textString = "\(self.document!)-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"
         } else {

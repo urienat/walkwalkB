@@ -807,7 +807,7 @@ print (self.billItems.count)
                "fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver
                 ], withCompletionBlock: { (error) in}) //end of update.
             
-            self.dbRefEmployees.child(self.employeeID).child("myReciepts").child(String("-"+self.BillArray[self.buttonRow])).child(self.self.mydateFormat5.string(from: Date())).updateChildValues(["fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver,"fActive":"Yes"], withCompletionBlock: { (error) in}) //end of update.
+            self.dbRefEmployees.child(self.employeeID).child("myReciepts").child(String("-"+self.BillArray[self.buttonRow])).child(self.self.mydateFormat5.string(from: Date())).updateChildValues(["fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver,"fActive":"Yes","fBill":self.BillArray[self.buttonRow],"fDocument":"Reciept"], withCompletionBlock: { (error) in}) //end of update.
             
             print (self.employerID)
             print(self.mydateFormat10.string(from: Date()))
