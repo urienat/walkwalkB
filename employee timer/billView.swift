@@ -409,7 +409,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             currentRange.length = 0;
         }
     }
- 
+    
+    
+    
     //alerts//////////////////////////////////////////////////
         func alert5(){
         let alertController5 = UIAlertController(title: ("Share") , message: "", preferredStyle: .alert)

@@ -15,7 +15,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     let billDocument = UIImage(named: "billDocument")
     //let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-    let Vimage = UIImage(named: "due")
+    let Vimage = UIImage(named: "V")
     let nonVimage = UIImage(named: "emptyV")
     let paidImage = UIImage(named: "paid")
     let canceledImage = UIImage(named: "cancelled")
@@ -81,8 +81,25 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var midCalc2 :String?
     var  midCalc3 :String?
     var account :String?
+    var fully: Bool = true
 
     @IBOutlet weak var paymentTitle: UITextField!
+    @IBOutlet weak var partiallyPaymentTitle: UITextField!
+    @IBOutlet weak var partialPayment: UITextField!
+    @IBOutlet weak var imagePartially: UIImageView!
+    @IBOutlet weak var btnPartially: UIButton!
+    
+    @IBAction func btnPartially(_ sender: Any) {
+        print("fully")
+        fullyOptions()
+    }
+    
+    @IBAction func btnFully(_ sender: Any) {
+        fullyOptions()
+
+    }
+    @IBOutlet weak var btnFully: UIButton!
+    @IBOutlet weak var imageFull: UIImageView!
     @IBOutlet weak var paymentView: UIView!
     @IBOutlet weak var paymentMethood: UISegmentedControl!
     
@@ -594,8 +611,11 @@ print (self.billItems.count)
         
                 if self.BillArrayStatus[self.buttonRow] != "Cancelled"
                 { if self.BillArrayStatus[self.buttonRow] == "Billed" {  self.statusTemp = "Paid";
-                    self.paymentTitle.text = "Fully pay bill \(self.BillArray[self.buttonRow]) by"
+                    self.paymentTitle.text = "Fully pay bill \(self.BillArray[self.buttonRow])"
                     self.paymentView.isHidden = false
+                    self.fully = true
+                    self.fullyOptions()
+
                     self.BillArrayStatus[self.buttonRow] = self.statusTemp
             }//end of if billed
             
@@ -843,6 +863,28 @@ print (self.billItems.count)
         fmt.dateFormat = "m"
         monthMMM = fmt.shortMonthSymbols[monthNumber-1]
         return
+    }
+    
+    func fullyOptions() {
+        switch fully{
+        case true:
+            print("fully2")
+            self.imageFull.image = Vimage
+            self.imagePartially.image = nonVimage
+            fully = false
+            partialPayment.isEnabled = false
+            
+        case false:
+            print("fully3")
+            fully = true
+            self.imageFull.image = nonVimage
+            self.imagePartially.image = Vimage
+            partialPayment.isEnabled = true
+
+            
+            
+        }
+        
     }
 
             // alerts////////////////////////////////////////////////////////////////////////////////////////////
