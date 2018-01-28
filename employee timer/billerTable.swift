@@ -22,6 +22,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     //let greenFilter = UIImage(named: "sandWatchGreen")
     let greenFilter = UIImage(named: "filterBlack")
     let redFilter = UIImage(named: "filterRed")
+    let partially = UIImage(named: "partially")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
     
     var counterForpresent:String?
@@ -32,6 +33,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var accountLastName = ""
     var accountParnet = ""
     var balance:String?
+    var remainingBalance: String?
 
     var seprator = "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
     var seprator2 = "⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶"
@@ -331,7 +333,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             cell.l1.text = ("#\(billItem.fBill!) - \(billItem.fBillEmployerName!)")}
         print ("fuf\(billItem.fBillTotalTotal!)" )
         print ("fuf2\(billItem.fBillTotalTotal!)" )
-            if taxBillsToHandle == false || reportMode  == true {
+        if taxBillsToHandle == false || reportMode  == true {
                 if billItem.fBillTotalTotal != "" {cell.l3.text = billItem.fBillTotalTotal} else {cell.l3.text = billItem.fBillSum} } else{
                 
        
@@ -358,7 +360,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
 
         print("fbillstatus\(billItem.fBillStatus!)")
         
-        if billItem.fBillStatus! == "Billed" { cell.approval.setImage(billDocument, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
+        if billItem.fBillStatus! == "Billed" {cell.approval.setImage(billDocument, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
+        if billItem.fBillStatus! == "Partially" {cell.approval.setImage(partially, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
         if  billItem.fBillStatus!  == "Paid" { cell.approval.setImage(paidImage, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
         if billItem.fBillStatus! ==  "Cancelled" { cell.approval.setImage(canceledImage,for: .normal);cell.l1.alpha = 0.5;cell.l3.alpha = 0.5;cell.l4.alpha = 0.5;cell.l6.alpha = 0.5}
         
@@ -448,7 +451,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
 
                 if self .employerID == "" {
                 if self.StatusChoice == "All"  {self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += (Double(billItem.fBillTotalTotal!)!);  self.taxCounter += Double(billItem.fBillTax!)!};    self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
-                else if self.StatusChoice == "Not Paid" &&  billItem.fBillStatus == "Billed"  {self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
+                else if self.StatusChoice == "Not Paid" &&  (billItem.fBillStatus == "Billed" || billItem.fBillStatus == "Partially"){self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
                 }//end of  if self .employerID != ""
                 
             }//end of in filter
@@ -756,7 +759,7 @@ print (self.billItems.count)
         
         self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).observeSingleEvent(of: .value,with: {(snapshot) in
             self.employerID = (snapshot.childSnapshot(forPath: "fBillEmployer").value! as? String)!
-            if  (snapshot.childSnapshot(forPath: "fBalance").value! as? String) != nil { self.balance = (snapshot.childSnapshot(forPath: "fBalance").value! as? String)!} else {self.balance = (self.midCalc2!)}
+            if  (snapshot.childSnapshot(forPath: "fBalance").value! as? String) != nil { self.balance = (snapshot.childSnapshot(forPath: "fBalance").value! as? String)!} else {self.balance = (snapshot.childSnapshot(forPath: "fBillTotalTotal").value! as? String)!}
             
             self.dbRefEmployers.child(self.employerID).observeSingleEvent(of:.value, with: {(snapshot) in
                 //self.lastPrevious = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!
@@ -771,8 +774,12 @@ print (self.billItems.count)
         
         DispatchQueue.main.asyncAfter(deadline: .now()+2){
             print (self.billInfo)
+            print (Double(self.balance!) as Double!)
+            print (Double(self.partialPayment.text!))
+            if self.fully == false {self.remainingBalance = "0.0"} else {self.remainingBalance = String(Double(self.balance!)! - Double(self.partialPayment.text!)!)}
+            if Double (self.remainingBalance!) != 0.0 {self.statusTemp = "Partially"}
             
-            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\n\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.taxId!)\r\n\(self.address!)\r\n\(self.seprator2)\(self.seprator2)\r\n\r\nRecieved from:\r\n\(self.accountName) \(self.accountLastName) - \(self.accountParnet)\r\n\(self.accountAdress)\r\n\(self.seprator2)\r\n\r\n\r\nBalance Due from invoice \(self.BillArray[self.buttonRow]): \(ViewController.fixedCurrency!)\(self.balance!)\r\n\(self.paymentBlock!)\r\n\r\n\(self.seprator2)\(self.seprator2)\r\nRemaining Balance Due from Invoice \(self.BillArray[self.buttonRow]): \(ViewController.fixedCurrency!)0.0\r\n\r\n\r\nMade by PerSession app. "
+            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\n\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.taxId!)\r\n\(self.address!)\r\n\(self.seprator2)\(self.seprator2)\r\n\r\nRecieved from:\r\n\(self.accountName) \(self.accountLastName) - \(self.accountParnet)\r\n\(self.accountAdress)\r\n\(self.seprator2)\r\n\r\n\r\nBalance Due from invoice \(self.BillArray[self.buttonRow]): \(ViewController.fixedCurrency!)\(self.balance!)\r\n\(self.paymentBlock!)\r\n\r\n\(self.seprator2)\(self.seprator2)\r\nRemaining Balance Due from Invoice \(self.BillArray[self.buttonRow]): \(ViewController.fixedCurrency!)\(self.remainingBalance!)\r\n\r\n\r\nMade by PerSession app. "
             
             
            // Payment's recipet for Bill-\(self.BillArray[self.buttonRow])\r\
@@ -782,9 +789,9 @@ print (self.billItems.count)
             print (self.recieptMailSaver)
             print (self.recoveredreciept)
 
-                //update bill with DB
+            //update bill with DB
             self.dbRefEmployees.child(self.employeeID).child("myBills").child(String("-"+self.BillArray[self.buttonRow])).updateChildValues(["fBillStatus": self.statusTemp, "fBillStatusDate":
-                self.self.mydateFormat5.string(from: Date()),"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver
+                self.self.mydateFormat5.string(from: Date()),"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver, "fBalance" : self.remainingBalance
                 ], withCompletionBlock: { (error) in}) //end of update.
             
             print (self.employerID)
