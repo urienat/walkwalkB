@@ -329,12 +329,17 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         let cell = billerConnect.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! billerCell
         let billItem = billItems[indexPath.row]
         cell.backgroundColor = UIColor.clear
-            if taxBillsToHandle == false || reportMode  == true {cell.l1.text = ("\(billItem.fBillEmployerName!) - \(billItem.fBillEvents!) ses. ") } else {
+        if taxBillsToHandle == false || reportMode  == true {cell.l1.text = ("\(billItem.fBillEmployerName!) - \(billItem.fBillEvents!) ses. ") } else {
             cell.l1.text = ("#\(billItem.fBill!) - \(billItem.fBillEmployerName!)")}
         print ("fuf\(billItem.fBillTotalTotal!)" )
         print ("fuf2\(billItem.fBillTotalTotal!)" )
         if taxBillsToHandle == false || reportMode  == true {
-                if billItem.fBillTotalTotal != "" {cell.l3.text = billItem.fBillTotalTotal} else {cell.l3.text = billItem.fBillSum} } else{
+        if billItem.fBillTotalTotal != "" {cell.l3.text = billItem.fBillTotalTotal} else {cell.l3.text = billItem.fBillSum}
+        if StatusChoice == "Not Paid" {
+        if  billItem.fBalance == nil{self.remainingBalance = (billItem.fBillTotalTotal!)} else {self.remainingBalance = billItem.fBalance!}
+        cell.l3.text = self.remainingBalance}
+            
+        } else{
                 
        
         if billItem.fBillStatus == "Cancelled"{
@@ -438,10 +443,10 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             print (self.recordMonth-1,self.recordYear-1)
             
             func inFilter() {
-                
+                 if  billItem.fBalance == nil{self.remainingBalance = (billItem.fBillTotalTotal!)} else {self.remainingBalance = billItem.fBalance!}
                 if self .employerID != ""{
-                if self.StatusChoice == "Not Paid" && billItem.fBillStatus == "Billed" && billItem.fBillEmployer == self.employerID {
-                self.billItems.append(billItem); self.billCounter+=1 ;self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!
+                if self.StatusChoice == "Not Paid" && (billItem.fBillStatus == "Billed" || billItem.fBillStatus == "Partially") && billItem.fBillEmployer == self.employerID {
+                    self.billItems.append(billItem); self.billCounter+=1 ;self.AmountCounter += Double(self.remainingBalance!)!;self.taxCounter += Double(billItem.fBillTax!)!
                 ; self.BillArray.append(billItem.fBill!); self.BillArrayStatus.append(billItem.fBillStatus!)
                 }
                 else  if self.StatusChoice == "All" && billItem.fBillEmployer == self.employerID  {self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;
@@ -451,7 +456,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
 
                 if self .employerID == "" {
                 if self.StatusChoice == "All"  {self.billItems.append(billItem);if billItem.fBillStatus != "Cancelled" {self.billCounter+=1; self.AmountCounter += (Double(billItem.fBillTotalTotal!)!);  self.taxCounter += Double(billItem.fBillTax!)!};    self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
-                else if self.StatusChoice == "Not Paid" &&  (billItem.fBillStatus == "Billed" || billItem.fBillStatus == "Partially"){self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += Double(billItem.fBillTotalTotal!)!;self.taxCounter += Double(billItem.fBillTax!)!;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
+                else if self.StatusChoice == "Not Paid" &&  (billItem.fBillStatus == "Billed" || billItem.fBillStatus == "Partially"){self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += Double(self.remainingBalance!)!;self.taxCounter += Double(billItem.fBillTax!)!;self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)}
                 }//end of  if self .employerID != ""
                 
             }//end of in filter
