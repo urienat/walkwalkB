@@ -611,7 +611,9 @@ print (self.billItems.count)
         
                 if self.BillArrayStatus[self.buttonRow] != "Cancelled"
                 { if self.BillArrayStatus[self.buttonRow] == "Billed" {  self.statusTemp = "Paid";
-                    self.paymentTitle.text = "Fully pay invoice \(self.BillArray[self.buttonRow])(\(ViewController.fixedCurrency!)\(self.midCalc2!))"
+                    self.paymentTitle.text = "Fully pay invoice \(self.BillArray[self.buttonRow]) (\(ViewController.fixedCurrency!)\(self.midCalc2!))"
+                    self.partiallyPaymentTitle.text = "Partially pay: \(ViewController.fixedCurrency!)"
+
                     self.paymentView.isHidden = false
                     self.fully = true
                     self.fullyOptions()

@@ -2570,14 +2570,14 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyV" translatesAutoresizingMaskIntoConstraints="NO" id="ZRe-Za-hI8" userLabel="imagePartially">
-                                        <rect key="frame" x="1.5" y="54" width="30" height="30"/>
+                                        <rect key="frame" x="8.5" y="54" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Roa-N8-itE"/>
                                             <constraint firstAttribute="width" constant="30" id="uA2-1o-bb8"/>
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Partially Payment of " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="llV-8t-xRC" userLabel="partiallyPaymentTitle">
-                                        <rect key="frame" x="39.5" y="54" width="159" height="30"/>
+                                        <rect key="frame" x="46.5" y="54" width="159" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="45y-hR-Rmx"/>
                                         </constraints>
@@ -2585,10 +2585,10 @@
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ama-L4-iRh" userLabel="partialPayment" customClass="AllowedCharsTextField" customModule="perSession">
-                                        <rect key="frame" x="206.5" y="54" width="50" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ama-L4-iRh" userLabel="partialPayment" customClass="AllowedCharsTextField" customModule="perSession">
+                                        <rect key="frame" x="205.5" y="54" width="80" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="B9B-VM-n98"/>
+                                            <constraint firstAttribute="width" constant="80" id="B9B-VM-n98"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2607,14 +2607,14 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="V" translatesAutoresizingMaskIntoConstraints="NO" id="MGH-Ll-MqA" userLabel="imageFull">
-                                        <rect key="frame" x="1.5" y="12" width="30" height="30"/>
+                                        <rect key="frame" x="8.5" y="12" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="i7h-ck-cZe"/>
                                             <constraint firstAttribute="height" constant="30" id="wTL-KE-lqa"/>
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Payment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vBU-uW-SVk" userLabel="paymentTitle">
-                                        <rect key="frame" x="39.5" y="12" width="69" height="30"/>
+                                        <rect key="frame" x="46.5" y="12" width="69" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="V1V-md-g0L"/>
                                         </constraints>
@@ -2623,15 +2623,15 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="bal-L9-lS9" userLabel="paymentMethod">
-                                        <rect key="frame" x="39.5" y="109" width="220" height="31"/>
+                                        <rect key="frame" x="46.5" y="109" width="206" height="31"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="220" id="CPw-8p-jfr"/>
+                                            <constraint firstAttribute="width" constant="206" id="CPw-8p-jfr"/>
                                             <constraint firstAttribute="height" constant="30" id="qPT-ET-NlQ"/>
                                         </constraints>
                                         <segments>
                                             <segment title="Cash"/>
                                             <segment title="Check"/>
-                                            <segment title="By Other"/>
+                                            <segment title="Other"/>
                                         </segments>
                                         <connections>
                                             <action selector="paymentMethood:" destination="KQc-zY-Jl3" eventType="valueChanged" id="9MU-em-Bf8"/>
@@ -2727,7 +2727,7 @@
                                     <constraint firstItem="7km-HH-3Gq" firstAttribute="top" secondItem="9QC-CX-Si0" secondAttribute="bottom" constant="8" id="nba-LJ-rbe"/>
                                     <constraint firstItem="llV-8t-xRC" firstAttribute="leading" secondItem="vBU-uW-SVk" secondAttribute="leading" id="oi9-oL-0XJ"/>
                                     <constraint firstItem="8jL-sl-paz" firstAttribute="width" secondItem="ZRe-Za-hI8" secondAttribute="width" id="q1u-5i-nMn"/>
-                                    <constraint firstItem="Ama-L4-iRh" firstAttribute="leading" secondItem="llV-8t-xRC" secondAttribute="trailing" constant="8" id="qTZ-Ed-Pil"/>
+                                    <constraint firstItem="Ama-L4-iRh" firstAttribute="leading" secondItem="llV-8t-xRC" secondAttribute="trailing" id="qTZ-Ed-Pil"/>
                                     <constraint firstAttribute="width" constant="300" id="smT-Bw-CLa"/>
                                     <constraint firstItem="llV-8t-xRC" firstAttribute="leading" secondItem="bal-L9-lS9" secondAttribute="leading" id="tM9-3c-g7f"/>
                                     <constraint firstItem="bal-L9-lS9" firstAttribute="centerX" secondItem="T9c-oL-JGA" secondAttribute="centerX" id="tPa-iL-BI1"/>
