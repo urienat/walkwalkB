@@ -174,10 +174,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             func undo(){
             print (self.recieptChosen)
             if self.recieptChosen == true {
-            
-            self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).updateChildValues(["fBillStatus": "Billed", "fBillStatusDate":
-            "","fPaymentReference":"" ,"fRecieptDate":"","fBillRecieptMailSaver":"" ///take care of balance!!!!!!!!!!!!
+                        self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).updateChildValues(["fBillStatus": "Billed", "fBillStatusDate":
+                            "","fPaymentReference":"" ,"fRecieptDate":"","fBillRecieptMailSaver":""
             ], withCompletionBlock: { (error) in}) //end of update.
+                self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).child("fBalance").removeValue()
+
             } else {
             print (String(Int(self.documentCounter!)!-1))
             self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).removeValue()
