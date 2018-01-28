@@ -620,7 +620,11 @@ print (self.billItems.count)
         
                 if self.BillArrayStatus[self.buttonRow] != "Cancelled"
                 { if self.BillArrayStatus[self.buttonRow] == "Billed"  || self.BillArrayStatus[self.buttonRow] == "Partially" {  self.statusTemp = "Paid";
-                    if self.balance?.isEmpty == true { self.paymentTitle.text = "Fully pay #\(self.BillArray[self.buttonRow]) (\(ViewController.fixedCurrency!)\(self.midCalc2!))"} else {
+                    if self.balance == nil { self.paymentTitle.text = "Fully pay #\(self.BillArray[self.buttonRow]) (\(ViewController.fixedCurrency!)\(self.midCalc2!))"} else {
+                        print (self.balance)
+                        
+                        print (self.balance!)
+
                         self.paymentTitle.text = "Final balance #\(self.BillArray[self.buttonRow]) (\(ViewController.fixedCurrency!)\(self.balance!))"
                     }
                     self.partiallyPaymentTitle.text = "Partially pay: \(ViewController.fixedCurrency!)"
@@ -799,8 +803,11 @@ print (self.billItems.count)
 
             //update bill with DB
             self.dbRefEmployees.child(self.employeeID).child("myBills").child(String("-"+self.BillArray[self.buttonRow])).updateChildValues(["fBillStatus": self.statusTemp, "fBillStatusDate":
-                self.self.mydateFormat5.string(from: Date()),"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver, "fBalance" : self.remainingBalance
+                self.self.mydateFormat5.string(from: Date()), "fBalance" : self.remainingBalance,
+               "fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver
                 ], withCompletionBlock: { (error) in}) //end of update.
+            
+            self.dbRefEmployees.child(self.employeeID).child("myReciepts").child(String("-"+self.BillArray[self.buttonRow])).child(self.self.mydateFormat5.string(from: Date())).updateChildValues(["fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver,"fActive":"Yes"], withCompletionBlock: { (error) in}) //end of update.
             
             print (self.employerID)
             print(self.mydateFormat10.string(from: Date()))
