@@ -88,39 +88,18 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     switch billReciept.selectedSegmentIndex {
     case 0:
     recieptChosen = false
-    self.titleLbl = "\(document!) \(documentCounter!)"
+    reBill()
+    self.titleLbl = "\(document!)"
     self.title = self.titleLbl
-    self.attributedText(attributed: self.recoveredBill)
+    
+    //self.attributedText(attributed: self.recoveredBill)
 
     case billReciept.selectedSegmentIndex:
     recieptChosen = true
     self.titleLbl = "Reciept-\(documentCounter!)-\(billReciept.selectedSegmentIndex)"
     self.title = self.titleLbl
     reReciept()
-    /*
-    case 2:recieptChosen = true
-    self.titleLbl = "Reciept \(documentCounter!)-2"
-    self.title = self.titleLbl
-    reReciept()
-   
-    case 3:
-    recieptChosen = true
-    self.titleLbl = "Reciept \(documentCounter!)-3"
-    self.title = self.titleLbl
-    reReciept()
-        
-    case 4:
-    recieptChosen = true
-    self.titleLbl = "Reciept \(documentCounter!)-4"
-    self.title = self.titleLbl
-    reReciept()
-        
-    case 5:
-    recieptChosen = true
-    self.titleLbl = "Reciept \(documentCounter!)-5"
-    self.title = self.titleLbl
-    reReciept()
-     */
+    
     default:
     print ("switch is not working") //do nothing
     } //end of switch
@@ -263,7 +242,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.documentCounter = (snapshot.childSnapshot(forPath: "fBill").value! as? String)!
         
         //check what is rebilled
-        if self.recoveredReciept == "" {self.billReciept.isHidden = true ;print ("biil & Pay or just bill")} else {self.billReciept.isHidden = false;print(" bill and then reciept")}
+      //  if self.recoveredReciept == "" {self.billReciept.isHidden = false ;print ("biil & Pay or just bill")} else {self.billReciept.isHidden = false;print(" bill and then reciept")}
 
         self.titleLbl = "\(self.document!) \(self.documentCounter!)"
         self.title = self.titleLbl
@@ -290,7 +269,10 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         
         if self.recieptsArray2.isEmpty{
         print (" (self.recieptsArray)is empty")
+        self.billReciept.isHidden = true
         }else{
+            self.billReciept.isHidden = false
+
         print ("create reciepts segments")
         // remove all current segments to make sure it is empty:
         self.billReciept.removeAllSegments()
