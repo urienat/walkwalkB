@@ -268,7 +268,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         
         //build reciepts
  
-        self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(self.billToHandle).observeSingleEvent(of: .childAdded ,with: { (snapshot) in
+        self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(self.billToHandle).observe(.childAdded ,with: { (snapshot) in
         
         if let recieptItem = snapshot.key as? String {
         print(recieptItem)
@@ -276,6 +276,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         print (self.recieptsArray2)
             
         }
+        
         if self.recieptsArray2.isEmpty{
         print (" (self.recieptsArray)is empty")
         }else{
@@ -289,8 +290,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.billReciept.insertSegment(withTitle: "Invoice", at: 0, animated: true)
 
         }
+        
         })
-
         })
         }//end rebill clicked
  
