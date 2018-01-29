@@ -29,7 +29,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     let canceledImage = UIImage(named: "cancelled")
     let trashImage = UIImage(named: "trash")
     let billDocument = UIImage(named: "billDocument")
-    
+    let partially = UIImage(named: "partially")
+
     var textString = ""
     var largeTextRange:NSRange?
     var smallTextRange:NSRange?
@@ -173,6 +174,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             }
 
             func presentBill(){
+                
             billReciept.isHidden = true
             self.recieptChosen = false
             self.attributedText(attributed: self.recoveredBill)
@@ -252,7 +254,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.titleLbl = "\(self.document!)"
         self.title = self.titleLbl
          
-        if self.recoveredStatus == "Billed" { self.deleteBtn.isEnabled = true;self.billStatusForRecovery = "";self.statusImage.image = self.billDocument;}
+        if self.recoveredStatus == "Billed"  { self.deleteBtn.isEnabled = true;self.billStatusForRecovery = "";self.statusImage.image = self.billDocument;}
+        if self.recoveredStatus == "Partially"  { self.deleteBtn.isEnabled = true;self.billStatusForRecovery = "";self.statusImage.image = self.partially;}
         if  self.recoveredStatus  == "Paid" { self.statusImage.image = self.paidImage;self.deleteBtn.isEnabled = true;self.billStatusForRecovery = ""}
         if self.recoveredStatus ==  "Cancelled" {
             
@@ -290,6 +293,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         }
         
         })
+        if self.recieptsArray2.isEmpty{
+                print (" (self.recieptsArray)is empty")
+            self.billReciept.isHidden = true}
         })
         }//end rebill clicked
  
@@ -590,14 +596,18 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             if self.recieptChosen == false {
                 self.dbRefEmployee.child(self.employeeID).child("myBills").child(String(self.billToHandle)).updateChildValues([ "fBillStatus":"Cancelled","fBillStatusDate": self.mydateFormat5.string(from: Date())])
                //add effect on the reciepts
+                for rec in 1...self.recieptsArray2.count
+                {
+                self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(String("-\(self.documentCounter!)")!).child(String(rec)).updateChildValues(["fActive" : self.mydateFormat5.string(from: Date())])
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+                        if self.billReciept.isSelected == false { self.navigationController!.popViewController(animated: true)}
+                    }
+                }
             }else {
                 self.deleteReciept()
             }
 
-       // DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-
-       // self.navigationController!.popViewController(animated: true)
-      //r  }
+      
         }
 
         alertController.addAction(cancelAction)
@@ -612,6 +622,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).updateChildValues(["fBillStatus": "Partially", "fBalance":String (Double(balance!)! + Double(recieptPayment!)!)], withCompletionBlock: { (error) in}) //end of update.
         // cancel reciept
         self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(String("-\(self.documentCounter!)")!).child(String(billReciept.selectedSegmentIndex)).updateChildValues(["fActive" : self.mydateFormat5.string(from: Date())])
+        
+       
+        
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.0){
                 self.navigationController!.popViewController(animated: true)

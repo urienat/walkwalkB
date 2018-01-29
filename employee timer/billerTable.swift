@@ -649,7 +649,9 @@ print (self.billItems.count)
             } else {
             
             if self.documentName == "Bill & Payment" {self.alert78()} else {
-            self.alert3()}
+            //self.alert3()
+                
+                    }
             }//end of else
             }//end of if paid
 
@@ -958,7 +960,7 @@ print (self.billItems.count)
             let OKAction = UIAlertAction(title: "Yes", style: .default) { (UIAlertAction) in
                 
             //  save the canceeld reciept within the bill
-                self.dbRefEmployees.child(self.employeeID).child("IrregularLog").child("CancelledReciepts").child(self.mydateFormat5.string(from: Date())).updateChildValues(["fBillRecieptMailSaver":self.recoveredreciept, "fReciept":self.BillArray[self.buttonRow]], withCompletionBlock: { (error) in})
+               // self.dbRefEmployees.child(self.employeeID).child("IrregularLog").child("CancelledReciepts").child(self.mydateFormat5.string(from: Date())).updateChildValues(["fBillRecieptMailSaver":self.recoveredreciept, "fReciept":self.BillArray[self.buttonRow]], withCompletionBlock: { (error) in})
              //resert the reciept data within the bill
             self.statusTemp = "Billed"
             self.BillArrayStatus[self.buttonRow] = self.statusTemp
