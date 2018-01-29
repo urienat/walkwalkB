@@ -59,6 +59,7 @@ class billStruct: NSObject{
     var fDocumentName: String?
     var fRecieptDate: String?
     var fBalance: String?
+    var fRecieptCounter : String?
 
     
     

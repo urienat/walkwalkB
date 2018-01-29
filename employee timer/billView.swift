@@ -230,10 +230,15 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         
     self.recoveredReciept = (snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String)!
     //self.recieptDate = (snapshot.childSnapshot(forPath: "fRecieptDate").value! as? String)!
-    //self.recieptStatus = (snapshot.childSnapshot(forPath: "fActive").value! as? String)!
-    //self.document = (snapshot.childSnapshot(forPath: "fDocument").value! as? String)!
+    self.recieptStatus = (snapshot.childSnapshot(forPath: "fActive").value! as? String)!
+    self.document = (snapshot.childSnapshot(forPath: "fDocument").value! as? String)!
    // self.documentCounter = (snapshot.childSnapshot(forPath: "fBill").value! as? String)!
     
+    if self.recieptStatus !=  "Yes" {
+            
+            self.statusImage.image = self.canceledImage;
+            self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "!!!!!!!!!!This document was cancelled: \(self.mydateFormat8.string(from: self.mydateFormat5.date(from: self.recieptStatus!)! ))!!!!!!!!!!"}
+
     self.attributedText(attributed: self.recoveredReciept)
     
     })
@@ -297,15 +302,15 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         }//end rebill clicked
  
         func attributedText(attributed:String) {
-        if recieptChosen == false { self.textString = "\(self.document!)-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"
+        if recieptChosen == false { self.textString = "\(self.document!)\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"
         } else {
-        self.textString = "Reciept-\(self.documentCounter!) \r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"}
+        self.textString = "\(self.document!)\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"}
         
         var attrText = NSMutableAttributedString(string: textString)
         
-        if recieptChosen == false { self.largeTextRange = (textString as NSString).range(of: "\(self.document!)-\(self.documentCounter!)"); self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")
+        if recieptChosen == false { self.largeTextRange = (textString as NSString).range(of: "\(self.document!)"); self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")
         } else {
-        self.largeTextRange = (textString as NSString).range(of: "Reciept-\(self.documentCounter!)");self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")}
+        self.largeTextRange = (textString as NSString).range(of: "\(self.document!)");self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")}
         
         paragraph.alignment = .center
         //let attributes: [String : Any] = [NSParagraphStyleAttributeName: paragraph, NSFontAttributeName:largeFont]
@@ -321,7 +326,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         func  configuredMailComposeViewController2() -> MFMailComposeViewController {
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
-        mailComposerVC2.setSubject("\(document!) \(documentCounter!)")
+        mailComposerVC2.setSubject("\(document!)")
         mailComposerVC2.setMessageBody("Dear \(contactForMail!)\r\n\r\nThe invoice is attached for your records. Please don't hesitate to contact me with any questions.\r\n\r\nRegards \(ViewController.fixedName!) \(ViewController.fixedLastName!)", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
         mailComposerVC2.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: "Invoice")
@@ -332,7 +337,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         func  configuredMailComposeViewController4() -> MFMailComposeViewController {
         let mailComposerVC4 = MFMailComposeViewController()
         mailComposerVC4.mailComposeDelegate = self
-        mailComposerVC4.setSubject("Reciept \(documentCounter!)")
+        mailComposerVC4.setSubject("\(document)")
             mailComposerVC4.setMessageBody("Dear \(contactForMail!)\r\n\r\nThe reciept for your payment is attached for your records. Please don't hesitate to contact me with any questions.\r\n\r\nRegards \(ViewController.fixedName!) \(ViewController.fixedLastName!) ", isHTML: false)
         mailComposerVC4.setToRecipients([ViewController.fixedemail])
         mailComposerVC4.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: "Reciept")

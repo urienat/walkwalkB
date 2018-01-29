@@ -34,6 +34,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var accountParnet = ""
     var balance:String?
     var remainingBalance: String?
+    var recieptCounter: String?
 
     var seprator = "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
     var seprator2 = "⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶"
@@ -772,7 +773,7 @@ print (self.billItems.count)
         self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).observeSingleEvent(of: .value,with: {(snapshot) in
             self.employerID = (snapshot.childSnapshot(forPath: "fBillEmployer").value! as? String)!
             if  (snapshot.childSnapshot(forPath: "fBalance").value! as? String) != nil { self.balance = (snapshot.childSnapshot(forPath: "fBalance").value! as? String)!} else {self.balance = (snapshot.childSnapshot(forPath: "fBillTotalTotal").value! as? String)!}
-            
+            if  (snapshot.childSnapshot(forPath: "fRecieptCounter").value! as? String) != nil { self.recieptCounter = (snapshot.childSnapshot(forPath: "fRecieptCounter").value! as? String)!} else {self.recieptCounter = "1"}
             self.dbRefEmployers.child(self.employerID).observeSingleEvent(of:.value, with: {(snapshot) in
                 //self.lastPrevious = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!
                 self.accountAdress = String(describing: snapshot.childSnapshot(forPath: "fAddress").value!) as String!
@@ -803,16 +804,16 @@ print (self.billItems.count)
 
             //update bill with DB
             self.dbRefEmployees.child(self.employeeID).child("myBills").child(String("-"+self.BillArray[self.buttonRow])).updateChildValues(["fBillStatus": self.statusTemp, "fBillStatusDate":
-                self.self.mydateFormat5.string(from: Date()), "fBalance" : self.remainingBalance,
+                self.self.mydateFormat5.string(from: Date()), "fBalance" : self.remainingBalance,"fRecieptCounter":String(Int(self.recieptCounter!)!+1),
                "fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver
                 ], withCompletionBlock: { (error) in}) //end of update.
             
-            self.dbRefEmployees.child(self.employeeID).child("myReciepts").child(String("-"+self.BillArray[self.buttonRow])).child(self.self.mydateFormat5.string(from: Date())).updateChildValues(["fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver,"fActive":"Yes","fBill":self.BillArray[self.buttonRow],"fDocument":"Reciept"], withCompletionBlock: { (error) in}) //end of update.
+            self.dbRefEmployees.child(self.employeeID).child("myReciepts").child(String("-"+self.BillArray[self.buttonRow])).child(self.recieptCounter!).updateChildValues(["fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver,"fActive":"Yes","fBill":self.BillArray[self.buttonRow],"fDocument":"Reciept \(self.BillArray[self.buttonRow])-\(self.recieptCounter!)"], withCompletionBlock: { (error) in}) //end of update.
             
             print (self.employerID)
             print(self.mydateFormat10.string(from: Date()))
             
-            self.dbRefEmployers.child(self.employerID).updateChildValues(["fLast":"Last paid: \(self.mydateFormat10.string(from: Date()))"], withCompletionBlock: { (error) in})
+            self.dbRefEmployers.child(self.employerID).updateChildValues(["fLast":"Last paid: \(self.mydateFormat10.string(from: Date()))" ], withCompletionBlock: { (error) in})
             
             self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([(self.employerID):Int((self.mydateFormat5.date(from: self.mydateFormat5.string(from: Date()))?.timeIntervalSince1970)!)]) 
 
@@ -867,7 +868,7 @@ print (self.billItems.count)
             if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
             
             
-            self.documentName = "Reciept"; if self.paymentSys == "other" || self.paymentSys == ""{self.paymentBlock = ("Payment of \(ViewController.fixedCurrency!)\(self.balance) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock) ")
+            self.documentName = "Reciept \(self.BillArray[self.buttonRow])-\(self.recieptCounter!)"; if self.paymentSys == "other" || self.paymentSys == ""{self.paymentBlock = ("Payment of \(ViewController.fixedCurrency!)\(self.balance) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock) ")
            
             
                 
