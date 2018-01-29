@@ -353,6 +353,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         if StatusChoice == "Not Paid" {
         if  billItem.fBalance == nil{self.remainingBalance = (billItem.fBillTotalTotal!)} else {self.remainingBalance = billItem.fBalance!}
         cell.l3.text = self.remainingBalance}
+            if StatusChoice == "Not Paid" { cell.l3.textColor = UIColor.red;cell.l4.textColor = UIColor.red} else {cell.l3.textColor = blueColor;cell.l4.textColor = blueColor}
             
         } else{
                 
@@ -496,6 +497,7 @@ print (self.billItems.count)
         self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
         self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
         if ViewController.taxOption == "Yes"{ self.totalTax.text = "* Total included tax"} else { self.totalTax.text = "* Cancelled bills excluded"}
+            if self.StatusChoice == "Not Paid" {self.totalTax.text = "* Amounts reflect outstanding balance only" }
             
         self.billerConnect.reloadData()
         }//end of if let dic
