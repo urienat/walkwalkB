@@ -39,6 +39,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var seprator = "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
     var seprator2 = "⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶"
 
+    var recieptPayment:String?
 
     var monthToHandle : Int = 0
     var yearToHandle : Int = 0
@@ -415,6 +416,9 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billManager?.employeeID = employeeID
         billManager?.employerID = employerID
         billManager?.lastPrevious = lastPrevious
+        billManager?.undoRecieptCounter = recieptCounter
+        billManager?.undoBalance = balance// String(Double(self.balance!)! - Double(self.partialPayment.text!)!)
+        billManager?.undoTotal = String(Double(self.balance!)!)
         if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "(\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
         billManager?.contactForMail = "(\(self.accountName) \(self.accountLastName)"}
 
@@ -805,10 +809,10 @@ print (self.billItems.count)
             //update bill with DB
             self.dbRefEmployees.child(self.employeeID).child("myBills").child(String("-"+self.BillArray[self.buttonRow])).updateChildValues(["fBillStatus": self.statusTemp, "fBillStatusDate":
                 self.self.mydateFormat5.string(from: Date()), "fBalance" : self.remainingBalance,"fRecieptCounter":String(Int(self.recieptCounter!)!+1),
-               "fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver
+               //"fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver
                 ], withCompletionBlock: { (error) in}) //end of update.
             
-            self.dbRefEmployees.child(self.employeeID).child("myReciepts").child(String("-"+self.BillArray[self.buttonRow])).child(self.recieptCounter!).updateChildValues(["fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver,"fActive":"Yes","fBill":self.BillArray[self.buttonRow],"fDocument":"Reciept \(self.BillArray[self.buttonRow])-\(self.recieptCounter!)"], withCompletionBlock: { (error) in}) //end of update.
+            self.dbRefEmployees.child(self.employeeID).child("myReciepts").child(String("-"+self.BillArray[self.buttonRow])).child(self.recieptCounter!).updateChildValues(["fPaymentMethood": self.paymentSys, "fPaymentReference": self.paymentReference,"fRecieptDate":self.mydateFormat5.string(from: Date()),"fBillRecieptMailSaver":self.recieptMailSaver,"fActive":"Yes","fBill":self.BillArray[self.buttonRow],"fDocument":"Reciept \(self.BillArray[self.buttonRow])-\(self.recieptCounter!)","fRecieptAmount": (self.recieptPayment!) ], withCompletionBlock: { (error) in}) //end of update.
             
             print (self.employerID)
             print(self.mydateFormat10.string(from: Date()))
@@ -821,13 +825,6 @@ print (self.billItems.count)
             
             self.performSegue(withIdentifier: "presentReciept", sender: self.recieptMailSaver)
 
-                //self.navigationController!.popViewController(animated: true)
-            
-            
-
-           /// if self.StatusChoice == "Not Paid" {self.refresh(presser: 0)}
-           /// self.thinking.stopAnimating()
-        
             
             }//end of if biller
         
@@ -867,18 +864,15 @@ print (self.billItems.count)
             print (self.paymentSys!)
             if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
             
-            
-            self.documentName = "Reciept \(self.BillArray[self.buttonRow])-\(self.recieptCounter!)"; if self.paymentSys == "other" || self.paymentSys == ""{self.paymentBlock = ("Payment of \(ViewController.fixedCurrency!)\(self.balance) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock) ")
-           
-            
-                
+            if self.fully == false { self.self.recieptPayment = self.midCalc2!} else {self.recieptPayment = self.partialPayment.text!}
+
+            self.documentName = "Reciept \(self.BillArray[self.buttonRow])-\(self.recieptCounter!)"; if self.paymentSys == "other" || self.paymentSys == ""{self.paymentBlock = ("Payment of \(ViewController.fixedCurrency!)\(self.recieptPayment!) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock) ")
             }
 
-            
             if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
             if self.paymentSys! == "other" || self.paymentSys == ""{// payment == other
-                self.paymentBlock = ("Payment of \(ViewController.fixedCurrency!)\(self.midCalc2!) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))  \(self.refernceBlock!) ")
-            } else {self.paymentBlock = "Payment of \(ViewController.fixedCurrency!)\(self.midCalc2!) made by \(self.paymentSys!) \(self.refernceBlock!) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))"
+            self.paymentBlock = ("Payment of \(ViewController.fixedCurrency!)\(self.recieptPayment!) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))  \(self.refernceBlock!) ")
+            } else {self.paymentBlock = "Payment of \(ViewController.fixedCurrency!)\(self.recieptPayment!) made by \(self.paymentSys!) \(self.refernceBlock!) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))"
             }
         })
     }//end of billing
@@ -898,6 +892,7 @@ print (self.billItems.count)
             self.imagePartially.image = nonVimage
             fully = false
             partialPayment.isEnabled = false
+            
             
         case false:
             print("fully3")

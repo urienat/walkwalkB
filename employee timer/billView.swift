@@ -52,6 +52,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     var documentCounter :String?
     var rebillprocess:Bool?
     
+    var undoTotal: String?
+    var undoRecieptCounter: String?
+    var undoBalance: String?
+    var statusForUndo: String?
+
     var documentsFileName: String?
     var pdfData = NSMutableData()
     var documentPdfData: NSMutableData?
@@ -71,7 +76,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     var billStatusForRecovery = ""
     var cancelledDocument: String?
     var statusCanclledDate: String?
-        var lastPrevious = ""
+    var lastPrevious = ""
     var registerTitle : String?
     var recieptChosen:Bool = false
     var recieptStatus :String?
@@ -199,11 +204,13 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     
             func undo(){
             print (self.recieptChosen)
+                if Int(undoBalance!) != Int(self.undoTotal!) {self.statusForUndo = "Partially"} else {self.statusForUndo  = "Billed"}
             if self.recieptChosen == true {
-                        self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).updateChildValues(["fBillStatus": "Billed", "fBillStatusDate":
-                            "","fPaymentReference":"" ,"fRecieptDate":"","fBillRecieptMailSaver":""
+                self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).updateChildValues(["fBillStatus": self.statusForUndo!, "fBillStatusDate":"" ,"fRecieptCounter":String(Int(undoRecieptCounter!)!), "fBalance": undoBalance!
             ], withCompletionBlock: { (error) in}) //end of update.
-                self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).child("fBalance").removeValue()
+            // delete reciept
+            self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(String("-\(self.documentCounter!)")!).child(self.undoRecieptCounter!).removeValue()
+            //self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).child("fBalance").removeValue()
 
             } else {
             print (String(Int(self.documentCounter!)!-1))
@@ -212,6 +219,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             //undo - undo records
             self.moveSessionToBilled()
             }//end of else
+            
             print (lastPrevious)
             self.dbRefEmployer.child(self.employerID).updateChildValues(["fLast":lastPrevious], withCompletionBlock: { (error) in})
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.0){
@@ -249,11 +257,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             
         self.dbRefEmployee.child(employeeID).child("myBills").child(billToHandle).observeSingleEvent(of: .value,with: { (snapshot) in
         self.recoveredBill = (snapshot.childSnapshot(forPath: "fBillMailSaver").value! as? String)!
-        self.recoveredReciept = (snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String)!
         if (snapshot.childSnapshot(forPath: "fBillStatusDate").value! as? String) != nil {self.statusCanclledDate = (snapshot.childSnapshot(forPath: "fBillStatusDate").value! as? String)!}
         self.recoveredStatus = (snapshot.childSnapshot(forPath: "fBillStatus").value! as? String)!
-        self.recieptDate = (snapshot.childSnapshot(forPath: "fRecieptDate").value! as? String)!
-        self.paymentDate = (snapshot.childSnapshot(forPath: "fBillDate").value! as? String)!
         self.document = (snapshot.childSnapshot(forPath: "fDocumentName").value! as? String)!
         self.documentCounter = (snapshot.childSnapshot(forPath: "fBill").value! as? String)!
         
