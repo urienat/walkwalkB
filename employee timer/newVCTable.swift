@@ -133,6 +133,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     //payment
     @IBOutlet weak var paymentView: UIView!
     
+    @IBOutlet weak var toolbar1: UIToolbar!
     @IBOutlet weak var paymentMethood: UISegmentedControl!
     @IBAction func paymentMethood(_ sender: Any) {
     print("payment pressed")
@@ -635,9 +636,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             if self.billStarted != true   { self.thinking.stopAnimating()}
            // if self.billPayStarted != true { self.thinking.stopAnimating()}
             
-            if self.eventCounter == 0 {self.billSender.isEnabled = false;self.billPay.isEnabled = false;self.eventsLbl.text = " No Due Sessions";self.noSign.isHidden = false}
-            else if self.eventCounter == 1 {self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) Due session";self.noSign.isHidden = true}
-            else {self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions";self.noSign.isHidden = true}
+            if self.eventCounter == 0 {self.toolbar1.isHidden = true;self.billSender.isEnabled = false;self.billPay.isEnabled = false;self.eventsLbl.text = " No Due Sessions";self.noSign.isHidden = false}
+            else if self.eventCounter == 1 {self.toolbar1.isHidden = false;self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) Due session";self.noSign.isHidden = true}
+            else {self.toolbar1.isHidden = false;self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions";self.noSign.isHidden = true}
 
             self.calc = (Double(self.eventCounter))*(self.Employerrate) + self.itemSum
 

@@ -2599,6 +2599,9 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="string" keyPath="allowedChars" value="1,2,3,4,5,6,7,8,9,0,."/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="partialCheck:" destination="Grl-4C-vV7" eventType="editingChanged" id="Pu4-3Q-k4S"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGp-Px-mK1" userLabel="btnFully">
                                         <rect key="frame" x="117" y="95" width="46" height="30"/>
@@ -2793,6 +2796,7 @@
                         <outlet property="paymentTitle" destination="vBU-uW-SVk" id="8w8-V3-BFg"/>
                         <outlet property="paymentView" destination="T9c-oL-JGA" id="7tp-23-Uwm"/>
                         <outlet property="referenceTxt" destination="ozL-9e-hkS" id="eeQ-Am-MHo"/>
+                        <outlet property="sacePayment" destination="7km-HH-3Gq" id="iw2-Fm-cWh"/>
                         <outlet property="thinking" destination="n0x-Pz-LMA" id="ZFn-TC-imW"/>
                         <outlet property="totalAmount" destination="RwY-u5-Vpk" id="nqf-q4-hwd"/>
                         <outlet property="totalBills" destination="ILg-rw-WUw" id="23Y-xA-55y"/>
@@ -2832,7 +2836,7 @@
                                     <action selector="StatusChosen:" destination="KQc-zY-Jl3" eventType="valueChanged" id="DnG-Et-ifc"/>
                                 </connections>
                             </segmentedControl>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6A1-XQ-3Qo">
+                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6A1-XQ-3Qo">
                                 <rect key="frame" x="0.0" y="508" width="320" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="S0K-IT-oY1"/>
@@ -3165,6 +3169,7 @@
                         <outlet property="referenceTxt" destination="NDn-4f-pNB" id="r6u-yB-s3z"/>
                         <outlet property="tableConnect" destination="G8b-SK-75d" id="t1p-4t-cUa"/>
                         <outlet property="thinking" destination="oMs-Xd-055" id="lYw-6B-Spa"/>
+                        <outlet property="toolbar1" destination="6A1-XQ-3Qo" id="3GE-bu-X2j"/>
                         <segue destination="8gY-C3-V1Z" kind="show" identifier="presentBill" id="q4e-3H-dKE"/>
                     </connections>
                 </viewController>
@@ -3195,7 +3200,7 @@
                                 </items>
                             </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ka5-D8-Si7">
-                                <rect key="frame" x="0.0" y="464" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="508" width="320" height="60"/>
                                 <color key="backgroundColor" red="0.2145790309" green="0.45587304229999998" blue="0.84711945060000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="oq5-oC-ito"/>
@@ -3215,11 +3220,11 @@
                                 </items>
                             </toolbar>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SHD-aj-cq0">
-                                <rect key="frame" x="16" y="75" width="288" height="369"/>
+                                <rect key="frame" x="16" y="75" width="288" height="413"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pGt-z5-fAP">
-                                <rect key="frame" x="16" y="114" width="288" height="319"/>
+                                <rect key="frame" x="16" y="114" width="288" height="363"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82B-Jq-qRO">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="1600"/>
@@ -4033,7 +4038,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8Bf-Vi-arA"/>
-        <segue reference="Quf-pi-A92"/>
+        <segue reference="q4e-3H-dKE"/>
         <segue reference="GwF-xw-cu7"/>
         <segue reference="kEl-UY-JOa"/>
         <segue reference="8s0-fg-N01"/>

@@ -34,9 +34,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     var textString = ""
     var largeTextRange:NSRange?
     var smallTextRange:NSRange?
+    var centerTextRange:NSRange?
     let largeFont = UIFont(name: "PingFang TC", size: 20.0)!
     let smallFont = UIFont(name: "PingFang TC", size: 12.0)!
     let paragraph = NSMutableParagraphStyle()
+    var alertExtension: String?
     
     var recieptsArray: [String:AnyObject] = [:]
     var recieptsArray2 = [String]()
@@ -187,8 +189,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     
             func undo(){
             print (self.recieptChosen)
-                if Int(undoBalance!) != Int(self.undoTotal!) {self.statusForUndo = "Partially"} else {self.statusForUndo  = "Billed"}
             if self.recieptChosen == true {
+                if Int(undoBalance!) != Int(self.undoTotal!) {self.statusForUndo = "Partially"} else {self.statusForUndo  = "Billed"}
+
                 self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).updateChildValues(["fBillStatus": self.statusForUndo!, "fBillStatusDate":"" ,"fRecieptCounter":String(Int(undoRecieptCounter!)!), "fBalance": undoBalance!
             ], withCompletionBlock: { (error) in}) //end of update.
             // delete reciept
@@ -306,15 +309,18 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         
         var attrText = NSMutableAttributedString(string: textString)
         
-        if recieptChosen == false { self.largeTextRange = (textString as NSString).range(of: "\(self.document!)"); self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")
+        if recieptChosen == false { self.largeTextRange = (textString as NSString).range(of: "\(self.document!)");self.centerTextRange = (textString as NSString).range(of: "\(self.billStatusForRecovery)"); self.smallTextRange = (textString as NSString).range(of: "\r\n\r\n\(attributed)")
         } else {
-        self.largeTextRange = (textString as NSString).range(of: "\(self.document!)");self.smallTextRange = (textString as NSString).range(of: "\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)")}
+        self.largeTextRange = (textString as NSString).range(of: "\(self.document!)");self.centerTextRange = (textString as NSString).range(of: "\(self.billStatusForRecovery)");self.smallTextRange = (textString as NSString).range(of: ")\r\n\r\n\(attributed)")}
         
         paragraph.alignment = .center
+            
         //let attributes: [String : Any] = [NSParagraphStyleAttributeName: paragraph, NSFontAttributeName:largeFont]
         attrText.addAttribute(NSFontAttributeName, value: self.smallFont, range: smallTextRange!)
         attrText.addAttribute(NSFontAttributeName, value: self.largeFont, range: largeTextRange!)
         attrText.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: largeTextRange!)
+        attrText.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: centerTextRange!)
+        attrText.addAttribute(NSFontAttributeName, value:UIColor.red , range: centerTextRange!)
 
         // self.mailText.attributedText = attrText
        self.pdfData =  createPDFFilea(atext: attrText)
@@ -585,10 +591,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
 
         //save alert
         func deleteAlert () {
+            if recieptChosen != true && recieptsArray2.isEmpty == false {self.alertExtension = " Deleting invoice would delete also all related reciepts."} else { self.alertExtension = ""}
         print("delete")
         //if billReciept.isHidden != true { self.cancelledDocument = "Bill & Recipet ref# \(self.documentCounter!)"} else {self.cancelledDocument = "\(self.document!) ref# \(self.documentCounter!)"}
 
-        let alertController = UIAlertController(title: "Delete Alert", message: "You are about to delete \(self.document!). Are You Sure?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Delete Alert", message: "You are about to delete \(self.document!).\(self.alertExtension!) Are You Sure?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
         //nothing
         }

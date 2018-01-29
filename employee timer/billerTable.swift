@@ -122,7 +122,20 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     @IBOutlet weak var referenceTxt: UITextField!
     
+    
+    
+    @IBAction func partialCheck(_ sender: Any) {
+   
+    
+        if partialPayment.text != nil  {
+            sacePayment.isEnabled = true} else {sacePayment.isEnabled = false}
+        
+    }
+    @IBOutlet weak var sacePayment: UIButton!
+    
+    
     @IBAction func savePayment(_ sender: Any) {
+        
         self.thinking.startAnimating()
         paymentReference = referenceTxt.text
         billStatus = "Paid"
@@ -134,8 +147,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             
           self.recieptProcess() // self.alert19()
             
+            
         }
-        
     }
     
     @IBAction func cancelPayment(_ sender: Any) {
@@ -890,6 +903,7 @@ print (self.billItems.count)
         switch fully{
         case true:
             print("fully2")
+            sacePayment.isEnabled = true
             self.imageFull.image = Vimage
             self.imagePartially.image = nonVimage
             fully = false
@@ -897,6 +911,7 @@ print (self.billItems.count)
             
             
         case false:
+            sacePayment.isEnabled = false
             print("fully3")
             fully = true
             self.imageFull.image = nonVimage
