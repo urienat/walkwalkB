@@ -274,6 +274,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         print(recieptItem)
         self.recieptsArray2.append(recieptItem)
         print (self.recieptsArray2)
+            
         }
         if self.recieptsArray2.isEmpty{
         print (" (self.recieptsArray)is empty")
