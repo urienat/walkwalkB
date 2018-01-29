@@ -81,16 +81,40 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     @IBOutlet weak var billReciept: UISegmentedControl!
     @IBAction func billReciept(_ sender: Any) {
     switch billReciept.selectedSegmentIndex {
-    case 0:recieptChosen = false
+    case 0:
+    recieptChosen = false
     self.titleLbl = "\(document!) \(documentCounter!)"
     self.title = self.titleLbl
     self.attributedText(attributed: self.recoveredBill)
 
-    case 1:recieptChosen = true
-    self.titleLbl = "Reciept \(documentCounter!)"
+    case 1:
+    recieptChosen = true
+    self.titleLbl = "Reciept \(documentCounter!)-1"
     self.title = self.titleLbl
-    self.attributedText(attributed: self.recoveredReciept)
-
+    reReciept()
+    case 2:recieptChosen = true
+    self.titleLbl = "Reciept \(documentCounter!)-2"
+    self.title = self.titleLbl
+    reReciept()
+   
+    case 3:
+    recieptChosen = true
+    self.titleLbl = "Reciept \(documentCounter!)-3"
+    self.title = self.titleLbl
+    reReciept()
+        
+    case 4:
+    recieptChosen = true
+    self.titleLbl = "Reciept \(documentCounter!)-4"
+    self.title = self.titleLbl
+    reReciept()
+        
+    case 5:
+    recieptChosen = true
+    self.titleLbl = "Reciept \(documentCounter!)-5"
+    self.title = self.titleLbl
+    reReciept()
+        
     default:
     print ("switch is not working") //do nothing
     } //end of switch
@@ -200,16 +224,16 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     
     func reReciept(){
    
-    self.dbRefEmployee.child(employeeID).child("myReciepts").child("filldates").child(billToHandle).observeSingleEvent(of: .value,with: { (snapshot) in
-    self.recoveredReciept = (snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String)!
-    self.recieptDate = (snapshot.childSnapshot(forPath: "fRecieptDate").value! as? String)!
-    self.recieptStatus = (snapshot.childSnapshot(forPath: "fActive").value! as? String)!
-    self.document = (snapshot.childSnapshot(forPath: "fDocument").value! as? String)!
-    self.documentCounter = (snapshot.childSnapshot(forPath: "fBill").value! as? String)!
+    self.dbRefEmployee.child(employeeID).child("myReciepts").child(billToHandle).child(self.recieptsArray2[self.billReciept.selectedSegmentIndex-1]).observeSingleEvent(of: .value,with: { (snapshot) in
+        print ((self.recieptsArray2[self.billReciept.selectedSegmentIndex-1]))
         
-       // self.titleLbl = "Reciept \(documentCounter!)"
-       // self.title = self.titleLbl
-        self.attributedText(attributed: self.recoveredReciept)
+    self.recoveredReciept = (snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String)!
+    //self.recieptDate = (snapshot.childSnapshot(forPath: "fRecieptDate").value! as? String)!
+    //self.recieptStatus = (snapshot.childSnapshot(forPath: "fActive").value! as? String)!
+    //self.document = (snapshot.childSnapshot(forPath: "fDocument").value! as? String)!
+   // self.documentCounter = (snapshot.childSnapshot(forPath: "fBill").value! as? String)!
+    
+    self.attributedText(attributed: self.recoveredReciept)
     
     })
     }//end of rerreciept
@@ -243,29 +267,29 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.attributedText(attributed: self.recoveredBill)
         
         //build reciepts
-          
-
-            
-            self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(self.billToHandle).observeSingleEvent(of: .value ,with: { (snapshot) in
-            let recieptItem = snapshot.key
-            self.recieptsArray2.append(snapshot.key)
-            print (self.recieptsArray2)
-            
-                if self.recieptsArray2.isEmpty{
-            print (" (self.recieptsArray)is empty")
-
+ 
+        self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(self.billToHandle).observeSingleEvent(of: .childAdded ,with: { (snapshot) in
+        
+        if let recieptItem = snapshot.key as? String {
+        print(recieptItem)
+        self.recieptsArray2.append(recieptItem)
+        print (self.recieptsArray2)
+        }
+        if self.recieptsArray2.isEmpty{
+        print (" (self.recieptsArray)is empty")
         }else{
         print ("create reciepts segments")
-                    // remove all current segments to make sure it is empty:
-                    self.billReciept.removeAllSegments()
-                    self.billReciept.insertSegment(withTitle: "Invoice", at: 0, animated: true)
-                    // adding your segments, using the "for" loop is just for demonstration:
-                    for index in 0...self.recieptsArray2.count-1 {
-                        self.billReciept.insertSegment(withTitle: "Reciept \(index + 1)", at: index, animated: false)
-                    }
+        // remove all current segments to make sure it is empty:
+        self.billReciept.removeAllSegments()
+        // adding your segments, using the "for" loop is just for demonstration:
+        for index in 0...self.recieptsArray2.count-1 {
+        self.billReciept.insertSegment(withTitle: "Reciept \(index + 1)", at: index, animated: false)
+        }
+        self.billReciept.insertSegment(withTitle: "Invoice", at: 0, animated: true)
+
         }
         })
- 
+
         })
         }//end rebill clicked
  
