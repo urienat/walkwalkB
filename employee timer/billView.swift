@@ -213,7 +213,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             }//end of undo
     
     func reReciept(){
-   billStatusForRecovery = ""
+  
     self.dbRefEmployee.child(employeeID).child("myReciepts").child(billToHandle).child(self.recieptsArray2[self.billReciept.selectedSegmentIndex-1]).observeSingleEvent(of: .value,with: { (snapshot) in
         print ((self.recieptsArray2[self.billReciept.selectedSegmentIndex-1]))
         
@@ -227,7 +227,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     if self.recieptStatus !=  "Yes" {
             
             self.statusImage.image = self.canceledImage;
-            self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "!!!!!!!!!!This document was cancelled: \(self.mydateFormat8.string(from: self.mydateFormat5.date(from: self.recieptStatus!)! ))!!!!!!!!!!"}
+        self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "!!!!!!!!!!This document was cancelled: \(self.mydateFormat8.string(from: self.mydateFormat5.date(from: self.recieptStatus!)! ))!!!!!!!!!!"} else {self.deleteBtn.isEnabled = true; self.billStatusForRecovery = ""}
 
     self.attributedText(attributed: self.recoveredReciept)
     
@@ -235,6 +235,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     }//end of rerreciept
 
         func  reBill() {
+        self.billStatusForRecovery = ""
         recieptsArray2.removeAll()
             
         self.dbRefEmployee.child(employeeID).child("myBills").child(billToHandle).observeSingleEvent(of: .value,with: { (snapshot) in
