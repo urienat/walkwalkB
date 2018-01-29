@@ -56,6 +56,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     var undoRecieptCounter: String?
     var undoBalance: String?
     var statusForUndo: String?
+    var balance: String?
+    var recieptPayment: String?
 
     var documentsFileName: String?
     var pdfData = NSMutableData()
@@ -211,7 +213,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             }//end of undo
     
     func reReciept(){
-   
+   billStatusForRecovery = ""
     self.dbRefEmployee.child(employeeID).child("myReciepts").child(billToHandle).child(self.recieptsArray2[self.billReciept.selectedSegmentIndex-1]).observeSingleEvent(of: .value,with: { (snapshot) in
         print ((self.recieptsArray2[self.billReciept.selectedSegmentIndex-1]))
         
@@ -219,6 +221,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     //self.recieptDate = (snapshot.childSnapshot(forPath: "fRecieptDate").value! as? String)!
     self.recieptStatus = (snapshot.childSnapshot(forPath: "fActive").value! as? String)!
     self.document = (snapshot.childSnapshot(forPath: "fDocument").value! as? String)!
+    self.recieptPayment = (snapshot.childSnapshot(forPath: "fRecieptAmount").value! as? String)!
    // self.documentCounter = (snapshot.childSnapshot(forPath: "fBill").value! as? String)!
     
     if self.recieptStatus !=  "Yes" {
@@ -240,6 +243,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.recoveredStatus = (snapshot.childSnapshot(forPath: "fBillStatus").value! as? String)!
         self.document = (snapshot.childSnapshot(forPath: "fDocumentName").value! as? String)!
         self.documentCounter = (snapshot.childSnapshot(forPath: "fBill").value! as? String)!
+        self.balance = (snapshot.childSnapshot(forPath: "fBalance").value! as? String)!
         
         //check what is rebilled
       //  if self.recoveredReciept == "" {self.billReciept.isHidden = false ;print ("biil & Pay or just bill")} else {self.billReciept.isHidden = false;print(" bill and then reciept")}
@@ -575,25 +579,44 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         //save alert
         func deleteAlert () {
         print("delete")
-        if billReciept.isHidden != true { self.cancelledDocument = "Bill & Recipet ref# \(self.documentCounter!)"} else {self.cancelledDocument = "\(self.document!) ref# \(self.documentCounter!)"}
+        //if billReciept.isHidden != true { self.cancelledDocument = "Bill & Recipet ref# \(self.documentCounter!)"} else {self.cancelledDocument = "\(self.document!) ref# \(self.documentCounter!)"}
 
-        let alertController = UIAlertController(title: "Delete Alert", message: "You are about to delete \(cancelledDocument!). Are You Sure?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Delete Alert", message: "You are about to delete \(self.document!). Are You Sure?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
         //nothing
         }
         let deleteAction = UIAlertAction(title: "Delete it.", style: .default) { (UIAlertAction) in
-            self.dbRefEmployee.child(self.employeeID).child("myBills").child(String(self.billToHandle)).updateChildValues([ "fBillStatus":"Cancelled","fBillStatusDate": self.mydateFormat5.string(from: Date())])
+            if self.recieptChosen == false {
+                self.dbRefEmployee.child(self.employeeID).child("myBills").child(String(self.billToHandle)).updateChildValues([ "fBillStatus":"Cancelled","fBillStatusDate": self.mydateFormat5.string(from: Date())])
+               //add effect on the reciepts
+            }else {
+                self.deleteReciept()
+            }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+       // DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
 
-        self.navigationController!.popViewController(animated: true)
-        }
+       // self.navigationController!.popViewController(animated: true)
+      //r  }
         }
 
         alertController.addAction(cancelAction)
         alertController.addAction(deleteAction)
         self.present(alertController, animated: true, completion: nil)
         }
+    
+    func deleteReciept(){
+        print (self.recieptChosen)
+       // if Int(undoBalance!) != Int(self.undoTotal!) {self.statusForUndo = "Partially"} else {self.statusForUndo  = "Billed"}
+        
+        self.dbRefEmployee.child(self.employeeID).child("myBills").child(String("-\(self.documentCounter!)")!).updateChildValues(["fBillStatus": "Partially", "fBalance":String (Double(balance!)! + Double(recieptPayment!)!)], withCompletionBlock: { (error) in}) //end of update.
+        // cancel reciept
+        self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(String("-\(self.documentCounter!)")!).child(String(billReciept.selectedSegmentIndex)).updateChildValues(["fActive" : self.mydateFormat5.string(from: Date())])
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0){
+                self.navigationController!.popViewController(animated: true)
+            
+        }//end of dispatch
+    }
     
         }//end of class///////////////////////////////////////////////////////////////////////////////////////
 
