@@ -3253,7 +3253,6 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fhI-qh-yut">
                                 <rect key="frame" x="99.5" y="28" width="121" height="28"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="121" id="XN5-hy-5by"/>
                                     <constraint firstAttribute="height" constant="27" id="s4N-JV-cjy"/>
                                 </constraints>
                                 <segments>

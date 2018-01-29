@@ -87,11 +87,12 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     self.title = self.titleLbl
     self.attributedText(attributed: self.recoveredBill)
 
-    case 1:
+    case billReciept.selectedSegmentIndex:
     recieptChosen = true
-    self.titleLbl = "Reciept \(documentCounter!)-1"
+    self.titleLbl = "Reciept-\(documentCounter!)-\(billReciept.selectedSegmentIndex)"
     self.title = self.titleLbl
     reReciept()
+    /*
     case 2:recieptChosen = true
     self.titleLbl = "Reciept \(documentCounter!)-2"
     self.title = self.titleLbl
@@ -114,7 +115,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     self.titleLbl = "Reciept \(documentCounter!)-5"
     self.title = self.titleLbl
     reReciept()
-        
+     */
     default:
     print ("switch is not working") //do nothing
     } //end of switch
@@ -285,7 +286,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.billReciept.removeAllSegments()
         // adding your segments, using the "for" loop is just for demonstration:
         for index in 0...self.recieptsArray2.count-1 {
-        self.billReciept.insertSegment(withTitle: "Reciept \(index + 1)", at: index, animated: false)
+        self.billReciept.insertSegment(withTitle: "Rec-\(index + 1)", at: index, animated: false)
         }
         self.billReciept.insertSegment(withTitle: "Invoice", at: 0, animated: true)
 
