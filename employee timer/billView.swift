@@ -91,8 +91,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     case 0:
     recieptChosen = false
     reBill()
-    self.titleLbl = "\(document!)"
-    self.title = self.titleLbl
+    //self.titleLbl = "\(document!)"
+    //self.title = self.titleLbl
     
     //self.attributedText(attributed: self.recoveredBill)
 
@@ -249,7 +249,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         //check what is rebilled
       //  if self.recoveredReciept == "" {self.billReciept.isHidden = false ;print ("biil & Pay or just bill")} else {self.billReciept.isHidden = false;print(" bill and then reciept")}
 
-        self.titleLbl = "\(self.document!) \(self.documentCounter!)"
+        self.titleLbl = "\(self.document!)"
         self.title = self.titleLbl
          
         if self.recoveredStatus == "Billed" { self.deleteBtn.isEnabled = true;self.billStatusForRecovery = "";self.statusImage.image = self.billDocument;}
@@ -329,7 +329,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         func  configuredMailComposeViewController4() -> MFMailComposeViewController {
         let mailComposerVC4 = MFMailComposeViewController()
         mailComposerVC4.mailComposeDelegate = self
-        mailComposerVC4.setSubject("\(document)")
+        mailComposerVC4.setSubject("\(document!)")
             mailComposerVC4.setMessageBody("Dear \(contactForMail!)\r\n\r\nThe reciept for your payment is attached for your records. Please don't hesitate to contact me with any questions.\r\n\r\nRegards \(ViewController.fixedName!) \(ViewController.fixedLastName!) ", isHTML: false)
         mailComposerVC4.setToRecipients([ViewController.fixedemail])
         mailComposerVC4.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: "Reciept")

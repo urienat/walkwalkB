@@ -240,8 +240,8 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         
         cell.l3.text = "\(ViewController.fixedCurrency!)\(totalForMonth)"// total with tax
         if ViewController.taxOption! != "No" {
-        cell.l4.text = "Tax: \(ViewController.fixedCurrency!)\(taxForMonth)"//  tax
-        let totalWithOut = totalForMonth-taxForMonth
+        cell.l4.text = "Tax: \(ViewController.fixedCurrency!)\(taxForMonth.roundTo(places: 2))"//  tax
+        let totalWithOut = (totalForMonth-taxForMonth).roundTo(places: 2)
         cell.l6.text = "w/o Tax: \(ViewController.fixedCurrency!)\(totalWithOut)"//  taxtotal w/o
         }//end of if
         return cell
@@ -310,14 +310,14 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 func inFilter() {
                     if billItem.fBillStatus != "Cancelled"{
                         if self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] == nil {
-                            self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTax!)!;
-                            self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTotalTotal!)!;
+                            self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTax!)!.roundTo(places: 2);
+                            self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTotalTotal!)!.roundTo(places: 2);
                             self.byMonthSessions[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Int(billItem.fBillEvents!)!
                             self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = 1
                             
                         }else{
-                            self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTax!)!;
-                            self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTotalTotal!)!;
+                            self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTax!)!.roundTo(places: 2);
+                            self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTotalTotal!)!.roundTo(places: 2);
                             self.byMonthSessions[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthSessions[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Int(billItem.fBillEvents!)!
                             self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + 1
                         }
@@ -351,8 +351,8 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 print (ViewController.taxOption)
                 
                 if ViewController.taxOption! != "No" {
-                self.totalTax.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
-                self.totalWO.text = "w/o Tax: \(String(self.AmountCounter - self.taxCounter))"
+                self.totalTax.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter.roundTo(places: 2)))"
+                self.totalWO.text = "w/o Tax: \(String(self.AmountCounter - self.taxCounter.roundTo(places: 2)))"
                 }
                 self.totalBills.text  = "\(String (describing: self.billCounter)) bills"
                 self.totalSessions.text = "\(String (describing: self.sessionCounter)) sessions"
