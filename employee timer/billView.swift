@@ -37,6 +37,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     var centerTextRange:NSRange?
     let largeFont = UIFont(name: "PingFang TC", size: 20.0)!
     let smallFont = UIFont(name: "PingFang TC", size: 12.0)!
+    let colorFont = UIColor.red
     let paragraph = NSMutableParagraphStyle()
     var alertExtension: String?
     
@@ -320,7 +321,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         attrText.addAttribute(NSFontAttributeName, value: self.largeFont, range: largeTextRange!)
         attrText.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: largeTextRange!)
         attrText.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: centerTextRange!)
-        attrText.addAttribute(NSFontAttributeName, value:UIColor.red , range: centerTextRange!)
+       // attrText.addAttribute(NSFontAttributeName, value:colorFont , range: centerTextRange!)
 
         // self.mailText.attributedText = attrText
        self.pdfData =  createPDFFilea(atext: attrText)
