@@ -2286,6 +2286,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0nM-Xr-0uW" userLabel="cellBtnExt">
                                                     <rect key="frame" x="189" y="4" width="127" height="35.5"/>
                                                     <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="0.60105415239726023" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="cellBtnExt:" destination="oUk-dv-frm" eventType="touchUpInside" id="kqx-kv-t3f"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Rlo-ls-wai">
                                                     <rect key="frame" x="6" y="2" width="180" height="21.5"/>
@@ -2297,7 +2300,14 @@
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJG-u7-F6Y">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P8S-RB-D55" userLabel="approvalImage">
+                                                    <rect key="frame" x="275" y="1.5" width="39" height="39"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="39" id="Qgi-Ga-0Zt"/>
+                                                        <constraint firstAttribute="height" constant="39" id="Zju-vN-eqL"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" tag="7" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJG-u7-F6Y">
                                                     <rect key="frame" x="275" y="2" width="39" height="39"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="39" id="0aT-fJ-avo"/>
@@ -2347,13 +2357,16 @@
                                                 <constraint firstItem="0nM-Xr-0uW" firstAttribute="height" secondItem="8pP-cp-jw0" secondAttribute="height" constant="-8" id="QRK-XW-AvS"/>
                                                 <constraint firstAttribute="trailing" secondItem="JJG-u7-F6Y" secondAttribute="trailing" constant="6" id="V5H-Fd-ndx"/>
                                                 <constraint firstItem="sg5-Ew-ol6" firstAttribute="leading" secondItem="clN-0j-1FU" secondAttribute="trailing" constant="1" id="VEJ-SG-feN"/>
+                                                <constraint firstAttribute="trailing" secondItem="P8S-RB-D55" secondAttribute="trailing" constant="6" id="bf6-Hb-Nfn"/>
                                                 <constraint firstAttribute="trailing" secondItem="0nM-Xr-0uW" secondAttribute="trailing" constant="4" id="i2c-33-eNH"/>
+                                                <constraint firstAttribute="bottom" secondItem="P8S-RB-D55" secondAttribute="bottom" constant="3" id="s9c-tR-6gS"/>
                                                 <constraint firstItem="Rlo-ls-wai" firstAttribute="leading" secondItem="8pP-cp-jw0" secondAttribute="leading" constant="6" id="urG-R2-A3F"/>
                                                 <constraint firstAttribute="bottom" secondItem="0nM-Xr-0uW" secondAttribute="bottom" constant="4" id="v8x-yS-C4J"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="approval" destination="JJG-u7-F6Y" id="9SS-kC-TOm"/>
+                                            <outlet property="approvalImage" destination="P8S-RB-D55" id="DvY-aT-oqK"/>
                                             <outlet property="cellBtnExt" destination="0nM-Xr-0uW" id="5Jo-Ve-gNz"/>
                                             <outlet property="l1" destination="Rlo-ls-wai" id="XWA-fn-awJ"/>
                                             <outlet property="l3" destination="sg5-Ew-ol6" id="iRN-0b-KEi"/>

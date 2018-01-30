@@ -369,7 +369,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         cell.cellBtnExt.layer.borderWidth = 0.5;
         cell.cellBtnExt.layer.borderColor =  redColor.cgColor
         cell.cellBtnExt.layer.cornerRadius =  10
-        //cell.cellBtnExt.layoutIfNeeded()
+        
         if taxBillsToHandle == false || reportMode  == true {cell.l1.text = ("\(billItem.fBillEmployerName!) - \(billItem.fBillEvents!) ses. ") } else {
             cell.l1.text = ("#\(billItem.fBill!) - \(billItem.fBillEmployerName!)")}
         print ("fuf\(billItem.fBillTotalTotal!)" )
@@ -413,9 +413,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             if  billItem.fBillStatus!  == "Paid" { cell.cellBtnExt.layer.borderColor =  blueColor.cgColor; cell.approval.setImage(paidImage, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
             if billItem.fBillStatus! ==  "Cancelled" { cell.cellBtnExt.layer.borderColor =  blueColor.cgColor; cell.approval.setImage(canceledImage,for: .normal);cell.l1.alpha = 0.5;cell.l3.alpha = 0.5;cell.l4.alpha = 0.5;cell.l6.alpha = 0.5}
         
-        if taxBillsToHandle == false || reportMode  == true{ cell.approval.isEnabled = true} else {cell.approval.isEnabled=false}
+        if taxBillsToHandle == false || reportMode  == true{ cell.cellBtnExt.isEnabled = true} else {cell.cellBtnExt.isEnabled=false}
         cell.cellBtnExt.tag = indexPath.row
-        print ("gggggg\(cell.approval.tag)")
         
         cell.cellBtnExt.removeTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
         cell.cellBtnExt.addTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)

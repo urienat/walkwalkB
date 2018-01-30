@@ -29,9 +29,11 @@ class billerCell: UITableViewCell{
     @IBOutlet weak var l6: UILabel!
     @IBOutlet weak var cellBtnExt: UIButton!
     @IBOutlet weak var approval: UIButton!
+    @IBOutlet weak var approvalImage: UIImageView!
     
     
-    @IBAction func approval(_ sender: Any) {
+    @IBAction func cellBtnExt(_ sender: Any) {
+    
         if approval.image (for: .normal) != canceledImage {
         if approval.image(for: .normal) == billDocument || approval.image(for: .normal) == partially {biller.checkBoxBiller = 0 } else {biller.checkBoxBiller = 1}
         if biller.checkBoxBiller == 0 {biller.checkBoxBiller = 1} else {biller.checkBoxBiller = 0}
