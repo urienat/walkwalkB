@@ -134,25 +134,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     @IBOutlet weak var sacePayment: UIButton!
     
-    
-    @IBAction func savePayment(_ sender: Any) {
-        if partialPayment.text?.isEmpty == true && imagePartially.image == Vimage {
-         //alert no partial payment in place
-          print ("empty")
-            self.alert11()
-
-            
-        }else{
-            let a = (Double(partialPayment.text!))//?.roundTo(places: 2)
-            let b = (Double(self.balance!))//?.roundTo(places: 2)
-            print (a,b)
-            
-          if a! > b!//b(self.balance!)
-            {
-             self.alert12()
-            //alert too big
-                
-            }else{
+    func saveProcess(){
         self.thinking.startAnimating()
         paymentReference = referenceTxt.text
         billStatus = "Paid"
@@ -162,8 +144,31 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             print ("alert19")
             
-          self.recieptProcess() // self.alert19()
-            }
+            self.recieptProcess() // self.alert19()
+        }
+    }
+    
+    @IBAction func savePayment(_ sender: Any) {
+        if partialPayment.text?.isEmpty == true && imagePartially.image == Vimage {
+         //alert no partial payment in place
+          print ("empty")
+            self.alert11()
+
+            
+        }else{
+            if imagePartially.image == Vimage {
+            let a = (Double(partialPayment.text!))//?.roundTo(places: 2)
+            let b = (Double(self.balance!))//?.roundTo(places: 2)
+            print (a,b)
+            
+          if a! > b!
+            {
+             self.alert12()
+            //alert too big
+                
+          } else { saveProcess()}
+        }else{ saveProcess()
+        
             }//end of else
         }//end of else
     }
