@@ -24,7 +24,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let redFilter = UIImage(named: "filterRed")
     let partially = UIImage(named: "partially")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
-    
+    var redColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
+
     var counterForpresent:String?
     var lastPrevious = ""
 
@@ -106,6 +107,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var imageFull: UIImageView!
     @IBOutlet weak var paymentView: UIView!
     @IBOutlet weak var paymentMethood: UISegmentedControl!
+    @IBOutlet weak var totalBg: UIView!
     
     @IBAction func paymentMethood(_ sender: Any) {
         print("payment pressed")
@@ -135,7 +137,23 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     
     @IBAction func savePayment(_ sender: Any) {
-        
+        if partialPayment.text?.isEmpty == true && imagePartially.image == Vimage {
+         //alert no partial payment in place
+          print ("empty")
+            self.alert11()
+
+            
+        }else{
+            let a = (Double(partialPayment.text!))//?.roundTo(places: 2)
+            let b = (Double(self.balance!))//?.roundTo(places: 2)
+            print (a,b)
+            
+          if a! > b!//b(self.balance!)
+            {
+             self.alert12()
+            //alert too big
+                
+            }else{
         self.thinking.startAnimating()
         paymentReference = referenceTxt.text
         billStatus = "Paid"
@@ -146,9 +164,9 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             print ("alert19")
             
           self.recieptProcess() // self.alert19()
-            
-            
-        }
+            }
+            }//end of else
+        }//end of else
     }
     
     @IBAction func cancelPayment(_ sender: Any) {
@@ -496,8 +514,8 @@ print (self.billItems.count)
             
         self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
         self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
-        if ViewController.taxOption == "Yes"{ self.totalTax.text = "* Total included tax"} else { self.totalTax.text = "* Cancelled bills excluded"}
-            if self.StatusChoice == "Not Paid" {self.totalTax.text = "* Amounts reflect outstanding balance only" }
+            if ViewController.taxOption == "Yes"{ self.totalTax.text = "* Total included tax";self.totalBg.backgroundColor = self.blueColor} else { self.totalTax.text = "* Cancelled bills excluded";self.totalBg.backgroundColor = self.blueColor}
+            if self.StatusChoice == "Not Paid" {self.totalTax.text = "* Balance only"; self.totalBg.backgroundColor = UIColor.red}
             
         self.billerConnect.reloadData()
         }//end of if let dic
@@ -906,6 +924,7 @@ print (self.billItems.count)
         case true:
             print("fully2")
             sacePayment.isEnabled = true
+            partialPayment.text = ""
             self.imageFull.image = Vimage
             self.imagePartially.image = nonVimage
             fully = false
@@ -965,6 +984,26 @@ print (self.billItems.count)
         self.present(alertController78, animated: true, completion: nil)
         }
     
+    func alert11(){
+        let alertController11 = UIAlertController(title: ("Partial Payment Alert") , message: "Please fill the partial payment recieved", preferredStyle: .alert)
+        let OkAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            
+            //do nothing
+            
+        }
+        alertController11.addAction(OkAction)
+        self.present(alertController11, animated: true, completion: nil)
+    }
+    func alert12(){
+        let alertController12 = UIAlertController(title: ("Partial Payment Alert") , message: "Partial payment is bigger than remaining balance.Please correct.", preferredStyle: .alert)
+        let OkAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            
+            //do nothing
+            
+        }
+        alertController12.addAction(OkAction)
+        self.present(alertController12, animated: true, completion: nil)
+    }
             func alert3(){
             let alertController3 = UIAlertController(title: ("Bill Alert") , message: "You are about to cancel reciept. Are you Sure?", preferredStyle: .alert)
 

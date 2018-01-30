@@ -409,29 +409,19 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         //let paperA4 = CGRect(x: -25, y: 25, width: 612, height: 892);
         //let pageWithMargin = CGRect(x: 0, y: 0, width: paperA4.width-50, height: (paperA4.height-50)*2);
         //let paperRect = CGRect(x: 30, y: 30, width: 512, height:(781.8));
-            
         let mutableData = createPDFwithAttributedString(atext)
-            
-       // UIGraphicsBeginPDFContextToData(pdfData, pageWithMargin, nil)
-            
-        //UIGraphicsBeginPDFPage()
-      //  atext.draw(in: paperRect)
-        //UIGraphicsEndPDFContext()
         createURL()
         return pdfData
         }// end of create pdf
     
     
-    
     func createPDFwithAttributedString(_ currentText: NSAttributedString) -> NSMutableData {
-        
         //let pdfData = NSMutableData()
         
         // Create the PDF context using the default page size of 612 x 792.
         UIGraphicsBeginPDFContextToData(pdfData, CGRect.zero, nil)
         
         let framesetter = CTFramesetterCreateWithAttributedString(currentText)
-        
         var currentRange = CFRangeMake(0, 0);
         var currentPage = 0;
         var done = false;
@@ -471,6 +461,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             let frameRect = CGRect(x: 72, y: 72, width: 468, height: 648);
             let framePath = CGMutablePath();
             framePath.addRect(frameRect)
+            
             
             // Get the frame that will do the rendering.
             // The currentRange variable specifies only the starting point. The framesetter
