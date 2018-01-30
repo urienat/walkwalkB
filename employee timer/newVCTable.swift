@@ -18,7 +18,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var tableConnect: UITableView!
     let star = UIImage(named: "star")
     let billDocument = UIImage(named: "billDocument")
-    let Vimage = UIImage(named: "due")
+    let Vimage = UIImage(named:"vNaked")// "due")
     let nonVimage = UIImage(named: "emptyV")
     let paidImage = UIImage(named: "paid")
     let billedImage = UIImage(named: "locked")
@@ -29,6 +29,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
     var seprator = "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
     var seprator2 = "⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶"
+    var redColor = UIColor(red :170.0/255.0, green: 26.0/255.0, blue: 0/255.0, alpha: 1.0)
 
     
     let myGroup = DispatchGroup()
@@ -376,6 +377,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         let cell = tableConnect.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! newTableCell
         let record = records[indexPath.row]
         cell.backgroundColor = UIColor.clear
+        
+        cell.cellBtnExt.layer.borderWidth = 0.5;
+        cell.cellBtnExt.layer.borderColor =  redColor.cgColor
+        cell.cellBtnExt.layer.cornerRadius =  10
             
         //changing the dates for prentation
         if let fInToDate = record.fIn {
@@ -393,11 +398,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             if record.fStatus == "Pre" { cell.approval.setImage(nonVimage, for: .normal)}
             if record.fStatus == "Paid" { cell.approval.setImage(billedImage, for: .normal)}
 
-            cell.approval.tag = indexPath.row
+            cell.cellBtnExt.tag = indexPath.row
             print ("gggggg\(cell.approval.tag)")
 
-         cell.approval.removeTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
-        cell.approval.addTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
+         cell.cellBtnExt.removeTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
+        cell.cellBtnExt.addTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
 
         if record.fBill != nil {cell.l7.text = record.fBill!} else {cell.l7.text = ""}
         print ("tag\(cell.approval.tag)")
