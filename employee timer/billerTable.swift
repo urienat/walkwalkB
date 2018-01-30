@@ -24,8 +24,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let redFilter = UIImage(named: "filterRed")
     let partially = UIImage(named: "partially")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
-    var redColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
-
+    var redColor = UIColor(red :170.0/255.0, green: 26.0/255.0, blue: 0/255.0, alpha: 1.0)
     var counterForpresent:String?
     var lastPrevious = ""
 
@@ -371,7 +370,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         if StatusChoice == "Not Paid" {
         if  billItem.fBalance == nil{self.remainingBalance = (billItem.fBillTotalTotal!)} else {self.remainingBalance = billItem.fBalance!}
         cell.l3.text = self.remainingBalance}
-            if StatusChoice == "Not Paid" { cell.l3.textColor = UIColor.red;cell.l4.textColor = UIColor.red} else {cell.l3.textColor = blueColor;cell.l4.textColor = blueColor}
+            if StatusChoice == "Not Paid" { cell.l3.textColor = redColor;cell.l4.textColor = redColor} else {cell.l3.textColor = blueColor;cell.l4.textColor = blueColor}
             
         } else{
                 
@@ -515,7 +514,7 @@ print (self.billItems.count)
         self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
         self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
             if ViewController.taxOption == "Yes"{ self.totalTax.text = "* Total included tax";self.totalBg.backgroundColor = self.blueColor} else { self.totalTax.text = "* Cancelled bills excluded";self.totalBg.backgroundColor = self.blueColor}
-            if self.StatusChoice == "Not Paid" {self.totalTax.text = "* Balance only"; self.totalBg.backgroundColor = UIColor.red}
+            if self.StatusChoice == "Not Paid" {self.totalTax.text = "* Balance only"; self.totalBg.backgroundColor = self.redColor}
             
         self.billerConnect.reloadData()
         }//end of if let dic
