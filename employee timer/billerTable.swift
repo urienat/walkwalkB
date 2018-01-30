@@ -289,7 +289,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         filterDecided = 0
         
         billerConnect.backgroundColor = UIColor.clear
-        if employerID != "" {  titleLbl = "Bills" } else {titleLbl = "All Bills"}
+         titleLbl = "Invoices"
         
         self.title = titleLbl
         //self.view.insertSubview(backgroundImage, at: 0)
@@ -636,7 +636,11 @@ print (self.billItems.count)
         StatusChosen.isEnabled = false
         switch StatusChosen.selectedSegmentIndex {
         case 0: StatusChoice = "Not Paid"
+         titleLbl = "Not Paid"
+            self.title = titleLbl
         case 1: StatusChoice = "All"
+         titleLbl = "Invoices"
+            self.title = titleLbl
         default: break
         } //end of switch
                 fetchBills()

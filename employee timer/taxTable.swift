@@ -35,6 +35,9 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     var isFilterHidden = true
     var filterDecided :Int = 0
     
+    var pdfDataTable = NSMutableData()
+
+    
     var monthMMM: String?
     var monthTitle : Int = 0
     var yearTitle : Int = 0
@@ -126,6 +129,11 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     let dbRefEmployers = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     
+    func shareProcesses(){
+        pdfDataTable = pdfDataWithTableView(tableView: billerConnect)
+        self.alert101(printItem: self.pdfDataTable)
+    }
+    
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     override func viewDidLoad() {
@@ -145,6 +153,9 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
 
         connectivityCheck()
         
+        let shareProcess = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(shareProcesses))
+
+        
         //formatting decimal
         let formatter = NumberFormatter()
         //formatter.numberStyle = .decimal
@@ -163,7 +174,10 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         btnFilter.frame = CGRect(x: 0, y: 0, width: 60, height: 30)
         btnFilter.addTarget(self, action: #selector(filterMovement(delay:)), for: .touchUpInside)
         filterItem.customView = btnFilter
-        navigationItem.rightBarButtonItem = filterItem
+        //navigationItem.rightBarButtonItem = filterItem
+        
+        
+        navigationItem.rightBarButtonItems = [filterItem,shareProcess]
 
         let today = calendar.dateComponents([.year, .month, .day, .weekOfYear, .yearForWeekOfYear], from: Date())
         currentMonth = today.month!
@@ -271,7 +285,12 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
                 
                 let components = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
                 self.taxMonth = components.month!
+                
                 self.taxYear = components.year!
+                
+                
+
+                
                 
                 if billItem.fBillStatusDate != nil { let components2 = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillStatusDate!)!)
                 self.taxMonth2 = components2.month!

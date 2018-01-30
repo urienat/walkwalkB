@@ -36,6 +36,8 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var isFilterHidden = true
     var filterDecided :Int = 0
     
+    var pdfDataTable = NSMutableData() 
+    
     var monthMMM: String?
     var monthTitle : Int = 0
     var yearTitle : Int = 0
@@ -69,6 +71,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var noSign: UIImageView!
     @IBOutlet weak var totalWO: UITextField!
     @IBOutlet weak var totalSessions: UITextField!
+    
     
     //filter
     let btnFilter = UIButton(type: .custom)
@@ -155,6 +158,11 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let dbRefEmployers = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     
+    func shareProcesses(){
+        pdfDataTable = pdfDataWithTableView(tableView: billerConnect)
+        self.alert101(printItem: self.pdfDataTable)
+    }
+    
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     override func viewDidLoad() {
@@ -172,6 +180,8 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         self.title2 = "All Periods"
         title = "Report"
         connectivityCheck()
+        let shareProcess = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(shareProcesses))
+
         
         //formatting decimal
         let formatter = NumberFormatter()
@@ -188,8 +198,10 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         btnFilter.frame = CGRect(x: 0, y: 0, width: 60, height: 30)
         btnFilter.addTarget(self, action: #selector(filterMovement(delay:)), for: .touchUpInside)
         filterItem.customView = btnFilter
-        navigationItem.rightBarButtonItem = filterItem
+        //navigationItem.rightBarButtonItem = filterItem
         
+        
+        navigationItem.rightBarButtonItems = [filterItem,shareProcess]
         let today = calendar.dateComponents([.year, .month, .day, .weekOfYear, .yearForWeekOfYear], from: Date())
         currentMonth = today.month!
         currentYear = today.year!
@@ -445,6 +457,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     
     // alerts////////////////////////////////////////////////////////////////////////////////////////////
+
 
     
 }//end of class
