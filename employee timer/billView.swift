@@ -121,14 +121,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     }
     
     @IBOutlet weak var statusImage: UIImageView!
-    @IBOutlet weak var reSend: UIBarButtonItem!
-    @IBAction func reSend(_ sender: Any) {
-    if recieptChosen == true {alert6()} else {  alert5()}
-    }
     
-    @IBOutlet weak var share: UIBarButtonItem!
-    @IBAction func share(_ sender: Any) {
+    
+    func share(){
         if recieptChosen == true {alert6()} else {  alert5()}
+
     }
     /////////////////////////////////////////////////////////////////  view did load starts///////////////////////
     override func viewDidLoad() {
@@ -140,6 +137,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         mydateFormat8.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
 
         let doneProcess = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(returnToList))
+        let shareProcess = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(share))
 
         trashBtn.setImage(trashImage , for: .normal)
         trashBtn.setTitle("Bill", for: .normal)
@@ -158,11 +156,15 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.view.insertSubview(backgroundImage, at: 0)
         if rebillprocess == true {
         deleteBtn.customView = trashBtn
+        navigationItem.rightBarButtonItem = shareProcess
         reBill()
         }else {
         //deleteBtn.isEnabled = false
         deleteBtn.customView = undoBtn
-        navigationItem.rightBarButtonItem = doneProcess
+        self.titleLbl = "\(self.document!)"
+        self.title = self.titleLbl
+        navigationItem.rightBarButtonItems = [doneProcess,shareProcess]
+        
         navigationItem.hidesBackButton = true
         if recoveredReciept != "" {
         print ("in reciept")
