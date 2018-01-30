@@ -2283,6 +2283,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0nM-Xr-0uW" userLabel="cellBtnExt">
+                                                    <rect key="frame" x="189" y="4" width="127" height="35.5"/>
+                                                    <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="0.60105415239726023" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Rlo-ls-wai">
                                                     <rect key="frame" x="6" y="2" width="180" height="21.5"/>
                                                     <constraints>
@@ -2336,16 +2340,21 @@
                                                 <constraint firstItem="yEB-4f-1Nn" firstAttribute="top" secondItem="Rlo-ls-wai" secondAttribute="bottom" constant="2" id="6fJ-Ip-kjU"/>
                                                 <constraint firstItem="JJG-u7-F6Y" firstAttribute="leading" secondItem="sg5-Ew-ol6" secondAttribute="trailing" constant="15" id="DM8-es-WZu"/>
                                                 <constraint firstItem="JJG-u7-F6Y" firstAttribute="top" secondItem="8pP-cp-jw0" secondAttribute="top" constant="2" id="EZX-aK-Jof"/>
+                                                <constraint firstItem="0nM-Xr-0uW" firstAttribute="leading" secondItem="clN-0j-1FU" secondAttribute="leading" constant="-4" id="Efx-Uh-Gzn"/>
                                                 <constraint firstItem="yEB-4f-1Nn" firstAttribute="leading" secondItem="Rlo-ls-wai" secondAttribute="leading" id="GcL-pp-ayb"/>
                                                 <constraint firstItem="clN-0j-1FU" firstAttribute="top" secondItem="8pP-cp-jw0" secondAttribute="topMargin" constant="2" id="IEm-Y1-dZI"/>
                                                 <constraint firstItem="sg5-Ew-ol6" firstAttribute="top" secondItem="8pP-cp-jw0" secondAttribute="topMargin" constant="2" id="QJ2-if-Xud"/>
+                                                <constraint firstItem="0nM-Xr-0uW" firstAttribute="height" secondItem="8pP-cp-jw0" secondAttribute="height" constant="-8" id="QRK-XW-AvS"/>
                                                 <constraint firstAttribute="trailing" secondItem="JJG-u7-F6Y" secondAttribute="trailing" constant="6" id="V5H-Fd-ndx"/>
                                                 <constraint firstItem="sg5-Ew-ol6" firstAttribute="leading" secondItem="clN-0j-1FU" secondAttribute="trailing" constant="1" id="VEJ-SG-feN"/>
+                                                <constraint firstAttribute="trailing" secondItem="0nM-Xr-0uW" secondAttribute="trailing" constant="4" id="i2c-33-eNH"/>
                                                 <constraint firstItem="Rlo-ls-wai" firstAttribute="leading" secondItem="8pP-cp-jw0" secondAttribute="leading" constant="6" id="urG-R2-A3F"/>
+                                                <constraint firstAttribute="bottom" secondItem="0nM-Xr-0uW" secondAttribute="bottom" constant="4" id="v8x-yS-C4J"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="approval" destination="JJG-u7-F6Y" id="9SS-kC-TOm"/>
+                                            <outlet property="cellBtnExt" destination="0nM-Xr-0uW" id="5Jo-Ve-gNz"/>
                                             <outlet property="l1" destination="Rlo-ls-wai" id="XWA-fn-awJ"/>
                                             <outlet property="l3" destination="sg5-Ew-ol6" id="iRN-0b-KEi"/>
                                             <outlet property="l4" destination="clN-0j-1FU" id="9Qm-1a-Vmd"/>
@@ -4030,9 +4039,8 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
-        <segue reference="q4e-3H-dKE"/>
+        <segue reference="3Wx-xY-sDh"/>
         <segue reference="vGn-ru-ol3"/>
         <segue reference="kEl-UY-JOa"/>
         <segue reference="8s0-fg-N01"/>

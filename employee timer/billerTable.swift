@@ -361,6 +361,10 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         let cell = billerConnect.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! billerCell
         let billItem = billItems[indexPath.row]
         cell.backgroundColor = UIColor.clear
+        cell.cellBtnExt.layer.borderWidth = 0.5;
+        cell.cellBtnExt.layer.borderColor =  redColor.cgColor
+        cell.cellBtnExt.layer.cornerRadius =  10
+        //cell.cellBtnExt.layoutIfNeeded()
         if taxBillsToHandle == false || reportMode  == true {cell.l1.text = ("\(billItem.fBillEmployerName!) - \(billItem.fBillEvents!) ses. ") } else {
             cell.l1.text = ("#\(billItem.fBill!) - \(billItem.fBillEmployerName!)")}
         print ("fuf\(billItem.fBillTotalTotal!)" )
@@ -376,6 +380,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 
        
         if billItem.fBillStatus == "Cancelled"{
+        cell.cellBtnExt.layer.borderColor =  blueColor.cgColor
         let components3 = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
         self.recordMonth = components3.month!
         self.recordYear = components3.year!
@@ -398,17 +403,17 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
 
         print("fbillstatus\(billItem.fBillStatus!)")
         
-        if billItem.fBillStatus! == "Billed" {cell.approval.setImage(billDocument, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
-        if billItem.fBillStatus! == "Partially" {cell.approval.setImage(partially, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
-        if  billItem.fBillStatus!  == "Paid" { cell.approval.setImage(paidImage, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
-        if billItem.fBillStatus! ==  "Cancelled" { cell.approval.setImage(canceledImage,for: .normal);cell.l1.alpha = 0.5;cell.l3.alpha = 0.5;cell.l4.alpha = 0.5;cell.l6.alpha = 0.5}
+            if billItem.fBillStatus! == "Billed" { cell.cellBtnExt.layer.borderColor =  redColor.cgColor;cell.approval.setImage(billDocument, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
+            if billItem.fBillStatus! == "Partially" { cell.cellBtnExt.layer.borderColor =  redColor.cgColor;cell.approval.setImage(partially, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
+            if  billItem.fBillStatus!  == "Paid" { cell.cellBtnExt.layer.borderColor =  blueColor.cgColor; cell.approval.setImage(paidImage, for: .normal);cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approval.alpha = 1}
+            if billItem.fBillStatus! ==  "Cancelled" { cell.cellBtnExt.layer.borderColor =  blueColor.cgColor; cell.approval.setImage(canceledImage,for: .normal);cell.l1.alpha = 0.5;cell.l3.alpha = 0.5;cell.l4.alpha = 0.5;cell.l6.alpha = 0.5}
         
         if taxBillsToHandle == false || reportMode  == true{ cell.approval.isEnabled = true} else {cell.approval.isEnabled=false}
-        cell.approval.tag = indexPath.row
+        cell.cellBtnExt.tag = indexPath.row
         print ("gggggg\(cell.approval.tag)")
         
-        cell.approval.removeTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
-        cell.approval.addTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
+        cell.cellBtnExt.removeTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
+        cell.cellBtnExt.addTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
         
         return cell
         }
@@ -649,27 +654,17 @@ print (self.billItems.count)
                 //self.employerID = (snapshot.childSnapshot(forPath: "fBillEmployer").value! as? String)!
                // self.recoveredreciept = snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String
 
-
-                print (self.midCalc3,self.midCalc2,self.midCalc)
-                
-          ////  })
-            
         
                 if self.BillArrayStatus[self.buttonRow] != "Cancelled"
                 { if self.BillArrayStatus[self.buttonRow] == "Billed"  || self.BillArrayStatus[self.buttonRow] == "Partially" {  self.statusTemp = "Paid";
                     if self.balance == nil { self.paymentTitle.text = "Fully pay #\(self.BillArray[self.buttonRow]) (\(ViewController.fixedCurrency!)\(self.midCalc2!))"} else {
-                        print (self.balance)
-                        
-                        print (self.balance!)
-
-                        self.paymentTitle.text = "Final balance #\(self.BillArray[self.buttonRow]) (\(ViewController.fixedCurrency!)\(self.balance!))"
+                    self.paymentTitle.text = "Final balance #\(self.BillArray[self.buttonRow]) (\(ViewController.fixedCurrency!)\(self.balance!))"
                     }
                     self.partiallyPaymentTitle.text = "Partially pay: \(ViewController.fixedCurrency!)"
 
                     self.paymentView.isHidden = false
                     self.fully = true
                     self.fullyOptions()
-
                     self.BillArrayStatus[self.buttonRow] = self.statusTemp
             }//end of if billed
             

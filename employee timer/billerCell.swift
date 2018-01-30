@@ -27,7 +27,7 @@ class billerCell: UITableViewCell{
     @IBOutlet weak var l3: UILabel!
     @IBOutlet weak var l4: UILabel!
     @IBOutlet weak var l6: UILabel!
-    
+    @IBOutlet weak var cellBtnExt: UIButton!
     @IBOutlet weak var approval: UIButton!
     
     
@@ -36,7 +36,6 @@ class billerCell: UITableViewCell{
         if approval.image(for: .normal) == billDocument || approval.image(for: .normal) == partially {biller.checkBoxBiller = 0 } else {biller.checkBoxBiller = 1}
         if biller.checkBoxBiller == 0 {biller.checkBoxBiller = 1} else {biller.checkBoxBiller = 0}
         
-    
         //approval button
 
         switch biller.checkBoxBiller {
