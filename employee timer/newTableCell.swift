@@ -15,9 +15,9 @@ class newTableCell: UITableViewCell {
     
     //var checkBoxCell=newVCTable.checkBox
     
-    let Vimage = UIImage(named: "nakedV")
-    
-    let nonVimage =  UIImage(named: "emptyV")//UIImage(named: "emptyV")
+    let Vimage = UIImage(named:"vNaked")// "due")
+
+    let nonVimage =  UIImage(named: "blank")//UIImage(named: "emptyV")
     let paidImage = UIImage(named: "paid")
     let billedImage = UIImage(named: "locked")
     let billIcon = UIImage(named: "bill")
@@ -28,12 +28,11 @@ class newTableCell: UITableViewCell {
     @IBOutlet weak var l8: UIImageView!
     @IBOutlet weak var l9: UILabel!
    
-    @IBOutlet weak var approval: UIButton!
     @IBOutlet weak var cellBtnExt: UIButton!
+    @IBAction func cellBtnExt(_ sender: Any) {
     
-    //approval button
-        @IBAction func approval(_ sender: Any) {
         print("checkBoxcell\(newVCTable.checkBox)")
+            
         switch newVCTable.checkBox {
         //pre
         case 0:  cellBtnExt.setImage(nonVimage, for: .normal) //

@@ -19,7 +19,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let star = UIImage(named: "star")
     let billDocument = UIImage(named: "billDocument")
     let Vimage = UIImage(named:"vNaked")// "due")
-    let nonVimage = UIImage(named: "emptyV")
+    let nonVimage = UIImage(named: "blank")
     let paidImage = UIImage(named: "paid")
     let billedImage = UIImage(named: "locked")
     let billIcon = UIImage(named: "bill")
@@ -310,15 +310,15 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
          
         btn4.setImage(billDocument , for: .normal)
         btn4.setTitle("You Owe Me", for: .normal)
-        btn4.setTitleColor(blueColor, for: .normal)
-        btn4.frame = CGRect(x: 0, y: 0, width: 150, height: 30)
+        btn4.setTitleColor(redColor, for: .normal)
+        btn4.frame = CGRect(x: 0, y: 0, width: 140, height: 30)
         btn4.addTarget(self, action:#selector(sendBill), for: UIControlEvents.touchDown)
         billSender.customView = btn4
             
         btn5.setImage(paidImage , for: .normal)
         btn5.setTitle(" PayDay", for: .normal)
         btn5.setTitleColor(blueColor, for: .normal)
-        btn5.frame = CGRect(x: 0, y: 0, width: 140, height: 30)
+        btn5.frame = CGRect(x: 0, y: 0, width: 130, height: 30)
         btn5.addTarget(self, action:#selector(billPayProcess), for: UIControlEvents.touchDown)
         billPay.customView = btn5
             
@@ -379,7 +379,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         cell.backgroundColor = UIColor.clear
         
         cell.cellBtnExt.layer.borderWidth = 0.5;
-        cell.cellBtnExt.layer.borderColor =  redColor.cgColor
+        cell.cellBtnExt.layer.borderColor =  blueColor.cgColor
         cell.cellBtnExt.layer.cornerRadius =  10
             
         //changing the dates for prentation
@@ -394,18 +394,19 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
             if record.fSpecialAmount != nil {cell.l1.text = " \(record.fSpecialItem!)"; cell.l9.text = "\(ViewController.fixedCurrency!)\(record.fSpecialAmount!)"}//; cell.l1.textColor =  UIColor.red }
      
-            if record.fStatus == "Approved" { cell.approval.setImage(Vimage, for: .normal)}
-            if record.fStatus == "Pre" { cell.approval.setImage(nonVimage, for: .normal)}
-            if record.fStatus == "Paid" { cell.approval.setImage(billedImage, for: .normal)}
+            if record.fStatus == "Approved" { cell.cellBtnExt.setImage(Vimage, for: .normal)
+                
+                
+            }
+            if record.fStatus == "Pre" { cell.cellBtnExt.setImage(nonVimage, for: .normal)}
+            if record.fStatus == "Paid" { cell.cellBtnExt.setImage(billedImage, for: .normal)}
 
             cell.cellBtnExt.tag = indexPath.row
-            print ("gggggg\(cell.approval.tag)")
 
          cell.cellBtnExt.removeTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
         cell.cellBtnExt.addTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
 
         if record.fBill != nil {cell.l7.text = record.fBill!} else {cell.l7.text = ""}
-        print ("tag\(cell.approval.tag)")
         return cell
         }//end of func cellforrowat
     
@@ -470,7 +471,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }
         }//end button clicked
     
-        // button  General on table clicked
         func  moveSessionToBilled() {
         print ("moveSessionToBilled")
         if appArray.count != 0 {
