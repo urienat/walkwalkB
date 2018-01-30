@@ -126,6 +126,10 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     if recieptChosen == true {alert6()} else {  alert5()}
     }
     
+    @IBOutlet weak var share: UIBarButtonItem!
+    @IBAction func share(_ sender: Any) {
+        if recieptChosen == true {alert6()} else {  alert5()}
+    }
     /////////////////////////////////////////////////////////////////  view did load starts///////////////////////
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,6 +152,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         undoBtn.setTitleColor(blueColor, for: .normal)
         //btn4.frame = CGRect(x: 0, y: 0, width: 20, height: 40)
         undoBtn.addTarget(self, action:#selector(undo), for: UIControlEvents.touchDown)
+        
+        
         
         self.view.insertSubview(backgroundImage, at: 0)
         if rebillprocess == true {

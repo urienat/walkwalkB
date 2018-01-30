@@ -673,18 +673,7 @@ print (self.billItems.count)
                     self.BillArrayStatus[self.buttonRow] = self.statusTemp
             }//end of if billed
             
-                else if self.BillArrayStatus[self.buttonRow] == "Paid" {  if self.StatusChoice == "Not Paid" { self.statusTemp = "Billed"
-                    self.dbRefEmployees.child(self.employeeID).child("myBills").child(String("-"+self.BillArray[self.buttonRow])).updateChildValues(["fBillStatus": self.statusTemp, "fBillStatusDate":
-                        self.mydateFormat5.string(from: Date())//was 3
-            ], withCompletionBlock: { (error) in}) //end of update.
-                    self.BillArrayStatus[self.buttonRow] = self.statusTemp
-            } else {
-            
-            if self.documentName == "Bill & Payment" {self.alert78()} else {
-            //self.alert3()
-                
-                    }
-            }//end of else
+                else if self.BillArrayStatus[self.buttonRow] == "Paid" {self.alert78()
             }//end of if paid
 
         }else {
@@ -973,7 +962,7 @@ print (self.billItems.count)
             }
 
         func alert78(){
-        let alertController78 = UIAlertController(title: ("Cancel Payment Alert") , message: "You can't cancel a payment as 'bill & Pay' document already generated - if requiered, you can delete the document and set a new bill.", preferredStyle: .alert)
+        let alertController78 = UIAlertController(title: ("Payment Alert") , message: "You can't change the status of this invoice. If requiered you can choose and delete it.", preferredStyle: .alert)
         let OkAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
             biller.checkBoxBiller = 1
             //do nothing
