@@ -50,7 +50,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     var contactForMail: String?
     
     var titleLbl = ""
-    var billToHandle = String()
+    var billToHandle: String?
     var employerID = ""
     var employeeID = ""
     var recieptDate: String?
@@ -231,7 +231,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     
     func reReciept(){
   
-    self.dbRefEmployee.child(employeeID).child("myReciepts").child(billToHandle).child(self.recieptsArray2[self.billReciept.selectedSegmentIndex-1]).observeSingleEvent(of: .value,with: { (snapshot) in
+    self.dbRefEmployee.child(employeeID).child("myReciepts").child(billToHandle!).child(self.recieptsArray2[self.billReciept.selectedSegmentIndex-1]).observeSingleEvent(of: .value,with: { (snapshot) in
         print ((self.recieptsArray2[self.billReciept.selectedSegmentIndex-1]))
         
     self.recoveredReciept = (snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String)!
@@ -258,7 +258,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.billStatusForRecovery = ""
         recieptsArray2.removeAll()
             
-        self.dbRefEmployee.child(employeeID).child("myBills").child(billToHandle).observeSingleEvent(of: .value,with: { (snapshot) in
+        self.dbRefEmployee.child(employeeID).child("myBills").child(billToHandle!).observeSingleEvent(of: .value,with: { (snapshot) in
         self.recoveredBill = (snapshot.childSnapshot(forPath: "fBillMailSaver").value! as? String)!
         if (snapshot.childSnapshot(forPath: "fBillStatusDate").value! as? String) != nil {self.statusCanclledDate = (snapshot.childSnapshot(forPath: "fBillStatusDate").value! as? String)!}
         self.recoveredStatus = (snapshot.childSnapshot(forPath: "fBillStatus").value! as? String)!
@@ -288,7 +288,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         
         //build reciepts
  
-        self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(self.billToHandle).observe(.childAdded ,with: { (snapshot) in
+        self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(self.billToHandle!).observe(.childAdded ,with: { (snapshot) in
         
         if let recieptItem = snapshot.key as? String {
         print(recieptItem)
@@ -377,20 +377,25 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         switch result.rawValue {
         case MFMailComposeResult.cancelled.rawValue:
         print("Mail cancelled")
+       
         controller.dismiss(animated: true, completion: nil)
         case MFMailComposeResult.saved.rawValue:
         print("Mail saved3")
-        deleteBtn.isEnabled = false
-        controller.dismiss(animated: true, completion: nil)
+        self.navigationController!.popToRootViewController(animated: true)
+      
+        self.navigationController!.popViewController(animated: true)
+            
         case MFMailComposeResult.sent.rawValue:
         print("Mail sent3")
-        
-        deleteBtn.isEnabled = false
-        self.navigationController!.popViewController(animated: true)
         controller.dismiss(animated: true, completion: nil)
+        self.navigationController!.popToRootViewController(animated: true)
+
         case MFMailComposeResult.failed.rawValue:
         print("Mail sent failure: %@", [error!.localizedDescription])
         controller.dismiss(animated: true, completion: nil)
+        self.navigationController!.popToRootViewController(animated: true)
+
+            
         default:
         break
         }
@@ -613,16 +618,24 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         }
         let deleteAction = UIAlertAction(title: "Delete it.", style: .default) { (UIAlertAction) in
             if self.recieptChosen == false {
-                self.dbRefEmployee.child(self.employeeID).child("myBills").child(String(self.billToHandle)).updateChildValues([ "fBillStatus":"Cancelled","fBillStatusDate": self.mydateFormat5.string(from: Date())])
+                
+               
+                
+                self.dbRefEmployee.child(self.employeeID).child("myBills").child(String(self.billToHandle!)).updateChildValues([ "fBillStatus":"Cancelled","fBillStatusDate": self.mydateFormat5.string(from: Date())])
+                
                //add effect on the reciepts
+                if self.recieptsArray.isEmpty  == false {
                 for rec in 1...self.recieptsArray2.count
                 {
                 self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(String("-\(self.documentCounter!)")!).child(String(rec)).updateChildValues(["fActive" : self.mydateFormat5.string(from: Date())])
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
                         if self.billReciept.isSelected == false { self.navigationController!.popViewController(animated: true)}
                     }
-                }
+                    }}
+                
+              self.navigationController!.popToRootViewController(animated: true)
             }else {
+                
                 self.deleteReciept()
             }
 
