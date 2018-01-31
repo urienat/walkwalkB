@@ -20,6 +20,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     let dbRefEmployer = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployee = FIRDatabase.database().reference().child("fEmployees")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
+    var grayColor = UIColor(red :235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 0.5)
 
     let Vimage = UIImage(named: "due")
     let nonVimage = UIImage(named: "emptyV")
@@ -39,7 +40,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     var smallTextRange:NSRange?
     var centerTextRange:NSRange?
     let largeFont = UIFont(name: "PingFang TC", size: 20.0)!
-    let smallFont = UIFont(name: "PingFang TC", size: 12.0)!
+    let smallFont = UIFont(name: "PingFang TC", size: 10.0)!
     let colorFont = UIColor.red
     let paragraph = NSMutableParagraphStyle()
     var alertExtension: String?
@@ -459,6 +460,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             
             // Render the current page and update the current range to
             // point to the beginning of the next page.
+           
             renderPagewithTextRange(currentRange: &currentRange, framesetter: framesetter)
             
             // If we're at the end of the text, exit the loop.
@@ -483,6 +485,10 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             // Create a path object to enclose the text. Use 72 point
             // margins all around the text.
             let frameRect = CGRect(x: 72, y: 72, width: 468, height: 648);
+            let imageRect = CGRect(x: 10, y: 550, width: 100, height: 100);
+            let paperA4 = CGRect(x: 0, y: 0, width: 712, height: 992);
+            let pageWithMargin = CGRect(x: 0, y: -50, width: paperA4.width-50, height: (paperA4.height-50));
+            let paperRect = CGRect(x: 30, y: 30, width: 512, height:(781.8))
             let framePath = CGMutablePath();
             framePath.addRect(frameRect)
             
@@ -498,6 +504,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             currentContext.scaleBy(x: 1.0, y: -1.0);
             
             // Draw the frame.
+            
+            currentContext.draw((canceledImage?.cgImage)!, in: imageRect)
+            currentContext.setFillColor(grayColor.cgColor)
+            currentContext.fill(paperA4)
+            //currentContext.makeImage
             CTFrameDraw(frameRef, currentContext);
             
             // Update the current range based on what was drawn.
@@ -541,7 +552,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
                 if success {
                     // Printed successfully
                     if      self.rebillprocess != true {    self.deleteBtn.isEnabled = false
-                        self.navigationController!.popViewController(animated: true)
+                        ///self.navigationController!.popViewController(animated: true)
+                        self.navigationController!.popToRootViewController(animated: true)
 
                     }
                 } else {
