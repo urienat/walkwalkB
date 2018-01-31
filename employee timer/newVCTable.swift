@@ -47,6 +47,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var firstTimeGeneral:Bool?
 
     var mailSaver : String?
+    var payPalBlock = ""
     
     var PaymentBlalnce: String? = ""
     var paymentSys: String? = ""
@@ -422,6 +423,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                 billManager?.undoArray = idArray
                 billManager?.employerID = employerID
                 billManager?.lastPrevious = lastPrevious
+                billManager?.payPalBlock = payPalBlock
                 if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
                     billManager?.contactForMail = "\(self.accountName) \(self.accountLastName)"
                 }
@@ -713,7 +715,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                 }
                 
             }else{if self.taxSwitch == "Yes"{self.documentName = "VAT Invoice \(self.counterForMail2!)"} else {self.documentName = "Invoice \(self.counterForMail2)"}; // no payment only bill
-                if self.paypal != "" {self.paymentBlock = ("\r\n\(self.seprator2)\(self.seprator2)\r\nBalance due: \(ViewController.fixedCurrency!)\(self.PaymentBlalnce!)\r\n\r\nPayment can be made through Paypal: \(self.paypal!)/\(self.midCalc2)")}else {self.paymentBlock = ""}
+               
+                self.paymentBlock = "\r\n\(self.seprator2)\(self.seprator2)\r\nBalance due: \(ViewController.fixedCurrency!)\(self.PaymentBlalnce!)"
+                if self.paypal != "" {self.payPalBlock = "\r\n\r\nPayment can be made through Paypal: \(self.paypal!)/\(self.midCalc2)"}else {self.payPalBlock = ""}
             }// end of else  self.paymentDate != ""
             
    

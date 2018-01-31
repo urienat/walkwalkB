@@ -114,7 +114,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         
         connectivityCheck()
         calander.calanderLogin = true
-        title = "Import Calander"
+        title = "Import Calendar"
         
         findEmployerId()
 
@@ -265,13 +265,14 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
           
             
             
-            if eventCounter == 0 {animationImage.isHidden = true; self.eventCounterBlock = "No sessions" ;ViewController.sessionPusher = false}else if eventCounter == 1 {animationImage.isHidden = false; self.eventCounterBlock = "One session";ViewController.sessionPusher = true} else {self.eventCounterBlock = "\(String(self.eventCounter)) sessions";ViewController.sessionPusher = true }
+            if eventCounter == 0 {alert17() }//animationImage.isHidden = true; self.eventCounterBlock = "No sessions" ;ViewController.sessionPusher = false}
+            else if eventCounter == 1 {animationImage.isHidden = false; self.eventCounterBlock = "One session";ViewController.sessionPusher = true} else {self.eventCounterBlock = "\(String(self.eventCounter)) sessions";ViewController.sessionPusher = true }
             // save last date
             if spesific == false {textAdd.text = "\(self.eventCounterBlock) imported from calander";ViewController.sessionPusher = false
                 
 
             }
-            else {textAdd.text = "\(self.eventCounterBlock) for \(employerFromMain) imported from calander";
+            else {textAdd.text = "\(self.eventCounterBlock) for \(employerFromMain) imported from calendar";
                 
 
             }
@@ -444,9 +445,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                     }// end of calanders loop
                     if eventCounter == 0 {animationImage.isHidden = true; self.eventCounterBlock = "No sessions" ;ViewController.sessionPusher = false}else if eventCounter == 1 {animationImage.isHidden = false; self.eventCounterBlock = "One session";ViewController.sessionPusher = true} else {self.eventCounterBlock = "\(String(self.eventCounter)) sessions";ViewController.sessionPusher = true }
                     // save last date
-                    if spesific == false {textAdd.text = "\(self.eventCounterBlock) imported from calander";ViewController.sessionPusher = false
+                    if spesific == false {textAdd.text = "\(self.eventCounterBlock) imported from calendar";ViewController.sessionPusher = false
                     }
-                    else {textAdd.text = "\(self.eventCounterBlock) for \(employerFromMain) imported from calander"}
+                    else {textAdd.text = "\(self.eventCounterBlock) for \(employerFromMain) imported from calendar"}
                     thinking.stopAnimating()
                     calanderImage.layer.removeAllAnimations()
 
@@ -630,7 +631,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             print (LastCalander!)
 
 
-            let alertController456 = UIAlertController(title: ("Set import starting date") , message: "Import calander's sessions starting from \(mydateFormat9.string(from: mydateFormat5.date(from: LastCalander!)!))." , preferredStyle: .alert)
+            let alertController456 = UIAlertController(title: ("Set import starting date") , message: "Import calendar's sessions starting from \(mydateFormat9.string(from: mydateFormat5.date(from: LastCalander!)!))." , preferredStyle: .alert)
 
             let OKAction = UIAlertAction(title: "Starting date is OK", style: .default) { (UIAlertAction) in
             self.minDate = (Date()-(3600*24*45))
@@ -664,4 +665,14 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                         alertController72.addAction(OKAction)
             self.present(alertController72, animated: true, completion: nil)
     }
+    func alert17(){
+        let alertController17 = UIAlertController(title: ("No Session") , message: "No Session Imported because one of the following:\n There are no PAST sessions\n2 Sessions already imported once( see +sign in calendar)\n3 NO exact match of name+space+last combination between calendar event and PerSessio", preferredStyle: .alert)
+    let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+    self.alert123()
+    }
+    alertController17.addAction(OKAction)
+    self.present(alertController17, animated: true, completion: nil)
+    }
+    
+    
             }

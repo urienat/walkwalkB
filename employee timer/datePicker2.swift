@@ -167,6 +167,28 @@ class datePicker2: UIViewController {
     override func viewDidLoad() {
     super.viewDidLoad()
         
+        if recordToHandle == "" {
+            sessionItem.isHidden = true//false
+            deleter.isEnabled = false
+            if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat11.string(from: Date())} else {self.TimeIN.text = mydateFormat10.string(from: Date()) }
+            
+            
+            self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveToDB2) )
+            navigationItem.rightBarButtonItem = saveRecord
+            self.saveRecord?.isEnabled = false
+            if sessionMode == true {titleLbl = "Add session" ;refresh(presser: 0)} else {titleLbl = "Add other item" ;refresh(presser: 1)}
+            
+            
+        }else{
+            sessionItem.isHidden = true
+            deleter.isEnabled = true
+            self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveToDB2) )
+            self.saveRecord?.isEnabled = false;
+            navigationItem.rightBarButtonItem = saveRecord
+            self.deleter.isEnabled = true
+            bringRecord()
+        }//end of else
+        
     if ViewController.dateTimeFormat == "DateTime" {self.DatePicker.datePickerMode = .dateAndTime } else { self.DatePicker.datePickerMode = .date}
         //sessionMode = true
       
@@ -178,27 +200,7 @@ class datePicker2: UIViewController {
         mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
         mydateFormat11.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy , (HH,mm)", options: 0, locale: Locale.autoupdatingCurrent)!
         
-        if recordToHandle == "" {
-        sessionItem.isHidden = true//false
-        deleter.isEnabled = false
-        if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat11.string(from: Date())} else {self.TimeIN.text = mydateFormat10.string(from: Date()) }
-        
-         
-        self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveToDB2) )
-        navigationItem.rightBarButtonItem = saveRecord
-        self.saveRecord?.isEnabled = false
-            if sessionMode == true {titleLbl = "Add session" ;refresh(presser: 0)} else {titleLbl = "Add other item" ;refresh(presser: 1)}
-
-            
-        }else{
-        sessionItem.isHidden = true
-        deleter.isEnabled = true
-        self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveToDB2) )
-        self.saveRecord?.isEnabled = false;
-        navigationItem.rightBarButtonItem = saveRecord
-        self.deleter.isEnabled = true
-        bringRecord()
-        }//end of else
+       
         
         self.title = titleLbl
         

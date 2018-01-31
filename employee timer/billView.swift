@@ -32,6 +32,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     let partially = UIImage(named: "partially")
     
     var taxBillsToHandle: Bool?
+    var payPalBlock=""
 
     var textString = ""
     var largeTextRange:NSRange?
@@ -349,7 +350,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
         mailComposerVC2.setSubject("\(document!)")
-        mailComposerVC2.setMessageBody("Dear \(contactForMail!)\r\n\r\nThe invoice is attached for your records. Please don't hesitate to contact me with any questions.\r\n\r\nRegards\r\n \(ViewController.fixedName!) \(ViewController.fixedLastName!)", isHTML: false)
+        mailComposerVC2.setMessageBody("Dear \(contactForMail!)\r\n\r\nThe invoice is attached for your records. Please don't hesitate to contact me with any questions.\(self.payPalBlock)\r\n\r\nRegards\r\n \(ViewController.fixedName!) \(ViewController.fixedLastName!)", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
         mailComposerVC2.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: "Invoice")
         return mailComposerVC2
@@ -360,7 +361,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         let mailComposerVC4 = MFMailComposeViewController()
         mailComposerVC4.mailComposeDelegate = self
         mailComposerVC4.setSubject("\(document!)")
-            mailComposerVC4.setMessageBody("Dear \(contactForMail!)\r\n\r\nThe reciept for your payment is attached for your records. Please don't hesitate to contact me with any questions.\r\n\r\nRegards \(ViewController.fixedName!) \(ViewController.fixedLastName!) ", isHTML: false)
+            mailComposerVC4.setMessageBody("Dear \(contactForMail!)\r\n\r\nThe reciept for your payment is attached for your records. Please don't hesitate to contact me with any questions.\r\n\r\nRegards\r\n \(ViewController.fixedName!) \(ViewController.fixedLastName!) ", isHTML: false)
         mailComposerVC4.setToRecipients([ViewController.fixedemail])
         mailComposerVC4.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: "Reciept")
         return mailComposerVC4
