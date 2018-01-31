@@ -2273,7 +2273,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fgv-lZ-OY1">
-                                <rect key="frame" x="0.0" y="98" width="320" height="398"/>
+                                <rect key="frame" x="0.0" y="98" width="320" height="354"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="billerId" id="oUk-dv-frm" customClass="billerCell" customModule="perSession" customModuleProvider="target">
@@ -2364,7 +2364,7 @@
                                 </prototypes>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PrW-i7-IuZ">
-                                <rect key="frame" x="0.0" y="508" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="464" width="320" height="60"/>
                                 <color key="backgroundColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="NWC-gi-XYE"/>
@@ -2397,7 +2397,7 @@
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tR9-cS-rER" userLabel="totalBG">
-                                <rect key="frame" x="0.0" y="508" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="464" width="320" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ILg-rw-WUw" userLabel="totalBills">
                                         <rect key="frame" x="8" y="4" width="150" height="25"/>
@@ -2440,11 +2440,11 @@
                                 </constraints>
                             </view>
                             <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOU-wI-y5F" userLabel="blackView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="328"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFF-pl-qqA" userLabel="filterView">
-                                <rect key="frame" x="0.0" y="328" width="320" height="240"/>
+                                <rect key="frame" x="0.0" y="284" width="320" height="240"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42o-9O-q03">
                                         <rect key="frame" x="8" y="20" width="304" height="40"/>
@@ -3438,6 +3438,20 @@
                                         <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="30"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6P-xy-qFY" userLabel="taxInfo">
+                                        <rect key="frame" x="12" y="10" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="bE9-ol-IS8"/>
+                                            <constraint firstAttribute="width" constant="40" id="bpV-qf-QKA"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="taxInfo:" destination="Qsr-md-mj8" eventType="touchUpInside" id="H0S-Zs-EXO"/>
+                                        </connections>
+                                    </button>
                                     <textField hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="0Mo-TX-GXF" userLabel="totalTax">
                                         <rect key="frame" x="8" y="31" width="10" height="25"/>
                                         <constraints>
@@ -3454,9 +3468,11 @@
                                     <constraint firstItem="0Mo-TX-GXF" firstAttribute="leading" secondItem="11P-Mq-cL7" secondAttribute="leading" id="92q-By-epC"/>
                                     <constraint firstItem="6kr-dn-xOY" firstAttribute="centerX" secondItem="Mxy-Rp-79V" secondAttribute="centerX" id="BBk-Zr-Nkb"/>
                                     <constraint firstAttribute="height" constant="60" id="Ijq-Jc-qRK"/>
+                                    <constraint firstItem="i6P-xy-qFY" firstAttribute="leading" secondItem="Mxy-Rp-79V" secondAttribute="leading" constant="12" id="T6h-Ul-UQn"/>
                                     <constraint firstItem="11P-Mq-cL7" firstAttribute="leading" secondItem="Mxy-Rp-79V" secondAttribute="leading" constant="8" id="guN-dk-aNo"/>
                                     <constraint firstItem="6kr-dn-xOY" firstAttribute="centerY" secondItem="Mxy-Rp-79V" secondAttribute="centerY" id="hou-O6-S7m"/>
                                     <constraint firstAttribute="bottom" secondItem="0Mo-TX-GXF" secondAttribute="bottom" constant="4" id="iHK-6t-jXY"/>
+                                    <constraint firstItem="i6P-xy-qFY" firstAttribute="centerY" secondItem="Mxy-Rp-79V" secondAttribute="centerY" id="oY5-Cf-H04"/>
                                 </constraints>
                             </view>
                             <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FjF-mw-84J" userLabel="blackView">
@@ -3596,6 +3612,7 @@
                         <outlet property="filterConstrain" destination="2ce-8h-oFY" id="472-Ju-uHE"/>
                         <outlet property="filterImageConstrain" destination="yE2-ky-FCT" id="ACm-eB-CoQ"/>
                         <outlet property="noSign" destination="R5x-u4-ThV" id="oqg-qk-E3O"/>
+                        <outlet property="taxInfo" destination="i6P-xy-qFY" id="6c0-ed-UwY"/>
                         <outlet property="thinking" destination="zhl-VB-8N9" id="fqa-1X-Jl3"/>
                         <outlet property="totalAmount" destination="6kr-dn-xOY" id="vvO-cG-zIR"/>
                         <outlet property="totalBills" destination="11P-Mq-cL7" id="EM3-9x-IuP"/>
@@ -3787,6 +3804,20 @@
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7o-qH-2p7" userLabel="taxInfo">
+                                        <rect key="frame" x="122" y="23" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="KdN-fE-hhl"/>
+                                            <constraint firstAttribute="width" constant="40" id="XK8-Kg-cnD"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="taxInfo:" destination="vST-Pi-WDQ" eventType="touchUpInside" id="qZt-BL-14l"/>
+                                        </connections>
+                                    </button>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ZyX-6e-P7B" userLabel="totalWO">
                                         <rect key="frame" x="112" y="65" width="10" height="20"/>
                                         <constraints>
@@ -3800,6 +3831,8 @@
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="s2D-XW-ZF2" secondAttribute="trailing" constant="8" id="6nv-I5-0bX"/>
+                                    <constraint firstItem="r7o-qH-2p7" firstAttribute="leading" secondItem="taV-Cc-kZm" secondAttribute="trailing" id="KaG-aF-8um"/>
+                                    <constraint firstItem="r7o-qH-2p7" firstAttribute="centerY" secondItem="taV-Cc-kZm" secondAttribute="centerY" constant="-8" id="Opv-7v-990"/>
                                     <constraint firstItem="Jkf-VZ-e1J" firstAttribute="leading" secondItem="rts-ul-jAc" secondAttribute="leading" constant="8" id="QUz-NR-6Ra"/>
                                     <constraint firstItem="FCs-8X-QuT" firstAttribute="leading" secondItem="sBn-fl-kdU" secondAttribute="leading" id="RAV-Q5-MSW"/>
                                     <constraint firstItem="sBn-fl-kdU" firstAttribute="leading" secondItem="Jkf-VZ-e1J" secondAttribute="leading" id="Wc0-bM-vsX"/>
@@ -3984,6 +4017,7 @@
                         <outlet property="filterConstrain" destination="fQc-D5-bof" id="dsE-sx-iak"/>
                         <outlet property="filterImageConstrain" destination="cDU-aC-BBn" id="dfu-Yb-zEr"/>
                         <outlet property="noSign" destination="hCX-tZ-89K" id="awB-KW-GIc"/>
+                        <outlet property="taxInfo" destination="r7o-qH-2p7" id="esw-9g-D2B"/>
                         <outlet property="thinking" destination="YLp-1q-3zD" id="Pbx-H6-Zmh"/>
                         <outlet property="totalAmount" destination="s2D-XW-ZF2" id="bQl-g1-kFY"/>
                         <outlet property="totalBills" destination="sBn-fl-kdU" id="TRa-is-IV6"/>
@@ -4025,7 +4059,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="q4e-3H-dKE"/>
-        <segue reference="vGn-ru-ol3"/>
+        <segue reference="mzv-XJ-96f"/>
         <segue reference="5at-sc-TfM"/>
         <segue reference="8s0-fg-N01"/>
         <segue reference="gfT-By-X34"/>

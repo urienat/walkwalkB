@@ -443,7 +443,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                     }//end of if let event
 
                     }// end of calanders loop
-                    if eventCounter == 0 {animationImage.isHidden = true; self.eventCounterBlock = "No sessions" ;ViewController.sessionPusher = false}else if eventCounter == 1 {animationImage.isHidden = false; self.eventCounterBlock = "One session";ViewController.sessionPusher = true} else {self.eventCounterBlock = "\(String(self.eventCounter)) sessions";ViewController.sessionPusher = true }
+                        if eventCounter == 0 {alert17()}//animationImage.isHidden = true; self.eventCounterBlock = "No sessions" ;ViewController.sessionPusher = false}
+                    else if eventCounter == 1 {animationImage.isHidden = false; self.eventCounterBlock = "One session";ViewController.sessionPusher = true} else {self.eventCounterBlock = "\(String(self.eventCounter)) sessions";ViewController.sessionPusher = true }
                     // save last date
                     if spesific == false {textAdd.text = "\(self.eventCounterBlock) imported from calendar";ViewController.sessionPusher = false
                     }
@@ -452,7 +453,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                     calanderImage.layer.removeAllAnimations()
 
                     self.animation()
-                    DispatchQueue.main.asyncAfter(deadline: .now()+3){
+                    DispatchQueue.main.asyncAfter(deadline: .now()+2.6){
                     self.navigationController!.popViewController(animated: true)
                     }//end of dispatch
                     }//end of fetchevents
@@ -658,7 +659,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             }
     
     func alert72(){
-            let alertController72 = UIAlertController(title: ("Help") , message: "Import sessions from calendar is a powerful tool.  Only past sessions are imported and only if 'name+space+last name' combination matches calendar exactly.  After import process is completed a '+' sign is added to calendar's event to indicate it was imported.", preferredStyle: .alert)
+            let alertController72 = UIAlertController(title: ("Help") , message: "Import sessions from calendar is a powerful tool.\n\nOnly past sessions are imported and only if 'name+space+last name' combination matches calendar exactly.\n\nAfter import process is completed a '+' sign is added to calendar's event to indicate it was imported.", preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
                 self.alert123()
             }
@@ -666,7 +667,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             self.present(alertController72, animated: true, completion: nil)
     }
     func alert17(){
-        let alertController17 = UIAlertController(title: ("No Session") , message: "No Session Imported because one of the following:\n There are no PAST sessions\n2 Sessions already imported once( see +sign in calendar)\n3 NO exact match of name+space+last combination between calendar event and PerSessio", preferredStyle: .alert)
+        let alertController17 = UIAlertController(title: ("No Session") , message: "No Session Imported because one of the following:\n\n There are no PAST sessions\n\n Sessions already imported once( see +sign in calendar)\n\n NO exact match of name+space+last combination between calendar event and PerSessio", preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
     self.alert123()
     }

@@ -241,12 +241,13 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
         
     DateIn.text = ""
-    connectivityCheck()
+    
     
     employerList.backgroundColor = UIColor.clear
         
     let currentUser = FIRAuth.auth()?.currentUser
     if currentUser != nil {
+    connectivityCheck()
     self.employeeIDToS = (currentUser!.uid)
     
     self.dbRefEmployee.queryOrderedByKey().queryEqual(toValue: currentUser?.uid).observeSingleEvent(of: .childAdded, with: { (snapshot) in
@@ -500,7 +501,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }
 
     func fetchEmployers() {
-       
+      connectivityCheck()
     self.employerIdArray.removeAll()
     self.employerIdArray2.removeAll()
     self.pickerData.removeAll()

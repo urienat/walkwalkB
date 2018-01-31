@@ -37,6 +37,10 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     
     var pdfDataTable = NSMutableData()
 
+    @IBOutlet weak var taxInfo: UIButton!
+    @IBAction func taxInfo(_ sender: Any) {
+        alert17()
+    }
     
     var monthMMM: String?
     var monthTitle : Int = 0
@@ -458,6 +462,12 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     
     // alerts////////////////////////////////////////////////////////////////////////////////////////////
     
-
+    func alert17(){
+        let alertController17 = UIAlertController(title: ("Tax calaculation") , message: "Tax calculation is based on invoice cancellation timing(if occured) and therefore tax allocation can be different from general reports. Tax filing should be based on 'Tax' and Not 'Reports'", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+        }
+        alertController17.addAction(OKAction)
+        self.present(alertController17, animated: true, completion: nil)
+    }
 }//end of class
 
