@@ -40,7 +40,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var seprator2 = "⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶"
     
     var contact: String?
-
+    var pdfDataTable = NSMutableData()
     var recieptPayment:String?
 
     var monthToHandle : Int = 0
@@ -277,6 +277,11 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let dbRefEmployers = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     
+    func shareProcesses(){
+        pdfDataTable = pdfDataWithTableView(tableView: billerConnect)
+        self.alert101(printItem: self.pdfDataTable)
+    }
+    
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     override func viewDidLoad() {
@@ -294,7 +299,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         titleLbl = "Invoices"
         self.title = titleLbl
         
-        
+        let shareProcess = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(shareProcesses))
         //formatting decimal
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -305,7 +310,9 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         btnFilter.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         btnFilter.addTarget(self, action: #selector(filterMovement(delay:)), for: .touchUpInside)
         filterItem.customView = btnFilter
-        navigationItem.rightBarButtonItem = filterItem
+        //navigationItem.rightBarButtonItem = filterItem
+        
+         navigationItem.rightBarButtonItems = [filterItem,shareProcess]
         
         //Date
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!

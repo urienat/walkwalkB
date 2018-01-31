@@ -486,7 +486,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             // Create a path object to enclose the text. Use 72 point
             // margins all around the text.
             let frameRect = CGRect(x: 72, y: 72, width: 468, height: 648);
-            let imageRect = CGRect(x: 460, y: 648, width: 100, height: 100);
+            let imageRect = CGRect(x: 500, y: 700, width: 100, height: 100);
             let paperA4 = CGRect(x: 0, y: 0, width: 712, height: 992);
             let pageWithMargin = CGRect(x: 0, y: -50, width: paperA4.width-50, height: (paperA4.height-50));
             let paperRect = CGRect(x: 30, y: 30, width: 512, height:(781.8))
