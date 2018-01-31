@@ -192,7 +192,7 @@ class datePicker2: UIViewController {
     if ViewController.dateTimeFormat == "DateTime" {self.DatePicker.datePickerMode = .dateAndTime } else { self.DatePicker.datePickerMode = .date}
         //sessionMode = true
       
-      connectivityCheck()
+      
         
       
         //formating the date
@@ -226,6 +226,7 @@ class datePicker2: UIViewController {
     }//end of func
     
     func saveToDB2() {
+        connectivityCheck()
         saveRecord?.isEnabled = false
         self.navigationItem.setHidesBackButton(true, animated: true)
         

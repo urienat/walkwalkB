@@ -221,7 +221,6 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         picture.layer.cornerRadius = 15
         
         
-        connectivityCheck()
         
             let currentUser = FIRAuth.auth()?.currentUser
             if (currentUser != nil) {

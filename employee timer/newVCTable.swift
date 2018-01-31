@@ -266,7 +266,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         let titleLbl = "Sessions"
         self.title = titleLbl
    
-        connectivityCheck()
             
         //formatting decimal
         formatter.numberStyle = .decimal
@@ -335,7 +334,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }//end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
         override func viewDidAppear(_ animated: Bool) {
-        //connectivityCheck()
         fetch()
         }//view did appear end
     
@@ -500,6 +498,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }//end button  Generalclicked
     
         func fetch()  {
+            connectivityCheck()
         itemSum = 0
         eventCounter = 0
         self.dateDuplicate.removeAll()

@@ -185,7 +185,6 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billerConnect.backgroundColor = UIColor.clear
         self.title2 = "All Periods"
         title = "Report"
-        connectivityCheck()
         let shareProcess = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(shareProcesses))
 
         
@@ -201,7 +200,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         mydateFormat20.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM , yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
         
         btnFilter.setImage (greenFilter, for: .normal)
-        btnFilter.frame = CGRect(x: 0, y: 0, width: 60, height: 30)
+        btnFilter.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         btnFilter.addTarget(self, action: #selector(filterMovement(delay:)), for: .touchUpInside)
         filterItem.customView = btnFilter
         //navigationItem.rightBarButtonItem = filterItem
@@ -298,6 +297,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }//end of prepare
     
     func fetchBills(){
+        connectivityCheck()
         billItems.removeAll()
         BillArray.removeAll()
         BillArrayStatus.removeAll()

@@ -339,6 +339,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }//end of func message compose
     
         func bringEmployerData() {
+            connectivityCheck()
         if employerFromMain != "Add Account" {
         dbRefEmployers.child(self.employerID).child("myEmployees").queryOrderedByKey().queryEqual(toValue: employeeID).observeSingleEvent(of:.childAdded, with: { (snapshot) in
         self.RateUpdate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)

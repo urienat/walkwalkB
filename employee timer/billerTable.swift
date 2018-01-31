@@ -294,7 +294,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         titleLbl = "Invoices"
         self.title = titleLbl
         
-        connectivityCheck()
         
         //formatting decimal
         let formatter = NumberFormatter()
@@ -303,7 +302,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         formatter.roundingMode = .up
         
         btnFilter.setImage (greenFilter, for: .normal)
-        btnFilter.frame = CGRect(x: 0, y: 0, width: 60, height: 30)
+        btnFilter.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         btnFilter.addTarget(self, action: #selector(filterMovement(delay:)), for: .touchUpInside)
         filterItem.customView = btnFilter
         navigationItem.rightBarButtonItem = filterItem
@@ -471,6 +470,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         }//end of prepare
     
         func fetchBills(){
+            connectivityCheck()
         billItems.removeAll()
         BillArray.removeAll()
         BillArrayStatus.removeAll()

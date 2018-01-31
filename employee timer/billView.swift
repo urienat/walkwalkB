@@ -134,7 +134,6 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        connectivityCheck()
         
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         mydateFormat8.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
