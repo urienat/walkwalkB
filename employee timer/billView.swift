@@ -486,7 +486,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             // Create a path object to enclose the text. Use 72 point
             // margins all around the text.
             let frameRect = CGRect(x: 72, y: 72, width: 468, height: 648);
-            let imageRect = CGRect(x: 500, y: 700, width: 100, height: 100);
+            let imageRect = CGRect(x: 500, y: 660, width: 100, height: 100);
             let paperA4 = CGRect(x: 0, y: 0, width: 712, height: 992);
             let pageWithMargin = CGRect(x: 0, y: -50, width: paperA4.width-50, height: (paperA4.height-50));
             let paperRect = CGRect(x: 30, y: 30, width: 512, height:(781.8))
@@ -636,12 +636,12 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
                 self.dbRefEmployee.child(self.employeeID).child("myBills").child(String(self.billToHandle!)).updateChildValues([ "fBillStatus":"Cancelled","fBillStatusDate": self.mydateFormat5.string(from: Date())])
                 
                //add effect on the reciepts
-                if self.recieptsArray.isEmpty  == false {
+                if self.recieptsArray.isEmpty  != false {
                 for rec in 1...self.recieptsArray2.count
                 {
                 self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(String("-\(self.documentCounter!)")!).child(String(rec)).updateChildValues(["fActive" : self.mydateFormat5.string(from: Date())])
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-                        if self.billReciept.isSelected == false { self.navigationController!.popViewController(animated: true)}
+                      //  if self.billReciept.isSelected == false { self.navigationController!.popToRootViewController(animated: true)}
                     }
                     }}
                 
