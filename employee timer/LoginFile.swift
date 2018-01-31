@@ -14,10 +14,12 @@ import GoogleSignIn
 
 class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate ,GIDSignInUIDelegate{
 
+    var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
+
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     let mydateFormat5 = DateFormatter()
-    let Vimage = UIImage(named: "V")
-    let nonVimage = UIImage(named: "emptyV")
+    let Vimage = UIImage(named:"vNaked")// "due")
+    let nonVimage = UIImage(named: "blank")
     
     //facebook & google
     let loginButton =  FBSDKLoginButton()// facebooklogin variables
@@ -246,6 +248,10 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         if LoginFile.userForCreate != ""{ email.text = LoginFile.userForCreate; password.text = LoginFile.passwordForCreate; LoginFile.userForCreate = "";LoginFile.passwordForCreate = ""} else {LoginFile.userForCreate = "";LoginFile.passwordForCreate = ""}
         
         thinking.hidesWhenStopped = true
+        
+        check.layer.borderWidth = 0.5;
+        check.layer.borderColor =  blueColor.cgColor
+        check.layer.cornerRadius =  10
         } ///end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////
    
         //keyboard hide
