@@ -466,7 +466,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     // alerts////////////////////////////////////////////////////////////////////////////////////////////
 
     func alert17(){
-        let alertController17 = UIAlertController(title: ("Tax calaculation") , message: "Tax calculation is based on invoice cancellation timing(if occured) and therefore tax allocation can be different from general reports. Tax filing should be based on 'Tax' and Not 'Reports'", preferredStyle: .alert)
+        let alertController17 = UIAlertController(title: ("Tax calaculation") , message: "Tax calculation is based on invoice cancellation timing(if occured) and therefore tax allocation can be different from this report. Tax filing should be based on 'Tax' and Not 'Reports'", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
         }
         alertController17.addAction(OKAction)
