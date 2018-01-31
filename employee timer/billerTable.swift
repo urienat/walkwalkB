@@ -283,7 +283,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
        
         super.viewDidLoad()
         noSign.isHidden = true
-                filterConstrain.constant = -240
+        filterConstrain.constant = -240
         blackView.isHidden = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
         blackView.addGestureRecognizer(tap)
@@ -291,10 +291,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         filterDecided = 0
         
         billerConnect.backgroundColor = UIColor.clear
-         titleLbl = "Invoices"
-        
+        titleLbl = "Invoices"
         self.title = titleLbl
-        //self.view.insertSubview(backgroundImage, at: 0)
         
         connectivityCheck()
         
@@ -303,7 +301,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 1
         formatter.roundingMode = .up
-        
         
         btnFilter.setImage (greenFilter, for: .normal)
         btnFilter.frame = CGRect(x: 0, y: 0, width: 60, height: 30)
@@ -345,10 +342,12 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
         override func viewDidAppear(_ animated: Bool) {
         firebaseConnectivity()
+            print(taxBillsToHandle)
             
-            if taxBillsToHandle == false {
+        if taxBillsToHandle == false {
+        print (taxBillsToHandle)
                 
-                fetchBills(); StatusChosen.isHidden = false} else {filterDecided = 7 ;monther(monthNumber: monthToHandle);
+        fetchBills(); StatusChosen.isHidden = false} else {filterDecided = 7 ;monther(monthNumber: monthToHandle);
                 
                 billsForTaxMonth();StatusChosen.isHidden = true;titleLbl = "\(monthMMM!)-\(yearToHandle)";self.title = titleLbl}
         print (billItems.count)
@@ -442,6 +441,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billManager?.billToHandle = "-"+String(BillArray[billRow.row])
         billManager?.employeeID = employeeID
         billManager?.rebillprocess = true
+        billManager?.taxBillsToHandle = taxBillsToHandle
         if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
                 billManager?.contactForMail = "\(self.accountName) \(self.accountLastName)"
         }

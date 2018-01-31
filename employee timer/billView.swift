@@ -30,6 +30,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     let trashImage = UIImage(named: "trash")
     let billDocument = UIImage(named: "billDocument")
     let partially = UIImage(named: "partially")
+    
+    var taxBillsToHandle: Bool?
 
     var textString = ""
     var largeTextRange:NSRange?
@@ -242,6 +244,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             
             self.statusImage.image = self.canceledImage;
         self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "!!!!!!!!!!This document was cancelled: \(self.mydateFormat8.string(from: self.mydateFormat5.date(from: self.recieptStatus!)! ))!!!!!!!!!!"} else {self.deleteBtn.isEnabled = true; self.billStatusForRecovery = ""}
+        print (self.taxBillsToHandle)
+
+        if self.taxBillsToHandle == true {self.deleteBtn.isEnabled = false}
 
     self.attributedText(attributed: self.recoveredReciept)
     
@@ -273,7 +278,11 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             
         self.statusImage.image = self.canceledImage;
         self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "!!!!!!!!!!This document was cancelled: \(self.mydateFormat8.string(from: self.mydateFormat5.date(from: self.statusCanclledDate!)! ))!!!!!!!!!!"}
+            print (self.taxBillsToHandle)
+            
+            if self.taxBillsToHandle == true {self.deleteBtn.isEnabled = false}
 
+            
         self.attributedText(attributed: self.recoveredBill)
         
         //build reciepts

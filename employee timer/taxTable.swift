@@ -256,7 +256,6 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         self.taxMonth =   components.month!
         self.taxYear = components.year!
         print (self.taxYear,self.taxMonth)
-
         billTaxManager?.monthToHandle = components.month!
         billTaxManager?.yearToHandle = components.year!
         billTaxManager?.employeeID = employeeID
