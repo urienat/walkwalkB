@@ -38,6 +38,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
 
     var seprator = "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
     var seprator2 = "⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶"
+    
+    var contact: String?
 
     var recieptPayment:String?
 
@@ -440,8 +442,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billManager?.billToHandle = "-"+String(BillArray[billRow.row])
         billManager?.employeeID = employeeID
         billManager?.rebillprocess = true
-        if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "(\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
-                billManager?.contactForMail = "(\(self.accountName) \(self.accountLastName)"
+        if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
+                billManager?.contactForMail = "\(self.accountName) \(self.accountLastName)"
         }
 
         }//end of if (segue...
@@ -459,8 +461,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billManager?.undoRecieptCounter = recieptCounter
         billManager?.undoBalance = balance// String(Double(self.balance!)! - Double(self.partialPayment.text!)!)
         billManager?.undoTotal = String(Double(self.balance!)!)
-        if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "(\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
-        billManager?.contactForMail = "(\(self.accountName) \(self.accountLastName)"}
+        if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
+        billManager?.contactForMail = "\(self.accountName) \(self.accountLastName)"}
 
         
 
@@ -822,7 +824,10 @@ print (self.billItems.count)
             if self.fully == false {self.remainingBalance = "0.0"} else {self.remainingBalance = String(Double(self.balance!)! - Double(self.partialPayment.text!)!)}
             if Double (self.remainingBalance!) != 0.0 {self.statusTemp = "Partially"}
             
-            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\n\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.taxId!)\r\n\(self.address!)\r\n\(self.seprator2)\(self.seprator2)\r\n\r\nRecieved from:\r\n\(self.accountName) \(self.accountLastName) - \(self.accountParnet)\r\n\(self.accountAdress)\r\n\(self.seprator2)\r\n\r\n\r\nBalance Due from invoice \(self.BillArray[self.buttonRow]): \(ViewController.fixedCurrency!)\(self.balance!)\r\n\(self.paymentBlock!)\r\n\r\n\(self.seprator2)\(self.seprator2)\r\nRemaining Balance Due from Invoice \(self.BillArray[self.buttonRow]): \(ViewController.fixedCurrency!)\(self.remainingBalance!)\r\n\r\n\r\nMade by PerSession app. "
+            if  ViewController.professionControl! == "Tutor" && self.accountParnet != "" {self.contact = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
+                self.contact = "\(self.accountName) \(self.accountLastName)"}
+            
+            self.recieptMailSaver = "\(self.mydateFormat10.string(from: Date()))\r\n\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.taxId!)\r\n\(self.address!)\r\n\(self.seprator2)\(self.seprator2)\r\n\r\nRecieved from:\r\n\(self.contact)\r\n\(self.accountAdress)\r\n\(self.seprator2)\r\n\r\n\r\nBalance Due from invoice \(self.BillArray[self.buttonRow]): \(ViewController.fixedCurrency!)\(self.balance!)\r\n\(self.paymentBlock!)\r\n\r\n\(self.seprator2)\(self.seprator2)\r\nRemaining Balance Due from Invoice \(self.BillArray[self.buttonRow]): \(ViewController.fixedCurrency!)\(self.remainingBalance!)\r\n\r\n\r\nMade by PerSession app. "
             
             
            // Payment's recipet for Bill-\(self.BillArray[self.buttonRow])\r\

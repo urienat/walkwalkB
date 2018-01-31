@@ -340,7 +340,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
         mailComposerVC2.setSubject("\(document!)")
-        mailComposerVC2.setMessageBody("Dear \(contactForMail!)\r\n\r\nThe invoice is attached for your records. Please don't hesitate to contact me with any questions.\r\n\r\nRegards \(ViewController.fixedName!) \(ViewController.fixedLastName!)", isHTML: false)
+        mailComposerVC2.setMessageBody("Dear \(contactForMail!)\r\n\r\nThe invoice is attached for your records. Please don't hesitate to contact me with any questions.\r\n\r\nRegards\r\n \(ViewController.fixedName!) \(ViewController.fixedLastName!)", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
         mailComposerVC2.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: "Invoice")
         return mailComposerVC2
@@ -374,7 +374,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         controller.dismiss(animated: true, completion: nil)
         case MFMailComposeResult.sent.rawValue:
         print("Mail sent3")
+        
         deleteBtn.isEnabled = false
+        self.navigationController!.popViewController(animated: true)
         controller.dismiss(animated: true, completion: nil)
         case MFMailComposeResult.failed.rawValue:
         print("Mail sent failure: %@", [error!.localizedDescription])
@@ -382,7 +384,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         default:
         break
         }
-        self.navigationController!.popViewController(animated: true) //check to go one more level
+        //self.navigationController!.popViewController(animated: true) //check to go one more level
         }
 
         func  moveSessionToBilled() {

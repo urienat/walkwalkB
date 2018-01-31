@@ -422,8 +422,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                 billManager?.undoArray = idArray
                 billManager?.employerID = employerID
                 billManager?.lastPrevious = lastPrevious
-                if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "(\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
-                    billManager?.contactForMail = "(\(self.accountName) \(self.accountLastName)"
+                if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
+                    billManager?.contactForMail = "\(self.accountName) \(self.accountLastName)"
                 }
 
             }//end of if (segue...
@@ -449,12 +449,12 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.billPay.isEnabled = false
         buttonRow = sender.tag
         
-        if appArray[buttonRow] == "Pre" { newVCTable.checkBox = 1; statusTemp = "Approved";if indicationArray[buttonRow] != "📄" {eventCounter+=1};if indicationArray[buttonRow] == "📄" {itemSum += Double(amountArray[buttonRow]) };noSign.isHidden = true; amountCalc()}
+        if appArray[buttonRow] == "Pre" { newVCTable.checkBox = 1; statusTemp = "Approved";if indicationArray[buttonRow] != "📄" {eventCounter+=1};if indicationArray[buttonRow] == "📄" {itemSum += Double(amountArray[buttonRow]) }; amountCalc()}
         else if appArray[buttonRow] == "Approved" { newVCTable.checkBox = 0; statusTemp = "Pre";if indicationArray[buttonRow] != "📄" {eventCounter-=1}; if indicationArray[buttonRow] == "📄" {itemSum -= Double(amountArray[buttonRow]) }; amountCalc()}
         else if  appArray[buttonRow] == "Paid" {newVCTable.checkBox = 2; statusTemp = "Paid";alert12()}
         print( "apparray buttonarray\(appArray[buttonRow])")
         print( "checkBox\(newVCTable.checkBox)")
-        if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions"} else if self.eventCounter == 1 {self.eventsLbl.text = "\(String(self.eventCounter)) Due session"} else {self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions"}
+            if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions";if  itemSum == 0{toolbar1.isHidden = true;noSign.isHidden = false}else{toolbar1.isHidden = false;noSign.isHidden = true}} else if self.eventCounter == 1 {self.eventsLbl.text = "\(String(self.eventCounter)) Due session";toolbar1.isHidden = false;noSign.isHidden = true} else {self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions";toolbar1.isHidden = false;noSign.isHidden = true}
 
         if statusTemp != appArray[buttonRow] {
         appArray[buttonRow] = statusTemp!
@@ -641,7 +641,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             if self.billStarted != true   { self.thinking.stopAnimating()}
            // if self.billPayStarted != true { self.thinking.stopAnimating()}
             
-            if self.eventCounter == 0 {self.toolbar1.isHidden = true;self.billSender.isEnabled = false;self.billPay.isEnabled = false;self.eventsLbl.text = " No Due Sessions";self.noSign.isHidden = false}
+            if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions";if  self.itemSum == 0{self.toolbar1.isHidden = true;self.noSign.isHidden = false}else{self.toolbar1.isHidden = false;self.noSign.isHidden = true}}
             else if self.eventCounter == 1 {self.toolbar1.isHidden = false;self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) Due session";self.noSign.isHidden = true}
             else {self.toolbar1.isHidden = false;self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions";self.noSign.isHidden = true}
 
