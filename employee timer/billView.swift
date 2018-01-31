@@ -19,8 +19,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     let dbRef = FIRDatabase.database().reference().child("fRecords")
     let dbRefEmployer = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployee = FIRDatabase.database().reference().child("fEmployees")
-    var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
-    var grayColor = UIColor(red :235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 0.5)
+    var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 0.7)
+    var grayColor = UIColor(red :235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1)
 
     let Vimage = UIImage(named: "due")
     let nonVimage = UIImage(named: "emptyV")
@@ -31,6 +31,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     let trashImage = UIImage(named: "trash")
     let billDocument = UIImage(named: "billDocument")
     let partially = UIImage(named: "partially")
+    let logoImage = UIImage(named: "logo")
     
     var taxBillsToHandle: Bool?
     var payPalBlock=""
@@ -505,12 +506,12 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             
             // Draw the frame.
             
-            currentContext.draw((canceledImage?.cgImage)!, in: imageRect)
             currentContext.setFillColor(grayColor.cgColor)
             currentContext.fill(paperA4)
             //currentContext.makeImage
             CTFrameDraw(frameRef, currentContext);
-            
+            currentContext.draw((logoImage?.cgImage)!, in: imageRect)
+
             // Update the current range based on what was drawn.
             currentRange = CTFrameGetVisibleStringRange(frameRef);
             currentRange.location += currentRange.length;
