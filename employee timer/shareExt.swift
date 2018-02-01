@@ -19,6 +19,25 @@ extension(UIViewController){
         let paperA4 = CGRect(x: 0, y: 0, width: 712, height: 992);
         let pageWithMargin = CGRect(x: 0, y: -50, width: paperA4.width-50, height: (paperA4.height-50));
         let paperRect = CGRect(x: 30, y: 30, width: 512, height:(781.8))
+        var firstpage = true
+        let Head = "Head"
+        let font = UIFont(name: "Helvetica Bold", size: 14.0)
+        let textRect = CGRect(x: 5, y: -40, width: 125, height: 18)
+        var paragraphStyle:NSMutableParagraphStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+        paragraphStyle.alignment = NSTextAlignment.left
+        paragraphStyle.lineBreakMode = NSLineBreakMode.byWordWrapping
+        
+        let textColor = UIColor.red
+        
+        let textFontAttributes = [
+            NSFontAttributeName: font!,
+            NSForegroundColorAttributeName: textColor,
+            NSParagraphStyleAttributeName: paragraphStyle
+        ]
+        
+        let text:NSString = "Hello world"
+        
+        
         /////////
         let priorBounds = tableView.bounds
         let fittedSize = tableView.sizeThatFits(CGSize(width:priorBounds.size.width, height:tableView.contentSize.height))
@@ -29,9 +48,15 @@ extension(UIViewController){
         UIGraphicsBeginPDFContextToData(pdfDataTable, pdfPageBounds,nil)
         var pageOriginY: CGFloat = 0
         while pageOriginY < fittedSize.height {
+            
             UIGraphicsBeginPDFPageWithInfo(pdfPageBounds, nil)
             UIGraphicsGetCurrentContext()!.saveGState()
             UIGraphicsGetCurrentContext()!.translateBy(x: 0, y: -pageOriginY)
+            if firstpage == true {
+                text.draw(in: textRect, withAttributes: textFontAttributes)
+                ;firstpage = false
+            }
+            
             tableView.layer.render(in: UIGraphicsGetCurrentContext()!)
             UIGraphicsGetCurrentContext()!.restoreGState()
             pageOriginY += pdfPageBounds.size.height
