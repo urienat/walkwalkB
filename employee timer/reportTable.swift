@@ -248,7 +248,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         let totalForMonth =  byMonthTotal[taxMonthItem]!
         let sessionsForMonth =  byMonthSessions[taxMonthItem]!
         let billsForMonth =  byMonthBills[taxMonthItem]!
-        if billsForMonth == 1 {billTxt = "bill"} else {billTxt = "bills"}
+        if billsForMonth == 1 {billTxt = "invoice"} else {billTxt = "invoices"}
         
         cell.backgroundColor = UIColor.clear
         cell.l1.text = arrayOfMonths[indexPath.row] // month

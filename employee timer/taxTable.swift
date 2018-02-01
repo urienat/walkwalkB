@@ -221,7 +221,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         let taxForMonth =  byMonthTax[taxMonthItem]!
         let totalForMonth =  byMonthTotal[taxMonthItem]!
         let billsForMonth =  byMonthBills[taxMonthItem]!
-        if billsForMonth == 1 {billTxt = "bill"} else {billTxt = "bills"}
+        if billsForMonth == 1 {billTxt = "invoice"} else {billTxt = "invoices"}
             
 
         cell.backgroundColor = UIColor.clear
