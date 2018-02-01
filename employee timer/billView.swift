@@ -114,8 +114,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     override func viewDidLoad() {
     super.viewDidLoad()
         
-        // remove all current segments to make sure it is empty:
-        self.billReciept.removeAllSegments()
+        
         
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         mydateFormat8.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
@@ -238,7 +237,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             if let recieptItem = snapshot.key as? String {
             self.recieptsArray2.append(recieptItem)
             }
-
+            // remove all current segments to make sure it is empty:
+            self.billReciept.removeAllSegments()
             if self.recieptsArray2.isEmpty{
             print (" (self.recieptsArray)is empty")
             self.billReciept.isHidden = true
@@ -546,7 +546,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.dbRefEmployee.child(self.employeeID).child("myBills").child(String(self.billToHandle!)).updateChildValues([ "fBillStatus":"Cancelled","fBillStatusDate": self.mydateFormat5.string(from: Date())])
 
         //add effect on the reciepts
-        if self.recieptsArray2.isEmpty  != false {
+        if self.recieptsArray2.isEmpty  == false {
         for rec in 1...self.recieptsArray2.count
         {self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(String("-\(self.documentCounter!)")!).child(String(rec)).updateChildValues(["fActive" : self.mydateFormat5.string(from: Date())])
         }}//end of reciept is empty
