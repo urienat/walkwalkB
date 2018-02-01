@@ -145,7 +145,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         paymentView.isHidden = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             
-            self.recieptProcess() 
+            self.recieptProcess() // self.alert19()
         }
     }
     
@@ -277,7 +277,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     
     func shareProcesses(){
-        pdfDataTable = pdfDataWithTableView(tableView: billerConnect)
+        pdfDataTable = createPdfFromTableView(tableView: billerConnect)
         self.alert101(printItem: self.pdfDataTable)
     }
     
