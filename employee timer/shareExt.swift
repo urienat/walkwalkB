@@ -22,11 +22,11 @@ extension(UIViewController){
         var firstpage = true
         let Head = "Head"
         let font = UIFont(name: "Helvetica Bold", size: 14.0)
-        let textRect = CGRect(x: 5, y: -40, width: 125, height: 18)
+        let textRect = CGRect(x: 5, y: 5, width: 125, height: 18)
         var paragraphStyle:NSMutableParagraphStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.alignment = NSTextAlignment.left
         paragraphStyle.lineBreakMode = NSLineBreakMode.byWordWrapping
-        
+        var grayColor = UIColor(red :235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1)
         let textColor = UIColor.red
         
         let textFontAttributes = [
@@ -42,20 +42,26 @@ extension(UIViewController){
         let priorBounds = tableView.bounds
         let fittedSize = tableView.sizeThatFits(CGSize(width:priorBounds.size.width, height:tableView.contentSize.height))
         tableView.bounds = CGRect(x:0, y:0, width:fittedSize.width, height:fittedSize.height)
-        let pdfPageBounds = CGRect(x:0, y:0, width:frameRect.width, height:frameRect
-            .height)
+        let pdfPageBounds = paperA4//CGRect(x:0, y:0, width:frameRect.width, height:frameRect.height)
         let pdfDataTable = NSMutableData()
         UIGraphicsBeginPDFContextToData(pdfDataTable, pdfPageBounds,nil)
         var pageOriginY: CGFloat = 0
         while pageOriginY < fittedSize.height {
             
             UIGraphicsBeginPDFPageWithInfo(pdfPageBounds, nil)
-            UIGraphicsGetCurrentContext()!.saveGState()
-            UIGraphicsGetCurrentContext()!.translateBy(x: 0, y: -pageOriginY)
+            ///
+            let currentContext = UIGraphicsGetCurrentContext()
+            currentContext?.textMatrix = CGAffineTransform.identity;
+            currentContext?.setFillColor(grayColor.cgColor)
+            currentContext?.fill(paperA4)
             if firstpage == true {
                 text.draw(in: textRect, withAttributes: textFontAttributes)
                 ;firstpage = false
             }
+            ///
+            UIGraphicsGetCurrentContext()!.saveGState()
+            UIGraphicsGetCurrentContext()!.translateBy(x: 0, y: -pageOriginY)
+            
             
             tableView.layer.render(in: UIGraphicsGetCurrentContext()!)
             UIGraphicsGetCurrentContext()!.restoreGState()
