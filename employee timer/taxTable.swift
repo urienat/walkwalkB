@@ -134,7 +134,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     
     func shareProcesses(){
-        pdfDataTable = pdfDataWithTableView(tableView: billerConnect)
+        pdfDataTable =  pdfDataWithTableView(tableView: billerConnect)
         self.alert101(printItem: self.pdfDataTable)
     }
     
