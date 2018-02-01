@@ -18,8 +18,8 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     let dbRefcEmployers = FIRDatabase.database().reference().child("cEmployers")
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
 
-    let Vimage = UIImage(named: "V")
-    let emptyVimage = UIImage(named: "emptyV")
+    let Vimage = UIImage(named:"vNaked")// "due")
+    let emptyVimage = UIImage(named: "blank")
     var perSessionImage = UIImage(named:"perSessionImage")?.withRenderingMode(.alwaysTemplate)
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
     
@@ -149,6 +149,10 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if ViewController.fixedCurrency != nil {currencySign.text = (ViewController.fixedCurrency!)} else {currencySign.text = ""}
         
         if  ViewController.professionControl! == "Tutor" {addressTop.constant = 46.0; studentParentNameText.isHidden = false; studentParentNameLabel.isHidden = false } else {addressTop.constant = 8.0; studentParentNameText.isHidden = true; studentParentNameLabel.isHidden = true }
+        
+        activeButton.layer.borderWidth = 0.5;
+        activeButton.layer.borderColor =  blueColor.cgColor
+        activeButton.layer.cornerRadius =  10
         
     }//end of view did load /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     

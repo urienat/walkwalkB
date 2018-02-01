@@ -227,6 +227,7 @@
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTn-MV-ILJ" userLabel="activeButton">
                                                 <rect key="frame" x="110" y="313.5" width="100" height="110"/>
+                                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="0.60105415240000004" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="12"/>
                                                 <state key="normal" title="Inactive">
                                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
@@ -2776,6 +2777,7 @@
                             <constraint firstItem="PrW-i7-IuZ" firstAttribute="top" secondItem="fgv-lZ-OY1" secondAttribute="bottom" constant="12" id="cuB-ny-T0b"/>
                             <constraint firstItem="T9c-oL-JGA" firstAttribute="centerY" secondItem="LE5-Ui-4B3" secondAttribute="centerY" id="gea-7j-G12"/>
                             <constraint firstAttribute="trailing" secondItem="PrW-i7-IuZ" secondAttribute="trailing" id="izT-mK-gro"/>
+                            <constraint firstItem="tR9-cS-rER" firstAttribute="top" secondItem="fgv-lZ-OY1" secondAttribute="bottom" constant="12" id="jI1-MD-t6R"/>
                             <constraint firstAttribute="trailing" secondItem="WOU-wI-y5F" secondAttribute="trailing" id="lOo-af-2rU"/>
                             <constraint firstItem="n0x-Pz-LMA" firstAttribute="centerY" secondItem="LE5-Ui-4B3" secondAttribute="centerY" id="qXo-Z5-qkE"/>
                             <constraint firstItem="PrW-i7-IuZ" firstAttribute="leading" secondItem="LE5-Ui-4B3" secondAttribute="leading" id="udA-SX-lkf"/>
@@ -2879,7 +2881,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="47" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G8b-SK-75d">
-                                <rect key="frame" x="0.0" y="28" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="420"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellId" rowHeight="47" id="AQP-Fh-lfh" customClass="newTableCell" customModule="perSession" customModuleProvider="target">
@@ -3133,13 +3135,13 @@
                             <constraint firstItem="Sgd-DL-eFs" firstAttribute="top" secondItem="6A1-XQ-3Qo" secondAttribute="bottom" id="77Z-SX-SBG"/>
                             <constraint firstItem="7i1-XX-uWr" firstAttribute="leading" secondItem="ydA-FB-V1V" secondAttribute="leading" constant="8" id="8fk-8F-7ES"/>
                             <constraint firstItem="7i1-XX-uWr" firstAttribute="top" secondItem="G17-Ym-hsp" secondAttribute="bottom" constant="12" id="AbY-Dk-VX3"/>
-                            <constraint firstItem="6A1-XQ-3Qo" firstAttribute="top" secondItem="G8b-SK-75d" secondAttribute="bottom" id="G7t-kj-uN7"/>
                             <constraint firstItem="eCO-la-3hV" firstAttribute="centerX" secondItem="ydA-FB-V1V" secondAttribute="centerX" id="Nxc-Hq-RN7"/>
                             <constraint firstItem="oMs-Xd-055" firstAttribute="centerY" secondItem="ydA-FB-V1V" secondAttribute="centerY" id="PU2-jQ-tdt"/>
                             <constraint firstItem="G8b-SK-75d" firstAttribute="top" secondItem="G17-Ym-hsp" secondAttribute="bottom" constant="8" id="RKV-0b-cbL"/>
                             <constraint firstItem="eCO-la-3hV" firstAttribute="top" secondItem="7i1-XX-uWr" secondAttribute="bottom" constant="12" id="Te1-qf-5SB"/>
                             <constraint firstAttribute="trailing" secondItem="G8b-SK-75d" secondAttribute="trailing" id="cvM-p2-4OZ"/>
                             <constraint firstAttribute="trailing" secondItem="6A1-XQ-3Qo" secondAttribute="trailing" id="dji-oW-vex"/>
+                            <constraint firstItem="NbR-aV-1V6" firstAttribute="top" secondItem="G8b-SK-75d" secondAttribute="bottom" id="dwP-gg-fCW"/>
                             <constraint firstItem="onk-I2-XsT" firstAttribute="centerX" secondItem="ydA-FB-V1V" secondAttribute="centerX" id="dwR-8T-eVe"/>
                             <constraint firstItem="G8b-SK-75d" firstAttribute="leading" secondItem="ydA-FB-V1V" secondAttribute="leading" id="h5I-AT-Gt6"/>
                             <constraint firstItem="onk-I2-XsT" firstAttribute="centerY" secondItem="ydA-FB-V1V" secondAttribute="centerY" id="icv-tF-oOw"/>
@@ -4064,6 +4066,6 @@
         <segue reference="x0P-Ew-8Ag"/>
         <segue reference="5at-sc-TfM"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="1k4-P4-HYk"/>
+        <segue reference="gfT-By-X34"/>
     </inferredMetricsTieBreakers>
 </document>

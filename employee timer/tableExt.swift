@@ -74,7 +74,7 @@ extension(ViewController){
                 
                 if activeData[indexPath.row] == false {
              print ("alpha")
-                cell2.employerFirst.alpha = 0.4;cell2.lastDocument.alpha = 0.4}
+                cell2.employerFirst.alpha = 1;cell2.lastDocument.alpha = 1}
                 
                 else{ cell2.employerFirst.alpha = 1;cell2.lastDocument.alpha = 1 }
                 
