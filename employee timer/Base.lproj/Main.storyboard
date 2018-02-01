@@ -903,7 +903,7 @@
                                             <constraint firstAttribute="height" constant="30" id="Wj8-b4-D45"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
-                                        <state key="normal" title="Bills">
+                                        <state key="normal" title="All Bills">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -4059,7 +4059,6 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="q4e-3H-dKE"/>
         <segue reference="x0P-Ew-8Ag"/>
