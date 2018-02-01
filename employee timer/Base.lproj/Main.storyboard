@@ -2581,6 +2581,7 @@
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyV" translatesAutoresizingMaskIntoConstraints="NO" id="ZRe-Za-hI8" userLabel="imagePartially">
                                         <rect key="frame" x="8.5" y="54" width="30" height="30"/>
+                                        <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="0.60105415240000004" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Roa-N8-itE"/>
                                             <constraint firstAttribute="width" constant="30" id="uA2-1o-bb8"/>
@@ -2610,7 +2611,7 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="allowedChars" value="1,2,3,4,5,6,7,8,9,0,."/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="partialCheck:" destination="Grl-4C-vV7" eventType="editingChanged" id="Pu4-3Q-k4S"/>
+                                            <action selector="editPartial:" destination="Grl-4C-vV7" eventType="editingDidBegin" id="42G-d4-N58"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGp-Px-mK1" userLabel="btnFully">
@@ -2621,6 +2622,7 @@
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="V" translatesAutoresizingMaskIntoConstraints="NO" id="MGH-Ll-MqA" userLabel="imageFull">
                                         <rect key="frame" x="8.5" y="12" width="30" height="30"/>
+                                        <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="0.60105415240000004" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="i7h-ck-cZe"/>
                                             <constraint firstAttribute="height" constant="30" id="wTL-KE-lqa"/>
@@ -4061,9 +4063,8 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
-        <segue reference="q4e-3H-dKE"/>
+        <segue reference="3Wx-xY-sDh"/>
         <segue reference="x0P-Ew-8Ag"/>
         <segue reference="5at-sc-TfM"/>
         <segue reference="8s0-fg-N01"/>

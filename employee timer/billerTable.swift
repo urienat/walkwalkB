@@ -15,8 +15,9 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     let billDocument = UIImage(named: "billDocument")
     //let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-    let Vimage = UIImage(named: "V")
-    let nonVimage = UIImage(named: "emptyV")
+    let Vimage = UIImage(named:"vNaked")// "due")
+    let nonVimage = UIImage(named: "blank")
+    
     let paidImage = UIImage(named: "paid")
     let canceledImage = UIImage(named: "cancelled")
     //let greenFilter = UIImage(named: "sandWatchGreen")
@@ -25,6 +26,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let partially = UIImage(named: "partially")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
     var redColor = UIColor(red :170.0/255.0, green: 26.0/255.0, blue: 0/255.0, alpha: 1.0)
+    var grayColor = UIColor(red :235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1)
     var counterForpresent:String?
     var lastPrevious = ""
 
@@ -95,11 +97,20 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var imagePartially: UIImageView!
     @IBOutlet weak var btnPartially: UIButton!
     
+    
     @IBAction func btnPartially(_ sender: Any) {
         print("fully")
         fullyOptions()
     }
     
+   
+    @IBAction func editPartial(_ sender: Any) {
+    
+    
+    
+        print("partial begin")
+         fullyOptions()
+    }
     @IBAction func btnFully(_ sender: Any) {
         fullyOptions()
 
@@ -343,6 +354,18 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         paymentView.layer.borderColor = blueColor.cgColor
         paymentView.layer.cornerRadius =  10//CGFloat(25)
         paymentView.layoutIfNeeded()
+        
+        btnFully.layer.borderWidth = 0.5
+        btnFully.layer.borderColor = blueColor.cgColor
+        btnFully.layer.cornerRadius =  10//CGFloat(25)
+        btnFully.layer.backgroundColor = grayColor.cgColor
+        btnPartially.layer.borderWidth = 0.5
+        btnPartially.layer.borderColor = blueColor.cgColor
+        btnPartially.layer.cornerRadius =  10//CGFloat(25)
+        btnPartially.layer.backgroundColor = grayColor.cgColor
+        
+
+        
     }//end of view did load////////////////////////////////////////////////////////////////////////////////////////////
     
         override func viewDidAppear(_ animated: Bool) {
@@ -916,7 +939,8 @@ print (self.billItems.count)
             self.imageFull.image = Vimage
             self.imagePartially.image = nonVimage
             fully = false
-            partialPayment.isEnabled = false
+            partialPayment.endEditing(true)
+            partialPayment.isEnabled = true
             
             
         case false:
