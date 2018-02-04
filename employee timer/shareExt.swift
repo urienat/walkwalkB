@@ -12,6 +12,7 @@ import Firebase
 import MessageUI
 
 extension(UIViewController){
+   
 /*
     func pdfDataWithTableView(tableView: UITableView) -> NSMutableData {
         let frameRect = CGRect(x: 72, y: 72, width: 468, height: 600);
@@ -76,32 +77,81 @@ extension(UIViewController){
         
         return pdfDataTable
     }
-*/
+
    func pdfDataWithTableView(tableView: UITableView) -> NSMutableData {
         let pdfDataTable = NSMutableData()
         let paperA4 = CGRect(x: 0, y: 0, width: 712, height: 992)
         let pageWithMargin = CGRect(x: -72, y: 72, width:568, height: (600));
         let priorBounds = tableView.bounds
-        let fittedSize = tableView.sizeThatFits(CGSize(width:priorBounds.size.width-280, height:tableView.contentSize.height+300))
+        let fittedSize = tableView.sizeThatFits(CGSize(width:priorBounds.size.width, height:tableView.contentSize.height))//width:priorBounds.size.width-280
+    
+   //     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.contentSize.width, self.contentSize.height)
+    
+        print (tableView.contentSize.height)//still working on the height
+            
         tableView.bounds = CGRect(x:0, y:0, width:fittedSize.width, height:fittedSize.height)
-        let pdfPageBounds = CGRect(x:0, y:0, width:tableView.frame.width, height:self.view.frame.height)
+        
        // let pdfData = NSMutableData()
+    
+          let pdfPageBounds = CGRect(x:0, y:0, width:tableView.frame.width, height:tableView.contentSize.height)//view.frame.height)
         UIGraphicsBeginPDFContextToData(pdfDataTable, pdfPageBounds,nil)
         var pageOriginY: CGFloat = 0
         while pageOriginY < fittedSize.height {
-            UIGraphicsBeginPDFPageWithInfo(pageWithMargin, nil)
+            UIGraphicsBeginPDFPageWithInfo(pdfPageBounds, nil)
             UIGraphicsGetCurrentContext()!.saveGState()
             UIGraphicsGetCurrentContext()!.translateBy(x: 0, y: -pageOriginY)
             tableView.layer.render(in: UIGraphicsGetCurrentContext()!)
             UIGraphicsGetCurrentContext()!.restoreGState()
             pageOriginY += pdfPageBounds.size.height
-        }
+            }
+    
         UIGraphicsEndPDFContext()
         tableView.bounds = priorBounds
         var docURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
         docURL = docURL.appendingPathComponent("myDocument.pdf")
         pdfDataTable.write(to: docURL as URL, atomically: true)
     return pdfDataTable
+    }
+  */
+     func pdfDataWithTableView(tableView: UITableView) -> NSMutableData {
+       
+        // Don't include scroll indicators in file
+        tableView.showsVerticalScrollIndicator = false
+        
+        // Creates a mutable data object for updating with binary data, like a byte array
+        let pdfData = NSMutableData()
+        
+        // Change the frame size to include all data
+        let originalFrame = tableView.frame
+        tableView.frame = CGRect(x: tableView.frame.origin.x, y: tableView.frame.origin.y, width: tableView.contentSize.width, height:tableView.contentSize.height)
+        CGRect(x: -72, y: 72, width:568, height: (600))
+        // Points the pdf converter to the mutable data object and to the UIView to be converted
+        UIGraphicsBeginPDFContextToData(pdfData, tableView.bounds, nil)
+        UIGraphicsBeginPDFPage()
+        let pdfContext = UIGraphicsGetCurrentContext();
+        
+        // Draws rect to the view and thus this is captured by UIGraphicsBeginPDFContextToData
+        tableView.layer.render(in: pdfContext!)
+        
+        // Remove PDF rendering context
+        UIGraphicsEndPDFContext()
+        
+        // Retrieves the document directories from the iOS device
+       /// let documentDirectories: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        
+       /// let documentDirectory = documentDirectories.objectAtIndex(0)
+       /// let documentDirectoryFilename = documentDirectory.stringByAppendingPathComponent(fileName);
+        
+        // Instructs the mutable data object to write its context to a file on disk
+       /// pdfData.writeToFile(documentDirectoryFilename, atomically: true)
+        
+        // Back to normal size
+        tableView.frame = originalFrame
+        
+        // Put back the scroll indicator
+        tableView.showsVerticalScrollIndicator = true
+        
+       return pdfData
     }
     
     ////////////alerts/////////////////////////////////////
