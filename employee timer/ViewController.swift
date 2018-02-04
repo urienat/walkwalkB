@@ -262,7 +262,11 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
         if  ViewController.professionControl! == "Tutor" { self.homeTitle.title = "Students"} else {self.homeTitle.title = "Accounts"}
 
-    })
+    }
+        , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")}
+    )
     self.fetchEmployers()
     } else {
     print ("newreg\(newRegister)")
@@ -388,15 +392,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     //chose employer
     @IBAction func chooseEmployerBtn(_ sender: AnyObject) {
     noAccount()
-        /*
-    thinking2.startAnimating()
-    employerIDToS = ""
-    employerToS = ""
-    fetchEmployers()
-    self.dbRefEmployee.removeAllObservers()
-    postTimerView()
-    self.animationImage.alpha = 1
- */
     }//end of choose employerbtn
     
     func recordsClicked() {performSegue(withIdentifier: "employerforVC", sender: employerToS)}
@@ -495,7 +490,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         employerIDToS = ""
         employerToS = ""
         fetchEmployers()
-        self.dbRefEmployee.removeAllObservers()
         postTimerView()
         self.animationImage.alpha = 1
     }
@@ -567,12 +561,11 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         self.employerList.isHidden = false;
         self.postTimerView()//check if solve the bug of view interaction
         
-    self.dbRefEmployer.removeAllObservers()
 
     }
 
-    self.dbRefEmployee.removeAllObservers()
     }){(error) in
+        self.alert30()
     print(error.localizedDescription)} // end of dbrefemployer
 
     }//end of i loop
@@ -580,7 +573,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
 
     }){(error) in
     print(error.localizedDescription)}//end of dbref employee
-
+        self.alert30()
     }//end of fetch employer
     
     func preStartView() {

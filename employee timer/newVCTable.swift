@@ -215,21 +215,16 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     billSender.isEnabled = false
     billPay.isEnabled = false
     thinking.startAnimating()
-    //Status = "Approved" ;checkBoxGeneral = 2
-        myGroup.enter()
-        refresh(presser: 1)        //// When your task completes
-        myGroup.notify(queue: DispatchQueue.main) {
-            if self.appArray.count != 0 {self.thinking.stopAnimating();self.billProcess()}
-            if self.appArray.count == 0 {
-                self.thinking.stopAnimating()
-                self.alert27()
-                print("Queue3")
-                self.billStarted = false
-
+    myGroup.enter()
+    refresh(presser: 1)        //// When your task completes
+    myGroup.notify(queue: DispatchQueue.main) {
+        if self.appArray.count != 0 {self.thinking.stopAnimating();self.billProcess()}
+        if self.appArray.count == 0 {
+        self.thinking.stopAnimating()
+        self.alert27()
+        print("Queue3")
+        self.billStarted = false
         }
-        
-        
-    
         }
         }
         }//end of sendBill
@@ -336,7 +331,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }//end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
         override func viewDidAppear(_ animated: Bool) {
-        fetch()
+            fetch {self.final()}
         }//view did appear end
     
    
@@ -359,7 +354,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                 print ("status:\(Status)")
             self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
 
-            fetch()
+                fetch {self.final()}
             }//end of status chosen
     
         @IBOutlet weak var periodChosen: UISegmentedControl!
@@ -370,7 +365,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.thinking.startAnimating()
         StatusChosen.isEnabled = false
         periodChosen.isEnabled = false
-        ;fetch() }
+        ;fetch {self.final()} }
     
         func tableView(_ tableConnect: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -424,7 +419,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                 billManager?.lastPrevious = lastPrevious
                 billManager?.payPalBlock = payPalBlock
                 if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
-                    billManager?.contactForMail = "\(self.accountName) \(self.accountLastName)"
+                billManager?.contactForMail = "\(self.accountName) \(self.accountLastName)"
                 }
 
             }//end of if (segue...
@@ -499,164 +494,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             }//end of loop
         }//end button  Generalclicked
     
-        func fetch()  {
-            connectivityCheck()
-        itemSum = 0
-        eventCounter = 0
-        self.dateDuplicate.removeAll()
-        self.idArray.removeAll()
-        self.indicationArray.removeAll()
-        self.amountArray.removeAll()
-        self.appArray.removeAll()
-        self.records.removeAll()
-        self.FbArray.removeAll()
-        self.FbArray2.removeAll()
-        self.firstTime = true
-        self.firstTimeGeneral = true
-        htmlReport = nil
-                self.tableConnect.reloadData()
-        dbRefEmployers.child(self.employerID).child("myEmployees").queryOrderedByKey().queryEqual(toValue: employeeID).observeSingleEvent(of: .childAdded, with:  {(snapshot) in
-        self.Employerrate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)
-        
-
-        self.dbRefEmployers.child(self.employerID).child("fEmployerRecords").queryOrderedByValue().observeSingleEvent(of: .value, with: { (snapshot) in
-        print("id of employers34\(String(describing: snapshot.value))")
-        if snapshot.value as? [String : AnyObject] == nil {
-        }else{
-        self.idOfEmployers   = snapshot.value as! [String : AnyObject]
-        func sortFunc   (_ s1: (key: String, value: AnyObject), _ s2: (key: String, value: AnyObject)) -> Bool {
-        return   s2.value as! Int > s1.value as! Int
-        }
-
-        self.FbArray = (self.idOfEmployers.sorted(by: sortFunc) as [AnyObject] )
-        print ("recordsFB\(self.FbArray)")
-            
-        for j in 0...(self.FbArray.count-1){
-        let splitItem = self.FbArray[j] as! (String, AnyObject)
-        print (splitItem)
-        let split2    = splitItem.0
-        print (split2)
-            
-        self.FbArray2.append(split2)
-        }
-        
-        print (self.FbArray2)
-           
-        for i in 0...(self.FbArray2.count-1)  {
-        if i == 0 {
-        self.thinking.isHidden = false
-        self.thinking.startAnimating()
-        }
-                
-        self.dbRef.child((self.FbArray2[i])).observeSingleEvent(of: .value, with: { (snapshot) in
-        if let dictionary = snapshot.value as? [String: AnyObject] {
-        let record = recordsStruct()
-        record.setValuesForKeys(dictionary)
-        if record.fEmployeeRef != self.employeeID {
-        //do nothing
-        }else{
-        //array for record ID
-        let id = snapshot.key
-        let appStatus = record.fStatus
-        let indicationItem = record.fIndication3
-        print (record.fIndication3)
-       print (record.fSpecialAmount)
-       print (id)
-            
-        if record.fIndication3 ==  "📄" {self.amountItem = Double(record.fSpecialAmount!)!} else {self.amountItem = 0.00}
-       let dateDuplicate = record.fIn
        
-        if record.fStatus == "Approved" && record.fSpecialAmount == nil {self.eventCounter+=1}
-        if record.fStatus == "Approved" && record.fSpecialAmount != nil {self.itemSum += Double(record.fSpecialAmount!)!}
-
-        let period: Int = 5//self.periodChosen.selectedSegmentIndex
-                        
-        //handle to string to date of fIN from firbase/
-        let finManupulated =  self.mydateFormat5.date(from: record.fIn!) //brings the string as a date
-            
-        //brings the month and day
-        var calendar = Calendar.current
-           // calendar.firstWeekday = 2 // set the week to start on monday
-        let components = calendar.dateComponents([.year, .month, .day, ], from: finManupulated!)
-        let today = calendar.dateComponents([.year, .month, .day], from: Date())
-        self.recotdMonth = components.month!
-        self.recordYear = components.year!
-
-        self.currentMonth = today.month!
-        self.currentYear = today.year!
-                       
-        func cases() {
-        self.currentYear = today.year!
-        self.records.append(record)
-        self.idArray.append(id)
-        self.indicationArray.append(indicationItem!)
-        self.amountArray.append(self.amountItem)
-            if record.fIndication3 !=  "📄"  {self.dateDuplicate.append(dateDuplicate!)}
-        self.appArray.append(appStatus!)
-        self.tableConnect.reloadData()
-       
-            if record.fIndication3 == "📄" {if self.firstTimeGeneral == true {self.csv2.append("There are general Items Included:\r\n");self.firstTimeGeneral = false };"\(self.csv2.append(record.fSpecialItem!))";
-                
-                "\(self.csv2.append("......................................."))" ;self.csv2.append(ViewController.fixedCurrency!); self.csv2.append(record.fSpecialAmount!);self.csv2.append("\r\n")}  else {if self.firstTime == true {self.csv2.append("\r\nThese are the sessions included:\r\n");self.firstTime = false}
-                
-                if ViewController.dateTimeFormat == "DateTime" {"\(self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n")
-                } else {"\(self.csv2.append( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n") }
-            }//end of else
-                
-        }// end of cases func
-            if self.Status == "Approved" {if record.fStatus == "Approved" {cases()}} else if
-                record.fStatus == "Pre" || record.fStatus == "Approved" {cases()
-            }else if record.fStatus == nil
-            {}
-            else if self.Status == "All"
-            {cases()}
-            else {print ("in else: calc is :\(self.calc)")
-            ///    self.amount.text =  ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")
-            }
-       
-        }//end of else of fout is not empty
-                    
-        }// end of if let dictionary
-
-        }, withCancel: { (Error) in
-        print("error from FB")}
-        )//end of dbref2
-            
-        }//end of loop
-        }//end of elseif snapshot.value as? String == nil
-
-        
-        sleep(UInt32(1))
-        self.StatusChosen.isEnabled = true
-        self.periodChosen.isEnabled = true
- 
-        }, withCancel: { (Error) in
-        print("error from FB")}
-        )//end of dbref1the second one
-          
-        }) //end of dbref employers0 the first one
-
-        dbRef.removeAllObservers()
-        dbRefEmployers.removeAllObservers()
-
-        DispatchQueue.main.asyncAfter(deadline: .now()+4){
-            if self.billStarted != true   { self.thinking.stopAnimating()}
-           // if self.billPayStarted != true { self.thinking.stopAnimating()}
-            
-            if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions";if  self.itemSum == 0{self.toolbar1.isHidden = true;self.noSign.isHidden = false}else{self.toolbar1.isHidden = false;self.noSign.isHidden = true}}
-            else if self.eventCounter == 1 {self.toolbar1.isHidden = false;self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) Due session";self.noSign.isHidden = true}
-            else {self.toolbar1.isHidden = false;self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions";self.noSign.isHidden = true}
-
-            self.calc = (Double(self.eventCounter))*(self.Employerrate) + self.itemSum
-
-            self.perEvents.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /session")
-            self.amount.text =  ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")
-            if self.duplicateChecked == false {self.checkDuplicate()}
-            if self.billStarted == true {  self.myGroup.leave() }
-            if self.billPayStarted == true  {self.myGroupBillPay.leave()}
-        }//end of dispatch
-        }//end of fetch
-    
         func amountCalc(){
         print (itemSum)
         print (eventCounter)
@@ -775,8 +613,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
     self.keeper.set(1, forKey: "dueInstruction")
     self.rememberMe1 = 1
-    //self.billSender.isEnabled = true
-    //self.billPay.isEnabled = true
+    
 
     }
     alertController90.addAction(OKAction)
