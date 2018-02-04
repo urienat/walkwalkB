@@ -114,7 +114,7 @@ extension(UIViewController){
     }
   */
      func pdfDataWithTableView(tableView: UITableView) -> NSMutableData {
-       
+       let pageWithMargin = CGRect(x:0, y: 72, width:tableView.contentSize.width, height:tableView.contentSize.height+72 );
         // Don't include scroll indicators in file
         tableView.showsVerticalScrollIndicator = false
         
@@ -124,9 +124,9 @@ extension(UIViewController){
         // Change the frame size to include all data
         let originalFrame = tableView.frame
         tableView.frame = CGRect(x: tableView.frame.origin.x, y: tableView.frame.origin.y, width: tableView.contentSize.width, height:tableView.contentSize.height)
-        CGRect(x: -72, y: 72, width:568, height: (600))
+        //CGRect(x: -72, y: 72, width:568, height: (600))
         // Points the pdf converter to the mutable data object and to the UIView to be converted
-        UIGraphicsBeginPDFContextToData(pdfData, tableView.bounds, nil)
+        UIGraphicsBeginPDFContextToData(pdfData, pageWithMargin, nil)
         UIGraphicsBeginPDFPage()
         let pdfContext = UIGraphicsGetCurrentContext();
         
