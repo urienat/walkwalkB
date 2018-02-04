@@ -12,12 +12,13 @@ import Firebase
 import MessageUI
 
 extension(UIViewController){
-
+/*
     func pdfDataWithTableView(tableView: UITableView) -> NSMutableData {
         let frameRect = CGRect(x: 72, y: 72, width: 468, height: 600);
         let imageRect = CGRect(x: 500, y: 660, width: 100, height: 100);
-        let paperA4 = CGRect(x: 0, y: 0, width: 712, height: 992);
-        let pageWithMargin = CGRect(x: 0, y: -50, width: paperA4.width-50, height: (paperA4.height-50));
+        
+         let paperA4 = CGRect(x: 0, y: 0, width: 712, height: 992)
+        let pageWithMargin = CGRect(x: -72, y: 72, width:568, height: (600));
         let paperRect = CGRect(x: 30, y: 30, width: 512, height:(781.8))
         var firstpage = true
         let Head = "Head"
@@ -40,15 +41,15 @@ extension(UIViewController){
         
         /////////
         let priorBounds = tableView.bounds
-        let fittedSize = tableView.sizeThatFits(CGSize(width:priorBounds.size.width, height:tableView.contentSize.height))
+        let fittedSize = tableView.sizeThatFits(CGSize(width:pageWithMargin.size.width,height:pageWithMargin.size.height)) //width:priorBounds.size.width, height:tableView.contentSize.height))
         tableView.bounds = CGRect(x:0, y:0, width:fittedSize.width, height:fittedSize.height)
-        let pdfPageBounds = paperA4//CGRect(x:0, y:0, width:frameRect.width, height:frameRect.height)
+        let pdfPageBounds = CGRect(x:0, y:0, width:frameRect.width, height:frameRect.height)
         let pdfDataTable = NSMutableData()
-        UIGraphicsBeginPDFContextToData(pdfDataTable, pdfPageBounds,nil)
+        UIGraphicsBeginPDFContextToData(pdfDataTable, pageWithMargin,nil)
         var pageOriginY: CGFloat = 0
         while pageOriginY < fittedSize.height {
             
-            UIGraphicsBeginPDFPageWithInfo(pdfPageBounds, nil)
+            UIGraphicsBeginPDFPageWithInfo(pageWithMargin, nil)
             ///
             let currentContext = UIGraphicsGetCurrentContext()
             currentContext?.textMatrix = CGAffineTransform.identity;
@@ -65,7 +66,7 @@ extension(UIViewController){
             
             tableView.layer.render(in: UIGraphicsGetCurrentContext()!)
             UIGraphicsGetCurrentContext()!.restoreGState()
-            pageOriginY += pdfPageBounds.size.height
+            pageOriginY += pageWithMargin.size.height
         }
         UIGraphicsEndPDFContext()
         tableView.bounds = priorBounds
@@ -75,7 +76,33 @@ extension(UIViewController){
         
         return pdfDataTable
     }
-
+*/
+   func pdfDataWithTableView(tableView: UITableView) -> NSMutableData {
+        let pdfDataTable = NSMutableData()
+        let paperA4 = CGRect(x: 0, y: 0, width: 712, height: 992)
+        let pageWithMargin = CGRect(x: -72, y: 72, width:568, height: (600));
+        let priorBounds = tableView.bounds
+        let fittedSize = tableView.sizeThatFits(CGSize(width:priorBounds.size.width-280, height:tableView.contentSize.height+300))
+        tableView.bounds = CGRect(x:0, y:0, width:fittedSize.width, height:fittedSize.height)
+        let pdfPageBounds = CGRect(x:0, y:0, width:tableView.frame.width, height:self.view.frame.height)
+       // let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfDataTable, pdfPageBounds,nil)
+        var pageOriginY: CGFloat = 0
+        while pageOriginY < fittedSize.height {
+            UIGraphicsBeginPDFPageWithInfo(pageWithMargin, nil)
+            UIGraphicsGetCurrentContext()!.saveGState()
+            UIGraphicsGetCurrentContext()!.translateBy(x: 0, y: -pageOriginY)
+            tableView.layer.render(in: UIGraphicsGetCurrentContext()!)
+            UIGraphicsGetCurrentContext()!.restoreGState()
+            pageOriginY += pdfPageBounds.size.height
+        }
+        UIGraphicsEndPDFContext()
+        tableView.bounds = priorBounds
+        var docURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
+        docURL = docURL.appendingPathComponent("myDocument.pdf")
+        pdfDataTable.write(to: docURL as URL, atomically: true)
+    return pdfDataTable
+    }
     
     ////////////alerts/////////////////////////////////////
     

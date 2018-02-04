@@ -85,7 +85,9 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         self.thinking.stopAnimating()
         self.doSegue()
         }//end of else
-        })
+        } , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")})
         }//end of dispatch
         })//end of firauth
         }//end fbsdkrequest
@@ -342,7 +344,9 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         self.accounCreation()
         self.doSegue()
         }//end of else
-        })
+        } , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")})
         }//end of dispatch
         }//end of infirebase
 

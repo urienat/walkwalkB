@@ -190,9 +190,13 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         else {
         if eachEmployer == self.employerArray2.count-1 {self.saveToDB()}
         }
-        })
+        } , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")})
         }//end of loop
-        })
+        } , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")})
         }//end of func
 
     
@@ -348,7 +352,9 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         dbRefEmployers.child(self.employerID).child("myEmployees").queryOrderedByKey().queryEqual(toValue: employeeID).observeSingleEvent(of:.childAdded, with: { (snapshot) in
         self.RateUpdate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)
         if self.RateUpdate != 0.0 { self.pRate.text = String(self.RateUpdate)} else {self.pRate.text = ""}
-        })//end of dbrefemployers
+        } , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")})//end of dbrefemployers
             
         dbRefEmployers.queryOrderedByKey().queryEqual(toValue: employerID).observeSingleEvent(of: .childAdded, with: { (snapshot) in
         self.nameUpdate = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
@@ -413,8 +419,9 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }) .resume()
         }//end of if let
         }//end of else
-        })  {(error) in //end of dbref
-        print(error.localizedDescription)}//end of second dbrefemployers
+        } , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")})
         }//end of if employers is not new
         }//end of bring employer data
     
