@@ -121,7 +121,11 @@ extension(ViewController){
         self.startButton.setTitle("Session Now", for: .normal);self.startImage.image = self.roundImageBig
         self.RateUpdate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)
         if self.RateUpdate != 0.0 { } else {}
-        })
+        }
+            , withCancel: { (Error) in
+                self.alert30()
+                print("error from FB")}
+            )
         }}//end of dbrefemployers
 
 }//end of ext!!!!!!!!!!//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

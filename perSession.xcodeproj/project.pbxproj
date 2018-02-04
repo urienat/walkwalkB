@@ -40,8 +40,6 @@
 		AEE95E501D7B092A00093B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE95E4E1D7B092A00093B51 /* LaunchScreen.storyboard */; };
 		F42DD2991FB03E6A00BBAE75 /* recordsStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42DD2981FB03E6A00BBAE75 /* recordsStructure.swift */; };
 		F434A5432026EBDF003ED07C /* fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434A5422026EBDF003ED07C /* fetch.swift */; };
-		F448229F1FCEC6C5006880E4 /* recordsOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = F448229E1FCEC6C5006880E4 /* recordsOld.swift */; };
-		F44A2D98201712590024914C /* billSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44A2D97201712590024914C /* billSupport.swift */; };
 		F44CF4041FAB67FA00093950 /* UIControl.h in Headers */ = {isa = PBXBuildFile; fileRef = F44CF4031FAB67FA00093950 /* UIControl.h */; };
 		F46C02AA1FB3139D00EBC4A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46C02A91FB3139D00EBC4A4 /* Assets.xcassets */; };
 		F4C0629E1FCAF927005B2A08 /* calander.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C0629D1FCAF927005B2A08 /* calander.swift */; };
@@ -104,8 +102,6 @@
 		D5756A9D8D83AA717B759692 /* Pods_perSession.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_perSession.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F42DD2981FB03E6A00BBAE75 /* recordsStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recordsStructure.swift; sourceTree = "<group>"; };
 		F434A5422026EBDF003ED07C /* fetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetch.swift; sourceTree = "<group>"; };
-		F448229E1FCEC6C5006880E4 /* recordsOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recordsOld.swift; sourceTree = "<group>"; };
-		F44A2D97201712590024914C /* billSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = billSupport.swift; sourceTree = "<group>"; };
 		F44CF4031FAB67FA00093950 /* UIControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIControl.h; sourceTree = "<group>"; };
 		F46C02A91FB3139D00EBC4A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4C0629D1FCAF927005B2A08 /* calander.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calander.swift; sourceTree = "<group>"; };
@@ -164,7 +160,6 @@
 				AE26E0991E5A02180044C76B /* billerCell.swift */,
 				AE26E0971E59FA400044C76B /* billerTable.swift */,
 				AE0B0A7E1E62D461000E539C /* billView.swift */,
-				F44A2D97201712590024914C /* billSupport.swift */,
 			);
 			name = bill;
 			sourceTree = "<group>";
@@ -208,7 +203,6 @@
 				AEB16BA61DA03986004A6037 /* newVCTable.swift */,
 				F434A5422026EBDF003ED07C /* fetch.swift */,
 				AECEC1C91D8A8E8E007C1D14 /* newTableCell.swift */,
-				F448229E1FCEC6C5006880E4 /* recordsOld.swift */,
 			);
 			name = recordsTable;
 			sourceTree = "<group>";
@@ -497,9 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F44A2D98201712590024914C /* billSupport.swift in Sources */,
 				AE854B671E3A388B00C68CFB /* internetConnection.swift in Sources */,
-				F448229F1FCEC6C5006880E4 /* recordsOld.swift in Sources */,
 				F4EAE2542007873900BB448C /* reportTable.swift in Sources */,
 				AE1B3DB11DF824E100BB507F /* employerCellTableViewCell.swift in Sources */,
 				F4EAE2522007872400BB448C /* reportCell.swift in Sources */,

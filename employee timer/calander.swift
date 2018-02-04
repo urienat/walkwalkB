@@ -357,10 +357,14 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         self.employerArray3[("\(self.employerNameForGoogle) \(self.employerLastNameForGoogle)")] = self.employerArray2[eachEmployer]
         print ("array3\(self.employerArray3)")
 
-        })
+        } , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")})
         }//end of loop
         }//end of dispatch
-        })//end of dbref employeeid
+        } , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")})//end of dbref employeeid
         }//end of find
     
         func helper(){
@@ -384,7 +388,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         if (Date()-(3600*24*45)) > self.mydateFormat5.date(from: self.LastCalander!)! {print ("date is later");self.minDate = (Date()-(3600*24*45))} else {print ("lastcalander is later"); self.minDate = self.mydateFormat5.date(from: self.LastCalander!)!}
         self.alert123()
         }
-        })//end of dbref
+        } , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")})//end of dbref
         //findEmployerId()
         }// end of if current user is not nil
         }//end of ggc
@@ -475,7 +481,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                     if (Date()-(3600*24*45)) > self.mydateFormat5.date(from: self.LastCalander!)! {print ("date is later");self.minDate = (Date()-(3600*24*45))} else {print ("lastcalander is later"); self.minDate = self.mydateFormat5.date(from: self.LastCalander!)!}
                     self.alert123()
                 }
-            })//end of dbref
+            } , withCancel: { (Error) in
+                self.alert30()
+                print("error from FB")})//end of dbref
           //  findEmployerId()
         }// end of if current user is not nil
     }//end of ggc

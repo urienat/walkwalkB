@@ -157,9 +157,9 @@ class datePicker2: UIViewController {
     self.employerID = record.fEmployerRef!
     self.employeeID = record.fEmployeeRef!
     }
-    }, withCancel: { (Error) in
-    print("error from FB123456")
-    })
+    } , withCancel: { (Error) in
+        self.alert30()
+        print("error from FB")})
 
     }//end of func bring record
     

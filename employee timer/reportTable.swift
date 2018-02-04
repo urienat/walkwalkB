@@ -380,7 +380,9 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 
                 self.billerConnect.reloadData()
             }//end of if let dic
-        })//end of dbref
+        } , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")})//end of dbref
         
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){

@@ -207,7 +207,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
 
             if self.taxBillsToHandle == true {self.deleteBtn.isEnabled = false}
             self.attributedText(attributed: self.recoveredReciept)
-            })
+            } , withCancel: { (Error) in
+                self.alert30()
+                print("error from FB")})
             }//end of rerreciept
 
             func  reBill() {
@@ -251,11 +253,15 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             }
             self.billReciept.insertSegment(withTitle: "Invoice", at: 0, animated: true)
             }
-            })
+            } , withCancel: { (Error) in
+                self.alert30()
+                print("error from FB")})
             if self.recieptsArray2.isEmpty{
             print (" (self.recieptsArray)is empty")
             self.billReciept.isHidden = true}
-            })
+            } , withCancel: { (Error) in
+                self.alert30()
+                print("error from FB")})
             }//end rebill clicked
 
             func attributedText(attributed:String) {

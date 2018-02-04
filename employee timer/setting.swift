@@ -328,13 +328,15 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
         //  upload to cache
         MyImageCache.sharedCache.setObject(UIImage(data: Data!)!, forKey: self.employeeRefUpdate as AnyObject , cost: (Data?.count)!) // upload to cache
-        }) .resume()
+        })
+        .resume()
         }//end of if let url
         //end of bring from firebase
         } //end of if lf let profile
         }//end of else
-        }) {(error) in
-        print("error form FB\(error.localizedDescription)")}//end of dbref
+            } , withCancel: { (Error) in
+                self.alert30()
+                print("error from FB")})//end of dbref
         }//end of if let current user
         }//end of if current user !=nil
         
@@ -506,7 +508,9 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String  != self.precentage.text!  ||
             snapshot.childSnapshot(forPath: "fTaxId").value as! String != self.taxId.text!
             {self.alert6() } else {self.saveToDB()}
-        })
+        } , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")})
     }
 
         func saveToDB() {
