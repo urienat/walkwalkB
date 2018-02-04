@@ -2612,6 +2612,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="editPartial:" destination="Grl-4C-vV7" eventType="editingDidBegin" id="42G-d4-N58"/>
+                                            <action selector="editPartialEnd:" destination="Grl-4C-vV7" eventType="editingDidEnd" id="zkj-UJ-O9n"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGp-Px-mK1" userLabel="btnFully">

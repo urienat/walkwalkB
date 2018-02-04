@@ -247,7 +247,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
     let currentUser = FIRAuth.auth()?.currentUser
     if currentUser != nil {
-    connectivityCheck()
+  
     self.employeeIDToS = (currentUser!.uid)
     
     self.dbRefEmployee.queryOrderedByKey().queryEqual(toValue: currentUser?.uid).observeSingleEvent(of: .childAdded, with: { (snapshot) in
@@ -324,7 +324,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         mydateFormat7.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd MMM, (HH:mm)",options: 0, locale: nil)!
         
-
+  connectivityCheck()
         
         
     }// end of viewdidload//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -495,7 +495,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }
 
     func fetchEmployers() {
-      connectivityCheck()
+     // connectivityCheck()
     self.employerIdArray.removeAll()
     self.employerIdArray2.removeAll()
     self.pickerData.removeAll()
@@ -564,16 +564,16 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
 
     }
 
-    }){(error) in
-        self.alert30()
-    print(error.localizedDescription)} // end of dbrefemployer
+    }, withCancel: { (Error) in
+        self.alert30(); print(Error.localizedDescription)
+        print("error from FB")})// end of dbrefemployer
 
     }//end of i loop
     }//end of idarray2 is empty
 
-    }){(error) in
-    print(error.localizedDescription)}//end of dbref employee
-        self.alert30()
+    }, withCancel: { (Error) in
+        self.alert30(); print(Error.localizedDescription)
+        print("error from FB")})// end of
     }//end of fetch employer
     
     func preStartView() {

@@ -100,16 +100,18 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     @IBAction func btnPartially(_ sender: Any) {
         print("fully")
-        fullyOptions()
+      fullyOptions()
     }
     
    
+    @IBAction func editPartialEnd(_ sender: Any) {
+        if partialPayment.text == "" {sacePayment.isEnabled = false} else {sacePayment.isEnabled = true}
+    }
     @IBAction func editPartial(_ sender: Any) {
-    
-    
-    
+        fully=false
         print("partial begin")
          fullyOptions()
+        
     }
     @IBAction func btnFully(_ sender: Any) {
         fullyOptions()
@@ -344,7 +346,11 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         self.accountLastName = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
         self.accountParnet = String(describing: snapshot.childSnapshot(forPath: "fParent").value!) as String!
             
-        })
+        }
+            , withCancel: { (Error) in
+                self.alert30()
+                print("error from FB")}
+        )
         }//end of if
         billerConnect.delegate = self
         billerConnect.dataSource = self
@@ -558,7 +564,11 @@ print (self.billItems.count)
             
         self.billerConnect.reloadData()
         }//end of if let dic
-        })//end of dbref
+        }
+            , withCancel: { (Error) in
+                self.alert30()
+                print("error from FB")}
+        )//end of dbref
             
 
 
@@ -646,7 +656,11 @@ print (self.billItems.count)
             //self.totalTax.text = "Tax \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
             self.billerConnect.reloadData()
             }//end of if let dic
-            })//end of dbref
+            }
+                , withCancel: { (Error) in
+                    self.alert30()
+                    print("error from FB")}
+            )//end of dbref
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             if self.billItems.count != self.BillArray.count {
@@ -713,7 +727,11 @@ print (self.billItems.count)
         }else {
                     self.alert9()}// end of if cancelled
         
-                 })
+                 }
+                , withCancel: { (Error) in
+                    self.alert30()
+                    print("error from FB")}
+            )
         if StatusChoice == "Not Paid"{
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             self.StatusChosen.isEnabled = true
@@ -827,8 +845,16 @@ print (self.billItems.count)
                 self.accountName = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
                 self.accountLastName = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
                 self.accountParnet = String(describing: snapshot.childSnapshot(forPath: "fParent").value!) as String!
-            })
-            })
+            }
+                , withCancel: { (Error) in
+                    self.alert30()
+                    print("error from FB")}
+            )
+            }
+            , withCancel: { (Error) in
+                self.alert30()
+                print("error from FB")}
+        )
         
         recieptDate = mydateFormat5.string(from: Date())
         
@@ -896,11 +922,6 @@ print (self.billItems.count)
             self.address = (snapshot.childSnapshot(forPath: "fAddress").value as! String)
             self.taxForBlock = "VAT"
             
-            
-            
-          
-            
-            
             if  taxSwitch == "Yes" {
             self.taxationBlock = ("Total (without \(self.taxForBlock!)): \(ViewController.fixedCurrency!)\(self.midCalc3!)\r\n\(self.taxForBlock!): \(ViewController.fixedCurrency!)\(self.midCalc!)")
             }//if taxswitch = yes
@@ -920,7 +941,11 @@ print (self.billItems.count)
             self.paymentBlock = ("Payment of \(ViewController.fixedCurrency!)\(self.recieptPayment!) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))  \(self.refernceBlock!) ")
             } else {self.paymentBlock = "Payment of \(ViewController.fixedCurrency!)\(self.recieptPayment!) made by \(self.paymentSys!) \(self.refernceBlock!) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))"
             }
-        })
+        }
+            , withCancel: { (Error) in
+                self.alert30()
+                print("error from FB")}
+        )
     }//end of billing
     
     func monther(monthNumber:Int)  {
