@@ -2990,20 +2990,32 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YVF-H5-8sR" userLabel="perEvents">
-                                        <rect key="frame" x="8" y="31" width="150" height="25"/>
+                                        <rect key="frame" x="8" y="31" width="0.0" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="MDV-KF-liJ"/>
-                                            <constraint firstAttribute="width" constant="150" id="o8N-tJ-9fl"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGo-ek-wbx" userLabel="noRateInfo">
+                                        <rect key="frame" x="16" y="23" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="ILq-oh-sMM"/>
+                                            <constraint firstAttribute="height" constant="40" id="qOE-ba-REl"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="‼️">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="noRateInfo:" destination="KQc-zY-Jl3" eventType="touchUpInside" id="FnQ-pe-NDv"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Kbw-MS-DaF" userLabel="Events">
-                                        <rect key="frame" x="8" y="4.5" width="150" height="25"/>
+                                        <rect key="frame" x="8" y="4.5" width="7" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="CcV-rb-4wC"/>
-                                            <constraint firstAttribute="width" constant="150" id="kLb-2E-soc"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3016,6 +3028,8 @@
                                     <constraint firstAttribute="trailing" secondItem="97h-H1-ijY" secondAttribute="trailing" constant="8" id="6mR-aC-RDc"/>
                                     <constraint firstItem="Kbw-MS-DaF" firstAttribute="top" secondItem="NbR-aV-1V6" secondAttribute="top" constant="4" id="FCS-Je-Mkc"/>
                                     <constraint firstItem="Kbw-MS-DaF" firstAttribute="leading" secondItem="NbR-aV-1V6" secondAttribute="leading" constant="8" id="I3L-vA-Orh"/>
+                                    <constraint firstItem="KGo-ek-wbx" firstAttribute="centerY" secondItem="YVF-H5-8sR" secondAttribute="centerY" id="M99-46-Hws"/>
+                                    <constraint firstItem="KGo-ek-wbx" firstAttribute="leading" secondItem="YVF-H5-8sR" secondAttribute="trailing" constant="8" id="PAF-wM-fec"/>
                                     <constraint firstItem="97h-H1-ijY" firstAttribute="centerY" secondItem="NbR-aV-1V6" secondAttribute="centerY" id="XoZ-0I-AeG"/>
                                     <constraint firstAttribute="height" constant="60" id="e3T-af-5Xd"/>
                                     <constraint firstItem="YVF-H5-8sR" firstAttribute="leading" secondItem="Kbw-MS-DaF" secondAttribute="leading" id="kP0-Zq-IaS"/>
@@ -3161,6 +3175,7 @@
                         <outlet property="billPay" destination="OzA-Mw-ocR" id="Wr9-Km-ETk"/>
                         <outlet property="billSender" destination="OJv-uh-gXy" id="Fys-cH-WHz"/>
                         <outlet property="eventsLbl" destination="Kbw-MS-DaF" id="gRA-9v-92S"/>
+                        <outlet property="noRateInfo" destination="KGo-ek-wbx" id="jXf-Ha-RcQ"/>
                         <outlet property="noSign" destination="cvq-V7-JIv" id="osH-3A-zXl"/>
                         <outlet property="paymentMethood" destination="TcQ-To-oTL" id="iWm-aD-oZn"/>
                         <outlet property="paymentView" destination="onk-I2-XsT" id="6Sg-fo-EWD"/>

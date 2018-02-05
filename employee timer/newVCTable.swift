@@ -33,13 +33,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
     var contact:String?
 
-    
     let myGroup = DispatchGroup()
     let myGroupBillPay = DispatchGroup()
 
     var billStarted: Bool?
     var billPayStarted: Bool?
-    
     
     var lastPrevious = ""
 
@@ -197,6 +195,13 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var noSign: UIImageView!
     @IBOutlet weak var billPay: UIBarButtonItem!
     @IBOutlet weak var billSender: UIBarButtonItem!
+    @IBOutlet weak var noRateInfo: UIButton!
+    
+    @IBAction func noRateInfo(_ sender: Any) {
+    
+    print("GGG")
+    alert80()
+    }
     
     func firstTask(completion: (_ success: Bool) -> Void) {
         // Do something
@@ -217,7 +222,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     myGroup.enter()
     refresh(presser: 1)        //// When your task completes
     myGroup.notify(queue: DispatchQueue.main) {
-        if self.appArray.count != 0 {self.thinking.stopAnimating();self.billProcess()}
+        if self.appArray.count != 0  && self.Employerrate != 0.0 {self.thinking.stopAnimating();self.billProcess()}
+        if self.Employerrate == 0.0 {self.thinking.stopAnimating();self.alert80()}
         if self.appArray.count == 0 {
         self.thinking.stopAnimating()
         self.alert27()
@@ -238,9 +244,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     myGroupBillPay.enter()
     refresh(presser: 1)        //// When your task completes
     myGroupBillPay.notify(queue: DispatchQueue.main) {
-    if self.appArray.count != 0 {
+    if self.appArray.count != 0  && self.Employerrate != 0.0{
     self.paymentView.isHidden = false
     }
+    if self.Employerrate == 0.0 {self.thinking.stopAnimating();self.alert80()}
     if self.appArray.count == 0 {
     self.thinking.stopAnimating()
     self.alert27()
@@ -599,6 +606,15 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     self.present(alertController90, animated: true, completion: nil)
     }
     
+    func alert80(){
+        let alertController80 = UIAlertController(title: ("No Rate") , message: "You can't bill as there is no rate for this acoount. You can set it at \(accountName) \(accountLastName) - 'Profile'", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+        self.navigationController!.popViewController(animated: true)
+
+        }
+        alertController80.addAction(OKAction)
+        self.present(alertController80, animated: true, completion: nil)
+    }
     
     
     func billProcess() {
