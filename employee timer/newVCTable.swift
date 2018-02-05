@@ -473,20 +473,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }//end of if
         }//end movesession
     
-        func  generalApprovalClicked() {
-        print ("general approval clicked")
-        print (sessionAllChanger)
-            for h in 0...(appArray.count-1){
-            buttonRow = h
-            if sessionAllChanger == 1 {  statusTemp = "Approved"} else {  statusTemp = "Pre"; }
-            if statusTemp != appArray[buttonRow] {
-            appArray[buttonRow] = statusTemp!
-            self.dbRef.child(String(idArray[buttonRow])).updateChildValues(["fStatus": statusTemp!], withCompletionBlock: { (error) in}) //end of update.
-            }
-            }//end of loop
-        }//end button  Generalclicked
-    
-       
+              
         func amountCalc(){
         print (itemSum)
         print (eventCounter)

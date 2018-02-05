@@ -743,7 +743,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     
     func alert670(){
-        let alertController67 = UIAlertController(title: ("Inactive alert") , message: "This is an inactive account. You can only handle past bills and you can reactivate the account at 'Profile'.", preferredStyle: .alert)
+        let alertController67 = UIAlertController(title: ("Not Active alert") , message: "This account isn't active. You can only handle past invoices or you can reactivate the account at 'Profile'.", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
         }
         alertController67.addAction(OKAction)

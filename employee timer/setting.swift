@@ -718,7 +718,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     }
     
     func alert17(){
-    let alertController17 = UIAlertController(title: ("Taxation") , message: "The precentage of tax you chose would add on top of your bill for 'Over' and would be deducted from your rate for 'Included'. ", preferredStyle: .alert)
+    let alertController17 = UIAlertController(title: ("Taxation") , message: "The precentage of tax you chose would be added on top of your Invoice for 'Excluded' or would be included in this rate for 'Included' option. ", preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
     }
     alertController17.addAction(OKAction)

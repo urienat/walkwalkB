@@ -840,7 +840,7 @@ print (self.billItems.count)
             if  (snapshot.childSnapshot(forPath: "fBalance").value! as? String) != nil { self.balance = (snapshot.childSnapshot(forPath: "fBalance").value! as? String)!} else {self.balance = (snapshot.childSnapshot(forPath: "fBillTotalTotal").value! as? String)!}
             if  (snapshot.childSnapshot(forPath: "fRecieptCounter").value! as? String) != nil { self.recieptCounter = (snapshot.childSnapshot(forPath: "fRecieptCounter").value! as? String)!} else {self.recieptCounter = "1"}
             self.dbRefEmployers.child(self.employerID).observeSingleEvent(of:.value, with: {(snapshot) in
-                //self.lastPrevious = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!
+               
                 self.accountAdress = String(describing: snapshot.childSnapshot(forPath: "fAddress").value!) as String!
                 self.accountName = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
                 self.accountLastName = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!

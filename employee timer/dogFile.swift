@@ -116,7 +116,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if self.employerFromMain == "Add Account" {
             self.lbl = "New Account"
             self.title = lbl
-            if ViewController.professionControl == "Tutor" {self.studentParentNameText.text = ""}
+            self.studentParentNameText.text = ""
             self.pName.text = ""
             self.pLastName.text = ""
             self.pEmail.text = ""
@@ -211,7 +211,9 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if self.activeEmployerSwitch == true {self.activeEmployerSwitch = false} else {self.activeEmployerSwitch = true}
             
             self.dbRefEmployers.child(self.employerID).updateChildValues(["fName" : self.pName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!, "fRem" : self.pRem.text!, "fEmployer":self.pLastName.text!,"fActive" : self.activeEmployerSwitch!])
-            if ViewController.professionControl == "Tutor" {self.dbRefEmployers.child(self.employerID).updateChildValues(["fParent" : self.studentParentNameText.text!])}
+            if ViewController.professionControl == "Tutor" {self.dbRefEmployers.child(self.employerID).updateChildValues(["fParent" : self.studentParentNameText.text!])} else {
+                self.dbRefEmployers.child(self.employerID).updateChildValues(["fParent" : ""])
+            }
            
             //in firebase under url
             print ("employerId to store cache and FB:\(self.employerID)")
@@ -367,7 +369,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if self.activeEmployerSwitch == true { self.activeEmployer.image = self.Vimage
         self.activeButton.setTitle("", for: .normal)
         self.activeEmployerSwitch = false} else {self.activeEmployer.image = self.emptyVimage
-        self.activeButton.setTitle("Inactive", for: .normal)
+        self.activeButton.setTitle("Not Active", for: .normal)
         self.activeEmployerSwitch = true}
     
         self.emailUpdate = snapshot.childSnapshot(forPath: "fMail").value! as! String //probelm when set on connect it i sdeleted

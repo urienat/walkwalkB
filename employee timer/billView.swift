@@ -123,7 +123,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         let shareProcess = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(share))
 
         trashBtn.setImage(trashImage , for: .normal)
-        trashBtn.setTitle("Bill", for: .normal)
+        //trashBtn.setTitle("Bill", for: .normal)
         //btn4.setTitleColor(blueColor, for: .normal)
         //btn4.frame = CGRect(x: 0, y: 0, width: 20, height: 40)
         trashBtn.addTarget(self, action:#selector(deleteAlert), for: UIControlEvents.touchDown)
