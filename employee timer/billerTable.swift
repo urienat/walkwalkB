@@ -29,7 +29,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var grayColor = UIColor(red :235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1)
     var counterForpresent:String?
     var lastPrevious = ""
-    
+    var a = 0
      let myGroupMemory = DispatchGroup()
 
     var accountAdress = ""
@@ -230,7 +230,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var filterBG: UIView!
     @IBAction func noneBtn(_ sender: Any) {
     filterDecided = 0
-    fetchBills()
+    fetchHandler() //fetchBills()
     filterImageConstrain.constant = 20
     btnFilter.setImage (greenFilter, for: .normal)
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
@@ -240,7 +240,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     @IBAction func currentMonthBtn(_ sender: Any) {
     filterDecided = 1
-        fetchBills()
+        fetchHandler() //fetchBills()
     filterImageConstrain.constant = 60
     filterChoiceImage.reloadInputViews()
 
@@ -253,7 +253,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBAction func lastMonthBtn(_ sender: Any) {
     filterImageConstrain.constant = 100
     filterDecided = 2
-        fetchBills()
+        fetchHandler() //fetchBills()
         btnFilter.setImage (redFilter, for: .normal)
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
     self.filterMovement(delay: 1.3)
@@ -263,7 +263,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBAction func currentYearBtn(_ sender: Any) {
     filterImageConstrain.constant = 140
     filterDecided = 3
-        fetchBills()
+      fetchHandler() //fetchBills()
         btnFilter.setImage (redFilter, for: .normal)
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
     self.filterMovement(delay: 1.3)
@@ -273,7 +273,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBAction func lastYearBtn(_ sender: Any) {
     filterImageConstrain.constant = 180
     filterDecided = 4
-        fetchBills()
+       fetchHandler() //fetchBills()
         btnFilter.setImage (redFilter, for: .normal)
     DispatchQueue.main.asyncAfter(deadline: .now() + 1){
     self.filterMovement(delay: 1.3)
@@ -517,11 +517,10 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             
         }//end of prepare
     
-        func fetchBills(){
+         func fetch(completion: @escaping () -> () ){
             connectivityCheck()
             myGroupMemory.enter()
             
-           
         billItems.removeAll()
         BillArray.removeAll()
         BillArrayStatus.removeAll()
@@ -567,15 +566,15 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             case 4:if self.currentYear-1 == self.recordYear {inFilter()}
             default: inFilter()
             } //end of switch
+           
             
             
-print (self.billItems.count)
+            }
+           
+            self.a += 1
+            print ("a\(self.a)")
+            completion()
             
-        
-            
-       self.billerConnect.reloadData()
-            
-        }//end of if let dic
         }
             , withCancel: { (Error) in
                 self.alert30()
@@ -584,28 +583,31 @@ print (self.billItems.count)
             
             
 
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-        if self.billItems.count != self.BillArray.count {
-        print ("Stop")
-        }
-
-        self.thinking.isHidden = true
-        self.thinking.stopAnimating()
-        if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
         
+        }//end of fetch
+    
+    func final(){
+        print ("final")
+    self.billerConnect.reloadData()
+            if self.billItems.count != self.BillArray.count {
+                print ("Stop")
+            }
+            
+            self.thinking.isHidden = true
+            self.thinking.stopAnimating()
+            if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
+            
             if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
             
             self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
             self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
             if ViewController.taxOption == "Yes"{ self.totalTax.text = "* Total included tax";self.totalBg.backgroundColor = self.blueColor} else { self.totalTax.text = "* Cancelled bills excluded";self.totalBg.backgroundColor = self.blueColor}
             if self.StatusChoice == "Not Paid" {self.totalTax.text = "* Balance only"; self.totalBg.backgroundColor = self.redColor}
-
-        self.StatusChosen.isEnabled = true
-        self.myGroupMemory.leave()
-        }
-
-        }//end of fetch
+            
+            self.StatusChosen.isEnabled = true
+            //self.myGroupMemory.leave()
+        
+            }
     
             func billsForTaxMonth(){
             billItems.removeAll()
@@ -709,7 +711,7 @@ print (self.billItems.count)
             self.title = titleLbl
         default: break
         } //end of switch
-                fetchBills()
+               fetchHandler() //fetchBills()
         }
     
         // button on table clicked
@@ -1005,7 +1007,9 @@ print (self.billItems.count)
     
     func fetchHandler(){
         myGroupMemory.enter()
-        fetchBills()
+        fetch {
+           self.final()
+        }
         myGroupMemory.notify(queue: DispatchQueue.main) {self.showRow()}
     }
     
