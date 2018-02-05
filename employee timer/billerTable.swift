@@ -570,12 +570,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             
 print (self.billItems.count)
             
-        if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
-            
-        self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
-        self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
-            if ViewController.taxOption == "Yes"{ self.totalTax.text = "* Total included tax";self.totalBg.backgroundColor = self.blueColor} else { self.totalTax.text = "* Cancelled bills excluded";self.totalBg.backgroundColor = self.blueColor}
-            if self.StatusChoice == "Not Paid" {self.totalTax.text = "* Balance only"; self.totalBg.backgroundColor = self.redColor}
+        
             
        self.billerConnect.reloadData()
             
@@ -597,9 +592,16 @@ print (self.billItems.count)
         self.thinking.isHidden = true
         self.thinking.stopAnimating()
         if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
+        
+            if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
+            
+            self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
+            self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
+            if ViewController.taxOption == "Yes"{ self.totalTax.text = "* Total included tax";self.totalBg.backgroundColor = self.blueColor} else { self.totalTax.text = "* Cancelled bills excluded";self.totalBg.backgroundColor = self.blueColor}
+            if self.StatusChoice == "Not Paid" {self.totalTax.text = "* Balance only"; self.totalBg.backgroundColor = self.redColor}
 
         self.StatusChosen.isEnabled = true
-        self.myGroupMemory.leave() 
+        self.myGroupMemory.leave()
         }
 
         }//end of fetch
