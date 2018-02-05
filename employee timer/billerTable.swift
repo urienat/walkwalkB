@@ -14,13 +14,11 @@ import MessageUI
 class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMailComposeViewControllerDelegate {
     
     let billDocument = UIImage(named: "billDocument")
-    //let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
     let Vimage = UIImage(named:"vNaked")// "due")
     let nonVimage = UIImage(named: "blank")
     
     let paidImage = UIImage(named: "paid")
     let canceledImage = UIImage(named: "cancelled")
-    //let greenFilter = UIImage(named: "sandWatchGreen")
     let greenFilter = UIImage(named: "filterBlack")
     let redFilter = UIImage(named: "filterRed")
     let partially = UIImage(named: "partially")
@@ -30,7 +28,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var counterForpresent:String?
     var lastPrevious = ""
     var a = 0
-     let myGroupMemory = DispatchGroup()
 
     var accountAdress = ""
     var accountName = ""
@@ -381,9 +378,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         override func viewDidAppear(_ animated: Bool) {
         firebaseConnectivity()
         
-            
-           
-        
         if taxBillsToHandle == false {
         print (taxBillsToHandle)
                 
@@ -393,9 +387,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 billsForTaxMonth();StatusChosen.isHidden = true;titleLbl = "\(monthMMM!)-\(yearToHandle)";self.title = titleLbl}
         print (billItems.count)
         billerConnect.reloadData()
-      
-            
-            
+         
         }//view did appear end
     
         func tableView(_ billerConnect: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -510,8 +502,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billManager?.undoTotal = String(Double(self.balance!)!)
         if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
         billManager?.contactForMail = "\(self.accountName) \(self.accountLastName)"}
-
-        
 
         }//end of if (segue...
             
@@ -909,17 +899,12 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             self.imagePartially.image = Vimage
             partialPayment.isEnabled = true
 
-            
-            
         }
         
     }
     
-   
-
             // alerts////////////////////////////////////////////////////////////////////////////////////////////
     
-
             func alert9(){
             let alertController9 = UIAlertController(title: ("Invoice Alert") , message: "You can't change status of a cancelled Invoice.", preferredStyle: .alert)
             let OkAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in

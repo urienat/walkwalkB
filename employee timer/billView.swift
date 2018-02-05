@@ -199,7 +199,6 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     
             func reReciept(){
             self.dbRefEmployee.child(employeeID).child("myReciepts").child(billToHandle!).child(self.recieptsArray2[self.billReciept.selectedSegmentIndex-1]).observeSingleEvent(of: .value,with: { (snapshot) in
-
             self.recoveredReciept = (snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String)!
             self.recieptStatus = (snapshot.childSnapshot(forPath: "fActive").value! as? String)!
             self.document = (snapshot.childSnapshot(forPath: "fDocument").value! as? String)!
@@ -207,9 +206,15 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             // self.documentCounter = (snapshot.childSnapshot(forPath: "fBill").value! as? String)!
             if self.recieptStatus !=  "Yes" {
             self.statusImage.image = self.canceledImage;
-            self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "!!!!!!!!!!This document was cancelled: \(self.mydateFormat8.string(from: self.mydateFormat5.date(from: self.recieptStatus!)! ))!!!!!!!!!!"} else {self.deleteBtn.isEnabled = true; self.billStatusForRecovery = ""}
+            self.deleteBtn.isEnabled = false;self.billStatusForRecovery = "!!!!!!!!!!This document was cancelled: \(self.mydateFormat8.string(from: self.mydateFormat5.date(from: self.recieptStatus!)! ))!!!!!!!!!!"} else {self.deleteBtn.isEnabled = true;
+                
+                self.billStatusForRecovery = ""}
+                
+                print (self.taxBillsToHandle)
 
-            if self.taxBillsToHandle == true {self.deleteBtn.isEnabled = false}
+            if self.taxBillsToHandle == true {
+                self.deleteBtn.isEnabled = false
+                }
             self.attributedText(attributed: self.recoveredReciept)
             } , withCancel: { (Error) in
                 self.alert30()
@@ -575,6 +580,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(String("-\(self.documentCounter!)")!).child(String(billReciept.selectedSegmentIndex)).updateChildValues(["fActive" : self.mydateFormat5.string(from: Date())])
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.0){
+            
         self.navigationController!.popViewController(animated: true)
         }//end of dispatch
         }

@@ -10,17 +10,13 @@ import Foundation
 extension(biller){
 
         func fetchHandler() {
-        myGroupMemory.enter()
-        fetch {
-        self.final()
+        fetch {self.final()
         }
-        myGroupMemory.notify(queue: DispatchQueue.main) {self.showRow()}
         }
 
     
             func fetch(completion: @escaping () -> () ){
             connectivityCheck()
-            myGroupMemory.enter()
 
             billItems.removeAll()
             BillArray.removeAll()
@@ -28,8 +24,14 @@ extension(biller){
             self.billCounter = 0
             self.taxCounter = 0
             self.AmountCounter = 0
+                
+            self.dbRefEmployees.child(employeeID).child("myBills").observeSingleEvent(of:.value, with: { (snapshot) in
+                print ("count:\(snapshot.childrenCount)")
+                let billsNumber = snapshot.childrenCount
+                
+            
+            self.dbRefEmployees.child(self.employeeID).child("myBills").observe(.childAdded, with: { (snapshot) in
 
-            self.dbRefEmployees.child(employeeID).child("myBills").observe(.childAdded, with: { (snapshot) in
             if let dictionary =  snapshot.value as? [String: AnyObject] {
             print ("snappp\(snapshot.value!)")
             let billItem = billStruct()
@@ -68,27 +70,25 @@ extension(biller){
             default: inFilter()
             } //end of switch
 
-
-
-            }
-
+            }//end of if let
+            
             self.a += 1
             print ("a\(self.a)")
-            completion()
-
+                if billsNumber == self.a{ completion()}
+                
             }
             , withCancel: { (Error) in
             self.alert30()
             print("error from FB")}
             )//end of dbref
 
-
-
-
+                
+            })//end of count dbref
+                
             }//end of fetch
 
             func final(){
-            print ("final")
+            print ("a for final\(a)")
             self.billerConnect.reloadData()
             if self.billItems.count != self.BillArray.count {
             print ("Stop")
@@ -106,7 +106,8 @@ extension(biller){
             if self.StatusChoice == "Not Paid" {self.totalTax.text = "* Balance only"; self.totalBg.backgroundColor = self.redColor}
 
             self.StatusChosen.isEnabled = true
-            //self.myGroupMemory.leave()
+            
+            showRow()
 
             }
     
@@ -115,6 +116,8 @@ extension(biller){
     
     
         func showRow(){
+        print (rowMemory)
+            
         if self.rowMemory != nil {
         var index = IndexPath.init(row: self.rowMemory!, section: 0)
         self.billerConnect.selectRow(at: index, animated: true, scrollPosition: .none)
