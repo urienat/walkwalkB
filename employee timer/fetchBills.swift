@@ -88,18 +88,17 @@ extension(biller){
             }//end of fetch
 
             func final(){
+                
             print ("a for final\(a)")
             self.billerConnect.reloadData()
             if self.billItems.count != self.BillArray.count {
             print ("Stop")
+                
             }
 
             self.thinking.isHidden = true
             self.thinking.stopAnimating()
             if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
-
-            if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
-
             self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
             self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
             if ViewController.taxOption == "Yes"{ self.totalTax.text = "* Total included tax";self.totalBg.backgroundColor = self.blueColor} else { self.totalTax.text = "* Cancelled bills excluded";self.totalBg.backgroundColor = self.blueColor}
