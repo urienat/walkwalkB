@@ -387,7 +387,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         if taxBillsToHandle == false {
         print (taxBillsToHandle)
                 
-        fetchBills(); StatusChosen.isHidden = false} else {filterDecided = 7 ;monther(monthNumber: monthToHandle);
+         fetchHandler()   ///fetchBills()
+        ; StatusChosen.isHidden = false} else {filterDecided = 7 ;monther(monthNumber: monthToHandle);
                 
                 billsForTaxMonth();StatusChosen.isHidden = true;titleLbl = "\(monthMMM!)-\(yearToHandle)";self.title = titleLbl}
         print (billItems.count)
@@ -1002,7 +1003,9 @@ print (self.billItems.count)
         
     }
     
-    func memoryHandler(){
+    func fetchHandler(){
+        myGroupMemory.enter()
+        fetchBills()
         myGroupMemory.notify(queue: DispatchQueue.main) {self.showRow()}
     }
     
