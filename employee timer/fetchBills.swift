@@ -17,7 +17,8 @@ extension(biller){
     
             func fetch(completion: @escaping () -> () ){
             connectivityCheck()
-
+            a = 0
+            var billsNumber = 0
             billItems.removeAll()
             BillArray.removeAll()
             BillArrayStatus.removeAll()
@@ -27,7 +28,7 @@ extension(biller){
                 
             self.dbRefEmployees.child(employeeID).child("myBills").observeSingleEvent(of:.value, with: { (snapshot) in
                 print ("count:\(snapshot.childrenCount)")
-                let billsNumber = snapshot.childrenCount
+                billsNumber = Int(snapshot.childrenCount)
                 
             
             self.dbRefEmployees.child(self.employeeID).child("myBills").observe(.childAdded, with: { (snapshot) in
@@ -73,7 +74,7 @@ extension(biller){
             }//end of if let
             
             self.a += 1
-            print ("a\(self.a)")
+            print ("a before\(self.a)")
                 if billsNumber == self.a{ completion()}
                 
             }
