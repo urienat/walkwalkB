@@ -81,7 +81,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     var statusCanclledDate: String?
     var lastPrevious = ""
     var registerTitle : String?
-    var recieptChosen:Bool?
+    var recieptChosen:Bool = false
     var recieptStatus :String?
 
     @IBOutlet weak var scrollView: UIScrollView!
@@ -548,6 +548,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         //nothing
         }
         let deleteAction = UIAlertAction(title: "Delete it.", style: .default) { (UIAlertAction) in
+            print (self.recieptChosen)
+            
         if self.recieptChosen == false {
         self.dbRefEmployee.child(self.employeeID).child("myBills").child(String(self.billToHandle!)).updateChildValues([ "fBillStatus":"Cancelled","fBillStatusDate": self.mydateFormat5.string(from: Date())])
 

@@ -74,7 +74,7 @@ extension(ViewController){
                 
                 if activeData[indexPath.row] == false {
              print ("alpha")
-                cell2.employerFirst.alpha = 1;cell2.lastDocument.alpha = 1}
+                cell2.employerFirst.alpha = 0.5;cell2.lastDocument.alpha = 0.5}
                 
                 else{ cell2.employerFirst.alpha = 1;cell2.lastDocument.alpha = 1 }
                 
@@ -82,7 +82,7 @@ extension(ViewController){
             
                 
 
-                if activeData[indexPath.row] == false {cell2.lastDocument?.text = "\(lastDocument[indexPath.row])"; cell2.employerFirst?.text =  "\(nameData[indexPath.row]) \(pickerData[indexPath.row]) - Inactive"} else{cell2.employerFirst?.text =  "\(nameData[indexPath.row]) \(pickerData[indexPath.row])";cell2.lastDocument?.text = "\(lastDocument[indexPath.row])"}
+                if activeData[indexPath.row] == false {cell2.lastDocument?.text = "Not Active!"; cell2.employerFirst?.text =  "\(nameData[indexPath.row]) \(pickerData[indexPath.row])"} else{cell2.employerFirst?.text =  "\(nameData[indexPath.row]) \(pickerData[indexPath.row])";cell2.lastDocument?.text = "\(lastDocument[indexPath.row])"}
             
            
                 cell2.dogImage.clipsToBounds = true
