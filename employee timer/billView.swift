@@ -170,7 +170,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
    
             func returnToList(){
             print ("return")
-            self.present((storyboard?.instantiateViewController(withIdentifier: "homeScreen"))!, animated: true, completion: nil)
+             ViewController.billsPusher = true
+            self.navigationController!.popToRootViewController(animated: false)
+            //self.present((storyboard?.instantiateViewController(withIdentifier: "homeScreen"))!, animated: true, completion: nil)
             }
     
             func undo(){
@@ -182,6 +184,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             // delete reciept
             self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(String("-\(self.documentCounter!)")!).child(self.undoRecieptCounter!).removeValue()
             self.dbRefEmployer.child(self.employerID).updateChildValues(["fLast":lastPrevious], withCompletionBlock: { (error) in})
+            
             self.navigationController!.popViewController(animated: true)
             }// end reciept
             else {//begininng invoice
@@ -189,7 +192,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             self.dbRefEmployee.child(self.employeeID).updateChildValues(["fCounter":String(Int(self.documentCounter!)!)])
             self.moveSessionToBilled()
             self.dbRefEmployer.child(self.employerID).updateChildValues(["fLast":lastPrevious], withCompletionBlock: { (error) in})
-            self.navigationController!.popToRootViewController(animated: true)
+            ViewController.sessionPusher = true
+            self.navigationController!.popToRootViewController(animated: false)
             }//end of else
             }//end of undo
     
@@ -313,27 +317,26 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             switch result.rawValue {
             case MFMailComposeResult.cancelled.rawValue:
             print("Mail cancelled")
-
             controller.dismiss(animated: true, completion: nil)
             case MFMailComposeResult.saved.rawValue:
             print("Mail saved3")
-            self.navigationController!.popToRootViewController(animated: true)
-
-            self.navigationController!.popViewController(animated: true)
+            ViewController.billsPusher = true
+            self.navigationController!.popToRootViewController(animated: false)
 
             case MFMailComposeResult.sent.rawValue:
             print("Mail sent3")
             controller.dismiss(animated: true, completion: nil)
-            self.navigationController!.popToRootViewController(animated: true)
+            ViewController.billsPusher = true
+            self.navigationController!.popToRootViewController(animated: false)
 
             case MFMailComposeResult.failed.rawValue:
             print("Mail sent failure: %@", [error!.localizedDescription])
             controller.dismiss(animated: true, completion: nil)
-            self.navigationController!.popToRootViewController(animated: true)
+            ViewController.billsPusher = true
+            self.navigationController!.popToRootViewController(animated: false)
             default:
             break
             }
-            //self.navigationController!.popViewController(animated: true) //check to go one more level
             }
 
             func  moveSessionToBilled() {
@@ -456,7 +459,6 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.present(mailComposeViewController2, animated: true, completion: nil)
         } //end of if
         else{ self.showSendmailErrorAlert() }
-        // navigationController!.popViewController(animated: true)
         }
 
         let printAction = UIAlertAction(title: "Print", style: .default) { (UIAlertAction) in
@@ -476,8 +478,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
                 if success {
                     // Printed successfully
                     if      self.rebillprocess != true {    self.deleteBtn.isEnabled = false
-                        ///self.navigationController!.popViewController(animated: true)
-                        self.navigationController!.popToRootViewController(animated: true)
+                        ViewController.billsPusher = true
+                        self.navigationController!.popToRootViewController(animated: false)
 
                     }
                 } else {
@@ -505,7 +507,6 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         self.present(mailComposeViewController2, animated: true, completion: nil)
         } //end of if
         else{ self.showSendmailErrorAlert() }
-        // navigationController!.popViewController(animated: true)
         }
         let printAction = UIAlertAction(title: "Print", style: .default) { (UIAlertAction) in
             let printInfo = UIPrintInfo(dictionary:nil)
@@ -558,7 +559,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         for rec in 1...self.recieptsArray2.count
         {self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(String("-\(self.documentCounter!)")!).child(String(rec)).updateChildValues(["fActive" : self.mydateFormat5.string(from: Date())])
         }}//end of reciept is empty
-        self.navigationController!.popToRootViewController(animated: true)
+            ViewController.billsPusher = true
+            self.navigationController!.popToRootViewController(animated: false)
         }//end of reciept = false
         else {self.deleteReciept()}
         }//end of deleteaction

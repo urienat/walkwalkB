@@ -29,6 +29,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var grayColor = UIColor(red :235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1)
     var counterForpresent:String?
     var lastPrevious = ""
+    
+     let myGroupMemory = DispatchGroup()
 
     var accountAdress = ""
     var accountName = ""
@@ -40,6 +42,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
 
     var seprator = "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
     var seprator2 = "⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶"
+    
+    var rowMemory: Int?
     
     var contact: String?
     var pdfDataTable = NSMutableData()
@@ -376,8 +380,10 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
         override func viewDidAppear(_ animated: Bool) {
         firebaseConnectivity()
-            print(taxBillsToHandle)
+        
             
+           
+        
         if taxBillsToHandle == false {
         print (taxBillsToHandle)
                 
@@ -386,6 +392,9 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 billsForTaxMonth();StatusChosen.isHidden = true;titleLbl = "\(monthMMM!)-\(yearToHandle)";self.title = titleLbl}
         print (billItems.count)
         billerConnect.reloadData()
+      
+            
+            
         }//view did appear end
     
         func tableView(_ billerConnect: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -471,6 +480,9 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         print (BillArray)
             
         let billManager = segue.destination as? billView
+        rowMemory = billRow.row
+        print (rowMemory!)
+            
         print ("presparesegue")
         billManager?.billToHandle = "-"+String(BillArray[billRow.row])
         billManager?.employeeID = employeeID
@@ -506,6 +518,9 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
         func fetchBills(){
             connectivityCheck()
+            myGroupMemory.enter()
+            
+           
         billItems.removeAll()
         BillArray.removeAll()
         BillArrayStatus.removeAll()
@@ -562,13 +577,15 @@ print (self.billItems.count)
             if ViewController.taxOption == "Yes"{ self.totalTax.text = "* Total included tax";self.totalBg.backgroundColor = self.blueColor} else { self.totalTax.text = "* Cancelled bills excluded";self.totalBg.backgroundColor = self.blueColor}
             if self.StatusChoice == "Not Paid" {self.totalTax.text = "* Balance only"; self.totalBg.backgroundColor = self.redColor}
             
-        self.billerConnect.reloadData()
+       self.billerConnect.reloadData()
+            
         }//end of if let dic
         }
             , withCancel: { (Error) in
                 self.alert30()
                 print("error from FB")}
         )//end of dbref
+            
             
 
 
@@ -582,6 +599,7 @@ print (self.billItems.count)
         if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
 
         self.StatusChosen.isEnabled = true
+        self.myGroupMemory.leave() 
         }
 
         }//end of fetch
@@ -980,6 +998,18 @@ print (self.billItems.count)
             
         }
         
+    }
+    
+    func memoryHandler(){
+        myGroupMemory.notify(queue: DispatchQueue.main) {self.showRow()}
+    }
+    
+    func showRow(){
+        if self.rowMemory != nil {
+            var index = IndexPath.init(row: self.rowMemory!, section: 0)
+            self.billerConnect.selectRow(at: index, animated: true, scrollPosition: .none)
+            self.rowMemory = nil
+        }
     }
 
             // alerts////////////////////////////////////////////////////////////////////////////////////////////

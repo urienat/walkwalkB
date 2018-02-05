@@ -30,6 +30,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     static var dateTimeFormat:String!
     static var refresh:Bool? = false
     static var sessionPusher:Bool?
+    static var billsPusher:Bool?
+    static var profilePusher: Bool?
     static var professionControl: String?
     static var calanderOption: String?
     static var taxOption : String?
@@ -238,6 +240,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     employerList.dataSource = self
     employerList.delegate = self
     ViewController.sessionPusher = false
+    ViewController.billsPusher = false
+    ViewController.profilePusher = false
     
         
     DateIn.text = ""
@@ -337,8 +341,12 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
        
     
-    if ViewController.sessionPusher! == true {ViewController.sessionPusher = false;
+    if ViewController.sessionPusher == true {ViewController.sessionPusher = false;
     self.recordsClicked()}
+    if ViewController.billsPusher == true {ViewController.billsPusher = false;
+            self.billsClicked()}
+    if ViewController.profilePusher == true {ViewController.profilePusher = false;
+            self.profileClicked()}
         
     }//end of view did appear
 
