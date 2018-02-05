@@ -93,21 +93,30 @@ extension(newVCTable){
 
             if record.fIndication3 == "📄" {if self.firstTimeGeneral == true {self.csv2.append("There are general Items Included:\r\n");self.firstTimeGeneral = false };"\(self.csv2.append(record.fSpecialItem!))";
 
-            "\(self.csv2.append("......................................."))" ;self.csv2.append(ViewController.fixedCurrency!); self.csv2.append(record.fSpecialAmount!);self.csv2.append("\r\n")}  else {if self.firstTime == true {self.csv2.append("\r\nThese are the sessions included:\r\n");self.firstTime = false}
+            "\(self.csv2.append("......................................."))" ;self.csv2.append(ViewController.fixedCurrency!); self.csv2.append(record.fSpecialAmount!);self.csv2.append("\r\n")}
+            else {if self.firstTime == true {self.csv2.append("\r\nThese are the sessions included:\r\n");self.firstTime = false}
 
-            if ViewController.dateTimeFormat == "DateTime" {"\(self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n")
-            } else {"\(self.csv2.append( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n") }
+                
+                if ViewController.dateTimeFormat == "DateTime" {print (record.fIn!);"\(self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";
+                
+            self.csv2.append("\r\n")
+            }
+            else {"\(self.csv2.append( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n") }
             }//end of else
 
             }// end of cases func
-            if self.Status == "Approved" {if record.fStatus == "Approved" {cases()}} else if
-            record.fStatus == "Pre" || record.fStatus == "Approved" {cases()
-            }else if record.fStatus == nil
-            {}
-            else if self.Status == "All"
-            {cases()}
-            else {print ("in else: calc is :\(self.calc)")
+                
+                
+            if self.Status == "Approved" {if record.fStatus == "Approved" {cases()}}
+            else if record.fStatus == "Pre" || record.fStatus == "Approved" {cases()}
+            else if record.fStatus == nil
+            {
+            print ("stop there is no status!")
             }
+     //       else if self.Status == "All"
+      //      {cases()}
+            
+                
             }//end of else of fout is not empty
             }// end of if let dictionary
               if i == self.FbArray2.count-1 {completion()}
@@ -154,8 +163,11 @@ extension(newVCTable){
             self.perEvents.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /session")
             self.amount.text =  ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")
             if self.duplicateChecked == false {self.checkDuplicate()}
+        
             if self.billStarted == true {  self.myGroup.leave() }
+        
             if self.billPayStarted == true  {self.myGroupBillPay.leave()}
+        
     }
     
 }

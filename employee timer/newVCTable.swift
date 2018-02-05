@@ -40,8 +40,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var billStarted: Bool?
     var billPayStarted: Bool?
     
-    let btnGeneral = UIButton(type: .custom)
-    let generalItem = UIBarButtonItem()
     
     var lastPrevious = ""
 
@@ -96,7 +94,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var employerMail = ""
     var statusTemp:String?
     static var checkBox:Int = 0
-    var checkBoxGeneral:Int = 0
+   // var checkBoxGeneral:Int = 0
     var sessionAllChanger : Int = 0
     var generalChange = ""
     
@@ -162,6 +160,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }//end of save
     
     @IBAction func cancelPayment(_ sender: Any) {
+        self.billPayStarted = false
         paymentView.isHidden = true
         paymentReference = ""
         paymentSys = ""
@@ -297,13 +296,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         periodChosen.isEnabled = false
         self.thinking.hidesWhenStopped = true
             
-        btnGeneral.setImage (nonVimage, for: .normal)
-        btnGeneral.frame = CGRect(x: 0, y: 0, width: 120, height: 30)
-        btnGeneral.widthAnchor.constraint(equalToConstant: 40.0).isActive = true
-        btnGeneral.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
-        btnGeneral.addTarget(self, action: #selector(alert11), for: .touchUpInside)
-        generalItem.customView = btnGeneral
-        //navigationItem.rightBarButtonItem = generalItem //to avoid general approval
          
         btn4.setImage(billDocument , for: .normal)
         btn4.setTitle("You Owe Me", for: .normal)
@@ -346,9 +338,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             StatusChosen.isEnabled = false
             periodChosen.isEnabled = false
                 switch StatusChosen.selectedSegmentIndex {
-                case 0: Status = "Pre";checkBoxGeneral = 1
-                case 1: Status = "Approved" ;checkBoxGeneral = 2
-                case 2: Status = "Paid"  ;checkBoxGeneral = 0
+                case 0: Status = "Pre"//;checkBoxGeneral = 1
+                case 1: Status = "Approved" //;checkBoxGeneral = 2
+                //case 2: Status = "Paid"  ;checkBoxGeneral = 0
                 default: Status = "All";
                 } //end of switch
                 print ("status:\(Status)")
@@ -620,32 +612,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     self.present(alertController90, animated: true, completion: nil)
     }
     
-    func alert11(){
-    if sessionAllChanger == 1 {sessionAllChanger = 0; btnGeneral.setImage (nonVimage, for: .normal)
-    } else {sessionAllChanger = 1;btnGeneral.setImage (Vimage, for: .normal)
-        }
-    if appArray.count == 0 {}else {
-    let alertController11 = UIAlertController(title: ("Change all sessions ") , message: "You are about to change status for all  sessions. You can 'Undo' spesific record by clicking icon on each record." , preferredStyle: .alert)
-    let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-        self.thinking.startAnimating()
-    self.generalApprovalClicked()
-    DispatchQueue.main.asyncAfter(deadline: .now()+1){
-    self.refresh(presser: 0)//refreshtable
-     }
-    DispatchQueue.main.asyncAfter(deadline: .now()+1){
-    self.thinking.startAnimating()
-    }
-    }
-    let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
-        if self.sessionAllChanger == 1 {self.sessionAllChanger = 0; self.btnGeneral.setImage (self.nonVimage, for: .normal)
-        } else {self.sessionAllChanger = 1;self.btnGeneral.setImage (self.self.Vimage, for: .normal)}
-    //do nothing
-    }
-    alertController11.addAction(OKAction)
-    alertController11.addAction(CancelAction)
-    self.present(alertController11, animated: true, completion: nil)
-    }
-    }//end of alert11
+    
     
     func billProcess() {
     self.thinking.startAnimating()
@@ -673,6 +640,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([(self.employerID):Int((self.mydateFormat5.date(from: self.mydateFormat5.string(from: Date()))?.timeIntervalSince1970)!)])
 
     self.moveSessionToBilled()
+    self.billStarted = false
     self.performSegue(withIdentifier: "presentBill", sender: self.mailSaver)
 
     }//end of if biller
@@ -695,16 +663,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     self.present(alertController27, animated: true, completion: nil)
     }//end of alert27
     
-    func alert66() {
-        
-        let alertController66 = UIAlertController(title: ("Cancel Mail") , message:" Mail was cancelled, but the bill was registered to send it or print it go to bills" , preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-            self.refresh(presser: 3)
-        }
-        
-        alertController66.addAction(OKAction)
-        self.present(alertController66, animated: true, completion: nil)
-    }//end of alert66
+
 
     func alert12(){
     let alertController12 = UIAlertController(title: ("Change record status") , message: "You can not change status of records that were already billed.", preferredStyle: .alert)
