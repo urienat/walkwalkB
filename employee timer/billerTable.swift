@@ -40,7 +40,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var seprator = "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
     var seprator2 = "⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶"
     
-    var rowMemory: Int?
+    static var rowMemory: Int?
     
     var contact: String?
     var pdfDataTable = NSMutableData()
@@ -473,8 +473,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         print (BillArray)
             
         let billManager = segue.destination as? billView
-        rowMemory = billRow.row
-        print (rowMemory!)
+        biller.rowMemory = billRow.row
+        print (biller.rowMemory!)
             
         print ("presparesegue")
         billManager?.billToHandle = "-"+String(BillArray[billRow.row])

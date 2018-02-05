@@ -344,9 +344,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     if ViewController.sessionPusher == true {ViewController.sessionPusher = false;
     self.recordsClicked()}
     if ViewController.billsPusher == true {ViewController.billsPusher = false;
+        biller.rowMemory = 0
             self.billsClicked()}
     if ViewController.profilePusher == true {ViewController.profilePusher = false;
-            self.profileClicked()}
+            self.accountClicked()}
         
     }//end of view did appear
 

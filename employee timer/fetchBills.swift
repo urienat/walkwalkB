@@ -116,12 +116,12 @@ extension(biller){
     
     
         func showRow(){
-        print (rowMemory)
+            print (biller.rowMemory)
             
-        if self.rowMemory != nil {
-        var index = IndexPath.init(row: self.rowMemory!, section: 0)
+        if biller.rowMemory != nil {
+        var index = IndexPath.init(row: biller.rowMemory!, section: 0)
         self.billerConnect.selectRow(at: index, animated: true, scrollPosition: .none)
-        self.rowMemory = nil
+        biller.rowMemory = nil
         }
         }
 
