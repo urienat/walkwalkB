@@ -675,7 +675,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             self.present(alertController72, animated: true, completion: nil)
     }
     func alert17(){
-        let alertController17 = UIAlertController(title: ("No Session") , message: "No Session Imported because one of the following:\n\n There are no PAST sessions\n\n Sessions already imported once( see +sign in calendar)\n\n NO exact match of name+space+last combination between calendar event and PerSessio", preferredStyle: .alert)
+        let alertController17 = UIAlertController(title: ("No Session") , message: "No Session Imported because one of the following:\n\n There are no PAST sessions\n\n Sessions already imported once( see +sign in calendar)\n\n NO exact match of name+space+last combination between calendar event and PerSession", preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
     self.alert123()
     }
