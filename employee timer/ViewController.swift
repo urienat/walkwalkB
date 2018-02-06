@@ -58,8 +58,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var ImageFromFirebase : UIImage?
     var menu = UIImage(named: "menu")
     var backArrow = UIImage(named: "backArrow")
-    var leashImage = UIImage(named:"Leash")?.withRenderingMode(.alwaysTemplate)
-    var meluna = UIImage(named:"meluna")?.withRenderingMode(.alwaysTemplate)
+    var file = UIImage(named:"file")?.withRenderingMode(.alwaysTemplate)
+    var sessions = UIImage(named:"sessions")?.withRenderingMode(.alwaysTemplate)
     var billsIcon = UIImage(named:"billsIcon")?.withRenderingMode(.alwaysTemplate)
     var walkerProfile = UIImage(named:"walkerProfile")?.withRenderingMode(.alwaysTemplate)
     var importBlack = UIImage(named:"import")?.withRenderingMode(.alwaysTemplate)
@@ -283,11 +283,11 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.thinking2.hidesWhenStopped = true
     self.thinking2.startAnimating()
     
-    btn1.setImage(leashImage, for: .normal)
+    btn1.setImage(sessions, for: .normal)
     btn1.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
     btn1.addTarget(self, action:#selector(recordsClicked), for: UIControlEvents.touchDown)
     records.customView = btn1
-    btn2.setImage(meluna, for: .normal)
+    btn2.setImage(file, for: .normal)
     btn2.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
     btn2.addTarget(self, action:#selector(accountClicked), for: UIControlEvents.touchDown)
     account.customView = btn2

@@ -18,7 +18,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var tableConnect: UITableView!
     let star = UIImage(named: "star")
     let billDocument = UIImage(named: "billDocument")
-    let Vimage = UIImage(named:"vNaked")// "due")
+    let Vimage = UIImage(named:"vNaked")
     let nonVimage = UIImage(named: "blank")
     let paidImage = UIImage(named: "paid")
     let billedImage = UIImage(named: "locked")

@@ -22,7 +22,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 0.7)
     var grayColor = UIColor(red :235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1)
 
-    let Vimage = UIImage(named: "due")
+   
     let nonVimage = UIImage(named: "emptyV")
     let paidImage = UIImage(named: "paid")
     let billedImage = UIImage(named: "locked")
@@ -123,6 +123,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         let shareProcess = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(share))
 
         trashBtn.setImage(trashImage , for: .normal)
+        
         //trashBtn.setTitle("Bill", for: .normal)
         //btn4.setTitleColor(blueColor, for: .normal)
         //btn4.frame = CGRect(x: 0, y: 0, width: 20, height: 40)
@@ -131,6 +132,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         //undoBtn.setImage(sendBillIcon , for: .normal)
         undoBtn.setTitle("Undo", for: .normal)
         undoBtn.setTitleColor(blueColor, for: .normal)
+        undoBtn.setTitleColor(UIColor.gray, for: .disabled)
         //btn4.frame = CGRect(x: 0, y: 0, width: 20, height: 40)
         undoBtn.addTarget(self, action:#selector(undo), for: UIControlEvents.touchDown)
         

@@ -862,13 +862,13 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="zwO-Lr-m7N"/>
-                                    <barButtonItem enabled="NO" image="Leash" id="uPD-Ce-NUz">
+                                    <barButtonItem enabled="NO" image="sessions" id="uPD-Ce-NUz">
                                         <connections>
                                             <segue destination="KQc-zY-Jl3" kind="show" identifier="employerforVC" id="RQi-YY-5wb"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Pow-Ns-nZF"/>
-                                    <barButtonItem enabled="NO" image="meluna" id="nYU-wY-z3v" userLabel="account">
+                                    <barButtonItem enabled="NO" image="file" id="nYU-wY-z3v" userLabel="account">
                                         <connections>
                                             <segue destination="nD7-g7-jdd" kind="show" identifier="employerForDogFile" id="MLF-fz-7Mf"/>
                                         </connections>
@@ -2597,9 +2597,10 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ama-L4-iRh" userLabel="partialPayment" customClass="AllowedCharsTextField" customModule="perSession">
-                                        <rect key="frame" x="205.5" y="54" width="80" height="30"/>
+                                        <rect key="frame" x="205.5" y="49" width="80" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="B9B-VM-n98"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="EcA-VN-RfA"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2732,7 +2733,6 @@
                                     <constraint firstAttribute="height" constant="246" id="T2v-kw-61T"/>
                                     <constraint firstItem="Ama-L4-iRh" firstAttribute="centerY" secondItem="llV-8t-xRC" secondAttribute="centerY" id="YSd-8S-YPv"/>
                                     <constraint firstItem="ozL-9e-hkS" firstAttribute="top" secondItem="bal-L9-lS9" secondAttribute="bottom" constant="12" id="Yjv-JI-BAG"/>
-                                    <constraint firstItem="Ama-L4-iRh" firstAttribute="height" secondItem="llV-8t-xRC" secondAttribute="height" id="aVW-iJ-DsP"/>
                                     <constraint firstItem="9QC-CX-Si0" firstAttribute="leading" secondItem="T9c-oL-JGA" secondAttribute="leading" id="bBq-eN-C7F"/>
                                     <constraint firstItem="jcF-3L-tr2" firstAttribute="centerX" secondItem="9QC-CX-Si0" secondAttribute="centerX" id="hRw-7w-jsh"/>
                                     <constraint firstItem="8jL-sl-paz" firstAttribute="height" secondItem="ZRe-Za-hI8" secondAttribute="height" id="isx-PY-31g"/>
@@ -3222,7 +3222,7 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="uQY-Pe-tFk"/>
-                                    <barButtonItem image="trash" id="CkP-hP-qjf">
+                                    <barButtonItem title="Delete" image="trash" id="CkP-hP-qjf">
                                         <connections>
                                             <action selector="deleteBtn:" destination="8gY-C3-V1Z" id="NlM-7M-YBm"/>
                                         </connections>
@@ -4055,21 +4055,21 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Leash" width="50" height="50"/>
         <image name="V" width="156" height="141"/>
         <image name="arrow" width="30" height="36"/>
         <image name="billsIcon" width="50" height="50"/>
         <image name="cancelled" width="50" height="50"/>
         <image name="emptyV" width="42" height="52"/>
+        <image name="file" width="50" height="50"/>
         <image name="import" width="50" height="50"/>
         <image name="importBig" width="50" height="52"/>
         <image name="mail" width="50" height="50"/>
-        <image name="meluna" width="50" height="50"/>
         <image name="noSign" width="309" height="255"/>
         <image name="pencilImage" width="100" height="100"/>
         <image name="perSessionImage" width="234" height="225"/>
         <image name="report" width="50" height="42"/>
         <image name="roundBig" width="100" height="100"/>
+        <image name="sessions" width="50" height="50"/>
         <image name="setting" width="50" height="50"/>
         <image name="star" width="42" height="47"/>
         <image name="tax" width="39" height="35"/>
@@ -4080,7 +4080,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8Bf-Vi-arA"/>
-        <segue reference="q4e-3H-dKE"/>
+        <segue reference="3Wx-xY-sDh"/>
         <segue reference="x0P-Ew-8Ag"/>
         <segue reference="5at-sc-TfM"/>
         <segue reference="8s0-fg-N01"/>

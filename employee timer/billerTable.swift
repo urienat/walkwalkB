@@ -14,7 +14,7 @@ import MessageUI
 class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMailComposeViewControllerDelegate {
     
     let billDocument = UIImage(named: "billDocument")
-    let Vimage = UIImage(named:"vNaked")// "due")
+    let Vimage = UIImage(named:"vNaked")
     let nonVimage = UIImage(named: "blank")
     
     let paidImage = UIImage(named: "paid")
@@ -129,9 +129,9 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         print("payment pressed")
         //paymentMethood.isEnabled = false
         switch paymentMethood.selectedSegmentIndex {
-        case 0: paymentSys = "cash"; referenceTxt.isHidden = true
-        case 1: paymentSys = "check"; referenceTxt.isHidden = false
-        case 2: paymentSys = "other"; referenceTxt.isHidden = false
+        case 0: paymentSys = "cash"; referenceTxt.isHidden = true;partialPayment.endEditing(true)
+        case 1: paymentSys = "check"; referenceTxt.isHidden = false;partialPayment.endEditing(true)
+        case 2: paymentSys = "other"; referenceTxt.isHidden = false;partialPayment.endEditing(true)
         default: paymentSys = "None"; referenceTxt.isHidden = true
         } //end of switch
         

@@ -18,7 +18,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     let dbRefcEmployers = FIRDatabase.database().reference().child("cEmployers")
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
 
-    let Vimage = UIImage(named:"vNaked")// "due")
+    let Vimage = UIImage(named:"vNaked")
     let emptyVimage = UIImage(named: "blank")
     var perSessionImage = UIImage(named:"perSessionImage")?.withRenderingMode(.alwaysTemplate)
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)

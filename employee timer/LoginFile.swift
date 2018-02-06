@@ -18,7 +18,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
 
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     let mydateFormat5 = DateFormatter()
-    let Vimage = UIImage(named:"vNaked")// "due")
+    let Vimage = UIImage(named:"vNaked")
     let nonVimage = UIImage(named: "blank")
     
     //facebook & google

@@ -15,7 +15,7 @@ class newTableCell: UITableViewCell {
     
     //var checkBoxCell=newVCTable.checkBox
     
-    let Vimage = UIImage(named:"vNaked")// "due")
+    let Vimage = UIImage(named:"vNaked")
 
     let nonVimage =  UIImage(named: "blank")//UIImage(named: "emptyV")
     let paidImage = UIImage(named: "paid")
