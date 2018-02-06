@@ -327,22 +327,26 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             case MFMailComposeResult.cancelled.rawValue:
             print("Mail cancelled")
             controller.dismiss(animated: true, completion: nil)
+           
             case MFMailComposeResult.saved.rawValue:
             print("Mail saved3")
-            ViewController.billsPusher = true
-            self.navigationController!.popToRootViewController(animated: false)
-
+            if self.rebillprocess != true {
+                print ("delete btn not enables")
+                self.deleteBtn.isEnabled = false}
+            controller.dismiss(animated: true, completion: nil)
+                
             case MFMailComposeResult.sent.rawValue:
             print("Mail sent3")
+            if self.rebillprocess != true {
+                print ("delete btn not enables")
+                self.deleteBtn.isEnabled = false}
             controller.dismiss(animated: true, completion: nil)
-            ViewController.billsPusher = true
-            self.navigationController!.popToRootViewController(animated: false)
+            
 
             case MFMailComposeResult.failed.rawValue:
             print("Mail sent failure: %@", [error!.localizedDescription])
             controller.dismiss(animated: true, completion: nil)
-            ViewController.billsPusher = true
-            self.navigationController!.popToRootViewController(animated: false)
+            
             default:
             break
             }
@@ -484,20 +488,29 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         //  var viewpf:UIViewPrintFormatter = self.mailView.viewPrintFormatter()
         //printController.printFormatter = viewpf
         printController.present(animated: true) { (controller, success, error) -> Void in
-                if success {
-                    // Printed successfully
-                    if      self.rebillprocess != true {    self.deleteBtn.isEnabled = false
-                        ViewController.billsPusher = true
-                        self.navigationController!.popToRootViewController(animated: false)
-
-                    }
+            if success {
+                // Printed successfully
+                if      self.rebillprocess != true {
+                    print ("delete btn not enables")
+                    
+                    self.deleteBtn.isEnabled = false
+                    
+                    //ViewController.billsPusher = true
+                    // self.navigationController!.popToRootViewController(animated: false)
+                    
                 } else {
-                    // Printing failed, report error ...
+                    print ("old reciept")
+                    
                 }
+            } else {
+                print ("printing not occured")
+                //   if deleteBtn.isEnabled == true{ self.deleteBtn.isEnabled = true}
+                
+                // Printing failed, report error ...
+            }
             }//end of present
             
-        }
-
+            }
         alertController5.addAction(mailAction)
         alertController5.addAction(printAction)
         alertController5.addAction(CancelAction)
@@ -526,7 +539,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             printController.printInfo = printInfo
             printController.printingItem =  self.pdfData
             
-            self.deleteBtn.isEnabled = false
+           // self.deleteBtn.isEnabled = false
             
             //var viewpf:UIViewPrintFormatter = self.documentsFileName.viewPrintFormatter()
             //  var viewpf:UIViewPrintFormatter = self.mailView.viewPrintFormatter()
@@ -534,14 +547,24 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             printController.present(animated: true) { (controller, success, error) -> Void in
                 if success {
                     // Printed successfully
-                    if      self.rebillprocess != true {    self.deleteBtn.isEnabled = false
-                        self.navigationController!.popViewController(animated: true)
-
-                    }
-                  
+                    if      self.rebillprocess != true {
+                    print ("delete btn not enables")
+                    
+                    self.deleteBtn.isEnabled = false
+                    
+                    //ViewController.billsPusher = true
+                    // self.navigationController!.popToRootViewController(animated: false)
+                    
                 } else {
-                    // Printing failed, report error ...
-                }
+                 print ("old reciept")
+                        
+                    }
+            } else {
+                     print ("printing not occured")
+                 //   if deleteBtn.isEnabled == true{ self.deleteBtn.isEnabled = true}
+                    
+                // Printing failed, report error ...
+            }
             }//end of present
             
             }
