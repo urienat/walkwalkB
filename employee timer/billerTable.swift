@@ -41,7 +41,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var seprator2 = "⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶"
     
     static var rowMemory: Int?
-    
+    static var statusMemory: Int?
+
     var contact: String?
     var pdfDataTable = NSMutableData()
     var recieptPayment:String?
@@ -156,6 +157,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billStatus = "Paid"
         print (paymentSys,paymentReference)
         BillArrayStatus[buttonRow] = statusTemp
+        biller.rowMemory = buttonRow
         paymentView.isHidden = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             
@@ -377,14 +379,16 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
         override func viewDidAppear(_ animated: Bool) {
         firebaseConnectivity()
-        
+        if employerFromMain == "" {employerID = ""}
         if taxBillsToHandle == false {
         print (taxBillsToHandle)
-                
-         fetchHandler()   ///fetchBills()
+            //if biller.statusMemory == 0 {refresh(presser: 0)} else {
+                fetchHandler()
+            
+            //}
         ; StatusChosen.isHidden = false} else {filterDecided = 7 ;monther(monthNumber: monthToHandle);
                 
-                billsForTaxMonth();StatusChosen.isHidden = true;titleLbl = "\(monthMMM!)-\(yearToHandle)";self.title = titleLbl}
+        billsForTaxMonth();StatusChosen.isHidden = true;titleLbl = "\(monthMMM!)-\(yearToHandle)";self.title = titleLbl}
         print (billItems.count)
         billerConnect.reloadData()
          
@@ -474,6 +478,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             
         let billManager = segue.destination as? billView
         biller.rowMemory = billRow.row
+        biller.statusMemory = StatusChosen.selectedSegmentIndex
         print (biller.rowMemory!)
             
         print ("presparesegue")
@@ -830,6 +835,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         StatusChosen.isMomentary = true
         segmentedPressed = presser
         StatusChosen.selectedSegmentIndex = segmentedPressed!
+        print(presser)
+        
         StatusChosen.sendActions(for: .valueChanged)            //  StatusChosenis pressed
         StatusChosen.isMomentary = false
     }

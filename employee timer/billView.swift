@@ -170,8 +170,12 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
    
             func returnToList(){
             print ("return")
-             ViewController.billsPusher = true
+            if recieptChosen == false {
+            ViewController.billsPusher = true
             self.navigationController!.popToRootViewController(animated: false)
+                } else {
+                
+                self.navigationController!.popViewController(animated: true)}
             //self.present((storyboard?.instantiateViewController(withIdentifier: "homeScreen"))!, animated: true, completion: nil)
             }
     
@@ -565,7 +569,14 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         {self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(String("-\(self.documentCounter!)")!).child(String(rec)).updateChildValues(["fActive" : self.mydateFormat5.string(from: Date())])
         }}//end of reciept is empty
             ViewController.billsPusher = true
-            self.navigationController!.popToRootViewController(animated: false)
+            
+            print("statusmemory:\(biller.statusMemory)")
+            print("rowsmemory:\(biller.rowMemory)")
+            print ("pusher:\(ViewController.billsPusher)")
+            if biller.statusMemory != nil {
+                if biller.statusMemory! == 1 {self.navigationController!.popViewController(animated: true)} else  {self.navigationController!.popToRootViewController(animated: false);ViewController.billsPusher = false} }else {
+                ViewController.billsPusher = false; self.navigationController!.popViewController(animated: true)
+            }
         }//end of reciept = false
         else {self.deleteReciept()}
         }//end of deleteaction

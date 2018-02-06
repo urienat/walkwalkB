@@ -10,8 +10,10 @@ import Foundation
 extension(biller){
 
         func fetchHandler() {
-        fetch {self.final()
-        }
+           
+            fetch {self.final()}
+            
+          
         }
 
     
@@ -121,6 +123,7 @@ extension(biller){
         if biller.rowMemory != nil {
         var index = IndexPath.init(row: biller.rowMemory!, section: 0)
         self.billerConnect.selectRow(at: index, animated: true, scrollPosition: .none)
+        self.billerConnect.scrollToRow(at: index, at: .middle, animated: false)
         biller.rowMemory = nil
         }
         }

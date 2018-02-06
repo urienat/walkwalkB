@@ -338,14 +338,12 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     chooseEmployer.sendActions(for: .touchUpInside)
     ViewController.refresh = false
     }
-        
-       
     
     if ViewController.sessionPusher == true {ViewController.sessionPusher = false;
     self.recordsClicked()}
     if ViewController.billsPusher == true {ViewController.billsPusher = false;
-        biller.rowMemory = 0
-            self.billsClicked()}
+    biller.rowMemory = 0
+    self.billsClicked()}
     if ViewController.profilePusher == true {ViewController.profilePusher = false;
             self.accountClicked()}
         
