@@ -57,6 +57,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let pencilImage = UIImage(named: "pencilImage")
     var ImageFromFirebase : UIImage?
     var menu = UIImage(named: "menu")
+    var home = UIImage(named: "home")
     var backArrow = UIImage(named: "backArrow")
     var file = UIImage(named:"file")?.withRenderingMode(.alwaysTemplate)
     var sessions = UIImage(named:"sessions")?.withRenderingMode(.alwaysTemplate)
@@ -481,7 +482,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     func noAccount(){
         self.btnMenu.isHidden = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
             self.btnMenu.setImage (self.menu, for: .normal)
             self.btnMenu.isHidden = false
 
@@ -594,8 +595,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
     //self.account.isEnabled = true;
     self.chooseEmployer.isUserInteractionEnabled = true
-    startBarButtonFadeOut()
-    startBarButtonFadeIn()
+    //startBarButtonFadeOut()
+    //startBarButtonFadeIn()
     }//end of func
 
     func postTimerView() {

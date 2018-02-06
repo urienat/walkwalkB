@@ -652,16 +652,16 @@
                                 <rect key="frame" x="0.0" y="169" width="320" height="70"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencilImage" translatesAutoresizingMaskIntoConstraints="NO" id="fJW-rO-BL2" userLabel="pencil">
-                                        <rect key="frame" x="242.5" y="22" width="26" height="26"/>
+                                        <rect key="frame" x="248.5" y="22" width="26" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="26" id="Qqv-fi-RAm"/>
                                             <constraint firstAttribute="height" constant="26" id="qOV-bF-Lp1"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebM-9e-cve">
-                                        <rect key="frame" x="61.5" y="15" width="174" height="40"/>
+                                        <rect key="frame" x="55.5" y="15" width="186" height="40"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
-                                        <state key="normal" title="Session - Not Now">
+                                        <state key="normal" title="+Session - Not Now">
                                             <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                         </state>
                                         <connections>
@@ -750,9 +750,9 @@
                                 <rect key="frame" x="0.0" y="118" width="320" height="76"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cq4-SE-U6N">
-                                        <rect key="frame" x="7" y="0.0" width="261" height="76"/>
+                                        <rect key="frame" x="-14" y="0.0" width="303" height="76"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="45"/>
-                                        <state key="normal" title="Session Now">
+                                        <state key="normal" title="+ Session Now">
                                             <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                         </state>
                                         <connections>
@@ -760,7 +760,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="roundBig" translatesAutoresizingMaskIntoConstraints="NO" id="Chx-Kf-Bii" userLabel="startImage">
-                                        <rect key="frame" x="274" y="18" width="40" height="40"/>
+                                        <rect key="frame" x="295" y="18" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Meh-8R-FfI"/>
                                             <constraint firstAttribute="width" constant="40" id="S8d-Jr-c3n"/>
@@ -1103,7 +1103,7 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Accounts" id="Ke9-Ez-blq">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="ksb-0H-F3T" userLabel="menuItem">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="ksb-0H-F3T" userLabel="menuItem">
                                             <connections>
                                                 <action selector="menuItem:" destination="Ecy-Z7-2Op" id="zqN-Iw-OZ1"/>
                                             </connections>
@@ -4068,7 +4068,7 @@
         <image name="noSign" width="309" height="255"/>
         <image name="pencilImage" width="100" height="100"/>
         <image name="perSessionImage" width="234" height="225"/>
-        <image name="report" width="50" height="42"/>
+        <image name="report" width="50" height="50"/>
         <image name="roundBig" width="100" height="100"/>
         <image name="sessions" width="50" height="50"/>
         <image name="setting" width="50" height="50"/>
@@ -4080,11 +4080,12 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="3Wx-xY-sDh"/>
         <segue reference="x0P-Ew-8Ag"/>
         <segue reference="5at-sc-TfM"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="gfT-By-X34"/>
+        <segue reference="1k4-P4-HYk"/>
     </inferredMetricsTieBreakers>
 </document>
