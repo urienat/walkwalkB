@@ -924,7 +924,7 @@
                                             <action selector="reports:" destination="Ecy-Z7-2Op" eventType="touchUpInside" id="g2h-fN-ZZw"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="billsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="E9S-bA-Lc5" userLabel="billsIcon">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calcMachine" translatesAutoresizingMaskIntoConstraints="NO" id="E9S-bA-Lc5" userLabel="billsIcon">
                                         <rect key="frame" x="8" y="102.5" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="9IY-SQ-mRu"/>
@@ -4058,6 +4058,7 @@
         <image name="V" width="156" height="141"/>
         <image name="arrow" width="30" height="36"/>
         <image name="billsIcon" width="50" height="50"/>
+        <image name="calcMachine" width="50" height="50"/>
         <image name="cancelled" width="50" height="50"/>
         <image name="emptyV" width="42" height="52"/>
         <image name="file" width="50" height="50"/>
