@@ -1102,7 +1102,7 @@
                                     <constraint firstAttribute="height" constant="50" id="BWl-6v-Y2T"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Accounts" id="Ke9-Ez-blq">
+                                    <navigationItem title="Home" id="Ke9-Ez-blq">
                                         <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="ksb-0H-F3T" userLabel="menuItem">
                                             <connections>
                                                 <action selector="menuItem:" destination="Ecy-Z7-2Op" id="zqN-Iw-OZ1"/>
@@ -4080,7 +4080,6 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="3Wx-xY-sDh"/>
         <segue reference="x0P-Ew-8Ag"/>

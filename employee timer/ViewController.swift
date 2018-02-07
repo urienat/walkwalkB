@@ -47,6 +47,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var star: UIImageView!
     @IBOutlet weak var homeTitle: UINavigationItem!
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
+    var systemBlue = UIColor(red :0/255.0, green: 122/255.0, blue: 255/255.0, alpha: 1.0)
+    
 
     let Vimage = UIImage(named: "vNaked")
     let nonVimage = UIImage(named: "emptyV")
@@ -57,7 +59,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let pencilImage = UIImage(named: "pencilImage")
     var ImageFromFirebase : UIImage?
     var menu = UIImage(named: "menu")
-    var home = UIImage(named: "home")
+    var home = UIImage(named: "home")?.withRenderingMode(.alwaysTemplate)
     var backArrow = UIImage(named: "backArrow")
     var file = UIImage(named:"file")?.withRenderingMode(.alwaysTemplate)
     var sessions = UIImage(named:"sessions")?.withRenderingMode(.alwaysTemplate)
@@ -264,8 +266,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     ViewController.calanderOption =  String(describing: snapshot.childSnapshot(forPath: "fCalander").value!) as String
     ViewController.taxOption = String(describing: snapshot.childSnapshot(forPath: "fSwitcher").value!) as String
     ViewController.professionControl =  String(describing: snapshot.childSnapshot(forPath: "fProfessionControl").value!) as String
-        
-        if  ViewController.professionControl! == "Tutor" { self.homeTitle.title = "Students"} else {self.homeTitle.title = "Accounts"}
+    self.homeTitle.title = "Home"
+       // if  ViewController.professionControl! == "Tutor" { self.homeTitle.title = "Students"} else {self.homeTitle.title = "Accounts"}
 
     }
         , withCancel: { (Error) in
@@ -488,9 +490,16 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
 
         }
         
+        let font = UIFont.systemFont(ofSize: 17.0)
+        let textFontAttributes = [ NSFontAttributeName: font,NSForegroundColorAttributeName: systemBlue] as [String : Any]
+        let menuBackTitle = NSAttributedString(string: "General", attributes: textFontAttributes)
+        btnMenu.setAttributedTitle(menuBackTitle, for: .normal)
+        btnMenu.attributedTitle(for: .normal)
+        
         btnMenu.removeTarget(self, action:#selector(noAccount), for: .touchUpInside)
         btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
-        if  ViewController.professionControl! == "Tutor" { homeTitle.title = "Students"} else {homeTitle.title = "Accounts"}
+        //if  ViewController.professionControl! == "Tutor" { homeTitle.title = "Students"} else {homeTitle.title = "Accounts"}
+        homeTitle.title = "Home"
         toolBar.isHidden = true
         addAccount.isEnabled = true
         

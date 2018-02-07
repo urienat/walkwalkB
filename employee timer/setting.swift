@@ -17,7 +17,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
-
+    var home = UIImage(named: "home")
     //keepקר variables
     let keeper = UserDefaults.standard
     
@@ -220,6 +220,10 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         picture.clipsToBounds = true
         picture.layer.cornerRadius = 15
         
+        
+            let yourBackImage = UIImage(named: "home")
+            self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+            self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
         
         
             let currentUser = FIRAuth.auth()?.currentUser

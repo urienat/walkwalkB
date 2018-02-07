@@ -18,6 +18,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     let dbRefcEmployers = FIRDatabase.database().reference().child("cEmployers")
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
 
+    var home = UIImage(named: "home")
     let Vimage = UIImage(named:"vNaked")
     let emptyVimage = UIImage(named: "blank")
     var perSessionImage = UIImage(named:"perSessionImage")?.withRenderingMode(.alwaysTemplate)
@@ -107,6 +108,12 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         ViewController.refresh = false
         
         connectivityCheck()
+        
+        if employerID == "" {
+        let yourBackImage = UIImage(named: "home")
+        self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        }
         
  
         //keyboard adjustment

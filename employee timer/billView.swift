@@ -659,20 +659,18 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             DispatchQueue.main.asyncAfter(deadline: .now() + 4.0){
             connectedRef.observe(.value, with: { snapshot in
             if let connected = snapshot.value as? Bool, connected {
-            print("Connected after all")} else  {print("not connected after all");self.noFB()}
+                print("Connected after all")} else  {print("not connected after all");self.alert30()}
             })
             }}
             })
             }
         
-            func noFB() {
-            self.alert30()
-            }
+            
 
         func alert30(){
         let alertController30 = UIAlertController(title: ("No connection") , message: "Currently there is no connection with database. Please try again in few minutes.", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-        
+        self.navigationController!.popToRootViewController(animated: false)
         }
         alertController30.addAction(OKAction)
         self.present(alertController30, animated: true, completion: nil)
@@ -680,6 +678,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         func alert50(){
         let alertController50 = UIAlertController(title: ("Internet Connection") , message: " There is no internet - Check communication avilability.", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+        self.navigationController!.popToRootViewController(animated: false)
         }
         
         alertController50.addAction(OKAction)

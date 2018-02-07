@@ -16,7 +16,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let billDocument = UIImage(named: "billDocument")
     let Vimage = UIImage(named:"vNaked")
     let nonVimage = UIImage(named: "blank")
-    
+    var home = UIImage(named: "home")
     let paidImage = UIImage(named: "paid")
     let canceledImage = UIImage(named: "cancelled")
     let greenFilter = UIImage(named: "filterBlack")
@@ -300,6 +300,12 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     override func viewDidLoad() {
+        
+        if employerID == "" {
+            let yourBackImage = UIImage(named: "home")
+            self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+            self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        }
        
         super.viewDidLoad()
         noSign.isHidden = true
