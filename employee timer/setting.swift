@@ -553,7 +553,12 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             }//end of uploadtask   
             
         ViewController.fixedCurrency = self.currency.text!
-            ViewController.taxOption = self.taxSwitcherUpdate
+        ViewController.taxOption = self.taxSwitcherUpdate
+            if self.precentage.text != nil {ViewController.taxation = self.precentage.text!}
+            ViewController.taxCalc = self.taxCalacUpdate
+           
+
+            
         self.navigationController!.popViewController(animated: true)
 
        

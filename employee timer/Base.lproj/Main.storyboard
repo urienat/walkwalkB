@@ -750,9 +750,9 @@
                                 <rect key="frame" x="0.0" y="118" width="320" height="76"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cq4-SE-U6N">
-                                        <rect key="frame" x="-14" y="0.0" width="303" height="76"/>
+                                        <rect key="frame" x="122.5" y="0.0" width="30" height="76"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="45"/>
-                                        <state key="normal" title="+ Session Now">
+                                        <state key="normal">
                                             <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                         </state>
                                         <connections>
@@ -760,7 +760,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="roundBig" translatesAutoresizingMaskIntoConstraints="NO" id="Chx-Kf-Bii" userLabel="startImage">
-                                        <rect key="frame" x="295" y="18" width="40" height="40"/>
+                                        <rect key="frame" x="158.5" y="18" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Meh-8R-FfI"/>
                                             <constraint firstAttribute="width" constant="40" id="S8d-Jr-c3n"/>
@@ -2967,10 +2967,10 @@
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NbR-aV-1V6" userLabel="totalBG">
                                 <rect key="frame" x="0.0" y="448" width="320" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="97h-H1-ijY" userLabel="amount">
-                                        <rect key="frame" x="192" y="10" width="120" height="40"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="97h-H1-ijY" userLabel="amount">
+                                        <rect key="frame" x="192" y="8" width="120" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="J6a-Jb-JtK"/>
+                                            <constraint firstAttribute="height" constant="30" id="J6a-Jb-JtK"/>
                                             <constraint firstAttribute="width" constant="120" id="vkc-qW-agS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="30"/>
@@ -3009,18 +3009,29 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Tax included" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKv-hS-ZUD">
+                                        <rect key="frame" x="192" y="41" width="78.5" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="15" id="Jyo-sW-3dL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="YVF-H5-8sR" secondAttribute="bottom" constant="4" id="0pL-HX-LT8"/>
                                     <constraint firstAttribute="trailing" secondItem="97h-H1-ijY" secondAttribute="trailing" constant="8" id="6mR-aC-RDc"/>
+                                    <constraint firstItem="lKv-hS-ZUD" firstAttribute="leading" secondItem="97h-H1-ijY" secondAttribute="leading" id="7pT-IR-GlP"/>
                                     <constraint firstItem="Kbw-MS-DaF" firstAttribute="top" secondItem="NbR-aV-1V6" secondAttribute="top" constant="4" id="FCS-Je-Mkc"/>
                                     <constraint firstItem="Kbw-MS-DaF" firstAttribute="leading" secondItem="NbR-aV-1V6" secondAttribute="leading" constant="8" id="I3L-vA-Orh"/>
                                     <constraint firstItem="KGo-ek-wbx" firstAttribute="centerY" secondItem="YVF-H5-8sR" secondAttribute="centerY" id="M99-46-Hws"/>
                                     <constraint firstItem="KGo-ek-wbx" firstAttribute="leading" secondItem="YVF-H5-8sR" secondAttribute="trailing" constant="8" id="PAF-wM-fec"/>
-                                    <constraint firstItem="97h-H1-ijY" firstAttribute="centerY" secondItem="NbR-aV-1V6" secondAttribute="centerY" id="XoZ-0I-AeG"/>
                                     <constraint firstAttribute="height" constant="60" id="e3T-af-5Xd"/>
+                                    <constraint firstItem="97h-H1-ijY" firstAttribute="top" secondItem="NbR-aV-1V6" secondAttribute="top" constant="8" id="h57-6c-hYj"/>
                                     <constraint firstItem="YVF-H5-8sR" firstAttribute="leading" secondItem="Kbw-MS-DaF" secondAttribute="leading" id="kP0-Zq-IaS"/>
+                                    <constraint firstAttribute="bottom" secondItem="lKv-hS-ZUD" secondAttribute="bottom" constant="4" id="r1P-mM-MzH"/>
                                 </constraints>
                             </view>
                             <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noSign" translatesAutoresizingMaskIntoConstraints="NO" id="cvq-V7-JIv">
@@ -3171,6 +3182,7 @@
                         <outlet property="periodChosen" destination="eCO-la-3hV" id="cwF-hv-Hic"/>
                         <outlet property="referenceTxt" destination="NDn-4f-pNB" id="r6u-yB-s3z"/>
                         <outlet property="tableConnect" destination="G8b-SK-75d" id="t1p-4t-cUa"/>
+                        <outlet property="taxIncluded" destination="lKv-hS-ZUD" id="tVb-SU-1xQ"/>
                         <outlet property="thinking" destination="oMs-Xd-055" id="lYw-6B-Spa"/>
                         <outlet property="toolbar1" destination="6A1-XQ-3Qo" id="3GE-bu-X2j"/>
                         <segue destination="8gY-C3-V1Z" kind="show" identifier="presentBill" id="q4e-3H-dKE"/>
@@ -4068,7 +4080,6 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="q4e-3H-dKE"/>
         <segue reference="x0P-Ew-8Ag"/>

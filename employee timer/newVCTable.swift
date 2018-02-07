@@ -133,6 +133,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     //payment
     @IBOutlet weak var paymentView: UIView!
     
+    @IBOutlet weak var taxIncluded: UILabel!
     @IBOutlet weak var toolbar1: UIToolbar!
     @IBOutlet weak var paymentMethood: UISegmentedControl!
     @IBAction func paymentMethood(_ sender: Any) {

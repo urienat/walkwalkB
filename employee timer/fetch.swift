@@ -159,6 +159,8 @@ extension(newVCTable){
        
        
         if ViewController.taxOption == "Yes" && ViewController.taxCalc == "Over" {let totalForExcluded = Double(Double(ViewController.taxation!)!*self.calc*0.01).roundTo(places: 2) + Double(self.calc).roundTo(places: 2);self.amount.text =  ("\(ViewController.fixedCurrency!)\(String(totalForExcluded))")} else {self.amount.text =  ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")}
+        
+        if ViewController.taxOption == "Yes" {self.taxIncluded.isHidden = false } else {self.taxIncluded.isHidden = true}
             if self.duplicateChecked == false {self.checkDuplicate()}
         
             if self.billStarted == true {  self.myGroup.leave() }
