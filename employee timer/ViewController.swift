@@ -35,6 +35,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     static var professionControl: String?
     static var calanderOption: String?
     static var taxOption : String?
+    static var taxCalc: String?
+    static var taxation: String?
     
     let font = UIFont.systemFont(ofSize: 17.0)
     
@@ -268,6 +270,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     ViewController.dateTimeFormat =  String(describing: snapshot.childSnapshot(forPath: "fDateTime").value!) as String
     ViewController.calanderOption =  String(describing: snapshot.childSnapshot(forPath: "fCalander").value!) as String
     ViewController.taxOption = String(describing: snapshot.childSnapshot(forPath: "fSwitcher").value!) as String
+    ViewController.taxCalc = String(describing: snapshot.childSnapshot(forPath: "fTaxCalc").value!) as String
+    ViewController.taxation = String(describing: snapshot.childSnapshot(forPath: "fTaxPrecentage").value!) as String
+
+
     ViewController.professionControl =  String(describing: snapshot.childSnapshot(forPath: "fProfessionControl").value!) as String
     self.homeTitle.title = "Home"
        // if  ViewController.professionControl! == "Tutor" { self.homeTitle.title = "Students"} else {self.homeTitle.title = "Accounts"}
@@ -307,7 +313,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     btnMenu.setAttributedTitle(menuBackTitle, for: .normal)
     btnMenu.attributedTitle(for: .normal)
     btnMenu.setImage (menu, for: .normal)
-    btnMenu.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+    btnMenu.frame = CGRect(x: 0, y: 0, width: 20, height: 60)
         
     btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
     menuItem.customView = btnMenu
