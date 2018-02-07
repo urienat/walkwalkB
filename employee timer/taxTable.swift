@@ -114,7 +114,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
             filterDecided = 4
             fetchBills()
             btnFilter.setImage (redFilter, for: .normal)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             self.filterMovement(delay: 1.3)
             }
             }

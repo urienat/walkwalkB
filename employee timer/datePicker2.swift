@@ -266,9 +266,9 @@ class datePicker2: UIViewController {
    
     } //end of else
         
-    //imageAnimation()
+   
     ViewController.sessionPusher = true
-    self.navigationController!.popViewController(animated: true)
+    self.navigationController!.popViewController(animated: false)
 
     }//end of savetodb2
     
@@ -276,41 +276,7 @@ class datePicker2: UIViewController {
     datePickerbBackground .isHidden = false
     }
     
-    func imageAnimation(){
-        self.animationImage.center.x -= self.view.bounds.width
-        self.animationImage.isHidden = false
-        self.animationImage.alpha = 1
-        
-        UIView.animate(withDuration: 2.0, animations:{
-            self.animationImage.center.x += self.view.bounds.width
-        })
-        UIView.animate(withDuration: 2.0, delay :2.0 ,options:[],animations: {
-            self.animationImage.alpha = 0
-            
-        },completion:nil)
-        
-        UIView.animate(withDuration: 1.0, delay :4.0 ,options:[],animations: {
-
-            
-            DispatchQueue.main.asyncAfter(deadline: .now()){
-                UIView.animate(withDuration: 2.0, delay :0.0 ,options:[],animations: {
-                    //self.textAdd.alpha = 1
-                },completion:nil)
-                UIView.animate(withDuration: 2.0, delay :2.0 ,options:[],animations: {
-                   // self.textAdd.alpha = 0
-
-                },completion:nil)
-            }
-
-        
-    })
-        DispatchQueue.main.asyncAfter(deadline: .now()+3){
-            self.saveRecord?.isEnabled = true
-            self.navItem.hidesBackButton = false
-
-            self.navigationController!.popViewController(animated: false)
-
-        }}
+   
     
     func refresh(presser:Int){
         sessionItem.isMomentary = true

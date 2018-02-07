@@ -274,7 +274,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     filterDecided = 4
        fetchHandler() //fetchBills()
         btnFilter.setImage (redFilter, for: .normal)
-    DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
     self.filterMovement(delay: 1.3)
     }
     }
@@ -697,7 +697,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         mailComposerVC3.setSubject("Reciept")
         mailComposerVC3.setMessageBody(recieptMailSaver!, isHTML: false)
         mailComposerVC3.setToRecipients([ViewController.fixedemail])
-        DispatchQueue.main.asyncAfter(deadline: .now()+2){
+        DispatchQueue.main.asyncAfter(deadline: .now()+1){
         self.saveBase64StringToPDF(self.recieptMailSaver!)
         }
             
@@ -792,7 +792,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         
         recieptDate = mydateFormat5.string(from: Date())
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+2){
+        DispatchQueue.main.asyncAfter(deadline: .now()+0){/// used to be 2
             print (self.billInfo)
             print (Double(self.balance!) as Double!)
             print (Double(self.partialPayment.text!))
