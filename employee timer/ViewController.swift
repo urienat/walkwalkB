@@ -35,6 +35,9 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     static var professionControl: String?
     static var calanderOption: String?
     static var taxOption : String?
+    
+    let font = UIFont.systemFont(ofSize: 17.0)
+    
 
     var RateUpdate = 0.0
     var newRegister = ""
@@ -299,8 +302,13 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     btn3.addTarget(self, action:#selector(billsClicked), for: UIControlEvents.touchDown)
     bills.customView = btn3
         
+    let textFontAttributes = [ NSFontAttributeName: font,NSForegroundColorAttributeName: systemBlue] as [String : Any]
+    let menuBackTitle = NSAttributedString(string: "General", attributes: textFontAttributes)
+    btnMenu.setAttributedTitle(menuBackTitle, for: .normal)
+    btnMenu.attributedTitle(for: .normal)
     btnMenu.setImage (menu, for: .normal)
-    btnMenu.frame = CGRect(x: 0, y: 0, width: 120, height: 60)
+    btnMenu.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+        
     btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
     menuItem.customView = btnMenu
     
@@ -490,7 +498,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
 
         }
         
-        let font = UIFont.systemFont(ofSize: 17.0)
         let textFontAttributes = [ NSFontAttributeName: font,NSForegroundColorAttributeName: systemBlue] as [String : Any]
         let menuBackTitle = NSAttributedString(string: "General", attributes: textFontAttributes)
         btnMenu.setAttributedTitle(menuBackTitle, for: .normal)
