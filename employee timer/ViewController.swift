@@ -71,6 +71,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var billsIcon = UIImage(named:"billsIcon")?.withRenderingMode(.alwaysTemplate)
     var walkerProfile = UIImage(named:"walkerProfile")?.withRenderingMode(.alwaysTemplate)
     var importBlack = UIImage(named:"import")?.withRenderingMode(.alwaysTemplate)
+    let importIcon = UIImage(named:"importBtn")?.withRenderingMode(.alwaysTemplate)
 
     let mydateFormat2 = DateFormatter()
     let mydateFormat5 = DateFormatter()
@@ -148,6 +149,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var addAmanualRecord: UIView!
     @IBOutlet weak var records: UIBarButtonItem!
     @IBOutlet weak var bills: UIBarButtonItem!
+    @IBOutlet weak var importSpesific: UIBarButtonItem!
+    
     @IBOutlet weak var account: UIBarButtonItem!
     @IBOutlet weak var chooseEmployer: UIButton!
     @IBOutlet weak var animationImage: UIImageView!
@@ -216,6 +219,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let btn1 = UIButton(type: .custom)
     let btn2 = UIButton(type: .custom)
     let btn3 = UIButton(type: .custom)
+    let btn4 = UIButton(type: .custom)
     let btnMenu = UIButton(type: .custom)
  
     
@@ -308,6 +312,13 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     btn3.addTarget(self, action:#selector(billsClicked), for: UIControlEvents.touchDown)
     bills.customView = btn3
         
+      
+    btn4.setImage(importIcon, for: .normal)
+    btn4.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
+    btn4.addTarget(self, action:#selector(importClicked), for: UIControlEvents.touchDown)
+    importSpesific.customView = btn4
+        
+        
     let textFontAttributes = [ NSFontAttributeName: font,NSForegroundColorAttributeName: systemBlue] as [String : Any]
     let menuBackTitle = NSAttributedString(string: "General", attributes: textFontAttributes)
     btnMenu.setAttributedTitle(menuBackTitle, for: .normal)
@@ -321,6 +332,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         records.isEnabled = false
         bills.isEnabled = false
         account.isEnabled = false
+        importSpesific.isEnabled = false
     
     self.sideMenuConstarin.constant = -140
     self.blackView.isHidden = true
@@ -611,7 +623,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.DateIn.isHidden = true
     self.workedFor.isHidden = true
     self.startBackground.isHidden = false
-    self.importBackground.isHidden = false
+    self.importBackground.isHidden = true//false
     self.special.isHidden = false
     self.star.isHidden = false
         
@@ -626,6 +638,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     records.isEnabled = false
     account.isEnabled = false
     bills.isEnabled = false
+    importSpesific.isEnabled = false
     chooseEmployer.isHidden = true
     startBackground.isHidden = true
         self.special.isHidden = true

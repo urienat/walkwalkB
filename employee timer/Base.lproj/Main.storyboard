@@ -861,6 +861,8 @@
                                             <segue destination="Grl-4C-vV7" kind="show" identifier="employerForBills" id="x0P-Ew-8Ag"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="xY3-pg-4Am"/>
+                                    <barButtonItem enabled="NO" image="importBtn" id="uJr-T5-fnM" userLabel="import"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="zwO-Lr-m7N"/>
                                     <barButtonItem enabled="NO" image="sessions" id="uPD-Ce-NUz">
                                         <connections>
@@ -1193,6 +1195,7 @@
                         <outlet property="importBackground" destination="b9U-e8-FEx" id="wcP-Rn-43l"/>
                         <outlet property="importBtn" destination="bgz-2X-N9Q" id="oW8-ar-l0U"/>
                         <outlet property="importImage" destination="l9b-bB-9mb" id="6ef-nj-1c4"/>
+                        <outlet property="importSpesific" destination="uJr-T5-fnM" id="jle-AD-bQm"/>
                         <outlet property="menuItem" destination="yFh-ig-nQ8" id="5zC-xf-qOB"/>
                         <outlet property="records" destination="uPD-Ce-NUz" id="vkv-Tl-a3Z"/>
                         <outlet property="sideMenu" destination="cKA-rE-TUN" id="ZO5-OH-NyS"/>
@@ -4064,6 +4067,7 @@
         <image name="file" width="50" height="50"/>
         <image name="import" width="50" height="50"/>
         <image name="importBig" width="50" height="52"/>
+        <image name="importBtn" width="50" height="50"/>
         <image name="mail" width="50" height="50"/>
         <image name="noSign" width="309" height="255"/>
         <image name="pencilImage" width="100" height="100"/>
@@ -4080,11 +4084,12 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="q4e-3H-dKE"/>
         <segue reference="x0P-Ew-8Ag"/>
         <segue reference="5at-sc-TfM"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="gfT-By-X34"/>
+        <segue reference="1k4-P4-HYk"/>
     </inferredMetricsTieBreakers>
 </document>

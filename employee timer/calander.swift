@@ -280,7 +280,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             thinking.stopAnimating()
             self.animation()
             DispatchQueue.main.asyncAfter(deadline: .now()+3){
-            self.navigationController!.popViewController(animated: true)
+            self.navigationController!.popViewController(animated: false)
                 
             }
             }//end of function
@@ -460,7 +460,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
                     self.animation()
                     DispatchQueue.main.asyncAfter(deadline: .now()+2.6){
-                    self.navigationController!.popViewController(animated: true)
+                    self.navigationController!.popViewController(animated: false)
                     }//end of dispatch
                     }//end of fetchevents
     

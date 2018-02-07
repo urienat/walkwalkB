@@ -22,6 +22,7 @@ extension(ViewController){
             records.isEnabled = true
             account.isEnabled = true
             bills.isEnabled = true
+            importSpesific.isEnabled = true
 
             if pickerData.count == 0 {
             print ("indexpath4\([pickerData])")
