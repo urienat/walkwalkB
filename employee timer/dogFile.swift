@@ -11,6 +11,7 @@ import Firebase
 import MessageUI
 import FirebaseAuth
 
+
 class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate, MFMailComposeViewControllerDelegate ,MFMessageComposeViewControllerDelegate {
 
     let dbRefEmployers = FIRDatabase.database().reference().child("fEmployers")

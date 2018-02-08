@@ -14,7 +14,7 @@ import Google
 import GoogleSignIn
 import GoogleAPIClientForREST
 
-class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
+class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating{
     
     var window: UIWindow?
 
@@ -39,6 +39,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     static var taxation: String?
     
     let font = UIFont.systemFont(ofSize: 17.0)
+    
     
 
     var RateUpdate = 0.0
@@ -101,6 +102,9 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var nameData: [String] = [String]()
     var lastDocument:  [String] = [String]()
     var activeData: [Bool] = [Bool]()
+    var filteredList: [String] = [String]()
+    
+    let searchController =  UISearchController.init(searchResultsController: nil)
 
     var employerIdArray: [AnyObject] = []
     var employerIdArray2: [AnyObject] = []
@@ -256,8 +260,12 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     ViewController.sessionPusher = false
     ViewController.billsPusher = false
     ViewController.profilePusher = false
-    
         
+    searchController.searchResultsUpdater = self
+    searchController.dimsBackgroundDuringPresentation = false
+    definesPresentationContext = true
+    employerList.tableHeaderView = searchController.searchBar
+
     DateIn.text = ""
     
     
@@ -594,8 +602,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     //  self.profileImageUrl = "https://firebasestorage.googleapis.com/v0/b/persession-45987.appspot.com/o/Myprofile.png?alt=media&token=263c8fdb-9cca-4256-9d3b-b794774bf4e1"
     self.imageArray.append(self.profileImageUrl)
                       
-    if iIndex == (self.employerIdArray2.count-1) {
-     
+    if iIndex == (self.employerIdArray2.count-1) { //check this loop position within loop!!!
+    self.filteredList = self.pickerData
     self.thinking2.stopAnimating()
 
     self.employerList.isUserInteractionEnabled = true
@@ -611,7 +619,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }, withCancel: { (Error) in
         self.alert30(); print(Error.localizedDescription)
         print("error from FB")})// end of dbrefemployer
-
+       
     }//end of i loop
     }//end of idarray2 is empty
 

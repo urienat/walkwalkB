@@ -238,7 +238,6 @@
 				AECF31DE1E1248660072547C /* AllowedCharsTextField.swift */,
 				AECF31DC1E1246B80072547C /* MaxLengthField.swift */,
 				AED6564A1E0140A4001691D1 /* cacheImages.swift */,
-				AE577AD31DF9417E00EBE62B /* The Root Program */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -272,6 +271,7 @@
 				AE84DE891E7E638700F08945 /* RebeloperStore */,
 				AEC3A7711D7DE1C7005E3F1F /* datePicker */,
 				AE5548DC1DA51281009D7085 /* history */,
+				AE577AD31DF9417E00EBE62B /* The Root Program */,
 				AECF31E01E12496C0072547C /* helpers */,
 				F4EAE2552007874500BB448C /* reports */,
 				008388A21FE6576F00EFE400 /* tax */,
