@@ -266,12 +266,11 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     ViewController.billsPusher = false
     ViewController.profilePusher = false
     
-        
+   
     searchController.searchResultsUpdater = self
     searchController.dimsBackgroundDuringPresentation = false
     definesPresentationContext = true
-   
-    employerList.tableHeaderView = searchController.searchBar
+    
     searchController.searchBar.barTintColor = grayColor
     
         
@@ -614,7 +613,15 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     //  self.profileImageUrl = "https://firebasestorage.googleapis.com/v0/b/persession-45987.appspot.com/o/Myprofile.png?alt=media&token=263c8fdb-9cca-4256-9d3b-b794774bf4e1"
     self.imageArray.append(self.profileImageUrl)
                       
-    if iIndex == (self.employerIdArray2.count-1) { //check this loop position within loop!!!
+    if iIndex == (self.employerIdArray2.count-1) {
+        if self.pickerData.count > 8 {
+            if #available(iOS 11.0, *) {
+                self.searchController.searchBar.isHidden = false
+                self.navigationItem.searchController = self.searchController
+                
+            }
+        }//end of >4
+       else { self.searchController.searchBar.isHidden = true}
     self.notFilteredList = self.pickerData
     self.thinking2.stopAnimating()
 
@@ -623,6 +630,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         self.employerList.reloadData()
         
         self.employerList.isHidden = false;
+        
         self.postTimerView()//check if solve the bug of view interaction
         
 

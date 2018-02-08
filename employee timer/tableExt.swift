@@ -14,6 +14,7 @@ extension(ViewController){
     
             func tableView(_ employerList: UITableView, didSelectRowAt indexPath: IndexPath) {
             employerList.isHidden = true
+            searchController.searchBar.isHidden = true
             self.thinking2.startAnimating()
 
             employerList.isUserInteractionEnabled = false
