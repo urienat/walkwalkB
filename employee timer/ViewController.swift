@@ -161,6 +161,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var bills: UIBarButtonItem!
     @IBOutlet weak var importSpesific: UIBarButtonItem!
     
+    
     @IBOutlet weak var account: UIBarButtonItem!
     @IBOutlet weak var chooseEmployer: UIButton!
     @IBOutlet weak var animationImage: UIImageView!
@@ -269,9 +270,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     searchController.searchResultsUpdater = self
     searchController.dimsBackgroundDuringPresentation = false
     definesPresentationContext = true
-    
+   
     employerList.tableHeaderView = searchController.searchBar
-    
     searchController.searchBar.barTintColor = grayColor
     
         
