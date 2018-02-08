@@ -30,7 +30,7 @@ extension(ViewController){
 
             chooseEmployer.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
             chooseEmployer.titleLabel?.textAlignment = NSTextAlignment.center
-            homeTitle.title = (nameData[indexPath.row] + " " + pickerData[indexPath.row])
+            homeTitle.title = (pickerData[indexPath.row])
             
             
             btnMenu.setImage (home, for: .normal)
@@ -77,7 +77,7 @@ extension(ViewController){
             print (lastDocument[indexPath.row])
                 
             if pickerData[indexPath.row] != "Add new dog" {            cell2.backgroundColor = UIColor.clear
-                ;cell2.employerFirst.isHidden = false; cell2.employerFirst?.text = nameData[indexPath.row]
+                ;cell2.employerFirst.isHidden = false; cell2.employerFirst?.text = pickerData[indexPath.row]
            
                 
                 if activeData[indexPath.row] == false {
@@ -90,7 +90,7 @@ extension(ViewController){
             
                 
 
-                if activeData[indexPath.row] == false {cell2.lastDocument?.text = "Not Active!"; cell2.employerFirst?.text =  "\(nameData[indexPath.row]) \(pickerData[indexPath.row])"} else{cell2.employerFirst?.text =  "\(nameData[indexPath.row]) \(pickerData[indexPath.row])";cell2.lastDocument?.text = "\(lastDocument[indexPath.row])"}
+                if activeData[indexPath.row] == false {cell2.lastDocument?.text = "Not Active!"; cell2.employerFirst?.text =  "\(pickerData[indexPath.row])"} else{cell2.employerFirst?.text =  "\(pickerData[indexPath.row])";cell2.lastDocument?.text = "\(lastDocument[indexPath.row])"}
             
            
                 cell2.dogImage.clipsToBounds = true

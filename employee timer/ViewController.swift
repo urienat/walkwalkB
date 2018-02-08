@@ -267,8 +267,11 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
     searchController.searchResultsUpdater = self
     searchController.dimsBackgroundDuringPresentation = false
-    definesPresentationContext = true
+    definesPresentationContext = false
     employerList.tableHeaderView = searchController.searchBar
+    searchController.searchBar.barTintColor = blueColor
+    searchController.searchBar.barStyle = .blackOpaque
+        
 
     DateIn.text = ""
     
@@ -589,7 +592,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     for iIndex in 0...(self.employerIdArray2.count-1){
     self.dbRefEmployer.child(self.employerIdArray2[iIndex] as! String).observeSingleEvent(of: .value, with:{ (snapshot) in
     self.employerItem = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
-    self.pickerData.append(self.employerItem  )
+    //self.pickerData.append(self.employerItem  )
     
     print(String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!)
         
@@ -598,6 +601,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.dogItem = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
     self.nameData.append(self.dogItem  )
     self.lastDocument.append(self.lastDocumentItem)
+        
+        self.pickerData.append("\(self.dogItem) \(self.employerItem)" )
 
         self.activeItem =  snapshot.childSnapshot(forPath: "fActive").value as? Bool
         self.activeData.append(self.activeItem! )
@@ -788,7 +793,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
           
 
          //   pickerData = notFilteredList.filter({$0.lowercased().contains{_ in searchController.searchBar.text!.lowercased()}})
-            pickerData = notFilteredList.filter({ ($0.lowercased().contains(searchController.searchBar.text!.lowercased())) }) || 
+            pickerData = notFilteredList.filter({ ($0.lowercased().contains(searchController.searchBar.text!.lowercased())) })
             
         
         }
