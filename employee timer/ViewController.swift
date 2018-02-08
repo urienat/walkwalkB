@@ -530,6 +530,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }//end of prepare
     
     func noAccount(){
+        
         self.btnMenu.isHidden = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
             self.btnMenu.setImage (self.menu, for: .normal)
@@ -772,9 +773,17 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     func sideMenuMovement(){
         print ("fff")
-        searchController.isActive = false
+       
         
         if isSideMenuHidden {
+            if #available(iOS 11.0, *) {
+                
+                self.navigationItem.searchController = nil
+                
+                
+            } else {
+                self.searchController.isActive = false
+            }
             self.blackView.isHidden = false
             //self.toolBar.isHidden = true
             self.sideMenuConstarin.constant = 0
@@ -782,6 +791,15 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
                self.view.layoutIfNeeded()
             })
         }else{
+            if self.pickerData.count > 4 {
+                if #available(iOS 11.0, *) {
+                    self.navigationItem.searchController = self.searchController
+                } else {
+                    self.employerList.tableHeaderView = self.searchController.searchBar
+                }
+               
+            }//end of >4
+            
             sideMenuConstarin.constant = -140
             UIView.animate(withDuration:0.4, animations: {
                 self.view.layoutIfNeeded()

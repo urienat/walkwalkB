@@ -15,8 +15,9 @@ extension(ViewController){
             func tableView(_ employerList: UITableView, didSelectRowAt indexPath: IndexPath) {
             
             if #available(iOS 11.0, *) {
-                self.navigationItem.searchController?.isActive = false;
-                self.searchController.dismiss(animated: true, completion: nil)
+                //self.navigationItem.searchController?.isActive = false;
+                self.navigationItem.searchController = nil
+               
                 
             } else {
             self.searchController.isActive = false
