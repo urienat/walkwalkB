@@ -102,7 +102,11 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var nameData: [String] = [String]()
     var lastDocument:  [String] = [String]()
     var activeData: [Bool] = [Bool]()
-    var filteredList: [String] = [String]()
+    
+    struct listStruct {
+        var name = String()
+    }
+    var notFilteredList: [String] = [String]()
     
     let searchController =  UISearchController.init(searchResultsController: nil)
 
@@ -155,7 +159,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var records: UIBarButtonItem!
     @IBOutlet weak var bills: UIBarButtonItem!
     @IBOutlet weak var importSpesific: UIBarButtonItem!
-    @IBOutlet weak var searcher: UISearchBar!
     
     @IBOutlet weak var account: UIBarButtonItem!
     @IBOutlet weak var chooseEmployer: UIButton!
@@ -260,6 +263,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     ViewController.sessionPusher = false
     ViewController.billsPusher = false
     ViewController.profilePusher = false
+    
         
     searchController.searchResultsUpdater = self
     searchController.dimsBackgroundDuringPresentation = false
@@ -603,7 +607,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.imageArray.append(self.profileImageUrl)
                       
     if iIndex == (self.employerIdArray2.count-1) { //check this loop position within loop!!!
-    self.filteredList = self.pickerData
+    self.notFilteredList = self.pickerData
     self.thinking2.stopAnimating()
 
     self.employerList.isUserInteractionEnabled = true
@@ -776,6 +780,20 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         }, completion: nil)
 
         }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if searchController.searchBar.text! == ""{
+            pickerData = notFilteredList
+        }else{
+          
+
+         //   pickerData = notFilteredList.filter({$0.lowercased().contains{_ in searchController.searchBar.text!.lowercased()}})
+            pickerData = notFilteredList.filter({ ($0.lowercased().contains(searchController.searchBar.text!.lowercased())) }) || 
+            
+        
+        }
+        self.employerList.reloadData()
+    }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////alerts
     func  alert83(){
     let alertController83 = UIAlertController(title: ("Subscription alert") , message: " Adding more accounts requires subscription and we couldn't find one. please subscribe with free trial or log again if you have one.", preferredStyle: .alert)

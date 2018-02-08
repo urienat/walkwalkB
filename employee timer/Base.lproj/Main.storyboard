@@ -692,14 +692,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="QAK-61-qij"/>
                                 </constraints>
-                                <searchBar key="tableHeaderView" contentMode="redraw" id="mI6-Ph-1yd">
-                                    <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="employerList" rowHeight="74" id="QGB-yS-WGW" userLabel="employerList" customClass="employerCellTableViewCell" customModule="perSession" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="280" height="74"/>
+                                        <rect key="frame" x="0.0" y="28" width="280" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" tableViewCell="QGB-yS-WGW" id="i8b-rx-fpw">
                                             <rect key="frame" x="0.0" y="0.0" width="280" height="73.5"/>
@@ -1203,7 +1198,6 @@
                         <outlet property="importSpesific" destination="uJr-T5-fnM" id="jle-AD-bQm"/>
                         <outlet property="menuItem" destination="yFh-ig-nQ8" id="5zC-xf-qOB"/>
                         <outlet property="records" destination="uPD-Ce-NUz" id="vkv-Tl-a3Z"/>
-                        <outlet property="searcher" destination="mI6-Ph-1yd" id="eij-H4-YdT"/>
                         <outlet property="sideMenu" destination="cKA-rE-TUN" id="ZO5-OH-NyS"/>
                         <outlet property="sideMenuConstarin" destination="Qng-b0-SRL" id="STP-FC-cVD"/>
                         <outlet property="special" destination="POY-PZ-Iwq" id="wTy-fl-J4x"/>
