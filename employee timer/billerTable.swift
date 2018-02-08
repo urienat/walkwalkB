@@ -301,11 +301,11 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     override func viewDidLoad() {
         
-        if employerID == "" {
-            let yourBackImage = UIImage(named: "home")
-            self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
-            self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-        }
+       // if employerID == "" {
+         //   let yourBackImage = UIImage(named: "home")
+           // self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+            //self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        //}
        
         super.viewDidLoad()
         noSign.isHidden = true

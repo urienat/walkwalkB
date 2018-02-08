@@ -221,9 +221,9 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         picture.layer.cornerRadius = 15
         
         
-            let yourBackImage = UIImage(named: "home")
-            self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
-            self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+         //   let yourBackImage = UIImage(named: "home")
+           // self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+           // self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
         
         
             let currentUser = FIRAuth.auth()?.currentUser

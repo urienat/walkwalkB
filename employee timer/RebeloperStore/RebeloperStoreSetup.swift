@@ -63,7 +63,7 @@ let NonRenewablePurchasesSubscritionAmount = [3600 * 24 * 30]
 // renewable purchases
 enum RenewablePurchaseName : String {
   
-  case autoRenewableSubscription1 = "woof"
+  case autoRenewableSubscription1 = "general"
   //case autoRenewableSubscription2 = "bark"
  // case autoRenewableSubscription3 = "HomePloyer.employeetimer.bark"//"HomePloyer.employeetimer.Woof"  //this is the one
   

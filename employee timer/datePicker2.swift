@@ -47,18 +47,18 @@ class datePicker2: UIViewController {
     @IBAction func sessionItem(_ sender: Any) {
         switch sessionItem.selectedSegmentIndex {
         case 0:   //Session
-        sessionMode = true
-         datePickerbBackground .isHidden = false
+        itemBackground.isHidden = true
+        saveRecord?.isEnabled = true
+                 datePickerbBackground .isHidden = false
          startLbl.isHidden = false
          startLbl.text = "Session"
          date1button.isHidden = false
          timeIn.isHidden = false
          extendedDate1Button.isHidden = false
-         itemBackground.isHidden = true
-         saveRecord?.isEnabled = true
+         sessionMode = true
             
         case 1: //item
-        sessionMode = false
+        
         datePickerbBackground .isHidden = true
         startLbl.isHidden = true
         date1button.isHidden = true
@@ -67,7 +67,7 @@ class datePicker2: UIViewController {
         itemBackground.isHidden = false
         print (ViewController.fixedCurrency)
         checkItemDeltails()
-        
+        sessionMode = false
         
         amount.text = "Rate(\(ViewController.fixedCurrency!))"
 
@@ -167,10 +167,19 @@ class datePicker2: UIViewController {
     override func viewDidLoad() {
     super.viewDidLoad()
         
+        
+        //formating the date
+        mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
+        mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
+        mydateFormat11.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy , (HH,mm)", options: 0, locale: Locale.autoupdatingCurrent)!
+        
         if recordToHandle == "" {
             sessionItem.isHidden = true//false
             deleter.isEnabled = false
-            if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat11.string(from: Date())} else {self.TimeIN.text = mydateFormat10.string(from: Date()) }
+            
+            print (ViewController.dateTimeFormat)
+            
+            if ViewController.dateTimeFormat == "DateTime" { print ("khkhkj");self.TimeIN.text = mydateFormat11.string(from: Date())} else {self.TimeIN.text = mydateFormat10.string(from: Date()) }
             
             
             self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveToDB2) )
@@ -195,10 +204,7 @@ class datePicker2: UIViewController {
       
         
       
-        //formating the date
-        mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
-        mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
-        mydateFormat11.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy , (HH,mm)", options: 0, locale: Locale.autoupdatingCurrent)!
+       
         
        
         

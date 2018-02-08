@@ -72,6 +72,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var walkerProfile = UIImage(named:"walkerProfile")?.withRenderingMode(.alwaysTemplate)
     var importBlack = UIImage(named:"import")?.withRenderingMode(.alwaysTemplate)
     let importIcon = UIImage(named:"importBtn")?.withRenderingMode(.alwaysTemplate)
+    var perSessionImage = UIImage(named:"perSessionImage")?.withRenderingMode(.alwaysTemplate)
 
     let mydateFormat2 = DateFormatter()
     let mydateFormat5 = DateFormatter()
@@ -150,6 +151,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var records: UIBarButtonItem!
     @IBOutlet weak var bills: UIBarButtonItem!
     @IBOutlet weak var importSpesific: UIBarButtonItem!
+    @IBOutlet weak var searcher: UISearchBar!
     
     @IBOutlet weak var account: UIBarButtonItem!
     @IBOutlet weak var chooseEmployer: UIButton!

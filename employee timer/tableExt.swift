@@ -109,6 +109,7 @@ extension(ViewController){
             URLSession.shared.dataTask(with: url, completionHandler: { (Data, response, error) in
             if error != nil {
             print (error as Any)
+                cell2.dogImage.image = self.perSessionImage
             return
             }//end of if error
             
