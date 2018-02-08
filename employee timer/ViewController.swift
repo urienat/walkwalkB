@@ -614,14 +614,13 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.imageArray.append(self.profileImageUrl)
                       
     if iIndex == (self.employerIdArray2.count-1) {
-        if self.pickerData.count > 8 {
-            if #available(iOS 11.0, *) {
-                self.searchController.searchBar.isHidden = false
-                self.navigationItem.searchController = self.searchController
-                
-            }
+       if self.pickerData.count > 4 {
+           
+    self.employerList.tableHeaderView = self.searchController.searchBar
+       
+            
         }//end of >4
-       else { self.searchController.searchBar.isHidden = true}
+      
     self.notFilteredList = self.pickerData
     self.thinking2.stopAnimating()
 
@@ -766,6 +765,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     func sideMenuMovement(){
         print ("fff")
+        searchController.isActive = false
         
         if isSideMenuHidden {
             self.blackView.isHidden = false
