@@ -53,6 +53,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var star: UIImageView!
     @IBOutlet weak var homeTitle: UINavigationItem!
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
+    var grayColor = UIColor(red :235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1)
     var systemBlue = UIColor(red :0/255.0, green: 122/255.0, blue: 255/255.0, alpha: 1.0)
     
 
@@ -267,10 +268,12 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
     searchController.searchResultsUpdater = self
     searchController.dimsBackgroundDuringPresentation = false
-    definesPresentationContext = false
+    definesPresentationContext = true
+    
     employerList.tableHeaderView = searchController.searchBar
-    searchController.searchBar.barTintColor = blueColor
-    searchController.searchBar.barStyle = .blackOpaque
+    
+    searchController.searchBar.barTintColor = grayColor
+    
         
 
     DateIn.text = ""
