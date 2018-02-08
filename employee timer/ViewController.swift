@@ -270,6 +270,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     searchController.searchResultsUpdater = self
     searchController.dimsBackgroundDuringPresentation = false
     definesPresentationContext = true
+   
     
     searchController.searchBar.barTintColor = grayColor
     
@@ -397,7 +398,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
     }//end of view did appear
 
-   
+    
+    
     //check subscription
     func checkSubs(){
     /*
@@ -615,8 +617,13 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
                       
     if iIndex == (self.employerIdArray2.count-1) {
        if self.pickerData.count > 4 {
-           
-    self.employerList.tableHeaderView = self.searchController.searchBar
+       if #available(iOS 11.0, *) {
+        self.navigationItem.searchController = self.searchController
+        } else {
+        self.employerList.tableHeaderView = self.searchController.searchBar
+        }
+        
+    
        
             
         }//end of >4
