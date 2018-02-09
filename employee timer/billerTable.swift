@@ -792,7 +792,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         
         recieptDate = mydateFormat5.string(from: Date())
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+0){/// used to be 2
+        DispatchQueue.main.asyncAfter(deadline: .now()+2){/// used to be 2
             print (self.billInfo)
             print (Double(self.balance!) as Double!)
             print (Double(self.partialPayment.text!))

@@ -41,6 +41,7 @@
 		F416A6722028A7B800F0E5FB /* fetchBills.swift in Sources */ = {isa = PBXBuildFile; fileRef = F416A6712028A7B800F0E5FB /* fetchBills.swift */; };
 		F42DD2991FB03E6A00BBAE75 /* recordsStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42DD2981FB03E6A00BBAE75 /* recordsStructure.swift */; };
 		F434A5432026EBDF003ED07C /* fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434A5422026EBDF003ED07C /* fetch.swift */; };
+		F4419EC7202DD9C900DD1BFC /* fetchEmployers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4419EC6202DD9C900DD1BFC /* fetchEmployers.swift */; };
 		F44CF4041FAB67FA00093950 /* UIControl.h in Headers */ = {isa = PBXBuildFile; fileRef = F44CF4031FAB67FA00093950 /* UIControl.h */; };
 		F46C02AA1FB3139D00EBC4A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46C02A91FB3139D00EBC4A4 /* Assets.xcassets */; };
 		F4C0629E1FCAF927005B2A08 /* calander.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C0629D1FCAF927005B2A08 /* calander.swift */; };
@@ -105,6 +106,7 @@
 		F416A675202B68E100F0E5FB /* perSession.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = perSession.entitlements; sourceTree = "<group>"; };
 		F42DD2981FB03E6A00BBAE75 /* recordsStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recordsStructure.swift; sourceTree = "<group>"; };
 		F434A5422026EBDF003ED07C /* fetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetch.swift; sourceTree = "<group>"; };
+		F4419EC6202DD9C900DD1BFC /* fetchEmployers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetchEmployers.swift; sourceTree = "<group>"; };
 		F44CF4031FAB67FA00093950 /* UIControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIControl.h; sourceTree = "<group>"; };
 		F46C02A91FB3139D00EBC4A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4C0629D1FCAF927005B2A08 /* calander.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calander.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				AE7F91841DF53E11000BC8C7 /* tableExt.swift */,
 				F4E1AAAE2020BF2A00935421 /* shareExt.swift */,
 				AEE95E471D7B092A00093B51 /* ViewController.swift */,
+				F4419EC6202DD9C900DD1BFC /* fetchEmployers.swift */,
 				F4C0629D1FCAF927005B2A08 /* calander.swift */,
 			);
 			name = "The Root Program";
@@ -521,6 +524,7 @@
 				AE84DE8E1E7E638700F08945 /* RebeloperStore.swift in Sources */,
 				AE0B0A7F1E62D461000E539C /* billView.swift in Sources */,
 				0083889F1FE6574200EFE400 /* taxerCell.swift in Sources */,
+				F4419EC7202DD9C900DD1BFC /* fetchEmployers.swift in Sources */,
 				AE4159D71DD339F1008C5DE6 /* dogFile.swift in Sources */,
 				AED6564B1E0140A4001691D1 /* cacheImages.swift in Sources */,
 				F416A6722028A7B800F0E5FB /* fetchBills.swift in Sources */,

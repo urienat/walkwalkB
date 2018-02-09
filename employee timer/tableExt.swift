@@ -13,22 +13,13 @@ import Firebase
 extension(ViewController){
     
             func tableView(_ employerList: UITableView, didSelectRowAt indexPath: IndexPath) {
-            
+
             if #available(iOS 11.0, *) {
-                //self.navigationItem.searchController?.isActive = false;
-                self.navigationItem.searchController = nil
-               
-                
+            self.navigationItem.searchController = nil
             } else {
             self.searchController.isActive = false
             }
-                
-           
-            
-            
-                
-                
-                
+
             employerList.isHidden = true
             self.thinking2.startAnimating()
 
@@ -47,8 +38,7 @@ extension(ViewController){
             chooseEmployer.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
             chooseEmployer.titleLabel?.textAlignment = NSTextAlignment.center
             homeTitle.title = (pickerData[indexPath.row])
-            
-            
+
             btnMenu.setImage (home, for: .normal)
             let font = UIFont.systemFont(ofSize: 17.0)
             let textFontAttributes = [ NSFontAttributeName: font,NSForegroundColorAttributeName: systemBlue] as [String : Any]
@@ -57,7 +47,7 @@ extension(ViewController){
             btnMenu.attributedTitle(for: .normal)
             btnMenu.removeTarget(self, action:#selector(sideMenuMovement), for: .touchUpInside)
             btnMenu.addTarget(self, action: #selector(noAccount), for: .touchUpInside)
-                
+
             toolBar.isHidden = false
             addAccount.isEnabled = false
             account.title = "\(pickerData[indexPath.row])'s file"
@@ -65,17 +55,15 @@ extension(ViewController){
 
             employerToS = pickerData[indexPath.row]
 
-                
+
             employerIDToS = employerIdArray2[indexPath.row] as! String
             bringEmployerData()
-                if activeData[indexPath.row] != false {self.thinking2.stopAnimating(); preStartView();records.isEnabled = true}
-                else { chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating();alert670();records.isEnabled = false}
+            if activeData[indexPath.row] != false {self.thinking2.stopAnimating(); preStartView();records.isEnabled = true}
+            else { chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating();alert670();records.isEnabled = false}
 
             //set variable for Segue
             employerToS = pickerData[indexPath.row]
             chooseEmployer.isHidden = false
-                
-            
 
             }//end of did select
 
