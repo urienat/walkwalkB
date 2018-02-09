@@ -617,7 +617,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.imageArray.append(self.profileImageUrl)
                       
     if iIndex == (self.employerIdArray2.count-1) {
-       if self.pickerData.count > 4 {
+       if self.pickerData.count > 8 {
        if #available(iOS 11.0, *) {
         self.navigationItem.searchController = self.searchController
         } else {
@@ -791,7 +791,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
                self.view.layoutIfNeeded()
             })
         }else{
-            if self.pickerData.count > 4 {
+            if self.pickerData.count > 8 {
                 if #available(iOS 11.0, *) {
                     self.navigationItem.searchController = self.searchController
                 } else {

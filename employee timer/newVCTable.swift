@@ -632,8 +632,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         
     self.billing()
 
-    DispatchQueue.main.asyncAfter(deadline: .now()+0){//used to be 2
+    DispatchQueue.main.asyncAfter(deadline: .now()+2){//when 0 crash
     self.htmlReport = self.csv2 as String!
+    print(self.counterForMail2!)
+        
     if self.biller == true {self.dbRefEmployees.child(self.employeeID).updateChildValues(["fCounter": String(describing: (Int(self.counterForMail2!)!+1))])//add counter to invoice #
     self.biller = false
         
