@@ -94,7 +94,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var dOut = ""
     var methood = "Normal"
     var pickerlabel =  UILabel.self
-    print ("1234")
+    
     
     
     @IBOutlet weak var thinking2: UIActivityIndicatorView!
@@ -277,7 +277,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     searchController.searchBar.barTintColor = grayColor
     
     DateIn.text = ""
-    
+    print ("1234")
     employerList.backgroundColor = UIColor.clear
         
     let currentUser = FIRAuth.auth()?.currentUser
