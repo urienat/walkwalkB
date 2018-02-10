@@ -67,6 +67,8 @@ func fetchEmployers() {
         //  self.profileImageUrl = "https://firebasestorage.googleapis.com/v0/b/persession-45987.appspot.com/o/Myprofile.png?alt=media&token=263c8fdb-9cca-4256-9d3b-b794774bf4e1"
         self.imageArray.append(self.profileImageUrl)
 
+            
+            
         if iIndex == (self.employerIdArray2.count-1) {
         if self.pickerData.count > 8 {
         if #available(iOS 11.0, *) {
