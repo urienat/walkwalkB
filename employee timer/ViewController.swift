@@ -94,6 +94,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var dOut = ""
     var methood = "Normal"
     var pickerlabel =  UILabel.self
+    print ("1234")
+    
     
     @IBOutlet weak var thinking2: UIActivityIndicatorView!
     @IBOutlet weak var employerList: UITableView!
