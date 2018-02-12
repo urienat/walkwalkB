@@ -75,22 +75,22 @@ func fetchEmployers() {
             
             
         if iIndex == (self.employerIdArray2.count-1) {
-        if self.filteredEmployerForList.count > 8 {
-        if #available(iOS 11.0, *) {
-        self.navigationItem.searchController = self.searchController
-        } else {
-        self.employerList.tableHeaderView = self.searchController.searchBar
-        }
-
-
-
-
-        }//end of >4
+        print (self.filteredEmployerForList.count)
+            
+       
 
             print (self.employerForList)
         self.filteredEmployerForList = self.employerForList
-        self.notFilteredList = self.pickerData
+     ///   self.notFilteredList = self.pickerData
         self.thinking2.stopAnimating()
+          
+            if self.filteredEmployerForList.count > 8 {
+                if #available(iOS 11.0, *) {
+                    self.navigationItem.searchController = self.searchController
+                } else {
+                    self.employerList.tableHeaderView = self.searchController.searchBar
+                }
+            }//end of >4
 
         self.employerList.isUserInteractionEnabled = true
         self.employerListBottom.priority = 750; self.employerListHeiget.priority = 1000;self.employerListTop.constant = 30.0;self.employerListBottom.constant = 30

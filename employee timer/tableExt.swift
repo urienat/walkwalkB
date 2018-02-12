@@ -98,7 +98,7 @@ extension(ViewController){
             
                 
 
-                if activeData[indexPath.row] == false {cell2.lastDocument?.text = "Not Active!"; cell2.employerFirst?.text =  "\(filteredEmployerForList[indexPath.row])"} else{cell2.employerFirst?.text =  "\(filteredEmployerForList[indexPath.row])";cell2.lastDocument?.text = "\(lastDocument[indexPath.row])"}
+                if activeData[indexPath.row] == false {cell2.lastDocument?.text = "Not Active!"; cell2.employerFirst?.text =  "\(filteredEmployerForList[indexPath.row].accountName)"} else{cell2.employerFirst?.text =  "\(filteredEmployerForList[indexPath.row].accountName)";cell2.lastDocument?.text = "\(lastDocument[indexPath.row])"}
             
            
                 cell2.dogImage.clipsToBounds = true

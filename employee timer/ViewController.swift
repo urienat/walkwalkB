@@ -383,6 +383,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
   connectivityCheck()
         
         
+        
+        
     }// end of viewdidload//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    
     override func viewDidAppear(_ animated: Bool) {
