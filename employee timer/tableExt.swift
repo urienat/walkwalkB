@@ -31,13 +31,13 @@ extension(ViewController){
             bills.isEnabled = true
             importSpesific.isEnabled = true
 
-            if pickerData.count == 0 {
-            print ("indexpath4\([pickerData])")
+            if filteredEmployerForList.count == 0 {
+            print ("indexpath4\([filteredEmployerForList])")
             }
 
             chooseEmployer.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
             chooseEmployer.titleLabel?.textAlignment = NSTextAlignment.center
-            homeTitle.title = (pickerData[indexPath.row])
+            homeTitle.title = (filteredEmployerForList[indexPath.row].accountName)
 
             btnMenu.setImage (home, for: .normal)
             let font = UIFont.systemFont(ofSize: 17.0)
@@ -50,10 +50,10 @@ extension(ViewController){
 
             toolBar.isHidden = false
             addAccount.isEnabled = false
-            account.title = "\(pickerData[indexPath.row])'s file"
-            records.title =  "\(pickerData[indexPath.row])'s Sessions"
+            account.title = "\(filteredEmployerForList[indexPath.row])'s file"
+            records.title =  "\(filteredEmployerForList[indexPath.row])'s Sessions"
 
-            employerToS = pickerData[indexPath.row]
+            employerToS = filteredEmployerForList[indexPath.row].accountName
 
 
            /// employerIDToS = employerIdArray2[indexPath.row] as! String
@@ -64,14 +64,14 @@ extension(ViewController){
             else { chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating();alert670();records.isEnabled = false}
 
             //set variable for Segue
-            employerToS = pickerData[indexPath.row]
+            employerToS = filteredEmployerForList[indexPath.row].accountName
             chooseEmployer.isHidden = false
 
             }//end of did select
 
     
             func tableView(_ employerList: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return pickerData.count
+            return filteredEmployerForList.count
             }
     
             func tableView(_ employerList: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -84,8 +84,8 @@ extension(ViewController){
             print(activeData[indexPath.row])
             print (lastDocument[indexPath.row])
                 
-            if pickerData[indexPath.row] != "Add new dog" {            cell2.backgroundColor = UIColor.clear
-                ;cell2.employerFirst.isHidden = false; cell2.employerFirst?.text = pickerData[indexPath.row]
+            if filteredEmployerForList[indexPath.row].accountName != "Add new dog" {            cell2.backgroundColor = UIColor.clear
+                ;cell2.employerFirst.isHidden = false; cell2.employerFirst?.text = filteredEmployerForList[indexPath.row].accountName
            
                 
                 if activeData[indexPath.row] == false {
@@ -98,7 +98,7 @@ extension(ViewController){
             
                 
 
-                if activeData[indexPath.row] == false {cell2.lastDocument?.text = "Not Active!"; cell2.employerFirst?.text =  "\(pickerData[indexPath.row])"} else{cell2.employerFirst?.text =  "\(pickerData[indexPath.row])";cell2.lastDocument?.text = "\(lastDocument[indexPath.row])"}
+                if activeData[indexPath.row] == false {cell2.lastDocument?.text = "Not Active!"; cell2.employerFirst?.text =  "\(filteredEmployerForList[indexPath.row])"} else{cell2.employerFirst?.text =  "\(filteredEmployerForList[indexPath.row])";cell2.lastDocument?.text = "\(lastDocument[indexPath.row])"}
             
            
                 cell2.dogImage.clipsToBounds = true
