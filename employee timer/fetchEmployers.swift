@@ -57,6 +57,10 @@ func fetchEmployers() {
         self.dogItem = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
         self.nameData.append(self.dogItem  )
         self.lastDocument.append(self.lastDocumentItem)
+           
+            var employerToAdd:employerStruct = employerStruct( accountName:"\(self.dogItem) \(self.employerItem)" , employerRef: self.employerIdArray2[iIndex] as! String)
+        self.employerForList.append(employerToAdd)
+            
 
         self.pickerData.append("\(self.dogItem) \(self.employerItem)" )
 

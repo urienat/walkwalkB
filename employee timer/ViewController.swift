@@ -74,10 +74,15 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let importIcon = UIImage(named:"importBtn")?.withRenderingMode(.alwaysTemplate)
     var perSessionImage = UIImage(named:"perSessionImage")?.withRenderingMode(.alwaysTemplate)
     
-    struct employer{
-        var account = String()
-        var employerRef = String()
+    struct employerStruct{
+        var accountName : String?
+        var employerRef : String?
+        init(accountName:String, employerRef:String) {
+            self.accountName = accountName
+            self.employerRef = employerRef
+        }
     }
+    var employerForList : [employerStruct] = []
 
     let mydateFormat2 = DateFormatter()
     let mydateFormat5 = DateFormatter()
