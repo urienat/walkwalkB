@@ -75,8 +75,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var perSessionImage = UIImage(named:"perSessionImage")?.withRenderingMode(.alwaysTemplate)
     
     struct employerStruct{
-        var accountName : String?
-        var employerRef : String?
+        var accountName : String
+        var employerRef : String
         init(accountName:String, employerRef:String) {
             self.accountName = accountName
             self.employerRef = employerRef

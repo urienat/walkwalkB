@@ -86,6 +86,8 @@ func fetchEmployers() {
 
         }//end of >4
 
+            print (self.employerForList)
+            
         self.notFilteredList = self.pickerData
         self.thinking2.stopAnimating()
 
