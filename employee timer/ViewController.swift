@@ -699,7 +699,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
                self.view.layoutIfNeeded()
             })
         }else{
-            if self.pickerData.count > 8 {
+            if self.filteredEmployerForList.count > 8 {
                 if #available(iOS 11.0, *) {
                     self.navigationItem.searchController = self.searchController
                 } else {

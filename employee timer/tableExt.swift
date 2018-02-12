@@ -56,7 +56,9 @@ extension(ViewController){
             employerToS = pickerData[indexPath.row]
 
 
-            employerIDToS = employerIdArray2[indexPath.row] as! String
+           /// employerIDToS = employerIdArray2[indexPath.row] as! String
+            employerIDToS = filteredEmployerForList[indexPath.row].employerRef
+
             bringEmployerData()
             if activeData[indexPath.row] != false {self.thinking2.stopAnimating(); preStartView();records.isEnabled = true}
             else { chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating();alert670();records.isEnabled = false}

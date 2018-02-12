@@ -14,6 +14,7 @@ func fetchEmployers() {
         self.employerIdArray.removeAll()
         self.employerIdArray2.removeAll()
         self.pickerData.removeAll()
+    self.filteredEmployerForList.removeAll()
         self.imageArray.removeAll()
         self.nameData.removeAll()
         self.lastDocument.removeAll()
@@ -74,7 +75,7 @@ func fetchEmployers() {
             
             
         if iIndex == (self.employerIdArray2.count-1) {
-        if self.pickerData.count > 8 {
+        if self.filteredEmployerForList.count > 8 {
         if #available(iOS 11.0, *) {
         self.navigationItem.searchController = self.searchController
         } else {
@@ -87,7 +88,7 @@ func fetchEmployers() {
         }//end of >4
 
             print (self.employerForList)
-            
+        self.filteredEmployerForList = self.employerForList
         self.notFilteredList = self.pickerData
         self.thinking2.stopAnimating()
 
