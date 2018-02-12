@@ -11,29 +11,26 @@ import Firebase
 import MessageUI
 import FirebaseAuth
 
+
 class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate, MFMailComposeViewControllerDelegate ,MFMessageComposeViewControllerDelegate {
 
-    let dbRef = FIRDatabase.database().reference()
     let dbRefEmployers = FIRDatabase.database().reference().child("fEmployers")
-    let dbRefcEmployers = FIRDatabase.database().reference().child("cEmployers")
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
 
-    let Vimage = UIImage(named: "V")
-    let emptyVimage = UIImage(named: "emptyV")
+    var home = UIImage(named: "home")
+    let Vimage = UIImage(named:"vNaked")
+    let emptyVimage = UIImage(named: "blank")
     var perSessionImage = UIImage(named:"perSessionImage")?.withRenderingMode(.alwaysTemplate)
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
     
-    var message :String?
+   
     var message2 :String?
-    
     var activeEmployerSwitch: Bool?
-        var employerID = ""
+    var employerID = ""
     var EmployerRef = ""
     var lbl = ""
     var employeeID = ""
     var employerFromMain = ""
-    
-    var cEmployerRef = ""
     
     var employerArray: [String:Int] = [:]
     var employerArray2: [String] = []
@@ -43,10 +40,8 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     alert6()
     }
     
-    
     @IBOutlet weak var scrollerView: UIScrollView!
-    
-    @IBOutlet weak var trash: UIBarButtonItem!
+        @IBOutlet weak var trash: UIBarButtonItem!
     @IBOutlet weak var obligatory: UILabel!
     @IBAction func deleteAdog(_ sender: Any) {DeleteAlert()}  //for deleting an employer
     @IBOutlet weak var activeButton: UIButton!
@@ -58,7 +53,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             activeEmployerSwitch = true}
             }
     @IBOutlet weak var activeEmployer: UIImageView!
-    
+
     @IBOutlet weak var pName: UITextField!
     var nameUpdate = ""
     
@@ -71,7 +66,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBOutlet weak var studentParentNameText: UITextField!
     var studentParentUpdate = ""
     @IBOutlet weak var studentParentNameLabel: UILabel!
-
     
     @IBOutlet weak var pCell: UITextField!
     var cellUpdate = ""
@@ -104,11 +98,16 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     override func viewDidLoad(){ //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
-        ViewController.refresh = false
+    ViewController.refresh = false
         
-        connectivityCheck()
+    connectivityCheck()
         
- 
+        //if employerID == "" {
+        //let yourBackImage = UIImage(named: "home")
+        //self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+        //self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        //}
+        
         //keyboard adjustment
         NotificationCenter.default.addObserver(self, selector: #selector(self.KeyboardNotificationwillShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: self.view.window)
         NotificationCenter.default.addObserver(self, selector: #selector(self.KeyboardNotificationwillHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: self.view.window)
@@ -116,7 +115,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if self.employerFromMain == "Add Account" {
             self.lbl = "New Account"
             self.title = lbl
-            if ViewController.professionControl == "Tutor" {self.studentParentNameText.text = ""}
+            self.studentParentNameText.text = ""
             self.pName.text = ""
             self.pLastName.text = ""
             self.pEmail.text = ""
@@ -150,6 +149,10 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         
         if  ViewController.professionControl! == "Tutor" {addressTop.constant = 46.0; studentParentNameText.isHidden = false; studentParentNameLabel.isHidden = false } else {addressTop.constant = 8.0; studentParentNameText.isHidden = true; studentParentNameLabel.isHidden = true }
         
+        activeButton.layer.borderWidth = 0.5;
+        activeButton.layer.borderColor =  blueColor.cgColor
+        activeButton.layer.cornerRadius =  10
+        
     }//end of view did load /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
         deinit {NotificationCenter.default.removeObserver(self) }
@@ -158,9 +161,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         employerArray.removeAll()
         employerArray2.removeAll()
         employerArray3.removeAll()
-
         if pRate.text == "" {pRate.text = "0.0"}
-
         if self.pLastName.text == "" || self.pName.text == "" {
         message2 =  "Name & Last name are requiered fields"
         alert54()
@@ -176,8 +177,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         let employerLastNameForCheck = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
 
         self.employerArray3.append("\(employerNameforCheck!) \(employerLastNameForCheck!)")
-        print ("1")
-
 
         if self.employerArray3.contains("\(self.pName.text!) \(self.pLastName.text!)") && self.lbl == "New Account" || self.lbl != "New Account" && self.employerArray3.contains("\(self.pName.text!) \(self.pLastName.text!)") &&  ("\(self.pName.text!) \(self.pLastName.text!)") != ("\(self.nameUpdate) \(self.lastNameUpdate)") {
         self.message2 = " Can't save account as \(self.pName.text!) \(self.pLastName.text!) account is already set."
@@ -186,9 +185,13 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         else {
         if eachEmployer == self.employerArray2.count-1 {self.saveToDB()}
         }
-        })
+        } , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")})
         }//end of loop
-        })
+        } , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")})
         }//end of func
 
     
@@ -203,7 +206,9 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if self.activeEmployerSwitch == true {self.activeEmployerSwitch = false} else {self.activeEmployerSwitch = true}
             
             self.dbRefEmployers.child(self.employerID).updateChildValues(["fName" : self.pName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!, "fRem" : self.pRem.text!, "fEmployer":self.pLastName.text!,"fActive" : self.activeEmployerSwitch!])
-            if ViewController.professionControl == "Tutor" {self.dbRefEmployers.child(self.employerID).updateChildValues(["fParent" : self.studentParentNameText.text!])}
+            if ViewController.professionControl == "Tutor" {self.dbRefEmployers.child(self.employerID).updateChildValues(["fParent" : self.studentParentNameText.text!])} else {
+                self.dbRefEmployers.child(self.employerID).updateChildValues(["fParent" : ""])
+            }
            
             //in firebase under url
             print ("employerId to store cache and FB:\(self.employerID)")
@@ -273,7 +278,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         //storage of pictures
         //in cache under employerID
         //if employerFromMain != "Add Account" { MyImageCache.sharedCache.setObject(pickedImage as AnyObject, forKey: employerID as AnyObject)}
-    
         }//end of if let picked image
         imagePicker.dismiss(animated: true, completion: nil )
         }//end of imagepicked controller
@@ -286,8 +290,14 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         func sourcePicPicker(){
         let picSource = UIAlertController(title: ("Add Picture") , message: (""), preferredStyle: .alert)
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { (UIAlertAction) in
-        self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-        self.present(self.imagePicker, animated:  true, completion: nil)
+        print ("camera")
+        if UIImagePickerController.isSourceTypeAvailable(.camera) == true {
+                print ("camera")
+            self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+            self.present(self.imagePicker, animated:  true, completion: nil)
+            } else {print ("no camera")}
+            
+        
         }
         let AlbumAction = UIAlertAction(title: "Album", style: .default) { (UIAlertAction) in
         self.imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
@@ -339,11 +349,14 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }//end of func message compose
     
         func bringEmployerData() {
+            connectivityCheck()
         if employerFromMain != "Add Account" {
         dbRefEmployers.child(self.employerID).child("myEmployees").queryOrderedByKey().queryEqual(toValue: employeeID).observeSingleEvent(of:.childAdded, with: { (snapshot) in
         self.RateUpdate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)
         if self.RateUpdate != 0.0 { self.pRate.text = String(self.RateUpdate)} else {self.pRate.text = ""}
-        })//end of dbrefemployers
+        } , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")})//end of dbrefemployers
             
         dbRefEmployers.queryOrderedByKey().queryEqual(toValue: employerID).observeSingleEvent(of: .childAdded, with: { (snapshot) in
         self.nameUpdate = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
@@ -356,22 +369,13 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if self.activeEmployerSwitch == true { self.activeEmployer.image = self.Vimage
         self.activeButton.setTitle("", for: .normal)
         self.activeEmployerSwitch = false} else {self.activeEmployer.image = self.emptyVimage
-        self.activeButton.setTitle("Inactive", for: .normal)
+        self.activeButton.setTitle("Not Active", for: .normal)
         self.activeEmployerSwitch = true}
     
         self.emailUpdate = snapshot.childSnapshot(forPath: "fMail").value! as! String //probelm when set on connect it i sdeleted
         self.pEmail.text = self.emailUpdate
       
-    /*
-        self.dbRefcEmployers.queryOrderedByKey().queryEqual(toValue:self.cEmployerRef).observeSingleEvent(of: .childAdded, with: { (snapshot) in
-        self.pName.text = self.nameUpdate; self.pName.isEnabled = true
-        self.pLastName.text = self.lastNameUpdate; self.pLastName.isEnabled = true
-        self.studentParentNameText.text = self.studentParentUpdate;  self.studentParentNameText.isEnabled = true
-        self.pAddress.text = self.addressUpdate; self.pAddress.isEnabled = true
-        self.pCell.text = self.cellUpdate; self.pCell.isEnabled = true
-        //})//end of dbref from dbRefcEmployers.queryOrdered(byChild: "cMail").queryEqual(toValue: "mikaenat@gmail.com")
-        })//end of    self.dbRefcEmployers.queryOrderedByKey().queryEqual(toValue:self.cEmployerRef)
-        */
+    
         self.pName.text = self.nameUpdate; self.pName.isEnabled = true
         self.pLastName.text = self.lastNameUpdate; self.pLastName.isEnabled = true
         self.pAddress.text = self.addressUpdate;self.pAddress.isEnabled = true
@@ -407,9 +411,11 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         MyImageCache.sharedCache.setObject(UIImage(data: Data!)!, forKey: self.employerID as AnyObject , cost: (Data?.count)!) // upload to cache
         }) .resume()
         }//end of if let
+        else{self.pDogImage.image = self.perSessionImage}
         }//end of else
-        })  {(error) in //end of dbref
-        print(error.localizedDescription)}//end of second dbrefemployers
+        } , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")})
         }//end of if employers is not new
         }//end of bring employer data
     

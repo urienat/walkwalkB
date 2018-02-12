@@ -35,6 +35,13 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     var isFilterHidden = true
     var filterDecided :Int = 0
     
+    var pdfDataTable = NSMutableData()
+
+    @IBOutlet weak var taxInfo: UIButton!
+    @IBAction func taxInfo(_ sender: Any) {
+        alert17()
+    }
+    
     var monthMMM: String?
     var monthTitle : Int = 0
     var yearTitle : Int = 0
@@ -107,7 +114,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
             filterDecided = 4
             fetchBills()
             btnFilter.setImage (redFilter, for: .normal)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             self.filterMovement(delay: 1.3)
             }
             }
@@ -126,6 +133,11 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     let dbRefEmployers = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     
+    func shareProcesses(){
+        pdfDataTable =  pdfDataWithTableView(tableView: billerConnect)
+        self.alert101(printItem: self.pdfDataTable)
+    }
+    
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     override func viewDidLoad() {
@@ -143,7 +155,9 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         titleLbl = "Tax"
         self.title = titleLbl
 
-        connectivityCheck()
+        
+        let shareProcess = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(shareProcesses))
+
         
         //formatting decimal
         let formatter = NumberFormatter()
@@ -160,10 +174,13 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         mydateFormat20.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM , yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
       
         btnFilter.setImage (greenFilter, for: .normal)
-        btnFilter.frame = CGRect(x: 0, y: 0, width: 60, height: 30)
+       btnFilter.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         btnFilter.addTarget(self, action: #selector(filterMovement(delay:)), for: .touchUpInside)
         filterItem.customView = btnFilter
-        navigationItem.rightBarButtonItem = filterItem
+        //navigationItem.rightBarButtonItem = filterItem
+        
+        
+        navigationItem.rightBarButtonItems = [filterItem,shareProcess]
 
         let today = calendar.dateComponents([.year, .month, .day, .weekOfYear, .yearForWeekOfYear], from: Date())
         currentMonth = today.month!
@@ -204,7 +221,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         let taxForMonth =  byMonthTax[taxMonthItem]!
         let totalForMonth =  byMonthTotal[taxMonthItem]!
         let billsForMonth =  byMonthBills[taxMonthItem]!
-        if billsForMonth == 1 {billTxt = "bill"} else {billTxt = "bills"}
+        if billsForMonth == 1 {billTxt = "invoice"} else {billTxt = "invoices"}
             
 
         cell.backgroundColor = UIColor.clear
@@ -213,7 +230,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
                 //cell.l5.text = "Total(w/tax): \(ViewController.fixedCurrency!)\(totalForMonth) - \(billsForMonth) \(billTxt!)"
                 // cell.l5.text = "\(billsForMonth) \(billTxt!)"
                 //cell.l4.text  = ViewController.fixedCurrency
-                cell.l3.text = "\(ViewController.fixedCurrency!)\(String(taxForMonth) as String)"
+                cell.l3.text = "\(ViewController.fixedCurrency!)\(String(taxForMonth.roundTo(places: 2)) as String)"
             
             
             
@@ -242,7 +259,6 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         self.taxMonth =   components.month!
         self.taxYear = components.year!
         print (self.taxYear,self.taxMonth)
-
         billTaxManager?.monthToHandle = components.month!
         billTaxManager?.yearToHandle = components.year!
         billTaxManager?.employeeID = employeeID
@@ -251,6 +267,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         }//end of prepare
     
         func fetchBills(){
+            connectivityCheck()
         billItems.removeAll()
         BillArray.removeAll()
         BillArrayStatus.removeAll()
@@ -271,7 +288,12 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
                 
                 let components = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
                 self.taxMonth = components.month!
+                
                 self.taxYear = components.year!
+                
+                
+
+                
                 
                 if billItem.fBillStatusDate != nil { let components2 = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillStatusDate!)!)
                 self.taxMonth2 = components2.month!
@@ -351,11 +373,13 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
                 //print (self.taxCounter)
                 //if self.taxCounter == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
                // self.totalBills.text = "Total(w/Tax): \(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter)) - \(String(describing: self.billCounter)) Bills "
-                self.totalAmount.text = "Total Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
+                self.totalAmount.text = "Total Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter.roundTo(places: 2)))"
                 //self.totalTax.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
                 self.billerConnect.reloadData()
             }//end of if let dic
-        })//end of dbref
+        } , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")})//end of dbref
 
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
@@ -440,6 +464,12 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     
     // alerts////////////////////////////////////////////////////////////////////////////////////////////
     
-
+    func alert17(){
+        let alertController17 = UIAlertController(title: ("Tax calaculation") , message: "Tax calculation is based on invoice cancellation timing(if occured) and therefore tax allocation can be different from general report. Tax filing should be based on 'Tax'(this calculation) and Not 'Reports'", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+        }
+        alertController17.addAction(OKAction)
+        self.present(alertController17, animated: true, completion: nil)
+    }
 }//end of class
 

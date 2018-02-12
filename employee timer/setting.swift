@@ -17,7 +17,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
-
+    var home = UIImage(named: "home")
     //keepקר variables
     let keeper = UserDefaults.standard
     
@@ -221,7 +221,10 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         picture.layer.cornerRadius = 15
         
         
-        connectivityCheck()
+         //   let yourBackImage = UIImage(named: "home")
+           // self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+           // self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        
         
             let currentUser = FIRAuth.auth()?.currentUser
             if (currentUser != nil) {
@@ -329,13 +332,15 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
         //  upload to cache
         MyImageCache.sharedCache.setObject(UIImage(data: Data!)!, forKey: self.employeeRefUpdate as AnyObject , cost: (Data?.count)!) // upload to cache
-        }) .resume()
+        })
+        .resume()
         }//end of if let url
         //end of bring from firebase
         } //end of if lf let profile
         }//end of else
-        }) {(error) in
-        print("error form FB\(error.localizedDescription)")}//end of dbref
+            } , withCancel: { (Error) in
+                self.alert30()
+                print("error from FB")})//end of dbref
         }//end of if let current user
         }//end of if current user !=nil
         
@@ -507,7 +512,9 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String  != self.precentage.text!  ||
             snapshot.childSnapshot(forPath: "fTaxId").value as! String != self.taxId.text!
             {self.alert6() } else {self.saveToDB()}
-        })
+        } , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")})
     }
 
         func saveToDB() {
@@ -546,7 +553,12 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             }//end of uploadtask   
             
         ViewController.fixedCurrency = self.currency.text!
-            ViewController.taxOption = self.taxSwitcherUpdate
+        ViewController.taxOption = self.taxSwitcherUpdate
+            if self.precentage.text != nil {ViewController.taxation = self.precentage.text!}
+            ViewController.taxCalc = self.taxCalacUpdate
+           
+
+            
         self.navigationController!.popViewController(animated: true)
 
        
@@ -715,7 +727,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     }
     
     func alert17(){
-    let alertController17 = UIAlertController(title: ("Taxation") , message: "The precentage of tax you chose would add on top of your bill for 'Over' and would be deducted from your rate for 'Included'. ", preferredStyle: .alert)
+    let alertController17 = UIAlertController(title: ("Taxation") , message: "The precentage of tax you chose would be added on top of your Invoice for 'Excluded' or would be included in this rate for 'Included' option. ", preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
     }
     alertController17.addAction(OKAction)

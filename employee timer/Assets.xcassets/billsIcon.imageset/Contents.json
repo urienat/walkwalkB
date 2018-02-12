@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "888888.png",
+      "filename" : "billsfull.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "888888-1.png",
+      "filename" : "billsfull-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "888888-2.png",
+      "filename" : "billsfull-2.png",
       "scale" : "3x"
     }
   ],

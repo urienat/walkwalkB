@@ -47,18 +47,18 @@ class datePicker2: UIViewController {
     @IBAction func sessionItem(_ sender: Any) {
         switch sessionItem.selectedSegmentIndex {
         case 0:   //Session
-        sessionMode = true
-         datePickerbBackground .isHidden = false
+        itemBackground.isHidden = true
+        saveRecord?.isEnabled = true
+                 datePickerbBackground .isHidden = false
          startLbl.isHidden = false
          startLbl.text = "Session"
          date1button.isHidden = false
          timeIn.isHidden = false
          extendedDate1Button.isHidden = false
-         itemBackground.isHidden = true
-         saveRecord?.isEnabled = true
+         sessionMode = true
             
         case 1: //item
-        sessionMode = false
+        
         datePickerbBackground .isHidden = true
         startLbl.isHidden = true
         date1button.isHidden = true
@@ -67,7 +67,7 @@ class datePicker2: UIViewController {
         itemBackground.isHidden = false
         print (ViewController.fixedCurrency)
         checkItemDeltails()
-        
+        sessionMode = false
         
         amount.text = "Rate(\(ViewController.fixedCurrency!))"
 
@@ -157,9 +157,9 @@ class datePicker2: UIViewController {
     self.employerID = record.fEmployerRef!
     self.employeeID = record.fEmployeeRef!
     }
-    }, withCancel: { (Error) in
-    print("error from FB123456")
-    })
+    } , withCancel: { (Error) in
+        self.alert30()
+        print("error from FB")})
 
     }//end of func bring record
     
@@ -167,39 +167,46 @@ class datePicker2: UIViewController {
     override func viewDidLoad() {
     super.viewDidLoad()
         
-    if ViewController.dateTimeFormat == "DateTime" {self.DatePicker.datePickerMode = .dateAndTime } else { self.DatePicker.datePickerMode = .date}
-        //sessionMode = true
-      
-      connectivityCheck()
         
-      
         //formating the date
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         mydateFormat10.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
         mydateFormat11.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy , (HH,mm)", options: 0, locale: Locale.autoupdatingCurrent)!
         
         if recordToHandle == "" {
-        sessionItem.isHidden = true//false
-        deleter.isEnabled = false
-        if ViewController.dateTimeFormat == "DateTime" { self.TimeIN.text = mydateFormat11.string(from: Date())} else {self.TimeIN.text = mydateFormat10.string(from: Date()) }
-        
-        titleLbl = "Add"
-         
-        self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveToDB2) )
-        navigationItem.rightBarButtonItem = saveRecord
-        self.saveRecord?.isEnabled = false
-        if sessionMode == true { refresh(presser: 0)} else { refresh(presser: 1)}
-
+            sessionItem.isHidden = true//false
+            deleter.isEnabled = false
+            
+            print (ViewController.dateTimeFormat)
+            
+            if ViewController.dateTimeFormat == "DateTime" { print ("khkhkj");self.TimeIN.text = mydateFormat11.string(from: Date())} else {self.TimeIN.text = mydateFormat10.string(from: Date()) }
+            
+            
+            self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveToDB2) )
+            navigationItem.rightBarButtonItem = saveRecord
+            self.saveRecord?.isEnabled = false
+            if sessionMode == true {titleLbl = "Add session" ;refresh(presser: 0)} else {titleLbl = "Add other item" ;refresh(presser: 1)}
+            
             
         }else{
-        sessionItem.isHidden = true
-        deleter.isEnabled = true
-        self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveToDB2) )
-        self.saveRecord?.isEnabled = false;
-        navigationItem.rightBarButtonItem = saveRecord
-        self.deleter.isEnabled = true
-        bringRecord()
+            sessionItem.isHidden = true
+            deleter.isEnabled = true
+            self.saveRecord = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveToDB2) )
+            self.saveRecord?.isEnabled = false;
+            navigationItem.rightBarButtonItem = saveRecord
+            self.deleter.isEnabled = true
+            bringRecord()
         }//end of else
+        
+    if ViewController.dateTimeFormat == "DateTime" {self.DatePicker.datePickerMode = .dateAndTime } else { self.DatePicker.datePickerMode = .date}
+        //sessionMode = true
+      
+      
+        
+      
+       
+        
+       
         
         self.title = titleLbl
         
@@ -225,6 +232,7 @@ class datePicker2: UIViewController {
     }//end of func
     
     func saveToDB2() {
+        connectivityCheck()
         saveRecord?.isEnabled = false
         self.navigationItem.setHidesBackButton(true, animated: true)
         
@@ -264,9 +272,9 @@ class datePicker2: UIViewController {
    
     } //end of else
         
-    //imageAnimation()
+   
     ViewController.sessionPusher = true
-    self.navigationController!.popViewController(animated: true)
+    self.navigationController!.popViewController(animated: false)
 
     }//end of savetodb2
     
@@ -274,41 +282,7 @@ class datePicker2: UIViewController {
     datePickerbBackground .isHidden = false
     }
     
-    func imageAnimation(){
-        self.animationImage.center.x -= self.view.bounds.width
-        self.animationImage.isHidden = false
-        self.animationImage.alpha = 1
-        
-        UIView.animate(withDuration: 2.0, animations:{
-            self.animationImage.center.x += self.view.bounds.width
-        })
-        UIView.animate(withDuration: 2.0, delay :2.0 ,options:[],animations: {
-            self.animationImage.alpha = 0
-            
-        },completion:nil)
-        
-        UIView.animate(withDuration: 1.0, delay :4.0 ,options:[],animations: {
-
-            
-            DispatchQueue.main.asyncAfter(deadline: .now()){
-                UIView.animate(withDuration: 2.0, delay :0.0 ,options:[],animations: {
-                    //self.textAdd.alpha = 1
-                },completion:nil)
-                UIView.animate(withDuration: 2.0, delay :2.0 ,options:[],animations: {
-                   // self.textAdd.alpha = 0
-
-                },completion:nil)
-            }
-
-        
-    })
-        DispatchQueue.main.asyncAfter(deadline: .now()+3){
-            self.saveRecord?.isEnabled = true
-            self.navItem.hidesBackButton = false
-
-            self.navigationController!.popViewController(animated: false)
-
-        }}
+   
     
     func refresh(presser:Int){
         sessionItem.isMomentary = true

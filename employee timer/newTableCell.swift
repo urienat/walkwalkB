@@ -15,8 +15,9 @@ class newTableCell: UITableViewCell {
     
     //var checkBoxCell=newVCTable.checkBox
     
-    let Vimage = UIImage(named: "due")
-    let nonVimage = UIImage(named: "emptyV")
+    let Vimage = UIImage(named:"vNaked")
+
+    let nonVimage =  UIImage(named: "blank")//UIImage(named: "emptyV")
     let paidImage = UIImage(named: "paid")
     let billedImage = UIImage(named: "locked")
     let billIcon = UIImage(named: "bill")
@@ -26,19 +27,19 @@ class newTableCell: UITableViewCell {
     @IBOutlet weak var l7: UILabel!
     @IBOutlet weak var l8: UIImageView!
     @IBOutlet weak var l9: UILabel!
-    @IBOutlet weak var approval: UIButton! 
-
+   
+    @IBOutlet weak var cellBtnExt: UIButton!
+    @IBAction func cellBtnExt(_ sender: Any) {
     
-    //approval button
-        @IBAction func approval(_ sender: Any) {
         print("checkBoxcell\(newVCTable.checkBox)")
+            
         switch newVCTable.checkBox {
         //pre
-        case 0:  approval.setImage(nonVimage, for: .normal) //
+        case 0:  cellBtnExt.setImage(nonVimage, for: .normal) //
         //Approved
-        case 1: approval.setImage(Vimage, for: .normal) //
+        case 1: cellBtnExt.setImage(Vimage, for: .normal) //
         //Paid
-        case 2: approval.setImage(billedImage, for: .normal) //
+        case 2: cellBtnExt.setImage(billedImage, for: .normal) //
         //default
         default: break
             ////

@@ -13,6 +13,13 @@ import Firebase
 extension(ViewController){
     
             func tableView(_ employerList: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+            if #available(iOS 11.0, *) {
+            self.navigationItem.searchController = nil
+            } else {
+            self.searchController.isActive = false
+            }
+
             employerList.isHidden = true
             self.thinking2.startAnimating()
 
@@ -22,6 +29,7 @@ extension(ViewController){
             records.isEnabled = true
             account.isEnabled = true
             bills.isEnabled = true
+            importSpesific.isEnabled = true
 
             if pickerData.count == 0 {
             print ("indexpath4\([pickerData])")
@@ -29,11 +37,17 @@ extension(ViewController){
 
             chooseEmployer.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
             chooseEmployer.titleLabel?.textAlignment = NSTextAlignment.center
-            homeTitle.title = (nameData[indexPath.row] + " " + pickerData[indexPath.row])
-                            
-            btnMenu.setImage (backArrow, for: .normal)
+            homeTitle.title = (pickerData[indexPath.row])
+
+            btnMenu.setImage (home, for: .normal)
+            let font = UIFont.systemFont(ofSize: 17.0)
+            let textFontAttributes = [ NSFontAttributeName: font,NSForegroundColorAttributeName: systemBlue] as [String : Any]
+            let homeBackTitle = NSAttributedString(string: " Home", attributes: textFontAttributes)
+            btnMenu.setAttributedTitle(homeBackTitle, for: .normal)
+            btnMenu.attributedTitle(for: .normal)
             btnMenu.removeTarget(self, action:#selector(sideMenuMovement), for: .touchUpInside)
             btnMenu.addTarget(self, action: #selector(noAccount), for: .touchUpInside)
+
             toolBar.isHidden = false
             addAccount.isEnabled = false
             account.title = "\(pickerData[indexPath.row])'s file"
@@ -41,11 +55,11 @@ extension(ViewController){
 
             employerToS = pickerData[indexPath.row]
 
-                
+
             employerIDToS = employerIdArray2[indexPath.row] as! String
             bringEmployerData()
-                if activeData[indexPath.row] != false {self.thinking2.stopAnimating(); preStartView();records.isEnabled = true}
-                else { chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating();alert670();records.isEnabled = false}
+            if activeData[indexPath.row] != false {self.thinking2.stopAnimating(); preStartView();records.isEnabled = true}
+            else { chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating();alert670();records.isEnabled = false}
 
             //set variable for Segue
             employerToS = pickerData[indexPath.row]
@@ -69,12 +83,12 @@ extension(ViewController){
             print (lastDocument[indexPath.row])
                 
             if pickerData[indexPath.row] != "Add new dog" {            cell2.backgroundColor = UIColor.clear
-                ;cell2.employerFirst.isHidden = false; cell2.employerFirst?.text = nameData[indexPath.row]
+                ;cell2.employerFirst.isHidden = false; cell2.employerFirst?.text = pickerData[indexPath.row]
            
                 
                 if activeData[indexPath.row] == false {
              print ("alpha")
-                cell2.employerFirst.alpha = 0.4;cell2.lastDocument.alpha = 0.4}
+                cell2.employerFirst.alpha = 0.5;cell2.lastDocument.alpha = 0.5}
                 
                 else{ cell2.employerFirst.alpha = 1;cell2.lastDocument.alpha = 1 }
                 
@@ -82,7 +96,7 @@ extension(ViewController){
             
                 
 
-                if activeData[indexPath.row] == false {cell2.lastDocument?.text = "\(lastDocument[indexPath.row])"; cell2.employerFirst?.text =  "\(nameData[indexPath.row]) \(pickerData[indexPath.row]) - Inactive"} else{cell2.employerFirst?.text =  "\(nameData[indexPath.row]) \(pickerData[indexPath.row])";cell2.lastDocument?.text = "\(lastDocument[indexPath.row])"}
+                if activeData[indexPath.row] == false {cell2.lastDocument?.text = "Not Active!"; cell2.employerFirst?.text =  "\(pickerData[indexPath.row])"} else{cell2.employerFirst?.text =  "\(pickerData[indexPath.row])";cell2.lastDocument?.text = "\(lastDocument[indexPath.row])"}
             
            
                 cell2.dogImage.clipsToBounds = true
@@ -101,6 +115,7 @@ extension(ViewController){
             URLSession.shared.dataTask(with: url, completionHandler: { (Data, response, error) in
             if error != nil {
             print (error as Any)
+                cell2.dogImage.image = self.perSessionImage
             return
             }//end of if error
             
@@ -118,10 +133,14 @@ extension(ViewController){
         print ("employerfrom main:\(employerToS)")
         if self.employerToS != "Add new dog" {
         dbRefEmployer.child(self.employerIDToS).child("myEmployees").queryOrderedByKey().queryEqual(toValue: employeeIDToS).observeSingleEvent(of:.childAdded, with: { (snapshot) in
-        self.startButton.setTitle("Session Now", for: .normal);self.startImage.image = self.roundImageBig
+        self.startButton.setTitle("+Session Now", for: .normal);self.startImage.image = self.roundImageBig
         self.RateUpdate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)
         if self.RateUpdate != 0.0 { } else {}
-        })
+        }
+            , withCancel: { (Error) in
+                self.alert30()
+                print("error from FB")}
+            )
         }}//end of dbrefemployers
 
 }//end of ext!!!!!!!!!!//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

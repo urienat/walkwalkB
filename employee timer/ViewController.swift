@@ -14,7 +14,7 @@ import Google
 import GoogleSignIn
 import GoogleAPIClientForREST
 
-class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
+class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating{
     
     var window: UIWindow?
 
@@ -30,10 +30,16 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     static var dateTimeFormat:String!
     static var refresh:Bool? = false
     static var sessionPusher:Bool?
+    static var billsPusher:Bool?
+    static var profilePusher: Bool?
     static var professionControl: String?
     static var calanderOption: String?
     static var taxOption : String?
-
+    static var taxCalc: String?
+    static var taxation: String?
+    
+    let font = UIFont.systemFont(ofSize: 17.0)
+    
     var RateUpdate = 0.0
     var newRegister = ""
     var alive:Bool?
@@ -45,6 +51,9 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var star: UIImageView!
     @IBOutlet weak var homeTitle: UINavigationItem!
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
+    var grayColor = UIColor(red :235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1)
+    var systemBlue = UIColor(red :0/255.0, green: 122/255.0, blue: 255/255.0, alpha: 1.0)
+    
 
     let Vimage = UIImage(named: "vNaked")
     let nonVimage = UIImage(named: "emptyV")
@@ -55,12 +64,20 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let pencilImage = UIImage(named: "pencilImage")
     var ImageFromFirebase : UIImage?
     var menu = UIImage(named: "menu")
+    var home = UIImage(named: "home")?.withRenderingMode(.alwaysTemplate)
     var backArrow = UIImage(named: "backArrow")
-    var leashImage = UIImage(named:"Leash")?.withRenderingMode(.alwaysTemplate)
-    var meluna = UIImage(named:"meluna")?.withRenderingMode(.alwaysTemplate)
+    var file = UIImage(named:"file")?.withRenderingMode(.alwaysTemplate)
+    var sessions = UIImage(named:"sessions")?.withRenderingMode(.alwaysTemplate)
     var billsIcon = UIImage(named:"billsIcon")?.withRenderingMode(.alwaysTemplate)
     var walkerProfile = UIImage(named:"walkerProfile")?.withRenderingMode(.alwaysTemplate)
     var importBlack = UIImage(named:"import")?.withRenderingMode(.alwaysTemplate)
+    let importIcon = UIImage(named:"importBtn")?.withRenderingMode(.alwaysTemplate)
+    var perSessionImage = UIImage(named:"perSessionImage")?.withRenderingMode(.alwaysTemplate)
+    
+    struct employer{
+        var account = String()
+        var employerRef = String()
+    }
 
     let mydateFormat2 = DateFormatter()
     let mydateFormat5 = DateFormatter()
@@ -78,6 +95,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var methood = "Normal"
     var pickerlabel =  UILabel.self
     
+    
+    
     @IBOutlet weak var thinking2: UIActivityIndicatorView!
     @IBOutlet weak var employerList: UITableView!
     @IBOutlet weak var employerListTop: NSLayoutConstraint!
@@ -89,6 +108,13 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var nameData: [String] = [String]()
     var lastDocument:  [String] = [String]()
     var activeData: [Bool] = [Bool]()
+    
+    struct listStruct {
+        var name = String()
+    }
+    var notFilteredList: [String] = [String]()
+    
+    let searchController =  UISearchController.init(searchResultsController: nil)
 
     var employerIdArray: [AnyObject] = []
     var employerIdArray2: [AnyObject] = []
@@ -138,6 +164,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var addAmanualRecord: UIView!
     @IBOutlet weak var records: UIBarButtonItem!
     @IBOutlet weak var bills: UIBarButtonItem!
+    @IBOutlet weak var importSpesific: UIBarButtonItem!
+    
     @IBOutlet weak var account: UIBarButtonItem!
     @IBOutlet weak var chooseEmployer: UIButton!
     @IBOutlet weak var animationImage: UIImageView!
@@ -206,6 +234,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let btn1 = UIButton(type: .custom)
     let btn2 = UIButton(type: .custom)
     let btn3 = UIButton(type: .custom)
+    let btn4 = UIButton(type: .custom)
     let btnMenu = UIButton(type: .custom)
  
     
@@ -238,15 +267,22 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     employerList.dataSource = self
     employerList.delegate = self
     ViewController.sessionPusher = false
+    ViewController.billsPusher = false
+    ViewController.profilePusher = false
     
-        
+    searchController.searchResultsUpdater = self
+    searchController.dimsBackgroundDuringPresentation = false
+    definesPresentationContext = true
+   
+    searchController.searchBar.barTintColor = grayColor
+    
     DateIn.text = ""
-    connectivityCheck()
-    
+    print ("1234")
     employerList.backgroundColor = UIColor.clear
         
     let currentUser = FIRAuth.auth()?.currentUser
     if currentUser != nil {
+  
     self.employeeIDToS = (currentUser!.uid)
     
     self.dbRefEmployee.queryOrderedByKey().queryEqual(toValue: currentUser?.uid).observeSingleEvent(of: .childAdded, with: { (snapshot) in
@@ -257,11 +293,17 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     ViewController.dateTimeFormat =  String(describing: snapshot.childSnapshot(forPath: "fDateTime").value!) as String
     ViewController.calanderOption =  String(describing: snapshot.childSnapshot(forPath: "fCalander").value!) as String
     ViewController.taxOption = String(describing: snapshot.childSnapshot(forPath: "fSwitcher").value!) as String
+    ViewController.taxCalc = String(describing: snapshot.childSnapshot(forPath: "fTaxCalc").value!) as String
+    ViewController.taxation = String(describing: snapshot.childSnapshot(forPath: "fTaxPrecentage").value!) as String
     ViewController.professionControl =  String(describing: snapshot.childSnapshot(forPath: "fProfessionControl").value!) as String
-        
-        if  ViewController.professionControl! == "Tutor" { self.homeTitle.title = "Students"} else {self.homeTitle.title = "Accounts"}
+    self.homeTitle.title = "Home"
+       // if  ViewController.professionControl! == "Tutor" { self.homeTitle.title = "Students"} else {self.homeTitle.title = "Accounts"}
 
-    })
+    }
+        , withCancel: { (Error) in
+            self.alert30()
+            print("error from FB")}
+    )
     self.fetchEmployers()
     } else {
     print ("newreg\(newRegister)")
@@ -274,11 +316,11 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.thinking2.hidesWhenStopped = true
     self.thinking2.startAnimating()
     
-    btn1.setImage(leashImage, for: .normal)
+    btn1.setImage(sessions, for: .normal)
     btn1.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
     btn1.addTarget(self, action:#selector(recordsClicked), for: UIControlEvents.touchDown)
     records.customView = btn1
-    btn2.setImage(meluna, for: .normal)
+    btn2.setImage(file, for: .normal)
     btn2.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
     btn2.addTarget(self, action:#selector(accountClicked), for: UIControlEvents.touchDown)
     account.customView = btn2
@@ -287,14 +329,27 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     btn3.addTarget(self, action:#selector(billsClicked), for: UIControlEvents.touchDown)
     bills.customView = btn3
         
+      
+    btn4.setImage(importIcon, for: .normal)
+    btn4.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
+    btn4.addTarget(self, action:#selector(importClicked), for: UIControlEvents.touchDown)
+    importSpesific.customView = btn4
+        
+        
+    let textFontAttributes = [ NSFontAttributeName: font,NSForegroundColorAttributeName: systemBlue] as [String : Any]
+    let menuBackTitle = NSAttributedString(string: "General", attributes: textFontAttributes)
+    btnMenu.setAttributedTitle(menuBackTitle, for: .normal)
+    btnMenu.attributedTitle(for: .normal)
     btnMenu.setImage (menu, for: .normal)
-    btnMenu.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+    btnMenu.frame = CGRect(x: 0, y: 0, width: 20, height: 60)
+        
     btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
     menuItem.customView = btnMenu
     
         records.isEnabled = false
         bills.isEnabled = false
         account.isEnabled = false
+        importSpesific.isEnabled = false
     
     self.sideMenuConstarin.constant = -140
     self.blackView.isHidden = true
@@ -319,7 +374,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         mydateFormat7.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd MMM, (HH:mm)",options: 0, locale: nil)!
         
-
+  connectivityCheck()
         
         
     }// end of viewdidload//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -329,15 +384,19 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     chooseEmployer.sendActions(for: .touchUpInside)
     ViewController.refresh = false
     }
-        
-       
     
-    if ViewController.sessionPusher! == true {ViewController.sessionPusher = false;
+    if ViewController.sessionPusher == true {ViewController.sessionPusher = false;
     self.recordsClicked()}
+    if ViewController.billsPusher == true {ViewController.billsPusher = false;
+    biller.rowMemory = 0
+    self.billsClicked()}
+    if ViewController.profilePusher == true {ViewController.profilePusher = false;
+            self.accountClicked()}
         
     }//end of view did appear
 
-   
+    
+    
     //check subscription
     func checkSubs(){
     /*
@@ -387,15 +446,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     //chose employer
     @IBAction func chooseEmployerBtn(_ sender: AnyObject) {
     noAccount()
-        /*
-    thinking2.startAnimating()
-    employerIDToS = ""
-    employerToS = ""
-    fetchEmployers()
-    self.dbRefEmployee.removeAllObservers()
-    postTimerView()
-    self.animationImage.alpha = 1
- */
     }//end of choose employerbtn
     
     func recordsClicked() {performSegue(withIdentifier: "employerforVC", sender: employerToS)}
@@ -477,16 +527,23 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }//end of prepare
     
     func noAccount(){
+        
         self.btnMenu.isHidden = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
             self.btnMenu.setImage (self.menu, for: .normal)
             self.btnMenu.isHidden = false
 
         }
         
+        let textFontAttributes = [ NSFontAttributeName: font,NSForegroundColorAttributeName: systemBlue] as [String : Any]
+        let menuBackTitle = NSAttributedString(string: "General", attributes: textFontAttributes)
+        btnMenu.setAttributedTitle(menuBackTitle, for: .normal)
+        btnMenu.attributedTitle(for: .normal)
+        
         btnMenu.removeTarget(self, action:#selector(noAccount), for: .touchUpInside)
         btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
-        if  ViewController.professionControl! == "Tutor" { homeTitle.title = "Students"} else {homeTitle.title = "Accounts"}
+        //if  ViewController.professionControl! == "Tutor" { homeTitle.title = "Students"} else {homeTitle.title = "Accounts"}
+        homeTitle.title = "Home"
         toolBar.isHidden = true
         addAccount.isEnabled = true
         
@@ -494,107 +551,25 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         employerIDToS = ""
         employerToS = ""
         fetchEmployers()
-        self.dbRefEmployee.removeAllObservers()
         postTimerView()
         self.animationImage.alpha = 1
     }
 
-    func fetchEmployers() {
-       
-    self.employerIdArray.removeAll()
-    self.employerIdArray2.removeAll()
-    self.pickerData.removeAll()
-    self.imageArray.removeAll()
-    self.nameData.removeAll()
-    self.lastDocument.removeAll()
-    self.activeData.removeAll()
-        
-    self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").observeSingleEvent(of: .value, with:{(snapshot) in
-    self.listOfEmployers = snapshot.value as! [String : AnyObject] as! [String : Int]
-    func sortFunc   (_ s1: (key: String, value: Int), _ s2: (key: String, value: Int)) -> Bool {
-    return   s2.value > s1.value
-    }
-        
-    self.employerIdArray = (self.listOfEmployers.sorted(by: sortFunc) as [AnyObject]  )
-
-    for j in 0...(self.employerIdArray.count-1){
-    let splitItem = self.employerIdArray[j] as! (String, Int)
-    print (splitItem)
-
-    let split2    = splitItem.0
-    print (split2)
-
-    if split2 != "New Dog" {
-        self.employerIdArray2.append(split2 as AnyObject) } else {//do nothing
-    }
-    }//end of j loop
-                
-
-        if self.employerIdArray2.isEmpty == true {self.menuItem.isEnabled = false; self.thinking2.stopAnimating();  self.arrow.isHidden = false; self.arrowMove()
-
-    } else {
-    self.menuItem.isEnabled = true
-    self.arrow.isHidden = true
-    for iIndex in 0...(self.employerIdArray2.count-1){
-    self.dbRefEmployer.child(self.employerIdArray2[iIndex] as! String).observeSingleEvent(of: .value, with:{ (snapshot) in
-    self.employerItem = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
-    self.pickerData.append(self.employerItem  )
     
-    print(String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!)
-        
-        
-    if String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String! != "" {self.lastDocumentItem = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!} //else {self.lastDocumentItem = ""}
-    self.dogItem = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
-    self.nameData.append(self.dogItem  )
-    self.lastDocument.append(self.lastDocumentItem)
-
-        self.activeItem =  snapshot.childSnapshot(forPath: "fActive").value as? Bool
-        self.activeData.append(self.activeItem! )
-                        
-    self.profileImageUrl = snapshot.childSnapshot(forPath: "fImageRef").value as! String!
-    //  self.profileImageUrl = "https://firebasestorage.googleapis.com/v0/b/persession-45987.appspot.com/o/Myprofile.png?alt=media&token=263c8fdb-9cca-4256-9d3b-b794774bf4e1"
-    self.imageArray.append(self.profileImageUrl)
-                      
-    if iIndex == (self.employerIdArray2.count-1) {
-     
-    self.thinking2.stopAnimating()
-
-    self.employerList.isUserInteractionEnabled = true
-    self.employerListBottom.priority = 750; self.employerListHeiget.priority = 1000;self.employerListTop.constant = 30.0;self.employerListBottom.constant = 30
-        self.employerList.reloadData()
-        
-        self.employerList.isHidden = false;
-        self.postTimerView()//check if solve the bug of view interaction
-        
-    self.dbRefEmployer.removeAllObservers()
-
-    }
-
-    self.dbRefEmployee.removeAllObservers()
-    }){(error) in
-    print(error.localizedDescription)} // end of dbrefemployer
-
-    }//end of i loop
-    }//end of idarray2 is empty
-
-    }){(error) in
-    print(error.localizedDescription)}//end of dbref employee
-
-    }//end of fetch employer
     
     func preStartView() {
     self.addAmanualRecord.isHidden = false
     self.DateIn.isHidden = true
     self.workedFor.isHidden = true
     self.startBackground.isHidden = false
-    self.importBackground.isHidden = false
+    self.importBackground.isHidden = true//false
     self.special.isHidden = false
     self.star.isHidden = false
         
     //self.account.isEnabled = true;
     self.chooseEmployer.isUserInteractionEnabled = true
-    startBarButtonFadeOut()
-    startBarButtonFadeIn()
+    //startBarButtonFadeOut()
+    //startBarButtonFadeIn()
     }//end of func
 
     func postTimerView() {
@@ -602,6 +577,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     records.isEnabled = false
     account.isEnabled = false
     bills.isEnabled = false
+    importSpesific.isEnabled = false
     chooseEmployer.isHidden = true
     startBackground.isHidden = true
         self.special.isHidden = true
@@ -699,8 +675,17 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     func sideMenuMovement(){
         print ("fff")
+       
         
         if isSideMenuHidden {
+            if #available(iOS 11.0, *) {
+                
+                self.navigationItem.searchController = nil
+                
+                
+            } else {
+                self.searchController.isActive = false
+            }
             self.blackView.isHidden = false
             //self.toolBar.isHidden = true
             self.sideMenuConstarin.constant = 0
@@ -708,6 +693,15 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
                self.view.layoutIfNeeded()
             })
         }else{
+            if self.pickerData.count > 8 {
+                if #available(iOS 11.0, *) {
+                    self.navigationItem.searchController = self.searchController
+                } else {
+                    self.employerList.tableHeaderView = self.searchController.searchBar
+                }
+               
+            }//end of >4
+            
             sideMenuConstarin.constant = -140
             UIView.animate(withDuration:0.4, animations: {
                 self.view.layoutIfNeeded()
@@ -729,6 +723,20 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         }, completion: nil)
 
         }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if searchController.searchBar.text! == ""{
+            pickerData = notFilteredList
+        }else{
+          
+
+         //   pickerData = notFilteredList.filter({$0.lowercased().contains{_ in searchController.searchBar.text!.lowercased()}})
+            pickerData = notFilteredList.filter({ ($0.lowercased().contains(searchController.searchBar.text!.lowercased())) })
+            
+        
+        }
+        self.employerList.reloadData()
+    }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////alerts
     func  alert83(){
     let alertController83 = UIAlertController(title: ("Subscription alert") , message: " Adding more accounts requires subscription and we couldn't find one. please subscribe with free trial or log again if you have one.", preferredStyle: .alert)
@@ -749,7 +757,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     
     func alert670(){
-        let alertController67 = UIAlertController(title: ("Inactive alert") , message: "This is an inactive account. You can only handle past bills and you can reactivate the account at 'Profile'.", preferredStyle: .alert)
+        let alertController67 = UIAlertController(title: ("Not Active alert") , message: "This account isn't active. You can only handle past invoices or you can reactivate the account at 'Profile'.", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
         }
         alertController67.addAction(OKAction)
