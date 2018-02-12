@@ -83,6 +83,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         }
     }
     var employerForList : [employerStruct] = []
+    var filteredEmployerForList : [employerStruct] = []
 
     let mydateFormat2 = DateFormatter()
     let mydateFormat5 = DateFormatter()
@@ -731,13 +732,14 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     func updateSearchResults(for searchController: UISearchController) {
         if searchController.searchBar.text! == ""{
-            pickerData = notFilteredList
+           /// pickerData = notFilteredList
+            filteredEmployerForList = employerForList
         }else{
           
 
          //   pickerData = notFilteredList.filter({$0.lowercased().contains{_ in searchController.searchBar.text!.lowercased()}})
-            pickerData = notFilteredList.filter({ ($0.lowercased().contains(searchController.searchBar.text!.lowercased())) })
-            
+         ///   pickerData = notFilteredList.filter({ ($0.lowercased().contains(searchController.searchBar.text!.lowercased())) })
+            filteredEmployerForList = employerForList.filter({ ($0.accountName.lowercased().contains(searchController.searchBar.text!.lowercased())) })
         
         }
         self.employerList.reloadData()
