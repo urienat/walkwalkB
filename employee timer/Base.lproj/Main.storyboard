@@ -1092,7 +1092,7 @@
                                     <constraint firstAttribute="height" constant="50" id="BWl-6v-Y2T"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Home" id="Ke9-Ez-blq">
+                                    <navigationItem id="Ke9-Ez-blq">
                                         <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="ksb-0H-F3T" userLabel="menuItem">
                                             <connections>
                                                 <action selector="menuItem:" destination="Ecy-Z7-2Op" id="zqN-Iw-OZ1"/>
@@ -4066,7 +4066,7 @@
         <image name="emptyV" width="42" height="52"/>
         <image name="file" width="50" height="50"/>
         <image name="import" width="50" height="50"/>
-        <image name="importBig" width="50" height="52"/>
+        <image name="importBig" width="50" height="50"/>
         <image name="mail" width="50" height="50"/>
         <image name="noSign" width="309" height="255"/>
         <image name="pencilImage" width="100" height="100"/>

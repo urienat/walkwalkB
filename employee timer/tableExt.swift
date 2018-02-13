@@ -11,11 +11,14 @@ extension(ViewController){
         func tableView(_ employerList: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         if #available(iOS 11.0, *) { //handle when ios 11 is out
-        self.navigationItem.searchController = nil
+       self.navigationItem.searchController = nil
         } else {
         self.searchController.isActive = false
         }
 
+            
+            
+            
         employerList.isHidden = true
         self.thinking2.startAnimating()
 
@@ -31,25 +34,35 @@ extension(ViewController){
         //chooseEmployer.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         //chooseEmployer.titleLabel?.textAlignment = NSTextAlignment.center
 
-        self.navigationItem.titleView = nil
-        homeTitle.title = (filteredEmployerForList[indexPath.row].accountName)
+       self.navigationItem.titleView = nil
+            
+        print  (filteredEmployerForList[indexPath.row].accountName)
+            
+        //homeTitle.title = (filteredEmployerForList[indexPath.row].accountName)
 
 
+           
+            
         btnMenu.setImage (home, for: .normal)
+       
+            
         btnMenu.removeTarget(self, action:#selector(sideMenuMovement), for: .touchUpInside)
         btnMenu.addTarget(self, action: #selector(noAccount), for: .touchUpInside)
 
         toolBar.isHidden = false
         addAccount.isEnabled = false
-       // account.title = "\(filteredEmployerForList[indexPath.row].accountName)'s file"
-      // records.title =  "\(filteredEmployerForList[indexPath.row].accountName)'s Sessions"
 
         employerToS = filteredEmployerForList[indexPath.row].accountName
 
-        /// employerIDToS = employerIdArray2[indexPath.row] as! String
+        // employerIDToS = employerIdArray2[indexPath.row] as! String
         employerIDToS = filteredEmployerForList[indexPath.row].employerRef
+            
+            
 
         bringEmployerData()
+            
+        print (filteredEmployerForList)
+            
         if filteredEmployerForList[indexPath.row].activeAccount != false {self.thinking2.stopAnimating(); preStartView();records.isEnabled = true}
         else { chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating();alert670();records.isEnabled = false}
 
@@ -121,7 +134,13 @@ extension(ViewController){
 
         func bringEmployerData() {
         print ("employerfrom main:\(employerToS)")
+        print (employerIDToS)
+print (employerToS)
+            
         if self.employerToS != "Add new dog" {
+             print ("DDdd")
+          homeTitle.title = employerToS//(filteredEmployerForList[indexPath.row].accountName)
+            
         dbRefEmployer.child(self.employerIDToS).child("myEmployees").queryOrderedByKey().queryEqual(toValue: employeeIDToS).observeSingleEvent(of:.childAdded, with: { (snapshot) in
         self.startButton.setTitle("+Session Now", for: .normal);self.startImage.image = self.roundImageBig
         self.RateUpdate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)
@@ -131,6 +150,9 @@ extension(ViewController){
         self.alert30()
         print("error from FB")}
         )
-        }}//end of dbrefemployers
+        }
+        
+            
+    }//end of dbrefemployers
 
         }//end of ext!!!!!!!!!!//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

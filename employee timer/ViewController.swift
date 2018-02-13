@@ -716,7 +716,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
                self.view.layoutIfNeeded()
             })
         }else{
-            if self.filteredEmployerForList.count > 8 {
+            if self.employerForList.count > 8 {
                 if #available(iOS 11.0, *) {
                     self.navigationItem.searchController = self.searchController
                 } else {
@@ -754,8 +754,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         }else{
           
 
-         //   pickerData = notFilteredList.filter({$0.lowercased().contains{_ in searchController.searchBar.text!.lowercased()}})
-         ///   pickerData = notFilteredList.filter({ ($0.lowercased().contains(searchController.searchBar.text!.lowercased())) })
             filteredEmployerForList = employerForList.filter({ ($0.accountName.lowercased().contains(searchController.searchBar.text!.lowercased())) })
         
         }
