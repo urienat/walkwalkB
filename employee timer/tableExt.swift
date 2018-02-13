@@ -36,11 +36,11 @@ extension(ViewController){
             homeTitle.title = (filteredEmployerForList[indexPath.row].accountName)
 
             btnMenu.setImage (home, for: .normal)
-            let font = UIFont.systemFont(ofSize: 17.0)
-            let textFontAttributes = [ NSFontAttributeName: font,NSForegroundColorAttributeName: systemBlue] as [String : Any]
-            let homeBackTitle = NSAttributedString(string: " Home", attributes: textFontAttributes)
-            btnMenu.setAttributedTitle(homeBackTitle, for: .normal)
-            btnMenu.attributedTitle(for: .normal)
+           // let font = UIFont.systemFont(ofSize: 17.0)
+            //let textFontAttributes = [ NSFontAttributeName: font,NSForegroundColorAttributeName: systemBlue] as [String : Any]
+           // let homeBackTitle = NSAttributedString(string: " Home", attributes: textFontAttributes)
+           // btnMenu.setAttributedTitle(homeBackTitle, for: .normal)
+           // btnMenu.attributedTitle(for: .normal)
             btnMenu.removeTarget(self, action:#selector(sideMenuMovement), for: .touchUpInside)
             btnMenu.addTarget(self, action: #selector(noAccount), for: .touchUpInside)
 

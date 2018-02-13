@@ -303,6 +303,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     ViewController.taxation = String(describing: snapshot.childSnapshot(forPath: "fTaxPrecentage").value!) as String
     ViewController.professionControl =  String(describing: snapshot.childSnapshot(forPath: "fProfessionControl").value!) as String
     self.homeTitle.title = "Home"
+    
        // if  ViewController.professionControl! == "Tutor" { self.homeTitle.title = "Students"} else {self.homeTitle.title = "Accounts"}
 
     }
@@ -342,10 +343,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     importSpesific.customView = btn4
         
         
-    let textFontAttributes = [ NSFontAttributeName: font,NSForegroundColorAttributeName: systemBlue] as [String : Any]
-    let menuBackTitle = NSAttributedString(string: "General", attributes: textFontAttributes)
-    btnMenu.setAttributedTitle(menuBackTitle, for: .normal)
-    btnMenu.attributedTitle(for: .normal)
+    //let textFontAttributes = [ NSFontAttributeName: font,NSForegroundColorAttributeName: systemBlue] as [String : Any]
+   // let menuBackTitle = NSAttributedString(string: "General", attributes: textFontAttributes)
+  //  btnMenu.setAttributedTitle(menuBackTitle, for: .normal)
+  //r  btnMenu.attributedTitle(for: .normal)
     btnMenu.setImage (menu, for: .normal)
     btnMenu.frame = CGRect(x: 0, y: 0, width: 20, height: 60)
         
@@ -544,9 +545,9 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         }
         
         let textFontAttributes = [ NSFontAttributeName: font,NSForegroundColorAttributeName: systemBlue] as [String : Any]
-        let menuBackTitle = NSAttributedString(string: "General", attributes: textFontAttributes)
-        btnMenu.setAttributedTitle(menuBackTitle, for: .normal)
-        btnMenu.attributedTitle(for: .normal)
+      //  let menuBackTitle = NSAttributedString(string: "General", attributes: textFontAttributes)
+       // btnMenu.setAttributedTitle(menuBackTitle, for: .normal)
+      //  btnMenu.attributedTitle(for: .normal)
         
         btnMenu.removeTarget(self, action:#selector(noAccount), for: .touchUpInside)
         btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
