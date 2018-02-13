@@ -14,7 +14,7 @@ import Google
 import GoogleSignIn
 import GoogleAPIClientForREST
 
-class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating{
+class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating,UISearchControllerDelegate{
     
     var window: UIWindow?
 
@@ -22,6 +22,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let dbRefEmployer = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployee = FIRDatabase.database().reference().child("fEmployees")
     
+    @IBOutlet weak var nav2: UINavigationBar!
     
     static var fixedCurrency:String!
     static var fixedName:String!
@@ -277,6 +278,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
     checkUserAgainstDatabase { (alive, error3) in}    //check if user not deleted
 
+        searchController.delegate = self
+        
     employerList.dataSource = self
     employerList.delegate = self
     ViewController.sessionPusher = false
@@ -313,8 +316,9 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
         let imageView = UIImageView(image: self.home)
         imageView.contentMode = .scaleAspectFit // set imageview's content mode
-        self.navigationItem.titleView = imageView
-
+       /// self.navigationItem.titleView = imageView
+        self.homeTitle.titleView = imageView
+        
        // if  ViewController.professionControl! == "Tutor" { self.homeTitle.title = "Students"} else {self.homeTitle.title = "Accounts"}
 
     }
@@ -681,16 +685,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     self.importBtn.transform = .identity// CGAffineTransformIdentity
 
     })
-      /*
-    UIView.animate(withDuration: 0.3, delay: 0.6 ,animations: {
-    self.startButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-    self.importBtn.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-    })
-    UIView.animate(withDuration: 0.3, delay: 0.9,animations: {
-    self.startButton.transform = .identity
-    self.importBtn.transform = .identity
-    })
- */
+     
+
     }
     
     func handleTap(sender: UITapGestureRecognizer? = nil) {
@@ -702,7 +698,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
         if isSideMenuHidden {
             if #available(iOS 11.0, *) {
-                
+                self.dismiss(animated: false, completion: nil)
                 self.navigationItem.searchController = nil
                 
                 
@@ -714,6 +710,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
             self.sideMenuConstarin.constant = 0
             UIView.animate(withDuration: 0.4, animations: {
                self.view.layoutIfNeeded()
+                
             })
         }else{
             if self.employerForList.count > 8 {
@@ -746,6 +743,25 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         }, completion: nil)
 
         }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+        print("Will dimiss search controller")
+        self.dismiss(animated: true, completion: nil)
+        }
+    /*
+        if #available(iOS 11.0, *) { //handle when ios 11 is out
+            print("sfdf")
+            
+            self.navigationItem.searchController = nil
+            //self.navigationItem.searchController?.searchBar.si
+            // self.navigationItem.searchController?.searchBar.sizeToFit()
+            
+        } else {
+            self.searchController.isActive = false
+        }
+
+    }
+    */
     
     func updateSearchResults(for searchController: UISearchController) {
         if searchController.searchBar.text! == ""{

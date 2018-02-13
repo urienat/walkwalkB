@@ -1197,6 +1197,7 @@
                         <outlet property="importImage" destination="l9b-bB-9mb" id="6ef-nj-1c4"/>
                         <outlet property="importSpesific" destination="uJr-T5-fnM" id="jle-AD-bQm"/>
                         <outlet property="menuItem" destination="yFh-ig-nQ8" id="5zC-xf-qOB"/>
+                        <outlet property="nav2" destination="lxT-w2-3r9" id="XoC-NB-f7I"/>
                         <outlet property="records" destination="uPD-Ce-NUz" id="vkv-Tl-a3Z"/>
                         <outlet property="sideMenu" destination="cKA-rE-TUN" id="ZO5-OH-NyS"/>
                         <outlet property="sideMenuConstarin" destination="Qng-b0-SRL" id="STP-FC-cVD"/>

@@ -10,14 +10,18 @@ extension(ViewController){
     
         func tableView(_ employerList: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+            
+
         if #available(iOS 11.0, *) { //handle when ios 11 is out
-       self.navigationItem.searchController = nil
+            print("sfdf")
+            self.dismiss(animated: false, completion: nil)
+            self.navigationItem.searchController = nil
+
         } else {
         self.searchController.isActive = false
         }
 
-            
-            
+        
             
         employerList.isHidden = true
         self.thinking2.startAnimating()
@@ -34,13 +38,13 @@ extension(ViewController){
         //chooseEmployer.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         //chooseEmployer.titleLabel?.textAlignment = NSTextAlignment.center
 
-       self.navigationItem.titleView = nil
-            
+       ///self.navigationItem.titleView = nil
+         self.homeTitle.titleView = nil
         print  (filteredEmployerForList[indexPath.row].accountName)
             
-        //homeTitle.title = (filteredEmployerForList[indexPath.row].accountName)
-
-
+       // homeTitle.title = (filteredEmployerForList[indexPath.row].accountName)
+        ///self.navigationItem.title = (filteredEmployerForList[indexPath.row].accountName)
+            self.homeTitle.title = (filteredEmployerForList[indexPath.row].accountName)
            
             
         btnMenu.setImage (home, for: .normal)
@@ -72,7 +76,7 @@ extension(ViewController){
 
         }//end of did select
 
-
+    
         func tableView(_ employerList: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredEmployerForList.count
         }
