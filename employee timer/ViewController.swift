@@ -14,7 +14,7 @@ import Google
 import GoogleSignIn
 import GoogleAPIClientForREST
 
-class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating,UISearchControllerDelegate{
+class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating{
     
     var window: UIWindow?
 
@@ -278,7 +278,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         
     checkUserAgainstDatabase { (alive, error3) in}    //check if user not deleted
 
-        searchController.delegate = self
         
     employerList.dataSource = self
     employerList.delegate = self
@@ -699,6 +698,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         if isSideMenuHidden {
             if #available(iOS 11.0, *) {
                 self.dismiss(animated: false, completion: nil)
+                searchController.searchBar.text = ""
                 self.navigationItem.searchController = nil
                 
                 
@@ -744,24 +744,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
 
         }
     
-    func willDismissSearchController(_ searchController: UISearchController) {
-        print("Will dimiss search controller")
-        self.dismiss(animated: true, completion: nil)
-        }
-    /*
-        if #available(iOS 11.0, *) { //handle when ios 11 is out
-            print("sfdf")
-            
-            self.navigationItem.searchController = nil
-            //self.navigationItem.searchController?.searchBar.si
-            // self.navigationItem.searchController?.searchBar.sizeToFit()
-            
-        } else {
-            self.searchController.isActive = false
-        }
-
-    }
-    */
+    
     
     func updateSearchResults(for searchController: UISearchController) {
         if searchController.searchBar.text! == ""{

@@ -13,8 +13,9 @@ extension(ViewController){
             
 
         if #available(iOS 11.0, *) { //handle when ios 11 is out
-            print("sfdf")
+            
             self.dismiss(animated: false, completion: nil)
+            searchController.searchBar.text = ""
             self.navigationItem.searchController = nil
 
         } else {
