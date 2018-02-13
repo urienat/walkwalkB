@@ -71,7 +71,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var billsIcon = UIImage(named:"billsIcon")?.withRenderingMode(.alwaysTemplate)
     var walkerProfile = UIImage(named:"walkerProfile")?.withRenderingMode(.alwaysTemplate)
     var importBlack = UIImage(named:"import")?.withRenderingMode(.alwaysTemplate)
-    let importIcon = UIImage(named:"importBtn")?.withRenderingMode(.alwaysTemplate)
+    let importIcon = UIImage(named:"import")?.withRenderingMode(.alwaysTemplate)
     var perSessionImage = UIImage(named:"perSessionImage")?.withRenderingMode(.alwaysTemplate)
     
     struct employerStruct{
