@@ -14,8 +14,9 @@ func fetchEmployers() {
         self.employerIdArray.removeAll()
         self.employerIdArray2.removeAll()
       //  self.pickerData.removeAll()
+        self.employerForList.removeAll()
         self.filteredEmployerForList.removeAll()
-        self.imageArray.removeAll()
+        //self.imageArray.removeAll()
        // self.nameData.removeAll()
        // self.lastDocument.removeAll()
        // self.activeData.removeAll()
@@ -54,17 +55,17 @@ func fetchEmployers() {
 
         if String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String! != "" {self.lastDocumentItem = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!} //else {self.lastDocumentItem = ""}
        self.dogItem = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
-
+            self.profileImageUrl = snapshot.childSnapshot(forPath: "fImageRef").value as! String!
            
-            var employerToAdd:employerStruct = employerStruct( accountName:"\(self.dogItem) \(self.employerItem)" , employerRef: self.employerIdArray2[iIndex] as! String, activeAccount: (snapshot.childSnapshot(forPath: "fActive").value as? Bool)!, lastDocAccount: self.lastDocumentItem)
+            var employerToAdd:employerStruct = employerStruct( accountName:"\(self.dogItem) \(self.employerItem)" , employerRef: self.employerIdArray2[iIndex] as! String, activeAccount: (snapshot.childSnapshot(forPath: "fActive").value as? Bool)!, lastDocAccount: self.lastDocumentItem, accountImageUrl:self.profileImageUrl )
         self.employerForList.append(employerToAdd)
             
 
 
 
-        self.profileImageUrl = snapshot.childSnapshot(forPath: "fImageRef").value as! String!
+       
         //  self.profileImageUrl = "https://firebasestorage.googleapis.com/v0/b/persession-45987.appspot.com/o/Myprofile.png?alt=media&token=263c8fdb-9cca-4256-9d3b-b794774bf4e1"
-        self.imageArray.append(self.profileImageUrl)
+        //self.imageArray.append(self.profileImageUrl)
 
             
             

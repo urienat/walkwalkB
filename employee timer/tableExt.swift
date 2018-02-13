@@ -93,7 +93,7 @@ extension(ViewController){
         cell2.dogImage.clipsToBounds = true
         cell2.dogImage.layer.cornerRadius = CGFloat(25)
         cell2.dogImage.contentMode = .scaleAspectFill
-        if let cachedImage = MyImageCache.sharedCache.object(forKey: self.employerIdArray2[indexPath.row] as AnyObject) as? UIImage //bring from cache
+        if let cachedImage = MyImageCache.sharedCache.object(forKey: self.filteredEmployerForList[indexPath.row].employerRef as AnyObject) as? UIImage //bring from cache
         { DispatchQueue.main.async {
         cell2.dogImage.image = cachedImage
         }
@@ -101,8 +101,7 @@ extension(ViewController){
         else
         //bring from Firebase
         {
-        print (imageArray)
-        let url = URL(string: self.imageArray[indexPath.row])!
+        let url = URL(string: self.filteredEmployerForList[indexPath.row].accountImageUrl)!
         URLSession.shared.dataTask(with: url, completionHandler: { (Data, response, error) in
         if error != nil {
         print (error as Any)

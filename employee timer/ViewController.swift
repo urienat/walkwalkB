@@ -46,6 +46,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var addDog: Int?
     var tableRowHeight:Int?
     
+    var profileImageUrl = ""
+    
     var sessionModeSegue:Bool? = true
 
     @IBOutlet weak var star: UIImageView!
@@ -79,12 +81,13 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         var employerRef : String
         var activeAccount : Bool
         var lastDocAccount :String
-        var profileImageUrl = ""
-        init(accountName:String, employerRef:String, activeAccount:Bool,lastDocAccount:String) {
+        var accountImageUrl : String
+        init(accountName:String, employerRef:String, activeAccount:Bool,lastDocAccount:String,accountImageUrl:String) {
             self.accountName = accountName
             self.employerRef = employerRef
             self.activeAccount = activeAccount
             self.lastDocAccount = lastDocAccount
+            self.accountImageUrl = accountImageUrl
         }
     }
     var employerForList : [employerStruct] = []
@@ -130,7 +133,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var employerIdArray: [AnyObject] = []
     var employerIdArray2: [AnyObject] = []
 
-    var imageArray: [String] = [String]()
+   // var imageArray: [String] = [String]()
     var listOfEmployers = [String:Int]()
 
     //variable for Segue
