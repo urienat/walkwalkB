@@ -754,7 +754,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         }else{
           
 
-            filteredEmployerForList = employerForList.filter({ ($0.accountName.lowercased().contains(searchController.searchBar.text!.lowercased())) })
+            filteredEmployerForList =
+                
+                employerForList.filter({ ($0.accountName.lowercased().contains(searchController.searchBar.text!.lowercased())) })
+            
         
         }
         self.employerList.reloadData()

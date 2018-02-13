@@ -106,7 +106,7 @@ extension(ViewController){
         cell2.dogImage.clipsToBounds = true
         cell2.dogImage.layer.cornerRadius = CGFloat(25)
         cell2.dogImage.contentMode = .scaleAspectFill
-        if let cachedImage = MyImageCache.sharedCache.object(forKey: self.filteredEmployerForList[indexPath.row].employerRef as AnyObject) as? UIImage //bring from cache
+        if let cachedImage = MyImageCache.sharedCache.object(forKey: self.filteredEmployerForList[indexPath.row].accountImageUrl as AnyObject) as? UIImage //bring from cache //was employerref
         { DispatchQueue.main.async {
         cell2.dogImage.image = cachedImage
         }
@@ -138,7 +138,6 @@ extension(ViewController){
 print (employerToS)
             
         if self.employerToS != "Add new dog" {
-             print ("DDdd")
           homeTitle.title = employerToS//(filteredEmployerForList[indexPath.row].accountName)
             
         dbRefEmployer.child(self.employerIDToS).child("myEmployees").queryOrderedByKey().queryEqual(toValue: employeeIDToS).observeSingleEvent(of:.childAdded, with: { (snapshot) in
