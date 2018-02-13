@@ -31,12 +31,8 @@ extension(ViewController){
             bills.isEnabled = true
             importSpesific.isEnabled = true
 
-            if filteredEmployerForList.count == 0 {
-            print ("indexpath4\([filteredEmployerForList])")
-            }
-
-            chooseEmployer.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-            chooseEmployer.titleLabel?.textAlignment = NSTextAlignment.center
+            //chooseEmployer.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+            //chooseEmployer.titleLabel?.textAlignment = NSTextAlignment.center
             homeTitle.title = (filteredEmployerForList[indexPath.row].accountName)
 
             btnMenu.setImage (home, for: .normal)
@@ -50,8 +46,8 @@ extension(ViewController){
 
             toolBar.isHidden = false
             addAccount.isEnabled = false
-            account.title = "\(filteredEmployerForList[indexPath.row])'s file"
-            records.title =  "\(filteredEmployerForList[indexPath.row])'s Sessions"
+            account.title = "\(filteredEmployerForList[indexPath.row].accountName)'s file"
+            records.title =  "\(filteredEmployerForList[indexPath.row].accountName)'s Sessions"
 
             employerToS = filteredEmployerForList[indexPath.row].accountName
 
