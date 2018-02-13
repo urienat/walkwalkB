@@ -33,8 +33,12 @@ extension(ViewController){
 
             //chooseEmployer.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
             //chooseEmployer.titleLabel?.textAlignment = NSTextAlignment.center
-            homeTitle.title = (filteredEmployerForList[indexPath.row].accountName)
-
+            
+                 self.navigationItem.titleView = nil
+                
+                homeTitle.title = (filteredEmployerForList[indexPath.row].accountName)
+            
+                
             btnMenu.setImage (home, for: .normal)
            // let font = UIFont.systemFont(ofSize: 17.0)
             //let textFontAttributes = [ NSFontAttributeName: font,NSForegroundColorAttributeName: systemBlue] as [String : Any]

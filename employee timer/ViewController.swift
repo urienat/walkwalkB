@@ -302,8 +302,12 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     ViewController.taxCalc = String(describing: snapshot.childSnapshot(forPath: "fTaxCalc").value!) as String
     ViewController.taxation = String(describing: snapshot.childSnapshot(forPath: "fTaxPrecentage").value!) as String
     ViewController.professionControl =  String(describing: snapshot.childSnapshot(forPath: "fProfessionControl").value!) as String
-    self.homeTitle.title = "Home"
-    
+   /// self.homeTitle.title = "Home"
+        
+        let imageView = UIImageView(image: self.home)
+        imageView.contentMode = .scaleAspectFit // set imageview's content mode
+        self.navigationItem.titleView = imageView
+
        // if  ViewController.professionControl! == "Tutor" { self.homeTitle.title = "Students"} else {self.homeTitle.title = "Accounts"}
 
     }
@@ -552,7 +556,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         btnMenu.removeTarget(self, action:#selector(noAccount), for: .touchUpInside)
         btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
         //if  ViewController.professionControl! == "Tutor" { homeTitle.title = "Students"} else {homeTitle.title = "Accounts"}
-        homeTitle.title = "Home"
+        ///homeTitle.title = "Home"
+        let imageView = UIImageView(image: self.home)
+        imageView.contentMode = .scaleAspectFit // set imageview's content mode
+        self.navigationItem.titleView = imageView
         toolBar.isHidden = true
         addAccount.isEnabled = true
         

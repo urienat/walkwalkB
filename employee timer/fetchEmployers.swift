@@ -14,7 +14,7 @@ func fetchEmployers() {
         self.employerIdArray.removeAll()
         self.employerIdArray2.removeAll()
         self.pickerData.removeAll()
-    self.filteredEmployerForList.removeAll()
+        self.filteredEmployerForList.removeAll()
         self.imageArray.removeAll()
         self.nameData.removeAll()
         self.lastDocument.removeAll()
