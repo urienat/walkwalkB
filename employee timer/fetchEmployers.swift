@@ -13,12 +13,12 @@ func fetchEmployers() {
         // connectivityCheck()
         self.employerIdArray.removeAll()
         self.employerIdArray2.removeAll()
-        self.pickerData.removeAll()
+      //  self.pickerData.removeAll()
         self.filteredEmployerForList.removeAll()
         self.imageArray.removeAll()
-        self.nameData.removeAll()
-        self.lastDocument.removeAll()
-        self.activeData.removeAll()
+       // self.nameData.removeAll()
+       // self.lastDocument.removeAll()
+       // self.activeData.removeAll()
 
         self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").observeSingleEvent(of: .value, with:{(snapshot) in
         self.listOfEmployers = snapshot.value as! [String : AnyObject] as! [String : Int]
@@ -48,25 +48,19 @@ func fetchEmployers() {
         self.arrow.isHidden = true
         for iIndex in 0...(self.employerIdArray2.count-1){
         self.dbRefEmployer.child(self.employerIdArray2[iIndex] as! String).observeSingleEvent(of: .value, with:{ (snapshot) in
-        self.employerItem = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
-        //self.pickerData.append(self.employerItem  )
+       self.employerItem = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
 
-        print(String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!)
 
 
         if String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String! != "" {self.lastDocumentItem = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!} //else {self.lastDocumentItem = ""}
-        self.dogItem = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
-        self.nameData.append(self.dogItem  )
-        self.lastDocument.append(self.lastDocumentItem)
+       self.dogItem = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
+
            
-            var employerToAdd:employerStruct = employerStruct( accountName:"\(self.dogItem) \(self.employerItem)" , employerRef: self.employerIdArray2[iIndex] as! String)
+            var employerToAdd:employerStruct = employerStruct( accountName:"\(self.dogItem) \(self.employerItem)" , employerRef: self.employerIdArray2[iIndex] as! String, activeAccount: (snapshot.childSnapshot(forPath: "fActive").value as? Bool)!, lastDocAccount: self.lastDocumentItem)
         self.employerForList.append(employerToAdd)
             
 
-        self.pickerData.append("\(self.dogItem) \(self.employerItem)" )
 
-        self.activeItem =  snapshot.childSnapshot(forPath: "fActive").value as? Bool
-        self.activeData.append(self.activeItem! )
 
         self.profileImageUrl = snapshot.childSnapshot(forPath: "fImageRef").value as! String!
         //  self.profileImageUrl = "https://firebasestorage.googleapis.com/v0/b/persession-45987.appspot.com/o/Myprofile.png?alt=media&token=263c8fdb-9cca-4256-9d3b-b794774bf4e1"

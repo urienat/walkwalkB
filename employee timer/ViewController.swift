@@ -77,9 +77,14 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     struct employerStruct{
         var accountName : String
         var employerRef : String
-        init(accountName:String, employerRef:String) {
+        var activeAccount : Bool
+        var lastDocAccount :String
+        var profileImageUrl = ""
+        init(accountName:String, employerRef:String, activeAccount:Bool,lastDocAccount:String) {
             self.accountName = accountName
             self.employerRef = employerRef
+            self.activeAccount = activeAccount
+            self.lastDocAccount = lastDocAccount
         }
     }
     var employerForList : [employerStruct] = []
@@ -92,10 +97,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     var isSideMenuHidden = true
     var employerItem = ""
-    var profileImageUrl = ""
+    
     var dogItem = ""
     var lastDocumentItem = ""
-    var activeItem:Bool?
+    //var activeItem:Bool?
     var employerIdRef = ""
     var dOut = ""
     var methood = "Normal"
@@ -110,10 +115,10 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var employerListHeiget: NSLayoutConstraint!
     @IBOutlet weak var employerListBottom: NSLayoutConstraint!
     
-    var pickerData: [String] = [String]()
-    var nameData: [String] = [String]()
-    var lastDocument:  [String] = [String]()
-    var activeData: [Bool] = [Bool]()
+   // var pickerData: [String] = [String]()
+    //var nameData: [String] = [String]()
+   // var lastDocument:  [String] = [String]()
+   // var activeData: [Bool] = [Bool]()
     
     struct listStruct {
         var name = String()
@@ -171,7 +176,6 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var records: UIBarButtonItem!
     @IBOutlet weak var bills: UIBarButtonItem!
     @IBOutlet weak var importSpesific: UIBarButtonItem!
-    
     @IBOutlet weak var account: UIBarButtonItem!
     @IBOutlet weak var chooseEmployer: UIButton!
     @IBOutlet weak var animationImage: UIImageView!
