@@ -373,7 +373,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
         billManager?.contactForMail = "\(self.accountName) \(self.accountLastName)"
         }
-
         }//end of if (segue...
 
         if (segue.identifier == "recordHandler")
@@ -382,15 +381,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         let recordManager = segue.destination as? datePicker2
         print ("presparesegue")
         recordManager?.recordToHandle = String(idArray[recordRow.row])
-
         }//end of if (segue...
         }//end of prepare
 
         func tableView(_ tableConnect: UITableView, didSelectRowAt indexPath: IndexPath) {}
-        // func for transforming int to h:m:"
-        func secondsTo (seconds : Double) -> (Double, Double) {
-        return (seconds / 3600, (seconds.truncatingRemainder(dividingBy: 3600)/60))
-        }
 
         func  approvalClicked(sender:UIButton!) {
         self.billSender.isEnabled = false
@@ -400,8 +394,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         if appArray[buttonRow] == "Pre" { newVCTable.checkBox = 1; statusTemp = "Approved";if indicationArray[buttonRow] != "📄" {eventCounter+=1};if indicationArray[buttonRow] == "📄" {itemSum += Double(amountArray[buttonRow]) }; amountCalc()}
         else if appArray[buttonRow] == "Approved" { newVCTable.checkBox = 0; statusTemp = "Pre";if indicationArray[buttonRow] != "📄" {eventCounter-=1}; if indicationArray[buttonRow] == "📄" {itemSum -= Double(amountArray[buttonRow]) }; amountCalc()}
         else if  appArray[buttonRow] == "Paid" {newVCTable.checkBox = 2; statusTemp = "Paid";alert12()}
-        print( "apparray buttonarray\(appArray[buttonRow])")
-        print( "checkBox\(newVCTable.checkBox)")
         if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions";if  itemSum == 0{toolbar1.isHidden = true;noSign.isHidden = false}else{toolbar1.isHidden = false;noSign.isHidden = true}} else if self.eventCounter == 1 {self.eventsLbl.text = "\(String(self.eventCounter)) Due session";toolbar1.isHidden = false;noSign.isHidden = true} else {self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions";toolbar1.isHidden = false;noSign.isHidden = true}
 
         if statusTemp != appArray[buttonRow] {
@@ -409,13 +401,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
         self.dbRef.child(String(idArray[buttonRow])).updateChildValues(["fStatus": statusTemp!], withCompletionBlock: { (error) in}) //end of update.
         }
-        print("id55\([idArray])")
-        print("status\([appArray])")
-
         DispatchQueue.main.asyncAfter(deadline: .now()+1){
         self.billSender.isEnabled = true
         self.billPay.isEnabled = true
-
         }
         }//end button clicked
 
@@ -476,7 +464,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.taxationBlock = ("\(self.seprator)\r\n\(self.seprator)\r\nSubtotal: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n\(self.taxForBlock)(%\(self.taxation!)): \(ViewController.fixedCurrency!)\(self.midCalc)\r\nTotal (w/\(self.taxForBlock)): \(ViewController.fixedCurrency!)\(self.midCalc2)")
         } else {
 
-
         self.midCalc =  "0"
         self.midCalc2 =  String (describing:self.calc.roundTo(places: 2))
         self.midCalc3 = String (describing:self.calc.roundTo(places: 2))
@@ -484,8 +471,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.taxationBlock = "\(self.seprator)\r\n\(self.seprator)\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc3)"}
 
         if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
-
-
         if self.recieptDate != "" {if self.taxSwitch == "Yes"{self.documentName = "VAT Invoice \(self.counterForMail2!)"} else {self.documentName = "Invoice \(self.counterForMail2!)"}; if self.paymentSys == "other" || self.paymentSys == ""{self.paymentBlock = ("\(self.seprator2)\(self.seprator2)\r\nPayment of \(ViewController.fixedCurrency!)\(self.midCalc2) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock)\r\nBalance due: \(ViewController.fixedCurrency!)\(self.PaymentBlalnce!) ")
         }
         else{self.paymentBlock = "\(self.seprator2)\(self.seprator2)\r\nPayment of \(ViewController.fixedCurrency!)\(self.midCalc2) made by \(self.paymentSys!) \(self.refernceBlock) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))\r\nBalance due: \(ViewController.fixedCurrency!)\(self.PaymentBlalnce!)"
@@ -497,32 +482,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         if self.paypal != "" {self.payPalBlock = "\r\n\r\nPayment can be made through Paypal: \(self.paypal!)/\(self.midCalc2)"}else {self.payPalBlock = ""}
         }// end of else  self.paymentDate != ""
 
-
-        print("guygug3\(self.counterForMail2!)")
         })
         }//end of billing
 
-        func saveBase64StringToPDF(_ base64String: String) {
-        guard
-        var documentsURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last,
-        let convertedData = Data(base64Encoded: base64String)
-        else {
-        //handle error when getting documents URL
-        return
-        }
-
-        //name your file however you prefer
-        documentsURL.appendPathComponent("yourFileName.pdf")
-        do {
-        try convertedData.write(to: documentsURL)
-        } catch {
-        //handle write error here
-        }
-        //if you want to get a quick output of where your
-        //file was saved from the simulator on your machine
-        //just print the documentsURL and go there in Finder
-        print("url\(documentsURL)")
-        }
 
         func refresh(presser:Int){
         StatusChosen.isMomentary = true
@@ -531,7 +493,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         StatusChosen.sendActions(for: .valueChanged)
         StatusChosen.isMomentary = false
         }
-
 
         func checkDuplicate(){
         print ("check dupliates")
@@ -543,7 +504,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         print("do nothing")
         }
         }
-
 
     // alerts/////////////////////////////////////////////////////////////////////////////////////
 
