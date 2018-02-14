@@ -483,87 +483,17 @@
         animationImage.isHidden = true
         }//end of func
 
-        func postRoundView() {
-        self.animationImage.isHidden = false
-        self.startBackground.isHidden = true
-        self.special.isHidden = true
-        self.star.isHidden = true
-        self.importBackground.isHidden = true
-        self.DateIn.isHidden = false;
-        self.workedFor.isHidden = true
-        self.addAmanualRecord.isHidden = true
-        self.chooseEmployer.isUserInteractionEnabled = true
-        self.navigationController!.popViewController(animated: true)
-        self.animationImage.center.x -= self.view.bounds.width
-        self.animationImage.isHidden = false
-        self.animationImage.alpha = 1
-        UIView.animate(withDuration: 2.0, animations:{
-        self.animationImage.center.x += self.view.bounds.width
-        })
-        UIView.animate(withDuration: 2.0, delay :2.0 ,options:[],animations: {
-        self.animationImage.alpha = 0
-        self.startBackground.alpha = 0
-        self.importBackground.alpha = 0
-        self.addAmanualRecord.alpha = 0
-        },completion:nil)
-
-        UIView.animate(withDuration: 1.0, delay :4.0 ,options:[],animations: {
-        self.startBackground.alpha = 1
-        self.importBackground.alpha = 1
-        self.addAmanualRecord.alpha = 1
-
-        DispatchQueue.main.asyncAfter(deadline: .now()){
-        UIView.animate(withDuration: 2.0, delay :0.0 ,options:[],animations: {
-        self.textAdd.alpha = 1
-        },completion:nil)
-        UIView.animate(withDuration: 2.0, delay :2.0 ,options:[],animations: {
-        self.textAdd.alpha = 0
-        },completion:nil)
-        }
-
-        self.preStartView()
-        self.DateIn.alpha = 0
-
-        },completion:nil)
-        }//end of func oost round view
-
-
-
-
-        func startBarButtonFadeOut(){
-        UIView.animate(withDuration: 0.1, animations: {
-        self.startButton.transform = CGAffineTransform(scaleX: 0.75, y: 0.85)
-        self.importBtn.transform = CGAffineTransform(scaleX: 0.75, y: 0.85)
-
-        })
-        }
-
-        func startBarButtonFadeIn(){
-        UIView.animate(withDuration: 0.7,delay: 0.1, animations: {
-        self.startButton.alpha = 1
-        self.importBtn.alpha = 1
-        self.startButton.transform = .identity// CGAffineTransformIdentity
-        self.importBtn.transform = .identity// CGAffineTransformIdentity
-
-        })
-
-
-        }
+        
 
         func handleTap(sender: UITapGestureRecognizer? = nil) {
         sideMenuMovement()    }
 
         func sideMenuMovement(){
-        print ("fff")
-
-
         if isSideMenuHidden {
         if #available(iOS 11.0, *) {
         //searchController.dismiss(animated: false, completion: nil)
         searchController.searchBar.text = ""
         self.navigationItem.searchController = nil
-
-
         } else {
         self.searchController.isActive = false
         }
@@ -572,7 +502,6 @@
         self.sideMenuConstarin.constant = 0
         UIView.animate(withDuration: 0.4, animations: {
         self.view.layoutIfNeeded()
-
         })
         }else{
         if self.employerForList.count > 8 {
@@ -581,7 +510,6 @@
         } else {
         self.employerList.tableHeaderView = self.searchController.searchBar
         }
-
         }//end of >4
 
         sideMenuConstarin.constant = -140
@@ -603,22 +531,14 @@
         UIView.animate(withDuration: 1.3, delay: 0, options: [.repeat, .autoreverse], animations: {
         self.arrow.center.y -= 20
         }, completion: nil)
-
         }
-
-
 
         func updateSearchResults(for searchController: UISearchController) {
         if searchController.searchBar.text! == ""{
         filteredEmployerForList = employerForList
         }else{
-
-
         filteredEmployerForList =
-
         employerForList.filter({ ($0.accountName.lowercased().contains(searchController.searchBar.text!.lowercased())) })
-
-
         }
         self.employerList.reloadData()
         }
