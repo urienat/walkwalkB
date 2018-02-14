@@ -11,13 +11,13 @@ extension(ViewController){
         func tableView(_ employerList: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         if #available(iOS 11.0, *) { //handle when ios 11 is out
-        self.dismiss(animated: false, completion: nil)
+        searchController.dismiss(animated: false, completion: nil)
         searchController.searchBar.text = ""
         self.navigationItem.searchController = nil
         } else {
         self.searchController.isActive = false
         }
-
+            
         employerList.isHidden = true
         self.thinking2.startAnimating()
         employerList.isUserInteractionEnabled = false

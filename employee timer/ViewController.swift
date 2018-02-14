@@ -301,10 +301,6 @@
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.applicationDidBecomeActive(notification:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.applicationDidBecomeActive(notification:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
 
-        //application stop active
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.applicationDidBecomePassive(notification:)), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.applicationDidBecomePassive(notification:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
-
         self.employerList.separatorColor = blueColor
 
         //formating the date
@@ -604,7 +600,7 @@
 
         if isSideMenuHidden {
         if #available(iOS 11.0, *) {
-        self.dismiss(animated: false, completion: nil)
+        //searchController.dismiss(animated: false, completion: nil)
         searchController.searchBar.text = ""
         self.navigationItem.searchController = nil
 
