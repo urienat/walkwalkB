@@ -78,6 +78,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     @IBOutlet weak var totalAmount: UITextField!
     @IBOutlet weak var noSign: UIImageView!
     
+    @IBOutlet weak var totalLbl: UITextField!
     //filter
     let btnFilter = UIButton(type: .custom)
     let filterItem = UIBarButtonItem()
@@ -89,6 +90,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     
             @IBAction func noneBtn(_ sender: Any) {
             self.title = "Tax"
+            totalLbl.text = "All Periods"
             filterDecided = 0
             fetchBills()
             filterImageConstrain.constant = 20
@@ -100,6 +102,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
 
 
             @IBAction func currentYearBtn(_ sender: Any) {
+            totalLbl.text = "\(self.currentYear)"
             self.title = "Tax: \(self.currentYear)"
             filterImageConstrain.constant = 100
             filterDecided = 3
@@ -111,6 +114,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
             }
 
             @IBAction func lastYearBtn(_ sender: Any) {
+            totalLbl.text = "\(self.currentYear-1)"
             self.title = "Tax: \(self.currentYear-1)"
             filterImageConstrain.constant = 180
             filterDecided = 4
@@ -273,7 +277,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
             func inFilterBilldate() {
             if self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] == nil {
             self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTax!)!; self.taxCounter += Double(billItem.fBillTax!)!
-            self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTotalTotal!)!;self.AmountCounter = Double(billItem.fBillTotalTotal!)!
+            self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTotalTotal!)!;self.AmountCounter += Double(billItem.fBillTotalTotal!)!
             self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = 1
             }else{
             self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTax!)!; self.taxCounter += Double(billItem.fBillTax!)!
@@ -329,9 +333,9 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
             } //end of switch
 
 
-            self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
+            self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter.roundTo(places: 2)))"
             self.totalTax.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter.roundTo(places: 2)))"
-            self.totalBills.text = "w/o Tax: \(String(self.AmountCounter - self.taxCounter.roundTo(places: 2)))"
+            self.totalBills.text = "w/o Tax: \(String(self.AmountCounter.roundTo(places: 2) - self.taxCounter.roundTo(places: 2)))"
 
             self.billerConnect.reloadData()
             }//end of if let dic

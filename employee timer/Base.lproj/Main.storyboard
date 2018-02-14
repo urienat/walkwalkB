@@ -3455,11 +3455,20 @@
                                             <constraint firstAttribute="width" constant="200" id="ebP-DT-LbE"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="25"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="25"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="All Periods" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="1jz-Go-U1h" userLabel="totalLbl">
+                                        <rect key="frame" x="8" y="8" width="128" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="VI9-yi-akL"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="25"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6P-xy-qFY" userLabel="taxInfo">
-                                        <rect key="frame" x="12" y="24.5" width="40" height="40"/>
+                                        <rect key="frame" x="75" y="23" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="bE9-ol-IS8"/>
                                             <constraint firstAttribute="width" constant="40" id="bpV-qf-QKA"/>
@@ -3495,13 +3504,15 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="6kr-dn-xOY" secondAttribute="trailing" constant="8" id="0Ux-hj-nhe"/>
                                     <constraint firstItem="6kr-dn-xOY" firstAttribute="top" secondItem="Mxy-Rp-79V" secondAttribute="top" constant="8" id="5lA-se-dvc"/>
+                                    <constraint firstItem="1jz-Go-U1h" firstAttribute="leading" secondItem="Mxy-Rp-79V" secondAttribute="leading" constant="8" id="Cts-aL-RsG"/>
+                                    <constraint firstItem="i6P-xy-qFY" firstAttribute="leading" secondItem="6kr-dn-xOY" secondAttribute="leading" constant="-37" id="GrL-cB-Hdf"/>
                                     <constraint firstAttribute="height" constant="89" id="Ijq-Jc-qRK"/>
                                     <constraint firstItem="0Mo-TX-GXF" firstAttribute="leading" secondItem="6kr-dn-xOY" secondAttribute="leading" id="JFB-ZH-D1I"/>
                                     <constraint firstItem="11P-Mq-cL7" firstAttribute="top" secondItem="0Mo-TX-GXF" secondAttribute="bottom" constant="4" id="M9P-Dy-wez"/>
-                                    <constraint firstItem="i6P-xy-qFY" firstAttribute="leading" secondItem="Mxy-Rp-79V" secondAttribute="leading" constant="12" id="T6h-Ul-UQn"/>
-                                    <constraint firstItem="i6P-xy-qFY" firstAttribute="centerY" secondItem="Mxy-Rp-79V" secondAttribute="centerY" id="oY5-Cf-H04"/>
+                                    <constraint firstItem="i6P-xy-qFY" firstAttribute="centerY" secondItem="0Mo-TX-GXF" secondAttribute="centerY" constant="-8" id="hYc-Su-H95"/>
                                     <constraint firstItem="6kr-dn-xOY" firstAttribute="leading" secondItem="11P-Mq-cL7" secondAttribute="leading" id="rfh-69-520"/>
                                     <constraint firstItem="0Mo-TX-GXF" firstAttribute="top" secondItem="6kr-dn-xOY" secondAttribute="bottom" constant="8" id="sGA-B8-8dy"/>
+                                    <constraint firstItem="1jz-Go-U1h" firstAttribute="top" secondItem="Mxy-Rp-79V" secondAttribute="top" constant="8" id="sdj-aa-ah9"/>
                                 </constraints>
                             </view>
                             <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FjF-mw-84J" userLabel="blackView">
@@ -3645,6 +3656,7 @@
                         <outlet property="thinking" destination="zhl-VB-8N9" id="fqa-1X-Jl3"/>
                         <outlet property="totalAmount" destination="6kr-dn-xOY" id="vvO-cG-zIR"/>
                         <outlet property="totalBills" destination="11P-Mq-cL7" id="EM3-9x-IuP"/>
+                        <outlet property="totalLbl" destination="1jz-Go-U1h" id="6gK-a9-T2X"/>
                         <outlet property="totalTax" destination="0Mo-TX-GXF" id="b95-tn-KUg"/>
                     </connections>
                 </viewController>
@@ -4089,7 +4101,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="q4e-3H-dKE"/>
-        <segue reference="mzv-XJ-96f"/>
+        <segue reference="GwF-xw-cu7"/>
         <segue reference="5at-sc-TfM"/>
         <segue reference="8s0-fg-N01"/>
         <segue reference="1k4-P4-HYk"/>
