@@ -362,12 +362,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/taxTable.swift"
-            timestampString = "537988851.696327"
+            timestampString = "540316080.618412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/taxTable.swift"
-            timestampString = "537988851.696389"
+            timestampString = "540316080.618517"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "fetchBills()"
             landmarkType = "7">
             <Locations>
@@ -442,12 +442,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/taxTable.swift"
-            timestampString = "537988851.696449"
+            timestampString = "540316080.618588"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
-            landmarkName = "tableView(_:didSelectRowAt:)"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -490,12 +490,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/taxTable.swift"
-            timestampString = "537988851.696493"
+            timestampString = "540316080.618638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
-            landmarkName = "prepare(for:sender:)"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -506,7 +506,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/newVCTable.swift"
-            timestampString = "540309451.155481"
+            timestampString = "540316080.6186889"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "364"
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/newVCTable.swift"
-            timestampString = "540309451.155725"
+            timestampString = "540316080.618926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "570"
-            endingLineNumber = "570"
+            startingLineNumber = "530"
+            endingLineNumber = "530"
             landmarkName = "billProcess()"
             landmarkType = "7">
          </BreakpointContent>
@@ -906,7 +906,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/ViewController.swift"
-            timestampString = "540309451.155879"
+            timestampString = "540316080.619077"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
@@ -938,7 +938,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/ViewController.swift"
-            timestampString = "540309451.156008"
+            timestampString = "540316080.619148"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "212"
@@ -1226,7 +1226,7 @@
                   moduleName = "perSession"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/urienat/myApps/perSessionMB2/employee%20timer/LoginFile.swift"
-                  timestampString = "540309451.3968461"
+                  timestampString = "540316080.926352"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "421"
@@ -1241,7 +1241,7 @@
                   moduleName = "perSession"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/urienat/myApps/perSessionMB2/employee%20timer/LoginFile.swift"
-                  timestampString = "540309451.398749"
+                  timestampString = "540316080.928236"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "421"
@@ -1354,12 +1354,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/taxTable.swift"
-            timestampString = "537988851.6990089"
+            timestampString = "540316080.619435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
-            landmarkName = "inFilter()"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
+            landmarkName = "inFilterBillStatusDate()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1370,13 +1370,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/taxTable.swift"
-            timestampString = "537988851.699053"
+            timestampString = "540316080.6194839"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "354"
-            endingLineNumber = "354"
-            landmarkName = "fetchBills()"
-            landmarkType = "7">
+            startingLineNumber = "317"
+            endingLineNumber = "317"
+            landmarkName = "inFilter()"
+            landmarkType = "9">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1409,22 +1409,6 @@
                   offsetFromSymbolStart = "48">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "employee timer/taxTable.swift"
-            timestampString = "537988851.699092"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "360"
-            endingLineNumber = "360"
-            landmarkName = "fetchBills()"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1610,12 +1594,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/taxTable.swift"
-            timestampString = "537988851.700465"
+            timestampString = "540316080.619645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "taxCalc"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "employee timer/newVCTable.swift"
+            timestampString = "540316080.619693"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "521"
+            endingLineNumber = "521"
+            landmarkName = "alert80()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1626,23 +1626,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/newVCTable.swift"
-            timestampString = "540309451.156394"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "561"
-            endingLineNumber = "561"
-            landmarkName = "billProcess()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "employee timer/newVCTable.swift"
-            timestampString = "540309451.156441"
+            timestampString = "540316080.619738"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
@@ -1706,7 +1690,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "employee timer/ViewController.swift"
-            timestampString = "540309451.15652"
+            timestampString = "540316080.619825"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "316"

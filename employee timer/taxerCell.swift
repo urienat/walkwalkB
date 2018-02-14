@@ -16,7 +16,6 @@ class taxerCell: UITableViewCell{
     
     let nonVimage = UIImage(named: "emptyV")
     let paidImage = UIImage(named: "paid")
-    let billedImage = UIImage(named: "locked")
     let billIcon = UIImage(named: "bill")
     let canceledImage = UIImage(named: "cancelled")
     
@@ -24,7 +23,6 @@ class taxerCell: UITableViewCell{
     @IBOutlet weak var l1: UILabel!
     @IBOutlet weak var l2: UILabel!
     @IBOutlet weak var l5: UILabel!
-    
     @IBOutlet weak var l3: UILabel!
     
     

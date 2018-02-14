@@ -580,7 +580,7 @@
         }
 
         func alert47(){
-        let alertController47 = UIAlertController(title: ("Tax") , message: " Tax defintions are missing in your 'Setting'. Define it? ", preferredStyle: .alert)
+        let alertController47 = UIAlertController(title: ("Tax") , message: "There are no tax defintions  in your 'Setting'. Define it? ", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
         self.profileClicked()
         }
