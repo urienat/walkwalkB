@@ -126,7 +126,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="allowedChars" value="0123456789."/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="allowedChars" value="0123456789.-"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
                                                 <integer key="value" value="6"/>
                                             </userDefinedRuntimeAttribute>

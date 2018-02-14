@@ -26,7 +26,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let mydateFormat11 = DateFormatter()
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
     var redColor = UIColor(red :170.0/255.0, green: 26.0/255.0, blue: 0/255.0, alpha: 1.0)
-
     
     let star = UIImage(named: "star")
     let billDocument = UIImage(named: "billDocument")
@@ -50,7 +49,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var firstTimeGeneral:Bool?
     var mailSaver : String?
     var payPalBlock = ""
-        var PaymentBlalnce: String? = ""
+    var PaymentBlalnce: String? = ""
     var paymentSys: String? = ""
     var paymentReference: String? = ""
     var paymentDate: String? = ""
@@ -310,20 +309,16 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         StatusChosen.isEnabled = false
         periodChosen.isEnabled = false
         switch StatusChosen.selectedSegmentIndex {
-        case 0: Status = "Pre"//;checkBoxGeneral = 1
-        case 1: Status = "Approved" //;checkBoxGeneral = 2
-        //case 2: Status = "Paid"  ;checkBoxGeneral = 0
+        case 0: Status = "Pre"
+        case 1: Status = "Approved"
         default: Status = "All";
         } //end of switch
-        print ("status:\(Status)")
         self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
-
         fetch {self.final()}
         }//end of status chosen
 
         @IBOutlet weak var periodChosen: UISegmentedControl!
         @IBAction func PeriodChosen(_ sender: AnyObject) {
-
         self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
         self.thinking.isHidden = false
         self.thinking.startAnimating()
@@ -332,7 +327,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         ;fetch {self.final()} }
 
         func tableView(_ tableConnect: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cell = tableConnect.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! newTableCell
         let record = records[indexPath.row]
         cell.backgroundColor = UIColor.clear
@@ -347,20 +341,15 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         else { cell.l1.text = "N/A"}
 
         if record.fIndication3 == "📆" { cell.l8.image = sandwatchImage}
-        if record.fIndication3 == "✏️"||record.fIndication3 == "Manual" { cell.l8.image = pencilImage}
-        if record.fIndication3 == "↺" {  cell.l8.image = roundImageNormal}
+        if record.fIndication3 == "✏️" { cell.l8.image = pencilImage}
+        if record.fIndication3 == "↺" { cell.l8.image = roundImageNormal}
         if record.fIndication3 == "📄" {  cell.l8.image = star}
 
         if record.fSpecialAmount != nil {cell.l1.text = " \(record.fSpecialItem!)"; cell.l9.text = "\(ViewController.fixedCurrency!)\(record.fSpecialAmount!)"}//; cell.l1.textColor =  UIColor.red }
 
-        if record.fStatus == "Approved" { cell.cellBtnExt.setImage(Vimage, for: .normal)
-
-
-        }
+        if record.fStatus == "Approved" { cell.cellBtnExt.setImage(Vimage, for: .normal)}
         if record.fStatus == "Pre" { cell.cellBtnExt.setImage(nonVimage, for: .normal)}
-
         cell.cellBtnExt.tag = indexPath.row
-
         cell.cellBtnExt.removeTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
         cell.cellBtnExt.addTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
 
@@ -539,7 +528,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         StatusChosen.isMomentary = true
         segmentedPressed = presser
         StatusChosen.selectedSegmentIndex = segmentedPressed!
-        StatusChosen.sendActions(for: .valueChanged)            
+        StatusChosen.sendActions(for: .valueChanged)
         StatusChosen.isMomentary = false
         }
 
