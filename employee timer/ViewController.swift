@@ -368,9 +368,7 @@
         }
         }// end of func application did become
 
-        
-       
-        @IBAction func chooseEmployerBtn(_ sender: AnyObject) {
+                @IBAction func chooseEmployerBtn(_ sender: AnyObject) {
         noAccount()
         }//end of choose employerbtn
 
@@ -378,18 +376,10 @@
         func importClicked() {performSegue(withIdentifier: "employerForCalander", sender: employerToS)}
         func importAllClicked() {performSegue(withIdentifier: "employerForAllCalander", sender: employerToS)}
         func accountClicked() {performSegue(withIdentifier: "employerForDogFile", sender: employerToS)}
-        func billsClicked() {
-
-        performSegue(withIdentifier: "employerForBills", sender: employerToS)}
+        func billsClicked() {performSegue(withIdentifier: "employerForBills", sender: employerToS)}
         func profileClicked() {performSegue(withIdentifier: "setting", sender: employerToS)}
-
-        func reportsClicked(){
-        print ("report clicked")
-
-        performSegue(withIdentifier: "reports", sender: employerToS)}
-
-
-
+        func reportsClicked(){performSegue(withIdentifier: "reports", sender: employerToS)}
+       
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "employerforRecord") {
         let secondView = segue.destination as? datePicker2
@@ -399,52 +389,44 @@
         if self.sessionModeSegue! != false {sessionModeSegue = true}
         secondView?.sessionMode = sessionModeSegue
         }//end of if
-
         else if (segue.identifier == "employerForDogFile"){
         let recordsView = segue.destination as? dogFile
         recordsView?.employerID = employerIDToS
         recordsView?.employerFromMain = employerToS
         recordsView?.employeeID = employeeIDToS
         }//end of else if
-
         else if (segue.identifier == "employerForBills"){
         let recordsView = segue.destination as? biller
         recordsView?.employerID = employerIDToS
         recordsView?.employerFromMain = employerToS
         recordsView?.employeeID = employeeIDToS
         }//end of else if
-
         else if (segue.identifier == "employerForAllBills"){
         let recordsView = segue.destination as? biller
         recordsView?.employerID = ""//employerIDToS
         recordsView?.employerFromMain = ""//employerToS
         recordsView?.employeeID = employeeIDToS
         }//end of else if
-
         else if (segue.identifier == "employerForTax"){
         let recordsView = segue.destination as? taxCalc
         recordsView?.employeeID = employeeIDToS
         }//end of else if
-
         else if (segue.identifier == "reports"){
         let recordsView = segue.destination as? report
         recordsView?.employeeID = employeeIDToS
         }//end of else if
-
         else if (segue.identifier == "employerForCalander"){
         let recordsView = segue.destination as? calander
         recordsView?.employerIdFromMain = employerIDToS
         recordsView?.employerFromMain = employerToS
         recordsView?.employeeId = employeeIDToS
         }//end of else if
-
         else if (segue.identifier == "employerForAllCalander"){
         let recordsView = segue.destination as? calander
         recordsView?.employerIdFromMain = ""//employerIDToS
         recordsView?.employerFromMain = ""//employerToS
         recordsView?.employeeId = employeeIDToS
         }//end of else if
-
         else{let recordsView = segue.destination as? newVCTable
         recordsView?.employerFromMain = employerToS
         recordsView?.employerID = employerIDToS
@@ -453,29 +435,20 @@
         }//end of prepare
 
         func noAccount(){
-
         self.btnMenu.isHidden = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
         self.btnMenu.setImage (self.menu, for: .normal)
         self.btnMenu.isHidden = false
-
         }
-
-        let textFontAttributes = [ NSFontAttributeName: font,NSForegroundColorAttributeName: systemBlue] as [String : Any]
-        //  let menuBackTitle = NSAttributedString(string: "General", attributes: textFontAttributes)
-        // btnMenu.setAttributedTitle(menuBackTitle, for: .normal)
-        //  btnMenu.attributedTitle(for: .normal)
 
         btnMenu.removeTarget(self, action:#selector(noAccount), for: .touchUpInside)
         btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
         //if  ViewController.professionControl! == "Tutor" { homeTitle.title = "Students"} else {homeTitle.title = "Accounts"}
-        ///homeTitle.title = "Home"
         let imageView = UIImageView(image: self.home)
         imageView.contentMode = .scaleAspectFit // set imageview's content mode
         self.navigationItem.titleView = imageView
         toolBar.isHidden = true
         addAccount.isEnabled = true
-
         thinking2.startAnimating()
         employerIDToS = ""
         employerToS = ""
@@ -483,8 +456,6 @@
         postTimerView()
         self.animationImage.alpha = 1
         }
-
-
 
         func preStartView() {
         self.addAmanualRecord.isHidden = false
@@ -494,11 +465,7 @@
         self.importBackground.isHidden = true//false
         self.special.isHidden = false
         self.star.isHidden = false
-
-        //self.account.isEnabled = true;
         self.chooseEmployer.isUserInteractionEnabled = true
-        //startBarButtonFadeOut()
-        //startBarButtonFadeIn()
         }//end of func
 
         func postTimerView() {
@@ -511,24 +478,17 @@
         startBackground.isHidden = true
         self.special.isHidden = true
         self.star.isHidden = true
-
         self.importBackground.isHidden = true
-
         addAmanualRecord.isHidden = true
         animationImage.isHidden = true
         }//end of func
 
-        func postRound(){
-        }
-
         func postRoundView() {
-        //self.account.isEnabled = true
         self.animationImage.isHidden = false
         self.startBackground.isHidden = true
         self.special.isHidden = true
         self.star.isHidden = true
         self.importBackground.isHidden = true
-
         self.DateIn.isHidden = false;
         self.workedFor.isHidden = true
         self.addAmanualRecord.isHidden = true
@@ -537,7 +497,6 @@
         self.animationImage.center.x -= self.view.bounds.width
         self.animationImage.isHidden = false
         self.animationImage.alpha = 1
-
         UIView.animate(withDuration: 2.0, animations:{
         self.animationImage.center.x += self.view.bounds.width
         })
