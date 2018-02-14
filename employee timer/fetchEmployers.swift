@@ -48,7 +48,6 @@
         self.profileImageUrl = snapshot.childSnapshot(forPath: "fImageRef").value as! String!
 
         var employerToAdd:employerStruct = employerStruct( accountName:"\(self.dogItem) \(self.employerItem)" , employerRef: self.employerIdArray2[iIndex] as! String, activeAccount: (snapshot.childSnapshot(forPath: "fActive").value as? Bool)!, lastDocAccount: self.lastDocumentItem, accountImageUrl:self.profileImageUrl )
-       /// self.employerForList.append(employerToAdd)
             self.employerForList.append(employerToAdd)
 
 
@@ -59,7 +58,6 @@
 
             if self.employerForList.count > 8 {
 
-      //  if self.filteredEmployerForList.count > 8 {
         if #available(iOS 11.0, *) {
         self.navigationItem.searchController = self.searchController
         } else {

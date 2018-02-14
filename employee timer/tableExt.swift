@@ -10,74 +10,45 @@ extension(ViewController){
     
         func tableView(_ employerList: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-            
-
         if #available(iOS 11.0, *) { //handle when ios 11 is out
-            
-            self.dismiss(animated: false, completion: nil)
-            searchController.searchBar.text = ""
-            self.navigationItem.searchController = nil
-
+        self.dismiss(animated: false, completion: nil)
+        searchController.searchBar.text = ""
+        self.navigationItem.searchController = nil
         } else {
         self.searchController.isActive = false
         }
 
-        
-            
         employerList.isHidden = true
         self.thinking2.startAnimating()
-
         employerList.isUserInteractionEnabled = false
         chooseEmployer.isUserInteractionEnabled = false
-        print ("selected!!!!!!")
-        
+
         records.isEnabled = true
         account.isEnabled = true
         bills.isEnabled = true
         importSpesific.isEnabled = true
 
-        //chooseEmployer.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-        //chooseEmployer.titleLabel?.textAlignment = NSTextAlignment.center
-
-       ///self.navigationItem.titleView = nil
-         self.homeTitle.titleView = nil
-        print  (filteredEmployerForList[indexPath.row].accountName)
-            
-       // homeTitle.title = (filteredEmployerForList[indexPath.row].accountName)
-        ///self.navigationItem.title = (filteredEmployerForList[indexPath.row].accountName)
-            self.homeTitle.title = (filteredEmployerForList[indexPath.row].accountName)
-           
-            
+        self.homeTitle.titleView = nil
+        self.homeTitle.title = (filteredEmployerForList[indexPath.row].accountName)
         btnMenu.setImage (home, for: .normal)
-       
-            
         btnMenu.removeTarget(self, action:#selector(sideMenuMovement), for: .touchUpInside)
         btnMenu.addTarget(self, action: #selector(noAccount), for: .touchUpInside)
-
         toolBar.isHidden = false
         addAccount.isEnabled = false
 
         employerToS = filteredEmployerForList[indexPath.row].accountName
-
-        // employerIDToS = employerIdArray2[indexPath.row] as! String
         employerIDToS = filteredEmployerForList[indexPath.row].employerRef
-            
-            
 
         bringEmployerData()
-            
-        print (filteredEmployerForList)
-            
+
+
         if filteredEmployerForList[indexPath.row].activeAccount != false {self.thinking2.stopAnimating(); preStartView();records.isEnabled = true}
         else { chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating();alert670();records.isEnabled = false}
 
-        //set variable for Segue
-        employerToS = filteredEmployerForList[indexPath.row].accountName
         chooseEmployer.isHidden = false
-
         }//end of did select
 
-    
+
         func tableView(_ employerList: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredEmployerForList.count
         }
@@ -89,24 +60,15 @@ extension(ViewController){
 
         func tableView(_ employerList: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell2 = employerList.dequeueReusableCell(withIdentifier: "employerList", for: indexPath) as! employerCellTableViewCell
+
+        if filteredEmployerForList[indexPath.row].accountName != "Add new dog" {
+        cell2.backgroundColor = UIColor.clear; cell2.employerFirst.isHidden = false;
         
-
-        if filteredEmployerForList[indexPath.row].accountName != "Add new dog" {            cell2.backgroundColor = UIColor.clear
-        ;cell2.employerFirst.isHidden = false; cell2.employerFirst?.text = filteredEmployerForList[indexPath.row].accountName
-
-
+        cell2.employerFirst?.text = filteredEmployerForList[indexPath.row].accountName
         if filteredEmployerForList[indexPath.row].activeAccount == false {
-        print ("alpha")
-        cell2.employerFirst.alpha = 0.5;cell2.lastDocument.alpha = 0.5}
-
-        else{ cell2.employerFirst.alpha = 1;cell2.lastDocument.alpha = 1 }
-
+        cell2.employerFirst.alpha = 0.5;cell2.lastDocument.alpha = 0.5;cell2.lastDocument?.text = "Not Active!"; cell2.employerFirst?.text =  "\(filteredEmployerForList[indexPath.row].accountName)"}
+        else{ cell2.employerFirst.alpha = 1;cell2.lastDocument.alpha = 1;cell2.employerFirst?.text =  "\(filteredEmployerForList[indexPath.row].accountName)";cell2.lastDocument?.text = "\(filteredEmployerForList [indexPath.row].lastDocAccount)" }
         }//end of if
-
-
-
-        if filteredEmployerForList[indexPath.row].activeAccount == false {cell2.lastDocument?.text = "Not Active!"; cell2.employerFirst?.text =  "\(filteredEmployerForList[indexPath.row].accountName)"} else{cell2.employerFirst?.text =  "\(filteredEmployerForList[indexPath.row].accountName)";cell2.lastDocument?.text = "\(filteredEmployerForList [indexPath.row].lastDocAccount)"}
-
 
         cell2.dogImage.clipsToBounds = true
         cell2.dogImage.layer.cornerRadius = CGFloat(25)
@@ -138,25 +100,19 @@ extension(ViewController){
         }//end of cell for row
 
         func bringEmployerData() {
-        print ("employerfrom main:\(employerToS)")
-        print (employerIDToS)
-print (employerToS)
-            
         if self.employerToS != "Add new dog" {
-          homeTitle.title = employerToS//(filteredEmployerForList[indexPath.row].accountName)
-            
+        homeTitle.title = employerToS
+
         dbRefEmployer.child(self.employerIDToS).child("myEmployees").queryOrderedByKey().queryEqual(toValue: employeeIDToS).observeSingleEvent(of:.childAdded, with: { (snapshot) in
-        self.startButton.setTitle("+Session Now", for: .normal);self.startImage.image = self.roundImageBig
+        self.startButton.setTitle("+Session Now", for: .normal);
+        self.startImage.image = self.roundImageBig
         self.RateUpdate = Double(snapshot.childSnapshot(forPath: "fEmployerRate").value! as! Double)
-        if self.RateUpdate != 0.0 { } else {}
         }
         , withCancel: { (Error) in
         self.alert30()
         print("error from FB")}
         )
         }
-        
-            
-    }//end of dbrefemployers
+        }//end of dbrefemployers
 
         }//end of ext!!!!!!!!!!//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
