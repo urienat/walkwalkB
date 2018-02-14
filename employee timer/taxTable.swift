@@ -273,11 +273,11 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
             func inFilterBilldate() {
             if self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] == nil {
             self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTax!)!; self.taxCounter += Double(billItem.fBillTax!)!
-            self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTotalTotal!)!;
+            self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = Double(billItem.fBillTotalTotal!)!;self.AmountCounter = Double(billItem.fBillTotalTotal!)!
             self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = 1
             }else{
             self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTax!)!; self.taxCounter += Double(billItem.fBillTax!)!
-            self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTotalTotal!)!;
+            self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + Double(billItem.fBillTotalTotal!)!;self.AmountCounter += Double(billItem.fBillTotalTotal!)!
             self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)] = self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillDate!)!)]! + 1
             }
             }//end of infiltermain
@@ -286,11 +286,11 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
             if billItem.fBillStatus == "Cancelled"{
             if self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] == nil {
             self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = -Double(billItem.fBillTax!)!; self.taxCounter -= Double(billItem.fBillTax!)!
-            self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = -Double(billItem.fBillTotalTotal!)!;
+                self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = -Double(billItem.fBillTotalTotal!)!;self.AmountCounter -= Double(billItem.fBillTotalTotal!)!
             self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = 1
             }else{
             self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = self.byMonthTax[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)]! - Double(billItem.fBillTax!)!; self.taxCounter -= Double(billItem.fBillTax!)!
-            self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)]! - Double(billItem.fBillTotalTotal!)!;
+            self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = self.byMonthTotal[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)]! - Double(billItem.fBillTotalTotal!)!;self.AmountCounter -= Double(billItem.fBillTotalTotal!)!
             self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)] = self.byMonthBills[self .mydateFormat20.string(from: self.mydateFormat5.date(from:billItem.fBillStatusDate!)!)]! - 1
             }
             }
@@ -329,10 +329,9 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
             } //end of switch
 
 
-            self.totalAmount.text = "1234455"
+            self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
             self.totalTax.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter.roundTo(places: 2)))"
-            let grandWO = "1233"
-            self.totalBills.text = "w/o Tax: \(ViewController.fixedCurrency!)\(grandWO)"//String (describing: s.roundTo(places: 2)))"
+            self.totalBills.text = "w/o Tax: \(String(self.AmountCounter - self.taxCounter.roundTo(places: 2)))"
 
             self.billerConnect.reloadData()
             }//end of if let dic

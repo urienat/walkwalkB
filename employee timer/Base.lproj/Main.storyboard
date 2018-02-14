@@ -3472,7 +3472,7 @@
                                             <action selector="taxInfo:" destination="Qsr-md-mj8" eventType="touchUpInside" id="H0S-Zs-EXO"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="0Mo-TX-GXF" userLabel="totalTax">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="0Mo-TX-GXF" userLabel="totalTax">
                                         <rect key="frame" x="112" y="41" width="10" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="UDK-23-v75"/>
@@ -3481,7 +3481,7 @@
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="11P-Mq-cL7" userLabel="totalw/o">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="11P-Mq-cL7" userLabel="totalw/o">
                                         <rect key="frame" x="112" y="65" width="10" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="eLM-Qc-buI"/>
