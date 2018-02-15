@@ -3468,7 +3468,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6P-xy-qFY" userLabel="taxInfo">
-                                        <rect key="frame" x="75" y="23" width="40" height="40"/>
+                                        <rect key="frame" x="122" y="23" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="bE9-ol-IS8"/>
                                             <constraint firstAttribute="width" constant="40" id="bpV-qf-QKA"/>
@@ -3505,7 +3505,7 @@
                                     <constraint firstAttribute="trailing" secondItem="6kr-dn-xOY" secondAttribute="trailing" constant="8" id="0Ux-hj-nhe"/>
                                     <constraint firstItem="6kr-dn-xOY" firstAttribute="top" secondItem="Mxy-Rp-79V" secondAttribute="top" constant="8" id="5lA-se-dvc"/>
                                     <constraint firstItem="1jz-Go-U1h" firstAttribute="leading" secondItem="Mxy-Rp-79V" secondAttribute="leading" constant="8" id="Cts-aL-RsG"/>
-                                    <constraint firstItem="i6P-xy-qFY" firstAttribute="leading" secondItem="6kr-dn-xOY" secondAttribute="leading" constant="-37" id="GrL-cB-Hdf"/>
+                                    <constraint firstItem="i6P-xy-qFY" firstAttribute="leading" secondItem="0Mo-TX-GXF" secondAttribute="trailing" id="Grn-5b-jTF"/>
                                     <constraint firstAttribute="height" constant="89" id="Ijq-Jc-qRK"/>
                                     <constraint firstItem="0Mo-TX-GXF" firstAttribute="leading" secondItem="6kr-dn-xOY" secondAttribute="leading" id="JFB-ZH-D1I"/>
                                     <constraint firstItem="11P-Mq-cL7" firstAttribute="top" secondItem="0Mo-TX-GXF" secondAttribute="bottom" constant="4" id="M9P-Dy-wez"/>
