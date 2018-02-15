@@ -466,7 +466,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
         self.midCalc =  "0"
         self.midCalc2 =  String (describing:self.calc.roundTo(places: 2))
-        self.midCalc3 = String (describing:self.calc.roundTo(places: 2))
+        self.midCalc3 = String (describing:self.calc.roundTo(places: 2))//check it!!!!!!
+            
+            if self.paymentDate! == "" {self.paymentDate = self.mydateFormat5.string(from: Date());self.PaymentBlalnce = self.midCalc2} else { self.PaymentBlalnce = "0"}
 
         self.taxationBlock = "\(self.seprator)\r\n\(self.seprator)\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc3)"}
 
@@ -476,7 +478,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         else{self.paymentBlock = "\(self.seprator2)\(self.seprator2)\r\nPayment of \(ViewController.fixedCurrency!)\(self.midCalc2) made by \(self.paymentSys!) \(self.refernceBlock) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))\r\nBalance due: \(ViewController.fixedCurrency!)\(self.PaymentBlalnce!)"
         }
 
-        }else{if self.taxSwitch == "Yes"{self.documentName = "VAT Invoice \(self.counterForMail2!)"} else {self.documentName = "Invoice \(self.counterForMail2)"}; // no payment only bill
+        }else{if self.taxSwitch == "Yes"{self.documentName = "VAT Invoice \(self.counterForMail2!)"} else {self.documentName = "Invoice \(self.counterForMail2!)"}; // no payment only bill
 
         self.paymentBlock = "\r\n\(self.seprator2)\(self.seprator2)\r\nBalance due: \(ViewController.fixedCurrency!)\(self.PaymentBlalnce!)"
         if self.paypal != "" {self.payPalBlock = "\r\n\r\nPayment can be made through Paypal: \(self.paypal!)/\(self.midCalc2)"}else {self.payPalBlock = ""}

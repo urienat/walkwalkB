@@ -46,9 +46,11 @@ extension(biller){
             print (self.recordMonth-1,self.recordYear-1)
 
             func inFilter() {
-            if  billItem.fBalance == nil{self.remainingBalance = (billItem.fBillTotalTotal!)} else {self.remainingBalance = billItem.fBalance!}
+            if  billItem.fBalance == nil || billItem.fBalance == "" {self.remainingBalance = (billItem.fBillTotalTotal!)} else {self.remainingBalance = billItem.fBalance!}
             if self .employerID != ""{
             if self.StatusChoice == "Not Paid" && (billItem.fBillStatus == "Billed" || billItem.fBillStatus == "Partially") && billItem.fBillEmployer == self.employerID {
+                print (self.remainingBalance)
+                
             self.billItems.append(billItem); self.billCounter+=1 ;self.AmountCounter += Double(self.remainingBalance!)!;self.taxCounter += Double(billItem.fBillTax!)!
             ; self.BillArray.append(billItem.fBill!); self.BillArrayStatus.append(billItem.fBillStatus!)
             }

@@ -424,7 +424,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         if taxBillsToHandle == false || reportMode  == true {
         if billItem.fBillTotalTotal != "" {cell.l3.text = billItem.fBillTotalTotal} else {cell.l3.text = billItem.fBillSum}
         if StatusChoice == "Not Paid" {
-        if  billItem.fBalance == nil{self.remainingBalance = (billItem.fBillTotalTotal!)} else {self.remainingBalance = billItem.fBalance!}
+        if  billItem.fBalance == nil || billItem.fBalance == "" {self.remainingBalance = (billItem.fBillTotalTotal!)} else {self.remainingBalance = billItem.fBalance!}
         cell.l3.text = self.remainingBalance}
             if StatusChoice == "Not Paid" { cell.l3.textColor = redColor;cell.l4.textColor = redColor} else {cell.l3.textColor = blueColor;cell.l4.textColor = blueColor}
             
