@@ -26,7 +26,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     let dbRefEmployers = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
 
-
+    var aaa = 0
     var billItems = [billStruct]()
     static var checkBoxBiller:Int = 0
     var BillArrayStatus = [String]()
@@ -333,9 +333,15 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
             } //end of switch
 
 
+                
             self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter.roundTo(places: 2)))"
             self.totalTax.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter.roundTo(places: 2)))"
             self.totalBills.text = "w/o Tax: \(String(self.AmountCounter.roundTo(places: 2) - self.taxCounter.roundTo(places: 2)))"
+                
+                if self.AmountCounter == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
+                self.thinking.isHidden = true
+                self.thinking.stopAnimating()
+
 
             self.billerConnect.reloadData()
             }//end of if let dic
@@ -344,15 +350,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
             print("error from FB")})//end of dbref
 
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            if self.billItems.count != self.BillArray.count {
-            print ("Stop")
-            }
-
-            if self.taxCounter == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
-            self.thinking.isHidden = true
-            self.thinking.stopAnimating()
-            }
+            
 
             }//end of fetch
     

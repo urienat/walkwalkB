@@ -69,6 +69,7 @@
         }
         }//end of struct
             
+        let keeper = UserDefaults.standard
         var employerForList : [employerStruct] = []
         var filteredEmployerForList : [employerStruct] = []
         var profileImageUrl = ""
@@ -153,7 +154,9 @@
         }
         @IBAction func taxationBtn(_ sender: Any) {
         sideMenuMovement()
-        if ViewController.taxOption == "No" {self.alert47()} else {
+            print (ViewController.taxOption,keeper.string(forKey: "taxAlert"))
+            
+            if ViewController.taxOption! == "No"{if keeper.string(forKey: "taxAlert") == "not paying" {performSegue(withIdentifier: "employerForTax", sender: employerToS)} else {self.alert47()}} else {
         performSegue(withIdentifier: "employerForTax", sender: employerToS)}
         }
         @IBAction func reports(_ sender: Any) {
@@ -580,14 +583,20 @@
         }
 
         func alert47(){
-        let alertController47 = UIAlertController(title: ("Tax") , message: "There are no tax defintions  in your 'Setting'. Define it? ", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            print ("47")
+            
+        let alertController47 = UIAlertController(title: ("Tax") , message: "There are no tax defintions in your 'Setting'. If you pay VAT/Sales-Tax/GST please Define it? ", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "Ok - I would defint it now", style: .default) { (UIAlertAction) in
         self.profileClicked()
         }
-
-        let cancelAction = UIAlertAction(title: "Not now", style: .cancel) { (UIAlertAction) in
-        }
+        let notPayAction = UIAlertAction(title: "I don't pay any of these taxes", style: .default) { (UIAlertAction) in
+            self.keeper.set("not paying", forKey: "taxAlert")
+           self.performSegue(withIdentifier: "employerForTax", sender: self.employerToS)
+            }
+        let cancelAction = UIAlertAction(title: "I would do it later", style: .cancel) { (UIAlertAction) in
+            }
         alertController47.addAction(OKAction)
+        alertController47.addAction(notPayAction)
         alertController47.addAction(cancelAction)
         self.present(alertController47, animated: true, completion: nil)
         }
