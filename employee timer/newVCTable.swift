@@ -345,7 +345,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         if record.fIndication3 == "↺" { cell.l8.image = roundImageNormal}
         if record.fIndication3 == "📄" {  cell.l8.image = star}
 
-        if record.fSpecialAmount != nil {cell.l1.text = " \(record.fSpecialItem!)"; cell.l9.text = "\(ViewController.fixedCurrency!)\(record.fSpecialAmount!)"}//; cell.l1.textColor =  UIColor.red }
+            if record.fSpecialAmount != nil {cell.l1.text = " \(record.fSpecialItem!)"; cell.l9.text = "\(ViewController.fixedCurrency!)\(record.fSpecialAmount!)"}else {cell.l9.text = nil}
 
         if record.fStatus == "Approved" { cell.cellBtnExt.setImage(Vimage, for: .normal)}
         if record.fStatus == "Pre" { cell.cellBtnExt.setImage(nonVimage, for: .normal)}

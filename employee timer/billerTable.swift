@@ -442,10 +442,10 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         if self.recordMonthCancelled == self.recordMonth && self.recordYearCancelled == self.recordYear {
         cell.l3.text = "0"
         } else  if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle {
-        cell.l3.text = (billItem.fBillTax!)
-        } else {cell.l3.text = "-\(billItem.fBillTax!)"}
+        cell.l3.text = (billItem.fBillTotalTotal!)
+        } else {cell.l3.text = "-\(billItem.fBillTotalTotal!)"}
         }//end of cancelled
-        else { cell.l3.text = billItem.fBillTax}
+        else { cell.l3.text = billItem.fBillTotalTotal}
         }// end of else tax bil to handle
             
                 cell.l4.text  = billItem.fBillCurrency!
@@ -561,11 +561,11 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                         if self.recordMonthCancelled == self.recordMonth && self.recordYearCancelled == self.recordYear {
                          //do nothing
                         } else {//
-                        //self.AmountCounter -= (Double(billItem.fBillTotalTotal!)!);
+                        self.AmountCounter -= (Double(billItem.fBillTotalTotal!)!);
                             self.taxCounter -= Double(billItem.fBillTax!)!//self.billCounter+=1;
                         }} else if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle { if  self.recordMonth != self.recordMonthCancelled  || self.recordYear != self.recordYearCancelled{
                         self.billItems.append(billItem); self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
-                       // self.AmountCounter += (Double(billItem.fBillTotalTotal!)!);
+                        self.AmountCounter += (Double(billItem.fBillTotalTotal!)!);
                         self.taxCounter += Double(billItem.fBillTax!)!}//self.billCounter+=1;
                         }
                 
@@ -581,11 +581,12 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 
             if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
                 if self.reportMode != true {
-                    self.totalAmount.text = "Total Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"}
+                    self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String (describing: self.AmountCounter))"}
                 else {
-                    self.totalAmount.text = "Total: \(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
+                    self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
                     self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
-                    if ViewController.taxOption == "Yes"{ self.totalTax.text = "* Total included tax"} else { self.totalTax.text = "* Cancelled bills excluded"}
+                    
+                    
                 }
             //self.totalTax.text = "Tax \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
             self.billerConnect.reloadData()
