@@ -301,12 +301,15 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
 
             self.taxCalacUpdate = (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String)
             self.taxNameUpdate  = snapshot.childSnapshot(forPath: "fTaxName").value as! String
-
+            if self.taxNameUpdate! == "VAT"{self.taxNames.selectedSegmentIndex = 0} else if self.taxNameUpdate! == "GST" {self.taxNames.selectedSegmentIndex = 1} else if self.taxNameUpdate! == "Sales tax" {self.taxNames.selectedSegmentIndex = 2}
+                
+                print (self.taxNameUpdate)
+                
             self.taxSwitchTemp = snapshot.childSnapshot(forPath: "fSwitcher").value as! String
                 if self.taxSwitchTemp == "No" {self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true;self.taxNames.isHidden = true; self.taxCalac.isHidden = true; self.signer.isHidden = true;self.taxSwitchTemp = "Yes";
 
             } else {
-                    self.taxSwitch.setOn(true, animated: true);self.taxCalac.isHidden = false; self.precentage.isHidden = false; self.taxNames.isHidden = false; self.signer.isHidden = false;self.taxSwitchTemp = "No";self.taxSwitcherUpdate = "Yes"; if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0} ;if self.taxNameUpdate == "VAT"{self.taxNames.selectedSegmentIndex = 0} else if self.taxNameUpdate == "GST" {self.taxNames.selectedSegmentIndex = 1} else if self.taxNameUpdate == "Sales tax" {self.taxNames.selectedSegmentIndex = 2} }
+                    self.taxSwitch.setOn(true, animated: true);self.taxCalac.isHidden = false; self.precentage.isHidden = false; self.taxNames.isHidden = false; self.signer.isHidden = false;self.taxSwitchTemp = "No";self.taxSwitcherUpdate = "Yes"; if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0} }
 
             self.taxPrecentageUpdate  = snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String
             self.precentage.text = self.taxPrecentageUpdate
