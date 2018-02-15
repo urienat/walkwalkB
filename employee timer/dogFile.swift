@@ -527,7 +527,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
 
     func alert79(){
-        let alertController79 = UIAlertController(title: ("Camera denial") , message: "Please enable camera in your setting so you cann add photos to profiles.", preferredStyle: .alert)
+        let alertController79 = UIAlertController(title: ("Camera denial") , message: "Please enable camera in your setting so you can add photos to profiles.", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
         }
         alertController79.addAction(OKAction)
