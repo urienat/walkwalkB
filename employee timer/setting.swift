@@ -47,6 +47,8 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             taxNameUpdate = "VAT"
         case 1:
             taxNameUpdate = "GST"
+            print (taxNameUpdate)
+            
         case 2:
             taxNameUpdate = "Sales tax"
         default:

@@ -1748,7 +1748,7 @@
                                                     <action selector="taxCalc:" destination="bu7-cQ-GBV" eventType="valueChanged" id="pwW-Uo-RcF"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nF0-t5-DV7" userLabel="taxNames">
+                                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="nF0-t5-DV7" userLabel="taxNames">
                                                 <rect key="frame" x="112" y="401" width="149" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="f88-Oe-Ci8"/>
