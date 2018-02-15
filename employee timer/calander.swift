@@ -265,8 +265,16 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
           
             
             
-            if eventCounter == 0 {alert17() }//animationImage.isHidden = true; self.eventCounterBlock = "No sessions" ;ViewController.sessionPusher = false}
-            else if eventCounter == 1 {animationImage.isHidden = false; self.eventCounterBlock = "One session";ViewController.sessionPusher = true} else {self.eventCounterBlock = "\(String(self.eventCounter)) sessions";ViewController.sessionPusher = true }
+            if eventCounter == 0 {textAdd.isHidden = true;alert17() }//animationImage.isHidden = true; self.eventCounterBlock = "No sessions" ;ViewController.sessionPusher = false}
+            else if eventCounter == 1 {textAdd.isHidden = false;animationImage.isHidden = false; self.eventCounterBlock = "One session";ViewController.sessionPusher = true;
+                DispatchQueue.main.asyncAfter(deadline: .now()+3){
+                self.navigationController!.popViewController(animated: false)
+                
+                }} else {textAdd.isHidden = false;self.eventCounterBlock = "\(String(self.eventCounter)) sessions";ViewController.sessionPusher = true;
+                DispatchQueue.main.asyncAfter(deadline: .now()+3){
+                self.navigationController!.popViewController(animated: false)
+                
+                } }
             // save last date
             if spesific == false {textAdd.text = "\(self.eventCounterBlock) imported from calander";ViewController.sessionPusher = false
                 
@@ -449,8 +457,17 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                     }//end of if let event
 
                     }// end of calanders loop
-                        if eventCounter == 0 {alert17()}//animationImage.isHidden = true; self.eventCounterBlock = "No sessions" ;ViewController.sessionPusher = false}
-                    else if eventCounter == 1 {animationImage.isHidden = false; self.eventCounterBlock = "One session";ViewController.sessionPusher = true} else {self.eventCounterBlock = "\(String(self.eventCounter)) sessions";ViewController.sessionPusher = true }
+                        if eventCounter == 0 {textAdd.isHidden = true
+                            alert17()}
+                        else if eventCounter == 1 {textAdd.isHidden = false;animationImage.isHidden = false; self.eventCounterBlock = "One session";ViewController.sessionPusher = true;DispatchQueue.main.asyncAfter(deadline: .now()+2.6){
+                            self.navigationController!.popViewController(animated: false)
+                            }//end of dispatch
+                            
+                        } else {textAdd.isHidden = false;self.eventCounterBlock = "\(String(self.eventCounter)) sessions";ViewController.sessionPusher = true ;DispatchQueue.main.asyncAfter(deadline: .now()+2.6){
+                            self.navigationController!.popViewController(animated: false)
+                            }//end of dispatch
+                            
+                        }
                     // save last date
                     if spesific == false {textAdd.text = "\(self.eventCounterBlock) imported from calendar";ViewController.sessionPusher = false
                     }
@@ -459,9 +476,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                     calanderImage.layer.removeAllAnimations()
 
                     self.animation()
-                    DispatchQueue.main.asyncAfter(deadline: .now()+2.6){
-                    self.navigationController!.popViewController(animated: false)
-                    }//end of dispatch
                     }//end of fetchevents
     
     func appleCalanderConnected(){
@@ -505,6 +519,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
            /// refreshTableView()
         case EKAuthorizationStatus.restricted, EKAuthorizationStatus.denied:
             print ("denied")
+            alert79()
             // We need to help them give us permission
           ////  needPermissionView.fadeIn()
         }
@@ -677,11 +692,20 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     func alert17(){
         let alertController17 = UIAlertController(title: ("No Session") , message: "No Session Imported because one of the following:\n\n There are no PAST sessions\n\n Sessions already imported once( see +sign in calendar)\n\n NO exact match of name+space+last combination between calendar event and PerSession", preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-    self.alert123()
+        self.navigationController!.popViewController(animated: false)
     }
     alertController17.addAction(OKAction)
     self.present(alertController17, animated: true, completion: nil)
     }
     
-    
+    func alert79(){
+        let alertController79 = UIAlertController(title: ("Calendar denial") , message: "Please enable calendar in your setting so you can import sessions to the app.", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            
+            self.navigationController!.popViewController(animated: false)
+        }
+        alertController79.addAction(OKAction)
+        self.present(alertController79, animated: true, completion: nil)
+    }
+
             }
