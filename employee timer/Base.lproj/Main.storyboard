@@ -1760,6 +1760,7 @@
                                                 </segments>
                                                 <connections>
                                                     <action selector="taxCalc:" destination="bu7-cQ-GBV" eventType="valueChanged" id="qUI-p5-FYL"/>
+                                                    <action selector="taxNames:" destination="bu7-cQ-GBV" eventType="valueChanged" id="BAJ-Oz-pot"/>
                                                 </connections>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tax" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3p-Mh-USA">
@@ -2002,6 +2003,7 @@
                                             <constraint firstItem="eRi-ta-mdX" firstAttribute="leading" secondItem="dce-An-tH6" secondAttribute="leading" id="nOH-zy-tym"/>
                                             <constraint firstItem="03V-OC-j7W" firstAttribute="leading" secondItem="voQ-tU-PFp" secondAttribute="leading" id="nhZ-pT-KbQ"/>
                                             <constraint firstItem="Gfv-7f-bWL" firstAttribute="centerY" secondItem="k7K-bJ-hKl" secondAttribute="centerY" id="nkp-gS-xvJ"/>
+                                            <constraint firstItem="rrM-Wg-SYV" firstAttribute="trailing" secondItem="25j-eK-VXl" secondAttribute="trailing" id="o39-jh-2Mj"/>
                                             <constraint firstAttribute="trailing" secondItem="Gfv-7f-bWL" secondAttribute="trailing" constant="14" id="oog-ni-0Zc"/>
                                             <constraint firstItem="KWf-qy-tLB" firstAttribute="height" secondItem="CL9-rp-678" secondAttribute="height" id="pXr-kt-91v"/>
                                             <constraint firstItem="Ft4-Fz-x53" firstAttribute="top" secondItem="Zoe-u1-fd0" secondAttribute="bottom" constant="8" id="paA-Pa-nLT"/>
@@ -2079,6 +2081,7 @@
                         <outlet property="subscriptionLbl" destination="zSX-a2-krK" id="HAe-6t-fl3"/>
                         <outlet property="taxCalac" destination="iq6-6K-0xo" id="qB6-Co-P7r"/>
                         <outlet property="taxId" destination="no1-5P-gIF" id="cpG-we-H3U"/>
+                        <outlet property="taxNames" destination="nF0-t5-DV7" id="gSx-xk-9w9"/>
                         <outlet property="taxSwitch" destination="eRi-ta-mdX" id="pL3-Pf-y7B"/>
                         <outlet property="taxerTitle" destination="d3p-Mh-USA" id="Ohv-yR-tgU"/>
                         <outlet property="taxinfoSign" destination="XCs-4G-KHr" id="O66-xO-kHw"/>

@@ -39,6 +39,22 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
 
     let professions = ["Tutor","Psychologist","Therapist","Other"]
     
+     var taxNameUpdate:String?
+    @IBOutlet weak var taxNames: UISegmentedControl!
+    @IBAction func taxNames(_ sender: Any) {
+        switch taxNames.selectedSegmentIndex {
+        case 0:
+            taxNameUpdate = "VAT"
+        case 1:
+            taxNameUpdate = "GST"
+        case 2:
+            taxNameUpdate = "Sales tax"
+        default:
+            taxNameUpdate = "Tax"
+        }//end of switch
+    }
+    
+    
     @IBOutlet weak var obligatory: UILabel!
     @IBOutlet weak var passwordTitle: UILabel!
     @IBOutlet weak var thinking: UIActivityIndicatorView!
@@ -113,7 +129,6 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     }
     
     var taxCalacUpdate:String?
-    
     @IBOutlet weak var taxCalac: UISegmentedControl!
     @IBAction func taxCalc(_ sender: Any) {
         switch taxCalac.selectedSegmentIndex {
@@ -158,10 +173,10 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     @IBOutlet weak var taxSwitch: UISwitch!
     @IBAction func taxSwitch(_ sender: Any) {
-        if self.taxSwitchTemp == "No" {taxCalac.isHidden = true; self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true; signer.isHidden = true;taxSwitchTemp = "Yes";taxSwitcherUpdate = "No";taxPrecentageUpdate = "0";precentage.text = taxPrecentageUpdate; taxIdUpdate = ""; taxId.text = taxIdUpdate
+        if self.taxSwitchTemp == "No" {taxCalac.isHidden = true; self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true;taxNames.isHidden = true ;signer.isHidden = true;taxSwitchTemp = "Yes";taxSwitcherUpdate = "No";taxPrecentageUpdate = "0";precentage.text = taxPrecentageUpdate; taxIdUpdate = ""; taxId.text = taxIdUpdate
         
     } else {
-            self.taxSwitch.setOn(true, animated: true);taxCalac.isHidden = false;self.precentage.isHidden = false; signer.isHidden = false;taxSwitchTemp = "No";taxSwitcherUpdate = "Yes";alert17();if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0}}   }
+            self.taxSwitch.setOn(true, animated: true);taxCalac.isHidden = false;self.precentage.isHidden = false;taxNames.isHidden = false; signer.isHidden = false;taxSwitchTemp = "No";taxSwitcherUpdate = "Yes";alert17();if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0}}   }
     
     
     @IBAction func taxationInfo(_ sender: Any) {
@@ -283,15 +298,17 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             if self.calanderUpdate == "Google" {self.calander.selectedSegmentIndex = 0} else if self.calanderUpdate == "IOS" {self.calander.selectedSegmentIndex = 1} else {self.calander.selectedSegmentIndex = 2}
 
             self.taxCalacUpdate = (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String)
+            self.taxNameUpdate  = snapshot.childSnapshot(forPath: "fTaxName").value as! String
 
             self.taxSwitchTemp = snapshot.childSnapshot(forPath: "fSwitcher").value as! String
-            if self.taxSwitchTemp == "No" {self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true; self.taxCalac.isHidden = true; self.signer.isHidden = true;self.taxSwitchTemp = "Yes";
+                if self.taxSwitchTemp == "No" {self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true;self.taxNames.isHidden = true; self.taxCalac.isHidden = true; self.signer.isHidden = true;self.taxSwitchTemp = "Yes";
 
             } else {
-            self.taxSwitch.setOn(true, animated: true);self.taxCalac.isHidden = false; self.precentage.isHidden = false;  self.signer.isHidden = false;self.taxSwitchTemp = "No";self.taxSwitcherUpdate = "Yes"; if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0} }
+                    self.taxSwitch.setOn(true, animated: true);self.taxCalac.isHidden = false; self.precentage.isHidden = false; self.taxNames.isHidden = false; self.signer.isHidden = false;self.taxSwitchTemp = "No";self.taxSwitcherUpdate = "Yes"; if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0} ;if self.taxNameUpdate == "VAT"{self.taxNames.selectedSegmentIndex = 0} else if self.taxNameUpdate == "GST" {self.taxNames.selectedSegmentIndex = 1} else if self.taxNameUpdate == "Sales tax" {self.taxNames.selectedSegmentIndex = 2} }
 
             self.taxPrecentageUpdate  = snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String
             self.precentage.text = self.taxPrecentageUpdate
+                
             
             self.taxIdUpdate  =  snapshot.childSnapshot(forPath: "fTaxId").value as! String
             self.taxId.text = self.taxIdUpdate
@@ -457,7 +474,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
                 
                 self.employeeRefUpdate = (user?.uid)!
                 
-            self.dbRefEmployees.child((user?.uid)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage": self.taxPrecentageUpdate,"fTaxId": self.taxIdUpdate,  "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : "Over", "fDateTime": "DateTime","fLogin":"Normal", "fLastCalander":"New","fAddress":self.addressUpdate, "fPaypal" : self.paypalUpdate, "fBillinfo" :self.billInfoUpdate,"fCalander" : "None","fProfessionControl":"Profession"
+            self.dbRefEmployees.child((user?.uid)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage": self.taxPrecentageUpdate,"fTaxId": self.taxIdUpdate,  "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : "Over", "fDateTime": "DateTime","fLogin":"Normal", "fLastCalander":"New","fAddress":self.addressUpdate, "fPaypal" : self.paypalUpdate, "fBillinfo" :self.billInfoUpdate,"fCalander" : "None","fProfessionControl":"Profession","fTaxName":""
                 ])
 
                 ViewController.dateTimeFormat = self.dateTimeUpdate
@@ -529,7 +546,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
        
             print ("jhgdjhg\(String(describing: self.dateTimeUpdate))")
         
-            self.dbRefEmployees.child(self.employeeRefUpdate).updateChildValues(["fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": self.currency.text!, "fProgram": "0","fTaxPrecentage": self.precentage.text!,"fTaxId": self.taxId.text!, "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : self.taxCalacUpdate, "fDateTime": self.dateTimeUpdate, "fCalander" : self.calanderUpdate,"fAddress":self.address.text,"fPaypal" : self.paypal.text, "fBillinfo" :self.billInfo.text, "fProfessionControl":self.professionBtn.titleLabel?.text ]) //check email update with regard to auth
+            self.dbRefEmployees.child(self.employeeRefUpdate).updateChildValues(["fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": self.currency.text!, "fProgram": "0","fTaxPrecentage": self.precentage.text!,"fTaxId": self.taxId.text!, "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : self.taxCalacUpdate, "fDateTime": self.dateTimeUpdate, "fCalander" : self.calanderUpdate,"fAddress":self.address.text,"fPaypal" : self.paypal.text,"ftaxName":self.taxNameUpdate, "fBillinfo" :self.billInfo.text, "fProfessionControl":self.professionBtn.titleLabel?.text ]) //check email update with regard to auth
            
             
           self.updateEmail()

@@ -63,7 +63,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var taxForBlock = ""
     var taxSwitch: String?
     var taxCalc: String?
-    var taxation: String?  
+    var taxName: String?
+    var taxation: String?
     var taxId: String?
     var stam: Double?
     var stam3: Double?
@@ -437,6 +438,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.dbRefEmployees.queryOrderedByKey().queryEqual(toValue: self.employeeID).observeSingleEvent(of: .childAdded, with: { (snapshot) in
         self.counterForMail2 = (snapshot.childSnapshot(forPath: "fCounter").value as! String)
         self.taxation = (snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String)
+        self.taxName = (snapshot.childSnapshot(forPath: "fTaxName").value as! String)
         self.taxCalc = (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String)
         self.taxSwitch = (snapshot.childSnapshot(forPath: "fSwitcher").value as! String)
         self.paypal = (snapshot.childSnapshot(forPath: "fPaypal").value as! String)
@@ -455,7 +457,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.midCalc =  String (describing: self.stam!)
         self.midCalc3 =  String(describing: self.stam3!)
         print (self.midCalc)
-        self.taxForBlock = "VAT"
+        self.taxForBlock = self.taxName!
         print (self.midCalc3)
         self.midCalc2 =  String(self.stam3! + self.stam!)
 
