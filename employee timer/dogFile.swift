@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import MessageUI
 import FirebaseAuth
+import AVFoundation
 
 
 class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate, MFMailComposeViewControllerDelegate ,MFMessageComposeViewControllerDelegate {
@@ -90,8 +91,20 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBAction func takePhoto(_ sender: Any) {
     imagePicker = UIImagePickerController()
     imagePicker.delegate = self
-    sourcePicPicker()
-    present(imagePicker, animated:  true, completion: nil)
+        
+    
+    AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (granted: Bool) in
+        if granted {
+            print("granted")
+            self.sourcePicPicker()
+        }
+        else {
+            print("not granted")
+            self.alert79()
+        }
+
+        })
+
     }
     
     @IBAction func sendMail(_ sender: Any) {alert()}
@@ -291,10 +304,12 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         let picSource = UIAlertController(title: ("Add Picture") , message: (""), preferredStyle: .alert)
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { (UIAlertAction) in
         print ("camera")
+            
         if UIImagePickerController.isSourceTypeAvailable(.camera) == true {
                 print ("camera")
+            
             self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-            self.present(self.imagePicker, animated:  true, completion: nil)
+            self.present(self.imagePicker, animated: true, completion: nil)
             } else {print ("no camera")}
             
         
@@ -511,5 +526,13 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         present(alertController, animated: true, completion: nil)
         }
 
+    func alert79(){
+        let alertController79 = UIAlertController(title: ("Camera denial") , message: "Please enable camera in your setting so you cann add photos to profiles.", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+        }
+        alertController79.addAction(OKAction)
+        self.present(alertController79, animated: true, completion: nil)
+    }
+    
         }//end!!!////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
