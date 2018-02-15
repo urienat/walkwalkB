@@ -158,10 +158,10 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     @IBOutlet weak var taxSwitch: UISwitch!
     @IBAction func taxSwitch(_ sender: Any) {
-        if self.taxSwitchTemp == "No" {taxCalac.isHidden = true; self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true; taxId.isHidden = true; signer.isHidden = true;taxSwitchTemp = "Yes";taxSwitcherUpdate = "No";taxPrecentageUpdate = "0";precentage.text = taxPrecentageUpdate; taxIdUpdate = ""; taxId.text = taxIdUpdate
+        if self.taxSwitchTemp == "No" {taxCalac.isHidden = true; self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true; signer.isHidden = true;taxSwitchTemp = "Yes";taxSwitcherUpdate = "No";taxPrecentageUpdate = "0";precentage.text = taxPrecentageUpdate; taxIdUpdate = ""; taxId.text = taxIdUpdate
         
     } else {
-            self.taxSwitch.setOn(true, animated: true);taxCalac.isHidden = false;self.precentage.isHidden = false; taxId.isHidden = false; signer.isHidden = false;taxSwitchTemp = "No";taxSwitcherUpdate = "Yes";alert17();if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0}}   }
+            self.taxSwitch.setOn(true, animated: true);taxCalac.isHidden = false;self.precentage.isHidden = false; signer.isHidden = false;taxSwitchTemp = "No";taxSwitcherUpdate = "Yes";alert17();if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0}}   }
     
     
     @IBAction func taxationInfo(_ sender: Any) {
@@ -285,10 +285,10 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             self.taxCalacUpdate = (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String)
 
             self.taxSwitchTemp = snapshot.childSnapshot(forPath: "fSwitcher").value as! String
-            if self.taxSwitchTemp == "No" {self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true; self.taxCalac.isHidden = true; self.taxId.isHidden = true; self.signer.isHidden = true;self.taxSwitchTemp = "Yes";
+            if self.taxSwitchTemp == "No" {self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true; self.taxCalac.isHidden = true; self.signer.isHidden = true;self.taxSwitchTemp = "Yes";
 
             } else {
-            self.taxSwitch.setOn(true, animated: true);self.taxCalac.isHidden = false; self.precentage.isHidden = false; self.taxId.isHidden = true; self.signer.isHidden = false;self.taxSwitchTemp = "No";self.taxSwitcherUpdate = "Yes"; if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0} }
+            self.taxSwitch.setOn(true, animated: true);self.taxCalac.isHidden = false; self.precentage.isHidden = false;  self.signer.isHidden = false;self.taxSwitchTemp = "No";self.taxSwitcherUpdate = "Yes"; if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0} }
 
             self.taxPrecentageUpdate  = snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String
             self.precentage.text = self.taxPrecentageUpdate
