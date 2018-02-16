@@ -17,7 +17,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let greenFilter = UIImage(named: "filterBlack")
     let redFilter = UIImage(named: "filterRed")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
-    
+    var home = UIImage(named: "home")?.withRenderingMode(.alwaysTemplate)
     
     var billItems = [billStruct]()
     static var checkBoxBiller:Int = 0
@@ -186,6 +186,12 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         self.title2 = "All Periods"
         title = "Report"
         let shareProcess = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(shareProcesses))
+
+        
+        let yourBackImage = UIImage(named: "home")
+        self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        self.navigationController?.navigationBar.topItem?.title = " "
 
         
         //formatting decimal

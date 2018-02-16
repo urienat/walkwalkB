@@ -12,7 +12,7 @@ import Firebase
 import MessageUI
 
 class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMailComposeViewControllerDelegate {
-    
+    var backArrow = UIImage(named: "backArrow")?.withRenderingMode(.alwaysTemplate)
     let billDocument = UIImage(named: "billDocument")
     let Vimage = UIImage(named:"vNaked")
     let nonVimage = UIImage(named: "blank")
@@ -301,12 +301,19 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     override func viewDidLoad() {
         
-       // if employerID == "" {
-         //   let yourBackImage = UIImage(named: "home")
-           // self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
-            //self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-        //}
-       
+        if employerID == "" {
+           let yourBackImage = UIImage(named: "home")
+            self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+            self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+            self.navigationController?.navigationBar.topItem?.title = " "
+        } else {
+        let yourBackImage = UIImage(named: "backArrow")
+        self.navigationController?.navigationBar.topItem?.title = employerFromMain
+        self.navigationController?.navigationBar.backIndicatorImage =  yourBackImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        self.navigationController?.navigationBar.reloadInputViews()
+        }
+        
         super.viewDidLoad()
         noSign.isHidden = true
         filterConstrain.constant = -240
@@ -417,8 +424,9 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         cell.cellBtnExt.layer.borderColor =  redColor.cgColor
         cell.cellBtnExt.layer.cornerRadius =  10
         
-        if taxBillsToHandle == false || reportMode  == true {cell.l1.text = ("\(billItem.fBillEmployerName!) - \(billItem.fBillEvents!) ses. ") } else {
+        if taxBillsToHandle == false || reportMode  == true {cell.l1.text = ("\(billItem.fBillEmployerName!)-\(billItem.fBillEvents!) ses. ") } else {
             cell.l1.text = ("#\(billItem.fBill!) - \(billItem.fBillEmployerName!)")}
+            
         print ("fuf\(billItem.fBillTotalTotal!)" )
         print ("fuf2\(billItem.fBillTotalTotal!)" )
         if taxBillsToHandle == false || reportMode  == true {

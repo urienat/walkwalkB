@@ -45,7 +45,15 @@
 
         if String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String! != "" {self.lastDocumentItem = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!} //else {self.lastDocumentItem = ""}
         self.dogItem = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
-        self.profileImageUrl = snapshot.childSnapshot(forPath: "fImageRef").value as! String!
+           
+            
+            
+            self.profileImageUrl = snapshot.childSnapshot(forPath: "fImageRef").value as! String! 
+          if self.profileImageUrl == "" {
+                print ("empty image")
+            self.profileImageUrl = "https://firebasestorage.googleapis.com/v0/b/persession-45987.appspot.com/o/perSessionImage.jpg?alt=media&token=078c12de-f291-43a6-82d4-f68ac83cd9c9"
+                
+            }
 
         var employerToAdd:employerStruct = employerStruct( accountName:"\(self.dogItem) \(self.employerItem)" , employerRef: self.employerIdArray2[iIndex] as! String, activeAccount: (snapshot.childSnapshot(forPath: "fActive").value as? Bool)!, lastDocAccount: self.lastDocumentItem, accountImageUrl:self.profileImageUrl )
             self.employerForList.append(employerToAdd)

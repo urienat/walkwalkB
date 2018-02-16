@@ -31,6 +31,7 @@
         var ImageFromFirebase : UIImage?
         var menu = UIImage(named: "menu")
         var home = UIImage(named: "home")?.withRenderingMode(.alwaysTemplate)
+
         var backArrow = UIImage(named: "backArrow")
         var file = UIImage(named:"file")?.withRenderingMode(.alwaysTemplate)
         var sessions = UIImage(named:"sessions")?.withRenderingMode(.alwaysTemplate)
@@ -213,7 +214,6 @@
         super.viewDidLoad()
 
         checkUserAgainstDatabase { (alive, error3) in}    //check if user not deleted
-
 
         employerList.dataSource = self
         employerList.delegate = self

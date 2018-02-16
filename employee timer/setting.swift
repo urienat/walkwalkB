@@ -241,11 +241,11 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         picture.layer.cornerRadius = 15
         
         
-         //   let yourBackImage = UIImage(named: "home")
-           // self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
-           // self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-        
-        
+        let yourBackImage = UIImage(named: "home")
+       self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+       self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        self.navigationController?.navigationBar.topItem?.title = " "
+
             let currentUser = FIRAuth.auth()?.currentUser
             if (currentUser != nil) {
                 
@@ -264,6 +264,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             passwordTitle.isHidden = false;  reset.isHidden = false}
             passWord.isHidden = true
 
+            
             navigationItem.hidesBackButton = false // set pet list as enable
 
         
