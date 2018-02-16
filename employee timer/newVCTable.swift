@@ -27,6 +27,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
     var redColor = UIColor(red :170.0/255.0, green: 26.0/255.0, blue: 0/255.0, alpha: 1.0)
     
+    var backArrow = UIImage(named: "backArrow")?.withRenderingMode(.alwaysTemplate)
     let star = UIImage(named: "star")
     let billDocument = UIImage(named: "billDocument")
     let Vimage = UIImage(named:"vNaked")
@@ -237,7 +238,12 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         
         let titleLbl = "Sessions"
         self.title = titleLbl
+         
             
+        let yourBackImage = UIImage(named: "backArrow")
+        self.navigationController?.navigationBar.backIndicatorImage =  yourBackImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+
         //formatting decimal
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 1

@@ -18,6 +18,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     let dbRefEmployers = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
 
+    var backArrow = UIImage(named: "backArrow")?.withRenderingMode(.alwaysTemplate)
     var home = UIImage(named: "home")
     let Vimage = UIImage(named:"vNaked")
     let emptyVimage = UIImage(named: "blank")
@@ -115,6 +116,10 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         
     connectivityCheck()
         
+        let yourBackImage = UIImage(named: "backArrow")
+        self.navigationController?.navigationBar.backIndicatorImage =  yourBackImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+
         //if employerID == "" {
         //let yourBackImage = UIImage(named: "home")
         //self.navigationController?.navigationBar.backIndicatorImage = yourBackImage

@@ -27,6 +27,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     let mydateFormat6 = DateFormatter()
     let mydateFormat9 = DateFormatter()
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
+    var backArrow = UIImage(named: "backArrow")?.withRenderingMode(.alwaysTemplate)
 
     static var calanderLogin:Bool?
     
@@ -117,7 +118,10 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         title = "Import Calendar"
         
         findEmployerId()
+        
+        
 
+        
         
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         mydateFormat6.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd-MMM-yyyy, (HH:mm)", options: 0, locale:Locale.autoupdatingCurrent )!
@@ -159,7 +163,21 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         //helpBackground.layoutIfNeeded()
         thinking.hidesWhenStopped = true
         
-
+print (employerIdFromMain)
+        
+        if employerIdFromMain == "" {
+            let yourBackImage = UIImage(named: "home")
+            self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+            self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+            self.navigationController?.navigationBar.topItem?.title = " "
+        } else {
+            let yourBackImage = UIImage(named: "backArrow")
+            self.navigationController?.navigationBar.backIndicatorImage =  yourBackImage
+            self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+            print (self.employerFromMain)
+            
+            self.navigationController?.navigationBar.topItem?.title = employerFromMain
+        }
         
     }//end of view did load ////////////////////////////////////////////////////////////////////////////////////////
     
