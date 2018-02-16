@@ -426,9 +426,17 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         func amountCalc(){
         print (itemSum)
         print (eventCounter)
-            if taxSwitch == "Yes" && taxCalc == "Over" {self.calc = (1 + (Double(taxation!)!/100.0)) * ((Double(self.eventCounter))*(self.Employerrate) + itemSum)} else {self.calc = (Double(self.eventCounter))*(self.Employerrate) + itemSum}
+        print (taxSwitch,taxCalc)
+            
+            if ViewController.taxOption == "Yes" && ViewController.taxCalc == "Over" {self.calc = (1 + (Double(ViewController.taxation!)!/100.0)) * ((Double(self.eventCounter))*(self.Employerrate) + itemSum)
+                
+            } else {
+        self.calc = (Double(self.eventCounter))*(self.Employerrate) + itemSum}
+       
         self.amount.text =   ("\(ViewController.fixedCurrency!)\(String(Double(self.calc).roundTo(places: 2)))")
-        }
+        
+           
+    }
 
         func billing(){
         taxationBlock = ""
