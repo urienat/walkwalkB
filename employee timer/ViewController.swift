@@ -212,11 +212,16 @@
 
         override func viewDidLoad() {  //view did load/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         super.viewDidLoad()
-
+            
+            let imageView = UIImageView(image: self.home)
+            imageView.contentMode = .scaleAspectFit // set imageview's content mode
+            self.homeTitle.titleView = imageView
+            
         checkUserAgainstDatabase { (alive, error3) in}    //check if user not deleted
 
         employerList.dataSource = self
         employerList.delegate = self
+            
         ViewController.sessionPusher = false
         ViewController.billsPusher = false
         ViewController.profilePusher = false
@@ -245,9 +250,7 @@
         ViewController.taxation = String(describing: snapshot.childSnapshot(forPath: "fTaxPrecentage").value!) as String
         ViewController.professionControl =  String(describing: snapshot.childSnapshot(forPath: "fProfessionControl").value!) as String
 
-        let imageView = UIImageView(image: self.home)
-        imageView.contentMode = .scaleAspectFit // set imageview's content mode
-        self.homeTitle.titleView = imageView
+        
         // if  ViewController.professionControl! == "Tutor" { self.homeTitle.title = "Students"} else {self.homeTitle.title = "Accounts"}
         }
         , withCancel: { (Error) in
@@ -315,19 +318,27 @@
 
         }// end of viewdidload//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+       
         override func viewDidAppear(_ animated: Bool) {
+        
+            
         if ViewController.refresh == true ||  employerToS ==  "Add Account" {
         chooseEmployer.sendActions(for: .touchUpInside)
         ViewController.refresh = false
         }
 
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(0)) {
         if ViewController.sessionPusher == true {ViewController.sessionPusher = false;
         self.recordsClicked()}
         if ViewController.billsPusher == true {ViewController.billsPusher = false;
         biller.rowMemory = 0
         self.billsClicked()}
-        if ViewController.profilePusher == true {ViewController.profilePusher = false;
-        self.accountClicked()}
+        if ViewController.profilePusher == true {
+        ViewController.profilePusher = false;
+        print ("account ")
+        self.accountClicked()
+        }
+        }
         }//end of view did appear
 
         //check subscription
@@ -378,7 +389,10 @@
         func recordsClicked() {performSegue(withIdentifier: "employerforVC", sender: employerToS)}
         func importClicked() {performSegue(withIdentifier: "employerForCalander", sender: employerToS)}
         func importAllClicked() {performSegue(withIdentifier: "employerForAllCalander", sender: employerToS)}
-        func accountClicked() {performSegue(withIdentifier: "employerForDogFile", sender: employerToS)}
+        func accountClicked() {
+           print ( "segue")
+            
+        performSegue(withIdentifier: "employerForDogFile", sender: employerToS)}
         func billsClicked() {performSegue(withIdentifier: "employerForBills", sender: employerToS)}
         func profileClicked() {performSegue(withIdentifier: "setting", sender: employerToS)}
         func reportsClicked(){performSegue(withIdentifier: "reports", sender: employerToS)}

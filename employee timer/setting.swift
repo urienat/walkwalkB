@@ -242,8 +242,8 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         
         
         let yourBackImage = UIImage(named: "home")
-       self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
-       self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
         self.navigationController?.navigationBar.topItem?.title = " "
 
             let currentUser = FIRAuth.auth()?.currentUser
