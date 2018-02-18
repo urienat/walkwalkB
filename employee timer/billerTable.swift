@@ -293,7 +293,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     
     func shareProcesses(){
-        pdfDataTable = pdfDataWithTableView2(tableView: billerConnect)
+        pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 13*50)
         self.alert101(printItem: pdfDataTable)
     }
     

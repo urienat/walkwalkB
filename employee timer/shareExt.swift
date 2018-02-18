@@ -155,11 +155,11 @@ extension(UIViewController){
        return pdfData
     }
  
-    func pdfDataWithTableView2(tableView: UITableView) -> NSMutableData{
+    func pdfDataWithTableView2(tableView: UITableView,pageHeight: Int) -> NSMutableData{
         let priorBounds = tableView.bounds
         let fittedSize = tableView.sizeThatFits(CGSize(width:priorBounds.size.width, height:tableView.contentSize.height))
         tableView.bounds = CGRect(x:0, y:0, width:fittedSize.width, height:fittedSize.height+72)//added 72
-        let pdfPageBounds = CGRect(x:0, y:0, width:tableView.frame.width, height:(13*50))//instead of self.view.frame.height) //to make it fits nicelty in page
+        let pdfPageBounds = CGRect(x:0, y:0, width:Int(tableView.frame.width), height:(pageHeight))//instead of self.view.frame.height) //to make it fits nicelty in page
         let pdfData = NSMutableData()
         UIGraphicsBeginPDFContextToData(pdfData, pdfPageBounds,nil)
         var pageOriginY: CGFloat = 0
