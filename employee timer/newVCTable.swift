@@ -489,12 +489,18 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.taxationBlock = "\(self.seprator)\r\n\(self.seprator)\r\nTotal: \(ViewController.fixedCurrency!)\(self.midCalc3)"}
 
         if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
-        if self.recieptDate != "" {if self.taxSwitch == "Yes" && ViewController.taxOption == "VAT" {self.documentName = "VAT Invoice \(self.counterForMail2!)"} else {self.documentName = "Invoice \(self.counterForMail2!)"}; if self.paymentSys == "other" || self.paymentSys == ""{self.paymentBlock = ("\(self.seprator2)\(self.seprator2)\r\nPayment of \(ViewController.fixedCurrency!)\(self.midCalc2) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock)\r\nBalance due: \(ViewController.fixedCurrency!)\(self.PaymentBlalnce!) ")
+            if self.recieptDate != "" {if self.taxSwitch == "Yes" && self.taxForBlock == "VAT" {
+                print (self.taxForBlock)
+            
+        self.documentName = "VAT Invoice \(self.counterForMail2!)"} else {self.documentName = "Invoice \(self.counterForMail2!)"}; if self.paymentSys == "other" || self.paymentSys == ""{self.paymentBlock = ("\(self.seprator2)\(self.seprator2)\r\nPayment of \(ViewController.fixedCurrency!)\(self.midCalc2) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock)\r\nBalance due: \(ViewController.fixedCurrency!)\(self.PaymentBlalnce!) ")
         }
         else{self.paymentBlock = "\(self.seprator2)\(self.seprator2)\r\nPayment of \(ViewController.fixedCurrency!)\(self.midCalc2) made by \(self.paymentSys!) \(self.refernceBlock) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))\r\nBalance due: \(ViewController.fixedCurrency!)\(self.PaymentBlalnce!)"
         }
 
-        }else{if self.taxSwitch == "Yes"{self.documentName = "VAT Invoice \(self.counterForMail2!)"} else {self.documentName = "Invoice \(self.counterForMail2!)"}; // no payment only bill
+        }else{
+                print (self.taxForBlock)
+            
+                if self.taxSwitch == "Yes" && self.taxForBlock == "VAT" {self.documentName = "VAT Invoice \(self.counterForMail2!)"} else {self.documentName = "Invoice \(self.counterForMail2!)"}; // no payment only bill
 
         self.paymentBlock = "\r\n\(self.seprator2)\(self.seprator2)\r\nBalance due: \(ViewController.fixedCurrency!)\(self.PaymentBlalnce!)"
         if self.paypal != "" {self.payPalBlock = "\r\n\r\nPayment can be made through Paypal: \(self.paypal!)/\(self.midCalc2)"}else {self.payPalBlock = ""}
