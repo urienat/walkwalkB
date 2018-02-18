@@ -177,6 +177,7 @@ extension(UIViewController){
         totalBG.layer.render(in: UIGraphicsGetCurrentContext()!)
         totalBG.layer.draw(in: UIGraphicsGetCurrentContext()!)
         
+        
         UIGraphicsEndPDFContext()
         tableView.bounds = priorBounds
         var docURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL

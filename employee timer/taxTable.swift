@@ -78,6 +78,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     @IBOutlet weak var totalAmount: UITextField!
     @IBOutlet weak var noSign: UIImageView!
     
+    @IBOutlet weak var totalBG: UIView!
     @IBOutlet weak var totalLbl: UITextField!
     //filter
     let btnFilter = UIButton(type: .custom)
@@ -131,7 +132,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     var employeeID = ""
     
     func shareProcesses(){
-      //  pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 6*89,totalBG: totalBG)
+        pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 6*89,totalBG: totalBG)
         self.alert101(printItem: self.pdfDataTable)
     }
     

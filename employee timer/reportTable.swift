@@ -63,6 +63,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     @IBOutlet weak var billerConnect: UITableView!
     @IBOutlet weak var thinking: UIActivityIndicatorView!
+    @IBOutlet weak var totalBG: UIView!
     
     @IBOutlet weak var totalLbl: UITextField!
     @IBOutlet weak var totalBills: UITextField!
@@ -165,7 +166,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     
     func shareProcesses(){
-        //pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 6*89, totalBG: totalBG)
+        pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 6*89, totalBG: totalBG)
         self.alert101(printItem: self.pdfDataTable)
     }
     

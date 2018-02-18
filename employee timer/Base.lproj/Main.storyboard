@@ -3694,6 +3694,7 @@
                         <outlet property="taxInfo" destination="i6P-xy-qFY" id="6c0-ed-UwY"/>
                         <outlet property="thinking" destination="zhl-VB-8N9" id="fqa-1X-Jl3"/>
                         <outlet property="totalAmount" destination="6kr-dn-xOY" id="vvO-cG-zIR"/>
+                        <outlet property="totalBG" destination="Mxy-Rp-79V" id="Q7c-Tz-3eJ"/>
                         <outlet property="totalBills" destination="11P-Mq-cL7" id="EM3-9x-IuP"/>
                         <outlet property="totalLbl" destination="1jz-Go-U1h" id="6gK-a9-T2X"/>
                         <outlet property="totalTax" destination="0Mo-TX-GXF" id="b95-tn-KUg"/>
@@ -4100,6 +4101,7 @@
                         <outlet property="taxInfo" destination="r7o-qH-2p7" id="esw-9g-D2B"/>
                         <outlet property="thinking" destination="YLp-1q-3zD" id="Pbx-H6-Zmh"/>
                         <outlet property="totalAmount" destination="s2D-XW-ZF2" id="bQl-g1-kFY"/>
+                        <outlet property="totalBG" destination="rts-ul-jAc" id="I51-DX-NCm"/>
                         <outlet property="totalBills" destination="sBn-fl-kdU" id="TRa-is-IV6"/>
                         <outlet property="totalLbl" destination="Jkf-VZ-e1J" id="HtD-qA-a19"/>
                         <outlet property="totalSessions" destination="FCs-8X-QuT" id="3eG-sa-FPJ"/>
