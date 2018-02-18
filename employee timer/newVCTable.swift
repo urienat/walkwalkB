@@ -408,7 +408,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
         self.dbRef.child(String(idArray[buttonRow])).updateChildValues(["fStatus": statusTemp!], withCompletionBlock: { (error) in}) //end of update.
         }
-        DispatchQueue.main.asyncAfter(deadline: .now()+1){
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.2){//used to be 1
         self.billSender.isEnabled = true
         self.billPay.isEnabled = true
         }
@@ -444,7 +444,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
            
     }
 
-        func billing(){
+        func billing(completion: @escaping () -> () ){
         taxationBlock = ""
         sessionBlock = ""
         biller = true
@@ -501,6 +501,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         if self.paypal != "" {self.payPalBlock = "\r\n\r\nPayment can be made through Paypal: \(self.paypal!)/\(self.midCalc2)"}else {self.payPalBlock = ""}
         }// end of else  self.paymentDate != ""
 
+         completion()
         })
         }//end of billing
 
@@ -542,9 +543,13 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     func billProcess() {
     self.thinking.startAnimating()
-    self.billing()
+        self.billing {
+            self.afterBilling()
+        }
+    }
 
-    DispatchQueue.main.asyncAfter(deadline: .now()+2){//when 0 crash
+    func afterBilling(){
+    
     self.htmlReport = self.csv2 as String!
     print(self.counterForMail2!)
 
@@ -568,7 +573,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     self.performSegue(withIdentifier: "presentBill", sender: self.mailSaver)
 
     }//end of if biller
-    }//end of dispatch
+    
     }//end of billprocess
 
     func alert27() {
