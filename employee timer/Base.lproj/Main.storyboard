@@ -301,7 +301,14 @@
                                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perSessionImage" translatesAutoresizingMaskIntoConstraints="NO" id="5Rw-j6-6DO">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="d87-39-TLy" userLabel="camera">
+                                                <rect key="frame" x="301" y="7" width="12" height="12"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="12" id="iKr-VA-6pn"/>
+                                                    <constraint firstAttribute="height" constant="12" id="wSH-TR-X0D"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dogwalkerimage" translatesAutoresizingMaskIntoConstraints="NO" id="5Rw-j6-6DO">
                                                 <rect key="frame" x="248" y="12" width="60" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="CFX-bS-ZBC"/>
@@ -331,6 +338,7 @@
                                             <constraint firstItem="tPs-Eu-2ZP" firstAttribute="centerX" secondItem="kjJ-qf-Ai6" secondAttribute="centerX" id="AkQ-6h-gkD"/>
                                             <constraint firstItem="mf8-Uq-Tl6" firstAttribute="top" secondItem="MWa-6n-maP" secondAttribute="bottom" constant="20" id="B94-c1-9Mj"/>
                                             <constraint firstItem="PgN-Sp-vUs" firstAttribute="top" secondItem="Tvj-0H-np8" secondAttribute="bottom" constant="8" id="CAK-QA-Gy9"/>
+                                            <constraint firstItem="d87-39-TLy" firstAttribute="trailing" secondItem="5Rw-j6-6DO" secondAttribute="trailing" constant="5" id="Cm9-dW-MNb"/>
                                             <constraint firstItem="jQ1-Rx-gI3" firstAttribute="top" secondItem="Clb-ky-rEY" secondAttribute="bottom" constant="8" id="Cuz-kL-jbF"/>
                                             <constraint firstItem="ZtN-vu-BVM" firstAttribute="leading" secondItem="PgN-Sp-vUs" secondAttribute="leading" id="Cze-9N-gDQ"/>
                                             <constraint firstItem="RWP-Sp-2lC" firstAttribute="leading" secondItem="nxc-fT-4aR" secondAttribute="leading" id="Dqg-pg-yph"/>
@@ -356,6 +364,7 @@
                                             <constraint firstItem="3ey-yI-Stf" firstAttribute="leading" secondItem="jQ1-Rx-gI3" secondAttribute="leading" id="b7V-nX-X83"/>
                                             <constraint firstItem="Tvj-0H-np8" firstAttribute="leading" secondItem="BV5-Mg-kcY" secondAttribute="trailing" constant="-46" id="bFF-WS-7hn"/>
                                             <constraint firstItem="BV5-Mg-kcY" firstAttribute="top" secondItem="CBM-wj-30S" secondAttribute="bottom" constant="8" id="cHM-6H-LNy"/>
+                                            <constraint firstItem="d87-39-TLy" firstAttribute="top" secondItem="5Rw-j6-6DO" secondAttribute="top" constant="-5" id="crJ-gz-dxf"/>
                                             <constraint firstAttribute="height" constant="620" id="dCf-ci-tkw"/>
                                             <constraint firstItem="mf8-Uq-Tl6" firstAttribute="leading" secondItem="kjJ-qf-Ai6" secondAttribute="leading" constant="8" id="dGj-uy-Xgq"/>
                                             <constraint firstItem="9f3-Ix-fua" firstAttribute="leading" secondItem="3ey-yI-Stf" secondAttribute="leading" id="eXc-z1-cRR"/>
@@ -4107,7 +4116,9 @@
         <image name="arrow" width="30" height="36"/>
         <image name="billsIcon" width="50" height="50"/>
         <image name="calcMachine" width="50" height="50"/>
+        <image name="camera" width="25" height="25"/>
         <image name="cancelled" width="50" height="50"/>
+        <image name="dogwalkerimage" width="225" height="225"/>
         <image name="emptyV" width="42" height="52"/>
         <image name="file" width="50" height="50"/>
         <image name="import" width="50" height="50"/>

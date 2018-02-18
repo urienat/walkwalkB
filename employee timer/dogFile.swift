@@ -228,6 +228,8 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             if ViewController.professionControl == "Tutor" {self.dbRefEmployers.child(self.employerID).updateChildValues(["fParent" : self.studentParentNameText.text!])} else {
                 self.dbRefEmployers.child(self.employerID).updateChildValues(["fParent" : ""])
             }
+            
+            if self.employerFromMain != "Add Account" { MyImageCache.sharedCache.setObject(self.pDogImage.image as AnyObject, forKey: self.employerID as AnyObject)}
            
             //in firebase under url
             print ("employerId to store cache and FB:\(self.employerID)")
@@ -239,7 +241,9 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             return
             }
             
+           
             self.dbRefEmployers.child(self.employerID).updateChildValues(["fImageRef":(metadata?.downloadURL()?.absoluteString)! as Any ])
+                
             }) //end of dbref
             }//end of storage of pictures
            
@@ -273,6 +277,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         return
         }else {
         print (metadata!)
+            
         self.dbRefEmployers.child(employerRefence.key).updateChildValues(["fImageRef":(metadata?.downloadURL()?.absoluteString)! as Any ])}
         }) //end of dbref
                 
@@ -301,10 +306,10 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         ///storage of pictures
         ///in cache under employerID // uncommented th e line below to try and solve the image not appearing in the loist intially
             
-        if employerFromMain != "Add Account" { MyImageCache.sharedCache.setObject(pickedImage as AnyObject, forKey: employerID as AnyObject)
-         //add to profile
+        //if employerFromMain != "Add Account" { MyImageCache.sharedCache.setObject(pickedImage as AnyObject, forKey: employerID as AnyObject)
+         ////add to profile
             
-        }
+        ///}
         
         }//end of if let picked image
         imagePicker.dismiss(animated: true, completion: nil )
