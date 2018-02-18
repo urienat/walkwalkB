@@ -73,7 +73,8 @@ extension(ViewController){
         cell2.dogImage.clipsToBounds = true
         cell2.dogImage.layer.cornerRadius = CGFloat(25)
         cell2.dogImage.contentMode = .scaleAspectFill
-        if let cachedImage = MyImageCache.sharedCache.object(forKey: self.filteredEmployerForList[indexPath.row].accountImageUrl as AnyObject) as? UIImage //bring from cache //was employerref
+        //bring image
+        if let cachedImage = MyImageCache.sharedCache.object(forKey: self.filteredEmployerForList[indexPath.row].employerRef as AnyObject) as? UIImage //bring from cache //was employerref
         { DispatchQueue.main.async {
         cell2.dogImage.image = cachedImage
         }

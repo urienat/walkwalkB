@@ -298,9 +298,14 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if let pickedImage: UIImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
         pDogImage.image =  pickedImage
 
-        //storage of pictures
-        //in cache under employerID
-        //if employerFromMain != "Add Account" { MyImageCache.sharedCache.setObject(pickedImage as AnyObject, forKey: employerID as AnyObject)}
+        ///storage of pictures
+        ///in cache under employerID // uncommented th e line below to try and solve the image not appearing in the loist intially
+            
+        if employerFromMain != "Add Account" { MyImageCache.sharedCache.setObject(pickedImage as AnyObject, forKey: employerID as AnyObject)
+         //add to profile
+            
+        }
+        
         }//end of if let picked image
         imagePicker.dismiss(animated: true, completion: nil )
         }//end of imagepicked controller
