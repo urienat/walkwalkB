@@ -163,7 +163,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         //helpBackground.layoutIfNeeded()
         thinking.hidesWhenStopped = true
         
-print (employerIdFromMain)
+
         
         if employerIdFromMain == "" {
             let yourBackImage = UIImage(named: "home")
@@ -265,7 +265,7 @@ print (employerIdFromMain)
                 }//end of if
                 } else {
                 print ("keyexist\(keyExists)")
-                print ("employerid\(employerIdFromMain)")
+              
                 if (keyExists!) == employerIdFromMain { print ("another spesific included");employerId = employerArray3[event.summary!]!
                 saveToDB2()
                 //avoid double entry

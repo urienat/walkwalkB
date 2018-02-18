@@ -198,7 +198,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billStatus = "Billed"
     
         print (paymentSys,paymentReference)
-      refresh(presser: 0)
+        refresh(presser: biller.statusMemory!)
         
     }
         
@@ -386,7 +386,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         btnPartially.layer.cornerRadius =  10//CGFloat(25)
         btnPartially.layer.backgroundColor = grayColor.cgColor
         
-
+        biller.statusMemory = 1
         
     }//end of view did load////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -626,9 +626,13 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         case 0: StatusChoice = "Not Paid"
          titleLbl = "Not Paid"
             self.title = titleLbl
+        biller.statusMemory = 0
+
         case 1: StatusChoice = "All"
          titleLbl = "Invoices"
             self.title = titleLbl
+        biller.statusMemory = 1
+
         default: break
         } //end of switch
                fetchHandler() //fetchBills()
