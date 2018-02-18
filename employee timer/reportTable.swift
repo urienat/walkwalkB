@@ -165,9 +165,10 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     
     func shareProcesses(){
-        pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 6*89)
+        //pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 6*89, totalBG: totalBG)
         self.alert101(printItem: self.pdfDataTable)
     }
+    
     
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     

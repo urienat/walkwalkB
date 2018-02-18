@@ -2843,6 +2843,7 @@
                         <outlet property="sacePayment" destination="7km-HH-3Gq" id="iw2-Fm-cWh"/>
                         <outlet property="thinking" destination="n0x-Pz-LMA" id="ZFn-TC-imW"/>
                         <outlet property="totalAmount" destination="RwY-u5-Vpk" id="nqf-q4-hwd"/>
+                        <outlet property="totalBG" destination="tR9-cS-rER" id="a3e-Lt-F12"/>
                         <outlet property="totalBg" destination="tR9-cS-rER" id="pv8-GP-YqL"/>
                         <outlet property="totalBills" destination="ILg-rw-WUw" id="23Y-xA-55y"/>
                         <outlet property="totalTax" destination="kwr-P5-PJT" id="c7j-YN-9dc"/>
@@ -4144,6 +4145,6 @@
         <segue reference="mzv-XJ-96f"/>
         <segue reference="5at-sc-TfM"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="1k4-P4-HYk"/>
+        <segue reference="gfT-By-X34"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -218,6 +218,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var totalTax: UITextField!
     @IBOutlet weak var totalAmount: UITextField!
     @IBOutlet weak var noSign: UIImageView!
+    @IBOutlet weak var totalBG: UIView!
     
     //filter
     let btnFilter = UIButton(type: .custom)
@@ -293,7 +294,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     
     func shareProcesses(){
-        pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 13*50)
+        pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 13*50, totalBG: totalBG)
         self.alert101(printItem: pdfDataTable)
     }
     

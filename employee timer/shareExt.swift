@@ -155,7 +155,7 @@ extension(UIViewController){
        return pdfData
     }
  
-    func pdfDataWithTableView2(tableView: UITableView,pageHeight: Int) -> NSMutableData{
+    func pdfDataWithTableView2(tableView: UITableView,pageHeight: Int, totalBG:UIView) -> NSMutableData{
         let priorBounds = tableView.bounds
         let fittedSize = tableView.sizeThatFits(CGSize(width:priorBounds.size.width, height:tableView.contentSize.height))
         tableView.bounds = CGRect(x:0, y:0, width:fittedSize.width, height:fittedSize.height+72)//added 72
@@ -168,9 +168,15 @@ extension(UIViewController){
             UIGraphicsGetCurrentContext()!.saveGState()
             UIGraphicsGetCurrentContext()!.translateBy(x: 0, y: -pageOriginY)
             tableView.layer.render(in: UIGraphicsGetCurrentContext()!)
+            
             UIGraphicsGetCurrentContext()!.restoreGState()
             pageOriginY += pdfPageBounds.size.height
         }
+        
+        UIGraphicsBeginPDFPageWithInfo(pdfPageBounds, nil)
+        totalBG.layer.render(in: UIGraphicsGetCurrentContext()!)
+        totalBG.layer.draw(in: UIGraphicsGetCurrentContext()!)
+        
         UIGraphicsEndPDFContext()
         tableView.bounds = priorBounds
         var docURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
