@@ -112,7 +112,8 @@ extension(UIViewController){
         pdfDataTable.write(to: docURL as URL, atomically: true)
     return pdfDataTable
     }
-  */
+ 
+ */
      func pdfDataWithTableView(tableView: UITableView) -> NSMutableData {
        let pageWithMargin = CGRect(x:0, y: 72, width:tableView.contentSize.width, height:tableView.contentSize.height+72 );
         // Don't include scroll indicators in file
@@ -152,6 +153,30 @@ extension(UIViewController){
         tableView.showsVerticalScrollIndicator = true
         
        return pdfData
+    }
+ 
+    func pdfDataWithTableView2(tableView: UITableView) -> NSMutableData{
+        let priorBounds = tableView.bounds
+        let fittedSize = tableView.sizeThatFits(CGSize(width:priorBounds.size.width, height:tableView.contentSize.height))
+        tableView.bounds = CGRect(x:0, y:0, width:fittedSize.width, height:fittedSize.height+72)//added 72
+        let pdfPageBounds = CGRect(x:0, y:0, width:tableView.frame.width, height:(13*50))//instead of self.view.frame.height) //to make it fits nicelty in page
+        let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, pdfPageBounds,nil)
+        var pageOriginY: CGFloat = 0
+        while pageOriginY < fittedSize.height {
+            UIGraphicsBeginPDFPageWithInfo(pdfPageBounds, nil)
+            UIGraphicsGetCurrentContext()!.saveGState()
+            UIGraphicsGetCurrentContext()!.translateBy(x: 0, y: -pageOriginY)
+            tableView.layer.render(in: UIGraphicsGetCurrentContext()!)
+            UIGraphicsGetCurrentContext()!.restoreGState()
+            pageOriginY += pdfPageBounds.size.height
+        }
+        UIGraphicsEndPDFContext()
+        tableView.bounds = priorBounds
+        var docURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
+        docURL = docURL.appendingPathComponent("myDocument.pdf")
+        pdfData.write(to: docURL as URL, atomically: true)
+        return pdfData
     }
     
     ////////////alerts/////////////////////////////////////

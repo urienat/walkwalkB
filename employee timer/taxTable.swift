@@ -131,7 +131,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     var employeeID = ""
     
     func shareProcesses(){
-        pdfDataTable =  pdfDataWithTableView(tableView: billerConnect)
+        pdfDataWithTableView2(tableView: billerConnect)
         self.alert101(printItem: self.pdfDataTable)
     }
     
