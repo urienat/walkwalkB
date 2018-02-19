@@ -295,7 +295,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     func shareProcesses(){
         pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 13*50, totalBG: totalBG)
-        self.alert101(printItem: pdfDataTable)
+        self.alert101(printItem: self.pdfDataTable, mailFunction: configuredMailComposeViewController6())
     }
     
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -694,29 +694,48 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     
     
-    //func for mail// ithink not used
-        func  configuredMailComposeViewController2() -> MFMailComposeViewController {
+    //func for mail
+    func  configuredMailComposeViewController6() -> MFMailComposeViewController {
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
-        mailComposerVC2.setSubject("Bill recovery")
-        mailComposerVC2.setMessageBody(recoveredBill!, isHTML: false)
+        mailComposerVC2.setSubject("Report from PerSession App")
+        mailComposerVC2.setMessageBody("The report is attached for your records.\r\n\r\nRegards\r\n \(ViewController.fixedName!) \(ViewController.fixedLastName!)", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
+        //mailComposerVC2.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: "Invoice")
         return mailComposerVC2
-        }//end of MFMailcomposer
+    }//end of MFMailcomposer
     
-        //func for mail of reciept
-        func  configuredMailComposeViewController3() -> MFMailComposeViewController {
-        let mailComposerVC3 = MFMailComposeViewController()
-        mailComposerVC3.mailComposeDelegate = self
-        mailComposerVC3.setSubject("Reciept")
-        mailComposerVC3.setMessageBody(recieptMailSaver!, isHTML: false)
-        mailComposerVC3.setToRecipients([ViewController.fixedemail])
-        DispatchQueue.main.asyncAfter(deadline: .now()+1){
-        self.saveBase64StringToPDF(self.recieptMailSaver!)
-        }
+    func showSendmailErrorAlert() {
+        let sendMailErorrAlert = UIAlertController(title:"Could Not Send Email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.",preferredStyle: .alert)
+        sendMailErorrAlert.message = "error occured"
+        //seems that it does not work check!!!!
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController,didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result.rawValue {
+        case MFMailComposeResult.cancelled.rawValue:
+            print("Mail cancelled")
+            controller.dismiss(animated: true, completion: nil)
             
-        return mailComposerVC3
-        }//end of MFMailcomposer
+        case MFMailComposeResult.saved.rawValue:
+            print("Mail saved3")
+            
+            controller.dismiss(animated: true, completion: nil)
+            
+        case MFMailComposeResult.sent.rawValue:
+            print("Mail sent3")
+            
+            controller.dismiss(animated: true, completion: nil)
+            
+            
+        case MFMailComposeResult.failed.rawValue:
+            print("Mail sent failure: %@", [error!.localizedDescription])
+            controller.dismiss(animated: true, completion: nil)
+            
+        default:
+            break
+        }
+    }
 
     func saveBase64StringToPDF(_ base64String: String) {
         guard
@@ -727,30 +746,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 return
         }
     }
-        func showSendmailErrorAlert() {
-        let sendMailErorrAlert = UIAlertController(title:"Could Not Send Email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.",preferredStyle: .alert)
-        sendMailErorrAlert.message = "error occured"
-        }
-
-        func mailComposeController(_ controller: MFMailComposeViewController,
-        didFinishWith result: MFMailComposeResult, error: Error?) {
-        switch result.rawValue {
-        case MFMailComposeResult.cancelled.rawValue:
-        print("Mail cancelled")
-        controller.dismiss(animated: true, completion: nil)
-        case MFMailComposeResult.saved.rawValue:
-        print("Mail saved3")
-        controller.dismiss(animated: true, completion: nil)
-        case MFMailComposeResult.sent.rawValue:
-        print("Mail sent3")
-        controller.dismiss(animated: true, completion: nil)
-        case MFMailComposeResult.failed.rawValue:
-        print("Mail sent failure: %@", [error!.localizedDescription])
-        controller.dismiss(animated: true, completion: nil)
-        default:
-        break
-        }
-        }
+    
+    
     
         func handleTap(sender: UITapGestureRecognizer? = nil) {
         filterMovement(delay: 0)    }
@@ -929,6 +926,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         }
         
     }
+    
     
             // alerts////////////////////////////////////////////////////////////////////////////////////////////
     

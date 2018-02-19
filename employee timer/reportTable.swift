@@ -167,7 +167,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     func shareProcesses(){
         pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 6*89, totalBG: totalBG)
-        self.alert101(printItem: self.pdfDataTable)
+        self.alert101(printItem: self.pdfDataTable, mailFunction: configuredMailComposeViewController6())
     }
     
     
@@ -472,6 +472,48 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         return
     }
     
+    //func for mail
+    func  configuredMailComposeViewController6() -> MFMailComposeViewController {
+        let mailComposerVC2 = MFMailComposeViewController()
+        mailComposerVC2.mailComposeDelegate = self
+        mailComposerVC2.setSubject("Report from PerSession App")
+        mailComposerVC2.setMessageBody("The report is attached for your records.\r\n\r\nRegards\r\n \(ViewController.fixedName!) \(ViewController.fixedLastName!)", isHTML: false)
+        mailComposerVC2.setToRecipients([ViewController.fixedemail])
+        //mailComposerVC2.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: "Invoice")
+        return mailComposerVC2
+    }//end of MFMailcomposer
+    
+    func showSendmailErrorAlert() {
+        let sendMailErorrAlert = UIAlertController(title:"Could Not Send Email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.",preferredStyle: .alert)
+        sendMailErorrAlert.message = "error occured"
+        //seems that it does not work check!!!!
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController,didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result.rawValue {
+        case MFMailComposeResult.cancelled.rawValue:
+            print("Mail cancelled")
+            controller.dismiss(animated: true, completion: nil)
+            
+        case MFMailComposeResult.saved.rawValue:
+            print("Mail saved3")
+            
+            controller.dismiss(animated: true, completion: nil)
+            
+        case MFMailComposeResult.sent.rawValue:
+            print("Mail sent3")
+            
+            controller.dismiss(animated: true, completion: nil)
+            
+            
+        case MFMailComposeResult.failed.rawValue:
+            print("Mail sent failure: %@", [error!.localizedDescription])
+            controller.dismiss(animated: true, completion: nil)
+            
+        default:
+            break
+        }
+    }
     
     // alerts////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -297,7 +297,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             }//end of attributed
 
             //func for mail
-            func  configuredMailComposeViewController2() -> MFMailComposeViewController {
+     func  configuredMailComposeViewController2() -> MFMailComposeViewController {
             let mailComposerVC2 = MFMailComposeViewController()
             mailComposerVC2.mailComposeDelegate = self
             mailComposerVC2.setSubject("\(document!)")

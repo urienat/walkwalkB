@@ -54,16 +54,18 @@ extension(UIViewController){
         return pdfData
     }
     
+   
+    
     ////////////alerts/////////////////////////////////////
     
-    func alert101(printItem:NSMutableData){
+    func alert101(printItem:NSMutableData,mailFunction:MFMailComposeViewController){
         let alertController5 = UIAlertController(title: ("Share") , message: "", preferredStyle: .alert)
         let CancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
             //do nothing
         }
-        /*
-         let mailAction = UIAlertAction(title: "Mail", style: .default) { (UIAlertAction) in
-         let mailComposeViewController1 = configuredMailComposeViewController2()
+        
+        let mailAction = UIAlertAction(title: "Mail", style: .default) { (UIAlertAction) in
+        let mailComposeViewController1 = mailFunction
          if MFMailComposeViewController.canSendMail() {
          self.present(mailComposeViewController1, animated: true, completion: nil)
          } //end of if
@@ -72,7 +74,7 @@ extension(UIViewController){
          }
          // navigationController!.popViewController(animated: true)
          }
-         */
+        
         let printAction = UIAlertAction(title: "Print", style: .default) { (UIAlertAction) in
             let printInfo = UIPrintInfo(dictionary:nil)
             printInfo.outputType = UIPrintInfoOutputType.general
@@ -83,9 +85,7 @@ extension(UIViewController){
             printController.printingItem =  printItem
             
             
-            //var viewpf:UIViewPrintFormatter = self.documentsFileName.viewPrintFormatter()
-            // var viewpf:UIViewPrintFormatter = self.billerConnect.viewPrintFormatter()
-            //printController.printFormatter = viewpf
+            
             printController.present(animated: true) { (controller, success, error) -> Void in
                 if success {
                     // Printed successfully
@@ -100,7 +100,7 @@ extension(UIViewController){
             
         }
         
-        //alertController5.addAction(mailAction)
+        alertController5.addAction(mailAction)
         alertController5.addAction(printAction)
         alertController5.addAction(CancelAction)
         self.present(alertController5, animated: true, completion: nil)
