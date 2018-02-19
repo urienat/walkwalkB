@@ -476,10 +476,10 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     func  configuredMailComposeViewController6() -> MFMailComposeViewController {
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
-        mailComposerVC2.setSubject("Report from PerSession App")
-        mailComposerVC2.setMessageBody("The report is attached for your records.\r\n\r\nRegards\r\n \(ViewController.fixedName!) \(ViewController.fixedLastName!)", isHTML: false)
+        mailComposerVC2.setSubject("General mangerial report from PerSession App")
+        mailComposerVC2.setMessageBody("This report includes mangerial information and for that purpose only and it is attached for your records.\r\n\r\nRegards\r\n \(ViewController.fixedName!) \(ViewController.fixedLastName!)", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
-        //mailComposerVC2.addAttachmentData( pdfData as Data, mimeType: "application/pdf", fileName: "Invoice")
+        mailComposerVC2.addAttachmentData( pdfDataTable as Data, mimeType: "application/pdf", fileName: "Mangerial report")
         return mailComposerVC2
     }//end of MFMailcomposer
     

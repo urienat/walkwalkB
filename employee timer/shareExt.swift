@@ -37,7 +37,7 @@ extension(UIViewController){
         // the closing report
         if (Int(fittedSize.height)-(((pages-1) * pageHeight))+100) < pageHeight {
         UIGraphicsGetCurrentContext()!.translateBy(x: 0, y: CGFloat(Int(fittedSize.height)-(((pages-1) * pageHeight)))
-            )
+        )
         totalBG.layer.render(in: UIGraphicsGetCurrentContext()!)
         totalBG.layer.draw(in: UIGraphicsGetCurrentContext()!)
         } else {
