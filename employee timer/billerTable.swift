@@ -308,7 +308,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         if employerID == "" || employerID == nil  {self.whoInvoices = "all accounts"} else {whoInvoices = self.employerFromMain}
         if titleLbl == "Not Paid"{whatKindInvoices = "unpaid balance amount"} else {whatKindInvoices = "total amount invoiced" }
         
-        let textForReport = "* This report made on \(mydateFormat5.string(from: Date())) by PerSession APP\n**Invoices of \(whoInvoices!) for \(whenInvoices!) include \(whatKindInvoices!).\n***\(taxBillsApproach)"
+        let textForReport = "* This report made on \(mydateFormat5.string(from: Date())) by PerSession APP\n**Invoices of \(whoInvoices!) for \(whenInvoices!) include \(whatKindInvoices!).\n***\(taxBillsApproach!)"
         pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 13*50,totalBG: totalBG, Closing: textForReport as NSString, distance: 60.0)
         self.alert101(printItem: self.pdfDataTable, mailFunction: configuredMailComposeViewController6())
     }

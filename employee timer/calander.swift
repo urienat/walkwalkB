@@ -200,7 +200,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         
         let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")// instard of "primary"
         query.maxResults = 500
-        // DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
         print("0.2 \(self.LastCalander!)")
             print (self.minDate)
             minDate =  NSCalendar.current.startOfDay(for: minDate!)
@@ -218,19 +217,15 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         query,
         delegate: self,
         didFinish: #selector(self.displayResultWithTicket(ticket:finishedWithObject:error:)))
-        //}//end of dispatch
-
         }//end of fetchevents
 
         // Display the start dates and event summaries in the UITextView
-        func displayResultWithTicket(
-        ticket: GTLRServiceTicket,finishedWithObject response :  GTLRCalendar_Events,error : NSError?) {
+        func displayResultWithTicket(ticket: GTLRServiceTicket,finishedWithObject response :  GTLRCalendar_Events,error : NSError?) {
         if let error = error {
         print (error.code)
             if error.code == 403 {
         showAlert(title: "Error", message: error.localizedDescription)
-                
-            } else {
+        } else {
         showAlert(title: "Error", message: error.localizedDescription) }
         return
         }
@@ -248,7 +243,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         from: start.date,
         dateStyle: .short,
         timeStyle: .short)
-
         outputText += "\(calIn) - \(event.summary!)\r\n\r\n"
         
         let keyExists = employerArray3[("\(event.summary!)")]
@@ -264,7 +258,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 updateRead()
                 }//end of if
                 } else {
-                print ("keyexist\(keyExists)")
               
                 if (keyExists!) == employerIdFromMain { print ("another spesific included");employerId = employerArray3[event.summary!]!
                 saveToDB2()
@@ -273,7 +266,6 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 updater.summary = ("\(event.summary!)+")
                 eventCounter += 1
                 updateRead()
-                
                 }//end of if
                 }//end of else
                 }// end of if key exist != nil
@@ -281,9 +273,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             }//end of for event
             }//end of if let event
           
-            
-            
-            if eventCounter == 0 {textAdd.isHidden = true;alert17() }//animationImage.isHidden = true; self.eventCounterBlock = "No sessions" ;ViewController.sessionPusher = false}
+            if eventCounter == 0 {textAdd.isHidden = true;alert17() }
             else if eventCounter == 1 {textAdd.isHidden = false;animationImage.isHidden = false; self.eventCounterBlock = "One session";ViewController.sessionPusher = true;
                 DispatchQueue.main.asyncAfter(deadline: .now()+3){
                 self.navigationController!.popViewController(animated: false)
@@ -295,20 +285,16 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 } }
             // save last date
             if spesific == false {textAdd.text = "\(self.eventCounterBlock) imported from calander";ViewController.sessionPusher = false
-                
-
             }
             else {textAdd.text = "\(self.eventCounterBlock) for \(employerFromMain) imported from calendar";
-                
-
+            
             }
             calanderImage.layer.removeAllAnimations()
             thinking.stopAnimating()
             self.animation()
-            DispatchQueue.main.asyncAfter(deadline: .now()+3){
-            self.navigationController!.popViewController(animated: false)
-                
-            }
+            ///DispatchQueue.main.asyncAfter(deadline: .now()+3){
+            ///self.navigationController!.popViewController(animated: false)
+            ///}
             }//end of function
     
             func animation(){
@@ -361,11 +347,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         self.dbRefEmployee.child(employeeId).queryOrderedByValue().observeSingleEvent(of: .value, with: { (snapshot) in
         self.employerArray = snapshot.childSnapshot(forPath: "myEmployers").value! as! [String:Int]
         self.employerArray2 = Array(self.employerArray.keys) // for Dictionary
-        print ("employerArray\(self.employerArray)")
-
-        print ("employerArray2\(self.employerArray2)")
-        print ("match")
-           
+        
            
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
         for eachEmployer in 0...(self.employerArray2.count-1){

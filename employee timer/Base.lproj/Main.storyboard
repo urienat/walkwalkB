@@ -303,7 +303,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="d87-39-TLy" userLabel="camera">
-                                                <rect key="frame" x="234" y="7" width="20" height="20"/>
+                                                <rect key="frame" x="231" y="7" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="iKr-VA-6pn"/>
                                                     <constraint firstAttribute="height" constant="20" id="wSH-TR-X0D"/>
@@ -384,7 +384,7 @@
                                             <constraint firstItem="BV5-Mg-kcY" firstAttribute="leading" secondItem="kjJ-qf-Ai6" secondAttribute="leading" constant="8" id="jhx-N9-Zat"/>
                                             <constraint firstItem="CBM-wj-30S" firstAttribute="height" secondItem="Tvj-0H-np8" secondAttribute="height" id="kDh-zS-dHt"/>
                                             <constraint firstItem="wTn-MV-ILJ" firstAttribute="centerX" secondItem="tPs-Eu-2ZP" secondAttribute="centerX" id="kg0-ho-6Pn"/>
-                                            <constraint firstItem="d87-39-TLy" firstAttribute="leading" secondItem="5Rw-j6-6DO" secondAttribute="leading" constant="-14" id="khm-Vx-M25"/>
+                                            <constraint firstItem="d87-39-TLy" firstAttribute="leading" secondItem="5Rw-j6-6DO" secondAttribute="leading" constant="-17" id="khm-Vx-M25"/>
                                             <constraint firstItem="CmD-SU-Gwh" firstAttribute="top" secondItem="MWa-6n-maP" secondAttribute="bottom" constant="8" id="kju-jG-qcy"/>
                                             <constraint firstItem="3ey-yI-Stf" firstAttribute="top" secondItem="jQ1-Rx-gI3" secondAttribute="bottom" constant="8" id="ld6-OH-MQG"/>
                                             <constraint firstItem="Ohu-yT-NpW" firstAttribute="top" secondItem="XBr-xu-Bqr" secondAttribute="bottom" constant="8" id="n33-KA-hdX"/>
