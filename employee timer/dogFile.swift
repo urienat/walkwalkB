@@ -429,8 +429,9 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         else{
         //bring from firebase
         if let profileImageUrl = snapshot.childSnapshot(forPath: "fImageRef").value as! String! {
+            print(profileImageUrl)
             
-                let url = URL(string: profileImageUrl)
+            let url = URL(string: profileImageUrl)
             
             URLSession.shared.dataTask(with: url!, completionHandler: { (Data, response, error) in
         if error != nil {

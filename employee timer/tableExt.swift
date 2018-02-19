@@ -12,7 +12,7 @@ extension(ViewController){
 
         if #available(iOS 11.0, *) { //handle when ios 11 is out
         searchController.dismiss(animated: false, completion: nil)
-        searchController.searchBar.text = ""
+        ///searchController.searchBar.text = ""
         self.navigationItem.searchController = nil
         } else {
         self.searchController.isActive = false
@@ -36,8 +36,12 @@ extension(ViewController){
         toolBar.isHidden = false
         addAccount.isEnabled = false
 
+        print (filteredEmployerForList)
+            
         employerToS = filteredEmployerForList[indexPath.row].accountName
         employerIDToS = filteredEmployerForList[indexPath.row].employerRef
+            
+        print (employerToS,indexPath.row)
 
         bringEmployerData()
 

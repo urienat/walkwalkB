@@ -201,7 +201,6 @@
 
         //start timer action
         @IBAction func Start(_ sender: AnyObject) {
-        assert(false)
         textAdd.text = "Session added: \r\n\( mydateFormat7.string(from: Date()))"
         dIn =  mydateFormat5.string(from: Date()) //brings the a date as a string
         self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").updateChildValues([(self.employerIDToS):Int((self.mydateFormat5.date(from: mydateFormat5.string(from: Date()))?.timeIntervalSince1970)!)])
@@ -561,11 +560,17 @@
         func updateSearchResults(for searchController: UISearchController) {
         if searchController.searchBar.text! == ""{
         filteredEmployerForList = employerForList
+        self.employerList.reloadData()
         }else{
+        filteredEmployerForList.removeAll()
+        
         filteredEmployerForList =
         employerForList.filter({ ($0.accountName.lowercased().contains(searchController.searchBar.text!.lowercased())) })
-        }
+          print (filteredEmployerForList)
+            
         self.employerList.reloadData()
+        }
+        
         }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////alerts
         func  alert83(){
