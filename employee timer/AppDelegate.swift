@@ -17,6 +17,7 @@ import FirebaseAuth
 import FBSDKCoreKit
 import Google
 import GoogleSignIn
+import FirebaseCrash
 
 
 @UIApplicationMain
@@ -41,6 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+      
+        
         GIDSignIn.sharedInstance().clientID =  FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().signInSilently() ////try

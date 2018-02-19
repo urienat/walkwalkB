@@ -321,10 +321,10 @@
 				AEE95E3F1D7B092A00093B51 /* Frameworks */,
 				AEE95E401D7B092A00093B51 /* Resources */,
 				AE1259B41D8C2E4100AAF470 /* Embed Frameworks */,
-				AE1259B51D8C2E4F00AAF470 /* Run Script */,
 				440DDD19FF12039B5EA2739A /* [CP] Embed Pods Frameworks */,
 				57B37AFD86DF6AD0EA9CB931 /* [CP] Copy Pods Resources */,
 				AE29BE9E1D972B870066214D /* Headers */,
+				F4630DDB203B186C0011953F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -460,20 +460,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-perSession/Pods-perSession-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AE1259B51D8C2E4F00AAF470 /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "";
-		};
 		DCF47AF918A71A5ED53CDE22 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
@@ -491,6 +477,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		F4630DDB203B186C0011953F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "GOOGLE_APP_ID=1:652073679380:ios:4b7f21c3e2e380b3\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym  \"/Users/homeUriEnat/Documents/perSession2/employee timer/persession-45987-firebase-crashreporting-whqxh-5028473396.json\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
