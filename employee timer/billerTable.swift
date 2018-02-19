@@ -47,6 +47,11 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var pdfDataTable = NSMutableData()
     var recieptPayment:String?
     var whoInvoices : String?
+    var whatKindInvoices : String?
+    var taxBillsApproach : String?
+    var whenInvoices : String? = "all periods"
+
+    
     var monthToHandle : Int = 0
     var yearToHandle : Int = 0
     var taxBillsToHandle:Bool = false
@@ -229,6 +234,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var filterBG: UIView!
     @IBAction func noneBtn(_ sender: Any) {
+    whenInvoices = "all periods"
     filterDecided = 0
     fetchHandler() //fetchBills()
     filterImageConstrain.constant = 20
@@ -239,6 +245,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     
     @IBAction func currentMonthBtn(_ sender: Any) {
+    whenInvoices = "current month"
     filterDecided = 1
         fetchHandler() //fetchBills()
     filterImageConstrain.constant = 60
@@ -251,6 +258,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     
     @IBAction func lastMonthBtn(_ sender: Any) {
+    whenInvoices = "last month"
     filterImageConstrain.constant = 100
     filterDecided = 2
         fetchHandler() //fetchBills()
@@ -261,6 +269,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     
     @IBAction func currentYearBtn(_ sender: Any) {
+        whenInvoices = "current year"
     filterImageConstrain.constant = 140
     filterDecided = 3
       fetchHandler() //fetchBills()
@@ -271,6 +280,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     
     @IBAction func lastYearBtn(_ sender: Any) {
+    whenInvoices = "last year"
     filterImageConstrain.constant = 180
     filterDecided = 4
        fetchHandler() //fetchBills()
@@ -294,9 +304,12 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     
     func shareProcesses(){
-        if employerID == "" {whoInvoices = self.employerFromMain} else {self.whoInvoices = "all accounts"}
-        let textForReport = "* This report made on \(mydateFormat5.string(from: Date())) by PerSession APP Report includes Invoices of \(whoInvoices!) for the defined period"
-        pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 13*50,totalBG: totalBG, Closing: textForReport as NSString, distance: 50.0)
+        
+        if employerID == "" || employerID == nil  {self.whoInvoices = "all accounts"} else {whoInvoices = self.employerFromMain}
+        if titleLbl == "Not Paid"{whatKindInvoices = "unpaid balance amount"} else {whatKindInvoices = "total amount invoiced" }
+        
+        let textForReport = "* This report made on \(mydateFormat5.string(from: Date())) by PerSession APP\n**Invoices of \(whoInvoices!) for \(whenInvoices!) include \(whatKindInvoices!).\n***\(taxBillsApproach)"
+        pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 13*50,totalBG: totalBG, Closing: textForReport as NSString, distance: 60.0)
         self.alert101(printItem: self.pdfDataTable, mailFunction: configuredMailComposeViewController6())
     }
     
@@ -397,12 +410,13 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         firebaseConnectivity()
         if employerFromMain == "" {employerID = ""}
         if taxBillsToHandle == false {
+        taxBillsApproach = "cancelled Invoices allocated to their issue date to meet magerial purposes."
         print (taxBillsToHandle)
             //if biller.statusMemory == 0 {refresh(presser: 0)} else {
                 fetchHandler()
             
             //}
-        ; StatusChosen.isHidden = false} else {filterDecided = 7 ;monther(monthNumber: monthToHandle);
+            ; StatusChosen.isHidden = false} else {taxBillsApproach = "cancelled Invoices allocated to their cancelation date to meet tax purposes.";filterDecided = 7 ;monther(monthNumber: monthToHandle);
                 
         billsForTaxMonth();StatusChosen.isHidden = true;titleLbl = "\(monthMMM!)-\(yearToHandle)";self.title = titleLbl}
         print (billItems.count)

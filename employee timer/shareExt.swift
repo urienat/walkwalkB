@@ -43,11 +43,12 @@ extension(UIViewController){
         )
         totalBG.layer.render(in: UIGraphicsGetCurrentContext()!)
         totalBG.layer.draw(in: UIGraphicsGetCurrentContext()!)
-        print (CGFloat(Int(fittedSize.height)-(((pages-1) * pageHeight))))
-
+        print (distance)
+            print (Closing)
+            
         Closing.draw(at: CGPoint.init(x: 0.0, y: distance), withAttributes: textFontAttributes)
 
-        print (Closing)
+       
             
 
             
