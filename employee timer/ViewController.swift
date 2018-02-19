@@ -138,8 +138,9 @@
         @IBOutlet weak var startBackground: UIView!
         @IBOutlet weak var importImage: UIImageView!
         @IBOutlet weak var importBackground: UIView!
-        @IBOutlet weak var importBtn: UIButton!
-        @IBAction func importBtn(_ sender: Any) {
+        func importForSpesific() {
+        print (ViewController.calanderOption)
+            
         if ViewController.calanderOption! == "None" {alert32()} else {
         importClicked()}
         }
@@ -235,6 +236,8 @@
         employerList.backgroundColor = UIColor.clear
 
         let currentUser = FIRAuth.auth()?.currentUser
+        print (currentUser)
+            
         if currentUser != nil {
         self.employeeIDToS = (currentUser!.uid)
 
@@ -254,8 +257,9 @@
         // if  ViewController.professionControl! == "Tutor" { self.homeTitle.title = "Students"} else {self.homeTitle.title = "Accounts"}
         }
         , withCancel: { (Error) in
+        print("error from FB")
         self.alert30()
-        print("error from FB")}
+       }
         )
         self.fetchEmployers()
         } else {
@@ -263,6 +267,7 @@
         if  newRegister == "YES" {
         self.navigationController? .pushViewController(self.storyboard!.instantiateViewController(withIdentifier: "setting"), animated: false)
         }//end of Yes
+        else {self.present((storyboard?.instantiateViewController(withIdentifier: "loginScreen"))!, animated: true, completion: nil)}
         //no user connected
         }//end of else
 
@@ -283,7 +288,7 @@
         bills.customView = btn3
         btn4.setImage(importIcon, for: .normal)
         btn4.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
-        btn4.addTarget(self, action:#selector(importClicked), for: UIControlEvents.touchDown)
+        btn4.addTarget(self, action:#selector(importForSpesific), for: UIControlEvents.touchDown)
         importSpesific.customView = btn4
 
         btnMenu.setImage (menu, for: .normal)

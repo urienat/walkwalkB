@@ -49,9 +49,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBOutlet weak var activeButton: UIButton!
     @IBAction func activeButton(_ sender: Any) {
             if activeEmployerSwitch == true { activeEmployer.image = Vimage
-            activeButton.setTitle("", for: .normal)
             activeEmployerSwitch = false} else {activeEmployer.image = emptyVimage
-            activeButton.setTitle("Inactive", for: .normal)
             activeEmployerSwitch = true}
             }
     @IBOutlet weak var activeEmployer: UIImageView!
@@ -259,9 +257,8 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         } // end of update of an existed employer
         else{
         let employerRefence = self.dbRefEmployers.childByAutoId()
-            employerRefence.setValue(["fName" : self.pName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!, "fRem" : self.pRem.text!,  "fEmployer":self.pLastName.text!,"fImageRef":"", "fEmployerReg":employerRefence.key,"fLast":"New Account", "fActive" : true,"fParent" : self.studentParentNameText.text!
+            employerRefence.setValue(["fName" : self.pName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!, "fRem" : self.pRem.text!,  "fEmployer":self.pLastName.text!,"fImageRef":"https://firebasestorage.googleapis.com/v0/b/employeetimer.appspot.com/o/employerImages%2F47574737_s.jpg?alt=media&token=48983dc3-ca8d-4d9f-9b6d-3df6d756c480", "fEmployerReg":employerRefence.key,"fLast":"New Account", "fActive" : true,"fParent" : self.studentParentNameText.text!
                 
-                // "fImageRef":"https://firebasestorage.googleapis.com/v0/b/employeetimer.appspot.com/o/employerImages%2F47574737_s.jpg?alt=media&token=48983dc3-ca8d-4d9f-9b6d-3df6d756c480", 
         ])//end of set value
             
         //update pic in chache for new employee
@@ -432,9 +429,10 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         else{
         //bring from firebase
         if let profileImageUrl = snapshot.childSnapshot(forPath: "fImageRef").value as! String! {
-        print (profileImageUrl)
-        let url = URL(string: profileImageUrl)!
-        URLSession.shared.dataTask(with: url, completionHandler: { (Data, response, error) in
+            
+                let url = URL(string: profileImageUrl)
+            
+            URLSession.shared.dataTask(with: url!, completionHandler: { (Data, response, error) in
         if error != nil {
         print (error as Any)
         self.pDogImage.image = self.perSessionImage //I added to avoid teufut. if not stop cancel
