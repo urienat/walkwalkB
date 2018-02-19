@@ -43,6 +43,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     var isFilterHidden = true
     var filterDecided :Int = 0
         var pdfDataTable = NSMutableData()
+     
 
     @IBOutlet weak var taxInfo: UIButton!
     @IBAction func taxInfo(_ sender: Any) {
@@ -132,7 +133,11 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     var employeeID = ""
     
     func shareProcesses(){
-        pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 6*89,totalBG: totalBG)
+        //if reportMode
+       
+        let textForReport = "* This report made on \(mydateFormat5.string(from: Date())) by PerSession APP.** It includes Tax information based on acuural accounting for the defined period.***Tax calculation affected by invoice cancellation timing(if occured)\nand therefore might differ from this mangerial report.\n**** Tax filing should be based on this report and Not general managerial report"
+        
+        pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 6*89,totalBG: totalBG, Closing: textForReport as NSString, distance: 90.0)
         self.alert101(printItem: self.pdfDataTable, mailFunction: configuredMailComposeViewController6())
        
     }

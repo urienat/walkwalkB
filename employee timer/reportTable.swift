@@ -166,7 +166,8 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     
     func shareProcesses(){
-        pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 6*89, totalBG: totalBG)
+        let textForReport = "* This report made on \(mydateFormat5.string(from: Date())) by PerSession APP.\n**Report includes mangerial information for the defined period.\n***Tax calculation affected by invoice cancellation timing(if occured)\nand therefore might differ from this report.\n**** Tax filing should be based on 'Tax' report and Not this report."
+        pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 6*89,totalBG: totalBG, Closing: textForReport as NSString, distance: 90.0)
         self.alert101(printItem: self.pdfDataTable, mailFunction: configuredMailComposeViewController6())
     }
     

@@ -13,7 +13,10 @@ import MessageUI
 
 extension(UIViewController){
     
-    func pdfDataWithTableView2(tableView: UITableView,pageHeight: Int, totalBG:UIView) -> NSMutableData{
+    func pdfDataWithTableView2(tableView: UITableView,pageHeight: Int, totalBG:UIView, Closing:NSString,distance:Double ) -> NSMutableData{
+        let textFontAttributes = [
+            NSForegroundColorAttributeName: UIColor.red
+        ]
         var pages = 0
         let priorBounds = tableView.bounds
         let fittedSize = tableView.sizeThatFits(CGSize(width:priorBounds.size.width, height:tableView.contentSize.height))
@@ -35,15 +38,24 @@ extension(UIViewController){
         
         
         // the closing report
-        if (Int(fittedSize.height)-(((pages-1) * pageHeight))+100) < pageHeight {
+        if (Int(fittedSize.height)-(((pages-1) * pageHeight)) + Int(distance*2.0)) < pageHeight {
         UIGraphicsGetCurrentContext()!.translateBy(x: 0, y: CGFloat(Int(fittedSize.height)-(((pages-1) * pageHeight)))
         )
         totalBG.layer.render(in: UIGraphicsGetCurrentContext()!)
         totalBG.layer.draw(in: UIGraphicsGetCurrentContext()!)
+        print (CGFloat(Int(fittedSize.height)-(((pages-1) * pageHeight))))
+
+        Closing.draw(at: CGPoint.init(x: 0.0, y: distance), withAttributes: textFontAttributes)
+
+        print (Closing)
+            
+
+            
         } else {
         UIGraphicsBeginPDFPageWithInfo(pdfPageBounds, nil)
         totalBG.layer.render(in: UIGraphicsGetCurrentContext()!)
         totalBG.layer.draw(in: UIGraphicsGetCurrentContext()!)
+        Closing.draw(at: CGPoint.init(x: 0.0, y: distance), withAttributes: textFontAttributes)
         }
         
         UIGraphicsEndPDFContext()

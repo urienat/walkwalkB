@@ -46,7 +46,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var contact: String?
     var pdfDataTable = NSMutableData()
     var recieptPayment:String?
-
+    var whoInvoices : String?
     var monthToHandle : Int = 0
     var yearToHandle : Int = 0
     var taxBillsToHandle:Bool = false
@@ -294,7 +294,9 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     
     func shareProcesses(){
-        pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 13*50, totalBG: totalBG)
+        if employerID == "" {whoInvoices = self.employerFromMain} else {self.whoInvoices = "all accounts"}
+        let textForReport = "* This report made on \(mydateFormat5.string(from: Date())) by PerSession APP Report includes Invoices of \(whoInvoices!) for the defined period"
+        pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 13*50,totalBG: totalBG, Closing: textForReport as NSString, distance: 50.0)
         self.alert101(printItem: self.pdfDataTable, mailFunction: configuredMailComposeViewController6())
     }
     
@@ -699,7 +701,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
         mailComposerVC2.setSubject("Invoices report from PerSession App")
-        mailComposerVC2.setMessageBody("This report includes invoices  and it is attached for your records.\r\n\r\nRegards\r\n \(ViewController.fixedName!) \(ViewController.fixedLastName!)", isHTML: false)
+        mailComposerVC2.setMessageBody("This report includes invoices and it is attached for your records.\r\n\r\nRegards\r\n \(ViewController.fixedName!) \(ViewController.fixedLastName!)", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
         mailComposerVC2.addAttachmentData( pdfDataTable as Data, mimeType: "application/pdf", fileName: "Tax report")
         return mailComposerVC2
