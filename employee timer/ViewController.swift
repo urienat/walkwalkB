@@ -167,7 +167,6 @@
         }
         @IBAction func importAllBtn(_ sender: Any) {
         sideMenuMovement()
-        //print (ViewController.calanderOption!)
         if ViewController.calanderOption! == "None" {alert32()} else {
         importAllClicked()}
         }
@@ -199,7 +198,7 @@
         @IBAction func Start(_ sender: AnyObject) {
         textAdd.text = "Session added: \r\n\( mydateFormat7.string(from: Date()))"
         dIn =  mydateFormat5.string(from: Date()) //brings the a date as a string
-    self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").updateChildValues([(self.employerIDToS):Int((self.mydateFormat5.date(from: mydateFormat5.string(from: Date()))?.timeIntervalSince1970)!)])
+        self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").updateChildValues([(self.employerIDToS):Int((self.mydateFormat5.date(from: mydateFormat5.string(from: Date()))?.timeIntervalSince1970)!)])
 
         let record = ["fIn" : dIn,"fIndication3": "↺", "fEmployer": String (describing : employerToS),"fEmployeeRef": employeeIDToS,"fEmployerRef": employerIDToS,"fStatus" : "Approved","fSessionCreated":self.mydateFormat5.string(from: Date()) ]
         let fInRef = dbRef.childByAutoId()
@@ -223,9 +222,7 @@
         employerList.dataSource = self
         employerList.delegate = self
             
-        ViewController.sessionPusher = false
-        ViewController.billsPusher = false
-        ViewController.profilePusher = false
+        
 
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -240,7 +237,6 @@
             
         if currentUser != nil {
         self.employeeIDToS = (currentUser!.uid)
-
         self.dbRefEmployee.queryOrderedByKey().queryEqual(toValue: currentUser?.uid).observeSingleEvent(of: .childAdded, with: { (snapshot) in
         ViewController.fixedCurrency = String(describing: snapshot.childSnapshot(forPath: "fCurrency").value!) as String
         ViewController.fixedName =  String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String
@@ -252,15 +248,12 @@
         ViewController.taxCalc = String(describing: snapshot.childSnapshot(forPath: "fTaxCalc").value!) as String
         ViewController.taxation = String(describing: snapshot.childSnapshot(forPath: "fTaxPrecentage").value!) as String
         ViewController.professionControl =  String(describing: snapshot.childSnapshot(forPath: "fProfessionControl").value!) as String
-
-        
         // if  ViewController.professionControl! == "Tutor" { self.homeTitle.title = "Students"} else {self.homeTitle.title = "Accounts"}
         }
         , withCancel: { (Error) in
         print("error from FB")
         self.alert30()
-       }
-        )
+       })
         self.fetchEmployers()
         } else {
         print ("newreg\(newRegister)")
@@ -318,6 +311,10 @@
         mydateFormat2.dateFormat = DateFormatter.dateFormat(fromTemplate:  " HH:mm", options: 0, locale: nil)!
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         mydateFormat7.dateFormat = DateFormatter.dateFormat(fromTemplate: " EEE-dd MMM, (HH:mm)",options: 0, locale: nil)!
+            
+        ViewController.sessionPusher = false
+        ViewController.billsPusher = false
+        ViewController.profilePusher = false
 
         connectivityCheck()
 
