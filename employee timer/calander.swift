@@ -320,6 +320,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             }//end of animation
 
             func updateRead(){
+                
             let query2 = GTLRCalendarQuery_EventsPatch.query(withObject: self.updater , calendarId: "primary", eventId:id1!)
             service.executeQuery(query2) { (ticket: GTLRServiceTicket, Any, error) in
             if let error = error {self.showAlert(title: "Error", message: error.localizedDescription)

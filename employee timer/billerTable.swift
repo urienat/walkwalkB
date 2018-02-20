@@ -49,7 +49,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var whoInvoices : String?
     var whatKindInvoices : String?
     var taxBillsApproach : String?
-    var whenInvoices : String? = "all periods"
+    var whenInvoices : String? = "All periods"
 
     
     var monthToHandle : Int = 0
@@ -234,7 +234,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var filterBG: UIView!
     @IBAction func noneBtn(_ sender: Any) {
-    whenInvoices = "all periods"
+    whenInvoices = "All periods"
     filterDecided = 0
     fetchHandler() //fetchBills()
     filterImageConstrain.constant = 20
@@ -245,7 +245,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     
     @IBAction func currentMonthBtn(_ sender: Any) {
-    whenInvoices = "current month"
+    whenInvoices = "Current month"
     filterDecided = 1
         fetchHandler() //fetchBills()
     filterImageConstrain.constant = 60
@@ -258,7 +258,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     
     @IBAction func lastMonthBtn(_ sender: Any) {
-    whenInvoices = "last month"
+    whenInvoices = "Last month"
     filterImageConstrain.constant = 100
     filterDecided = 2
         fetchHandler() //fetchBills()
@@ -269,7 +269,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     
     @IBAction func currentYearBtn(_ sender: Any) {
-        whenInvoices = "current year"
+        whenInvoices = "Current year"
     filterImageConstrain.constant = 140
     filterDecided = 3
       fetchHandler() //fetchBills()
@@ -280,7 +280,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     
     @IBAction func lastYearBtn(_ sender: Any) {
-    whenInvoices = "last year"
+    whenInvoices = "Last year"
     filterImageConstrain.constant = 180
     filterDecided = 4
        fetchHandler() //fetchBills()
@@ -308,7 +308,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         if employerID == "" || employerID == nil  {self.whoInvoices = "all accounts"} else {whoInvoices = self.employerFromMain}
         if titleLbl == "Not Paid"{whatKindInvoices = "unpaid balance amount"} else {whatKindInvoices = "total amount invoiced" }
         
-        let textForReport = "* This report made on \(mydateFormat5.string(from: Date())) by PerSession APP\n**Invoices of \(whoInvoices!) for \(whenInvoices!) include \(whatKindInvoices!).\n***\(taxBillsApproach!)"
+        let textForReport = "* This report made on \(mydateFormat5.string(from: Date())) by PerSession APP\n**Invoices of \(whoInvoices!) for defined period include \(whatKindInvoices!).\n***\(taxBillsApproach!)"
         pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 13*50,totalBG: totalBG, Closing: textForReport as NSString, distance: 60.0)
         self.alert101(printItem: self.pdfDataTable, mailFunction: configuredMailComposeViewController6())
     }
@@ -615,7 +615,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                     self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
                 }
                 if ViewController.taxOption == "Yes"{ self.totalTax.text = "* Total tax invoices"} else { self.totalTax.text = "* Total invoice amounts"}
-                if self.reportMode == true{self.totalBills.text =  "Report:\(self.monthMMM!)-\(self.yearToHandle)" } else { self.totalBills.text =  "Tax:\(self.monthMMM!)-\(self.yearToHandle)" }
+                if self.reportMode == true{self.totalBills.text =  "Report: \(self.monthMMM!)-\(self.yearToHandle)" } else { self.totalBills.text =  "Tax report: \(self.monthMMM!)-\(self.yearToHandle)" }
             self.billerConnect.reloadData()
             }//end of if let dic
             }

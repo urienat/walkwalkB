@@ -2420,10 +2420,9 @@
                                 <rect key="frame" x="0.0" y="464" width="320" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ILg-rw-WUw" userLabel="totalBills">
-                                        <rect key="frame" x="8" y="4" width="150" height="25"/>
+                                        <rect key="frame" x="8" y="4" width="11" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="GkE-WT-reQ"/>
-                                            <constraint firstAttribute="width" constant="150" id="kYF-gY-uRz"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
