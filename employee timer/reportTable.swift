@@ -177,6 +177,8 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+
         noSign.isHidden = true
         filterConstrain.constant = -240
         blackView.isHidden = true
@@ -187,7 +189,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         
         billerConnect.backgroundColor = UIColor.clear
         self.title2 = "All Periods"
-        title = "Report"
+       
         let shareProcess = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(shareProcesses))
 
         
@@ -228,7 +230,9 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }//end of view did load////////////////////////////////////////////////////////////////////////////////////////////
     
     override func viewDidAppear(_ animated: Bool) {
-      
+        print (title2)
+        if self.title2 == "" {self.totalLbl.text = "Reports" } else {self.totalLbl.text = self.title2}
+            totalLbl.reloadInputViews()
         
         fetchBills()
         print (billItems.count)

@@ -317,7 +317,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
     override func viewDidLoad() {
         
-        if employerID == "" {
+        if employerID == "" && reportMode == false && taxBillsToHandle == false {
            let yourBackImage = UIImage(named: "home")
             self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
             self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
@@ -327,6 +327,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         self.navigationController?.navigationBar.topItem?.title = employerFromMain
         self.navigationController?.navigationBar.backIndicatorImage =  yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+            if reportMode == true { self.navigationController?.navigationBar.topItem?.title = "Reports"} else {
+                self.navigationController?.navigationBar.topItem?.title = "Tax"}
         self.navigationController?.navigationBar.reloadInputViews()
         }
         
@@ -608,12 +610,12 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 if self.reportMode != true {
                     self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String (describing: self.AmountCounter))"}
                 else {
+                   
                     self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
                     self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
-                    
-                    
                 }
-            //self.totalTax.text = "Tax \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter))"
+                if ViewController.taxOption == "Yes"{ self.totalTax.text = "* Total tax invoices"} else { self.totalTax.text = "* Total invoice amounts"}
+                if self.reportMode == true{self.totalBills.text =  "Report:\(self.monthMMM!)-\(self.yearToHandle)" } else { self.totalBills.text =  "Tax:\(self.monthMMM!)-\(self.yearToHandle)" }
             self.billerConnect.reloadData()
             }//end of if let dic
             }
@@ -854,6 +856,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             
             self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([(self.employerID):Int((self.mydateFormat5.date(from: self.mydateFormat5.string(from: Date()))?.timeIntervalSince1970)!)]) 
 
+            self.referenceTxt.text = ""
+            
             
             
             self.performSegue(withIdentifier: "presentReciept", sender: self.recieptMailSaver)

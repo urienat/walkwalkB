@@ -570,6 +570,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     self.moveSessionToBilled()
     self.billStarted = false
+    referenceTxt.text = ""
+    
+        
     self.performSegue(withIdentifier: "presentBill", sender: self.mailSaver)
 
     }//end of if biller

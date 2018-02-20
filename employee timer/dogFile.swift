@@ -112,7 +112,6 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         
     ViewController.refresh = false
         
-    connectivityCheck()
         
         let yourBackImage = UIImage(named: "backArrow")
         self.navigationController?.navigationBar.backIndicatorImage =  yourBackImage
@@ -402,7 +401,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if self.activeEmployerSwitch == true { self.activeEmployer.image = self.Vimage
         self.activeButton.setTitle("", for: .normal)
         self.activeEmployerSwitch = false} else {self.activeEmployer.image = self.emptyVimage
-        self.activeButton.setTitle("Not Active", for: .normal)
+        //self.activeButton.setTitle("Not Active", for: .normal)
         self.activeEmployerSwitch = true}
     
         self.emailUpdate = snapshot.childSnapshot(forPath: "fMail").value! as! String //probelm when set on connect it i sdeleted
