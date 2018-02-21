@@ -2588,7 +2588,7 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9c-oL-JGA" userLabel="paymentView">
-                                <rect key="frame" x="10" y="161" width="300" height="246"/>
+                                <rect key="frame" x="10" y="121" width="300" height="246"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8jL-sl-paz" userLabel="btnPartially">
                                         <rect key="frame" x="8.5" y="54" width="30" height="30"/>
@@ -2795,7 +2795,7 @@
                             <constraint firstItem="T9c-oL-JGA" firstAttribute="centerX" secondItem="LE5-Ui-4B3" secondAttribute="centerX" id="aZP-Jd-m8i"/>
                             <constraint firstItem="WOU-wI-y5F" firstAttribute="leading" secondItem="LE5-Ui-4B3" secondAttribute="leading" id="azG-70-gSK"/>
                             <constraint firstItem="PrW-i7-IuZ" firstAttribute="top" secondItem="fgv-lZ-OY1" secondAttribute="bottom" constant="12" id="cuB-ny-T0b"/>
-                            <constraint firstItem="T9c-oL-JGA" firstAttribute="centerY" secondItem="LE5-Ui-4B3" secondAttribute="centerY" id="gea-7j-G12"/>
+                            <constraint firstItem="T9c-oL-JGA" firstAttribute="centerY" secondItem="LE5-Ui-4B3" secondAttribute="centerY" constant="-40" id="gea-7j-G12"/>
                             <constraint firstAttribute="trailing" secondItem="PrW-i7-IuZ" secondAttribute="trailing" id="izT-mK-gro"/>
                             <constraint firstItem="tR9-cS-rER" firstAttribute="top" secondItem="fgv-lZ-OY1" secondAttribute="bottom" constant="12" id="jI1-MD-t6R"/>
                             <constraint firstAttribute="trailing" secondItem="WOU-wI-y5F" secondAttribute="trailing" id="lOo-af-2rU"/>

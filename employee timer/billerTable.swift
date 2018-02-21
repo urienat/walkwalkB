@@ -105,9 +105,11 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     
     @IBAction func editPartial(_ sender: Any) {
-    fully=false
-    print("partial begin")
-    fullyOptions()
+    
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+    self.fully=false
+    self.fullyOptions()
+    }
     }
     
     @IBAction func btnFully(_ sender: Any) {
@@ -758,7 +760,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             
         case false:
             sacePayment.isEnabled = false
-            print("fully3")
             fully = true
             self.imageFull.image = nonVimage
             self.imagePartially.image = Vimage

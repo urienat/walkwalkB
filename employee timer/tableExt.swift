@@ -54,6 +54,7 @@ extension(ViewController){
 
 
         func tableView(_ employerList: UITableView, numberOfRowsInSection section: Int) -> Int {
+            
         return filteredEmployerForList.count
         }
 
