@@ -588,7 +588,7 @@
         }//end of alert83
 
         func alert670(){
-        let alertController67 = UIAlertController(title: ("Not Active alert") , message: "This account isn't active. You can only handle past invoices or you can re-activate the account at 'Profile'.", preferredStyle: .alert)
+        let alertController67 = UIAlertController(title: ("Not Active alert") , message: "This account isn't active. You can only handle past invoices or you can reactivate the account at 'File'.", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
         }
         alertController67.addAction(OKAction)
@@ -596,7 +596,7 @@
         }
 
         func alert32(){
-        let alertController32 = UIAlertController(title: ("Define calander") , message: " in your 'Setting' no calander is defined for sessions' import. Define one? ", preferredStyle: .alert)
+        let alertController32 = UIAlertController(title: ("Define calendar") , message: "No calendar was defined in your 'Setting' for sessions' import. Define one? ", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "Sure", style: .default) { (UIAlertAction) in
         self.profileClicked()
         }

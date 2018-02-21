@@ -622,7 +622,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         ///alerts///////////////////////////////////////////////////////////////////////////////////
 
         func alert20(){
-        let alertController2 = UIAlertController(title: ("Missing fields ") , message: ("Name and last name is a requiered field."), preferredStyle: .alert)
+        let alertController2 = UIAlertController(title: ("Missing fields ") , message: ("Name and last name are requiered fields."), preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
         }
         alertController2.addAction(OKAction)
@@ -630,7 +630,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
 
         func alert4(){
-        let alertController4 = UIAlertController(title: ("email") , message: "email is also your user name. ", preferredStyle: .alert)
+        let alertController4 = UIAlertController(title: ("email") , message: "email is also your user-name. ", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
         if self.reset.isHidden == true {
         self.passWord.becomeFirstResponder()  }  else {self.email.becomeFirstResponder()   }
@@ -640,7 +640,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
 
         func alert17(){
-        let alertController17 = UIAlertController(title: ("Taxation") , message: "The precentage of tax you chose would be added on top of your Invoice for 'Excluded' or would be included in each account's rate for 'Included' option. ", preferredStyle: .alert)
+        let alertController17 = UIAlertController(title: ("Taxation") , message: "The precentage of tax you choose would be added on top of your invoice for 'Excluded' or would be included in each account's rate for 'Included'. ", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
         }
         alertController17.addAction(OKAction)
@@ -658,7 +658,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
 
         // alert1
         func alert1 () {
-        let alertCotroller1 = UIAlertController(title: ("Password alert") , message: ("An email with password instructions was sent to the email you signed into PerSession"), preferredStyle: .alert)
+        let alertCotroller1 = UIAlertController(title: ("Password alert") , message: ("An email with password instructions was sent to the email you set with PerSession"), preferredStyle: .alert)
         let okAction1 = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in
         }
         alertCotroller1.addAction(okAction1)
@@ -676,7 +676,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
 
         // alert6
         func alert6 () {
-        let alertCotroller6 = UIAlertController(title: ("Financial effect change") , message: ("Changes made in tax fields are effective from now on, to sessions not yet billed."), preferredStyle: .alert)
+        let alertCotroller6 = UIAlertController(title: ("Change Financial Info") , message: ("Changes made in tax fields are effective from now on, to sessions not yet billed."), preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK. I am aware.", style: .default) { (UIAlertAction) in
         self.saveToDB()
         }

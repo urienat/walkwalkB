@@ -531,7 +531,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     // alerts/////////////////////////////////////////////////////////////////////////////////////
 
     func alert80(){
-    let alertController80 = UIAlertController(title: ("No Rate") , message: "You can't bill as there is no rate for this account. You can set it at \(accountName) \(accountLastName) - 'Profile'", preferredStyle: .alert)
+    let alertController80 = UIAlertController(title: ("No Rate") , message: "You can't bill as there is no rate for this account. You can set it at \(accountName) \(accountLastName) - 'File'", preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
     ViewController.profilePusher = true
     self.navigationController!.popViewController(animated: false)

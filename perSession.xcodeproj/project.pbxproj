@@ -19,7 +19,6 @@
 		AE29BE9D1D972A910066214D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE29BE9C1D972A910066214D /* UIKit.framework */; };
 		AE4159D71DD339F1008C5DE6 /* dogFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4159D61DD339F1008C5DE6 /* dogFile.swift */; };
 		AE4B0FEC1E82B82F00188B79 /* subs.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B0FEB1E82B82F00188B79 /* subs.swift */; };
-		AE4CDC0D1D96430400FE2BB5 /* fetchRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4CDC0C1D96430400FE2BB5 /* fetchRecords.swift */; };
 		AE7F91851DF53E11000BC8C7 /* tableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F91841DF53E11000BC8C7 /* tableExt.swift */; };
 		AE84DE8D1E7E638700F08945 /* CHANGE LOG.rtf in Resources */ = {isa = PBXBuildFile; fileRef = AE84DE8A1E7E638700F08945 /* CHANGE LOG.rtf */; };
 		AE84DE8E1E7E638700F08945 /* RebeloperStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE84DE8B1E7E638700F08945 /* RebeloperStore.swift */; };
@@ -28,7 +27,6 @@
 		AEB16BA71DA03986004A6037 /* newVCTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB16BA61DA03986004A6037 /* newVCTable.swift */; };
 		AEC3A7731D7DE20E005E3F1F /* datePicker2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC3A7721D7DE20E005E3F1F /* datePicker2.swift */; };
 		AEC3A7751D7DE22B005E3F1F /* datePicker2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEC3A7741D7DE22B005E3F1F /* datePicker2.storyboard */; };
-		AECEC1C81D8A8E0B007C1D14 /* newRecordsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECEC1C71D8A8E0B007C1D14 /* newRecordsTable.swift */; };
 		AECEC1CA1D8A8E8E007C1D14 /* newTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECEC1C91D8A8E8E007C1D14 /* newTableCell.swift */; };
 		AECF31DD1E1246B80072547C /* MaxLengthField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECF31DC1E1246B80072547C /* MaxLengthField.swift */; };
 		AECF31DF1E1248660072547C /* AllowedCharsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECF31DE1E1248660072547C /* AllowedCharsTextField.swift */; };
@@ -79,7 +77,6 @@
 		AE29BE9C1D972A910066214D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AE4159D61DD339F1008C5DE6 /* dogFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dogFile.swift; sourceTree = "<group>"; };
 		AE4B0FEB1E82B82F00188B79 /* subs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = subs.swift; sourceTree = "<group>"; };
-		AE4CDC0C1D96430400FE2BB5 /* fetchRecords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fetchRecords.swift; sourceTree = "<group>"; };
 		AE7F91841DF53E11000BC8C7 /* tableExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableExt.swift; sourceTree = "<group>"; };
 		AE84DE8A1E7E638700F08945 /* CHANGE LOG.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "CHANGE LOG.rtf"; sourceTree = "<group>"; };
 		AE84DE8B1E7E638700F08945 /* RebeloperStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RebeloperStore.swift; sourceTree = "<group>"; };
@@ -88,7 +85,6 @@
 		AEB16BA61DA03986004A6037 /* newVCTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newVCTable.swift; sourceTree = "<group>"; };
 		AEC3A7721D7DE20E005E3F1F /* datePicker2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = datePicker2.swift; sourceTree = "<group>"; };
 		AEC3A7741D7DE22B005E3F1F /* datePicker2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = datePicker2.storyboard; sourceTree = "<group>"; };
-		AECEC1C71D8A8E0B007C1D14 /* newRecordsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = newRecordsTable.swift; path = ../newRecordsTable.swift; sourceTree = "<group>"; };
 		AECEC1C91D8A8E8E007C1D14 /* newTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newTableCell.swift; sourceTree = "<group>"; };
 		AECF31DC1E1246B80072547C /* MaxLengthField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaxLengthField.swift; sourceTree = "<group>"; };
 		AECF31DE1E1248660072547C /* AllowedCharsTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllowedCharsTextField.swift; sourceTree = "<group>"; };
@@ -168,15 +164,6 @@
 				F416A6712028A7B800F0E5FB /* fetchBills.swift */,
 			);
 			name = bill;
-			sourceTree = "<group>";
-		};
-		AE5548DC1DA51281009D7085 /* history */ = {
-			isa = PBXGroup;
-			children = (
-				AECEC1C71D8A8E0B007C1D14 /* newRecordsTable.swift */,
-				AE4CDC0C1D96430400FE2BB5 /* fetchRecords.swift */,
-			);
-			name = history;
 			sourceTree = "<group>";
 		};
 		AE577AD31DF9417E00EBE62B /* The Root Program */ = {
@@ -273,7 +260,6 @@
 				AEE95E451D7B092A00093B51 /* AppDelegate.swift */,
 				AE84DE891E7E638700F08945 /* RebeloperStore */,
 				AEC3A7711D7DE1C7005E3F1F /* datePicker */,
-				AE5548DC1DA51281009D7085 /* history */,
 				AE577AD31DF9417E00EBE62B /* The Root Program */,
 				AECF31E01E12496C0072547C /* helpers */,
 				F4EAE2552007874500BB448C /* reports */,
@@ -507,11 +493,9 @@
 				AE7F91851DF53E11000BC8C7 /* tableExt.swift in Sources */,
 				00BE2E951FE78A76000F3AAF /* taxTable.swift in Sources */,
 				AEE95E481D7B092A00093B51 /* ViewController.swift in Sources */,
-				AE4CDC0D1D96430400FE2BB5 /* fetchRecords.swift in Sources */,
 				AE4B0FEC1E82B82F00188B79 /* subs.swift in Sources */,
 				AECF31DD1E1246B80072547C /* MaxLengthField.swift in Sources */,
 				AEE95E461D7B092A00093B51 /* AppDelegate.swift in Sources */,
-				AECEC1C81D8A8E0B007C1D14 /* newRecordsTable.swift in Sources */,
 				F434A5432026EBDF003ED07C /* fetch.swift in Sources */,
 				AEC3A7731D7DE20E005E3F1F /* datePicker2.swift in Sources */,
 				AECF31DF1E1248660072547C /* AllowedCharsTextField.swift in Sources */,
