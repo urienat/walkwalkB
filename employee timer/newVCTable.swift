@@ -142,8 +142,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         //paymentMethood.isEnabled = false
         switch paymentMethood.selectedSegmentIndex {
         case 0: paymentSys = "cash"; referenceTxt.isHidden = true
-        case 1: paymentSys = "check"; referenceTxt.isHidden = false
-        case 2: paymentSys = "other"; referenceTxt.isHidden = false
+        case 1: paymentSys = "wire"; referenceTxt.isHidden = false
+        case 2: paymentSys = "check"; referenceTxt.isHidden = false
+        case 3: paymentSys = "other"; referenceTxt.isHidden = false
         default: paymentSys = ""; referenceTxt.isHidden = true
         } //end of switch
     }//end of payment methood
