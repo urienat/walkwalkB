@@ -381,12 +381,12 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             }
 
             func createPDFFilea(atext: NSAttributedString) -> NSMutableData {
-            //let mutableData = createPDFwithAttributedString(atext)
+            createPDFwithAttributedString(atext)
             createURL()
             return pdfData
             }// end of create pdf
 
-            func createPDFwithAttributedString(_ currentText: NSAttributedString) -> NSMutableData {
+    func createPDFwithAttributedString(_ currentText: NSAttributedString){//} -> NSMutableData {
             // Create the PDF context using the default page size of 612 x 792.
             UIGraphicsBeginPDFContextToData(pdfData, CGRect.zero, nil)
 
@@ -415,7 +415,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
 
             // Close the PDF context and write the contents out.
             UIGraphicsEndPDFContext();
-            return pdfData
+            //return pdfData
             }
 
             func renderPagewithTextRange (currentRange: inout CFRange,  framesetter: CTFramesetter) {
