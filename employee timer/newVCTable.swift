@@ -43,8 +43,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var contact:String?
     let myGroup = DispatchGroup()
     let myGroupBillPay = DispatchGroup()
-    var billStarted: Bool?
-    var billPayStarted: Bool?
+    var billStarted = false
+    var billPayStarted = false
     var lastPrevious = ""
     var firstTime:Bool?
     var firstTimeGeneral:Bool?
@@ -217,8 +217,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     thinking.startAnimating()
     self.billPayStarted = true
     if duplicateChecked == false {checkDuplicate()} else {
-        billSender.isEnabled = false
-        billPay.isEnabled = false
+    billSender.isEnabled = false
+    billPay.isEnabled = false
     myGroupBillPay.enter()
     refresh(presser: 1)        //// When your task completes
     myGroupBillPay.notify(queue: DispatchQueue.main) {

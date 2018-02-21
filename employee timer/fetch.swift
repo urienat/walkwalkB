@@ -134,8 +134,10 @@ import Foundation
         sleep(UInt32(1))
         self.StatusChosen.isEnabled = true
         self.periodChosen.isEnabled = true
+            
+        print (billStarted)
 
-            if self.billStarted != true   { self.thinking.stopAnimating()//}
+            if self.billStarted == false && self.billPayStarted == false   { self.thinking.stopAnimating()//}
 
         if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions";if  self.itemSum == 0{self.toolbar1.isHidden = true;self.noSign.isHidden = false}else{self.toolbar1.isHidden = false;self.noSign.isHidden = true}}
         else if self.eventCounter == 1 {self.toolbar1.isHidden = false;self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) Due session";self.noSign.isHidden = true}
