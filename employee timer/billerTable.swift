@@ -127,7 +127,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     switch paymentMethood.selectedSegmentIndex {
     case 0: paymentSys = "cash"; referenceTxt.isHidden = true;partialPayment.endEditing(true)
     case 1: paymentSys = "check"; referenceTxt.isHidden = false;partialPayment.endEditing(true)
-    case 2: paymentSys = "other"; referenceTxt.isHidden = false;partialPayment.endEditing(true)
+    case 2: paymentSys = "wire"; referenceTxt.isHidden = false;partialPayment.endEditing(true)
+    case 3: paymentSys = "other"; referenceTxt.isHidden = false;partialPayment.endEditing(true)
     default: paymentSys = ""; referenceTxt.isHidden = true
     } //end of switch
     }
