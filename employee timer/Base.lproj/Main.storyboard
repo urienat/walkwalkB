@@ -1640,6 +1640,9 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="allowedChars" value="0,1,2,3,4,5,6,7,8,9,.,-"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="editPrecentage:" destination="bu7-cQ-GBV" eventType="editingChanged" id="Be6-Yr-foZ"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="%" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iho-r5-Jit" userLabel="%sign">
                                                 <rect key="frame" x="214" y="334.5" width="15" height="17"/>

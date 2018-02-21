@@ -32,6 +32,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     let outBtn = UIButton(type: .custom)
     let outBarIten = UIBarButtonItem()
     var pickedImage:UIImage?
+    var finChanged:Bool = false
 
     @IBOutlet weak var pDogImage: UIImageView!
     let professions = ["Tutor","Psychologist","Therapist","Trainer","Other"]
@@ -41,12 +42,16 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         switch taxNames.selectedSegmentIndex {
         case 0:
         taxNameUpdate = "VAT"
+        self.finChanged = true
         case 1:
         taxNameUpdate = "GST"
+        self.finChanged = true
         case 2:
         taxNameUpdate = "Sales tax"
+        self.finChanged = true
         default:
         taxNameUpdate = "Tax"
+        self.finChanged = true
         }//end of switch
         }
     @IBOutlet weak var obligatory: UILabel!
@@ -102,14 +107,19 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }//end of switch
     }
     
+    @IBAction func editPrecentage(_ sender: Any) {
+      self.finChanged = true
+    }
     var taxCalacUpdate:String?
     @IBOutlet weak var taxCalac: UISegmentedControl!
     @IBAction func taxCalc(_ sender: Any) {
         switch taxCalac.selectedSegmentIndex {
         case 0:
         taxCalacUpdate = "Included"
+        self.finChanged = true
         case 1:
         taxCalacUpdate = "Over"
+        self.finChanged = true
         default:
         print("nothing")
         }//end of switch
@@ -139,7 +149,9 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBAction func taxSwitch(_ sender: Any) {
     if self.taxSwitchTemp == "No" {taxCalac.isHidden = true; self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true;taxNames.isHidden = true ;signer.isHidden = true;taxSwitchTemp = "Yes";taxSwitcherUpdate = "No";taxPrecentageUpdate = "0";precentage.text = taxPrecentageUpdate; taxIdUpdate = ""; taxId.text = taxIdUpdate
     } else {
-            self.taxSwitch.setOn(true, animated: true);taxCalac.isHidden = false;self.precentage.isHidden = false;taxNames.isHidden = false; signer.isHidden = false;taxSwitchTemp = "No";taxSwitcherUpdate = "Yes";alert17();if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0}}   }
+            self.taxSwitch.setOn(true, animated: true);taxCalac.isHidden = false;self.precentage.isHidden = false;taxNames.isHidden = false; signer.isHidden = false;taxSwitchTemp = "No";taxSwitcherUpdate = "Yes";alert17();if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0}}
+        self.finChanged = true
+    }
     @IBAction func taxationInfo(_ sender: Any) {
     alert17()
     }
@@ -432,16 +444,18 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }//end of account creation
     
         func finChangeHappend(){
-        self.dbRefEmployees.queryOrderedByKey().queryEqual(toValue: self.employeeRefUpdate).observeSingleEvent(of: .childAdded, with: { (snapshot) in
+        if finChanged == true {self.alert6() } else {self.saveToDB()}
             
-        if  (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String) != self.taxCalacUpdate!  ||
-        snapshot.childSnapshot(forPath: "fSwitcher").value as! String !=  self.taxSwitcherUpdate ||
-        snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String  != self.precentage.text!  ||
-        snapshot.childSnapshot(forPath: "fTaxId").value as! String != self.taxId.text!
-        {self.alert6() } else {self.saveToDB()}
-        } , withCancel: { (Error) in
-        self.alert30()
-        print("error from FB")})
+        //self.dbRefEmployees.queryOrderedByKey().queryEqual(toValue: self.employeeRefUpdate).observeSingleEvent(of: .childAdded, with: { (snapshot) in
+            
+        //if  (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String) != self.taxCalacUpdate!  ||
+        //snapshot.childSnapshot(forPath: "fSwitcher").value as! String !=  self.taxSwitcherUpdate ||
+        //snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String  != self.precentage.text!  ||
+        //snapshot.childSnapshot(forPath: "fTaxId").value as! String != self.taxId.text!
+        //{self.alert6() } else {self.saveToDB()}
+        //} , withCancel: { (Error) in
+        //self.alert30()
+        //print("error from FB")})
         }
 
         func saveToDB() {
