@@ -265,7 +265,8 @@
         if  newRegister == "YES" {
         self.navigationController? .pushViewController(self.storyboard!.instantiateViewController(withIdentifier: "setting"), animated: false)
         }//end of Yes
-        else {self.present((storyboard?.instantiateViewController(withIdentifier: "loginScreen"))!, animated: true, completion: nil)}
+        else {LoginFile.logoutchosen = true
+        try! FIRAuth.auth()?.signOut();self.present((storyboard?.instantiateViewController(withIdentifier: "loginScreen"))!, animated: true, completion: nil)}
         //no user connected
         }//end of else
 
