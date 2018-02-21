@@ -116,7 +116,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         let yourBackImage = UIImage(named: "backArrow")
         self.navigationController?.navigationBar.backIndicatorImage =  yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-
+        if self.employerFromMain == "Add Account" { self.navigationController?.navigationBar.topItem?.title = ""} else { self.navigationController?.navigationBar.topItem?.title = employerFromMain}
         //if employerID == "" {
         //let yourBackImage = UIImage(named: "home")
         //self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
@@ -147,7 +147,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             obligatory .isHidden = false
             
             } else {
-            self.lbl = ("Profile")
+            self.lbl = ("File")
             self.title = lbl
             bringEmployerData()
             trash.isEnabled = true
@@ -353,7 +353,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         mailComposerVC.setSubject("PerSession mail")
-        mailComposerVC.setMessageBody("Hello", isHTML: false)
+        mailComposerVC.setMessageBody("", isHTML: false)
         mailComposerVC.setToRecipients([emailUpdate])
         return mailComposerVC
         }//end of configure

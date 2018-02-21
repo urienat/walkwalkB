@@ -16,7 +16,8 @@ class datePicker2: UIViewController {
     let dbRefEmployer = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployee = FIRDatabase.database().reference().child("fEmployees")
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
-
+    var backArrow = UIImage(named: "backArrow")?.withRenderingMode(.alwaysTemplate)
+    var home = UIImage(named: "home")
     var titleLbl = ""
     var recordToHandle = String()
     
@@ -166,6 +167,14 @@ class datePicker2: UIViewController {
     /////////////////////////////////////////////////////////////////  view did load starts///////////////////////
     override func viewDidLoad() {
     super.viewDidLoad()
+        
+
+        let yourBackImage = UIImage(named: "backArrow")
+            self.navigationController?.navigationBar.topItem?.title = employerFromMain
+            self.navigationController?.navigationBar.backIndicatorImage =  yourBackImage
+            self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+            //self.navigationController?.navigationBar.reloadInputViews()
+        
         
         
         //formating the date

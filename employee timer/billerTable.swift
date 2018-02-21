@@ -456,7 +456,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         if billItem.fBillStatus! == "Billed" { cell.cellBtnExt.layer.borderColor =  redColor.cgColor;cell.approvalImage.image =  billDocument;cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approvalImage.alpha = 1}
         if billItem.fBillStatus! == "Partially" { cell.cellBtnExt.layer.borderColor =  redColor.cgColor;cell.approvalImage.image = partially;cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approvalImage.alpha = 1}
         if  billItem.fBillStatus!  == "Paid" { cell.cellBtnExt.layer.borderColor =  blueColor.cgColor; cell.approvalImage.image = paidImage;cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approvalImage.alpha = 1}
-        if billItem.fBillStatus! ==  "Cancelled" { cell.cellBtnExt.layer.borderColor =  blueColor.cgColor; cell.approvalImage.image = canceledImage;cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approvalImage.alpha = 1}
+        if billItem.fBillStatus! ==  "Cancelled" { cell.cellBtnExt.layer.borderColor =  blueColor.cgColor; cell.approvalImage.image = canceledImage;cell.l1.alpha = 0.5;cell.l3.alpha = 0.5;cell.l4.alpha = 0.5;cell.l6.alpha = 0.5;cell.approvalImage.alpha = 0.5}
 
         if taxBillsToHandle == false || reportMode  == true{ cell.cellBtnExt.isEnabled = true} else {cell.cellBtnExt.isEnabled=false}
         cell.cellBtnExt.tag = indexPath.row
