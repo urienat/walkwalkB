@@ -278,17 +278,11 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print (arrayOfMonths)
-        print (taxMonthRow?.row)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         taxMonthRow = self.billerConnect.indexPathForSelectedRow!
-        print (taxMonthRow)
-        print (taxMonthRow?.row)
-        print (arrayOfMonths)
-        print (mydateFormat20.date(from: (arrayOfMonths[(taxMonthRow?.row)!])))
         
         
         if (segue.identifier == "billsForMonth")
@@ -304,7 +298,7 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
             billTaxManager?.monthToHandle = components.month!
             billTaxManager?.yearToHandle = components.year!
             billTaxManager?.employeeID = employeeID
-            billTaxManager?.taxBillsToHandle = true
+            billTaxManager?.taxBillsToHandle = false //true
             billTaxManager?.reportMode = true
         }//end of if (segue...
     }//end of prepare
@@ -379,7 +373,6 @@ class report: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
                 
                 if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
                 self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"// - \(String(describing: self.billCounter)) Bills "
-                print (ViewController.taxOption)
                 
                 if ViewController.taxOption! != "No" {
                 self.totalTax.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter.roundTo(places: 2)))"

@@ -144,7 +144,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         self.thinking.startAnimating()
         paymentReference = referenceTxt.text
         billStatus = "Paid"
-        print (paymentSys,paymentReference)
         BillArrayStatus[buttonRow] = statusTemp
         biller.rowMemory = buttonRow
         paymentView.isHidden = true
@@ -162,7 +161,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         if imagePartially.image == Vimage {
         let a = (Double(partialPayment.text!))//?.roundTo(places: 2)
         let b = (Double(self.balance!))//?.roundTo(places: 2)
-        print (a,b)
         if a! > b!
         {self.alert12()//alert too big
         } else { saveProcess()}
@@ -181,7 +179,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         recieptDate = ""
         billStatus = "Billed"
     
-        print (paymentSys,paymentReference)
         refresh(presser: biller.statusMemory!)
     }
         
@@ -283,7 +280,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
         func shareProcesses(){
 
-        if employerID == "" || employerID == nil  {self.whoInvoices = "all accounts"} else {whoInvoices = self.employerFromMain}
+        if employerID == ""  {self.whoInvoices = "all accounts"} else {whoInvoices = self.employerFromMain}
         if titleLbl == "Not Paid"{whatKindInvoices = "unpaid balance amount"} else {whatKindInvoices = "total amount invoiced" }
 
         let textForReport = "* This report made on \(mydateFormat5.string(from: Date())) by PerSession APP\n**Invoices of \(whoInvoices!) for defined period include \(whatKindInvoices!).\n***\(taxBillsApproach!)"
@@ -294,9 +291,12 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     override func viewDidLoad() {
+        print (reportMode,taxBillsToHandle,self.employerID)
         
-        if reportMode == false && taxBillsToHandle == false  {
+        if reportMode == false && taxBillsToHandle == false && self.employerID == ""  {
+            
         let yourBackImage = UIImage(named: "home")
+            
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
         self.navigationController?.navigationBar.topItem?.title = " "
@@ -305,8 +305,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         self.navigationController?.navigationBar.topItem?.title = employerFromMain
         self.navigationController?.navigationBar.backIndicatorImage =  yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-        if reportMode == true { self.navigationController?.navigationBar.topItem?.title = "Reports"} else {
-                self.navigationController?.navigationBar.topItem?.title = "Tax"}
+        if reportMode == true { self.navigationController?.navigationBar.topItem?.title = "Reports"} else if taxBillsToHandle == true{
+            self.navigationController?.navigationBar.topItem?.title = "Tax"} else {self.navigationController?.navigationBar.topItem?.title = employerFromMain}
         self.navigationController?.navigationBar.reloadInputViews()
         }
         
@@ -698,16 +698,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         }
         }
 
-        func saveBase64StringToPDF(_ base64String: String) {
-        guard
-        var documentsURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last,
-        let convertedData = Data(base64Encoded: base64String)
-        else {
-        //handle error when getting documents URL
-        return
-        }
-        }
-    
         func handleTap(sender: UITapGestureRecognizer? = nil) {
         filterMovement(delay: 0)    }
     

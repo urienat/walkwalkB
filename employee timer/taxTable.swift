@@ -253,6 +253,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         billTaxManager?.yearToHandle = components.year!
         billTaxManager?.employeeID = employeeID
         billTaxManager?.taxBillsToHandle = true
+        billTaxManager?.reportMode = false
         }//end of if (segue...
         }//end of prepare
     

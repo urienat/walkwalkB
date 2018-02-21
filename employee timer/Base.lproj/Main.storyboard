@@ -317,7 +317,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name*" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tvj-0H-np8">
-                                                <rect key="frame" x="12" y="8" width="54.5" height="30"/>
+                                                <rect key="frame" x="8" y="8" width="54.5" height="30"/>
                                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                                 <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -369,7 +369,6 @@
                                             <constraint firstItem="Ohu-yT-NpW" firstAttribute="leading" secondItem="3ey-yI-Stf" secondAttribute="trailing" id="X7I-cx-Tsa"/>
                                             <constraint firstItem="wTn-MV-ILJ" firstAttribute="height" secondItem="tPs-Eu-2ZP" secondAttribute="height" id="Xaf-af-QTg"/>
                                             <constraint firstItem="3ey-yI-Stf" firstAttribute="leading" secondItem="jQ1-Rx-gI3" secondAttribute="leading" id="b7V-nX-X83"/>
-                                            <constraint firstItem="Tvj-0H-np8" firstAttribute="leading" secondItem="BV5-Mg-kcY" secondAttribute="trailing" constant="-46" id="bFF-WS-7hn"/>
                                             <constraint firstItem="tPs-Eu-2ZP" firstAttribute="leading" secondItem="9f3-Ix-fua" secondAttribute="leading" id="bVy-YM-pqz"/>
                                             <constraint firstItem="BV5-Mg-kcY" firstAttribute="top" secondItem="CBM-wj-30S" secondAttribute="bottom" constant="8" id="cHM-6H-LNy"/>
                                             <constraint firstItem="d87-39-TLy" firstAttribute="top" secondItem="5Rw-j6-6DO" secondAttribute="top" constant="-5" id="crJ-gz-dxf"/>
@@ -2297,7 +2296,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fgv-lZ-OY1">
-                                <rect key="frame" x="0.0" y="98" width="320" height="354"/>
+                                <rect key="frame" x="0.0" y="98" width="320" height="398"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="billerId" id="oUk-dv-frm" customClass="billerCell" customModule="perSession" customModuleProvider="target">
@@ -2388,7 +2387,7 @@
                                 </prototypes>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PrW-i7-IuZ">
-                                <rect key="frame" x="0.0" y="464" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="508" width="320" height="60"/>
                                 <color key="backgroundColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="NWC-gi-XYE"/>
@@ -2421,7 +2420,7 @@
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tR9-cS-rER" userLabel="totalBG">
-                                <rect key="frame" x="0.0" y="464" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="508" width="320" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ILg-rw-WUw" userLabel="totalBills">
                                         <rect key="frame" x="8" y="4" width="11" height="25"/>
@@ -2463,11 +2462,11 @@
                                 </constraints>
                             </view>
                             <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOU-wI-y5F" userLabel="blackView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="328"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFF-pl-qqA" userLabel="filterView">
-                                <rect key="frame" x="0.0" y="284" width="320" height="240"/>
+                                <rect key="frame" x="0.0" y="328" width="320" height="240"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42o-9O-q03">
                                         <rect key="frame" x="8" y="20" width="304" height="40"/>
@@ -2636,8 +2635,8 @@
                                             <action selector="editPartialEnd:" destination="Grl-4C-vV7" eventType="editingDidEnd" id="zkj-UJ-O9n"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGp-Px-mK1" userLabel="btnFully">
-                                        <rect key="frame" x="117" y="95" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGp-Px-mK1" userLabel="btnFully">
+                                        <rect key="frame" x="8.5" y="12" width="30" height="30"/>
                                         <connections>
                                             <action selector="btnFully:" destination="Grl-4C-vV7" eventType="touchUpInside" id="M3C-FX-AMR"/>
                                         </connections>
@@ -4134,11 +4133,12 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="q4e-3H-dKE"/>
-        <segue reference="mzv-XJ-96f"/>
+        <segue reference="x0P-Ew-8Ag"/>
         <segue reference="5at-sc-TfM"/>
         <segue reference="8s0-fg-N01"/>
-        <segue reference="gfT-By-X34"/>
+        <segue reference="1k4-P4-HYk"/>
     </inferredMetricsTieBreakers>
 </document>

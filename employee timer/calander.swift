@@ -201,9 +201,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")// instard of "primary"
         query.maxResults = 500
         print("0.2 \(self.LastCalander!)")
-            print (self.minDate)
             minDate =  NSCalendar.current.startOfDay(for: minDate!)
-            print (self.minDate)
             
             query.timeMin = GTLRDateTime(date: minDate!)
         print ("before min \(String(describing: self.LastCalander))")
@@ -249,14 +247,13 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
         if (keyExists)  != nil {
                 if spesific == false {
-                if (keyExists!) != nil { print ("another all included");employerId = employerArray3[event.summary!]!
+                print ("another all included");employerId = employerArray3[event.summary!]!
                 saveToDB2()
                 //avoid double entry
                 id1 = event.identifier
                 updater.summary = ("\(event.summary!)+")
                 eventCounter += 1
                 updateRead()
-                }//end of if
                 } else {
               
                 if (keyExists!) == employerIdFromMain { print ("another spesific included");employerId = employerArray3[event.summary!]!
@@ -415,12 +412,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                     print ("in fetcheventapple")
 
                     minDate =  NSCalendar.current.startOfDay(for: minDate!)// - (24*3600*30)
-                    print (self.minDate)
 
                     let calendars = eventStore.calendars(for: .event)
                     for calendar in calendars {
                     let predicate = eventStore.predicateForEvents(withStart: minDate!, end: Date(), calendars: [calendar])
-                    var events = eventStore.events(matching: predicate)
+                        let events = eventStore.events(matching: predicate)
                     for event in events {
                     let start = event.startDate
                     calIn = self.mydateFormat6.string(from: start)
@@ -430,22 +426,20 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                     let keyExists = employerArray3[("\(event.title)")]
                     if (keyExists)  != nil {
                     if spesific == false {
-                    if (keyExists!) != nil { print ("another all included");employerId = employerArray3[event.title]!
+                   print ("another all included");employerId = employerArray3[event.title]!
                     saveToDB2()
                     //avoid double entry
                     eventId = event.eventIdentifier
-                    print (eventId)
                         
                     eventCounter += 1
                         updateEvent( event: event, title: ("\(event.title)+"))
 
-                        }//end of if
+                       
                     } else {
                     if (keyExists!) == employerIdFromMain { print ("another spesific included");employerId = employerArray3[event.title]!
                     saveToDB2()
                     //avoid double entry
                         eventId = event.eventIdentifier
-                        print (eventId)
 
                     eventCounter += 1
                         

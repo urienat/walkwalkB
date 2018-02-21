@@ -154,7 +154,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         paymentDate = mydateFormat5.string(from: Date())
         recieptDate = paymentDate
         billStatus = "Paid"
-        print (paymentSys,paymentReference)
         paymentView.isHidden = true
         billProcess()
     }//end of save
@@ -170,7 +169,6 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         paymentDate = ""
         recieptDate = ""
         billStatus = "Billed"
-        print (paymentSys,paymentReference)
         self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
         self.segmentedPressed = 0
         self.StatusChosen.selectedSegmentIndex = self.segmentedPressed!
@@ -434,10 +432,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
 
         func amountCalc(){
-        print (itemSum)
-        print (eventCounter)
-        print (taxSwitch,taxCalc)
-            
+           
             if ViewController.taxOption == "Yes" && ViewController.taxCalc == "Over" {self.calc = (1 + (Double(ViewController.taxation!)!/100.0)) * ((Double(self.eventCounter))*(self.Employerrate) + itemSum)
                 
             } else {
@@ -460,10 +455,10 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.taxCalc = (snapshot.childSnapshot(forPath: "fTaxCalc").value as! String)
         self.taxSwitch = (snapshot.childSnapshot(forPath: "fSwitcher").value as! String)
         self.paypal = (snapshot.childSnapshot(forPath: "fPaypal").value as! String)
-        if snapshot.childSnapshot(forPath: "fBillinfo").value as! String != nil {self.billInfo = "\(snapshot.childSnapshot(forPath: "fBillinfo").value as! String)"} else {self.billInfo = ""}
+            if snapshot.childSnapshot(forPath: "fBillinfo").value as? String != nil {self.billInfo = "\(snapshot.childSnapshot(forPath: "fBillinfo").value as! String)"} else {self.billInfo = ""}
         print(snapshot.childSnapshot(forPath: "fTaxId").value as! String)
             
-        if snapshot.childSnapshot(forPath: "fTaxId").value as! String == nil || snapshot.childSnapshot(forPath: "fTaxId").value as! String == "" {self.taxId = ""} else {self.taxId = "Tax ID: \(snapshot.childSnapshot(forPath: "fTaxId").value as! String)"} 
+        if snapshot.childSnapshot(forPath: "fTaxId").value as! String == "" {self.taxId = ""} else {self.taxId = "Tax ID: \(snapshot.childSnapshot(forPath: "fTaxId").value as! String)"} 
         self.address = (snapshot.childSnapshot(forPath: "fAddress").value as! String)
 
 
@@ -568,7 +563,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     self.mailSaver = "\(self.mydateFormat8.string(from: Date()))\r\n\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.taxId!)\r\n\(self.address!)\r\n\(self.seprator2)\(self.seprator2)\r\n\r\nBill to:\r\n\(self.contact!) \(self.accountParnet)\r\n\(self.accountAdress)\r\n\(self.seprator2)\r\n\(self.htmlReport!)\(self.sessionBlock)\r\n\r\n\(self.taxationBlock)\r\n\(self.paymentBlock)\r\n\r\n\r\nMade by PerSession app. "
 
     //update bill with DB
-    self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": self.billStatus!,"fBillStatusDate":self.mydateFormat5.string(from: Date()) ,"fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2, "fDocumentName":self.documentName!,"fBalance": self.PaymentBlalnce
+        self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": self.billStatus!,"fBillStatusDate":self.mydateFormat5.string(from: Date()) ,"fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2, "fDocumentName":self.documentName!,"fBalance": self.PaymentBlalnce!
     ], withCompletionBlock: { (error) in}) //end of update.//was 0
 
     self.dbRefEmployers.child(self.employerID).updateChildValues(["fLast":"Last billed: \(self.mydateFormat8.string(from: Date()))"], withCompletionBlock: { (error) in})

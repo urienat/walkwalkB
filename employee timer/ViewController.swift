@@ -144,7 +144,6 @@
         @IBOutlet weak var importImage: UIImageView!
         @IBOutlet weak var importBackground: UIView!
         func importForSpesific() {
-        print (ViewController.calanderOption)
             
         if ViewController.calanderOption! == "None" {alert32()} else {
         importClicked()}
@@ -161,9 +160,8 @@
         }
         @IBAction func taxationBtn(_ sender: Any) {
         sideMenuMovement()
-            print (ViewController.taxOption,keeper.string(forKey: "taxAlert"))
             
-            if ViewController.taxOption! == "No"{if keeper.string(forKey: "taxAlert") == "not paying" {performSegue(withIdentifier: "employerForTax", sender: employerToS)} else {self.alert47()}} else {
+            if ViewController.taxOption! == "No"{if keeper.string(forKey: "t!axAlert") == "not paying" {performSegue(withIdentifier: "employerForTax", sender: employerToS)} else {self.alert47()}} else {
         performSegue(withIdentifier: "employerForTax", sender: employerToS)}
         }
         @IBAction func reports(_ sender: Any) {
@@ -238,7 +236,6 @@
         employerList.backgroundColor = UIColor.clear
 
         let currentUser = FIRAuth.auth()?.currentUser
-        print (currentUser)
             
         if currentUser != nil {
         self.employeeIDToS = (currentUser!.uid)

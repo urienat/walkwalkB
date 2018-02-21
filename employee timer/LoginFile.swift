@@ -227,7 +227,6 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         if FBSDKAccessToken.current() == nil {
             
             print (GIDSignIn.sharedInstance().currentUser)
-            print (AccessToken.current)
             
             if GIDSignIn.sharedInstance().currentUser != nil  {
                 thinking.startAnimating()

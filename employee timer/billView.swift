@@ -216,7 +216,6 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
                 
                 self.billStatusForRecovery = ""}
                 
-                print (self.taxBillsToHandle)
 
             if self.taxBillsToHandle == true {
                 self.deleteBtn.isEnabled = false
@@ -251,9 +250,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
 
             //build reciepts
             self.dbRefEmployee.child(self.employeeID).child("myReciepts").child(self.billToHandle!).observe(.childAdded ,with: { (snapshot) in
-            if let recieptItem = snapshot.key as? String {
-            self.recieptsArray2.append(recieptItem)
-            }
+           
+            self.recieptsArray2.append((snapshot.key))
+            
             // remove all current segments to make sure it is empty:
             self.billReciept.removeAllSegments()
             if self.recieptsArray2.isEmpty{
@@ -283,7 +282,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             if recieptChosen == false { self.textString = "\(self.document!)\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"
             } else {
             self.textString = "\(self.document!)\r\n\(self.billStatusForRecovery)\r\n\r\n\(attributed)"}
-            var attrText = NSMutableAttributedString(string: textString)
+                let attrText = NSMutableAttributedString(string: textString)
             if recieptChosen == false { self.largeTextRange = (textString as NSString).range(of: "\(self.document!)");self.centerTextRange = (textString as NSString).range(of: "\(self.billStatusForRecovery)"); self.smallTextRange = (textString as NSString).range(of: "\r\n\r\n\(attributed)")
             } else {
             self.largeTextRange = (textString as NSString).range(of: "\(self.document!)");self.centerTextRange = (textString as NSString).range(of: "\(self.billStatusForRecovery)");self.smallTextRange = (textString as NSString).range(of: ")\r\n\r\n\(attributed)")}
@@ -372,6 +371,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             try pdfData.write(to: documentsURL)
             let myURL = documentsURL //URL(string:document"BillToWebView.pdf" )
             let myRequest = URLRequest(url: myURL)
+                
             webView2.scalesPageToFit = true
             webView2.loadRequest(myRequest)
             } catch {
@@ -381,7 +381,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             }
 
             func createPDFFilea(atext: NSAttributedString) -> NSMutableData {
-            let mutableData = createPDFwithAttributedString(atext)
+            //let mutableData = createPDFwithAttributedString(atext)
             createURL()
             return pdfData
             }// end of create pdf
@@ -431,8 +431,8 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
             let frameRect = CGRect(x: 72, y: 72, width: 468, height: 648);
             let imageRect = CGRect(x: 500, y: 690, width: 100, height: 100);
             let paperA4 = CGRect(x: 0, y: 0, width: 712, height: 992);
-            let pageWithMargin = CGRect(x: 0, y: -50, width: paperA4.width-50, height: (paperA4.height-50));
-            let paperRect = CGRect(x: 30, y: 30, width: 512, height:(781.8))
+            //let pageWithMargin = CGRect(x: 0, y: -50, width: paperA4.width-50, height: (paperA4.height-50));
+            //let paperRect = CGRect(x: 30, y: 30, width: 512, height:(781.8))
             let framePath = CGMutablePath();
             framePath.addRect(frameRect)
 
@@ -595,9 +595,6 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
         }}//end of reciept is empty
             ViewController.billsPusher = true
             
-            print("statusmemory:\(biller.statusMemory)")
-            print("rowsmemory:\(biller.rowMemory)")
-            print ("pusher:\(ViewController.billsPusher)")
             if biller.statusMemory != nil {
                 if biller.statusMemory! == 1 {self.navigationController!.popViewController(animated: true)} else  {self.navigationController!.popToRootViewController(animated: false);ViewController.billsPusher = false} }else {
                 ViewController.billsPusher = false; self.navigationController!.popViewController(animated: true)
