@@ -143,7 +143,7 @@ extension(biller){
         }//if taxswitch = yes
         else {self.taxationBlock = ""}
         if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
-        if self.fully == false { self.self.recieptPayment = self.midCalc2!} else {self.recieptPayment = self.partialPayment.text!}
+        if self.fully == false { self.self.recieptPayment = self.balance!} else {self.recieptPayment = self.partialPayment.text!}
 
         self.documentName = "Reciept \(self.BillArray[self.buttonRow])-\(self.recieptCounter!)"; if self.paymentSys == "other" || self.paymentSys == ""{self.paymentBlock = ("Payment of \(ViewController.fixedCurrency!)\(self.recieptPayment!) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock) ")
         }
