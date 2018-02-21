@@ -217,6 +217,12 @@ extension(biller){
         self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([(self.employerID):Int((self.mydateFormat5.date(from: self.mydateFormat5.string(from: Date()))?.timeIntervalSince1970)!)])
 
         self.referenceTxt.text = ""
+        self.paymentReference = ""
+        self.paymentSys = ""
+        self.recieptDate = ""
+        self.paymentMethood.selectedSegmentIndex = -1
+        self.referenceTxt.isHidden = true
+            
         self.performSegue(withIdentifier: "presentReciept", sender: self.recieptMailSaver)
         }//end of if biller
         }//end of billprocess

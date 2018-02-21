@@ -144,7 +144,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         case 0: paymentSys = "cash"; referenceTxt.isHidden = true
         case 1: paymentSys = "check"; referenceTxt.isHidden = false
         case 2: paymentSys = "other"; referenceTxt.isHidden = false
-        default: paymentSys = "None"; referenceTxt.isHidden = true
+        default: paymentSys = ""; referenceTxt.isHidden = true
         } //end of switch
     }//end of payment methood
     @IBOutlet weak var referenceTxt: UITextField!
@@ -161,6 +161,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     @IBAction func cancelPayment(_ sender: Any) {
         self.billPayStarted = false
         paymentView.isHidden = true
+        self.referenceTxt.text = ""
+        self.paymentMethood.selectedSegmentIndex = -1
+        self.referenceTxt.isHidden = true
         paymentReference = ""
         paymentSys = ""
         paymentDate = ""
@@ -570,8 +573,12 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
     self.moveSessionToBilled()
     self.billStarted = false
-    referenceTxt.text = ""
-    
+    self.referenceTxt.text = ""
+    self.paymentReference = ""
+    self.paymentSys = ""
+    self.recieptDate = ""
+    self.paymentMethood.selectedSegmentIndex = -1
+    self.referenceTxt.isHidden = true
         
     self.performSegue(withIdentifier: "presentBill", sender: self.mailSaver)
 

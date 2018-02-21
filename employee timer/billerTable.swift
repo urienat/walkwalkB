@@ -126,7 +126,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     case 0: paymentSys = "cash"; referenceTxt.isHidden = true;partialPayment.endEditing(true)
     case 1: paymentSys = "check"; referenceTxt.isHidden = false;partialPayment.endEditing(true)
     case 2: paymentSys = "other"; referenceTxt.isHidden = false;partialPayment.endEditing(true)
-    default: paymentSys = "None"; referenceTxt.isHidden = true
+    default: paymentSys = ""; referenceTxt.isHidden = true
     } //end of switch
     }
     
@@ -155,27 +155,23 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         //alert no partial payment in place
         print ("empty")
         self.alert11()
-
-
         }else{
         if imagePartially.image == Vimage {
         let a = (Double(partialPayment.text!))//?.roundTo(places: 2)
         let b = (Double(self.balance!))//?.roundTo(places: 2)
         print (a,b)
-
         if a! > b!
-        {
-        self.alert12()
-        //alert too big
-
+        {self.alert12()//alert too big
         } else { saveProcess()}
         }else{ saveProcess()
-
         }//end of else
         }//end of else
         }//end of save payment
     
     @IBAction func cancelPayment(_ sender: Any) {
+        self.referenceTxt.text = ""
+        self.paymentMethood.selectedSegmentIndex = -1
+        self.referenceTxt.isHidden = true
         paymentView.isHidden = true
         paymentReference = ""
         paymentSys = ""
