@@ -28,7 +28,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var counterForpresent:String?
     var lastPrevious = ""
     var a = 0
-
     var accountAdress = ""
     var accountName = ""
     var accountLastName = ""
@@ -36,13 +35,11 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var balance:String?
     var remainingBalance: String?
     var recieptCounter: String?
-
     var seprator = "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
     var seprator2 = "⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶"
-    
+    var seprator3 = "=============================== "
     static var rowMemory: Int?
     static var statusMemory: Int?
-
     var contact: String?
     var pdfDataTable = NSMutableData()
     var recieptPayment:String?
@@ -50,22 +47,17 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var whatKindInvoices : String?
     var taxBillsApproach : String?
     var whenInvoices : String? = "All periods"
-
-    
     var monthToHandle : Int = 0
     var yearToHandle : Int = 0
     var taxBillsToHandle:Bool = false
     var reportMode:Bool = false
-    
     var paymentSys: String? = ""
     var paymentReference: String? = ""
     var recieptDate: String? = ""
     var billStatus:String? = "Billed"
     var documentName:String?
     var segmentedPressed:Int?
-    
     var monthMMM: String?
-
     var billItems = [billStruct]()
     static var checkBoxBiller:Int = 0
     var BillArrayStatus = [String]()
@@ -103,26 +95,23 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var partialPayment: UITextField!
     @IBOutlet weak var imagePartially: UIImageView!
     @IBOutlet weak var btnPartially: UIButton!
-    
-    
     @IBAction func btnPartially(_ sender: Any) {
-        print("fully")
-      fullyOptions()
+    print("fully")
+    fullyOptions()
     }
     
-   
-    @IBAction func editPartialEnd(_ sender: Any) {
-        if partialPayment.text == "" {sacePayment.isEnabled = false} else {sacePayment.isEnabled = true}
+   @IBAction func editPartialEnd(_ sender: Any) {
+    if partialPayment.text == "" {sacePayment.isEnabled = false} else {sacePayment.isEnabled = true}
     }
+    
     @IBAction func editPartial(_ sender: Any) {
-        fully=false
-        print("partial begin")
-         fullyOptions()
-        
+    fully=false
+    print("partial begin")
+    fullyOptions()
     }
+    
     @IBAction func btnFully(_ sender: Any) {
-        fullyOptions()
-
+    fullyOptions()
     }
     @IBOutlet weak var btnFully: UIButton!
     @IBOutlet weak var imageFull: UIImageView!
@@ -131,31 +120,23 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     @IBOutlet weak var totalBg: UIView!
     
     @IBAction func paymentMethood(_ sender: Any) {
-        print("payment pressed")
-        //paymentMethood.isEnabled = false
-        switch paymentMethood.selectedSegmentIndex {
-        case 0: paymentSys = "cash"; referenceTxt.isHidden = true;partialPayment.endEditing(true)
-        case 1: paymentSys = "check"; referenceTxt.isHidden = false;partialPayment.endEditing(true)
-        case 2: paymentSys = "other"; referenceTxt.isHidden = false;partialPayment.endEditing(true)
-        default: paymentSys = "None"; referenceTxt.isHidden = true
-        } //end of switch
-        
+    print("payment pressed")
+    //paymentMethood.isEnabled = false
+    switch paymentMethood.selectedSegmentIndex {
+    case 0: paymentSys = "cash"; referenceTxt.isHidden = true;partialPayment.endEditing(true)
+    case 1: paymentSys = "check"; referenceTxt.isHidden = false;partialPayment.endEditing(true)
+    case 2: paymentSys = "other"; referenceTxt.isHidden = false;partialPayment.endEditing(true)
+    default: paymentSys = "None"; referenceTxt.isHidden = true
+    } //end of switch
     }
-    
     
     @IBOutlet weak var referenceTxt: UITextField!
     
-    
-    
     @IBAction func partialCheck(_ sender: Any) {
-   
-    
-        if partialPayment.text != nil  {
-            sacePayment.isEnabled = true} else {sacePayment.isEnabled = false}
-        
+    if partialPayment.text != nil  {
+    sacePayment.isEnabled = true} else {sacePayment.isEnabled = false}
     }
     @IBOutlet weak var sacePayment: UIButton!
-    
     func saveProcess(){
         self.thinking.startAnimating()
         paymentReference = referenceTxt.text
@@ -165,35 +146,34 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         biller.rowMemory = buttonRow
         paymentView.isHidden = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            
-            self.recieptProcess() // self.alert19()
+        self.recieptProcess()
         }
-    }
+        }
     
-    @IBAction func savePayment(_ sender: Any) {
+        @IBAction func savePayment(_ sender: Any) {
         if partialPayment.text?.isEmpty == true && imagePartially.image == Vimage {
-         //alert no partial payment in place
-          print ("empty")
-            self.alert11()
+        //alert no partial payment in place
+        print ("empty")
+        self.alert11()
 
-            
+
         }else{
-            if imagePartially.image == Vimage {
-            let a = (Double(partialPayment.text!))//?.roundTo(places: 2)
-            let b = (Double(self.balance!))//?.roundTo(places: 2)
-            print (a,b)
-            
-          if a! > b!
-            {
-             self.alert12()
-            //alert too big
-                
-          } else { saveProcess()}
+        if imagePartially.image == Vimage {
+        let a = (Double(partialPayment.text!))//?.roundTo(places: 2)
+        let b = (Double(self.balance!))//?.roundTo(places: 2)
+        print (a,b)
+
+        if a! > b!
+        {
+        self.alert12()
+        //alert too big
+
+        } else { saveProcess()}
         }else{ saveProcess()
-        
-            }//end of else
+
         }//end of else
-    }
+        }//end of else
+        }//end of save payment
     
     @IBAction func cancelPayment(_ sender: Any) {
         paymentView.isHidden = true
@@ -204,7 +184,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     
         print (paymentSys,paymentReference)
         refresh(presser: biller.statusMemory!)
-        
     }
         
         
@@ -303,25 +282,25 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     let dbRefEmployers = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
     
-    func shareProcesses(){
-        
+        func shareProcesses(){
+
         if employerID == "" || employerID == nil  {self.whoInvoices = "all accounts"} else {whoInvoices = self.employerFromMain}
         if titleLbl == "Not Paid"{whatKindInvoices = "unpaid balance amount"} else {whatKindInvoices = "total amount invoiced" }
-        
+
         let textForReport = "* This report made on \(mydateFormat5.string(from: Date())) by PerSession APP\n**Invoices of \(whoInvoices!) for defined period include \(whatKindInvoices!).\n***\(taxBillsApproach!)"
         pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 13*50,totalBG: totalBG, Closing: textForReport as NSString, distance: 60.0)
         self.alert101(printItem: self.pdfDataTable, mailFunction: configuredMailComposeViewController6())
-    }
+        }
     
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     override func viewDidLoad() {
         
         if reportMode == false && taxBillsToHandle == false  {
-           let yourBackImage = UIImage(named: "home")
-            self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
-            self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-            self.navigationController?.navigationBar.topItem?.title = " "
+        let yourBackImage = UIImage(named: "home")
+        self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        self.navigationController?.navigationBar.topItem?.title = " "
         } else {
         let yourBackImage = UIImage(named: "backArrow")
         self.navigationController?.navigationBar.topItem?.title = employerFromMain
@@ -414,18 +393,14 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         if taxBillsToHandle == false {
         taxBillsApproach = "cancelled Invoices allocated to their issue date to meet magerial purposes."
         print (taxBillsToHandle)
-            //if biller.statusMemory == 0 {refresh(presser: 0)} else {
-                fetchHandler()
-            
-            //}
-            ; StatusChosen.isHidden = false} else {taxBillsApproach = "cancelled Invoices allocated to their cancelation date to meet tax purposes.";filterDecided = 7 ;monther(monthNumber: monthToHandle);
-                
+        fetchHandler()
+        ; StatusChosen.isHidden = false} else {taxBillsApproach = "cancelled Invoices allocated to their cancelation date to meet tax purposes.";filterDecided = 7 ;monther(monthNumber: monthToHandle);
+
         billsForTaxMonth();StatusChosen.isHidden = true;titleLbl = "\(monthMMM!)-\(yearToHandle)";self.title = titleLbl}
         print (billItems.count)
         billerConnect.reloadData()
-         
         }//view did appear end
-    
+
         func tableView(_ billerConnect: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
         }
@@ -442,10 +417,10 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         cell.cellBtnExt.layer.borderWidth = 0.5;
         cell.cellBtnExt.layer.borderColor =  redColor.cgColor
         cell.cellBtnExt.layer.cornerRadius =  10
-        
+
         if taxBillsToHandle == false || reportMode  == true {cell.l1.text = ("\(billItem.fBillEmployerName!)-\(billItem.fBillEvents!) ses. ") } else {
-            cell.l1.text = ("#\(billItem.fBill!) - \(billItem.fBillEmployerName!)")}
-            
+        cell.l1.text = ("#\(billItem.fBill!) - \(billItem.fBillEmployerName!)")}
+
         print ("fuf\(billItem.fBillTotalTotal!)" )
         print ("fuf2\(billItem.fBillTotalTotal!)" )
         if taxBillsToHandle == false || reportMode  == true {
@@ -453,11 +428,9 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         if StatusChoice == "Not Paid" {
         if  billItem.fBalance == nil || billItem.fBalance == "" {self.remainingBalance = (billItem.fBillTotalTotal!)} else {self.remainingBalance = billItem.fBalance!}
         cell.l3.text = self.remainingBalance}
-            if StatusChoice == "Not Paid" { cell.l3.textColor = redColor;cell.l4.textColor = redColor} else {cell.l3.textColor = blueColor;cell.l4.textColor = blueColor}
-            
+        if StatusChoice == "Not Paid" { cell.l3.textColor = redColor;cell.l4.textColor = redColor} else {cell.l3.textColor = blueColor;cell.l4.textColor = blueColor}
+
         } else{
-                
-       
         if billItem.fBillStatus == "Cancelled"{
         cell.cellBtnExt.layer.borderColor =  blueColor.cgColor
         let components3 = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
@@ -474,25 +447,23 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         }//end of cancelled
         else { cell.l3.text = billItem.fBillTotalTotal}
         }// end of else tax bil to handle
-            
-                cell.l4.text  = billItem.fBillCurrency!
-           
-            if taxBillsToHandle == false || reportMode  == true {cell.l6.text = "#\(billItem.fBill!) - \(mydateFormat10.string(from: mydateFormat5.date(from: billItem.fBillDate!)!))"} else {
-                if billItem.fBillStatus == "Cancelled" {cell.l6.text = "\(mydateFormat12.string(from: mydateFormat5.date(from: billItem.fBillDate!)!))- cancelled:\(mydateFormat12.string(from: mydateFormat5.date(from: billItem.fBillStatusDate!)!))"} else {cell.l6.text = "\(mydateFormat12.string(from: self.mydateFormat5.date(from: billItem.fBillDate!)!))" }}
 
-        print("fbillstatus\(billItem.fBillStatus!)")
-        
-            if billItem.fBillStatus! == "Billed" { cell.cellBtnExt.layer.borderColor =  redColor.cgColor;cell.approvalImage.image =  billDocument;cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approvalImage.alpha = 1}
-            if billItem.fBillStatus! == "Partially" { cell.cellBtnExt.layer.borderColor =  redColor.cgColor;cell.approvalImage.image = partially;cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approvalImage.alpha = 1}
-            if  billItem.fBillStatus!  == "Paid" { cell.cellBtnExt.layer.borderColor =  blueColor.cgColor; cell.approvalImage.image = paidImage;cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approvalImage.alpha = 1}
-            if billItem.fBillStatus! ==  "Cancelled" { cell.cellBtnExt.layer.borderColor =  blueColor.cgColor; cell.approvalImage.image = canceledImage;cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approvalImage.alpha = 1}
-        
+        cell.l4.text  = billItem.fBillCurrency!
+
+        if taxBillsToHandle == false || reportMode  == true {cell.l6.text = "#\(billItem.fBill!) - \(mydateFormat10.string(from: mydateFormat5.date(from: billItem.fBillDate!)!))"} else {
+        if billItem.fBillStatus == "Cancelled" {cell.l6.text = "\(mydateFormat12.string(from: mydateFormat5.date(from: billItem.fBillDate!)!))- cancelled:\(mydateFormat12.string(from: mydateFormat5.date(from: billItem.fBillStatusDate!)!))"} else {cell.l6.text = "\(mydateFormat12.string(from: self.mydateFormat5.date(from: billItem.fBillDate!)!))" }}
+
+        if billItem.fBillStatus! == "Billed" { cell.cellBtnExt.layer.borderColor =  redColor.cgColor;cell.approvalImage.image =  billDocument;cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approvalImage.alpha = 1}
+        if billItem.fBillStatus! == "Partially" { cell.cellBtnExt.layer.borderColor =  redColor.cgColor;cell.approvalImage.image = partially;cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approvalImage.alpha = 1}
+        if  billItem.fBillStatus!  == "Paid" { cell.cellBtnExt.layer.borderColor =  blueColor.cgColor; cell.approvalImage.image = paidImage;cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approvalImage.alpha = 1}
+        if billItem.fBillStatus! ==  "Cancelled" { cell.cellBtnExt.layer.borderColor =  blueColor.cgColor; cell.approvalImage.image = canceledImage;cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approvalImage.alpha = 1}
+
         if taxBillsToHandle == false || reportMode  == true{ cell.cellBtnExt.isEnabled = true} else {cell.cellBtnExt.isEnabled=false}
         cell.cellBtnExt.tag = indexPath.row
-        
+
         cell.cellBtnExt.removeTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
         cell.cellBtnExt.addTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)
-        
+
         return cell
         }
     
@@ -500,29 +471,21 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         }
     
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-            
-            
         if (segue.identifier == "billHandler")
         {
         var billRow : IndexPath = self.billerConnect.indexPathForSelectedRow!
         print (billRow.row)
-        print (BillArray)
-            
         let billManager = segue.destination as? billView
         biller.rowMemory = billRow.row
         biller.statusMemory = StatusChosen.selectedSegmentIndex
-        print (biller.rowMemory!)
-            
         print ("presparesegue")
         billManager?.billToHandle = "-"+String(BillArray[billRow.row])
         billManager?.employeeID = employeeID
         billManager?.rebillprocess = true
         billManager?.taxBillsToHandle = taxBillsToHandle
         if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
-                billManager?.contactForMail = "\(self.accountName) \(self.accountLastName)"
+        billManager?.contactForMail = "\(self.accountName) \(self.accountLastName)"
         }
-
         }//end of if (segue...
         
         if (segue.identifier == "presentReciept")
@@ -540,180 +503,169 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billManager?.undoTotal = String(Double(self.balance!)!)
         if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
         billManager?.contactForMail = "\(self.accountName) \(self.accountLastName)"}
-
         }//end of if (segue...
-            
         }//end of prepare
     
         
     
-            func billsForTaxMonth(){
-            billItems.removeAll()
-            BillArray.removeAll()
-            BillArrayStatus.removeAll()
-            filterItem.isEnabled = false
-                
-            self.billCounter = 0
-            self.taxCounter = 0
-            self.AmountCounter = 0
+        func billsForTaxMonth(){
+        billItems.removeAll()
+        BillArray.removeAll()
+        BillArrayStatus.removeAll()
+        filterItem.isEnabled = false
 
-            self.dbRefEmployees.child(employeeID).child("myBills").observe(.childAdded, with: { (snapshot) in
-            if let dictionary =  snapshot.value as? [String: AnyObject] {
-            print ("snappp\(snapshot.value!)")
-            let billItem = billStruct()
-            billItem.setValuesForKeys(dictionary)
+        self.billCounter = 0
+        self.taxCounter = 0
+        self.AmountCounter = 0
 
-           
-            let components = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
-            self.recordMonth = components.month!
-            self.recordYear = components.year!
-                
-                if billItem.fBillStatusDate != nil {
-                    print (billItem.fBillStatusDate!)
-                    
-             let components2 = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillStatusDate!)!)
-                self.recordMonthCancelled = components2.month!
-                self.recordYearCancelled = components2.year! }
-                
-                func inFilter(){
-                if billItem.fBillStatus != "Cancelled" {
-                    if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle {self.BillArray.append(billItem.fBill!);
-                self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += (Double(billItem.fBillTotalTotal!)!); self.taxCounter += Double(billItem.fBillTax!)! ;self.BillArrayStatus.append(billItem.fBillStatus!)}
-            }// end of != cancelled
-                else {
-                    
-                    
-                    if self.recordMonthCancelled == self.monthToHandle && self.recordYearCancelled == self.yearToHandle  {
-                        self.billItems.append(billItem); self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
-                        if self.recordMonthCancelled == self.recordMonth && self.recordYearCancelled == self.recordYear {
-                         //do nothing
-                        } else {//
-                        self.AmountCounter -= (Double(billItem.fBillTotalTotal!)!);
-                            self.taxCounter -= Double(billItem.fBillTax!)!//self.billCounter+=1;
-                        }} else if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle { if  self.recordMonth != self.recordMonthCancelled  || self.recordYear != self.recordYearCancelled{
-                        self.billItems.append(billItem); self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
-                        self.AmountCounter += (Double(billItem.fBillTotalTotal!)!);
-                        self.taxCounter += Double(billItem.fBillTax!)!}//self.billCounter+=1;
-                        }
-                
-                }//end of else
-                }//end of infilter
-               
-                switch self.filterDecided {
-                case 7: if self.monthToHandle == self.recordMonth && self.yearToHandle == self.recordYear  || self.monthToHandle == self.recordMonthCancelled && self.yearToHandle == self.recordYearCancelled {inFilter()}
+        self.dbRefEmployees.child(employeeID).child("myBills").observe(.childAdded, with: { (snapshot) in
+        if let dictionary =  snapshot.value as? [String: AnyObject] {
+        print ("snappp\(snapshot.value!)")
+        let billItem = billStruct()
+        billItem.setValuesForKeys(dictionary)
 
-                default: inFilter()
-                } //end of switch
-                
-                
-            if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
-                if self.reportMode != true {
-                    self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String (describing: self.AmountCounter))"}
-                else {
-                   
-                    self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
-                    self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
-                }
-                if ViewController.taxOption == "Yes"{ self.totalTax.text = "* Total tax invoices"} else { self.totalTax.text = "* Total invoice amounts"}
-                if self.reportMode == true{self.totalBills.text =  "Report: \(self.monthMMM!)-\(self.yearToHandle)" } else { self.totalBills.text =  "Tax report: \(self.monthMMM!)-\(self.yearToHandle)" }
-            self.billerConnect.reloadData()
-            }//end of if let dic
-            }
-                , withCancel: { (Error) in
-                    self.alert30()
-                    print("error from FB")}
-            )//end of dbref
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            if self.billItems.count != self.BillArray.count {
-            print ("Stop")
-            }
-            self.thinking.isHidden = true
-            self.thinking.stopAnimating()
-            self.StatusChosen.isEnabled = true
-            }
-            }//end of bills for tax month
+        let components = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillDate!)!)
+        self.recordMonth = components.month!
+        self.recordYear = components.year!
+
+        if billItem.fBillStatusDate != nil {
+        print (billItem.fBillStatusDate!)
+
+        let components2 = self.calendar.dateComponents([.year, .month], from: self.mydateFormat5.date(from: billItem.fBillStatusDate!)!)
+        self.recordMonthCancelled = components2.month!
+        self.recordYearCancelled = components2.year! }
+
+        func inFilter(){
+        if billItem.fBillStatus != "Cancelled" {
+        if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle {self.BillArray.append(billItem.fBill!);
+        self.billItems.append(billItem);self.billCounter+=1; self.AmountCounter += (Double(billItem.fBillTotalTotal!)!); self.taxCounter += Double(billItem.fBillTax!)! ;self.BillArrayStatus.append(billItem.fBillStatus!)}
+        }// end of != cancelled
+        else {
+
+
+        if self.recordMonthCancelled == self.monthToHandle && self.recordYearCancelled == self.yearToHandle  {
+        self.billItems.append(billItem); self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
+        if self.recordMonthCancelled == self.recordMonth && self.recordYearCancelled == self.recordYear {
+        //do nothing
+        } else {//
+        self.AmountCounter -= (Double(billItem.fBillTotalTotal!)!);
+        self.taxCounter -= Double(billItem.fBillTax!)!//self.billCounter+=1;
+        }} else if self.recordMonth == self.monthToHandle && self.recordYear == self.yearToHandle { if  self.recordMonth != self.recordMonthCancelled  || self.recordYear != self.recordYearCancelled{
+        self.billItems.append(billItem); self.BillArray.append(billItem.fBill!);self.BillArrayStatus.append(billItem.fBillStatus!)
+        self.AmountCounter += (Double(billItem.fBillTotalTotal!)!);
+        self.taxCounter += Double(billItem.fBillTax!)!}//self.billCounter+=1;
+        }
+
+        }//end of else
+        }//end of infilter
+
+        switch self.filterDecided {
+        case 7: if self.monthToHandle == self.recordMonth && self.yearToHandle == self.recordYear  || self.monthToHandle == self.recordMonthCancelled && self.yearToHandle == self.recordYearCancelled {inFilter()}
+
+        default: inFilter()
+        } //end of switch
+
+
+        if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
+        if self.reportMode != true {
+        self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String (describing: self.AmountCounter))"}
+        else {
+
+        self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
+        self.totalBills.text = "\(String(describing: self.billCounter)) Bills"
+        }
+        if ViewController.taxOption == "Yes"{ self.totalTax.text = "* Total tax invoices"} else { self.totalTax.text = "* Total invoice amounts"}
+        if self.reportMode == true{self.totalBills.text =  "Report: \(self.monthMMM!)-\(self.yearToHandle)" } else { self.totalBills.text =  "Tax report: \(self.monthMMM!)-\(self.yearToHandle)" }
+        self.billerConnect.reloadData()
+        }//end of if let dic
+        }
+        , withCancel: { (Error) in
+        self.alert30()
+        print("error from FB")}
+        )//end of dbref
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+        if self.billItems.count != self.BillArray.count {
+        print ("Stop")
+        }
+        self.thinking.isHidden = true
+        self.thinking.stopAnimating()
+        self.StatusChosen.isEnabled = true
+        }
+        }//end of bills for tax month
     
         @IBAction func StatusChosen(_ sender: Any) {
-        print("pressed")
-        //noSign.isHidden = true
-        //saveToFB() //check why is it here?
         self.thinking.isHidden = false
         self.thinking.startAnimating()
         StatusChosen.isEnabled = false
         switch StatusChosen.selectedSegmentIndex {
         case 0: StatusChoice = "Not Paid"
-         titleLbl = "Not Paid"
-            self.title = titleLbl
+        titleLbl = "Not Paid"
+        self.title = titleLbl
         biller.statusMemory = 0
 
         case 1: StatusChoice = "All"
-         titleLbl = "Invoices"
-            self.title = titleLbl
+        titleLbl = "Invoices"
+        self.title = titleLbl
         biller.statusMemory = 1
 
         default: break
         } //end of switch
-               fetchHandler() //fetchBills()
+        fetchHandler() //fetchBills()
         }
     
         // button on table clicked
         func  approvalClicked(sender:UIButton!) {
         self.StatusChosen.isEnabled = false
         buttonRow = sender.tag
-            
-            self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).observeSingleEvent(of: .value,with: {(snapshot) in
-                self.documentName = snapshot.childSnapshot(forPath: "fDocumentName").value! as? String
-                self.counterForpresent = snapshot.childSnapshot(forPath: "fBill").value! as? String
-                self.midCalc = snapshot.childSnapshot(forPath: "fBillTax").value! as? String
-                self.midCalc2 = snapshot.childSnapshot(forPath: "fBillTotalTotal").value! as? String
-                self.midCalc3 = snapshot.childSnapshot(forPath: "fBillSum").value! as? String
-                self.account = snapshot.childSnapshot(forPath: "fBillEmployerName").value! as? String
-                self.balance = snapshot.childSnapshot(forPath: "fBalance").value! as? String
-                //self.employerID = (snapshot.childSnapshot(forPath: "fBillEmployer").value! as? String)!
-               // self.recoveredreciept = snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String
 
-        
-                if self.BillArrayStatus[self.buttonRow] != "Cancelled"
-                { if self.BillArrayStatus[self.buttonRow] == "Billed"  || self.BillArrayStatus[self.buttonRow] == "Partially" {  self.statusTemp = "Paid";
-                    if self.balance == nil { self.paymentTitle.text = "Fully pay #\(self.BillArray[self.buttonRow]) (\(ViewController.fixedCurrency!)\(self.midCalc2!))"} else {
-                    self.paymentTitle.text = "Final balance #\(self.BillArray[self.buttonRow]) (\(ViewController.fixedCurrency!)\(self.balance!))"
-                    }
-                    self.partiallyPaymentTitle.text = "Partially pay: \(ViewController.fixedCurrency!)"
+        self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).observeSingleEvent(of: .value,with: {(snapshot) in
+        self.documentName = snapshot.childSnapshot(forPath: "fDocumentName").value! as? String
+        self.counterForpresent = snapshot.childSnapshot(forPath: "fBill").value! as? String
+        self.midCalc = snapshot.childSnapshot(forPath: "fBillTax").value! as? String
+        self.midCalc2 = snapshot.childSnapshot(forPath: "fBillTotalTotal").value! as? String
+        self.midCalc3 = snapshot.childSnapshot(forPath: "fBillSum").value! as? String
+        self.account = snapshot.childSnapshot(forPath: "fBillEmployerName").value! as? String
+        self.balance = snapshot.childSnapshot(forPath: "fBalance").value! as? String
+        //self.employerID = (snapshot.childSnapshot(forPath: "fBillEmployer").value! as? String)!
+        // self.recoveredreciept = snapshot.childSnapshot(forPath: "fBillRecieptMailSaver").value! as? String
 
-                    self.paymentView.isHidden = false
-                    self.fully = true
-                    self.fullyOptions()
-                    self.BillArrayStatus[self.buttonRow] = self.statusTemp
-            }//end of if billed
-            
-                else if self.BillArrayStatus[self.buttonRow] == "Paid" {self.alert78()
-            }//end of if paid
+        if self.BillArrayStatus[self.buttonRow] != "Cancelled"
+        { if self.BillArrayStatus[self.buttonRow] == "Billed"  || self.BillArrayStatus[self.buttonRow] == "Partially" {  self.statusTemp = "Paid";
+        if self.balance == nil { self.paymentTitle.text = "Fully pay #\(self.BillArray[self.buttonRow]) (\(ViewController.fixedCurrency!)\(self.midCalc2!))"} else {
+        self.paymentTitle.text = "Final balance #\(self.BillArray[self.buttonRow]) (\(ViewController.fixedCurrency!)\(self.balance!))"
+        }
+        self.partiallyPaymentTitle.text = "Partially pay: \(ViewController.fixedCurrency!)"
+        self.paymentView.isHidden = false
+        self.fully = true
+        self.fullyOptions()
+        self.BillArrayStatus[self.buttonRow] = self.statusTemp
+        }//end of if billed
 
+        else if self.BillArrayStatus[self.buttonRow] == "Paid" {self.alert78()
+        }//end of if paid
         }else {
-                    self.alert9()}// end of if cancelled
-        
-                 }
-                , withCancel: { (Error) in
-                    self.alert30()
-                    print("error from FB")}
-            )
+        self.alert9()}// end of if cancelled
+        }
+        , withCancel: { (Error) in
+        self.alert30()
+        print("error from FB")}
+        )
         if StatusChoice == "Not Paid"{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            self.StatusChosen.isEnabled = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+        self.StatusChosen.isEnabled = true
         }} else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            self.StatusChosen.isEnabled = true
-            }//end of fispatch
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+        self.StatusChosen.isEnabled = true
+        }//end of fispatch
         }//end of else
-    
+
         }//end button clicked
 
     
-    
-    
-    //func for mail
-    func  configuredMailComposeViewController6() -> MFMailComposeViewController {
+        //func for mail
+        func  configuredMailComposeViewController6() -> MFMailComposeViewController {
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
         mailComposerVC2.setSubject("Invoices report from PerSession App")
@@ -721,51 +673,41 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
         mailComposerVC2.addAttachmentData( pdfDataTable as Data, mimeType: "application/pdf", fileName: "Tax report")
         return mailComposerVC2
-    }//end of MFMailcomposer
+        }//end of MFMailcomposer
     
-    func showSendmailErrorAlert() {
+        func showSendmailErrorAlert() {
         let sendMailErorrAlert = UIAlertController(title:"Could Not Send Email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.",preferredStyle: .alert)
         sendMailErorrAlert.message = "error occured"
-        //seems that it does not work check!!!!
-    }
+        }
     
-    func mailComposeController(_ controller: MFMailComposeViewController,didFinishWith result: MFMailComposeResult, error: Error?) {
+        func mailComposeController(_ controller: MFMailComposeViewController,didFinishWith result: MFMailComposeResult, error: Error?) {
         switch result.rawValue {
         case MFMailComposeResult.cancelled.rawValue:
-            print("Mail cancelled")
-            controller.dismiss(animated: true, completion: nil)
-            
+        print("Mail cancelled")
+        controller.dismiss(animated: true, completion: nil)
         case MFMailComposeResult.saved.rawValue:
-            print("Mail saved3")
-            
-            controller.dismiss(animated: true, completion: nil)
-            
+        print("Mail saved3")
+        controller.dismiss(animated: true, completion: nil)
         case MFMailComposeResult.sent.rawValue:
-            print("Mail sent3")
-            
-            controller.dismiss(animated: true, completion: nil)
-            
-            
+        print("Mail sent3")
+        controller.dismiss(animated: true, completion: nil)
         case MFMailComposeResult.failed.rawValue:
-            print("Mail sent failure: %@", [error!.localizedDescription])
-            controller.dismiss(animated: true, completion: nil)
-            
+        print("Mail sent failure: %@", [error!.localizedDescription])
+        controller.dismiss(animated: true, completion: nil)
         default:
-            break
+        break
         }
-    }
+        }
 
-    func saveBase64StringToPDF(_ base64String: String) {
+        func saveBase64StringToPDF(_ base64String: String) {
         guard
-            var documentsURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last,
-            let convertedData = Data(base64Encoded: base64String)
-            else {
-                //handle error when getting documents URL
-                return
+        var documentsURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last,
+        let convertedData = Data(base64Encoded: base64String)
+        else {
+        //handle error when getting documents URL
+        return
         }
-    }
-    
-    
+        }
     
         func handleTap(sender: UITapGestureRecognizer? = nil) {
         filterMovement(delay: 0)    }
@@ -787,8 +729,6 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         isFilterHidden = !isFilterHidden
         }//end of issidemenuhidden
     
-
-    
         func refresh(presser:Int){
         StatusChosen.isMomentary = true
         segmentedPressed = presser
@@ -799,38 +739,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         StatusChosen.isMomentary = false
         }
     
-            func fetchBillInfo(){
-            self.dbRefEmployees.queryOrderedByKey().queryEqual(toValue: self.employeeID).observeSingleEvent(of: .childAdded, with: { (snapshot) in
-           
-            let counterForMail = (snapshot.childSnapshot(forPath: "fCounter").value as! String)
-            let taxSwitch = (snapshot.childSnapshot(forPath: "fSwitcher").value as! String)
-            //let taxation = (snapshot.childSnapshot(forPath: "fTaxPrecentage").value as! String)
-            if snapshot.childSnapshot(forPath: "fBillinfo").value as! String != nil {self.billInfo = "\(snapshot.childSnapshot(forPath: "fBillinfo").value as! String)"} else {self.billInfo = ""}
-            if snapshot.childSnapshot(forPath: "fTaxId").value as! String != nil {self.taxId = "Tax ID:\(snapshot.childSnapshot(forPath: "fTaxId").value as! String)"} else {self.taxId = ""}
-            self.address = (snapshot.childSnapshot(forPath: "fAddress").value as! String)
-            self.taxForBlock = "VAT"
             
-            if  taxSwitch == "Yes" {
-            self.taxationBlock = ("Total (without \(self.taxForBlock!)): \(ViewController.fixedCurrency!)\(self.midCalc3!)\r\n\(self.taxForBlock!): \(ViewController.fixedCurrency!)\(self.midCalc!)")
-            }//if taxswitch = yes
-            else {self.taxationBlock = ""}
-            if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
-            if self.fully == false { self.self.recieptPayment = self.midCalc2!} else {self.recieptPayment = self.partialPayment.text!}
-
-            self.documentName = "Reciept \(self.BillArray[self.buttonRow])-\(self.recieptCounter!)"; if self.paymentSys == "other" || self.paymentSys == ""{self.paymentBlock = ("Payment of \(ViewController.fixedCurrency!)\(self.recieptPayment!) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(self.refernceBlock) ")
-            }
-
-            if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
-            if self.paymentSys! == "other" || self.paymentSys == ""{// payment == other
-            self.paymentBlock = ("Payment of \(ViewController.fixedCurrency!)\(self.recieptPayment!) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))  \(self.refernceBlock!) ")
-            } else {self.paymentBlock = "Payment of \(ViewController.fixedCurrency!)\(self.recieptPayment!) made by \(self.paymentSys!) \(self.refernceBlock!) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))"
-            }
-        }
-            , withCancel: { (Error) in
-                self.alert30()
-                print("error from FB")}
-        )
-    }//end of billing
     
     func monther(monthNumber:Int)  {
     let fmt = DateFormatter()
