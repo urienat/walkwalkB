@@ -2269,6 +2269,7 @@
                         <outlet property="dog" destination="Jpb-a2-c4I" id="O4u-sI-4nU"/>
                         <outlet property="email" destination="Rnh-XI-hKH" id="xKi-X4-Las"/>
                         <outlet property="forgot" destination="NiB-Rc-LZj" id="YvM-Qd-aWF"/>
+                        <outlet property="loginBarImage" destination="HNh-Jn-nzq" id="Vsl-kn-aoL"/>
                         <outlet property="password" destination="Pog-dx-X7C" id="DPt-6s-xTU"/>
                         <outlet property="signIn" destination="NTs-3R-g9p" id="icG-yh-2Fe"/>
                         <outlet property="thinking" destination="AiQ-AU-mU3" id="XoA-hO-Av1"/>

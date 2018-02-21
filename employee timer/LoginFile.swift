@@ -102,6 +102,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     static var passwordForCreate = ""
     var cu = Locale.current.currencySymbol
 
+    @IBOutlet weak var loginBarImage: UIImageView!
     //regulaer login
     @IBOutlet weak var dog: UIImageView!
     @IBOutlet weak var email: UITextField!
@@ -254,6 +255,9 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         check.layer.borderWidth = 0.5;
         check.layer.borderColor =  blueColor.cgColor
         check.layer.cornerRadius =  10
+        
+        loginBarImage.clipsToBounds = true
+        loginBarImage.layer.cornerRadius = 15
         } ///end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////
    
         //keyboard hide
