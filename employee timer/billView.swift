@@ -22,7 +22,7 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 0.7)
     var grayColor = UIColor(red :235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1)
 
-   
+    let yourBackImage = UIImage(named: "backArrow")
     let nonVimage = UIImage(named: "emptyV")
     let paidImage = UIImage(named: "paid")
     let billedImage = UIImage(named: "locked")
@@ -114,7 +114,9 @@ class billView: UIViewController, MFMailComposeViewControllerDelegate,WKUIDelega
     override func viewDidLoad() {
     super.viewDidLoad()
         
-        
+        let yourBackImage = UIImage(named: "backArrow")
+        self.navigationController?.navigationBar.backIndicatorImage =  yourBackImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
         
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
         mydateFormat8.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
