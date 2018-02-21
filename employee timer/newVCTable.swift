@@ -189,12 +189,13 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     }
     
     func sendBill() {
+    toolbar1.isHidden = true
     thinking.startAnimating()
     billStarted = true
     print (duplicateChecked)
     if duplicateChecked == false {checkDuplicate()} else {
-    billSender.isEnabled = false
-    billPay.isEnabled = false
+        billSender.isEnabled = false
+        billPay.isEnabled = false
     thinking.startAnimating()
     myGroup.enter()
     refresh(presser: 1)        //// When your task completes
@@ -203,7 +204,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         if self.Employerrate == 0.0 {self.thinking.stopAnimating();self.alert80()}
         if self.appArray.count == 0 {
         self.thinking.stopAnimating()
-        self.alert27()
+        
         print("Queue3")
         self.billStarted = false
         }
@@ -212,11 +213,12 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     }//end of sendBill
     
     func billPayProcess(){
+    toolbar1.isHidden = true
     thinking.startAnimating()
     self.billPayStarted = true
     if duplicateChecked == false {checkDuplicate()} else {
-    billSender.isEnabled = false
-    billPay.isEnabled = false
+        billSender.isEnabled = false
+        billPay.isEnabled = false
     myGroupBillPay.enter()
     refresh(presser: 1)        //// When your task completes
     myGroupBillPay.notify(queue: DispatchQueue.main) {
@@ -226,7 +228,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     if self.Employerrate == 0.0 {self.thinking.stopAnimating();self.alert80()}
     if self.appArray.count == 0 {
     self.thinking.stopAnimating()
-    self.alert27()
+    
     }
         }//end of my group
     }//end of else
@@ -584,20 +586,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     
     }//end of billprocess
 
-    func alert27() {
-    DispatchQueue.main.asyncAfter(deadline: .now()){
-    self.billSender.isEnabled = false
-    self.billPay.isEnabled = false
-    }
-
-    let alertController27 = UIAlertController(title: ("Bill records") , message:" There is no 'Due' sessionsto bill. Please mark sessions that you would like to bill by touching the empty square of made sessions or create new ones." , preferredStyle: .alert)
-    let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-    self.refresh(presser: 0)
-    }
-    alertController27.addAction(OKAction)
-    self.present(alertController27, animated: true, completion: nil)
-    }//end of alert27
-
+    
     func alert12(){
     let alertController12 = UIAlertController(title: ("Change record status") , message: "You can not change status of records that were already billed.", preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in

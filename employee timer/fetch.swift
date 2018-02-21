@@ -135,7 +135,7 @@ import Foundation
         self.StatusChosen.isEnabled = true
         self.periodChosen.isEnabled = true
 
-        if self.billStarted != true   { self.thinking.stopAnimating()}
+            if self.billStarted != true   { self.thinking.stopAnimating()//}
 
         if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions";if  self.itemSum == 0{self.toolbar1.isHidden = true;self.noSign.isHidden = false}else{self.toolbar1.isHidden = false;self.noSign.isHidden = true}}
         else if self.eventCounter == 1 {self.toolbar1.isHidden = false;self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) Due session";self.noSign.isHidden = true}
@@ -149,6 +149,7 @@ import Foundation
 
         if ViewController.taxOption == "Yes" {self.taxIncluded.isHidden = false } else {self.taxIncluded.isHidden = true}
         if self.duplicateChecked == false {self.checkDuplicate()}
+            }// end bill started = true
         if self.billStarted == true {  self.myGroup.leave() }
         if self.billPayStarted == true  {self.myGroupBillPay.leave()}
         }
