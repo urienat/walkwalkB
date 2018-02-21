@@ -194,7 +194,7 @@ extension(biller){
         print (Double(self.balance!) as Double!)
         print (Double(self.partialPayment.text!))
         if self.fully == false {self.remainingBalance = "0.0"} else {self.remainingBalance = String(Double(self.balance!)! - Double(self.partialPayment.text!)!)}
-        if Double (self.remainingBalance!) != 0.0 {self.statusTemp = "Partially"}
+            if Double (self.remainingBalance!) != 0.0 {self.statusTemp = "Partially"} else {biller.rowMemory = nil}
 
         if  ViewController.professionControl! == "Tutor" && self.accountParnet != "" {self.contact = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
         self.contact = "\(self.accountName) \(self.accountLastName)"}
@@ -216,6 +216,7 @@ extension(biller){
         self.dbRefEmployers.child(self.employerID).updateChildValues(["fLast":"Last paid: \(self.mydateFormat10.string(from: Date()))" ], withCompletionBlock: { (error) in})
         self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([(self.employerID):Int((self.mydateFormat5.date(from: self.mydateFormat5.string(from: Date()))?.timeIntervalSince1970)!)])
 
+        
         self.referenceTxt.text = ""
         self.paymentReference = ""
         self.paymentSys = ""
