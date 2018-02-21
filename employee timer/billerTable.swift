@@ -74,6 +74,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
     var AmountCounter = 0.0
     var isFilterHidden = true
     var filterDecided :Int = 0
+    var billText = "Bills"
     
     //payment
     var recieptMailSaver : String?
@@ -792,7 +793,7 @@ alertController11.addAction(OkAction)
 self.present(alertController11, animated: true, completion: nil)
 }
 func alert12(){
-let alertController12 = UIAlertController(title: ("Partial Payment Alert") , message: "Partial payment is bigger than remaining balance.Please correct.", preferredStyle: .alert)
+let alertController12 = UIAlertController(title: ("Partial Payment Alert") , message: "Partial payment can not exceed remaining balance.Please correct.", preferredStyle: .alert)
 let OkAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
 
 //do nothing

@@ -102,8 +102,10 @@ extension(biller){
 
             self.thinking.isHidden = true
             self.thinking.stopAnimating()
-            if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
-            self.totalBills.text = "\(whenInvoices!)-\(String(describing: self.billCounter)) Bills"
+                if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true;if billItems.count == 1 {self.billText = "Bill"} else { self.billText = "Bills"}}
+          
+            
+            self.totalBills.text = "\(whenInvoices!)-\(String(describing: self.billCounter)) \(self.billText)"
             self.totalAmount.text = "\(ViewController.fixedCurrency!)\(String(describing: self.AmountCounter))"
             if ViewController.taxOption == "Yes"{ self.totalTax.text = "* Total included tax";self.totalBg.backgroundColor = self.blueColor} else { self.totalTax.text = "* Cancelled bills excluded";self.totalBg.backgroundColor = self.blueColor}
             if self.StatusChoice == "Not Paid" {self.totalTax.text = "* Balance only"; self.totalBg.backgroundColor = self.redColor}

@@ -46,8 +46,8 @@ extension(ViewController){
         bringEmployerData()
 
 
-        if filteredEmployerForList[indexPath.row].activeAccount != false {self.thinking2.stopAnimating(); preStartView();records.isEnabled = true}
-        else { chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating();alert670();records.isEnabled = false}
+            if filteredEmployerForList[indexPath.row].activeAccount != false {self.thinking2.stopAnimating(); preStartView();records.isEnabled = true;importSpesific.isEnabled = true}
+        else { chooseEmployer.isUserInteractionEnabled = true; self.thinking2.stopAnimating();alert670();records.isEnabled = false;importSpesific.isEnabled = false}
 
         chooseEmployer.isHidden = false
         }//end of did select
