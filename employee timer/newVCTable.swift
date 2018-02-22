@@ -34,12 +34,13 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     let nonVimage = UIImage(named: "blank")
     let paidImage = UIImage(named: "paid")
     let billIcon = UIImage(named: "bill")
-    let sandwatchImage = UIImage(named: "importBig")
+    let blackImport = UIImage(named: "blackImport")
     let pencilImage = UIImage(named: "pencilImage")
     let roundImageNormal = UIImage(named: "roundImageNormal")
     var seprator = "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
     var seprator2 = "⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶⎶"
-    
+    var seprator3 = "==============================="
+
     var contact:String?
     let myGroup = DispatchGroup()
     let myGroupBillPay = DispatchGroup()
@@ -142,8 +143,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         //paymentMethood.isEnabled = false
         switch paymentMethood.selectedSegmentIndex {
         case 0: paymentSys = "cash"; referenceTxt.isHidden = true
-        case 1: paymentSys = "wire"; referenceTxt.isHidden = false
-        case 2: paymentSys = "check"; referenceTxt.isHidden = false
+        case 1: paymentSys = "check"; referenceTxt.isHidden = false
+        case 2: paymentSys = "wire"; referenceTxt.isHidden = false
         case 3: paymentSys = "other"; referenceTxt.isHidden = false
         default: paymentSys = ""; referenceTxt.isHidden = true
         } //end of switch
@@ -351,7 +352,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         if ViewController.dateTimeFormat == "DateTime" { cell.l1.text = mydateFormat11.string(from: mydateFormat5.date(from: fInToDate)!)} else {cell.l1.text = mydateFormat10.string(from: mydateFormat5.date(from: fInToDate)!) } }
         else { cell.l1.text = "N/A"}
 
-        if record.fIndication3 == "📆" { cell.l8.image = sandwatchImage}
+        if record.fIndication3 == "📆" { cell.l8.image = blackImport}
         if record.fIndication3 == "✏️" { cell.l8.image = pencilImage}
         if record.fIndication3 == "↺" { cell.l8.image = roundImageNormal}
         if record.fIndication3 == "📄" {  cell.l8.image = star}
@@ -480,7 +481,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
 
         if self.paymentDate! == "" {self.paymentDate = self.mydateFormat5.string(from: Date());self.PaymentBlalnce = self.midCalc2} else { self.PaymentBlalnce = "0"}
 
-        self.taxationBlock = ("\(self.seprator)\r\n\(self.seprator)\r\nSubtotal: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n\(self.taxForBlock)(%\(self.taxation!)): \(ViewController.fixedCurrency!)\(self.midCalc)\r\nTotal (w/\(self.taxForBlock)): \(ViewController.fixedCurrency!)\(self.midCalc2)")
+        self.taxationBlock = ("\(self.seprator3)\r\nSubtotal: \(ViewController.fixedCurrency!)\(self.midCalc3)\r\n\(self.taxForBlock)(%\(self.taxation!)): \(ViewController.fixedCurrency!)\(self.midCalc)\r\nTotal (w/\(self.taxForBlock)): \(ViewController.fixedCurrency!)\(self.midCalc2)")
         } else {
 
         self.midCalc =  "0"

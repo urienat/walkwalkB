@@ -88,7 +88,7 @@ import Foundation
         self.appArray.append(appStatus!)
         self.tableConnect.reloadData()
 
-        if record.fIndication3 == "📄" {if self.firstTimeGeneral == true {self.csv2.append("There are general Items Included:\r\n");self.firstTimeGeneral = false };"\(self.csv2.append(record.fSpecialItem!))";
+        if record.fIndication3 == "📄" {if self.firstTimeGeneral == true {self.csv2.append("Following general items included:\r\n");self.firstTimeGeneral = false };"\(self.csv2.append(record.fSpecialItem!))";
 
         "\(self.csv2.append("......................................."))" ;self.csv2.append(ViewController.fixedCurrency!); self.csv2.append(record.fSpecialAmount!);self.csv2.append("\r\n")}
         else {if self.firstTime == true {self.csv2.append("\r\nThese are the sessions included:\r\n");self.firstTime = false}
