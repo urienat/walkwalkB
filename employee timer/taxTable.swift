@@ -272,6 +272,8 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         self.AmountCounter = 0
         
         self.dbRefEmployees.child(employeeID).child("myBills").observe(.childAdded, with: { (snapshot) in
+            print (snapshot.value as? [String: AnyObject])
+            
             if let dictionary =  snapshot.value as? [String: AnyObject] {
             let billItem = billStruct()
             billItem.setValuesForKeys(dictionary)
@@ -364,7 +366,15 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
             print("error from FB")})//end of dbref
 
 
-            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                if self.billItems.count != self.BillArray.count {
+                    print ("Stop")
+                }
+                
+                if self.billItems.count == 0 {self.noSign.isHidden = false;self.taxInfo.isHidden = true} else {self.noSign.isHidden = true;self.taxInfo.isHidden = false}
+                self.thinking.isHidden = true
+                self.thinking.stopAnimating()
+            }
 
             }//end of fetch
     

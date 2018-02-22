@@ -32,6 +32,8 @@ import Foundation
         self.dbRefEmployers.child(self.employerID).child("fEmployerRecords").queryOrderedByValue().observeSingleEvent(of: .value, with: { (snapshot) in
         print("id of employers34\(String(describing: snapshot.value))")
         if snapshot.value as? [String : AnyObject] == nil {
+        print ("nillllll!!!")
+            self.final()// check if not disturbing
         }else{
         self.idOfEmployers   = snapshot.value as! [String : AnyObject]
         func sortFunc   (_ s1: (key: String, value: AnyObject), _ s2: (key: String, value: AnyObject)) -> Bool {
@@ -137,7 +139,7 @@ import Foundation
             
         print (billStarted)
 
-            if self.billStarted == false && self.billPayStarted == false   { self.thinking.stopAnimating()//}
+        if self.billStarted == false && self.billPayStarted == false   { self.thinking.stopAnimating()//}
 
         if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions";if  self.itemSum == 0{self.toolbar1.isHidden = true;self.noSign.isHidden = false}else{self.toolbar1.isHidden = false;self.noSign.isHidden = true}}
         else if self.eventCounter == 1 {self.toolbar1.isHidden = false;self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) Due session";self.noSign.isHidden = true}

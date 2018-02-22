@@ -31,10 +31,17 @@ extension(biller){
             self.dbRefEmployees.child(employeeID).child("myBills").observeSingleEvent(of:.value, with: { (snapshot) in
                 print ("count:\(snapshot.childrenCount)")
                 billsNumber = Int(snapshot.childrenCount)
-                
+                if billsNumber == 0 {
+                    print ("finallll!!")
+                    
+                    self.final()}
             
             self.dbRefEmployees.child(self.employeeID).child("myBills").observe(.childAdded, with: { (snapshot) in
-
+                if snapshot.value as? [String: AnyObject] == nil {
+                        print ("finallll!!")
+                        
+                        self.final()}
+                
             if let dictionary =  snapshot.value as? [String: AnyObject] {
             print ("snappp\(snapshot.value!)")
             let billItem = billStruct()
@@ -76,6 +83,7 @@ extension(biller){
 
             }//end of if let
             
+                
             self.a += 1
             print ("a before\(self.a)")
                 if billsNumber == self.a{ completion()}
@@ -102,7 +110,7 @@ extension(biller){
 
             self.thinking.isHidden = true
             self.thinking.stopAnimating()
-                if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true;if billItems.count == 1 {self.billText = "Bill"} else { self.billText = "Bills"}}
+            if self.billItems.count == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true;if billItems.count == 1 {self.billText = "Bill"} else { self.billText = "Bills"}}
           
             
             self.totalBills.text = "\(whenInvoices!)-\(String(describing: self.billCounter)) \(self.billText)"
