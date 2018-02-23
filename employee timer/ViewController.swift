@@ -610,8 +610,8 @@
         func alert47(){
             print ("47")
             
-        let alertController47 = UIAlertController(title: ("Tax") , message: "There are no tax defintions in your 'Setting'. If you pay VAT/Sales-Tax/GST please Define it? ", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "Ok - I would defint it now", style: .default) { (UIAlertAction) in
+        let alertController47 = UIAlertController(title: ("Tax") , message: "There are no tax defintions in your 'Setting'. If you pay VAT/Sales-Tax/GST please set it? ", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "Ok - I would set it now", style: .default) { (UIAlertAction) in
         self.profileClicked()
         }
         let notPayAction = UIAlertAction(title: "I don't pay any of these taxes", style: .default) { (UIAlertAction) in

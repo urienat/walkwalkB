@@ -3067,7 +3067,7 @@
                                     <constraint firstAttribute="bottom" secondItem="lKv-hS-ZUD" secondAttribute="bottom" constant="4" id="r1P-mM-MzH"/>
                                 </constraints>
                             </view>
-                            <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noSign" translatesAutoresizingMaskIntoConstraints="NO" id="cvq-V7-JIv">
+                            <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noSign" translatesAutoresizingMaskIntoConstraints="NO" id="cvq-V7-JIv">
                                 <rect key="frame" x="100" y="224" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="3f5-W1-2A1"/>

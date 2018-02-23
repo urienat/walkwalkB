@@ -619,6 +619,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         func  approvalClicked(sender:UIButton!) {
         self.StatusChosen.isEnabled = false
         buttonRow = sender.tag
+        biller.rowMemory = sender.tag/// added to make button choice select
+        showRow()
 
         self.dbRefEmployees.child(employeeID).child("myBills").child(String("-"+BillArray[buttonRow])).observeSingleEvent(of: .value,with: {(snapshot) in
         self.documentName = snapshot.childSnapshot(forPath: "fDocumentName").value! as? String
