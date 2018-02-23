@@ -475,7 +475,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.midCalc =  String (describing: self.stam!)
         self.midCalc3 =  String(describing: self.stam3!)
         print (self.midCalc)
-        self.taxForBlock = self.taxName!
+        if self.taxName! == "" {self.taxForBlock = "Tax"} else {self.taxForBlock = self.taxName!}
         print (self.midCalc3)
         self.midCalc2 =  String(self.stam3! + self.stam!)
 

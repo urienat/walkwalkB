@@ -147,7 +147,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     @IBOutlet weak var taxSwitch: UISwitch!
     @IBAction func taxSwitch(_ sender: Any) {
-    if self.taxSwitchTemp == "No" {taxCalac.isHidden = true; self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true;taxNames.isHidden = true ;signer.isHidden = true;taxSwitchTemp = "Yes";taxSwitcherUpdate = "No";taxPrecentageUpdate = "0";precentage.text = taxPrecentageUpdate; taxIdUpdate = ""; taxId.text = taxIdUpdate
+        if self.taxSwitchTemp == "No" {taxCalac.isHidden = true; self.taxSwitch.setOn(false, animated: true);self.precentage.isHidden = true;taxNames.isHidden = true ;signer.isHidden = true;taxSwitchTemp = "Yes";taxSwitcherUpdate = "No";taxPrecentageUpdate = "0";precentage.text = taxPrecentageUpdate; taxIdUpdate = ""; taxId.text = taxIdUpdate;taxNameUpdate = ""; self.taxNames.selectedSegmentIndex = -1
     } else {
             self.taxSwitch.setOn(true, animated: true);taxCalac.isHidden = false;self.precentage.isHidden = false;taxNames.isHidden = false; signer.isHidden = false;taxSwitchTemp = "No";taxSwitcherUpdate = "Yes";alert17();if self.taxCalacUpdate == "Over"{self.taxCalac.selectedSegmentIndex = 1} else {self.taxCalac.selectedSegmentIndex = 0}}
         self.finChanged = true
