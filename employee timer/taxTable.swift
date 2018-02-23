@@ -354,6 +354,9 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
             self.totalTax.text = "Tax: \(ViewController.fixedCurrency!)\(String (describing: self.taxCounter.roundTo(places: 2)))"
             self.totalBills.text = "w/o Tax: \(String(self.AmountCounter.roundTo(places: 2) - self.taxCounter.roundTo(places: 2)))"
                 
+                print (self.AmountCounter)
+                
+                
                 if self.AmountCounter == 0 {self.noSign.isHidden = false} else {self.noSign.isHidden = true}
                 self.thinking.isHidden = true
                 self.thinking.stopAnimating()
@@ -371,7 +374,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
                     print ("Stop")
                 }
                 
-                if self.billItems.count == 0 {self.noSign.isHidden = false;self.taxInfo.isHidden = true} else {self.noSign.isHidden = true;self.taxInfo.isHidden = false}
+                if self.AmountCounter == 0 {self.noSign.isHidden = false;self.taxInfo.isHidden = true} else {self.noSign.isHidden = true;self.taxInfo.isHidden = false}
                 self.thinking.isHidden = true
                 self.thinking.stopAnimating()
             }
