@@ -109,9 +109,9 @@
         print ("add")
         arrow.isHidden = true
         employerToS = "Add Account"
-        // if employerIdArray.count > 2 {checkSubs()} else {
+        if employerIdArray.count > 4 {checkSubs()} else {
         accountClicked()
-        //}
+        }
         }//end of addaccount
         @IBOutlet weak var special: UIButton!
         @IBAction func special(_ sender: Any) {
@@ -348,7 +348,7 @@
 
         //check subscription
         func checkSubs(){
-        /*
+        
         RebeloperStore.shared.verifyRenewablePurchase(.autoRenewableSubscription1) { (result, resultString) in
         print( result)
         if result == false {print ("no subscription"); self.alert83()
@@ -357,7 +357,7 @@
         //do nothing
         } //end of else  meaning there is subscription
         }//end of subscription result check
-        */
+        
         }//end of func
 
         //Check if user does exists
