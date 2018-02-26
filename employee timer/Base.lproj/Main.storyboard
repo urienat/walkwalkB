@@ -483,20 +483,6 @@
                                     <navigationItem title="Subscription" id="kqD-bm-lpO"/>
                                 </items>
                             </navigationBar>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ils-2a-qKn" userLabel="Bark2">
-                                <rect key="frame" x="64.5" y="120" width="191" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="Mzy-zb-E3x"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="gvl-qk-GA5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="21"/>
-                                <state key="normal" title="&lt;&lt; Bark annualy &gt;&gt;">
-                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="barkNew:" destination="fcy-Tw-2om" eventType="touchUpInside" id="wTT-cT-c2w"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQz-Hs-fNV" userLabel="woof">
                                 <rect key="frame" x="35.5" y="74" width="249" height="30"/>
                                 <constraints>
@@ -524,16 +510,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="Lt1-Eo-UCk"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="mI0-eB-a9z"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.12558225109999999" green="0.58808092950000002" blue="0.095813386410000007" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ml5-Iv-mbD" userLabel="barkLbl2">
-                                <rect key="frame" x="85" y="90" width="150" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="1za-DE-ffk"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="CGy-Zj-tP7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.12558225109999999" green="0.58808092950000002" blue="0.095813386410000007" alpha="1" colorSpace="calibratedRGB"/>
@@ -568,7 +544,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="230" id="b0v-7S-y7N"/>
                                 </constraints>
-                                <string key="text">After 2 months of free trial, monthly subscription with full and ongoing access to all features, so you can try before you buy. A subscription costs $2.99 per month. Payment will be charged to your iTunes Account at confirmation of purchase and after the 2 months free trial.  Unused portion of free trial, will be forfeited when the user purchases a subscription. The subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Your account will be charged for renewal within 24-hours prior to the end of the current 1 month period. You can turn off auto-renew at any time from your iTunes account settings. Cancellation of the current active subscription period is not allowed. Find our privacy policy and Terms &amp; Conditions, at the following links: </string>
+                                <mutableString key="text">After month of free trial, monthly subscription with full and ongoing access to all features, so you can try before you buy. A subscription costs $4.99 per month. Payment will be charged to your iTunes Account at confirmation of purchase and after the month of free trial.  Unused portion of free trial, will be forfeited when the user purchases a subscription. The subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Your account will be charged for renewal within 24-hours prior to the end of the current 1 month period. You can turn off auto-renew at any time from your iTunes account settings. Cancellation of the current active subscription period is not allowed. Find our privacy policy and Terms &amp; Conditions, at the following links: </mutableString>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -604,11 +580,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Ml5-Iv-mbD" firstAttribute="top" secondItem="xJI-kw-XIv" secondAttribute="bottom" constant="40" id="1s0-ie-R3H"/>
-                            <constraint firstItem="Ils-2a-qKn" firstAttribute="top" secondItem="xJI-kw-XIv" secondAttribute="bottom" constant="70" id="8lC-Ab-cKo"/>
                             <constraint firstItem="h1y-h7-toK" firstAttribute="centerY" secondItem="yQz-Hs-fNV" secondAttribute="centerY" id="Ac1-vm-Lki"/>
                             <constraint firstItem="yQz-Hs-fNV" firstAttribute="top" secondItem="xJI-kw-XIv" secondAttribute="bottom" constant="24" id="Btt-Gb-Ia8"/>
-                            <constraint firstItem="Ils-2a-qKn" firstAttribute="centerX" secondItem="V25-s4-mQy" secondAttribute="centerX" id="ELY-r4-iTS"/>
                             <constraint firstItem="zve-AF-n09" firstAttribute="centerX" secondItem="V25-s4-mQy" secondAttribute="centerX" id="Eb3-8y-nwX"/>
                             <constraint firstItem="bXQ-7A-HsX" firstAttribute="top" secondItem="fZi-ek-Reb" secondAttribute="bottom" id="F8P-il-ICg"/>
                             <constraint firstItem="gF4-tF-i12" firstAttribute="top" secondItem="zve-AF-n09" secondAttribute="bottom" constant="5" id="F9H-sX-yup"/>
@@ -620,7 +593,6 @@
                             <constraint firstItem="1Ru-Qy-YhC" firstAttribute="top" secondItem="gF4-tF-i12" secondAttribute="bottom" id="SX8-kS-oCa"/>
                             <constraint firstItem="vsj-Dg-aLI" firstAttribute="centerY" secondItem="1Ru-Qy-YhC" secondAttribute="centerY" id="VBx-B8-auo"/>
                             <constraint firstItem="F1J-Og-Wpy" firstAttribute="trailing" secondItem="V25-s4-mQy" secondAttribute="trailingMargin" id="auW-Tx-JY3"/>
-                            <constraint firstItem="Ml5-Iv-mbD" firstAttribute="centerX" secondItem="V25-s4-mQy" secondAttribute="centerX" id="dM2-xY-ggh"/>
                             <constraint firstItem="h1y-h7-toK" firstAttribute="leading" secondItem="V25-s4-mQy" secondAttribute="leadingMargin" constant="8" id="eWa-ln-fnL"/>
                             <constraint firstItem="xJI-kw-XIv" firstAttribute="top" secondItem="V25-s4-mQy" secondAttribute="top" id="g4c-IN-Vgf"/>
                             <constraint firstItem="yQz-Hs-fNV" firstAttribute="centerX" secondItem="V25-s4-mQy" secondAttribute="centerX" id="gur-Ux-SRe"/>
@@ -633,8 +605,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="barkNew" destination="Ils-2a-qKn" id="Dqq-Xj-24t"/>
-                        <outlet property="barkNewLbl" destination="Ml5-Iv-mbD" id="BzR-pK-ocP"/>
                         <outlet property="thinking" destination="h1y-h7-toK" id="94I-MZ-VuS"/>
                         <outlet property="woofNew" destination="yQz-Hs-fNV" id="rh3-2f-rbL"/>
                         <outlet property="woofNewLbl" destination="zve-AF-n09" id="6Np-25-6mt"/>

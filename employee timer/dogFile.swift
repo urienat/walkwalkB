@@ -248,8 +248,8 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             MyImageCache.sharedCache.setObject(self.pDogImage.image as AnyObject, forKey: self.employerID as AnyObject)
             
             self.dbRefEmployers.child(self.employerID).child("myEmployees").child(self.employeeID).updateChildValues(["fEmployerRate": Double( self.pRate.text!)!])//add employer rate per employee
-            
-            if self.activeEmployerSwitch == false {  self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([self.employerID:4000000000000])}
+            let niner:UInt64 = 9999999999999
+            if self.activeEmployerSwitch == false {  self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([self.employerID:niner])}
             else {self.dbRefEmployees.child(self.employeeID).child("myEmployers").updateChildValues([self.employerID:-1000])}
         
         self.navigationController!.popViewController(animated: true)

@@ -20,20 +20,7 @@ class subs: UIViewController {
 
 
     @IBOutlet weak var thinking: UIActivityIndicatorView!
-    @IBAction func barkNew(_ sender: Any) {
-        barkNew.isEnabled = false
-        barkNew.alpha = 0.5
-       // RebeloperStore.shared.purchaseRenewable(.autoRenewableSubscription2)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-            
-            self.barkNew.isEnabled = true
-            self.barkNew.alpha = 1
-            
-        }
-
-        
-    }
+    
 
 
     
@@ -45,11 +32,9 @@ class subs: UIViewController {
         self.present((storyboard?.instantiateViewController(withIdentifier: "loginScreen"))!, animated: true, completion: nil)
     }
     
-    @IBOutlet weak var barkNew: UIButton!
     
     @IBOutlet weak var woofNew: UIButton!
     
-    @IBOutlet weak var barkNewLbl: UILabel!
     @IBAction func woofNew(_ sender: Any) {
         woofNew.isEnabled = false
         woofNew.alpha = 0.5
@@ -69,14 +54,14 @@ class subs: UIViewController {
     
     @IBOutlet weak var woofNewLbl: UILabel!
     @IBAction func privacy(_ sender: Any) {
-        UIApplication.shared.open(NSURL(string:"http://www.homeployer.com/privacy")! as URL, options: [:], completionHandler: nil)
+        UIApplication.shared.open(NSURL(string:"https://www.persessionapp.com/privacy-statement")! as URL, options: [:], completionHandler: nil)
     }
     
     
     
     
     @IBAction func terms(_ sender: Any) {
-         UIApplication.shared.open(NSURL(string:"http://www.homeployer.com/terms-of-use")! as URL, options: [:], completionHandler: nil)
+         UIApplication.shared.open(NSURL(string:"https://www.persessionapp.com/terms-of-use")! as URL, options: [:], completionHandler: nil)
     }
     
     ///////////////////////////////////////////////////////

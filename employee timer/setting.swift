@@ -171,25 +171,8 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBAction func help(_ sender: Any) {
     alert4()
     }
-    @IBOutlet weak var bark: UIButton!
-    @IBAction func bark(_ sender: Any) {
-        bark.isEnabled = false
-        bark.alpha = 0.5
-        RebeloperStore.shared.purchaseRenewable(.autoRenewableSubscription1)
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-        self.bark.isEnabled = true
-        self.bark.alpha = 1
-    }
-    }
-    @IBOutlet weak var bark2: UIButton!
-    @IBAction func bark2(_ sender: Any) {
-        bark2.isEnabled = false
-        bark2.alpha = 0.5
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-            self.bark2.isEnabled = true
-            self.bark2.alpha = 1
-    }
-    }
+    
+    
    
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
