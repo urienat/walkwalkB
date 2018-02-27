@@ -40,7 +40,7 @@ class subs: UIViewController {
         woofNew.alpha = 0.5
         RebeloperStore.shared.purchaseRenewable(.autoRenewableSubscription1)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
             
             self.woofNew.isEnabled = true
             self.woofNew.alpha = 1
@@ -104,7 +104,7 @@ class subs: UIViewController {
         RebeloperStore.shared.verifyRenewablePurchase(.autoRenewableSubscription1) { (result, resultString) in
             
             self.woofNewLbl.text = "\(resultString)"
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
                 self.thinking.stopAnimating()
                 self.thinking.isHidden = true
             }

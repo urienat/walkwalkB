@@ -30,11 +30,7 @@ import KeychainAccess
 
 
 let AppBundleId = "HomePloyer.perSession"// Bundle.main.bundleIdentifier!
-
 let mydateFormat = DateFormatter()
-
-
-
 
 let iAPStatusChanged = "iAPStatusChanged"
 let virtualPurchaseStatusChanged = "virtualPurchaseStatusChanged"
@@ -70,18 +66,18 @@ extension UIApplication {
   }
 }
 
-class RebeloperStore  {
+class RebeloperStore: UIViewController {
     
 
   static let shared = RebeloperStore()
    
  
     
-    private init() {} //This prevents others from using the default '()' initializer for this class.
- 
+    ///private init() {} //This prevents others from using the default '()' initializer for this class.
+ ///comented this to add UIViewcontroller
+    
     
   enum InfoType : String {
-    
     case title = "title"
     case description = "description"
     case price = "price"
@@ -119,17 +115,6 @@ class RebeloperStore  {
       removeRebeloperStoreKeychainAccount()
     }
     
-    // non-renewable purchases
-    var g = 0
-    repeat {
-      
-      if getRebeloperStoreKeychainAccountValue(NonRenewablePurchases[g].rawValue) == KeychainValue.noValue.rawValue {
-        print("Key '\(NonRenewablePurchases[g].rawValue)' does not exist or is 'nil'. Setting it up now.")
-        setRebeloperStoreKeychainAccount(KeychainValue.notPurchased.rawValue, key: NonRenewablePurchases[g].rawValue)
-      }
-      
-      g = g + 1
-    } while g < NonRenewablePurchases.count
     
     // renewable purchases
     var h = 0
@@ -144,43 +129,7 @@ class RebeloperStore  {
       h = h + 1
     } while h < RenewablePurchases.count
     
-    // regular purchases
-    var i = 0
-    repeat {
-      
-      if getRebeloperStoreKeychainAccountValue(RegularPurchases[i].rawValue) == KeychainValue.noValue.rawValue {
-        print("Key '\(RegularPurchases[i].rawValue)' does not exist or is 'nil'. Setting it up now.")
-        setRebeloperStoreKeychainAccount(KeychainValue.notPurchased.rawValue, key: RegularPurchases[i].rawValue)
-      }
-      
-      i = i + 1
-    } while i < RegularPurchases.count
     
-    // virtual purchases
-    var j = 0
-    repeat {
-      
-      if getRebeloperStoreKeychainAccountValue(VirtualPurchases[j].rawValue) == KeychainValue.noValue.rawValue {
-        print("Key '\(VirtualPurchases[j].rawValue)' does not exist or is 'nil'. Setting it up now.")
-        setRebeloperStoreKeychainAccount(VirtualPurchasesAmountToGiveOnFirstLaunch[j], key: VirtualPurchases[j].rawValue)
-      }
-      
-      j = j + 1
-    } while j < VirtualPurchases.count
-    
-    // virtual currencies
-    var k = 0
-    repeat {
-      
-      if getRebeloperStoreKeychainAccountValue(VirtualCurrencies[k].rawValue) == KeychainValue.noValue.rawValue {
-        print("Key '\(VirtualCurrencies[k].rawValue)' does not exist or is 'nil'. Setting it up now.")
-        setRebeloperStoreKeychainAccount(VirtualCurrenciesAmountToGiveOnFirstLaunch[k], key: VirtualCurrencies[k].rawValue)
-      }
-      
-      k = k + 1
-    } while k < VirtualCurrencies.count
-    
-  }
   
   func logRebeloperStoreKeychainAccount() {
     print("-------- Logging Rebeloper Store Keychain Account --------")
@@ -550,14 +499,7 @@ class RebeloperStore  {
     NetworkActivityIndicatorManager.networkOperationStarted()
     SwiftyStoreKit.purchaseProduct(AppBundleId + "." +
     purchase.rawValue) { result in
-        print( purchase.rawValue)
-        
-        print(AppBundleId)
-
-        print(AppBundleId + "." +
-            purchase.rawValue)
-        
-      NetworkActivityIndicatorManager.networkOperationFinished()
+    NetworkActivityIndicatorManager.networkOperationFinished()
       
       //self.showAlert(self.alertForPurchaseResult(result))
       self.alertForPurchaseResult(result)
@@ -946,19 +888,16 @@ class RebeloperStore  {
     
   }
   
-  func alertForPurchaseResult(_ result: SwiftyStoreKit.PurchaseResult) /*-> UIAlertController*/ {
+    func alertForPurchaseResult(_ result: SwiftyStoreKit.PurchaseResult) /*-> UIAlertController*/ {
     
     switch result {
     case .success(let productId):
       print("Purchase Success: \(productId)")
       saveRealPurchaseIntoRebeloperStoreKeychain(productId)
       NotificationCenter.default.post(name: NSNotification.Name(rawValue: iAPStatusChanged), object: nil)
-      
-            
-
-        
     //self.showAlert(alertWithTitle("Thank You", message: "Purchase completed"))
-
+         self.navigationController!.popViewController(animated: true)
+      
     case .error(let error):
       print("Purchase Failed: \(error)")
       

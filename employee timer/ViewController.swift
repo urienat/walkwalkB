@@ -357,7 +357,7 @@
         if result == false {print ("no subscription"); self.alert83()
         }else {
         self.thinking2.stopAnimating()
-        //do nothing
+        self.accountClicked()
         } //end of else  meaning there is subscription
         }//end of subscription result check
         
