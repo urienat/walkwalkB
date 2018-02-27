@@ -51,8 +51,8 @@
         updateUI()
 
 
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(iAPStatusChanged), object: nil, queue:OperationQueue.main) { (Notification) in
-        self.backToMain()        }
+        //NotificationCenter.default.addObserver(forName: NSNotification.Name(iAPStatusChanged), object: nil, queue:OperationQueue.main) { (Notification) in
+       // self.backToMain()        }
 
 
         }//end of viewdid ////////////////////////////////////////
