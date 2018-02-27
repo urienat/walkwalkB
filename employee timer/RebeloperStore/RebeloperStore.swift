@@ -491,8 +491,8 @@ mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy",
     else if results.restoredProductIds.count > 0 {
       print("Restore Success: \(results.restoredProductIds)")
       
-      for i in 0 ... results.restoredProductIds.count - 1 {
-      }
+    ///  for i in 0 ... results.restoredProductIds.count - 1 {
+   ///   }
       
       NotificationCenter.default.post(name: NSNotification.Name(rawValue: iAPStatusChanged), object: nil)
       return alertWithTitle("Purchases Restored", message: "All purchases have been restored")

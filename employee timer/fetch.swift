@@ -90,15 +90,15 @@ import Foundation
         self.appArray.append(appStatus!)
         self.tableConnect.reloadData()
 
-        if record.fIndication3 == "📄" {if self.firstTimeGeneral == true {self.csv2.append("Following general items included:\r\n");self.firstTimeGeneral = false };"\(self.csv2.append(record.fSpecialItem!))";
+        if record.fIndication3 == "📄" {if self.firstTimeGeneral == true {self.csv2.append("Following general items included:\r\n");self.firstTimeGeneral = false };self.csv2.append("\(record.fSpecialItem!)");
 
-        "\(self.csv2.append("......................................."))" ;self.csv2.append(ViewController.fixedCurrency!); self.csv2.append(record.fSpecialAmount!);self.csv2.append("\r\n")}
+        self.csv2.append(".......................................");self.csv2.append(ViewController.fixedCurrency!); self.csv2.append(record.fSpecialAmount!);self.csv2.append("\r\n")}
         else {if self.firstTime == true {self.csv2.append("\r\nThese are the sessions included:\r\n");self.firstTime = false}
 
-        if ViewController.dateTimeFormat == "DateTime" {print (record.fIn!);"\(self.csv2.append( self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";
+        if ViewController.dateTimeFormat == "DateTime" {print (record.fIn!);self.csv2.append("\(self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!))");
         self.csv2.append("\r\n")
         }
-        else {"\(self.csv2.append( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!) ))";self.csv2.append("\r\n") }
+        else {self.csv2.append("\( self.mydateFormat10.string(from: self.mydateFormat5.date(from: record.fIn!)!))");self.csv2.append("\r\n") }
         }//end of else
 
         }// end of cases func

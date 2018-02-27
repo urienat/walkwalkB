@@ -135,7 +135,6 @@ class datePicker2: UIViewController {
     record.setValuesForKeys(dictionary)
     print (dictionary)
         
-        print (self.sessionMode)
     
         if record.fSpecialAmount != nil {self.sessionMode = false } else {self.sessionMode = true}
         if self.sessionMode == false {

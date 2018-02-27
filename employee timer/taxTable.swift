@@ -272,7 +272,6 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
         self.AmountCounter = 0
         
         self.dbRefEmployees.child(employeeID).child("myBills").observe(.childAdded, with: { (snapshot) in
-            print (snapshot.value as? [String: AnyObject])
             
             if let dictionary =  snapshot.value as? [String: AnyObject] {
             let billItem = billStruct()
