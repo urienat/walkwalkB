@@ -161,6 +161,8 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     var billInfoUpdate = ""
     @IBOutlet weak var subscriptionLbl: UILabel!
     @IBOutlet weak var subscriptionBtn: UIButton!
+    
+    
     @IBAction func takePhoto(_ sender: Any) {
         imagePicker2 = UIImagePickerController()
         imagePicker2.delegate = self

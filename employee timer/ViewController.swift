@@ -348,13 +348,15 @@
 
         //check subscription
         func checkSubs(){
-        
+        thinking2.startAnimating()
+        print("checked")
+            
         RebeloperStore.shared.verifyRenewablePurchase(.autoRenewableSubscription1) { (result, resultString) in
         print( result)
             
         if result == false {print ("no subscription"); self.alert83()
-        }
-        else {
+        }else {
+        self.thinking2.stopAnimating()
         //do nothing
         } //end of else  meaning there is subscription
         }//end of subscription result check
@@ -573,15 +575,16 @@
         }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////alerts
         func  alert83(){
-        let alertController83 = UIAlertController(title: ("Subscription alert") , message: " Adding more accounts requires subscription and we couldn't find one. please subscribe with free trial or log again if you have one.", preferredStyle: .alert)
+        thinking2.stopAnimating()
+        let alertController83 = UIAlertController(title: ("Subscription alert") , message: " Adding more than 3 accounts requires subscription and we couldn't find one. Please subscribe with free trial or log again if you have one.", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         self.present((storyboard.instantiateViewController(withIdentifier: "subScreen")), animated: true, completion: nil)
         }
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        self.present((storyboard.instantiateViewController(withIdentifier: "subScreen")), animated: true, completion: nil)
+          //self.navigationController!.popViewController(animated: true)
+
         }
         alertController83.addAction(OKAction)
         alertController83.addAction(cancelAction)

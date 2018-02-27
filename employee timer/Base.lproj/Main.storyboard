@@ -465,7 +465,7 @@
         <!--subs-->
         <scene sceneID="xUc-db-d2F">
             <objects>
-                <viewController storyboardIdentifier="subScreen" id="fcy-Tw-2om" userLabel="subs" customClass="subs" customModule="employee_timer" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="subScreen" id="fcy-Tw-2om" userLabel="subs" customClass="subs" customModule="perSession" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g5o-6j-u0Z"/>
                         <viewControllerLayoutGuide type="bottom" id="bXQ-7A-HsX"/>
@@ -536,12 +536,13 @@
                                     <constraint firstAttribute="width" constant="40" id="QSh-OO-wEH"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="gF4-tF-i12">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="gF4-tF-i12">
                                 <rect key="frame" x="16" y="124" width="288" height="230"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                 </accessibility>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="260" id="OCu-kA-VSx"/>
                                     <constraint firstAttribute="height" constant="230" id="b0v-7S-y7N"/>
                                 </constraints>
                                 <string key="text">After month of free trial, monthly subscription with full and ongoing access to all features, so you can try before you buy. A subscription costs $4.99 per month. Payment will be charged to your iTunes Account at confirmation of purchase and after the month of free trial.  Unused portion of free trial, will be forfeited when the user purchases a subscription. The subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Your account will be charged for renewal within 24-hours prior to the end of the current 1 month period. You can turn off auto-renew at any time from your iTunes account settings. Cancellation of the current active subscription period is not allowed. Find our privacy policy and Terms &amp; Conditions, at the following links: </string>
@@ -612,7 +613,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ut-od-LiO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7059" y="-115"/>
+            <point key="canvasLocation" x="-7108" y="-358"/>
         </scene>
         <!--Accounts' list-->
         <scene sceneID="Zz4-MQ-AeY">
@@ -1664,7 +1665,7 @@
                                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="fcy-Tw-2om" kind="show" identifier="sub" id="IPp-jX-ZkT"/>
+                                                    <segue destination="fcy-Tw-2om" kind="show" id="9ps-10-xzH"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBg-ht-L1l">
@@ -3219,7 +3220,7 @@
                                 </items>
                             </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ka5-D8-Si7">
-                                <rect key="frame" x="0.0" y="508" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="464" width="320" height="60"/>
                                 <color key="backgroundColor" red="0.2145790309" green="0.45587304229999998" blue="0.84711945060000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="oq5-oC-ito"/>
@@ -3234,11 +3235,11 @@
                                 </items>
                             </toolbar>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SHD-aj-cq0">
-                                <rect key="frame" x="16" y="75" width="288" height="413"/>
+                                <rect key="frame" x="16" y="75" width="288" height="369"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pGt-z5-fAP">
-                                <rect key="frame" x="16" y="114" width="288" height="363"/>
+                                <rect key="frame" x="16" y="114" width="288" height="319"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82B-Jq-qRO">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="1600"/>
@@ -4104,7 +4105,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8Bf-Vi-arA"/>
-        <segue reference="q4e-3H-dKE"/>
+        <segue reference="3Wx-xY-sDh"/>
         <segue reference="GwF-xw-cu7"/>
         <segue reference="5at-sc-TfM"/>
         <segue reference="8s0-fg-N01"/>
