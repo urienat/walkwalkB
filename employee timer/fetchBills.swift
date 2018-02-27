@@ -150,13 +150,13 @@ extension(biller){
         self.taxationBlock = ("Total (without \(self.taxForBlock!)): \(ViewController.fixedCurrency!)\(self.midCalc3!)\r\n\(self.taxForBlock!): \(ViewController.fixedCurrency!)\(self.midCalc!)")
         }//if taxswitch = yes
         else {self.taxationBlock = ""}
-        if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
+        if self.paymentReference != "" {self.refernceBlock = " - Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
         if self.fully == false { self.self.recieptPayment = self.balance!} else {self.recieptPayment = self.partialPayment.text!}
 
-            self.documentName = "Reciept \(self.BillArray[self.buttonRow])-\(self.recieptCounter!)"; if self.paymentSys == "other" || self.paymentSys == ""{self.paymentBlock = ("Payment of \(ViewController.fixedCurrency!)\(self.recieptPayment!) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!)) - \(String(describing: self.refernceBlock)) ")
+            self.documentName = "Reciept \(self.BillArray[self.buttonRow])-\(self.recieptCounter!)"; if self.paymentSys == "other" || self.paymentSys == ""{self.paymentBlock = ("Payment of \(ViewController.fixedCurrency!)\(self.recieptPayment!) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))\(String(describing: self.refernceBlock)) ")
         }
 
-        if self.paymentReference != "" {self.refernceBlock = "Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
+        if self.paymentReference != "" {self.refernceBlock = " - Ref:\(self.paymentReference!)"} else {self.refernceBlock = ""}
         if self.paymentSys! == "other" || self.paymentSys == ""{// payment == other
         self.paymentBlock = ("Payment of \(ViewController.fixedCurrency!)\(self.recieptPayment!) made: \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))  \(self.refernceBlock!) ")
         } else {self.paymentBlock = "Payment of \(ViewController.fixedCurrency!)\(self.recieptPayment!) made by \(self.paymentSys!) \(self.refernceBlock!) - \(self.mydateFormat10.string(from:self.mydateFormat5.date(from: self.recieptDate!)!))"

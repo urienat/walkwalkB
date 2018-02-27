@@ -227,7 +227,6 @@
 				AE854B661E3A388A00C68CFB /* internetConnection.swift */,
 				AECF31DE1E1248660072547C /* AllowedCharsTextField.swift */,
 				AECF31DC1E1246B80072547C /* MaxLengthField.swift */,
-				AED6564A1E0140A4001691D1 /* cacheImages.swift */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -278,6 +277,7 @@
 		F4EAE2552007874500BB448C /* reports */ = {
 			isa = PBXGroup;
 			children = (
+				AED6564A1E0140A4001691D1 /* cacheImages.swift */,
 				F4EAE2512007872400BB448C /* reportCell.swift */,
 				F4EAE2532007873900BB448C /* reportTable.swift */,
 			);
