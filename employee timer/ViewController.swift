@@ -575,8 +575,8 @@
         }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////alerts
         func  alert83(){
-        thinking2.stopAnimating()
-        let alertController83 = UIAlertController(title: ("Subscription alert") , message: " Adding more than 3 accounts requires subscription and we couldn't find one. Please subscribe with free trial or log again if you have one.", preferredStyle: .alert)
+        
+        let alertController83 = UIAlertController(title: ("Subscription alert") , message: " Adding more than 4 accounts requires subscription and we couldn't find one. Please subscribe with free trial or log again if you have one.", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         self.present((storyboard.instantiateViewController(withIdentifier: "subScreen")), animated: true, completion: nil)
@@ -588,6 +588,7 @@
         }
         alertController83.addAction(OKAction)
         alertController83.addAction(cancelAction)
+        thinking2.stopAnimating()
         self.present(alertController83, animated: true, completion: nil)
         }//end of alert83
 

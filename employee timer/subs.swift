@@ -50,7 +50,6 @@ class subs: UIViewController {
         
         
     }
-    @IBOutlet weak var wwofNewLbl: UILabel!
     
     @IBOutlet weak var woofNewLbl: UILabel!
     @IBAction func privacy(_ sender: Any) {

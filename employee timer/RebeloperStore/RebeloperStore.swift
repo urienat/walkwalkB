@@ -546,6 +546,7 @@ class RebeloperStore  {
   }
   
   func purchaseRenewable(_ purchase: RenewablePurchaseName) {
+    
     NetworkActivityIndicatorManager.networkOperationStarted()
     SwiftyStoreKit.purchaseProduct(AppBundleId + "." +
     purchase.rawValue) { result in

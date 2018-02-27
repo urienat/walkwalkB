@@ -512,7 +512,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="mI0-eB-a9z"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.12558225109999999" green="0.58808092950000002" blue="0.095813386410000007" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZi-ek-Reb">
@@ -536,13 +536,13 @@
                                     <constraint firstAttribute="width" constant="40" id="QSh-OO-wEH"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="gF4-tF-i12">
-                                <rect key="frame" x="16" y="124" width="288" height="230"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="gF4-tF-i12">
+                                <rect key="frame" x="30" y="124" width="260" height="230"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                 </accessibility>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="260" id="OCu-kA-VSx"/>
+                                    <constraint firstAttribute="width" constant="260" id="OCu-kA-VSx"/>
                                     <constraint firstAttribute="height" constant="230" id="b0v-7S-y7N"/>
                                 </constraints>
                                 <string key="text">After month of free trial, monthly subscription with full and ongoing access to all features, so you can try before you buy. A subscription costs $4.99 per month. Payment will be charged to your iTunes Account at confirmation of purchase and after the month of free trial.  Unused portion of free trial, will be forfeited when the user purchases a subscription. The subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Your account will be charged for renewal within 24-hours prior to the end of the current 1 month period. You can turn off auto-renew at any time from your iTunes account settings. Cancellation of the current active subscription period is not allowed. Find our privacy policy and Terms &amp; Conditions, at the following links: </string>
@@ -550,28 +550,28 @@
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ru-Qy-YhC" userLabel="privacy">
-                                <rect key="frame" x="16" y="354" width="124" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ru-Qy-YhC" userLabel="privacy">
+                                <rect key="frame" x="30" y="354" width="124" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="IGq-Ka-CJ2"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="124" id="nUd-sa-pLE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
-                                <state key="normal" title="&lt;&lt;Privacy policy&gt;&gt;">
+                                <state key="normal" title="Privacy policy">
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
                                 <connections>
                                     <action selector="privacy:" destination="fcy-Tw-2om" eventType="touchUpInside" id="aNd-Wn-5NK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsj-Dg-aLI" userLabel="terms">
-                                <rect key="frame" x="163" y="354" width="141" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsj-Dg-aLI" userLabel="terms">
+                                <rect key="frame" x="166" y="354" width="124" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="124" id="BZN-4u-Dfb"/>
                                     <constraint firstAttribute="height" constant="31" id="CKH-TQ-fcV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
-                                <state key="normal" title="&lt;&lt;Terms &amp; Conditions&gt;&gt;">
+                                <state key="normal" title="Terms &amp; Conditions">
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
                                 <connections>
@@ -581,14 +581,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="vsj-Dg-aLI" firstAttribute="trailing" secondItem="gF4-tF-i12" secondAttribute="trailing" id="98Y-1I-buW"/>
                             <constraint firstItem="h1y-h7-toK" firstAttribute="centerY" secondItem="yQz-Hs-fNV" secondAttribute="centerY" id="Ac1-vm-Lki"/>
                             <constraint firstItem="yQz-Hs-fNV" firstAttribute="top" secondItem="xJI-kw-XIv" secondAttribute="bottom" constant="24" id="Btt-Gb-Ia8"/>
                             <constraint firstItem="zve-AF-n09" firstAttribute="centerX" secondItem="V25-s4-mQy" secondAttribute="centerX" id="Eb3-8y-nwX"/>
                             <constraint firstItem="bXQ-7A-HsX" firstAttribute="top" secondItem="fZi-ek-Reb" secondAttribute="bottom" id="F8P-il-ICg"/>
                             <constraint firstItem="gF4-tF-i12" firstAttribute="top" secondItem="zve-AF-n09" secondAttribute="bottom" constant="5" id="F9H-sX-yup"/>
                             <constraint firstItem="gF4-tF-i12" firstAttribute="centerX" secondItem="V25-s4-mQy" secondAttribute="centerX" id="GqG-Jm-nEj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gF4-tF-i12" secondAttribute="trailing" id="I5d-qs-18g"/>
-                            <constraint firstItem="gF4-tF-i12" firstAttribute="leading" secondItem="V25-s4-mQy" secondAttribute="leadingMargin" id="LS4-8R-IG5"/>
                             <constraint firstItem="fZi-ek-Reb" firstAttribute="leading" secondItem="V25-s4-mQy" secondAttribute="leading" id="OLn-w0-gli"/>
                             <constraint firstAttribute="trailing" secondItem="fZi-ek-Reb" secondAttribute="trailing" id="RdT-fs-MaJ"/>
                             <constraint firstItem="1Ru-Qy-YhC" firstAttribute="top" secondItem="gF4-tF-i12" secondAttribute="bottom" id="SX8-kS-oCa"/>
@@ -599,10 +598,9 @@
                             <constraint firstItem="yQz-Hs-fNV" firstAttribute="centerX" secondItem="V25-s4-mQy" secondAttribute="centerX" id="gur-Ux-SRe"/>
                             <constraint firstItem="xJI-kw-XIv" firstAttribute="leading" secondItem="V25-s4-mQy" secondAttribute="leading" id="jjx-le-2Xb"/>
                             <constraint firstItem="F1J-Og-Wpy" firstAttribute="top" secondItem="xJI-kw-XIv" secondAttribute="bottom" constant="30" id="o5B-oE-8Oz"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="vsj-Dg-aLI" secondAttribute="trailing" id="teR-M9-Jxy"/>
+                            <constraint firstItem="1Ru-Qy-YhC" firstAttribute="leading" secondItem="gF4-tF-i12" secondAttribute="leading" id="pzi-U6-YWb"/>
                             <constraint firstItem="zve-AF-n09" firstAttribute="top" secondItem="yQz-Hs-fNV" secondAttribute="bottom" id="vGf-Pn-3aK"/>
                             <constraint firstAttribute="trailing" secondItem="xJI-kw-XIv" secondAttribute="trailing" id="ycP-NN-Icy"/>
-                            <constraint firstItem="1Ru-Qy-YhC" firstAttribute="leading" secondItem="V25-s4-mQy" secondAttribute="leadingMargin" id="yq4-om-zlZ"/>
                         </constraints>
                     </view>
                     <connections>
