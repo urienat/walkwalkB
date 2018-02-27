@@ -351,6 +351,7 @@
         
         RebeloperStore.shared.verifyRenewablePurchase(.autoRenewableSubscription1) { (result, resultString) in
         print( result)
+            
         if result == false {print ("no subscription"); self.alert83()
         }
         else {
