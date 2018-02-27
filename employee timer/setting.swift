@@ -226,7 +226,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             self.professionBtn.setTitle(snapshot.childSnapshot(forPath: "fProfessionControl").value! as? String, for: .normal)
 
             self .currencyUpdate = snapshot.childSnapshot(forPath: "fCurrency").value as! String
-            self.currency.text = self.currencyUpdate
+            if self.currencyUpdate == "" {self.currency.text = Locale.current.currencySymbol!} else { self.currency.text = self.currencyUpdate}
             
             self.created = (snapshot.childSnapshot(forPath: "fCreated").value as! String)
                 
