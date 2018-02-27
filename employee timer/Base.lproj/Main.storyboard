@@ -497,8 +497,8 @@
                                     <action selector="woofNew:" destination="fcy-Tw-2om" eventType="touchUpInside" id="XZG-ai-Lz1"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="h1y-h7-toK">
-                                <rect key="frame" x="24" y="79" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="h1y-h7-toK">
+                                <rect key="frame" x="24" y="79.5" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="V5Z-fT-AbF"/>
                                     <constraint firstAttribute="height" constant="20" id="eN7-2P-k2R"/>
@@ -806,8 +806,12 @@
                                     <constraint firstAttribute="width" constant="150" id="zuu-ll-odg"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fEo-2V-FTr" userLabel="thinking2">
-                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fEo-2V-FTr" userLabel="thinking2">
+                                <rect key="frame" x="140.5" y="264.5" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="KbR-HH-IKI"/>
+                                    <constraint firstAttribute="height" constant="40" id="uv9-wU-89t"/>
+                                </constraints>
                                 <color key="color" red="0.2145790309" green="0.45587304229999998" blue="0.84711945060000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </activityIndicatorView>
                             <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHg-YC-CqC">
@@ -2164,8 +2168,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="AiQ-AU-mU3" userLabel="thinking2">
-                                <rect key="frame" x="145" y="433" width="30" height="30"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="AiQ-AU-mU3" userLabel="thinking2">
+                                <rect key="frame" x="145.5" y="433" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="ILD-Xn-vcA"/>
                                     <constraint firstAttribute="height" constant="30" id="vqT-x9-6P1"/>
@@ -2734,11 +2738,11 @@
                                     <constraint firstItem="dGp-Px-mK1" firstAttribute="width" secondItem="MGH-Ll-MqA" secondAttribute="width" id="xuK-bA-gYe"/>
                                 </constraints>
                             </view>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="n0x-Pz-LMA" userLabel="thinking">
-                                <rect key="frame" x="145" y="269" width="30" height="30"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="n0x-Pz-LMA" userLabel="thinking">
+                                <rect key="frame" x="140.5" y="264.5" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="Kph-XY-fYb"/>
-                                    <constraint firstAttribute="height" constant="30" id="w6E-2j-vcJ"/>
+                                    <constraint firstAttribute="width" constant="40" id="Kph-XY-fYb"/>
+                                    <constraint firstAttribute="height" constant="40" id="w6E-2j-vcJ"/>
                                 </constraints>
                                 <color key="color" red="0.086202956740000003" green="0.51369708780000001" blue="0.97062271830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
@@ -2952,8 +2956,8 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="oMs-Xd-055" userLabel="thinking">
-                                <rect key="frame" x="110" y="234" width="100" height="100"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="oMs-Xd-055" userLabel="thinking">
+                                <rect key="frame" x="110.5" y="234.5" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="7iA-wc-FrS"/>
                                     <constraint firstAttribute="height" constant="100" id="Rc4-L5-Mbu"/>
@@ -3428,8 +3432,8 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="ie4-al-Vxl"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zhl-VB-8N9" userLabel="thinking">
-                                <rect key="frame" x="110" y="234" width="100" height="100"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="zhl-VB-8N9" userLabel="thinking">
+                                <rect key="frame" x="110.5" y="234.5" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="9u3-fj-e2J"/>
                                     <constraint firstAttribute="height" constant="100" id="A4F-K8-dD8"/>
@@ -3780,8 +3784,8 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="jxC-va-07j"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="YLp-1q-3zD" userLabel="thinking">
-                                <rect key="frame" x="110" y="234" width="100" height="100"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="YLp-1q-3zD" userLabel="thinking">
+                                <rect key="frame" x="110.5" y="234.5" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="Yvz-gV-OoL"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="kg2-W4-uRk"/>
