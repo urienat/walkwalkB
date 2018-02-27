@@ -117,92 +117,53 @@ class RebeloperStore: UIViewController {
     
     
     // renewable purchases
-    var h = 0
-    repeat {
+   // var h = 0
+    //repeat {
       
-      if getRebeloperStoreKeychainAccountValue(RenewablePurchases[h].rawValue) == KeychainValue.noValue.rawValue {
-        print("Key '\(RenewablePurchases[h].rawValue)' does not exist or is 'nil'. Setting it up now.")
-        setRebeloperStoreKeychainAccount(KeychainValue.notPurchased.rawValue, key: RenewablePurchases[h].rawValue)
+      if getRebeloperStoreKeychainAccountValue(RenewablePurchases[0].rawValue) == KeychainValue.noValue.rawValue {
+        print("Key '\(RenewablePurchases[0].rawValue)' does not exist or is 'nil'. Setting it up now.")
+        
+        setRebeloperStoreKeychainAccount(KeychainValue.notPurchased.rawValue, key: RenewablePurchases[0].rawValue)
         
       }
       
-      h = h + 1
-    } while h < RenewablePurchases.count
+     // h = h + 1
+    //} while h < RenewablePurchases.count
     
     
+  }
   
   func logRebeloperStoreKeychainAccount() {
     print("-------- Logging Rebeloper Store Keychain Account --------")
     
     print("-------- Non-Renewable Purchases --------")
     // renewable purchases
-    var g = 0
-    repeat {
+    //var g = 0
+   // repeat {
       
-      if getRebeloperStoreKeychainAccountValue(NonRenewablePurchases[g].rawValue) == KeychainValue.noValue.rawValue {
-        print("Key '\(NonRenewablePurchases[g].rawValue)' does not exist or is 'nil'.")
+      if getRebeloperStoreKeychainAccountValue(NonRenewablePurchases[0].rawValue) == KeychainValue.noValue.rawValue {
+        print("Key '\(NonRenewablePurchases[0].rawValue)' does not exist or is 'nil'.")
       } else {
-        print("[\(NonRenewablePurchases[g].rawValue) : \(getRebeloperStoreKeychainAccountValue(NonRenewablePurchases[g].rawValue))]")
+        print("[\(NonRenewablePurchases[0].rawValue) : \(getRebeloperStoreKeychainAccountValue(NonRenewablePurchases[0].rawValue))]")
       }
       
-      g = g + 1
-    } while g < NonRenewablePurchases.count
+    //  g = g + 1
+   // } while g < NonRenewablePurchases.count
     
     print("-------- Renewable Purchases --------")
     // renewable purchases
-    var h = 0
-    repeat {
+  //  var h = 0
+   // repeat {
       
-      if getRebeloperStoreKeychainAccountValue(RenewablePurchases[h].rawValue) == KeychainValue.noValue.rawValue {
-        print("Key '\(RenewablePurchases[h].rawValue)' does not exist or is 'nil'.")
+      if getRebeloperStoreKeychainAccountValue(RenewablePurchases[0].rawValue) == KeychainValue.noValue.rawValue {
+        print("Key '\(RenewablePurchases[0].rawValue)' does not exist or is 'nil'.")
       } else {
-        print("[\(RenewablePurchases[h].rawValue) : \(getRebeloperStoreKeychainAccountValue(RenewablePurchases[h].rawValue))]")
+        print("[\(RenewablePurchases[0].rawValue) : \(getRebeloperStoreKeychainAccountValue(RenewablePurchases[0].rawValue))]")
       }
       
-      h = h + 1
-    } while h < RenewablePurchases.count
+    // h = h + 1
+  //  } while h < RenewablePurchases.count
     
-    print("-------- Regular Purchases --------")
-    // regular purchases
-    var i = 0
-    repeat {
-      
-      if getRebeloperStoreKeychainAccountValue(RegularPurchases[i].rawValue) == KeychainValue.noValue.rawValue {
-        print("Key '\(RegularPurchases[i].rawValue)' does not exist or is 'nil'.")
-      } else {
-        print("[\(RegularPurchases[i].rawValue) : \(getRebeloperStoreKeychainAccountValue(RegularPurchases[i].rawValue))]")
-      }
-      
-      i = i + 1
-    } while i < RegularPurchases.count
-    
-    print("-------- Virtual Purchases --------")
-    // virtual purchases
-    var j = 0
-    repeat {
-      
-      if getRebeloperStoreKeychainAccountValue(VirtualPurchases[j].rawValue) == KeychainValue.noValue.rawValue {
-        print("Key '\(VirtualPurchases[j].rawValue)' does not exist or is 'nil'.")
-      } else {
-        print("[\(VirtualPurchases[j].rawValue) : \(getRebeloperStoreKeychainAccountValue(VirtualPurchases[j].rawValue))]")
-      }
-      
-      j = j + 1
-    } while j < VirtualPurchases.count
-    
-    print("-------- Virtual Currencies --------")
-    // virtual currencies
-    var k = 0
-    repeat {
-      
-      if getRebeloperStoreKeychainAccountValue(VirtualCurrencies[k].rawValue) == KeychainValue.noValue.rawValue {
-        print("Key '\(VirtualCurrencies[k].rawValue)' does not exist or is 'nil'.")
-      } else {
-        print("[\(VirtualCurrencies[k].rawValue) : \(getRebeloperStoreKeychainAccountValue(VirtualCurrencies[k].rawValue))]")
-      }
-      
-      k = k + 1
-    } while k < VirtualCurrencies.count
     
     print("-------- End of Rebeloper Store Keychain Account Log --------")
   }
@@ -255,11 +216,6 @@ class RebeloperStore: UIViewController {
   
   func removeRebeloperStoreKeychainAccount() {
     
-    var g = 0
-    repeat {
-      removeRebeloperStoreKeychain(NonRenewablePurchases[g].rawValue)
-      g = g + 1
-    } while g < NonRenewablePurchases.count
     
     var h = 0
     repeat {
@@ -267,212 +223,17 @@ class RebeloperStore: UIViewController {
       h = h + 1
     } while h < RenewablePurchases.count
     
-    var i = 0
-    repeat {
-      removeRebeloperStoreKeychain(RegularPurchases[i].rawValue)
-      i = i + 1
-    } while i < RegularPurchases.count
-    
-    var j = 0
-    repeat {
-      removeRebeloperStoreKeychain(VirtualPurchases[j].rawValue)
-      j = j + 1
-    } while j < VirtualPurchases.count
-    
-    var k = 0
-    repeat {
-      removeRebeloperStoreKeychain(VirtualCurrencies[k].rawValue)
-      k = k + 1
-    } while k < VirtualCurrencies.count
-    
-  }
-  
-  func isRegularPurchaseBought(_ regularPurchaseType: RegularPurchaseName) -> Bool {
-    if getRebeloperStoreKeychainAccountValue(regularPurchaseType.rawValue) == KeychainValue.purchased.rawValue {
-      return true
-    } else {
-      return false
-    }
-  }
-  
-  func isVirtualNonConsumablePurchaseBought(_ virtualPurchaseType: VirtualPurchasesName) -> Bool {
-    if getRebeloperStoreKeychainAccountValue(virtualPurchaseType.rawValue) != "0" {
-      return true
-    } else {
-      return false
-    }
-  }
-
-  func purchaseVirtualGood(_ amount: Int, ofVirtualGoodType: VirtualPurchasesName, forVirtualCurrencyAmount: Int, ofVirtualCurrencyType: VirtualCurrenciesName) {
-    // pay
-    changeVirtualCurrency(-forVirtualCurrencyAmount, ofVirtualCurrencyType: ofVirtualCurrencyType) { (result, theAmount) in
-      if result == true {
-        // receive the goods
-        self.changeVirtualGood(amount, ofVirtualGoodType: ofVirtualGoodType, completion: { (resut, theAmount) in
-          print("Added \(theAmount)")
-          NotificationCenter.default.post(name: NSNotification.Name(rawValue: virtualPurchaseStatusChanged), object: nil)
-        })
-        
-      }
-      
-    }
-    
-  }
-  
-  func purchaseVirtualCurrency(_ amount: Int, ofVirtualCurrencyType: VirtualCurrenciesName, forPayableVirtualCurrencyAmount: Int, ofPayableVirtualCurrencyType: VirtualCurrenciesName) {
-    // pay
-    changeVirtualCurrency(-forPayableVirtualCurrencyAmount, ofVirtualCurrencyType: ofPayableVirtualCurrencyType) { (result, theAmount) in
-      if result == true {
-        // receive the virtual currency
-        self.changeVirtualCurrency(amount, ofVirtualCurrencyType: ofVirtualCurrencyType, completion: { (result, theAmount) in
-          print("Added \(theAmount)")
-          NotificationCenter.default.post(name: NSNotification.Name(rawValue: virtualPurchaseStatusChanged), object: nil)
-        })
-        
-      }
-      
-    }
-    
-  }
-  
-  func changeVirtualGood(_ amount: Int, ofVirtualGoodType: VirtualPurchasesName, completion: @escaping (_ result: Bool, _ amount: Int) -> Void) {
-    
-    if amount < 0 {
-      
-      let currentVirtualGoodAmount = getVirtualGoodAmount(ofVirtualGoodType)
-      if currentVirtualGoodAmount >= -amount {
-        let virtualGoodAmountToSave = currentVirtualGoodAmount + amount
-        setRebeloperStoreKeychainAccount(String(virtualGoodAmountToSave), key: ofVirtualGoodType.rawValue)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: virtualPurchaseStatusChanged), object: nil)
-        completion(true, amount)
-      } else {
-        // not enough VG
-        self.showAlert(self.alertWithTitle("Insufficient funds", message: "You don't have enough funds to make this action."))
-        completion(false, amount)
-      }
-      
-    } else {
-      
-      let currentVirtualGoodAmount = getVirtualGoodAmount(ofVirtualGoodType)
-      let virtualGoodAmountToSave = currentVirtualGoodAmount + amount
-      setRebeloperStoreKeychainAccount(String(virtualGoodAmountToSave), key: ofVirtualGoodType.rawValue)
-      completion(true, amount)
-      
-    }
-    
-    
     
     
   }
   
-  func changeVirtualCurrency(_ amount: Int, ofVirtualCurrencyType: VirtualCurrenciesName, completion: @escaping (_ result: Bool, _ amount: Int) -> Void) {
-    
-    if amount < 0 {
-      
-      let currentVirtualCurrencyAmount = getVirtualCurrencyAmount(ofVirtualCurrencyType)
-      if currentVirtualCurrencyAmount >= -amount {
-        let virtualCurrencyToSave = currentVirtualCurrencyAmount + amount
-        setRebeloperStoreKeychainAccount(String(virtualCurrencyToSave), key: ofVirtualCurrencyType.rawValue)
-        completion(true, amount)
-      } else {
-        // not enough VC
-        self.showAlert(self.alertWithTitle("Insufficient funds", message: "You don't have enough funds to make this action."))
-        completion(false, amount)
-      }
-      
-    } else {
-      
-      let currentVirtualCurrencyAmount = getVirtualCurrencyAmount(ofVirtualCurrencyType)
-      let virtualCurrencyToSave = currentVirtualCurrencyAmount + amount
-      setRebeloperStoreKeychainAccount(String(virtualCurrencyToSave), key: ofVirtualCurrencyType.rawValue)
-      completion(true, amount)
-      
-    }
-    
-    
-    
-    
-  }
-  
-  func getVirtualGoodAmount(_ ofVirtualGoodType: VirtualPurchasesName) -> Int {
-    return Int(getRebeloperStoreKeychainAccountValue(ofVirtualGoodType.rawValue))!
-  }
-  
-  func getVirtualCurrencyAmount(_ ofVirtualCurrency: VirtualCurrenciesName) -> Int {
-    return Int(getRebeloperStoreKeychainAccountValue(ofVirtualCurrency.rawValue))!
-  }
   
   
-  func getInfo(_ purchase: RegularPurchaseName, completion: @escaping (_ result: SKProduct) -> Void) {
-    
-    NetworkActivityIndicatorManager.networkOperationStarted()
-    
-    SwiftyStoreKit.retrieveProductsInfo([AppBundleId + "." + purchase.rawValue]) { result in
-      NetworkActivityIndicatorManager.networkOperationFinished()
-      
-      if let product = result.retrievedProducts.first {
-        
-        completion(product)
-        
-      }
-      else if let invalidProductId = result.invalidProductIDs.first {
-        self.showAlert(self.alertWithTitle("Could not retrieve product info", message: "Invalid product identifier: \(invalidProductId)"))
-      }
-      else {
-        let errorString = result.error?.localizedDescription ?? "Unknown error. Please contact support"
-        self.showAlert(self.alertWithTitle("Could not retrieve product info", message: errorString))
-      }
-      
-    }
-  }
-  
-  func purchase(_ purchase: RegularPurchaseName) {
-    
-    NetworkActivityIndicatorManager.networkOperationStarted()
-    SwiftyStoreKit.purchaseProduct(AppBundleId + "." + purchase.rawValue) { result in
-      NetworkActivityIndicatorManager.networkOperationFinished()
-      
-      //self.showAlert(self.alertForPurchaseResult(result))
-      self.alertForPurchaseResult(result)
-    }
-  }
-  
-  func getNonRenewableInfo(_ purchase: NonRenewablePurchaseName, completion: @escaping (_ result: SKProduct) -> Void) {
-    
-    NetworkActivityIndicatorManager.networkOperationStarted()
-    
-    SwiftyStoreKit.retrieveProductsInfo([AppBundleId + "." + purchase.rawValue]) { result in
-      NetworkActivityIndicatorManager.networkOperationFinished()
-      
-      if let product = result.retrievedProducts.first {
-        
-        completion(product)
-        
-      }
-      else if let invalidProductId = result.invalidProductIDs.first {
-        self.showAlert(self.alertWithTitle("Could not retrieve product info", message: "Invalid product identifier: \(invalidProductId)"))
-      }
-      else {
-        let errorString = result.error?.localizedDescription ?? "Unknown error. Please contact support"
-        self.showAlert(self.alertWithTitle("Could not retrieve product info", message: errorString))
-      }
-      
-    }
-  }
-  
-  func purchaseNonRenewable(_ purchase: NonRenewablePurchaseName) {
-    NetworkActivityIndicatorManager.networkOperationStarted()
-    SwiftyStoreKit.purchaseProduct(AppBundleId + "." + purchase.rawValue) { result in
-      NetworkActivityIndicatorManager.networkOperationFinished()
-      
-      //self.showAlert(self.alertForPurchaseResult(result))
-      self.alertForPurchaseResult(result)
-    }
-  }
   
   func getRenewableInfo(_ purchase: RenewablePurchaseName, completion: @escaping (_ result: SKProduct) -> Void) {
-    mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy"
-        ,options: 0, locale: nil)!
+    mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
+   // mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy"
+     //   ,options: 0, locale: nil)!
     NetworkActivityIndicatorManager.networkOperationStarted()
     
     SwiftyStoreKit.retrieveProductsInfo([AppBundleId + "." + purchase.rawValue]) { result in
@@ -506,39 +267,7 @@ class RebeloperStore: UIViewController {
     }
   }
   
-  func purchaseVirtualCurrency(_ purchase: VirtualCurrencyPurchaseName) {
-    
-    NetworkActivityIndicatorManager.networkOperationStarted()
-    SwiftyStoreKit.purchaseProduct(AppBundleId + "." + purchase.rawValue) { result in
-      NetworkActivityIndicatorManager.networkOperationFinished()
-      
-      //self.showAlert(self.alertForPurchaseResult(result))
-      self.alertForPurchaseResult(result)
-    }
-  }
   
-  func getVirtualCurrencyPurchaseInfo(_ purchase: VirtualCurrencyPurchaseName, completion: @escaping (_ result: SKProduct) -> Void) {
-    
-    NetworkActivityIndicatorManager.networkOperationStarted()
-    
-    SwiftyStoreKit.retrieveProductsInfo([AppBundleId + "." + purchase.rawValue]) { result in
-      NetworkActivityIndicatorManager.networkOperationFinished()
-      
-      if let product = result.retrievedProducts.first {
-        
-        completion(product)
-        
-      }
-      else if let invalidProductId = result.invalidProductIDs.first {
-        self.showAlert(self.alertWithTitle("Could not retrieve product info", message: "Invalid product identifier: \(invalidProductId)"))
-      }
-      else {
-        let errorString = result.error?.localizedDescription ?? "Unknown error. Please contact support"
-        self.showAlert(self.alertWithTitle("Could not retrieve product info", message: errorString))
-      }
-      
-    }
-  }
   
   func restorePurchases() {
     
@@ -567,69 +296,11 @@ class RebeloperStore: UIViewController {
     }
   }
   
-  func verifyNonRenewablePurchase(_ purchase: NonRenewablePurchaseName, completion: @escaping (_ result: Bool, _ resutlString: String) -> Void) {
   
-    NetworkActivityIndicatorManager.networkOperationStarted()
-    
-    SwiftyStoreKit.verifyReceipt(password: SharedSecret, session: URLSession.shared) { (result) in
-      
-      NetworkActivityIndicatorManager.networkOperationFinished()
-      switch result {
-      case .success(let receipt):
-        
-        let productId = AppBundleId + "." + purchase.rawValue
-        
-        var i = 0
-        repeat {
-          
-          if purchase == NonRenewablePurchases[i] {
-            let purchaseResult = SwiftyStoreKit.verifySubscription(
-              productId: productId,
-              inReceipt: receipt,
-              validUntil: Date(),
-              validDuration: TimeInterval(NonRenewablePurchasesSubscritionAmount[i])
-            )
-            
-            switch purchaseResult {
-                
-            case .purchased(let expiresDate):
-                mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy"
-                    ,options: 0, locale: nil)!
-              print("Product '\(AppBundleId).\(purchase)' is valid until \(expiresDate)")
-              completion(true, "Product is valid until \(mydateFormat.string(from: expiresDate))")
-            case .expired(let expiresDate):
-                mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy"
-                    ,options: 0, locale: nil)!
-              print("Product '\(AppBundleId).\(purchase)' is expired since \(expiresDate)")
-              completion(false, "Product is expired since \(mydateFormat.string(from: expiresDate))")
-            case .notPurchased:
-              print("Product '\(AppBundleId).\(purchase)' has never been purchased")
-              completion(false, "Product has never been purchased")
-            }
-          }
-          
-          i = i + 1
-        } while i < NonRenewablePurchases.count
-        
-        
-        
-      case .error(let error):
-        //self.showAlert(self.alertForVerifyReceipt(result))
-        self.alertForVerifyReceipt(result)
-        if case .noReceiptData = error {
-          self.refreshReceipt()
-        }
-      }
-    }
-    
-  }
-
   
   func verifyRenewablePurchase(_ purchase: RenewablePurchaseName, completion: @escaping (_ result: Bool, _ resutlString: String) -> Void) {
-    mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy"
-        ,options: 0, locale: nil)!
+mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
     NetworkActivityIndicatorManager.networkOperationStarted()
-    
     SwiftyStoreKit.verifyReceipt(password: SharedSecret, session: URLSession.shared) { (result) in
       
       NetworkActivityIndicatorManager.networkOperationFinished()
@@ -638,10 +309,10 @@ class RebeloperStore: UIViewController {
         
         let productId = AppBundleId + "." + purchase.rawValue
         
-        var i = 0
-        repeat {
+     ///   var i = 0
+    ///    repeat {
           
-          if purchase == RenewablePurchases[i] {
+          if purchase == RenewablePurchases[0] {
             let purchaseResult = SwiftyStoreKit.verifySubscription(
               productId: productId,
               inReceipt: receipt,
@@ -665,8 +336,8 @@ class RebeloperStore: UIViewController {
             }
           }
           
-          i = i + 1
-        } while i < RenewablePurchases.count
+      //    i = i + 1
+    //    } while i < RenewablePurchases.count
         
         
         
@@ -681,96 +352,7 @@ class RebeloperStore: UIViewController {
     
   }
   
-  func verifyPurchase(_ purchase: RegularPurchaseName, completion: @escaping (_ result: Bool, _ resutlString: String) -> Void) {
-    
-    NetworkActivityIndicatorManager.networkOperationStarted()
-    
-    SwiftyStoreKit.verifyReceipt(password: SharedSecret, session: URLSession.shared) { (result) in
-      
-      NetworkActivityIndicatorManager.networkOperationFinished()
-      switch result {
-      case .success(let receipt):
-        
-        let productId = AppBundleId + "." + purchase.rawValue
-        
-        var i = 0
-        repeat {
-          
-          if purchase == RegularPurchases[i] {
-            let purchaseResult = SwiftyStoreKit.verifyPurchase(
-              productId: productId,
-              inReceipt: receipt
-            )
-            
-            switch purchaseResult {
-            case .purchased:
-              print("Product '\(AppBundleId).\(purchase)' is purchased")
-              completion(true, "Product is purchased")
-            case .notPurchased:
-              print("Product '\(AppBundleId).\(purchase)' has never been purchased")
-              completion(false, "Product has never been purchased")
-            }
-          }
-          
-          i = i + 1
-        } while i < RegularPurchases.count
-        
-      case .error(let error):
-        //self.showAlert(self.alertForVerifyReceipt(result))
-        self.alertForVerifyReceipt(result)
-        if case .noReceiptData = error {
-          self.refreshReceipt()
-        }
-      }
-    }
-  }
   
-  func verifyVirtualCurrencyPurchase(_ purchase: VirtualCurrencyPurchaseName, completion: @escaping (_ result: Bool, _ resutlString: String) -> Void) {
-    
-    // check if there is a network connection
-    // if not than we're updating from keychain
-    
-    NetworkActivityIndicatorManager.networkOperationStarted()
-    
-    SwiftyStoreKit.verifyReceipt(password: SharedSecret, session: URLSession.shared) { (result) in
-      
-      NetworkActivityIndicatorManager.networkOperationFinished()
-      switch result {
-      case .success(let receipt):
-        
-        let productId = AppBundleId + "." + purchase.rawValue
-        
-        var i = 0
-        repeat {
-          
-          if purchase == VirtualCurrencyPurchases[i] {
-            let purchaseResult = SwiftyStoreKit.verifyPurchase(
-              productId: productId,
-              inReceipt: receipt
-            )
-            
-            switch purchaseResult {
-            case .purchased:
-              print("Product '\(AppBundleId).\(purchase)' is purchased")
-              completion(true, "Product is purchased")
-            case .notPurchased:
-              print("Product '\(AppBundleId).\(purchase)' has never been purchased")
-              completion(false, "Product has never been purchased")
-            }
-          }
-          
-          i = i + 1
-        } while i < RegularPurchases.count
-        
-      case .error(let error):
-        //self.showAlert(self.alertForVerifyReceipt(result))
-        self.alertForVerifyReceipt(result)
-        if case .noReceiptData = error {
-          self.refreshReceipt()
-        }
-      }
-    }
-  }
   
   func refreshReceipt() {
     
@@ -780,19 +362,33 @@ class RebeloperStore: UIViewController {
       self.alertForRefreshReceipt(result)
     }
   }
-  
+    
+    
+    func pop(alert: UIAlertAction!){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let view = storyboard.instantiateViewController(withIdentifier: "homeScreen§") as UIViewController
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        //show window
+        appDelegate.window?.rootViewController = view
+        
+    }
   func alertWithTitle(_ title: String, message: String) -> UIAlertController {
     
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler:  self.pop))
     return alert
   }
+    
+    
   
   func showAlert(_ alert: UIAlertController) {
     
     if let topController = UIApplication.topViewController() {
-      topController.present(alert, animated: true, completion: nil)
+    topController.present(alert, animated: true, completion: nil)
     }
+    
+   
+    
     
     /*
     if let rootView = UIApplication.shared.keyWindow?.rootViewController {
@@ -857,46 +453,15 @@ class RebeloperStore: UIViewController {
    }
    }*/
   
-  func saveRealPurchaseIntoRebeloperStoreKeychain(_ productId: String) {
-    // save to keychain
-    let bundleIDString = productId.range(of: "\(AppBundleId).")
-    let key = productId[(bundleIDString?.upperBound)!..<productId.endIndex]
-    
-    // regular / non-consumable purchases
-    var i = 0
-    repeat {
-      
-      if key == RegularPurchases[i].rawValue {
-        setRebeloperStoreKeychainAccount(KeychainValue.purchased.rawValue, key: key)
-      }
-      
-      i = i + 1
-    } while i < RegularPurchases.count
-    
-    // virtual currency purchases
-    var j = 0
-    repeat {
-      
-      if key == VirtualCurrencyPurchases[j].rawValue {
-        changeVirtualCurrency(Int(VirtualCurrencyPurchasesAmount[j])!, ofVirtualCurrencyType: VirtualCurrenciesName.primaryVirtualCurrency, completion: { (result, amount) in
-          print("Changed virtual currency")
-        })
-      }
-      
-      j = j + 1
-    } while j < VirtualCurrencyPurchases.count
-    
-  }
+  
   
     func alertForPurchaseResult(_ result: SwiftyStoreKit.PurchaseResult) /*-> UIAlertController*/ {
     
     switch result {
     case .success(let productId):
       print("Purchase Success: \(productId)")
-      saveRealPurchaseIntoRebeloperStoreKeychain(productId)
       NotificationCenter.default.post(name: NSNotification.Name(rawValue: iAPStatusChanged), object: nil)
-    //self.showAlert(alertWithTitle("Thank You", message: "Purchase completed"))
-         self.navigationController!.popViewController(animated: true)
+      self.showAlert(alertWithTitle("Thank You", message: "Purchase completed"))
       
     case .error(let error):
       print("Purchase Failed: \(error)")
@@ -927,7 +492,6 @@ class RebeloperStore: UIViewController {
       print("Restore Success: \(results.restoredProductIds)")
       
       for i in 0 ... results.restoredProductIds.count - 1 {
-        saveRealPurchaseIntoRebeloperStoreKeychain(results.restoredProductIds[i])
       }
       
       NotificationCenter.default.post(name: NSNotification.Name(rawValue: iAPStatusChanged), object: nil)

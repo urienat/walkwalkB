@@ -186,7 +186,6 @@
 				AE0213481DCF8130006F927F /* setting.swift */,
 				AEDF47AC1DC22EA0005DB21A /* LoginFile.swift */,
 				AE4159D61DD339F1008C5DE6 /* dogFile.swift */,
-				AE4B0FEB1E82B82F00188B79 /* subs.swift */,
 			);
 			name = "Side programs";
 			sourceTree = "<group>";
@@ -207,6 +206,7 @@
 				AE84DE8A1E7E638700F08945 /* CHANGE LOG.rtf */,
 				AE84DE8B1E7E638700F08945 /* RebeloperStore.swift */,
 				AE84DE8C1E7E638700F08945 /* RebeloperStoreSetup.swift */,
+				AE4B0FEB1E82B82F00188B79 /* subs.swift */,
 			);
 			path = RebeloperStore;
 			sourceTree = "<group>";

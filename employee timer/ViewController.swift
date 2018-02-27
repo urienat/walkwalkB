@@ -52,6 +52,7 @@
         static var dateTimeFormat:String!
         static var refresh:Bool? = false
         static var sessionPusher:Bool?
+            static var subPusher:Bool?
         static var billsPusher:Bool?
         static var profilePusher: Bool?
         static var professionControl: String?
@@ -318,7 +319,7 @@
         ViewController.sessionPusher = false
         ViewController.billsPusher = false
         ViewController.profilePusher = false
-
+        ViewController.subPusher = false
         //connectivityCheck()
 
         }// end of viewdidload//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -578,8 +579,10 @@
         
         let alertController83 = UIAlertController(title: ("Subscription alert") , message: " Adding more than 4 accounts requires subscription and we couldn't find one. Please subscribe with free trial or log again if you have one.", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        self.present((storyboard.instantiateViewController(withIdentifier: "subScreen")), animated: true, completion: nil)
+       
+        ViewController.subPusher = true
+        self.profileClicked()
+            
         }
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in

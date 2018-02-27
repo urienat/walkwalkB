@@ -12,6 +12,8 @@ import FirebaseAuth
 
 
 class subs: UIViewController {
+    var backArrow = UIImage(named: "backArrow")?.withRenderingMode(.alwaysTemplate)
+
     
    var lbl = ""
 
@@ -65,20 +67,24 @@ class subs: UIViewController {
     
     ///////////////////////////////////////////////////////
     override func viewDidLoad() {
-        thinking.isHidden = false
-       lbl = "Subscription"
+    woofNew.isEnabled = false
+    thinking.isHidden = false
+    lbl = "Subscription"
     self.title = lbl
-
+    self.thinking.startAnimating()
+    self.woofNewLbl.text = "Checking..."
+     
+        let yourBackImage = UIImage(named: "backArrow")
+        self.navigationController?.navigationBar.backIndicatorImage =  yourBackImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
         
-        self.thinking.startAnimating()
-     //   self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Grass12")!)
-        //self.view.insertSubview(backgroundImage, at: 0)
         
-         updateUI()
+    
+    updateUI()
     
     
     NotificationCenter.default.addObserver(forName: NSNotification.Name(iAPStatusChanged), object: nil, queue:OperationQueue.main) { (Notification) in
-   self.backToMain()        }
+    self.backToMain()        }
         
     
 }//end of viewdid ////////////////////////////////////////
@@ -99,16 +105,15 @@ class subs: UIViewController {
         }
     }//end of view did appear
 
-    func updateUI() {
-        
+        func updateUI() {
         RebeloperStore.shared.verifyRenewablePurchase(.autoRenewableSubscription1) { (result, resultString) in
-            
-            self.woofNewLbl.text = "\(resultString)"
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-                self.thinking.stopAnimating()
-                self.thinking.isHidden = true
-            }
-            }
+        self.woofNewLbl.text = "\(resultString)"
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(0)) {
+        if result == true {self.woofNew.isEnabled = false} else {self.woofNew.isEnabled = true}
+        self.thinking.stopAnimating()
+        self.thinking.isHidden = true
+        }
+        }
         
       
     }//end of update ui

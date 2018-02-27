@@ -188,6 +188,9 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
         self.navigationController?.navigationBar.topItem?.title = " "
+        
+        if ViewController.subPusher == true {ViewController.subPusher = false;
+            subscriptionBtn.sendActions(for: .touchUpInside)}
 
         let currentUser = FIRAuth.auth()?.currentUser
         if (currentUser != nil) {
