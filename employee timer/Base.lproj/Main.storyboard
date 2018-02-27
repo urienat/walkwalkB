@@ -522,15 +522,10 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="BKZ-mQ-cBN"/>
-                                    <barButtonItem title="Logout" id="1Rn-jl-52S">
-                                        <connections>
-                                            <action selector="logout:" destination="fcy-Tw-2om" id="cqc-hf-63a"/>
-                                        </connections>
-                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perSessionImage" translatesAutoresizingMaskIntoConstraints="NO" id="F1J-Og-Wpy">
-                                <rect key="frame" x="264" y="60" width="40" height="40"/>
+                                <rect key="frame" x="264" y="72" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9bP-bJ-STn"/>
                                     <constraint firstAttribute="width" constant="40" id="QSh-OO-wEH"/>
@@ -597,7 +592,7 @@
                             <constraint firstItem="xJI-kw-XIv" firstAttribute="top" secondItem="V25-s4-mQy" secondAttribute="top" id="g4c-IN-Vgf"/>
                             <constraint firstItem="yQz-Hs-fNV" firstAttribute="centerX" secondItem="V25-s4-mQy" secondAttribute="centerX" id="gur-Ux-SRe"/>
                             <constraint firstItem="xJI-kw-XIv" firstAttribute="leading" secondItem="V25-s4-mQy" secondAttribute="leading" id="jjx-le-2Xb"/>
-                            <constraint firstItem="F1J-Og-Wpy" firstAttribute="top" secondItem="xJI-kw-XIv" secondAttribute="bottom" constant="10" id="o5B-oE-8Oz"/>
+                            <constraint firstItem="F1J-Og-Wpy" firstAttribute="top" secondItem="xJI-kw-XIv" secondAttribute="bottom" constant="22" id="o5B-oE-8Oz"/>
                             <constraint firstItem="1Ru-Qy-YhC" firstAttribute="leading" secondItem="gF4-tF-i12" secondAttribute="leading" id="pzi-U6-YWb"/>
                             <constraint firstItem="zve-AF-n09" firstAttribute="top" secondItem="yQz-Hs-fNV" secondAttribute="bottom" id="vGf-Pn-3aK"/>
                             <constraint firstAttribute="trailing" secondItem="xJI-kw-XIv" secondAttribute="trailing" id="ycP-NN-Icy"/>
@@ -1663,7 +1658,7 @@
                                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="fcy-Tw-2om" kind="show" animates="NO" id="9ps-10-xzH"/>
+                                                    <segue destination="fcy-Tw-2om" kind="show" id="9ps-10-xzH"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBg-ht-L1l">
