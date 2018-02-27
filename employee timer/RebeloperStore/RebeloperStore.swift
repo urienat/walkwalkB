@@ -366,7 +366,7 @@ mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy",
     
     func pop(alert: UIAlertAction!){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let view = storyboard.instantiateViewController(withIdentifier: "homeScreen§") as UIViewController
+        let view = storyboard.instantiateViewController(withIdentifier: "homeScreen") as UIViewController
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         //show window
         appDelegate.window?.rootViewController = view
