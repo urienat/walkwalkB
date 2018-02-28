@@ -479,6 +479,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         ViewController.taxOption = self.taxSwitcherUpdate
         if self.precentage.text != nil {ViewController.taxation = self.precentage.text!}
         ViewController.taxCalc = self.taxCalacUpdate
+        ViewController.taxName = self.taxNameUpdate
 
         self.navigationController!.popViewController(animated: true)
 

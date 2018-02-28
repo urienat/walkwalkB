@@ -52,7 +52,7 @@
         static var dateTimeFormat:String!
         static var refresh:Bool? = false
         static var sessionPusher:Bool?
-            static var subPusher:Bool?
+        static var subPusher:Bool?
         static var billsPusher:Bool?
         static var profilePusher: Bool?
         static var professionControl: String?
@@ -60,7 +60,8 @@
         static var taxOption : String?
         static var taxCalc: String?
         static var taxation: String?
-
+        static var taxName: String?
+            
         struct employerStruct{
         var accountName : String
         var employerRef : String
@@ -250,6 +251,7 @@
         ViewController.taxOption = String(describing: snapshot.childSnapshot(forPath: "fSwitcher").value!) as String
         ViewController.taxCalc = String(describing: snapshot.childSnapshot(forPath: "fTaxCalc").value!) as String
         ViewController.taxation = String(describing: snapshot.childSnapshot(forPath: "fTaxPrecentage").value!) as String
+        ViewController.taxName = String(describing: snapshot.childSnapshot(forPath: "fTaxName").value!) as String
         ViewController.professionControl =  String(describing: snapshot.childSnapshot(forPath: "fProfessionControl").value!) as String
         // if  ViewController.professionControl! == "Tutor" { self.homeTitle.title = "Students"} else {self.homeTitle.title = "Accounts"}
         }

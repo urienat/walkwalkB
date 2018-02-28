@@ -73,7 +73,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yv6-XF-GvY" userLabel="View datePicker background">
-                                <rect key="frame" x="10" y="149" width="300" height="320"/>
+                                <rect key="frame" x="10" y="209" width="300" height="200"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AwW-qy-Zpc">
                                         <rect key="frame" x="252" y="0.0" width="40" height="40"/>
@@ -87,7 +87,7 @@
                                         </connections>
                                     </button>
                                     <datePicker tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="Zh1-5a-B5S">
-                                        <rect key="frame" x="15" y="55" width="270" height="250"/>
+                                        <rect key="frame" x="15" y="-65" width="270" height="250"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="250" id="kzN-OC-ezd"/>
                                         </constraints>
@@ -105,7 +105,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="AwW-qy-Zpc" secondAttribute="trailing" constant="8" id="FSW-9B-EOl"/>
-                                    <constraint firstAttribute="height" constant="320" id="MAc-ev-3Z4"/>
+                                    <constraint firstAttribute="height" constant="200" id="MAc-ev-3Z4"/>
                                     <constraint firstAttribute="bottom" secondItem="Zh1-5a-B5S" secondAttribute="bottom" constant="15" id="jfT-MB-QnM"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="kqB-Sg-foy"/>
                                     <constraint firstItem="AwW-qy-Zpc" firstAttribute="top" secondItem="yv6-XF-GvY" secondAttribute="top" id="lwE-6G-QAk"/>
@@ -114,7 +114,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3pe-xh-s5t" userLabel="Itembackground">
-                                <rect key="frame" x="10.5" y="149" width="300" height="320"/>
+                                <rect key="frame" x="10.5" y="209" width="300" height="200"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="natural" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="X5I-Pz-o4U" userLabel="amount" customClass="AllowedCharsTextField" customModule="perSession" customModuleProvider="target">
                                         <rect key="frame" x="104.5" y="46" width="90" height="30"/>
@@ -174,10 +174,10 @@
                                         </connections>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Voe-To-vG2">
-                                        <rect key="frame" x="30" y="92" width="240" height="170"/>
+                                        <rect key="frame" x="30" y="92" width="240" height="100"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="170" id="Mbj-Hi-grG"/>
+                                            <constraint firstAttribute="height" constant="100" id="Mbj-Hi-grG"/>
                                         </constraints>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>

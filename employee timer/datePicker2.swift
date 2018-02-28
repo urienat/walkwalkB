@@ -33,7 +33,7 @@ class datePicker2: UIViewController {
     var employerID = ""
     var employeeID = ""
     var recordStatus = "save"
-    
+    var textForTax = ""
     var saveRecord : UIBarButtonItem?
     
     let mydateFormat5 = DateFormatter()
@@ -228,9 +228,10 @@ class datePicker2: UIViewController {
         itemBackground.layer.cornerRadius =  10//CGFloat(25)
         itemBackground.layoutIfNeeded()
         
-        if ViewController.taxOption == "No" {self.taxForSpecial = "Fill amount" } else {self.taxForSpecial = "Fill amount aligned with your taxation approach ( rate with tax included or excluded)." }
+        if ViewController.taxCalc == "Over" {self.textForTax = "and its rate excluding \(String(describing: ViewController.taxName!))"} else {self.textForTax = "and its rate including \(String(describing: ViewController.taxName!))"}
+        if ViewController.taxOption == "No" {self.taxForSpecial = "and its rate." } else {self.taxForSpecial = "\(self.textForTax)." }
         
-        textForSpecial.text = "Add an item with a short description to the billing  process. \(String(describing: taxForSpecial!))"
+        textForSpecial.text = "Add item's short description \(String(describing: taxForSpecial!))"
  
     } ///end of did load/////////////////////////////////////////////////////////////////////////////////////////////////////
     
