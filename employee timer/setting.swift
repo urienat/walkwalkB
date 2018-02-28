@@ -402,7 +402,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.dbRefEmployees.child((user?.uid)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage": self.taxPrecentageUpdate,"fTaxId": self.taxIdUpdate,  "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : "Over", "fDateTime": "DateTime","fLogin":"Normal", "fLastCalander":"New","fAddress":self.addressUpdate, "fPaypal" : self.paypalUpdate, "fBillinfo" :self.billInfoUpdate,"fCalander" : "None","fProfessionControl":"Profession","fTaxName":""
         ])
 
-        ViewController.dateTimeFormat = self.dateTimeUpdate
+       
         self.dbRefEmployees.child(user!.uid).child("myEmployers").setValue(["New Dog":0])//add employer to my employers of employee
 
         //storage of pictures
@@ -420,7 +420,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.dbRefEmployees.child(self.employeeRefUpdate).updateChildValues(["fImageRef":(metadata?.downloadURL()?.absoluteString)! as Any ])
         }) //end of dbref
         }//end of uploadtask
-        ViewController.fixedCurrency = self.currency.text!
+        
 
         //add users update passcode and mail
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
@@ -451,8 +451,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
 
         func saveToDB() {
-        ViewController.dateTimeFormat = self.dateTimeUpdate
-        ViewController.calanderOption = self.calanderUpdate
+        
 
         let alertController = UIAlertController(title: ("Save Setting") , message: ("Are You Sure?"), preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
@@ -484,7 +483,12 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if self.precentage.text != nil {ViewController.taxation = self.precentage.text!}
         ViewController.taxCalc = self.taxCalacUpdate
         ViewController.taxName = self.taxNameUpdate
-
+        ViewController.fixedName =  self.nameUpdate
+        ViewController.fixedLastName =  self.lastNameUpdate
+        ViewController.fixedemail =  self.emailUpdate
+        ViewController.dateTimeFormat = self.dateTimeUpdate
+        ViewController.calanderOption = self.calanderUpdate
+            
         self.navigationController!.popViewController(animated: true)
 
         }//end of let update
