@@ -68,8 +68,8 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     var taxName: String?
     var taxation: String?
     var taxId: String?
-    var stam: Double?
-    var stam3: Double?
+    var taxCalculated: Double?
+    var beforeTaxCalculated: Double?
 
     var taxationBlock = ""
     var sessionBlock = ""
@@ -468,16 +468,16 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         if self.eventCounter == 0 {self.sessionBlock = ""} else {self.sessionBlock = "\(self.seprator)\r\nTotal Number of sessions: \(self.eventCounter)  -   \(self.perEvents.text!)"}
 
         if  self.taxSwitch == "Yes" {
-        if self.self.taxCalc == "Over" {self.self.stam =  Double(Double(self.taxation!)!*self.calc*0.01).roundTo(places: 2)}  else  { self.stam = Double((self.calc / Double(Double(self.taxation!)!*0.01+1)) * Double(Double(self.taxation!)!*0.01)).roundTo(places: 2)}
+        if self.self.taxCalc == "Over" {self.taxCalculated =  Double(Double(self.taxation!)!*self.calc*0.01).roundTo(places: 2)}  else  { self.taxCalculated = Double((self.calc / Double(Double(self.taxation!)!*0.01+1)) * Double(Double(self.taxation!)!*0.01)).roundTo(places: 2)}
 
-        if self.taxCalc == "Over" {self.stam3 = Double(self.calc).roundTo(places: 2)}  else  { self.stam3 =  self.calc -  Double((self.calc / Double(Double(self.taxation!)!*0.01+1)) * Double(Double(self.taxation!)!*0.01)).roundTo(places: 2)}
+        if self.taxCalc == "Over" {self.beforeTaxCalculated = Double(self.calc).roundTo(places: 2)}  else  { self.beforeTaxCalculated =  self.calc -  Double((self.calc / Double(Double(self.taxation!)!*0.01+1)) * Double(Double(self.taxation!)!*0.01)).roundTo(places: 2)}
 
-        self.midCalc =  String (describing: self.stam!)
-        self.midCalc3 =  String(describing: self.stam3!)
+        self.midCalc =  String (describing: self.taxCalculated!)
+        self.midCalc3 =  String(describing: self.beforeTaxCalculated!)
         print (self.midCalc)
         if self.taxName! == "" {self.taxForBlock = "Tax"} else {self.taxForBlock = self.taxName!}
         print (self.midCalc3)
-        self.midCalc2 =  String(self.stam3! + self.stam!)
+        self.midCalc2 =  String(self.beforeTaxCalculated! + self.taxCalculated!)
 
         if self.paymentDate! == "" {self.paymentDate = self.mydateFormat5.string(from: Date());self.PaymentBlalnce = self.midCalc2} else { self.PaymentBlalnce = "0"}
 
