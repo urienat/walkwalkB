@@ -25,8 +25,9 @@ class datePicker2: UIViewController {
     var taxForSpecial: String?
     let dateForItem = Date()
     var segmentedPressed:Int?
-     let niner:UInt64 = 9999999999999
-    
+     //let niner:UInt64 = 9999999999999
+    let niner = -9999999999
+
     @IBOutlet weak var backHeight: NSLayoutConstraint!
     
     //let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
@@ -264,7 +265,7 @@ class datePicker2: UIViewController {
             let recordRefence = self.dbRef.childByAutoId()
             recordRefence.setValue(record)
             
-            self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(niner)])
+            self.dbRefEmployee.child(self.employeeID).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int((niner))])
             self.dbRefEmployer.child(self.employerID).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(niner)])
         }//end of else
     } // end of recordToHandle == ""
