@@ -75,6 +75,10 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBOutlet weak var picture: UIImageView!
     var imagePicker2: UIImagePickerController!
     @IBOutlet weak var currencyTitle: UILabel!
+    
+    @IBAction func curenncyChanged(_ sender: Any) {
+        alert74()
+    }
     @IBOutlet weak var currency: UITextField!
     var currencyUpdate = ""
     @IBOutlet weak var signer: UITextField!
@@ -689,6 +693,17 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         alertCotroller70.addAction(okAction1)
         present(alertCotroller70, animated: true, completion: nil)
         }//alert end
-
+    
+    func alert74(){
+            let alertCotroller74 = UIAlertController(title: ("Currency Alert - Important") , message: ("Changing currency is not recommended as this is not a multy-currency system. Do it only if no activity yet or if you change it for presentaion purposes only(e.g USD instaed of $.)"), preferredStyle: .alert)
+            let okAction1 = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+                self.currency.text = self.currencyUpdate
+            }
+            alertCotroller74.addAction(cancelAction)
+            alertCotroller74.addAction(okAction1)
+            present(alertCotroller74, animated: true, completion: nil)
+    }
 
         }////////////////////////////end!!!

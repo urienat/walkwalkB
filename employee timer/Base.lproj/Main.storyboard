@@ -540,7 +540,7 @@
                                     <constraint firstAttribute="width" constant="260" id="OCu-kA-VSx"/>
                                     <constraint firstAttribute="height" constant="420" id="b0v-7S-y7N"/>
                                 </constraints>
-                                <mutableString key="text">After a month of free trial, monthly subscription with full and ongoing access to all features, so you can try before you buy. A subscription costs $4.99 per month. Payment will be charged to your iTunes Account at confirmation of purchase and after the month of free trial.  Unused portion of free trial, will be forfeited when the user purchases a subscription. The subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Your account will be charged for renewal within 24-hours prior to the end of the current 1 month period. You can turn off auto-renew at any time from your iTunes account settings. Cancellation of the current active subscription period is not allowed. Find our privacy policy and Terms &amp; Conditions, at the following links: </mutableString>
+                                <string key="text">After a month of free trial, monthly subscription with full and ongoing access to all features, so you can try before you buy. A subscription costs $4.99 per month. Payment will be charged to your iTunes Account at confirmation of purchase and after the month of free trial.  Unused portion of free trial, will be forfeited when the user purchases a subscription. The subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Your account will be charged for renewal within 24-hours prior to the end of the current 1 month period. You can turn off auto-renew at any time from your iTunes account settings. Cancellation of the current active subscription period is not allowed. Find our privacy policy and Terms &amp; Conditions, at the following links: </string>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1410,6 +1410,9 @@
                                                         <integer key="value" value="3"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="curenncyChanged:" destination="bu7-cQ-GBV" eventType="editingChanged" id="I4Q-jW-u0R"/>
+                                                </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WuQ-ku-qG9" userLabel="takePic">
                                                 <rect key="frame" x="238" y="10" width="68" height="68"/>
@@ -4099,7 +4102,6 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cyf-eK-Md6"/>
         <segue reference="8Bf-Vi-arA"/>
         <segue reference="3Wx-xY-sDh"/>
         <segue reference="vGn-ru-ol3"/>
