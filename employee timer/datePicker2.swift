@@ -26,6 +26,7 @@ class datePicker2: UIViewController {
     let dateForItem = Date()
     var segmentedPressed:Int?
     
+    @IBOutlet weak var backHeight: NSLayoutConstraint!
     
     //let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
     
@@ -48,6 +49,7 @@ class datePicker2: UIViewController {
     @IBAction func sessionItem(_ sender: Any) {
         switch sessionItem.selectedSegmentIndex {
         case 0:   //Session
+        backHeight.constant = 330
         itemBackground.isHidden = true
         saveRecord?.isEnabled = true
                  datePickerbBackground .isHidden = false
@@ -59,7 +61,7 @@ class datePicker2: UIViewController {
          sessionMode = true
             
         case 1: //item
-        
+        backHeight.constant = 200
         datePickerbBackground .isHidden = true
         startLbl.isHidden = true
         date1button.isHidden = true

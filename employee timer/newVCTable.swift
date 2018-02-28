@@ -198,8 +198,9 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         billSender.isEnabled = false
         billPay.isEnabled = false
     thinking.startAnimating()
-    myGroup.enter()
+   
     refresh(presser: 1)        //// When your task completes
+    myGroup.enter()
     myGroup.notify(queue: DispatchQueue.main) {
         if self.appArray.count != 0  && self.Employerrate != 0.0 {self.thinking.stopAnimating();self.billProcess()}
         if self.Employerrate == 0.0 {self.thinking.stopAnimating();self.alert80()}
@@ -326,7 +327,11 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         default: Status = "All";
         } //end of switch
         self.csv2.deleteCharacters(in: NSMakeRange(0, self.csv2.length-1) )
-        fetch {self.final()}
+            
+            self.fetch {
+               print ("fetch")
+                
+                self.final()}
         }//end of status chosen
 
         @IBOutlet weak var periodChosen: UISegmentedControl!
@@ -433,8 +438,15 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         }//end of if
         }//end movesession
 
-
-        func amountCalc(){
+    func amountCalc(){
+        if ViewController.taxOption == "Yes" && ViewController.taxCalc == "Over" {
+            self.amount.text = "\(ViewController.fixedCurrency!)\(String(Double((1 + (Double(ViewController.taxation!)!/100.0)) * ((Double(self.eventCounter))*(self.Employerrate) + itemSum)).roundTo(places: 2)))"
+        } else {
+            self.amount.text = "\(ViewController.fixedCurrency!)\(String((Double(self.eventCounter))*(self.Employerrate) + itemSum))"
+        }
+    }
+    
+        func amountCalc3(){
            
             if ViewController.taxOption == "Yes" && ViewController.taxCalc == "Over" {self.calc = (1 + (Double(ViewController.taxation!)!/100.0)) * ((Double(self.eventCounter))*(self.Employerrate) + itemSum)
                 

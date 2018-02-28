@@ -281,6 +281,7 @@
                         <outlet property="amount" destination="7Js-4i-g59" id="Lbs-aO-rzE"/>
                         <outlet property="amountNumber" destination="X5I-Pz-o4U" id="pXR-td-jju"/>
                         <outlet property="animationImage" destination="UaV-6l-lVU" id="kdJ-SC-cQi"/>
+                        <outlet property="backHeight" destination="MAc-ev-3Z4" id="H8Q-xa-175"/>
                         <outlet property="date1button" destination="Ydt-wR-B8B" id="M1q-2Q-Nql"/>
                         <outlet property="datePickerbBackground" destination="yv6-XF-GvY" id="N14-Mo-Rnz"/>
                         <outlet property="deleter" destination="jaO-3a-pGo" id="w7H-FI-CQb"/>
