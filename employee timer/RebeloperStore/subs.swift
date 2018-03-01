@@ -14,6 +14,7 @@
         class subs: UIViewController {
         var backArrow = UIImage(named: "backArrow")?.withRenderingMode(.alwaysTemplate)
         var lbl = ""
+        var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
 
         //let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
 
@@ -40,6 +41,12 @@
         override func viewDidLoad() {
         woofNew.isEnabled = false
         woofNew.alpha = 0.5
+        woofNew.clipsToBounds = true
+        woofNew.layer.borderWidth = 0.5
+        woofNew.layer.borderColor = blueColor.cgColor
+        woofNew.layer.cornerRadius =  10//CGFloat(25)
+        woofNew.layoutIfNeeded()
+            
         thinking.isHidden = false
         lbl = "Subscription"
         self.title = lbl
@@ -53,10 +60,10 @@
         updateUI()
 
 
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(iAPStatusChanged), object: nil, queue:OperationQueue.main) { (Notification) in
-            self.updateUI()        }
+        //NotificationCenter.default.addObserver(forName: NSNotification.Name(iAPStatusChanged), object: nil, queue:OperationQueue.main) { (Notification) in
+         //   self.updateUI()        }
 
-
+            thinking.hidesWhenStopped = true
         }//end of viewdid ////////////////////////////////////////
 
         func backToMain() {
@@ -68,7 +75,7 @@
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(0)) {
             if result == true {self.woofNew.isEnabled = false;self.woofNew.alpha = 0.5} else {self.woofNew.isEnabled = true;self.woofNew.alpha = 1}
         self.thinking.stopAnimating()
-        self.thinking.isHidden = true
+       
         }
         }
         }//end of update ui
