@@ -194,7 +194,8 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         self.navigationController?.navigationBar.topItem?.title = " "
         
         if ViewController.subPusher == true {ViewController.subPusher = false;
-            subscriptionBtn.sendActions(for: .touchUpInside)}
+            performSegue(withIdentifier: "subPusher", sender: nil )}
+            //subscriptionBtn.sendActions(for: .touchUpInside)}
 
         let currentUser = FIRAuth.auth()?.currentUser
         if (currentUser != nil) {

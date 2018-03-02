@@ -1666,7 +1666,7 @@
                                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="fcy-Tw-2om" kind="show" id="9ps-10-xzH"/>
+                                                    <segue destination="fcy-Tw-2om" kind="show" identifier="subPusher" animates="NO" id="9ps-10-xzH"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBg-ht-L1l">
@@ -2057,6 +2057,7 @@
                         <outlet property="taxinfoSign" destination="XCs-4G-KHr" id="O66-xO-kHw"/>
                         <outlet property="viewForMove" destination="yE7-CY-drC" id="2uu-me-gOr"/>
                         <segue destination="Ecy-Z7-2Op" kind="show" identifier="backToMain" id="8s0-fg-N01"/>
+                        <segue destination="fcy-Tw-2om" kind="show" id="FV7-Nj-bs9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="39l-AQ-zlJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4108,6 +4109,7 @@
         <segue reference="vGn-ru-ol3"/>
         <segue reference="5at-sc-TfM"/>
         <segue reference="8s0-fg-N01"/>
+        <segue reference="9ps-10-xzH"/>
         <segue reference="1k4-P4-HYk"/>
     </inferredMetricsTieBreakers>
 </document>
