@@ -149,54 +149,54 @@ public enum ReceiptInfoField: String {
 internal class InAppReceipt {
 
     // URL used to verify remotely receipt
-    enum ReceiptVerifyURL: String {
-        case Production = "https://buy.itunes.apple.com/verifyReceipt"
-        case Test = "https://sandbox.itunes.apple.com/verifyReceipt"
+    enum VerifyReceiptURLType: String {
+        case production = "https://buy.itunes.apple.com/verifyReceipt"
+        case sandbox = "https://sandbox.itunes.apple.com/verifyReceipt"
     }
 
-    static var URL: Foundation.URL? {
+    static var appStoreReceiptUrl: URL? {
         return Bundle.main.appStoreReceiptURL
     }
 
-    static var data: Data? {
-        if let receiptDataURL = URL, let data = try? Data(contentsOf: receiptDataURL) {
-            return data
+    static var appStoreReceiptData: Data? {
+        guard let receiptDataURL = appStoreReceiptUrl, let data = try? Data(contentsOf: receiptDataURL) else {
+            return nil
         }
-        return nil
+        return data
     }
 
     // The base64 encoded receipt data.
-    static var base64EncodedString: String? {
-        return data?.base64EncodedString(options: [])
+    static var appStoreReceiptBase64Encoded: String? {
+        return appStoreReceiptData?.base64EncodedString(options: [])
     }
 
     // https://developer.apple.com/library/ios/releasenotes/General/ValidateAppStoreReceipt/Chapters/ValidateRemotely.html
 
-   /**
-    *  - Parameter receiptVerifyURL: receipt verify url (default: Production)
-    *  - Parameter password: Only used for receipts that contain auto-renewable subscriptions. Your app’s shared secret (a hexadecimal string).
-    *  - Parameter session: the session used to make remote call.
-    *  - Parameter completion: handler for result
-    */
+    /**
+     *  - Parameter receiptVerifyURL: receipt verify url (default: Production)
+     *  - Parameter password: Only used for receipts that contain auto-renewable subscriptions. Your app’s shared secret (a hexadecimal string).
+     *  - Parameter session: the session used to make remote call.
+     *  - Parameter completion: handler for result
+     */
     class func verify(
-        receiptVerifyURL url: ReceiptVerifyURL = .Production,
+        urlType: VerifyReceiptURLType = .production,
         password autoRenewPassword: String? = nil,
         session: URLSession = URLSession.shared,
         completion: @escaping (SwiftyStoreKit.VerifyReceiptResult) -> ()) {
 
             // If no receipt is present, validation fails.
-            guard let base64EncodedString = self.base64EncodedString else {
+            guard let base64EncodedString = appStoreReceiptBase64Encoded else {
                 completion(.error(error: .noReceiptData))
                 return
             }
 
             // Create request
-            let storeURL = Foundation.URL(string: url.rawValue)! // safe (until no more)
+            let storeURL = URL(string: urlType.rawValue)! // safe (until no more)
             let storeRequest = NSMutableURLRequest(url: storeURL)
             storeRequest.httpMethod = "POST"
 
 
-            let requestContents :NSMutableDictionary = [ "receipt-data" : base64EncodedString]
+            let requestContents: NSMutableDictionary = [ "receipt-data" : base64EncodedString ]
             // password if defined
             if let password = autoRenewPassword {
                 requestContents.setValue(password, forKey: "password")
@@ -248,7 +248,7 @@ internal class InAppReceipt {
                      */
                     let receiptStatus = ReceiptStatus(rawValue: status) ?? ReceiptStatus.unknown
                     if case .testReceipt = receiptStatus {
-                        verify(receiptVerifyURL: .Test, password: autoRenewPassword, session: session, completion: completion)
+                        verify(urlType: .sandbox, password: autoRenewPassword, session: session, completion: completion)
                     }
                     else {
                         if receiptStatus.isValid {
@@ -305,6 +305,8 @@ internal class InAppReceipt {
             return .notPurchased
         }
     
+        let receiptDate = getReceiptRequestDate(inReceipt: receipt) ?? date
+        
         // Return the expires dates sorted desc
         let expiryDateValues = receiptsInfo
             .flatMap { (receipt) -> String? in
@@ -328,7 +330,7 @@ internal class InAppReceipt {
         }
       
         // Check if at least 1 receipt is valid
-        if firstExpiryDate.compare(date) == .orderedDescending {
+        if firstExpiryDate.compare(receiptDate) == .orderedDescending {
             
             // The subscription is valid
             return .purchased(expiryDate: firstExpiryDate)
@@ -339,6 +341,16 @@ internal class InAppReceipt {
         }
     }
   
+    private class func getReceiptRequestDate(inReceipt receipt: ReceiptInfo) -> Date? {
+        
+        guard let receiptInfo = receipt["receipt"] as? ReceiptInfo,
+            let requestDateString = receiptInfo["request_date_ms"] as? String,
+            let requestDateMs = Double(requestDateString) else {
+            return nil
+        }
+        return Date(timeIntervalSince1970: requestDateMs / 1000)
+    }
+    
     /**
      *  Get all the receipts info for a specific product
      *  - Parameter productId: the product id

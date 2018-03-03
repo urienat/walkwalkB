@@ -100,7 +100,7 @@ PODS:
     - GTMSessionFetcher/Core (= 1.1.9)
   - KeychainAccess (3.0.0)
   - Protobuf (3.3.0)
-  - SwiftyStoreKit (0.5.1)
+  - SwiftyStoreKit (0.5.4)
 
 DEPENDENCIES:
   - Bolts
@@ -120,7 +120,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - KeychainAccess (from `https://github.com/kishikawakatsumi/KeychainAccess.git`, tag `v3.0.0`)
   - Protobuf
-  - SwiftyStoreKit (from `https://github.com/bizz84/SwiftyStoreKit.git`, tag `0.5.1`)
+  - SwiftyStoreKit (from `https://github.com/bizz84/SwiftyStoreKit.git`, tag `0.5.4`)
 
 EXTERNAL SOURCES:
   KeychainAccess:
@@ -128,7 +128,7 @@ EXTERNAL SOURCES:
     :tag: v3.0.0
   SwiftyStoreKit:
     :git: https://github.com/bizz84/SwiftyStoreKit.git
-    :tag: 0.5.1
+    :tag: 0.5.4
 
 CHECKOUT OPTIONS:
   KeychainAccess:
@@ -136,7 +136,7 @@ CHECKOUT OPTIONS:
     :tag: v3.0.0
   SwiftyStoreKit:
     :git: https://github.com/bizz84/SwiftyStoreKit.git
-    :tag: 0.5.1
+    :tag: 0.5.4
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -161,8 +161,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   KeychainAccess: 412bf2650d9aebfc8135a58103b90ec38caad7f8
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
-  SwiftyStoreKit: 53c63f91545a3778dc108f860a7414905ce40a63
+  SwiftyStoreKit: 31ecbc5be1b1c15241392bf6adabdcdd501b6cb5
 
-PODFILE CHECKSUM: 5cfdd384f6e1fd0760eea1a551a18bc554c69577
+PODFILE CHECKSUM: 722e6ea7cd635e6c0a3966e6aad2b9a53ef349d9
 
 COCOAPODS: 1.3.1

@@ -21,11 +21,12 @@
         @IBOutlet weak var thinking: UIActivityIndicatorView!
         @IBOutlet weak var woofNew: UIButton!
         @IBAction func woofNew(_ sender: Any) {
+        RebeloperStore.shared.purchaseRenewable(.autoRenewableSubscription1)
         thinking.startAnimating()
         woofNew.isEnabled = false
         self.woofNewLbl.text = "I am on it..."
         woofNew.alpha = 0.5
-        RebeloperStore.shared.purchaseRenewable(.autoRenewableSubscription1)
+       
 
         }
 
