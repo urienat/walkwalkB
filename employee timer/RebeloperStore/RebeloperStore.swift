@@ -530,6 +530,7 @@ extension UIApplication {
         let purchase: RenewablePurchaseName = RenewablePurchases[purchase]
         
         NetworkActivityIndicatorManager.networkOperationStarted()
+        print (AppBundleId + "." + purchase.rawValue)
         
         SwiftyStoreKit.retrieveProductsInfo([AppBundleId + "." + purchase.rawValue]) { result in
             NetworkActivityIndicatorManager.networkOperationFinished()
@@ -729,6 +730,7 @@ extension UIApplication {
                 self.alertForVerifyReceipt(result)
                 if case .noReceiptData = error {
                     self.refreshReceipt()
+                  
                 }
             }
         }

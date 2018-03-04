@@ -9,6 +9,7 @@
         import Foundation
         import UIKit
         import FirebaseAuth
+        import StoreKit
 
 
         class subs: UIViewController,UITextFieldDelegate {
@@ -41,6 +42,8 @@
 
         ///////////////////////////////////////////////////////
         override func viewDidLoad() {
+            
+           
       
         let yourBackImage = UIImage(named: "backArrow")
         self.navigationController?.navigationBar.backIndicatorImage =  yourBackImage
@@ -86,7 +89,31 @@
         }
         }
         }//end of update ui
-
+            
+            
+            ////////////////////////
+            func loadSubscriptionOptions() {
+                
+                let productID = Set(["HomePloyer.perSession.mainSub"]) 
+                
+                let request = SKProductsRequest(productIdentifiers: productID)
+                request.delegate = self
+                request.start()
+            }
 
         }
-
+        
+        
+        //////
+        extension subs: SKProductsRequestDelegate {
+            func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+                options = response.products.map { Subscription(product: $0) }
+            }
+            
+            func request(_ request: SKRequest, didFailWithError error: Error) {
+                if request is SKProductsRequest {
+                    print("Subscription Options Failed Loading: \(error.localizedDescription)")
+                }
+            }
+        }
+        

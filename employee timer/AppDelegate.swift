@@ -50,13 +50,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().signInSilently() ////try
         
         RebeloperStore.shared.start()
-        
-        
+        subs.shared.loadSubscriptionOptions()
             
 
         
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        
+        
 
         // Initialize Google  sign-in
         var configureError: NSError?
