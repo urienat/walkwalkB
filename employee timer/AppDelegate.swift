@@ -18,6 +18,7 @@ import FBSDKCoreKit
 import Google
 import GoogleSignIn
 import FirebaseCrash
+import SwiftyStoreKit
 
 
 @UIApplicationMain
@@ -47,7 +48,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().clientID =  FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().signInSilently() ////try
+        
         RebeloperStore.shared.start()
+        
+        
+            
+
+        
+        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         // Initialize Google  sign-in

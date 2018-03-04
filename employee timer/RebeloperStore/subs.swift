@@ -21,6 +21,7 @@
         @IBOutlet weak var thinking: UIActivityIndicatorView!
         @IBOutlet weak var woofNew: UIButton!
         @IBAction func woofNew(_ sender: Any) {
+        print ("start")
         RebeloperStore.shared.purchaseRenewable(.autoRenewableSubscription1)
         thinking.startAnimating()
         woofNew.isEnabled = false
@@ -40,6 +41,10 @@
 
         ///////////////////////////////////////////////////////
         override func viewDidLoad() {
+            
+            print ("start")
+            RebeloperStore.shared.start()///
+            
         let yourBackImage = UIImage(named: "backArrow")
         self.navigationController?.navigationBar.backIndicatorImage =  yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
