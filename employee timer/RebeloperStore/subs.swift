@@ -12,10 +12,11 @@
         import StoreKit
 
 
-        class subs: UIViewController,UITextFieldDelegate {
+        class subs: UIViewController {
         var backArrow = UIImage(named: "backArrow")?.withRenderingMode(.alwaysTemplate)
         var lbl = ""
         var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
+        var options: [Subscription]?
 
         //let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
 
@@ -43,7 +44,7 @@
         ///////////////////////////////////////////////////////
         override func viewDidLoad() {
             
-           
+         options = subs.shared.options
       
         let yourBackImage = UIImage(named: "backArrow")
         self.navigationController?.navigationBar.backIndicatorImage =  yourBackImage
@@ -107,7 +108,7 @@
         //////
         extension subs: SKProductsRequestDelegate {
             func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-                options = response.products.map { Subscription(product: $0) }
+                options = response.products.map { (product: $0) }
             }
             
             func request(_ request: SKRequest, didFailWithError error: Error) {

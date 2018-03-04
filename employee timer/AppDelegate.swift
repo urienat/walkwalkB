@@ -51,6 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         RebeloperStore.shared.start()
         subs.shared.loadSubscriptionOptions()
+        
             
 
         
