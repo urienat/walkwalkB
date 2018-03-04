@@ -257,10 +257,10 @@ class RebeloperStore: UIViewController {
   func purchaseRenewable(_ purchase: RenewablePurchaseName) {
     
     NetworkActivityIndicatorManager.networkOperationStarted()
-    SwiftyStoreKit.purchaseProduct(AppBundleId + "." +
-    purchase.rawValue) { result in
+     print ("aa")
+    SwiftyStoreKit.purchaseProduct("\(AppBundleId).\(purchase.rawValue)") { result in
     NetworkActivityIndicatorManager.networkOperationFinished()
-      
+   print ("bb")
       //self.showAlert(self.alertForPurchaseResult(result))
       self.alertForPurchaseResult(result)
     }
@@ -467,6 +467,7 @@ self.refreshReceipt()
       
       switch error {
       case .failed(let error):
+        
         if (error as NSError).domain == SKErrorDomain {
           self.showAlert(alertWithTitle("Purchase failed", message: "Please check your Internet connection or try again later"))
         }
