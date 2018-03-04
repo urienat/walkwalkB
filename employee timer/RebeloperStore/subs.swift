@@ -11,7 +11,7 @@
         import FirebaseAuth
 
 
-        class subs: UIViewController {
+        class subs: UIViewController,UITextFieldDelegate {
         var backArrow = UIImage(named: "backArrow")?.withRenderingMode(.alwaysTemplate)
         var lbl = ""
         var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
@@ -40,6 +40,10 @@
 
         ///////////////////////////////////////////////////////
         override func viewDidLoad() {
+        let yourBackImage = UIImage(named: "backArrow")
+        self.navigationController?.navigationBar.backIndicatorImage =  yourBackImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+            
         woofNew.isEnabled = false
         woofNew.alpha = 0.5
         woofNew.clipsToBounds = true
@@ -54,15 +58,15 @@
         self.thinking.startAnimating()
         self.woofNewLbl.text = "Checking..."
 
-        let yourBackImage = UIImage(named: "backArrow")
-        self.navigationController?.navigationBar.backIndicatorImage =  yourBackImage
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-
+        
         updateUI()
 
 
-        //NotificationCenter.default.addObserver(forName: NSNotification.Name(iAPStatusChanged), object: nil, queue:OperationQueue.main) { (Notification) in
-         //   self.updateUI()        }
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(iAPStatusChanged), object: nil, queue:OperationQueue.main) { (Notification) in
+            
+            print ("notificationUI")
+            
+           self.updateUI()        }
 
             thinking.hidesWhenStopped = true
         }//end of viewdid ////////////////////////////////////////

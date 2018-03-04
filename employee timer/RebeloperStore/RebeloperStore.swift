@@ -235,9 +235,8 @@ class RebeloperStore: UIViewController {
    // mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy"
      //   ,options: 0, locale: nil)!
     NetworkActivityIndicatorManager.networkOperationStarted()
-    
-    SwiftyStoreKit.retrieveProductsInfo([AppBundleId + "." + purchase.rawValue]) { result in
-      NetworkActivityIndicatorManager.networkOperationFinished()
+        SwiftyStoreKit.retrieveProductsInfo([AppBundleId + "." + purchase.rawValue]) { result in
+     NetworkActivityIndicatorManager.networkOperationFinished()
       
       if let product = result.retrievedProducts.first {
         
@@ -297,61 +296,61 @@ class RebeloperStore: UIViewController {
   }
   
   
-  
-  func verifyRenewablePurchase(_ purchase: RenewablePurchaseName, completion: @escaping (_ result: Bool, _ resutlString: String) -> Void) {
+ //////////////check from add account/////////////////////////////////////////////
+func verifyRenewablePurchase(_ purchase: RenewablePurchaseName, completion: @escaping (_ result: Bool, _ resutlString: String) -> Void) {
 mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
-    NetworkActivityIndicatorManager.networkOperationStarted()
-    SwiftyStoreKit.verifyReceipt(password: SharedSecret, session: URLSession.shared) { (result) in
-      
-      NetworkActivityIndicatorManager.networkOperationFinished()
-      switch result {
-      case .success(let receipt):
-        
-        let productId = AppBundleId + "." + purchase.rawValue
-        
-     ///   var i = 0
-    ///    repeat {
-          
-          if purchase == RenewablePurchases[0] {
-            let purchaseResult = SwiftyStoreKit.verifySubscription(
-              productId: productId,
-              inReceipt: receipt,
-              validUntil: Date()
-            )
-            print (purchaseResult)
-
-            switch purchaseResult {
-            case .purchased(let expiresDate):
-              print("Product till'\(AppBundleId).\(expiresDate)")
-
-              
-              completion(true, "Valid:\(mydateFormat.string(from: expiresDate))")
-              
-            case .expired(let expiresDate):
-              print("Product expired '\(AppBundleId).\(expiresDate))")
-              completion(false, "Expired:\(mydateFormat.string(from: expiresDate))")
-            case .notPurchased:
-              print("Product '\(AppBundleId).\(purchase)' has never been purchased")
-              completion(false, "Not purchased")
-            }
-          }
-          
-      //    i = i + 1
-    //    } while i < RenewablePurchases.count
-        
-        
-        
-      case .error(let error):
-        //self.showAlert(self.alertForVerifyReceipt(result))
-        self.alertForVerifyReceipt(result)
-        if case .noReceiptData = error {
-          self.refreshReceipt()
-        }
-      }
-    }
+NetworkActivityIndicatorManager.networkOperationStarted()
+SwiftyStoreKit.verifyReceipt(password: SharedSecret, session: URLSession.shared) { (result) in
+NetworkActivityIndicatorManager.networkOperationFinished()
     
-  }
-  
+switch result {
+case .success(let receipt):
+
+let productId = AppBundleId + "." + purchase.rawValue
+print (productId)
+
+///   var i = 0
+///    repeat {
+
+///if purchase == RenewablePurchases[0] {
+print (purchase)
+    
+let purchaseResult = SwiftyStoreKit.verifySubscription(
+productId: productId,
+inReceipt: receipt,
+validUntil: Date()
+)
+print (purchaseResult)
+
+switch purchaseResult {
+case .purchased(let expiresDate):
+print("Product till'\(AppBundleId).\(expiresDate)")
+completion(true, "Valid:\(mydateFormat.string(from: expiresDate))")
+
+case .expired(let expiresDate):
+print("Product expired '\(AppBundleId).\(expiresDate))")
+completion(false, "Expired:\(mydateFormat.string(from: expiresDate))")
+    
+case .notPurchased:
+print("Product '\(AppBundleId).\(purchase)' has never been purchased")
+completion(false, "Not purchased")
+}// end of switch purchaseResult
+///}//end of if purchase
+    
+// /   i = i + 1
+// /   } while i < RenewablePurchases.count
+
+case .error(let error):
+//self.showAlert(self.alertForVerifyReceipt(result))
+self.alertForVerifyReceipt(result)
+if case .noReceiptData = error {
+self.refreshReceipt()
+}
+}//end of switch
+}
+
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   
   
   func refreshReceipt() {

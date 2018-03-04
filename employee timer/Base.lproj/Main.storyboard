@@ -1666,7 +1666,7 @@
                                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="fcy-Tw-2om" kind="show" identifier="subPusher" animates="NO" id="9ps-10-xzH"/>
+                                                    <segue destination="fcy-Tw-2om" kind="show" identifier="subPusher" id="9ps-10-xzH"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBg-ht-L1l">

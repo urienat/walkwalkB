@@ -39,10 +39,10 @@
 
 // provide your Shared Secret if you use Renewable purchases
 let SharedSecret = "86cce15ddcc44cf5b047d47ed6a53161"
-
-let KeychainSecret = "ea4bc2b9a25e2a6bff93ffcd26bef2b4" // IMPORTANT: once your app is on the App Store DO NOT CHANGET this because users who update your app with the new value will lose all of their Virtual Purchases
+//"ea4bc2b9a25e2a6bff93ffcd26bef2b4"
+let KeychainSecret = "ea4bc2b9a25e2a6bff93ffcd26bef2c3" // IMPORTANT: once your app is on the App Store DO NOT CHANGET this because users who update your app with the new value will lose all of their Virtual Purchases
 let resetKeychainToDefaultValues = false // IMPORTANT: set this to 'false' before release
-let shouldLogRebeloperStoreKeychainAccount = true
+let shouldLogRebeloperStoreKeychainAccount = false//true
 
 // set up your In-app Purchases and Virtual Purchases
 
