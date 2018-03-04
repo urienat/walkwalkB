@@ -40,8 +40,12 @@ pod 'Protobuf'
   ##use_frameworks!
 
   # Pods for SwiftySubscriptions
-  pod 'SwiftyStoreKit', :git => 'https://github.com/bizz84/SwiftyStoreKit.git', :tag => '0.5.4'
-  pod 'KeychainAccess', :git => 'https://github.com/kishikawakatsumi/KeychainAccess.git', :tag => 'v3.0.0'
+ # pod 'SwiftyStoreKit', :git => 'https://github.com/bizz84/SwiftyStoreKit.git', :tag => '0.5.4'
+  #pod 'KeychainAccess', :git => 'https://github.com/kishikawakatsumi/KeychainAccess.git', :tag => 'v3..0'
+pod 'SwiftyStoreKit', :git => 'https://github.com/bizz84/SwiftyStoreKit.git', :tag => '0.11.0'
+  	pod 'KeychainAccess', :git => 'https://github.com/kishikawakatsumi/KeychainAccess.git', :tag => 'v3.1.0'
+
+
   
   post_install do |installer|
     installer.pods_project.targets.each do |target|

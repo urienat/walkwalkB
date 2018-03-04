@@ -491,7 +491,7 @@
                                     <constraint firstAttribute="height" constant="60" id="UDJ-ai-Pj6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="16"/>
-                                <state key="normal" title="    Subscribe to PerSession-month">
+                                <state key="normal" title="    Subscribe to PerSession-monthly">
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
                                 <connections>

@@ -354,7 +354,7 @@
         thinking2.startAnimating()
         print("checked")
             
-        RebeloperStore.shared.verifyRenewablePurchase(.autoRenewableSubscription1) { (result, resultString) in
+        RebeloperStore.shared.verifyRenewablePurchase(0) { (result, resultString) in
         print( result)
             
         if result == false {print ("no subscription"); self.alert83()

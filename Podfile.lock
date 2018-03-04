@@ -98,9 +98,9 @@ PODS:
   - GTMSessionFetcher/Core (1.1.9)
   - GTMSessionFetcher/Full (1.1.9):
     - GTMSessionFetcher/Core (= 1.1.9)
-  - KeychainAccess (3.0.0)
+  - KeychainAccess (3.1.0)
   - Protobuf (3.3.0)
-  - SwiftyStoreKit (0.5.4)
+  - SwiftyStoreKit (0.11.0)
 
 DEPENDENCIES:
   - Bolts
@@ -118,25 +118,25 @@ DEPENDENCIES:
   - Google/SignIn (~> 3.1.0)
   - GoogleAPIClientForREST/Calendar (~> 1.2.1)
   - GoogleSignIn
-  - KeychainAccess (from `https://github.com/kishikawakatsumi/KeychainAccess.git`, tag `v3.0.0`)
+  - KeychainAccess (from `https://github.com/kishikawakatsumi/KeychainAccess.git`, tag `v3.1.0`)
   - Protobuf
-  - SwiftyStoreKit (from `https://github.com/bizz84/SwiftyStoreKit.git`, tag `0.5.4`)
+  - SwiftyStoreKit (from `https://github.com/bizz84/SwiftyStoreKit.git`, tag `0.11.0`)
 
 EXTERNAL SOURCES:
   KeychainAccess:
     :git: https://github.com/kishikawakatsumi/KeychainAccess.git
-    :tag: v3.0.0
+    :tag: v3.1.0
   SwiftyStoreKit:
     :git: https://github.com/bizz84/SwiftyStoreKit.git
-    :tag: 0.5.4
+    :tag: 0.11.0
 
 CHECKOUT OPTIONS:
   KeychainAccess:
     :git: https://github.com/kishikawakatsumi/KeychainAccess.git
-    :tag: v3.0.0
+    :tag: v3.1.0
   SwiftyStoreKit:
     :git: https://github.com/bizz84/SwiftyStoreKit.git
-    :tag: 0.5.4
+    :tag: 0.11.0
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -159,10 +159,10 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: be83fd28d63ae3087e7d351b1f39c1a7e24ab6e7
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
-  KeychainAccess: 412bf2650d9aebfc8135a58103b90ec38caad7f8
+  KeychainAccess: d6fbf0cf06dbd76108d0358af53a231867a5b371
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
-  SwiftyStoreKit: 31ecbc5be1b1c15241392bf6adabdcdd501b6cb5
+  SwiftyStoreKit: 4e9df21b754e80d84e622a394c8162e0e02c8d61
 
-PODFILE CHECKSUM: 722e6ea7cd635e6c0a3966e6aad2b9a53ef349d9
+PODFILE CHECKSUM: 6cd79a6ac7016841b19b28f216f7a505613b8ff3
 
 COCOAPODS: 1.3.1

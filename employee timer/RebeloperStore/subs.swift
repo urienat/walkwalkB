@@ -21,8 +21,8 @@
         @IBOutlet weak var thinking: UIActivityIndicatorView!
         @IBOutlet weak var woofNew: UIButton!
         @IBAction func woofNew(_ sender: Any) {
-        print ("start")
-        RebeloperStore.shared.purchaseRenewable(.autoRenewableSubscription1)
+        RebeloperStore.shared.purchaseRenewable(0)
+        //RebeloperStore.shared.purchaseRenewable(.autoRenewableSubscription1)
         thinking.startAnimating()
         woofNew.isEnabled = false
         self.woofNewLbl.text = "I am on it..."
@@ -41,10 +41,7 @@
 
         ///////////////////////////////////////////////////////
         override func viewDidLoad() {
-            
-            print ("start")
-            RebeloperStore.shared.start()///
-            
+      
         let yourBackImage = UIImage(named: "backArrow")
         self.navigationController?.navigationBar.backIndicatorImage =  yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
@@ -80,7 +77,7 @@
         self.navigationController!.popViewController(animated: true) }//
 
         func updateUI() {
-        RebeloperStore.shared.verifyRenewablePurchase(.autoRenewableSubscription1) { (result, resultString) in
+        RebeloperStore.shared.verifyRenewablePurchase(0) { (result, resultString) in
         self.woofNewLbl.text = "\(resultString)"
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(0)) {
             if result == true {self.woofNew.isEnabled = false;self.woofNew.alpha = 0.5} else {self.woofNew.isEnabled = true;self.woofNew.alpha = 1}
