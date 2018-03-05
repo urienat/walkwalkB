@@ -16,7 +16,7 @@
         var backArrow = UIImage(named: "backArrow")?.withRenderingMode(.alwaysTemplate)
         var lbl = ""
         var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
-        var options: [Subscription]?
+       /// var options: [Subscription]?
 
         //let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
 
@@ -44,7 +44,7 @@
         ///////////////////////////////////////////////////////
         override func viewDidLoad() {
             
-         options = subs.shared.options
+        /// options = subs.shared.options
       
         let yourBackImage = UIImage(named: "backArrow")
         self.navigationController?.navigationBar.backIndicatorImage =  yourBackImage
@@ -90,7 +90,8 @@
         }
         }
         }//end of update ui
-            
+        }
+      /*
             
             ////////////////////////
             func loadSubscriptionOptions() {
@@ -102,6 +103,8 @@
                 request.start()
             }
 
+        
+            
         }
         
         
@@ -117,4 +120,6 @@
                 }
             }
         }
+        
+       */
         

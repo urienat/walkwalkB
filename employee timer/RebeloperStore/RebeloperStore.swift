@@ -29,6 +29,7 @@ import SwiftyStoreKit
 import KeychainAccess
 
 let AppBundleId = Bundle.main.bundleIdentifier!
+let mydateFormat = DateFormatter()
 
 let iAPStatusChanged = "iAPStatusChanged"
 let virtualPurchaseStatusChanged = "virtualPurchaseStatusChanged"
@@ -692,6 +693,7 @@ extension UIApplication {
         let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: SharedSecret)
         SwiftyStoreKit.verifyReceipt(using: appleValidator, forceRefresh: false) { (result) in
             NetworkActivityIndicatorManager.networkOperationFinished()
+             mydateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: " MMM d, yyyy", options: 0, locale: Locale.autoupdatingCurrent)!
             switch result {
             case .success(let receipt):
                 
@@ -705,17 +707,20 @@ extension UIApplication {
                         let purchaseResult = SwiftyStoreKit.verifySubscription(
                             type: .autoRenewable,
                             productId: productId,
-                            inReceipt: receipt)
+                            inReceipt: receipt,
+                            validUntil: Date()
                         
+                        )
+                    
                         switch purchaseResult {
                         case .purchased(let expiresDate):
-                            print("Product '\(AppBundleId).\(purchase)' is valid until \(expiresDate)")
-                            completion(true, "Valid until: \(expiresDate)")
+                            print("Product is valid until \(mydateFormat.string(from: expiresDate.expiryDate))")
+                            completion(true, "Valid until: \(mydateFormat.string(from: expiresDate.expiryDate))")
                         case .expired(let expiresDate):
-                            print("Product '\(AppBundleId).\(purchase)' is expired since \(expiresDate)")
-                            completion(false, "Expired since \(expiresDate)")
+                            print("Product Expired since \(mydateFormat.string(from: expiresDate.expiryDate))")
+                            completion(false, "Expired since \(mydateFormat.string(from: expiresDate.expiryDate))")
                         case .notPurchased:
-                            print("Product '\(AppBundleId).\(purchase)' has never been purchased")
+                            print("Product never been purchased")
                             completion(false, "Never purchased")
                         }
                     }
