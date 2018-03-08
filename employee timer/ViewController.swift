@@ -188,7 +188,7 @@
         }
             
         @IBAction func faq(_ sender: Any) {
-        UIApplication.shared.open(NSURL(string:"https://www.persessionapp.com/FAQ")! as URL, options: [:], completionHandler: nil)
+        UIApplication.shared.open(NSURL(string:"https://www.persessionapp.com/faq")! as URL, options: [:], completionHandler: nil)
         }
             @IBAction func logoutBtn(_ sender: Any) {
         sideMenuMovement()
