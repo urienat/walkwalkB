@@ -108,12 +108,15 @@
         @IBOutlet weak var menuItem: UIBarButtonItem!
         @IBOutlet weak var addAccount: UIBarButtonItem!
         @IBAction func addAccount(_ sender: Any) {
+        addAccount.isEnabled = false
         print ("add")
         arrow.isHidden = true
         employerToS = "Add Account"
         if employerIdArray.count > 4 {checkSubs()} else {
+        self.addAccount.isEnabled = true
         accountClicked()
         }
+        
         }//end of addaccount
         @IBOutlet weak var special: UIButton!
         @IBAction func special(_ sender: Any) {
@@ -361,9 +364,10 @@
         RebeloperStore.shared.verifyRenewablePurchase(0) { (result, resultString) in
         print( result)
             
-        if result == false {print ("no subscription"); self.alert83()
+            if result == false {print ("no subscription");self.addAccount.isEnabled = true; self.alert83()
         }else {
         self.thinking2.stopAnimating()
+        self.addAccount.isEnabled = true
         self.accountClicked()
         } //end of else  meaning there is subscription
         }//end of subscription result check

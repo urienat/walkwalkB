@@ -50,8 +50,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().signInSilently() ////try
         
         RebeloperStore.shared.start()
-        subs.shared.loadSubscriptionOptions()
-        
+        ///subs.shared.loadSubscriptionOptions()
+        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in for purchase in purchases { if purchase.transaction.transactionState == .purchased ||
+        purchase.transaction.transactionState == .restored { if purchase.needsFinishTransaction { SwiftyStoreKit.finishTransaction(purchase.transaction) }; print("purchased: \(purchase)") } } }
             
 
         
