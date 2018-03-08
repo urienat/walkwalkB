@@ -183,7 +183,11 @@
         sideMenuMovement()
         profileClicked()
         }
-        @IBAction func logoutBtn(_ sender: Any) {
+            
+        @IBAction func faq(_ sender: Any) {
+        UIApplication.shared.open(NSURL(string:"https://www.persessionapp.com/FAQ")! as URL, options: [:], completionHandler: nil)
+        }
+            @IBAction func logoutBtn(_ sender: Any) {
         sideMenuMovement()
         LoginFile.logoutchosen = true
         print (LoginFile.logoutchosen)
