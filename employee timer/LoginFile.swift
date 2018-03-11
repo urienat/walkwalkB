@@ -168,7 +168,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     
     
     override func viewDidLoad() {
-        connectivityCheck()
+        ///connectivityCheck()
         
         dog.clipsToBounds = true
         dog.layer.cornerRadius = 50

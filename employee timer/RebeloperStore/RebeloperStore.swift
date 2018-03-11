@@ -1678,7 +1678,7 @@ class NetworkActivityIndicatorManager: NSObject {
   class func networkOperationStarted() {
     
     if loadingCount == 0 {
-      UIApplication.shared.isNetworkActivityIndicatorVisible = true
+      UIApplication.shared.isNetworkActivityIndicatorVisible = truer
     }
     loadingCount += 1
   }

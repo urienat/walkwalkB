@@ -12,6 +12,8 @@
         self.employerIdArray2.removeAll()
         self.employerForList.removeAll()
         self.filteredEmployerForList.removeAll()
+        connectivityCheck()
+
 
         self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").observeSingleEvent(of: .value, with:{(snapshot) in
         self.listOfEmployers = snapshot.value as! [String : AnyObject] as! [String : Int]
