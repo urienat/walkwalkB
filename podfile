@@ -20,17 +20,17 @@ use_frameworks!
    pod 'Firebase'
    pod 'Firebase/Database'
    pod 'Firebase/Auth'
-   pod 'Firebase/Messaging'
+   #pod 'Firebase/Messaging'
    pod 'Firebase/Crash'
    
 	pod 'GoogleAPIClientForREST/Calendar', '~> 1.2.1'
   	 pod 'Google/SignIn', '~> 3.1.0’
-	pod ‘Google’, '~> 3.1.0’
+	#pod ‘Google’, '~> 3.1.0’
 	pod ‘GoogleSignIn’
 
 
-   pod 'Firebase/Storage'
-pod 'Protobuf'
+  	pod 'Firebase/Storage'
+	pod 'Protobuf'
 
 # Uncomment this line to define a global platform for your project
 # platform :ios, '9.0'
