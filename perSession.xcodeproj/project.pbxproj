@@ -42,9 +42,9 @@
 		F4419EC7202DD9C900DD1BFC /* fetchEmployers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4419EC6202DD9C900DD1BFC /* fetchEmployers.swift */; };
 		F44CF4041FAB67FA00093950 /* UIControl.h in Headers */ = {isa = PBXBuildFile; fileRef = F44CF4031FAB67FA00093950 /* UIControl.h */; };
 		F46C02AA1FB3139D00EBC4A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46C02A91FB3139D00EBC4A4 /* Assets.xcassets */; };
+		F485A5622057CB5D007306CC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4F6B0B72057C4E300F22658 /* GoogleService-Info.plist */; };
 		F4C0629E1FCAF927005B2A08 /* calander.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C0629D1FCAF927005B2A08 /* calander.swift */; };
 		F4D0683C1FA9C5920079CA88 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D0683B1FA9C5920079CA88 /* StoreKit.framework */; };
-		F4DDD6341FB1C92B00A327D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4DDD6331FB1C92B00A327D7 /* GoogleService-Info.plist */; };
 		F4E1AAAF2020BF2C00935421 /* shareExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E1AAAE2020BF2A00935421 /* shareExt.swift */; };
 		F4EAE2522007872400BB448C /* reportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EAE2512007872400BB448C /* reportCell.swift */; };
 		F4EAE2542007873900BB448C /* reportTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EAE2532007873900BB448C /* reportTable.swift */; };
@@ -107,10 +107,11 @@
 		F46C02A91FB3139D00EBC4A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4C0629D1FCAF927005B2A08 /* calander.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calander.swift; sourceTree = "<group>"; };
 		F4D0683B1FA9C5920079CA88 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		F4DDD6331FB1C92B00A327D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F4DDD6331FB1C92B00A327D7 /* GoogleService-Info1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info1.plist"; path = "../GoogleService-Info1.plist"; sourceTree = "<group>"; };
 		F4E1AAAE2020BF2A00935421 /* shareExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shareExt.swift; sourceTree = "<group>"; };
 		F4EAE2512007872400BB448C /* reportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = reportCell.swift; path = reports/reportCell.swift; sourceTree = "<group>"; };
 		F4EAE2532007873900BB448C /* reportTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reportTable.swift; sourceTree = "<group>"; };
+		F4F6B0B72057C4E300F22658 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +183,8 @@
 		AE577AD41DF941C800EBE62B /* Side programs */ = {
 			isa = PBXGroup;
 			children = (
+				F4DDD6331FB1C92B00A327D7 /* GoogleService-Info1.plist */,
+				F4F6B0B72057C4E300F22658 /* GoogleService-Info.plist */,
 				F46C02A91FB3139D00EBC4A4 /* Assets.xcassets */,
 				AE0213481DCF8130006F927F /* setting.swift */,
 				AEDF47AC1DC22EA0005DB21A /* LoginFile.swift */,
@@ -267,7 +270,6 @@
 				AE6AA8531DEFFB9000E424FF /* recordsTable */,
 				AE577AD41DF941C800EBE62B /* Side programs */,
 				AEE95E4E1D7B092A00093B51 /* LaunchScreen.storyboard */,
-				F4DDD6331FB1C92B00A327D7 /* GoogleService-Info.plist */,
 				0010D84D1FC56EF600291FFF /* client_652073679380-so0npi4n865nv8a8a4880g5hqr8pnnfs.apps.googleusercontent.com.plist */,
 				AEE95E511D7B092A00093B51 /* Info.plist */,
 			);
@@ -379,7 +381,7 @@
 				AE84DE8D1E7E638700F08945 /* CHANGE LOG.rtf in Resources */,
 				AEE95E501D7B092A00093B51 /* LaunchScreen.storyboard in Resources */,
 				0010D84E1FC56EF700291FFF /* client_652073679380-so0npi4n865nv8a8a4880g5hqr8pnnfs.apps.googleusercontent.com.plist in Resources */,
-				F4DDD6341FB1C92B00A327D7 /* GoogleService-Info.plist in Resources */,
+				F485A5622057CB5D007306CC /* GoogleService-Info.plist in Resources */,
 				F46C02AA1FB3139D00EBC4A4 /* Assets.xcassets in Resources */,
 				AEE95E4B1D7B092A00093B51 /* Main.storyboard in Resources */,
 				AEC3A7751D7DE22B005E3F1F /* datePicker2.storyboard in Resources */,
@@ -467,14 +469,14 @@
 		};
 		F4630DDB203B186C0011953F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "GOOGLE_APP_ID=1:652073679380:ios:4b7f21c3e2e380b3\n\"${PODS_ROOT}/Fabric/run\"\n#\"${PODS_ROOT}\"/FirebaseCrash/upload-sym-util.bash  \"/Users/homeUriEnat/Documents/perSession2/employee timer/persession-45987-firebase-crashreporting-whqxh-5028473396.json\"";
 		};
@@ -489,7 +491,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n#./Fabric.framework/run 3a4a9eb47ac423b46e28f857f6d070ba05150990 4ba1a116cffdaa6577cca4c13cfb8fb369bb5b19523343e35bb6aeb19e394df9";
+			shellScript = "#./Fabric.framework/run 3a4a9eb47ac423b46e28f857f6d070ba05150990 4ba1a116cffdaa6577cca4c13cfb8fb369bb5b19523343e35bb6aeb19e394df9";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -674,6 +676,7 @@
 				CODE_SIGN_ENTITLEMENTS = perSession.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = WMAL4VEAR5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)",

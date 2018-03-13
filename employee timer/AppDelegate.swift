@@ -17,7 +17,8 @@ import FirebaseAuth
 import FBSDKCoreKit
 import Google
 import GoogleSignIn
-//import FirebaseCrash
+//import Fabric
+//import Crashlytics
 import SwiftyStoreKit
 
 
@@ -43,7 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-      
+        //Fabric.with([Crashlytics.self])
+        
         
         GIDSignIn.sharedInstance().clientID =  FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self

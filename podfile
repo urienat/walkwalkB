@@ -22,15 +22,15 @@ use_frameworks!
    pod 'Firebase/Database'
    pod 'Firebase/Auth'
    #pod 'Firebase/Messaging'
-   #pod 'Firebase/Crash'
+  # pod 'Firebase/Crash'
 # Pods for PodTest
-pod 'Fabric', '~> 1.7.2'
-pod 'Crashlytics', '~> 3.9.3'
+pod 'Fabric', '~> 1.7.5'
+pod 'Crashlytics', '~> 3.10.1'
    
 	pod 'GoogleAPIClientForREST/Calendar', '~> 1.2.1'
   	 pod 'Google/SignIn', '~> 3.1.0’
 	#pod ‘Google’, '~> 3.1.0’
-	pod ‘GoogleSignIn’
+	##pod ‘GoogleSignIn’
 
 
   	pod 'Firebase/Storage'
