@@ -8,7 +8,7 @@
         import Google
         import GoogleSignIn
         import GoogleAPIClientForREST
-        import FirebaseCrash
+        //import FirebaseCrash
     
 
 
@@ -208,6 +208,8 @@
 
         //start timer action
         @IBAction func Start(_ sender: AnyObject) {
+        fatalError("fatal")
+            
         textAdd.text = "Session added: \r\n\( mydateFormat7.string(from: Date()))"
         dIn =  mydateFormat5.string(from: Date()) //brings the a date as a string
         self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").updateChildValues([(self.employerIDToS):Int((self.mydateFormat5.date(from: mydateFormat5.string(from: Date()))?.timeIntervalSince1970)!)])

@@ -311,6 +311,7 @@
 				57B37AFD86DF6AD0EA9CB931 /* [CP] Copy Pods Resources */,
 				AE29BE9E1D972B870066214D /* Headers */,
 				F4630DDB203B186C0011953F /* ShellScript */,
+				F4F6B0B52056A85C00F22658 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -475,7 +476,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "GOOGLE_APP_ID=1:652073679380:ios:4b7f21c3e2e380b3\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym-util.bash  \"/Users/homeUriEnat/Documents/perSession2/employee timer/persession-45987-firebase-crashreporting-whqxh-5028473396.json\"";
+			shellScript = "GOOGLE_APP_ID=1:652073679380:ios:4b7f21c3e2e380b3\n\"${PODS_ROOT}/Fabric/run\"\n#\"${PODS_ROOT}\"/FirebaseCrash/upload-sym-util.bash  \"/Users/homeUriEnat/Documents/perSession2/employee timer/persession-45987-firebase-crashreporting-whqxh-5028473396.json\"";
+		};
+		F4F6B0B52056A85C00F22658 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\n#./Fabric.framework/run 3a4a9eb47ac423b46e28f857f6d070ba05150990 4ba1a116cffdaa6577cca4c13cfb8fb369bb5b19523343e35bb6aeb19e394df9";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -559,6 +573,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -618,6 +633,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

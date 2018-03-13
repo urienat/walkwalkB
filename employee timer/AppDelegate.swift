@@ -17,7 +17,7 @@ import FirebaseAuth
 import FBSDKCoreKit
 import Google
 import GoogleSignIn
-import FirebaseCrash
+//import FirebaseCrash
 import SwiftyStoreKit
 
 
