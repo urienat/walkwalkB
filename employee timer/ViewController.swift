@@ -208,7 +208,6 @@
 
         //start timer action
         @IBAction func Start(_ sender: AnyObject) {
-        fatalError("fatal")
             
         textAdd.text = "Session added: \r\n\( mydateFormat7.string(from: Date()))"
         dIn =  mydateFormat5.string(from: Date()) //brings the a date as a string
