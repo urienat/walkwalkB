@@ -271,11 +271,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             }//end of if let event
           
             if eventCounter == 0 {textAdd.isHidden = true;alert17() }
-            else if eventCounter == 1 {textAdd.isHidden = false;animationImage.isHidden = false; self.eventCounterBlock = "One session";ViewController.sessionPusher = true;
+            else if eventCounter == 1 {textAdd.isHidden = false;animationImage.isHidden = false; self.eventCounterBlock = "One walk";ViewController.sessionPusher = true;
                 DispatchQueue.main.asyncAfter(deadline: .now()+3){
                 self.navigationController!.popViewController(animated: false)
                 
-                }} else {textAdd.isHidden = false;self.eventCounterBlock = "\(String(self.eventCounter)) sessions";ViewController.sessionPusher = true;
+                }} else {textAdd.isHidden = false;self.eventCounterBlock = "\(String(self.eventCounter)) walks";ViewController.sessionPusher = true;
                 DispatchQueue.main.asyncAfter(deadline: .now()+3){
                 self.navigationController!.popViewController(animated: false)
                 
@@ -454,11 +454,11 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                     }// end of calanders loop
                         if eventCounter == 0 {textAdd.isHidden = true
                             alert17()}
-                        else if eventCounter == 1 {textAdd.isHidden = false;animationImage.isHidden = false; self.eventCounterBlock = "One session";ViewController.sessionPusher = true;DispatchQueue.main.asyncAfter(deadline: .now()+2.6){
+                        else if eventCounter == 1 {textAdd.isHidden = false;animationImage.isHidden = false; self.eventCounterBlock = "One walk";ViewController.sessionPusher = true;DispatchQueue.main.asyncAfter(deadline: .now()+2.6){
                             self.navigationController!.popViewController(animated: false)
                             }//end of dispatch
                             
-                        } else {textAdd.isHidden = false;self.eventCounterBlock = "\(String(self.eventCounter)) sessions";ViewController.sessionPusher = true ;DispatchQueue.main.asyncAfter(deadline: .now()+2.6){
+                        } else {textAdd.isHidden = false;self.eventCounterBlock = "\(String(self.eventCounter)) walks";ViewController.sessionPusher = true ;DispatchQueue.main.asyncAfter(deadline: .now()+2.6){
                             self.navigationController!.popViewController(animated: false)
                             }//end of dispatch
                             
@@ -602,7 +602,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             print (LastCalander!)
 
 
-            let alertController123 = UIAlertController(title: ("Import Calander Sessions") , message: "You are about to import calander's sessions occured till now" , preferredStyle: .alert)
+            let alertController123 = UIAlertController(title: ("Import Calander walks") , message: "You are about to import calander's walks occured till now" , preferredStyle: .alert)
 
             let spesificAction = UIAlertAction(title: "Import \(employerFromMain)'s only", style: .default) { (UIAlertAction) in
                 self.calanderImage.alpha = 0.8
@@ -650,7 +650,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             print (LastCalander!)
 
 
-            let alertController456 = UIAlertController(title: ("Set import starting date") , message: "Import calendar's sessions starting from \(mydateFormat9.string(from: mydateFormat5.date(from: LastCalander!)!))." , preferredStyle: .alert)
+            let alertController456 = UIAlertController(title: ("Set import starting date") , message: "Import calendar's walks starting from \(mydateFormat9.string(from: mydateFormat5.date(from: LastCalander!)!))." , preferredStyle: .alert)
 
             let OKAction = UIAlertAction(title: "Starting date is OK", style: .default) { (UIAlertAction) in
             self.minDate = (Date()-(3600*24*45))
@@ -677,7 +677,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             }
     
     func alert72(){
-            let alertController72 = UIAlertController(title: ("Help") , message: "Import sessions from calendar is a powerful tool.\n\nOnly past sessions are imported and only if 'name+space+last name' combination matches calendar exactly.\n\nAfter import process is completed a '+' sign is added to calendar's event to indicate it was imported.", preferredStyle: .alert)
+            let alertController72 = UIAlertController(title: ("Help") , message: "Import walks from calendar is a powerful tool.\n\nOnly past walks are imported and only if 'name+space+last name' combination matches calendar exactly.\n\nAfter import process is completed a '+' sign is added to calendar's event to indicate it was imported.", preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
                 self.alert123()
             }
@@ -685,7 +685,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             self.present(alertController72, animated: true, completion: nil)
     }
     func alert17(){
-        let alertController17 = UIAlertController(title: ("No Session") , message: "No Session Imported because one of the following:\n\n There are no PAST sessions\n\n Sessions already imported once( see +sign in calendar)\n\n NO exact match of 'name+space+last Name' combination between calendar event and PerSession", preferredStyle: .alert)
+        let alertController17 = UIAlertController(title: ("No walks") , message: "No walks Imported because one of the following:\n\n There are no PAST walks\n\n Walks already imported once( see +sign in calendar)\n\n NO exact match of 'name+space+last Name' combination between calendar event and WalkWalk", preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
         self.navigationController!.popViewController(animated: false)
     }
@@ -694,7 +694,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     }
     
     func alert79(){
-        let alertController79 = UIAlertController(title: ("Calendar denial") , message: "Please enable calendar in your setting so you can import sessions to the app.", preferredStyle: .alert)
+        let alertController79 = UIAlertController(title: ("Calendar denial") , message: "Please enable calendar in your setting so you can import walks to the app.", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
             
             self.navigationController!.popViewController(animated: false)

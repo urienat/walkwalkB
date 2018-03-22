@@ -39,7 +39,7 @@
 // provide your Shared Secret if you use Renewable purchases
 let SharedSecret = "86cce15ddcc44cf5b047d47ed6a53161"
 //"ea4bc2b9a25e2a6bff93ffcd26bef2b4"
-let KeychainSecret = "ea4bc2b9a25e2a6bff93ffcd26bef2c3" // IMPORTANT: once your app is on the App Store DO NOT CHANGET this because users who update your app with the new value will lose all of their Virtual Purchases
+let KeychainSecret = "ea4bc2b9a25e2a6bff93ffcd26bef2b4" // IMPORTANT: once your app is on the App Store DO NOT CHANGET this because users who update your app with the new value will lose all of their Virtual Purchases
 let resetKeychainToDefaultValues = false // IMPORTANT: set this to 'false' before release
 let shouldLogRebeloperStoreKeychainAccount = false//true
 
@@ -63,7 +63,7 @@ let NonRenewablePurchasesSubscritionAmount = [3600 * 24 * 30]
 
 enum RenewablePurchaseName : String {
     
-    case autoRenewableSubscription1 = "mainSub"
+    case autoRenewableSubscription1 = "woof"
     //case autoRenewableSubscription2 = "group1.autoRenewableSubscription2"
     //case autoRenewableSubscription3 = "group1.autoRenewableSubscription3"
     

@@ -411,7 +411,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         if appArray[buttonRow] == "Pre" { newVCTable.checkBox = 1; statusTemp = "Approved";if indicationArray[buttonRow] != "📄" {eventCounter+=1};if indicationArray[buttonRow] == "📄" {itemSum += Double(amountArray[buttonRow]) }; amountCalc()}
         else if appArray[buttonRow] == "Approved" { newVCTable.checkBox = 0; statusTemp = "Pre";if indicationArray[buttonRow] != "📄" {eventCounter-=1}; if indicationArray[buttonRow] == "📄" {itemSum -= Double(amountArray[buttonRow]) }; amountCalc()}
         else if  appArray[buttonRow] == "Paid" {newVCTable.checkBox = 2; statusTemp = "Paid";alert12()}
-        if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions";if  itemSum == 0{toolbar1.isHidden = true;noSign.isHidden = false}else{toolbar1.isHidden = false;noSign.isHidden = true}} else if self.eventCounter == 1 {self.eventsLbl.text = "\(String(self.eventCounter)) Due session";toolbar1.isHidden = false;noSign.isHidden = true} else {self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions";toolbar1.isHidden = false;noSign.isHidden = true}
+        if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions";if  itemSum == 0{toolbar1.isHidden = true;noSign.isHidden = false}else{toolbar1.isHidden = false;noSign.isHidden = true}} else if self.eventCounter == 1 {self.eventsLbl.text = "\(String(self.eventCounter)) Due walks";toolbar1.isHidden = false;noSign.isHidden = true} else {self.eventsLbl.text = "\(String(self.eventCounter)) due walks";toolbar1.isHidden = false;noSign.isHidden = true}
 
         if statusTemp != appArray[buttonRow] {
         appArray[buttonRow] = statusTemp!
@@ -477,7 +477,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.address = (snapshot.childSnapshot(forPath: "fAddress").value as! String)
 
 
-        if self.eventCounter == 0 {self.sessionBlock = ""} else {self.sessionBlock = "\(self.seprator)\r\nTotal Number of sessions: \(self.eventCounter)  -   \(self.perEvents.text!)"}
+        if self.eventCounter == 0 {self.sessionBlock = ""} else {self.sessionBlock = "\(self.seprator)\r\nTotal Number of walks: \(self.eventCounter)  -   \(self.perEvents.text!)"}
 
         if  self.taxSwitch == "Yes" {
         if self.self.taxCalc == "Over" {self.taxCalculated =  Double(Double(self.taxation!)!*self.calc*0.01).roundTo(places: 2)}  else  { self.taxCalculated = Double((self.calc / Double(Double(self.taxation!)!*0.01+1)) * Double(Double(self.taxation!)!*0.01)).roundTo(places: 2)}
@@ -575,7 +575,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     if  ViewController.professionControl! == "Dog walker" && self.accountParnet != "" {self.contact = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
     self.contact = "\(self.accountName) \(self.accountLastName)"}
 
-    self.mailSaver = "\(self.mydateFormat8.string(from: Date()))\r\n\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.taxId!)\r\n\(self.address!)\r\n\(self.seprator2)\(self.seprator2)\r\n\r\nBill to:\r\n\(self.contact!)\r\n\(self.accountAdress)\r\n\(self.seprator2)\r\n\(self.htmlReport!)\(self.sessionBlock)\r\n\r\n\(self.taxationBlock)\r\n\(self.paymentBlock)\r\n\r\n\r\nMade by PerSession app. "
+    self.mailSaver = "\(self.mydateFormat8.string(from: Date()))\r\n\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.taxId!)\r\n\(self.address!)\r\n\(self.seprator2)\(self.seprator2)\r\n\r\nBill to:\r\n\(self.contact!)\r\n\(self.accountAdress)\r\n\(self.seprator2)\r\n\(self.htmlReport!)\(self.sessionBlock)\r\n\r\n\(self.taxationBlock)\r\n\(self.paymentBlock)\r\n\r\n\r\nMade by WalkWalk app. "
 
     //update bill with DB
         self.dbRefEmployees.child(self.employeeID).child("myBills").child("-\(self.counterForMail2!)").updateChildValues(["fBill": self.counterForMail2!,"fBillDate": self.mydateFormat5.string(from: Date()) ,"fBillStatus": self.billStatus!,"fBillStatusDate":self.mydateFormat5.string(from: Date()) ,"fBillEmployer": self.employerID,"fBillEventRate": self.perEvents.text!, "fBillEvents": String(self.eventCounter) as String,"fBillSum": self.midCalc3, "fBillCurrency": ViewController.fixedCurrency!,"fBillEmployerName": self.employerFromMain!, "fBillMailSaver" : self.mailSaver!,"fBillTax" : self.midCalc ,"fBillTotalTotal": self.midCalc2, "fDocumentName":self.documentName!,"fBalance": self.PaymentBlalnce!
@@ -613,7 +613,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     }//end of alert12
 
     func alert23(){
-    let alertController23 = UIAlertController(title: ("Double session?") , message: "It seems that following are duplicate sessions: \(self.duplicates). Is that OK? ", preferredStyle: .alert)
+    let alertController23 = UIAlertController(title: ("Double walks?") , message: "It seems that following are duplicate walks: \(self.duplicates). Is that OK? ", preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "Yes. I am aware.", style: .default) { (UIAlertAction) in
     self.duplicateChecked = true
     }

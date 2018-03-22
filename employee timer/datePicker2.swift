@@ -56,7 +56,7 @@ class datePicker2: UIViewController {
         saveRecord?.isEnabled = true
                  datePickerbBackground .isHidden = false
          startLbl.isHidden = false
-         startLbl.text = "Session"
+         startLbl.text = "Walk"
          date1button.isHidden = false
          timeIn.isHidden = false
          extendedDate1Button.isHidden = false

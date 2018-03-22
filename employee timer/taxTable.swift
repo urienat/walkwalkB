@@ -135,7 +135,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     func shareProcesses(){
         //if reportMode
        
-        let textForReport = "* This report made on \(mydateFormat5.string(from: Date())) by PerSession APP.** It includes Tax information based on acuural accounting for the defined period.***Tax calculation affected by invoice cancellation timing(if occured)\nand therefore might differ from this mangerial report.\n**** Tax filing should be based on this report and Not general managerial report"
+        let textForReport = "* This report made on \(mydateFormat5.string(from: Date())) by WalkWalk APP.** It includes Tax information based on acuural accounting for the defined period.***Tax calculation affected by invoice cancellation timing(if occured)\nand therefore might differ from this mangerial report.\n**** Tax filing should be based on this report and Not general managerial report"
         
         pdfDataTable = pdfDataWithTableView2(tableView: billerConnect, pageHeight: 6*89,totalBG: totalBG, Closing: textForReport as NSString, distance: 90.0)
         self.alert101(printItem: self.pdfDataTable, mailFunction: configuredMailComposeViewController6())
@@ -451,7 +451,7 @@ class taxCalc: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMa
     func  configuredMailComposeViewController6() -> MFMailComposeViewController {
         let mailComposerVC2 = MFMailComposeViewController()
         mailComposerVC2.mailComposeDelegate = self
-        mailComposerVC2.setSubject("TAX report from PerSession App")
+        mailComposerVC2.setSubject("TAX report from WalkWalk App")
         mailComposerVC2.setMessageBody("This report is based on acurral accounting for tax filing purposes and it is attached for your records.\r\n\r\nRegards\r\n \(ViewController.fixedName!) \(ViewController.fixedLastName!)", isHTML: false)
         mailComposerVC2.setToRecipients([ViewController.fixedemail])
         mailComposerVC2.addAttachmentData( pdfDataTable as Data, mimeType: "application/pdf", fileName: "Tax report")

@@ -208,7 +208,7 @@
         //start timer action
         @IBAction func Start(_ sender: AnyObject) {
             
-        textAdd.text = "Session added: \r\n\( mydateFormat7.string(from: Date()))"
+        textAdd.text = "Walks added: \r\n\( mydateFormat7.string(from: Date()))"
         dIn =  mydateFormat5.string(from: Date()) //brings the a date as a string
         self.dbRefEmployee.child(self.employeeIDToS).child("myEmployers").updateChildValues([(self.employerIDToS):Int((self.mydateFormat5.date(from: mydateFormat5.string(from: Date()))?.timeIntervalSince1970)!)])
 
@@ -614,7 +614,7 @@
         }
 
         func alert32(){
-        let alertController32 = UIAlertController(title: ("Define calendar") , message: "No calendar was defined in your 'Setting' for sessions' import. Define one? ", preferredStyle: .alert)
+        let alertController32 = UIAlertController(title: ("Define calendar") , message: "No calendar was defined in your 'Setting' for walks' import. Define one? ", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "Sure", style: .default) { (UIAlertAction) in
         self.profileClicked()
         }

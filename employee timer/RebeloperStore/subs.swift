@@ -35,10 +35,10 @@
 
         @IBOutlet weak var woofNewLbl: UILabel!
         @IBAction func privacy(_ sender: Any) {
-        UIApplication.shared.open(NSURL(string:"https://www.persessionapp.com/privacy-statement")! as URL, options: [:], completionHandler: nil)
+        UIApplication.shared.open(NSURL(string:"https://www.homeployer.com/privacy")! as URL, options: [:], completionHandler: nil)
         }
         @IBAction func terms(_ sender: Any) {
-        UIApplication.shared.open(NSURL(string:"https://www.persessionapp.com/terms-of-use")! as URL, options: [:], completionHandler: nil)
+        UIApplication.shared.open(NSURL(string:"https://www.homeployer.com/terms-of-use")! as URL, options: [:], completionHandler: nil)
         }
 
         ///////////////////////////////////////////////////////

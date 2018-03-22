@@ -485,7 +485,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         ///////////////////////////////////////////////////////////////////////////////////////////////////alerts
         //delete a dog alert
         func DeleteAlert () {
-        let alertController3 = UIAlertController(title: ("Delete") , message: ("This would delete your access to this account's information including master data and sessions. Are You sure?"), preferredStyle: .alert)
+        let alertController3 = UIAlertController(title: ("Delete") , message: ("This would delete your access to this account's information including master data and walks. Are You sure?"), preferredStyle: .alert)
         let cancelAction3 = UIAlertAction(title: "NO", style: .cancel) { (UIAlertAction) in
         }
         let deleteAction3 = UIAlertAction(title: "YES", style: .default) { (UIAlertAction) in
@@ -503,7 +503,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     
     // alert6
         func alert6 () {
-        let alertCotroller6 = UIAlertController(title: ("Rate change") , message: ("If there are \(employerFromMain)'s session not yet billed, new rate would affect it."), preferredStyle: .alert)
+        let alertCotroller6 = UIAlertController(title: ("Rate change") , message: ("If there are \(employerFromMain)'s walk not yet billed, new rate would affect it."), preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK. I am aware.", style: .default) { (UIAlertAction) in
             self.navigationItem.rightBarButtonItem?.isEnabled = true
         }
