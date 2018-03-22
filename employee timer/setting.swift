@@ -626,7 +626,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
 
         // alert1
         func alert1 () {
-        let alertCotroller1 = UIAlertController(title: ("Password alert") , message: ("An email with password instructions was sent to the email you set with PerSession"), preferredStyle: .alert)
+        let alertCotroller1 = UIAlertController(title: ("Password alert") , message: ("An email with password instructions was sent to the email you set with WalkWalk"), preferredStyle: .alert)
         let okAction1 = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in
         }
         alertCotroller1.addAction(okAction1)
@@ -644,7 +644,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
 
         // alert6
         func alert6 () {
-        let alertCotroller6 = UIAlertController(title: ("Change Financial Info") , message: ("Changes made in tax fields are effective from now on, to sessions not yet billed."), preferredStyle: .alert)
+        let alertCotroller6 = UIAlertController(title: ("Change Financial Info") , message: ("Changes made in tax fields are effective from now on, to walks not yet billed."), preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK. I am aware.", style: .default) { (UIAlertAction) in
         self.saveToDB()
         }

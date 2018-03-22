@@ -178,7 +178,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         employerArray2.removeAll()
         employerArray3.removeAll()
         if pRate.text == "" {pRate.text = "0.0"}
-        if self.pLastName.text == "" || self.pName.text == "" {
+        if self.pLastName.text == "" || self.pName.text == "" || self.studentParentNameText.text == ""{
         message2 =  "Name & Last name are requiered fields"
         alert54()
         } // end of name or  last name is not filled

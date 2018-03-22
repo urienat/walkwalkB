@@ -290,7 +290,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         if self.password.text != "" {
         self.textForError = ("This is a wrong Password. Please try again or use 'Forgot password'." ) } else {self.textForError = ("Missing Password. Please try again or use 'Forgot password'." ) }
         case .errorCodeUserDisabled:
-        self.textForError = ("This user is disabled. Please check with our PerSession support at wwww.homeployer.com." )
+        self.textForError = ("This user is disabled. Please check with our WalkWalk support at wwww.homeployer.com." )
         default:
         self.textForError = ("There is a login error . Pleasr try again" )
         print("Create User Error: \(String(describing: error))")

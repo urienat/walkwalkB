@@ -677,7 +677,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             }
     
     func alert72(){
-            let alertController72 = UIAlertController(title: ("Help") , message: "Import walks from calendar is a powerful tool.\n\nOnly past walks are imported and only if 'name+space+last name' combination matches calendar exactly.\n\nAfter import process is completed a '+' sign is added to calendar's event to indicate it was imported.", preferredStyle: .alert)
+            let alertController72 = UIAlertController(title: ("Help") , message: "Import walks from calendar is a powerful tool.\n\nOnly past walks are imported and only if 'pet's name+space+last name' combination matches calendar exactly.\n\nAfter import process is completed a '+' sign is added to calendar's event to indicate it was imported.", preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
                 self.alert123()
             }
@@ -685,7 +685,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             self.present(alertController72, animated: true, completion: nil)
     }
     func alert17(){
-        let alertController17 = UIAlertController(title: ("No walks") , message: "No walks Imported because one of the following:\n\n There are no PAST walks\n\n Walks already imported once( see +sign in calendar)\n\n NO exact match of 'name+space+last Name' combination between calendar event and WalkWalk", preferredStyle: .alert)
+        let alertController17 = UIAlertController(title: ("No walks") , message: "No walks Imported because one of the following:\n\n There are no PAST walks\n\n Walks already imported once( see +sign in calendar)\n\n NO exact match of 'pet's name+space+last Name' combination between calendar event and WalkWalk", preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
         self.navigationController!.popViewController(animated: false)
     }

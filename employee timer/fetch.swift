@@ -93,7 +93,7 @@ import Foundation
         if record.fIndication3 == "📄" {if self.firstTimeGeneral == true {self.csv2.append("Following general items included:\r\n");self.firstTimeGeneral = false };self.csv2.append("\(record.fSpecialItem!)");
 
         self.csv2.append(".......................................");self.csv2.append(ViewController.fixedCurrency!); self.csv2.append(record.fSpecialAmount!);self.csv2.append("\r\n")}
-        else {if self.firstTime == true {self.csv2.append("\r\nThese are the sessions included:\r\n");self.firstTime = false}
+        else {if self.firstTime == true {self.csv2.append("\r\nThese are the walks included:\r\n");self.firstTime = false}
 
         if ViewController.dateTimeFormat == "DateTime" {print (record.fIn!);self.csv2.append("\(self.mydateFormat11.string(from: self.mydateFormat5.date(from: record.fIn!)!))");
         self.csv2.append("\r\n")
@@ -142,13 +142,13 @@ import Foundation
        /// if self.billStarted == false && self.billPayStarted == false   {
         self.thinking.stopAnimating()//}
 
-            if self.eventCounter == 0 {self.eventsLbl.text = " No Due Sessions";if  self.itemSum == 0{self.toolbar1.isHidden = true;self.noSign.isHidden = false;self.billSender.isEnabled = false;self.billPay.isEnabled = false;}else{self.toolbar1.isHidden = false;self.noSign.isHidden = true;self.billSender.isEnabled = true;self.billPay.isEnabled = true;}}
-        else if self.eventCounter == 1 {self.toolbar1.isHidden = false;self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) Due session";self.noSign.isHidden = true}
-        else {self.toolbar1.isHidden = false;self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) due Sessions";self.noSign.isHidden = true}
+            if self.eventCounter == 0 {self.eventsLbl.text = " No Due Walks";if  self.itemSum == 0{self.toolbar1.isHidden = true;self.noSign.isHidden = false;self.billSender.isEnabled = false;self.billPay.isEnabled = false;}else{self.toolbar1.isHidden = false;self.noSign.isHidden = true;self.billSender.isEnabled = true;self.billPay.isEnabled = true;}}
+        else if self.eventCounter == 1 {self.toolbar1.isHidden = false;self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) Due walk";self.noSign.isHidden = true}
+        else {self.toolbar1.isHidden = false;self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) due Walks";self.noSign.isHidden = true}
 
         if self.Employerrate == 0.0 { noRateInfo.isHidden = false} else {noRateInfo.isHidden = true}
         self.calc = (Double(self.eventCounter))*(self.Employerrate) + self.itemSum
-        self.perEvents.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /session")
+        self.perEvents.text =  String("\(ViewController.fixedCurrency!)\(self.Employerrate) /walk")
 
         if ViewController.taxOption == "Yes" && ViewController.taxCalc == "Over" {let totalForExcluded = Double(Double(ViewController.taxation!)!*self.calc*0.01).roundTo(places: 2) + Double(self.calc).roundTo(places: 2);self.amount.text =  ("\(ViewController.fixedCurrency!)\(String(totalForExcluded))")
         } else {
