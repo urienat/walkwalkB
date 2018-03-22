@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "walksIcon.png",
+      "filename" : "walksLogo.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "walksIcon-1.png",
+      "filename" : "walksLogo-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "walksIcon-2.png",
+      "filename" : "walksLogo-2.png",
       "scale" : "3x"
     }
   ],
