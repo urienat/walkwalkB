@@ -541,7 +541,7 @@
                                     <constraint firstAttribute="width" constant="260" id="OCu-kA-VSx"/>
                                     <constraint firstAttribute="height" constant="420" id="b0v-7S-y7N"/>
                                 </constraints>
-                                <mutableString key="text">After a month of free trial, monthly subscription with full and ongoing access to all features, so you can try before you buy. A subscription costs $2.99 per month. Payment will be charged to your iTunes Account at confirmation of purchase and after the month of free trial.  Unused portion of free trial, will be forfeited when the user purchases a subscription. The subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Your account will be charged for renewal within 24-hours prior to the end of the current 1 month period. You can turn off auto-renew at any time from your iTunes account settings. Cancellation of the current active subscription period is not allowed. Find our privacy policy and Terms &amp; Conditions, at the following links: </mutableString>
+                                <string key="text">After a month of free trial, monthly subscription with full and ongoing access to all features, so you can try before you buy. A subscription costs $2.99 per month. Payment will be charged to your iTunes Account at confirmation of purchase and after the month of free trial.  Unused portion of free trial, will be forfeited when the user purchases a subscription. The subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Your account will be charged for renewal within 24-hours prior to the end of the current 1 month period. You can turn off auto-renew at any time from your iTunes account settings. Cancellation of the current active subscription period is not allowed. Find our privacy policy and Terms &amp; Conditions, at the following links: </string>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1288,7 +1288,7 @@
                                             <constraint firstAttribute="width" constant="280" id="1ya-7Y-hl2"/>
                                             <constraint firstAttribute="height" constant="340" id="scQ-X1-Zp4"/>
                                         </constraints>
-                                        <mutableString key="text">                   Import walks from calendar is a very powerfull tool.    Only past walks are imported and only if 'name+space+last name' combined matches calendar exactly.   After import process is completed a '+' sign is added in calendar's event to indicate it was imported. </mutableString>
+                                        <string key="text">                   Import walks from calendar is a very powerfull tool.    Only past walks are imported and only if 'name+space+last name' combined matches calendar exactly.   After import process is completed a '+' sign is added in calendar's event to indicate it was imported. </string>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -4065,7 +4065,6 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cyf-eK-Md6"/>
         <segue reference="UPU-lN-oqU"/>
         <segue reference="3Wx-xY-sDh"/>
         <segue reference="x0P-Ew-8Ag"/>
