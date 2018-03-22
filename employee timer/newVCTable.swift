@@ -387,7 +387,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         billManager?.employerID = employerID
         billManager?.lastPrevious = lastPrevious
         billManager?.payPalBlock = payPalBlock
-        if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
+        if  ViewController.professionControl! == "Dog walker" && accountParnet != "" {billManager?.contactForMail = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
         billManager?.contactForMail = "\(self.accountName) \(self.accountLastName)"
         }
         }//end of if (segue...
@@ -572,7 +572,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     if self.biller == true {self.dbRefEmployees.child(self.employeeID).updateChildValues(["fCounter": String(describing: (Int(self.counterForMail2!)!+1))])//add counter to invoice #
     self.biller = false
 
-    if  ViewController.professionControl! == "Tutor" && self.accountParnet != "" {self.contact = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
+    if  ViewController.professionControl! == "Dog walker" && self.accountParnet != "" {self.contact = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
     self.contact = "\(self.accountName) \(self.accountLastName)"}
 
     self.mailSaver = "\(self.mydateFormat8.string(from: Date()))\r\n\r\n\r\n\(ViewController.fixedName!) \(ViewController.fixedLastName!)\r\n\(self.billInfo!)\r\n\(self.taxId!)\r\n\(self.address!)\r\n\(self.seprator2)\(self.seprator2)\r\n\r\nBill to:\r\n\(self.contact!)\r\n\(self.accountAdress)\r\n\(self.seprator2)\r\n\(self.htmlReport!)\(self.sessionBlock)\r\n\r\n\(self.taxationBlock)\r\n\(self.paymentBlock)\r\n\r\n\r\nMade by PerSession app. "

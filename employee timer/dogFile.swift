@@ -163,7 +163,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         rateTitle.text = "Rate"
         if ViewController.fixedCurrency != nil {currencySign.text = (ViewController.fixedCurrency!)} else {currencySign.text = ""}
         
-        if  ViewController.professionControl! == "Tutor" {addressTop.constant = 46.0; studentParentNameText.isHidden = false; studentParentNameLabel.isHidden = false } else {addressTop.constant = 8.0; studentParentNameText.isHidden = true; studentParentNameLabel.isHidden = true }
+        if  ViewController.professionControl! == "Dog walker" {addressTop.constant = 46.0; studentParentNameText.isHidden = false; studentParentNameLabel.isHidden = false } else {addressTop.constant = 8.0; studentParentNameText.isHidden = true; studentParentNameLabel.isHidden = true }
         
         activeButton.layer.borderWidth = 0.5;
         activeButton.layer.borderColor =  blueColor.cgColor
@@ -222,7 +222,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if self.activeEmployerSwitch == true {self.activeEmployerSwitch = false} else {self.activeEmployerSwitch = true}
             
             self.dbRefEmployers.child(self.employerID).updateChildValues(["fName" : self.pName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!, "fRem" : self.pRem.text!, "fEmployer":self.pLastName.text!,"fActive" : self.activeEmployerSwitch!])
-            if ViewController.professionControl == "Tutor" {self.dbRefEmployers.child(self.employerID).updateChildValues(["fParent" : self.studentParentNameText.text!])} else {
+            if ViewController.professionControl == "Dog walker" {self.dbRefEmployers.child(self.employerID).updateChildValues(["fParent" : self.studentParentNameText.text!])} else {
                 self.dbRefEmployers.child(self.employerID).updateChildValues(["fParent" : ""])
             }
             
@@ -393,7 +393,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         dbRefEmployers.queryOrderedByKey().queryEqual(toValue: employerID).observeSingleEvent(of: .childAdded, with: { (snapshot) in
         self.nameUpdate = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
         self.lastNameUpdate = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
-        if ViewController.professionControl == "Tutor" { if String(describing: snapshot.childSnapshot(forPath: "fParent").value!) as String! != nil {  self.studentParentUpdate = String(describing: snapshot.childSnapshot(forPath: "fParent").value!) as String!} else {self.studentParentUpdate = ""}}
+        if ViewController.professionControl == "Dog walker" { if String(describing: snapshot.childSnapshot(forPath: "fParent").value!) as String! != nil {  self.studentParentUpdate = String(describing: snapshot.childSnapshot(forPath: "fParent").value!) as String!} else {self.studentParentUpdate = ""}}
             
         self.addressUpdate = String(describing: snapshot.childSnapshot(forPath: "fAddress").value!) as String!
         self.cellUpdate = String(describing: snapshot.childSnapshot(forPath: "fCell").value!) as String!

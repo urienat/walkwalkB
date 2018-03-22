@@ -483,7 +483,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billManager?.employeeID = employeeID
         billManager?.rebillprocess = true
         billManager?.taxBillsToHandle = taxBillsToHandle
-        if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
+        if  ViewController.professionControl! == "Dog walker" && accountParnet != "" {billManager?.contactForMail = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
         billManager?.contactForMail = "\(self.accountName) \(self.accountLastName)"
         }
         }//end of if (segue...
@@ -501,7 +501,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         billManager?.undoRecieptCounter = recieptCounter
         billManager?.undoBalance = balance// String(Double(self.balance!)! - Double(self.partialPayment.text!)!)
         billManager?.undoTotal = String(Double(self.balance!)!)
-        if  ViewController.professionControl! == "Tutor" && accountParnet != "" {billManager?.contactForMail = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
+        if  ViewController.professionControl! == "Dog walker" && accountParnet != "" {billManager?.contactForMail = "\(self.accountParnet) \(self.accountLastName) - \(self.accountName)"} else {
         billManager?.contactForMail = "\(self.accountName) \(self.accountLastName)"}
         }//end of if (segue...
         }//end of prepare

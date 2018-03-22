@@ -260,7 +260,7 @@
         ViewController.taxation = String(describing: snapshot.childSnapshot(forPath: "fTaxPrecentage").value!) as String
         ViewController.taxName = String(describing: snapshot.childSnapshot(forPath: "fTaxName").value!) as String
         ViewController.professionControl =  String(describing: snapshot.childSnapshot(forPath: "fProfessionControl").value!) as String
-        // if  ViewController.professionControl! == "Tutor" { self.homeTitle.title = "Students"} else {self.homeTitle.title = "Accounts"}
+        // if  ViewController.professionControl! == "Dog walker" { self.homeTitle.title = "Students"} else {self.homeTitle.title = "Accounts"}
         }
         , withCancel: { (Error) in
         print("error from FB")
@@ -479,7 +479,7 @@
 
         btnMenu.removeTarget(self, action:#selector(noAccount), for: .touchUpInside)
         btnMenu.addTarget(self, action: #selector(sideMenuMovement), for: .touchUpInside)
-        //if  ViewController.professionControl! == "Tutor" { homeTitle.title = "Students"} else {homeTitle.title = "Accounts"}
+        //if  ViewController.professionControl! == "Dog walker" { homeTitle.title = "Students"} else {homeTitle.title = "Accounts"}
         let imageView = UIImageView(image: self.home)
         imageView.contentMode = .scaleAspectFit // set imageview's content mode
         self.navigationItem.titleView = imageView

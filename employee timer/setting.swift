@@ -13,7 +13,7 @@ import FirebaseDatabase
 import FirebaseStorage
 import MessageUI
 
-class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate, MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource {
+class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate, MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate {
     
     let dbRef = FIRDatabase.database().reference()
     let dbRefEmployees = FIRDatabase.database().reference().child("fEmployees")
@@ -35,7 +35,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     var finChanged:Bool = false
 
     @IBOutlet weak var pDogImage: UIImageView!
-    let professions = ["Tutor","Psychologist","Therapist","Trainer","Other"]
+  
     var taxNameUpdate:String?
     @IBOutlet weak var taxNames: UISegmentedControl!
     @IBAction func taxNames(_ sender: Any) {
@@ -133,19 +133,10 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
     @IBOutlet weak var taxerTitle: UILabel!
     var taxSwitcherUpdate = "No"
     var taxSwitchTemp = "No"
-    @IBAction func professionBtn(_ sender: Any) {
-        professionalPicker.isHidden = false
-
-    }
-    @IBOutlet weak var professionBtn: UIButton!
-    @IBOutlet weak var professionalPicker: UIView!
-    @IBAction func donePicker(_ sender: Any) {
-    professionalPicker.isHidden = true
-    }
     
-    @IBAction func startProfessionEdit(_ sender: Any) {
-    professionalPicker.isHidden = false
-    }
+
+    
+   
     @IBOutlet weak var taxId: UITextField!
     var taxIdUpdate = ""
     
@@ -228,7 +219,6 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             self.addressUpdate = snapshot.childSnapshot(forPath: "fAddress").value! as! String
             self.address.text = self.addressUpdate
                 
-            self.professionBtn.setTitle(snapshot.childSnapshot(forPath: "fProfessionControl").value! as? String, for: .normal)
 
             self .currencyUpdate = snapshot.childSnapshot(forPath: "fCurrency").value as! String
             if self.currencyUpdate == "" {self.currency.text = Locale.current.currencySymbol!} else { self.currency.text = self.currencyUpdate}
@@ -334,15 +324,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             //{(note)-> void in
             }
 
-        professionalPicker.layer.borderWidth = 0.5
-        professionalPicker.layer.borderColor = blueColor.cgColor
-        professionalPicker.layer.cornerRadius =  15//CGFloat(25)
-        professionalPicker.layoutIfNeeded()
         
-       // professionBtn.backgroundColor = .clear
-        professionBtn.layer.cornerRadius = 5
-        professionBtn.layer.borderWidth = 1
-        professionBtn.layer.borderColor = blueColor.cgColor
         
         }//end of viewdid load    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -400,7 +382,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
 
         self.employeeRefUpdate = (user?.uid)!
 
-        self.dbRefEmployees.child((user?.uid)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage": self.taxPrecentageUpdate,"fTaxId": self.taxIdUpdate,  "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : "Over", "fDateTime": "DateTime","fLogin":"Normal", "fLastCalander":"New","fAddress":self.addressUpdate, "fPaypal" : self.paypalUpdate, "fBillinfo" :self.billInfoUpdate,"fCalander" : "None","fProfessionControl":"Tutor","fTaxName":""
+        self.dbRefEmployees.child((user?.uid)!).updateChildValues([ "fImageRef":"","fCounter": "1000","fCreated"  : self.mydateFormat5.string(from: Date()),"fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": Locale.current.currencySymbol!, "fProgram":"0","fTaxPrecentage": self.taxPrecentageUpdate,"fTaxId": self.taxIdUpdate,  "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : "Over", "fDateTime": "DateTime","fLogin":"Normal", "fLastCalander":"New","fAddress":self.addressUpdate, "fPaypal" : self.paypalUpdate, "fBillinfo" :self.billInfoUpdate,"fCalander" : "None","fProfessionControl":"Dog walker","fTaxName":""
         ])
 
        
@@ -459,7 +441,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
         let updateDBAction = UIAlertAction(title: "Yes", style: .default) { (UIAlertAction) in
        
-            self.dbRefEmployees.child(self.employeeRefUpdate).updateChildValues(["fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": self.currency.text!, "fProgram": "0","fTaxPrecentage": self.precentage.text!,"fTaxId": self.taxId.text!, "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : self.taxCalacUpdate!, "fDateTime": self.dateTimeUpdate!, "fCalander" : self.calanderUpdate!,"fAddress":self.address.text!,"fPaypal" : self.paypal.text!,"fTaxName":self.taxNameUpdate!, "fBillinfo" :self.billInfo.text! , "fProfessionControl":self.professionBtn.titleLabel?.text! ]) //check email update with regard to auth
+            self.dbRefEmployees.child(self.employeeRefUpdate).updateChildValues(["fName" : self.name.text!, "fLastName": self.lastName.text!, "femail" : self.email.text!, "fCurrency": self.currency.text!, "fProgram": "0","fTaxPrecentage": self.precentage.text!,"fTaxId": self.taxId.text!, "fSwitcher": self.taxSwitcherUpdate,"fTaxCalc" : self.taxCalacUpdate!, "fDateTime": self.dateTimeUpdate!, "fCalander" : self.calanderUpdate!,"fAddress":self.address.text!,"fPaypal" : self.paypal.text!,"fTaxName":self.taxNameUpdate!, "fBillinfo" :self.billInfo.text! , "fProfessionControl":"Dog walker" ]) //check email update with regard to auth
         
         self.updateEmail()
             
@@ -603,19 +585,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
         }
-        func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return professions.count
-        }
-
-        func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return professions[row]
-        }
-
-        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-
-        professionBtn.setTitle(professions[row], for: .normal)
-        ViewController.professionControl = professions[row]
-        }
+    
     
         ///alerts///////////////////////////////////////////////////////////////////////////////////
 
