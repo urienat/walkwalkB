@@ -145,8 +145,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         LoginFile.userFromGoole = user2
         LoginFile.employeeRef2 = (user?.uid)!
-        self.window?.rootViewController = loginViewController // before the app
-        
+       // self.window?.rootViewController = loginViewController // before the app
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SomeNotification"), object: nil)
+
         return
         }//end of if
             

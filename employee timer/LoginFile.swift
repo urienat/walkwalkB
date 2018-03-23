@@ -20,6 +20,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     let mydateFormat5 = DateFormatter()
     let Vimage = UIImage(named:"vNaked")
     let nonVimage = UIImage(named: "blank")
+    var connectCheck = 0
     
     //facebook & google
     let loginButton =  FBSDKLoginButton()// facebooklogin variables
@@ -30,13 +31,15 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     var fbEmail = ""
     static var userFromGoole : GIDGoogleUser?
     
+    // Define identifier
+    
   
     static var employeeRef2 = "" {
     didSet {    //called when employeeref2 changed
     print("changed")
-    inFireBase()
-   
-    
+    NotificationCenter.default.addObserver(self, selector: #selector(inFireBase), name: NSNotification.Name(rawValue: "SomeNotification"), object: nil)
+    NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "SomeNotification"), object: nil)
+
     }
     }
     
@@ -175,12 +178,17 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     
     
     override func viewDidLoad() {
+        print ("rrrr",connectCheck)
+        
+        if connectCheck == 0{
         connectivityCheck()
+        connectCheck = 1
+        }
         
         dog.clipsToBounds = true
         dog.layer.cornerRadius = 50
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(inFireBase), name: NSNotification.Name(rawValue: "SomeNotification"), object: nil)
         //delgate to hide keyboard
         self.email.delegate = self
         self.password.delegate = self
@@ -255,6 +263,17 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         
         if LoginFile.userForCreate != ""{ email.text = LoginFile.userForCreate; password.text = LoginFile.passwordForCreate; LoginFile.userForCreate = "";LoginFile.passwordForCreate = ""} else {LoginFile.userForCreate = "";LoginFile.passwordForCreate = ""}
         
+       
+        
+        // Register to receive notification
+        
+        // Post notification
+       // NotificationCenter.default.post(name: notificationName, object: nil)
+        
+        // Stop listening notification
+        //NotificationCenter.default.removeObserver(self, name: notificationName, object: nil)
+        
+        
         thinking.hidesWhenStopped = true
         
         check.layer.borderWidth = 0.5;
@@ -263,6 +282,9 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         
         loginBarImage.clipsToBounds = true
         loginBarImage.layer.cornerRadius = 15
+        
+
+        
         } ///end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////
    
         //keyboard hide
@@ -338,6 +360,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     
         //google signin
         func inFireBase(){
+        print ("in fire base starts")
+            
         ipusKeeper()
         LoginFile.provider = "Google"
         DispatchQueue.main.asyncAfter(deadline: .now() ) {
