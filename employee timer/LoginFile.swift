@@ -173,7 +173,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     self.performSegue(withIdentifier: "create", sender: Any?.self)
     }//end of create action
     
-   
+    
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     
@@ -207,13 +207,13 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         loginButton.frame = CGRect(x: view.frame.width/2-100, y: 107, width: 200, height: 45)
         loginButton.delegate = self
         loginButton.readPermissions = ["email","public_profile"]
-        print(FBSDKAccessToken.current())
+        print("khkjhj", FBSDKAccessToken.current())
         
         //quick facebook
         DispatchQueue.main.asyncAfter(deadline: .now() ) {
         if FBSDKAccessToken.current() != nil {
                 LoginFile.provider = "facebook"
-                print (LoginFile.provider)
+                print ("ggg",LoginFile.provider)
                 self.doSegue()
             }//end of if
         }//end of dispatch
@@ -230,24 +230,24 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             // }//end of if
             email.text = savedUser
             password.text = savedPassword
-            print (LoginFile.logoutchosen)
+            print ("sss",LoginFile.logoutchosen)
             if LoginFile.logoutchosen == true {
                 //do nothing
             } else  {signInProcess() }
         } else{check.setImage(nonVimage, for: .normal)
             checkBox = true}
-        print(FBSDKAccessToken.current())
+        print("ttt",FBSDKAccessToken.current())
         
         if FBSDKAccessToken.current() == nil {
             
-            print (GIDSignIn.sharedInstance().currentUser)
+            print ("kkk",GIDSignIn.sharedInstance().currentUser)
             
             if GIDSignIn.sharedInstance().currentUser != nil  {
                 thinking.startAnimating()
-                print (GIDSignIn.sharedInstance().currentUser)
+                print ("aas",GIDSignIn.sharedInstance().currentUser)
                inFireBase()
             } else {
-                print (GIDSignIn.sharedInstance().currentUser)
+                print ("DSDS",GIDSignIn.sharedInstance().currentUser)
             }
         }// end of else if
         /*
@@ -283,7 +283,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         loginBarImage.clipsToBounds = true
         loginBarImage.layer.cornerRadius = 15
         
-
+        
         
         } ///end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////
    

@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         //FIRApp.configure()
         // Override point for customization after application launch.
         let currentUser = FIRAuth.auth()?.currentUser
-        print (currentUser as Any)
+        print ("444",currentUser as Any)
 
         if currentUser != nil  { isLoggedIn = true; } else {  isLoggedIn = false}
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
        // if isLoggedIn == true && keeper.integer(forKey: "remember") == 1 {//marked to try quickin for google
         if isLoggedIn == true  {
-            print (LoginFile.provider)
+            print ("rrr",LoginFile.provider)
             
             if LoginFile.provider == "normal" && keeper.integer(forKey: "remember") == 1 {
                 self.window?.rootViewController = homeViewController }
@@ -154,6 +154,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
         // ...
+            print (GIDGoogleUser.self)
+            
         }
 
 
