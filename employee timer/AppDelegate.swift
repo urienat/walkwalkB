@@ -146,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         LoginFile.userFromGoole = user2
         LoginFile.employeeRef2 = (user?.uid)!
         self.window?.rootViewController = loginViewController // before the app
-        LoginFile.inFireBase()
+        
         return
         }//end of if
             

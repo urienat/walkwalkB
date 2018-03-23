@@ -34,6 +34,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     static var employeeRef2 = "" {
     didSet {    //called when employeeref2 changed
     print("changed")
+    inFireBase()
    
     
     }
@@ -236,7 +237,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             if GIDSignIn.sharedInstance().currentUser != nil  {
                 thinking.startAnimating()
                 print (GIDSignIn.sharedInstance().currentUser)
-               inFireBase
+               inFireBase()
             } else {
                 print (GIDSignIn.sharedInstance().currentUser)
             }
