@@ -30,11 +30,17 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     var fbEmail = ""
     static var userFromGoole : GIDGoogleUser?
     
+  
     static var employeeRef2 = "" {
     didSet {    //called when employeeref2 changed
     print("changed")
+   
+    
     }
     }
+    
+    
+    
     
         var pickedImage:UIImage?
         let picture = UIImage(named: "perSessionImage")
@@ -196,14 +202,13 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         
         //quick facebook
         DispatchQueue.main.asyncAfter(deadline: .now() ) {
-            if FBSDKAccessToken.current() != nil {
+        if FBSDKAccessToken.current() != nil {
                 LoginFile.provider = "facebook"
                 print (LoginFile.provider)
                 self.doSegue()
             }//end of if
         }//end of dispatch
         
-        print (keeper.integer(forKey: "remember"))
         
         if keeper.integer(forKey: "remember") != 1 {rememberMe = 0 } else { rememberMe = keeper.integer(forKey: "remember")}
         if rememberMe == 1 {
@@ -231,7 +236,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             if GIDSignIn.sharedInstance().currentUser != nil  {
                 thinking.startAnimating()
                 print (GIDSignIn.sharedInstance().currentUser)
-                inFireBase()
+               inFireBase
             } else {
                 print (GIDSignIn.sharedInstance().currentUser)
             }

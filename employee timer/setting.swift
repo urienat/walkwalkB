@@ -221,6 +221,8 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
                 
 
             self .currencyUpdate = snapshot.childSnapshot(forPath: "fCurrency").value as! String
+            print (self.currencyUpdate)
+                
             if self.currencyUpdate == "" {self.currency.text = Locale.current.currencySymbol!} else { self.currency.text = self.currencyUpdate}
             
             self.created = (snapshot.childSnapshot(forPath: "fCreated").value as! String)
@@ -303,7 +305,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             
             obligatoryIn()
             obligatoryOut()
-            
+            self.currency.text = Locale.current.currencySymbol!
             let cancelLogin = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(logout))
             navigationItem.leftBarButtonItem = cancelLogin
            

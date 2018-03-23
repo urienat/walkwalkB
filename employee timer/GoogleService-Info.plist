@@ -7,34 +7,34 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>652073679380-1kvokid2j7sjh9md93en99qmnupeds3b.apps.googleusercontent.com</string>
+	<string>407913500714-i7ghajd51ch4mtg3vst4r5n3p7ssqk5v.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.652073679380-1kvokid2j7sjh9md93en99qmnupeds3b</string>
+	<string>com.googleusercontent.apps.407913500714-i7ghajd51ch4mtg3vst4r5n3p7ssqk5v</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCXx18Pf7sh0Wi9-dHt3z_zbFzmOE59ses</string>
+	<string>AIzaSyD2ZLsdBaCSE1gOKcIsYLIO0T-fJCNdNyU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>652073679380</string>
+	<string>407913500714</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>HomePloyer.walkwalkB</string>
 	<key>PROJECT_ID</key>
-	<string>persession-45987</string>
+	<string>walkwalkb-fee20</string>
 	<key>STORAGE_BUCKET</key>
-	<string>persession-45987.appspot.com</string>
+	<string>walkwalkb-fee20.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
 	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
 	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:652073679380:ios:bd8d1ff395f8b4dc</string>
+	<string>1:407913500714:ios:bd8d1ff395f8b4dc</string>
 	<key>DATABASE_URL</key>
-	<string>https://persession-45987.firebaseio.com</string>
+	<string>https://walkwalkb-fee20.firebaseio.com</string>
 </dict>
 </plist>

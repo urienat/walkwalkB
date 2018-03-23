@@ -179,7 +179,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         employerArray3.removeAll()
         if pRate.text == "" {pRate.text = "0.0"}
         if self.pLastName.text == "" || self.pName.text == "" || self.studentParentNameText.text == ""{
-        message2 =  "Name & Last name are requiered fields"
+        message2 =  "Name,Last name & Parent are requiered fields"
         alert54()
         } // end of name or  last name is not filled
 
@@ -256,8 +256,7 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         } // end of update of an existed employer
         else{
         let employerRefence = self.dbRefEmployers.childByAutoId()
-            employerRefence.setValue(["fName" : self.pName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!, "fRem" : self.pRem.text!,  "fEmployer":self.pLastName.text!,"fImageRef":"https://firebasestorage.googleapis.com/v0/b/employeetimer.appspot.com/o/employerImages%2F47574737_s.jpg?alt=media&token=48983dc3-ca8d-4d9f-9b6d-3df6d756c480", "fEmployerReg":employerRefence.key,"fLast":"New Account", "fActive" : true,"fParent" : self.studentParentNameText.text!
-                
+            employerRefence.setValue(["fName" : self.pName.text!,"fMail": self.pEmail.text!, "fCell": self.pCell.text!, "fAddress": self.pAddress.text!, "fRem" : self.pRem.text!,  "fEmployer":self.pLastName.text!,"fImageRef":"https://firebasestorage.googleapis.com/v0/b/walkwalkb-fee20.appspot.com/o/image%20gor%20firebase.png?alt=media&token=65f96e08-02ef-419d-8e04-d4fccb2e62df", "fEmployerReg":employerRefence.key,"fLast":"New Account", "fActive" : true,"fParent" : self.studentParentNameText.text!
         ])//end of set value
             
         //update pic in chache for new employee

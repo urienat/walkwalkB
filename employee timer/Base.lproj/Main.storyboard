@@ -88,10 +88,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jQ1-Rx-gI3" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
-                                                <rect key="frame" x="111.5" y="122" width="180" height="30"/>
+                                                <rect key="frame" x="111.5" y="122" width="170" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="iaN-1f-Nlc"/>
-                                                    <constraint firstAttribute="width" constant="180" id="pgc-V5-7VA"/>
+                                                    <constraint firstAttribute="width" constant="170" id="pgc-V5-7VA"/>
                                                 </constraints>
                                                 <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -153,7 +153,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBr-xu-Bqr" userLabel="sendMail">
-                                                <rect key="frame" x="295.5" y="122" width="30" height="30"/>
+                                                <rect key="frame" x="285.5" y="122" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="0i9-9k-Pt3"/>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="30" id="Qvv-Gt-QpU"/>
@@ -303,13 +303,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="d87-39-TLy" userLabel="camera">
-                                                <rect key="frame" x="231" y="7" width="20" height="20"/>
+                                                <rect key="frame" x="238" y="7" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="iKr-VA-6pn"/>
                                                     <constraint firstAttribute="height" constant="20" id="wSH-TR-X0D"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dogwalkerimage" translatesAutoresizingMaskIntoConstraints="NO" id="5Rw-j6-6DO">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cameraImage" translatesAutoresizingMaskIntoConstraints="NO" id="5Rw-j6-6DO">
                                                 <rect key="frame" x="248" y="12" width="60" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="CFX-bS-ZBC"/>
@@ -383,7 +383,7 @@
                                             <constraint firstItem="BV5-Mg-kcY" firstAttribute="leading" secondItem="kjJ-qf-Ai6" secondAttribute="leading" constant="8" id="jhx-N9-Zat"/>
                                             <constraint firstItem="CBM-wj-30S" firstAttribute="height" secondItem="Tvj-0H-np8" secondAttribute="height" id="kDh-zS-dHt"/>
                                             <constraint firstItem="wTn-MV-ILJ" firstAttribute="centerX" secondItem="tPs-Eu-2ZP" secondAttribute="centerX" id="kg0-ho-6Pn"/>
-                                            <constraint firstItem="d87-39-TLy" firstAttribute="leading" secondItem="5Rw-j6-6DO" secondAttribute="leading" constant="-17" id="khm-Vx-M25"/>
+                                            <constraint firstItem="d87-39-TLy" firstAttribute="leading" secondItem="5Rw-j6-6DO" secondAttribute="leading" constant="-10" id="khm-Vx-M25"/>
                                             <constraint firstItem="CmD-SU-Gwh" firstAttribute="top" secondItem="MWa-6n-maP" secondAttribute="bottom" constant="8" id="kju-jG-qcy"/>
                                             <constraint firstItem="3ey-yI-Stf" firstAttribute="top" secondItem="jQ1-Rx-gI3" secondAttribute="bottom" constant="8" id="ld6-OH-MQG"/>
                                             <constraint firstItem="Ohu-yT-NpW" firstAttribute="top" secondItem="XBr-xu-Bqr" secondAttribute="bottom" constant="8" id="n33-KA-hdX"/>
@@ -1622,7 +1622,7 @@
                                                     <action selector="taxationInfo:" destination="bu7-cQ-GBV" eventType="touchUpInside" id="R08-8A-pjL"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NdQ-LL-HGn" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
+                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NdQ-LL-HGn" customClass="MaxLengthTextField" customModule="perSession" customModuleProvider="target">
                                                 <rect key="frame" x="166" y="297.5" width="44" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="3at-M6-7IN"/>
@@ -1641,7 +1641,7 @@
                                                     <action selector="editPrecentage:" destination="bu7-cQ-GBV" eventType="editingChanged" id="Be6-Yr-foZ"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="%" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iho-r5-Jit" userLabel="%sign">
+                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="%" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iho-r5-Jit" userLabel="%sign">
                                                 <rect key="frame" x="214" y="304.5" width="15" height="17"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -4042,8 +4042,8 @@
         <image name="billsIcon" width="50" height="50"/>
         <image name="calcMachine" width="50" height="50"/>
         <image name="camera" width="25" height="25"/>
+        <image name="cameraImage" width="50" height="50"/>
         <image name="cancelled" width="50" height="50"/>
-        <image name="dogwalkerimage" width="225" height="225"/>
         <image name="emptyV" width="42" height="52"/>
         <image name="file" width="50" height="50"/>
         <image name="import" width="50" height="50"/>
