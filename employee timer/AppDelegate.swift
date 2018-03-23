@@ -142,9 +142,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginViewController  =  storyboard.instantiateViewController(withIdentifier: "loginScreen")
         let homeViewController  =  storyboard.instantiateViewController(withIdentifier: "homeScreen")
-        self.window?.rootViewController = homeViewController// before the app
+        
         LoginFile.userFromGoole = user2
         LoginFile.employeeRef2 = (user?.uid)!
+        self.window?.rootViewController = loginViewController // before the app
         return
         }//end of if
             
