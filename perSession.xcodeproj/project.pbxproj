@@ -476,7 +476,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "GOOGLE_APP_ID=1:652073679380:ios:4b7f21c3e2e380b3\n\"${PODS_ROOT}/Fabric/run\"\n#\"${PODS_ROOT}\"/FirebaseCrash/upload-sym-util.bash  \"/Users/homeUriEnat/Documents/perSession2/employee timer/persession-45987-firebase-crashreporting-whqxh-5028473396.json\"";
+			shellScript = "//GOOGLE_APP_ID=1:652073679380:ios:4b7f21c3e2e380b3\n\"${PODS_ROOT}/Fabric/run\"\n#\"${PODS_ROOT}\"/FirebaseCrash/upload-sym-util.bash  \"/Users/homeUriEnat/Documents/perSession2/employee timer/persession-45987-firebase-crashreporting-whqxh-5028473396.json\"";
 		};
 		F4F6B0B52056A85C00F22658 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
