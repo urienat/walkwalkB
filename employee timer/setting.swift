@@ -326,7 +326,7 @@ class setting: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
             //{(note)-> void in
             }
 
-        
+      
         
         }//end of viewdid load    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
