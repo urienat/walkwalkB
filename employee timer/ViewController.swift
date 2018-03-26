@@ -194,6 +194,8 @@
         LoginFile.logoutchosen = true
         print (LoginFile.logoutchosen)
         try! FIRAuth.auth()?.signOut()
+        print ("gid signout")
+        GIDSignIn.sharedInstance().signOut()
         self.present((storyboard?.instantiateViewController(withIdentifier: "loginScreen"))!, animated: true, completion: nil)
         }
 

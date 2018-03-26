@@ -23,7 +23,7 @@ import SwiftyStoreKit
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,GIDSignInDelegate {
 
     var window: UIWindow?
     var isLoggedIn:Bool?
@@ -37,19 +37,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
   
     @available(iOS 9.0, *)//added two to avoid clash with FB
-    func application2(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
-    -> Bool {
-    return GIDSignIn.sharedInstance().handle(url,sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-    annotation: [:])
-    }
+  func application2(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
+  -> Bool {
+   return GIDSignIn.sharedInstance().handle(url,sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+   annotation: [:])
+   }
+  
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         //Fabric.with([Crashlytics.self])
         
-        
         GIDSignIn.sharedInstance().clientID =  FIRApp.defaultApp()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().signInSilently() ////try
+       GIDSignIn.sharedInstance().delegate = self
+       
+        
+        if GIDSignIn.sharedInstance().hasAuthInKeychain() == true{
+            print ("has auth key chain")
+             GIDSignIn.sharedInstance().signInSilently() ////try
+        }else{
+            print ("no auth key chain")
+        }
+        
+       
         
         RebeloperStore.shared.start()
         ///subs.shared.loadSubscriptionOptions()
@@ -79,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginViewController  =  storyboard.instantiateViewController(withIdentifier: "loginScreen")
         let homeViewController  =  storyboard.instantiateViewController(withIdentifier: "homeScreen")
-        print(isLoggedIn!,keeper.integer(forKey: "remember"))
+        print("DDDD",isLoggedIn!,keeper.integer(forKey: "remember"))
         
        // if isLoggedIn == true && keeper.integer(forKey: "remember") == 1 {//marked to try quickin for google
         if isLoggedIn == true  {
@@ -127,7 +137,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
 
         func sign(_ signIn: GIDSignIn!, didSignInFor user2: GIDGoogleUser!, withError error: Error?) {
+            if GIDSignIn.sharedInstance().hasAuthInKeychain() == true{
+                print ("has auth key chain")
+            }else{
+                print ("no auth key chain")
+            }
+            
         if let error = error {
+        print ("not 1234")
         return
         }
             
@@ -136,7 +153,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
         if let error = error {
-        print (error)
+        print ("ggg",error)
         return
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -154,7 +171,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
         // ...
-            print (GIDGoogleUser.self)
+            print ("ggg",GIDGoogleUser.self)
             
         }
 

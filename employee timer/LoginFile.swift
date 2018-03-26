@@ -11,8 +11,9 @@ import FBSDKLoginKit
 import FacebookCore
 import Google
 import GoogleSignIn
+import GoogleAPIClientForREST
 
-class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate ,GIDSignInUIDelegate{
+class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,GIDSignInUIDelegate{
 
     var blueColor = UIColor(red :22/255.0, green: 131/255.0, blue: 248/255.0, alpha: 1.0)
 
@@ -37,7 +38,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     static var employeeRef2 = "" {
     didSet {    //called when employeeref2 changed
     print("changed")
-    NotificationCenter.default.addObserver(self, selector: #selector(inFireBase), name: NSNotification.Name(rawValue: "SomeNotification"), object: nil)
+    //NotificationCenter.default.addObserver(self, selector: #selector(inFireBase), name: NSNotification.Name(rawValue: "SomeNotification"), object: nil)
     NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "SomeNotification"), object: nil)
 
     }
@@ -185,6 +186,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         connectCheck = 1
         }
         
+        
+        
         dog.clipsToBounds = true
         dog.layer.cornerRadius = 50
         mydateFormat5.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM/dd/yy, (HH:mm)",options: 0, locale: nil)!
@@ -200,12 +203,18 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         signIn.layoutIfNeeded()
 
         GIDSignIn.sharedInstance().uiDelegate = self
+       GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeCalendar]
+
+        
+       
+        
         view.addSubview(loginButton2)
         loginButton2.frame = CGRect(x: view.frame.width/2-104, y: 50, width: 208, height: 45)
         
+        
         view.addSubview(loginButton)
         loginButton.frame = CGRect(x: view.frame.width/2-100, y: 107, width: 200, height: 45)
-        loginButton.delegate = self
+        loginButton.delegate = self 
         loginButton.readPermissions = ["email","public_profile"]
         print("khkjhj", FBSDKAccessToken.current())
         
@@ -250,29 +259,13 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
                 print ("DSDS",GIDSignIn.sharedInstance().currentUser)
             }
         }// end of else if
-        /*
-         DispatchQueue.main.asyncAfter(deadline: .now() ) {
-         
-         
-         if AccessToken.current != nil {        LoginFile.provider = "Google"
-         self.doSegue()
-         }//end of if
-         }//end of dispatch
-         */
+       
         
         
         if LoginFile.userForCreate != ""{ email.text = LoginFile.userForCreate; password.text = LoginFile.passwordForCreate; LoginFile.userForCreate = "";LoginFile.passwordForCreate = ""} else {LoginFile.userForCreate = "";LoginFile.passwordForCreate = ""}
         
        
-        
-        // Register to receive notification
-        
-        // Post notification
-       // NotificationCenter.default.post(name: notificationName, object: nil)
-        
-        // Stop listening notification
-        //NotificationCenter.default.removeObserver(self, name: notificationName, object: nil)
-        
+      
         
         thinking.hidesWhenStopped = true
         
@@ -283,8 +276,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         loginBarImage.clipsToBounds = true
         loginBarImage.layer.cornerRadius = 15
         
-        
-        
+       
         } ///end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////
    
         //keyboard hide
@@ -305,7 +297,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
             
         if error != nil
         {print ("something went wrong")
-        print(error!)
+        print("111",error!)
         if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
         switch errCode {
         case .errorCodeInvalidEmail:
@@ -398,7 +390,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         if let uploadTask = UIImageJPEGRepresentation(self.picture!, CGFloat(0.1)){
         dbStorageRef.put(uploadTask, metadata: nil, completion: { (metadata, error) in
         if error != nil {
-        print (error as Any)
+        print ("111",error as Any)
         return
         }
         self.dbRefEmployees.child(self.employeeRefUpdate!).updateChildValues(["fImageRef":(metadata?.downloadURL()?.absoluteString)! as Any ])
@@ -429,13 +421,18 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
         if LoginFile.logoutchosen == true{let loginManager = FBSDKLoginManager()
         loginManager.logOut()
         print ("logout from facebook")
+           // GIDSignIn.sharedInstance().scopes = []
+            print (GIDSignIn.sharedInstance().scopes)
             
+
         let firebaseAuth = FIRAuth.auth()
         do {try firebaseAuth?.signOut();            print ("logout from firebase")
         } catch let signOutError as NSError {
         print ("Error signing out: %@", signOutError)
         }
             GIDSignIn.sharedInstance().signOut();  print ("logout from google")
+           
+
             //LoginFile.logoutchosen = false
         }//end of if
         }
@@ -460,4 +457,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate 
     
     // alerts end//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    
+   
+    
    }
