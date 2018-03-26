@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en_US</string>
 	<key>CFBundleDisplayName</key>
-	<string>walkwalkB</string>
+	<string>walkwalk</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -31,7 +31,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.407913500714-i7ghajd51ch4mtg3vst4r5n3p7ssqk5v</string>
+				<string>com.googleusercontent.apps.407913500714-l0t8kv4ggpnsnfdo5pb0cqghkitl9mre</string>
 				<string>fb280821099095469</string>
 			</array>
 		</dict>
@@ -45,7 +45,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>01</string>
+	<string>06</string>
 	<key>FacebookAppID</key>
 	<string>280821099095469</string>
 	<key>FacebookDisplayName</key>
