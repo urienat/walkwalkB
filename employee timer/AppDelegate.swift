@@ -23,7 +23,7 @@ import SwiftyStoreKit
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var isLoggedIn:Bool?
@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,GIDSignInDelegate {
         //Fabric.with([Crashlytics.self])
         
         GIDSignIn.sharedInstance().clientID =  FIRApp.defaultApp()?.options.clientID
-       GIDSignIn.sharedInstance().delegate = self
+      // GIDSignIn.sharedInstance().delegate = self
        
         
         if GIDSignIn.sharedInstance().hasAuthInKeychain() == true{
@@ -136,6 +136,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,GIDSignInDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         }
 
+    /*
         func sign(_ signIn: GIDSignIn!, didSignInFor user2: GIDGoogleUser!, withError error: Error?) {
             if GIDSignIn.sharedInstance().hasAuthInKeychain() == true{
                 print ("has auth key chain")
@@ -177,6 +178,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,GIDSignInDelegate {
 
 
     }
-    
+   */
 }
 
