@@ -28,7 +28,9 @@ import StoreKit
 import SwiftyStoreKit
 import KeychainAccess
 
-let AppBundleId = Bundle.main.bundleIdentifier!
+let AppBundleId = "HomePloyer.employeetimer"//Bundle.main.bundleIdentifier!
+
+//"HomePloyer.employee-timer"
 let mydateFormat = DateFormatter()
 
 let iAPStatusChanged = "iAPStatusChanged"
