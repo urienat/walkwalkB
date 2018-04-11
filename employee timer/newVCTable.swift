@@ -202,6 +202,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     refresh(presser: 1)        //// When your task completes
     myGroup.enter()
     myGroup.notify(queue: DispatchQueue.main) {
+        self.toolbar1.isHidden = true///
         if self.appArray.count != 0  && self.Employerrate != 0.0 {self.thinking.stopAnimating();self.billProcess()}
         if self.Employerrate == 0.0 {self.thinking.stopAnimating();self.alert80()}
         if self.appArray.count == 0 {
@@ -225,6 +226,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
     refresh(presser: 1)        //// When your task completes
     myGroupBillPay.notify(queue: DispatchQueue.main) {
     if self.appArray.count != 0  && self.Employerrate != 0.0{
+    self.toolbar1.isHidden = true///
     self.paymentView.isHidden = false
     }
     if self.Employerrate == 0.0 {self.thinking.stopAnimating();self.alert80()}
