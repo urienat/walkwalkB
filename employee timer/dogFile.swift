@@ -99,7 +99,10 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         }
         else {
             print("not granted")
+            DispatchQueue.main.async{
+
             self.alert79()
+            }
         }
 
         })
