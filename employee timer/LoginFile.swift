@@ -182,7 +182,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
         print ("rrrr",connectCheck)
         
         if connectCheck == 0{
-        connectivityCheck()
+        //connectivityCheck()
         connectCheck = 1
         }
         
