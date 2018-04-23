@@ -163,8 +163,9 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         rateTitle.text = "Rate"
         if ViewController.fixedCurrency != nil {currencySign.text = (ViewController.fixedCurrency!)} else {currencySign.text = ""}
         
+        if ViewController.professionControl != nil{
         if  ViewController.professionControl! == "Dog walker" {addressTop.constant = 46.0; studentParentNameText.isHidden = false; studentParentNameLabel.isHidden = false } else {addressTop.constant = 8.0; studentParentNameText.isHidden = true; studentParentNameLabel.isHidden = true }
-        
+    }
         activeButton.layer.borderWidth = 0.5;
         activeButton.layer.borderColor =  blueColor.cgColor
         activeButton.layer.cornerRadius =  10
