@@ -124,6 +124,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
     var rememberMe:Int?
     var userEmail:String?
     var userPassword:String! = nil
+    var nofirstTimer:Bool?
+
 
     @IBOutlet weak var check: UIButton! // section for rememberme check
     @IBAction func checkBox(_ sender: Any) {
@@ -174,7 +176,12 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
     self.performSegue(withIdentifier: "create", sender: Any?.self)
     }//end of create action
     
-    
+    @IBOutlet weak var welcomeScreen: UIView!
+    @IBOutlet weak var letsGo: UIButton!
+    @IBAction func letsGo(_ sender: Any) {
+        keeper.set(true, forKey: "nofirstTimer")
+        welcomeScreen.isHidden = true
+    }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     
@@ -277,7 +284,18 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
         loginBarImage.clipsToBounds = true
         loginBarImage.layer.cornerRadius = 15
         
-       
+        self.view.bringSubview(toFront: welcomeScreen)
+        welcomeScreen.layer.cornerRadius = 15
+        welcomeScreen.layer.borderWidth = 0.5
+        welcomeScreen.layer.borderColor = blueColor.cgColor
+        welcomeScreen.layoutIfNeeded()
+        letsGo.layer.borderWidth = 0.5
+        letsGo.layer.borderColor = blueColor.cgColor
+        letsGo.layer.cornerRadius =  15//CGFloat(25)
+        letsGo.layoutIfNeeded()
+        print (keeper.bool(forKey: "nofirstTimer"))
+        if keeper.bool(forKey: "nofirstTimer") == false { welcomeScreen.isHidden = false}
+
         } ///end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////
    
         //keyboard hide

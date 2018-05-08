@@ -2149,36 +2149,39 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CEK-Dv-b8n">
-                                <rect key="frame" x="36" y="25" width="248" height="518"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CEK-Dv-b8n">
+                                <rect key="frame" x="31" y="35" width="258" height="518"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="perSessionImage" translatesAutoresizingMaskIntoConstraints="NO" id="amg-eO-ncU">
-                                        <rect key="frame" x="64" y="363" width="120" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perSessionImage" translatesAutoresizingMaskIntoConstraints="NO" id="amg-eO-ncU">
+                                        <rect key="frame" x="69" y="363" width="120" height="128"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="RF4-eJ-6Ee"/>
                                             <constraint firstAttribute="height" constant="128" id="VhY-EQ-2Eo"/>
                                         </constraints>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hne-1x-ij8">
-                                        <rect key="frame" x="4" y="20" width="240" height="220"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hne-1x-ij8">
+                                        <rect key="frame" x="9" y="20" width="240" height="250"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="220" id="dcQ-qo-peW"/>
+                                            <constraint firstAttribute="height" constant="250" id="dcQ-qo-peW"/>
                                             <constraint firstAttribute="width" constant="240" id="lYu-ry-K39"/>
                                         </constraints>
-                                        <string key="text">Welcome to PerSession!   Patients billing "nightmare" is about to disappear, making your life better!  Just 3 easy steps and you’re up and running – we’ll line up your sessions like ducks in a row in no time. </string>
+                                        <string key="text">Welcome to WalkWalk!   Dog Walks billing "nightmare" is about to disappear, making your life better!  Just 3 easy steps and you’re up and running – we’ll line up your walks like ducks in a row in no time. </string>
                                         <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMq-wD-iy8">
-                                        <rect key="frame" x="66" y="284" width="116" height="42"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMq-wD-iy8">
+                                        <rect key="frame" x="71" y="314" width="116" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="116" id="a2h-Je-bLs"/>
                                             <constraint firstAttribute="height" constant="42" id="hp3-a4-jkU"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="Ler's Go!"/>
+                                        <connections>
+                                            <action selector="letsGo:" destination="QwA-1e-1p4" eventType="touchUpInside" id="U63-OK-szw"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2203,6 +2206,7 @@
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wuq-GZ-v5C" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" constant="12" id="1BR-3h-4IW"/>
+                            <constraint firstItem="CEK-Dv-b8n" firstAttribute="leading" secondItem="4Aa-sb-LQD" secondAttribute="leadingMargin" constant="15" id="2lH-ky-5A4"/>
                             <constraint firstItem="Jpb-a2-c4I" firstAttribute="top" secondItem="SW0-cP-SJB" secondAttribute="bottom" constant="40" id="3rZ-I4-TMc"/>
                             <constraint firstItem="Rnh-XI-hKH" firstAttribute="top" secondItem="IJY-5Y-cpH" secondAttribute="bottom" constant="12" id="4Ht-te-3iU"/>
                             <constraint firstItem="SW0-cP-SJB" firstAttribute="top" secondItem="NiB-Rc-LZj" secondAttribute="bottom" constant="24" id="5R9-rJ-RDn"/>
@@ -2213,12 +2217,14 @@
                             <constraint firstItem="qQ5-M2-yCT" firstAttribute="top" secondItem="NiB-Rc-LZj" secondAttribute="bottom" constant="12" id="Kcc-cU-Ph4"/>
                             <constraint firstItem="NiB-Rc-LZj" firstAttribute="centerX" secondItem="wuq-GZ-v5C" secondAttribute="centerX" constant="-14" id="Lxs-JW-b3A"/>
                             <constraint firstItem="apK-xN-ZsM" firstAttribute="top" secondItem="NTs-3R-g9p" secondAttribute="bottom" constant="12" id="SX6-eL-OYB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CEK-Dv-b8n" secondAttribute="trailing" constant="15" id="SvX-dY-JJc"/>
                             <constraint firstItem="apK-xN-ZsM" firstAttribute="centerY" secondItem="wuq-GZ-v5C" secondAttribute="centerY" id="VX9-zI-q9V"/>
                             <constraint firstItem="qQ5-M2-yCT" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="W02-Mv-Uw8"/>
                             <constraint firstItem="HNh-Jn-nzq" firstAttribute="centerY" secondItem="NTs-3R-g9p" secondAttribute="centerY" id="WXt-cC-Xu1"/>
                             <constraint firstItem="wuq-GZ-v5C" firstAttribute="leading" secondItem="apK-xN-ZsM" secondAttribute="trailing" constant="8" id="YBV-cg-IOf"/>
                             <constraint firstItem="Rnh-XI-hKH" firstAttribute="top" secondItem="qKH-jT-XhF" secondAttribute="bottom" constant="164" id="ZiZ-qp-GIK"/>
                             <constraint firstItem="AiQ-AU-mU3" firstAttribute="top" secondItem="Jpb-a2-c4I" secondAttribute="top" constant="-30" id="gnu-WG-UGR"/>
+                            <constraint firstItem="twK-NU-76K" firstAttribute="top" secondItem="CEK-Dv-b8n" secondAttribute="bottom" constant="15" id="hrM-2w-fOA"/>
                             <constraint firstItem="Jpb-a2-c4I" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="i0q-OP-KW4"/>
                             <constraint firstItem="onV-o8-Fmx" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="iad-G5-pKR"/>
                             <constraint firstItem="IJY-5Y-cpH" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="mmI-FT-y7E"/>
@@ -2226,6 +2232,7 @@
                             <constraint firstItem="NTs-3R-g9p" firstAttribute="top" secondItem="Pog-dx-X7C" secondAttribute="bottom" constant="12" id="stn-97-IEN"/>
                             <constraint firstItem="onV-o8-Fmx" firstAttribute="centerY" secondItem="IJY-5Y-cpH" secondAttribute="centerY" id="tRE-dC-9jv"/>
                             <constraint firstItem="SW0-cP-SJB" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="u0U-IH-U2n"/>
+                            <constraint firstItem="CEK-Dv-b8n" firstAttribute="top" secondItem="qKH-jT-XhF" secondAttribute="bottom" constant="15" id="vhn-Iw-W2a"/>
                             <constraint firstItem="AiQ-AU-mU3" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="xgX-QQ-Ewz"/>
                             <constraint firstItem="Pog-dx-X7C" firstAttribute="centerX" secondItem="4Aa-sb-LQD" secondAttribute="centerX" id="zfg-t6-OgU"/>
                         </constraints>
@@ -2236,17 +2243,19 @@
                         <outlet property="dog" destination="Jpb-a2-c4I" id="O4u-sI-4nU"/>
                         <outlet property="email" destination="Rnh-XI-hKH" id="xKi-X4-Las"/>
                         <outlet property="forgot" destination="NiB-Rc-LZj" id="YvM-Qd-aWF"/>
+                        <outlet property="letsGo" destination="SMq-wD-iy8" id="4IA-q9-EwW"/>
                         <outlet property="loginBarImage" destination="HNh-Jn-nzq" id="Vsl-kn-aoL"/>
                         <outlet property="password" destination="Pog-dx-X7C" id="DPt-6s-xTU"/>
                         <outlet property="signIn" destination="NTs-3R-g9p" id="icG-yh-2Fe"/>
                         <outlet property="thinking" destination="AiQ-AU-mU3" id="XoA-hO-Av1"/>
+                        <outlet property="welcomeScreen" destination="CEK-Dv-b8n" id="fxk-aw-AkN"/>
                         <segue destination="H8h-Dv-TZT" kind="show" identifier="signIn2" id="8Bf-Vi-arA"/>
                         <segue destination="H8h-Dv-TZT" kind="show" identifier="create" id="UPU-lN-oqU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="115-Oe-E6l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7637" y="-2258"/>
+            <point key="canvasLocation" x="-7638.75" y="-2258.4507042253522"/>
         </scene>
         <!--billerView-->
         <scene sceneID="1lX-oS-zgj">
