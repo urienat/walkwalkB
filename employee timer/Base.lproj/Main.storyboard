@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="QwA-1e-1p4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="QwA-1e-1p4">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="MarkerFeltThin.ttf">
-            <string>MarkerFelt-Thin</string>
-        </array>
-        <array key="PingFang.ttc">
-            <string>PingFangTC-Light</string>
-            <string>PingFangTC-Regular</string>
-            <string>PingFangTC-Thin</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Pet's family file-->
         <scene sceneID="b5u-3C-CgN">
@@ -541,7 +531,7 @@
                                     <constraint firstAttribute="width" constant="260" id="OCu-kA-VSx"/>
                                     <constraint firstAttribute="height" constant="420" id="b0v-7S-y7N"/>
                                 </constraints>
-                                <mutableString key="text">After two weeks of free trial, monthly subscription with full and ongoing access to all features, so you can try before you buy. A subscription costs $2.99 per month. Payment will be charged to your iTunes Account at confirmation of purchase and after the month of free trial.  Unused portion of free trial, will be forfeited when the user purchases a subscription. The subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Your account will be charged for renewal within 24-hours prior to the end of the current 1 month period. You can turn off auto-renew at any time from your iTunes account settings. Cancellation of the current active subscription period is not allowed. Find our privacy policy and Terms &amp; Conditions, at the following links: </mutableString>
+                                <string key="text">After two weeks of free trial, monthly subscription with full and ongoing access to all features, so you can try before you buy. A subscription costs $2.99 per month. Payment will be charged to your iTunes Account at confirmation of purchase and after the month of free trial.  Unused portion of free trial, will be forfeited when the user purchases a subscription. The subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Your account will be charged for renewal within 24-hours prior to the end of the current 1 month period. You can turn off auto-renew at any time from your iTunes account settings. Cancellation of the current active subscription period is not allowed. Find our privacy policy and Terms &amp; Conditions, at the following links: </string>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2152,13 +2142,55 @@
                                     <action selector="forgot:" destination="QwA-1e-1p4" eventType="touchUpInside" id="klS-48-Gkc"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" OR " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onV-o8-Fmx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" OR " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onV-o8-Fmx" userLabel="OR">
                                 <rect key="frame" x="147" y="163" width="27.5" height="18.5"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CEK-Dv-b8n">
+                                <rect key="frame" x="36" y="25" width="248" height="518"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="perSessionImage" translatesAutoresizingMaskIntoConstraints="NO" id="amg-eO-ncU">
+                                        <rect key="frame" x="64" y="363" width="120" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="RF4-eJ-6Ee"/>
+                                            <constraint firstAttribute="height" constant="128" id="VhY-EQ-2Eo"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hne-1x-ij8">
+                                        <rect key="frame" x="4" y="20" width="240" height="220"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="220" id="dcQ-qo-peW"/>
+                                            <constraint firstAttribute="width" constant="240" id="lYu-ry-K39"/>
+                                        </constraints>
+                                        <string key="text">Welcome to PerSession!   Patients billing "nightmare" is about to disappear, making your life better!  Just 3 easy steps and you’re up and running – we’ll line up your sessions like ducks in a row in no time. </string>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMq-wD-iy8">
+                                        <rect key="frame" x="66" y="284" width="116" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="116" id="a2h-Je-bLs"/>
+                                            <constraint firstAttribute="height" constant="42" id="hp3-a4-jkU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Ler's Go!"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="hne-1x-ij8" firstAttribute="centerX" secondItem="CEK-Dv-b8n" secondAttribute="centerX" id="0eb-je-tsW"/>
+                                    <constraint firstAttribute="bottom" secondItem="amg-eO-ncU" secondAttribute="bottom" constant="27" id="ID9-JJ-Zts"/>
+                                    <constraint firstItem="SMq-wD-iy8" firstAttribute="top" secondItem="hne-1x-ij8" secondAttribute="bottom" constant="44" id="SP1-Td-I8N"/>
+                                    <constraint firstItem="hne-1x-ij8" firstAttribute="top" secondItem="CEK-Dv-b8n" secondAttribute="top" constant="20" id="psc-U7-57a"/>
+                                    <constraint firstItem="amg-eO-ncU" firstAttribute="centerX" secondItem="CEK-Dv-b8n" secondAttribute="centerX" id="qg9-2P-miu"/>
+                                    <constraint firstItem="SMq-wD-iy8" firstAttribute="centerX" secondItem="CEK-Dv-b8n" secondAttribute="centerX" id="sHz-wv-f8d"/>
+                                </constraints>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perSessionImage" translatesAutoresizingMaskIntoConstraints="NO" id="HNh-Jn-nzq">
                                 <rect key="frame" x="67" y="275" width="30" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -4065,7 +4097,6 @@
         <image name="whiteV" width="133" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cyf-eK-Md6"/>
         <segue reference="UPU-lN-oqU"/>
         <segue reference="q4e-3H-dKE"/>
         <segue reference="x0P-Ew-8Ag"/>
