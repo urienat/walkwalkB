@@ -34,7 +34,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
     
     // Define identifier
     
-  
+    @IBOutlet var loginView: UIView!
+    
     static var employeeRef2 = "" {
     didSet {    //called when employeeref2 changed
     print("changed")
@@ -113,6 +114,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
     static var passwordForCreate = ""
     var cu = Locale.current.currencySymbol
 
+    @IBOutlet weak var imageForTransition: UIImageView!
     @IBOutlet weak var loginBarImage: UIImageView!
     //regulaer login
     @IBOutlet weak var dog: UIImageView!
@@ -187,7 +189,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
     
     override func viewDidLoad() {
         print ("rrrr",connectCheck)
-        
+
         if connectCheck == 0{
         //connectivityCheck()
         connectCheck = 1
@@ -233,6 +235,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
                 print ("ggg",LoginFile.provider)
                 self.doSegue()
             }//end of if
+            
+        
         }//end of dispatch
         
         
@@ -265,6 +269,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
                inFireBase()
             } else {
                 print ("DSDS",GIDSignIn.sharedInstance().currentUser)
+                self.loginView.alpha = 1//  isHidden = true
             }
         }// end of else if
        
@@ -295,6 +300,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
         letsGo.layoutIfNeeded()
         print (keeper.bool(forKey: "nofirstTimer"))
         if keeper.bool(forKey: "nofirstTimer") == false { welcomeScreen.isHidden = false}
+        
+       
 
         } ///end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////
    
