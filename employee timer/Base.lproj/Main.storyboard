@@ -2178,7 +2178,7 @@
                                             <constraint firstAttribute="height" constant="42" id="hp3-a4-jkU"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="Ler's Go!"/>
+                                        <state key="normal" title="Let's Go!"/>
                                         <connections>
                                             <action selector="letsGo:" destination="QwA-1e-1p4" eventType="touchUpInside" id="U63-OK-szw"/>
                                         </connections>
