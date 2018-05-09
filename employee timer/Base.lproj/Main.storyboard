@@ -763,16 +763,17 @@
                                 </constraints>
                             </view>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="uHI-Qf-dgk" userLabel="star">
-                                <rect key="frame" x="279.5" y="430.5" width="25" height="25"/>
+                                <rect key="frame" x="280" y="430.5" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="wro-vk-ge6"/>
                                     <constraint firstAttribute="height" constant="25" id="zEA-EU-kpF"/>
                                 </constraints>
                             </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="POY-PZ-Iwq" userLabel="special">
-                                <rect key="frame" x="40.5" y="428" width="239" height="30"/>
+                                <rect key="frame" x="10" y="428" width="300" height="30"/>
                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="0.60105415240000004" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Mfi-cO-AQg"/>
                                     <constraint firstAttribute="height" constant="30" id="iUy-zA-iaL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="17"/>
@@ -1134,7 +1135,7 @@
                             <constraint firstItem="uHI-Qf-dgk" firstAttribute="centerY" secondItem="POY-PZ-Iwq" secondAttribute="centerY" id="XDA-Ck-d8U"/>
                             <constraint firstItem="9Fh-da-mJL" firstAttribute="bottom" secondItem="cKA-rE-TUN" secondAttribute="bottom" id="XbM-1d-XN2"/>
                             <constraint firstItem="fqn-dL-iFO" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="Yxj-2x-GlY"/>
-                            <constraint firstItem="uHI-Qf-dgk" firstAttribute="leading" secondItem="POY-PZ-Iwq" secondAttribute="trailing" id="b3N-nW-2iq"/>
+                            <constraint firstItem="uHI-Qf-dgk" firstAttribute="leading" secondItem="POY-PZ-Iwq" secondAttribute="trailing" constant="-30" id="b3N-nW-2iq"/>
                             <constraint firstItem="FxU-Wn-hMn" firstAttribute="top" secondItem="45C-VX-M18" secondAttribute="bottom" constant="10" id="db2-hz-AHs"/>
                             <constraint firstItem="lxT-w2-3r9" firstAttribute="top" secondItem="uv4-gs-ESI" secondAttribute="top" id="f3E-b2-6a4"/>
                             <constraint firstItem="FxU-Wn-hMn" firstAttribute="centerX" secondItem="uv4-gs-ESI" secondAttribute="centerX" id="hWD-cb-73R"/>

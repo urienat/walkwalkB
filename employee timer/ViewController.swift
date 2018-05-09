@@ -293,7 +293,10 @@
             startBackground.layer.borderWidth = 0.5
             startBackground.layer.borderColor = blueColor.cgColor
             startBackground.layoutIfNeeded()
-
+            special.layer.cornerRadius = 15
+            special.layer.borderWidth = 0.5
+            special.layer.borderColor = blueColor.cgColor
+            special.layoutIfNeeded()
 
         btn1.setImage(sessions, for: .normal)
         btn1.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
