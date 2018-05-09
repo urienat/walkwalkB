@@ -35,7 +35,7 @@
         }//end of j loop
 
 
-        if self.employerIdArray2.isEmpty == true {self.menuItem.isEnabled = false; self.thinking2.stopAnimating();  self.arrow.isHidden = false; self.arrowMove()
+            if self.employerIdArray2.isEmpty == true {self.menuItem.isEnabled = false; self.thinking2.stopAnimating();  self.arrow.isHidden = false; self.arrowMove(instruct: self.arrow)
 
         } else {
         self.menuItem.isEnabled = true
@@ -74,7 +74,17 @@
         self.employerList.tableHeaderView = self.searchController.searchBar
         }
         }//end of >4
-
+          
+            print (self.employerIdArray.count)
+            
+            if self.self.employerIdArray.count < 4 && self.self.employerIdArray.count > 1 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    self.instruction.isHidden = false
+                    self.arrowMove(instruct: self.instruction)
+                }//end of dispatch
+            } else { self.instruction.isHidden = true
+            }
+            
         self.employerList.isUserInteractionEnabled = true
         self.employerListBottom.priority = 750; self.employerListHeiget.priority = 1000;self.employerListTop.constant = 30.0;self.employerListBottom.constant = 30
         self.employerList.reloadData()

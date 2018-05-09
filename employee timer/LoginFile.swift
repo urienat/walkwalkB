@@ -444,6 +444,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
     
         //logout from face book & Google
         func logoutGeneral(){
+        loginView.isHidden = false
         if LoginFile.logoutchosen == true{let loginManager = FBSDKLoginManager()
         loginManager.logOut()
         print ("logout from facebook")
