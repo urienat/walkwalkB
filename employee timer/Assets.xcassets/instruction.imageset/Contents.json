@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "addpatientsdog.png",
+      "filename" : "choosdog.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "addpatientsdog-1.png",
+      "filename" : "choosdog-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "addpatientsdog-2.png",
+      "filename" : "choosdog-2.png",
       "scale" : "3x"
     }
   ],

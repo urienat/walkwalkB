@@ -154,8 +154,8 @@
         importClicked()}
         }
         @IBOutlet weak var arrow: UIImageView!
-
-        //side Menu
+        @IBOutlet weak var instruction: UIImageView!
+            //side Menu
         @IBOutlet weak var blackView: UIView!
         @IBOutlet weak var sideMenuConstarin: NSLayoutConstraint!
         @IBOutlet weak var sideMenu: UIView!

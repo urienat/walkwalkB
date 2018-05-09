@@ -438,11 +438,11 @@ class dogFile: UIViewController, UIImagePickerControllerDelegate,UINavigationCon
         if error != nil {
         print (error as Any)
         self.pDogImage.image = self.perSessionImage //I added to avoid teufut. if not stop cancel
-        }
+        } else {
         DispatchQueue.main.async {
             self.pDogImage.image = UIImage(data: Data!)!
         }
-                            
+                }
         //  upload to cache
         MyImageCache.sharedCache.setObject(UIImage(data: Data!)!, forKey: self.employerID as AnyObject , cost: (Data?.count)!) // upload to cache
         }) .resume()
