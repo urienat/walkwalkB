@@ -154,8 +154,8 @@
         importClicked()}
         }
         @IBOutlet weak var arrow: UIImageView!
-
-        //side Menu
+        @IBOutlet weak var instruction: UIImageView!
+            //side Menu
         @IBOutlet weak var blackView: UIView!
         @IBOutlet weak var sideMenuConstarin: NSLayoutConstraint!
         @IBOutlet weak var sideMenu: UIView!
@@ -191,6 +191,7 @@
         UIApplication.shared.open(NSURL(string:"https://www.persessionapp.com/faq")! as URL, options: [:], completionHandler: nil)
         }
             @IBAction func logoutBtn(_ sender: Any) {
+         
         sideMenuMovement()
         LoginFile.logoutchosen = true
         print (LoginFile.logoutchosen)
@@ -282,6 +283,20 @@
 
         self.thinking2.hidesWhenStopped = true
         self.thinking2.startAnimating()
+            
+            addAmanualRecord.layer.cornerRadius = 15
+            addAmanualRecord.layer.borderWidth = 0.5
+            addAmanualRecord.layer.borderColor = blueColor.cgColor
+            addAmanualRecord.layoutIfNeeded()
+            
+            startBackground.layer.cornerRadius = 15
+            startBackground.layer.borderWidth = 0.5
+            startBackground.layer.borderColor = blueColor.cgColor
+            startBackground.layoutIfNeeded()
+            special.layer.cornerRadius = 15
+            special.layer.borderWidth = 0.5
+            special.layer.borderColor = blueColor.cgColor
+            special.layoutIfNeeded()
 
         btn1.setImage(sessions, for: .normal)
         btn1.frame = CGRect(x: 0, y: 0, width: 60, height: 100)
@@ -528,6 +543,7 @@
         sideMenuMovement()    }
 
         func sideMenuMovement(){
+        self.instruction.isHidden = true
         if isSideMenuHidden {
         if #available(iOS 11.0, *) {
         //searchController.dismiss(animated: false, completion: nil)
@@ -561,14 +577,14 @@
         isSideMenuHidden = !isSideMenuHidden
         }//end of issidemenuhidden
 
-        func arrowMove(){
+            func arrowMove(instruct:UIImageView){
         UIView.animate(withDuration: 1.3, delay: 0, options: [.repeat, .autoreverse], animations: {
-        self.arrow.center.y += 13
+        instruct.center.y += 13
         }, completion: nil)
 
 
         UIView.animate(withDuration: 1.3, delay: 0, options: [.repeat, .autoreverse], animations: {
-        self.arrow.center.y -= 20
+        instruct.center.y -= 20
         }, completion: nil)
         }
 

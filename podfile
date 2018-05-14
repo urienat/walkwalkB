@@ -47,7 +47,6 @@ pod 'Crashlytics', '~> 3.10.1'
   #pod 'SwiftyStoreKit', :git => 'https://github.com/bizz84/SwiftyStoreKit.git', :tag => '0.5.4'
   pod 'KeychainAccess', :git => 'https://github.com/kishikawakatsumi/KeychainAccess.git', :tag => 'v3.1.0'
 	pod 'SwiftyStoreKit', :git => 'https://github.com/bizz84/SwiftyStoreKit.git', :tag => '0.11.0'
-  #pod 'KeychainAccess', :git => 'https://github.com/kishikawakatsumi/KeychainAccess.git', :tag => 'v3.1.0'
 
 
   

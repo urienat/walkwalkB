@@ -34,7 +34,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
     
     // Define identifier
     
-  
+    @IBOutlet var loginView: UIView!
+    
     static var employeeRef2 = "" {
     didSet {    //called when employeeref2 changed
     print("changed")
@@ -113,6 +114,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
     static var passwordForCreate = ""
     var cu = Locale.current.currencySymbol
 
+    @IBOutlet weak var imageForTransition: UIImageView!
     @IBOutlet weak var loginBarImage: UIImageView!
     //regulaer login
     @IBOutlet weak var dog: UIImageView!
@@ -124,6 +126,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
     var rememberMe:Int?
     var userEmail:String?
     var userPassword:String! = nil
+    var nofirstTimer:Bool?
+
 
     @IBOutlet weak var check: UIButton! // section for rememberme check
     @IBAction func checkBox(_ sender: Any) {
@@ -174,15 +178,20 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
     self.performSegue(withIdentifier: "create", sender: Any?.self)
     }//end of create action
     
-    
+    @IBOutlet weak var welcomeScreen: UIView!
+    @IBOutlet weak var letsGo: UIButton!
+    @IBAction func letsGo(_ sender: Any) {
+        keeper.set(true, forKey: "nofirstTimer")
+        welcomeScreen.isHidden = true
+    }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     
     override func viewDidLoad() {
         print ("rrrr",connectCheck)
-        
+
         if connectCheck == 0{
-        connectivityCheck()
+        //connectivityCheck()
         connectCheck = 1
         }
         
@@ -226,6 +235,8 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
                 print ("ggg",LoginFile.provider)
                 self.doSegue()
             }//end of if
+            
+        
         }//end of dispatch
         
         
@@ -258,6 +269,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
                inFireBase()
             } else {
                 print ("DSDS",GIDSignIn.sharedInstance().currentUser)
+                self.loginView.alpha = 1//  isHidden = true
             }
         }// end of else if
        
@@ -277,7 +289,20 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
         loginBarImage.clipsToBounds = true
         loginBarImage.layer.cornerRadius = 15
         
+        self.view.bringSubview(toFront: welcomeScreen)
+        welcomeScreen.layer.cornerRadius = 15
+        welcomeScreen.layer.borderWidth = 0.5
+        welcomeScreen.layer.borderColor = blueColor.cgColor
+        welcomeScreen.layoutIfNeeded()
+        letsGo.layer.borderWidth = 0.5
+        letsGo.layer.borderColor = blueColor.cgColor
+        letsGo.layer.cornerRadius =  15//CGFloat(25)
+        letsGo.layoutIfNeeded()
+        print (keeper.bool(forKey: "nofirstTimer"))
+        if keeper.bool(forKey: "nofirstTimer") == false { welcomeScreen.isHidden = false}
+        
        
+
         } ///end of view did load//////////////////////////////////////////////////////////////////////////////////////////////////////
    
         //keyboard hide
@@ -419,6 +444,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
     
         //logout from face book & Google
         func logoutGeneral(){
+        loginView.isHidden = false
         if LoginFile.logoutchosen == true{let loginManager = FBSDKLoginManager()
         loginManager.logOut()
         print ("logout from facebook")
