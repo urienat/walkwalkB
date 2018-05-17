@@ -572,6 +572,7 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
 
         switch self.filterDecided {
         case 7: if self.monthToHandle == self.recordMonth && self.yearToHandle == self.recordYear  || self.monthToHandle == self.recordMonthCancelled && self.yearToHandle == self.recordYearCancelled {inFilter()}
+        case 8: if self.monthToHandle == self.recordMonth && self.yearToHandle == self.recordYear {inFilter()}
 
         default: inFilter()
         } //end of switch
