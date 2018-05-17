@@ -390,15 +390,24 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         override func viewDidAppear(_ animated: Bool) {
         firebaseConnectivity()
         if employerFromMain == "" {employerID = ""}
-        if taxBillsToHandle == false {
-        taxBillsApproach = "cancelled Invoices allocated to their issue date to meet magerial purposes."
-        print (taxBillsToHandle)
-        fetchHandler()
-        ; StatusChosen.isHidden = false} else {taxBillsApproach = "cancelled Invoices allocated to their cancelation date to meet tax purposes.";filterDecided = 7 ;monther(monthNumber: monthToHandle);
-
-        billsForTaxMonth();StatusChosen.isHidden = true;titleLbl = "\(monthMMM!)-\(yearToHandle)";self.title = titleLbl}
-        print (billItems.count)
-        billerConnect.reloadData()
+            if  reportMode == true {
+                taxBillsApproach = "cancelled Invoices allocated to their issue date to meet managerial purposes."
+                print (taxBillsToHandle)
+                //fetchHandler()
+                filterDecided = 8 ;monther(monthNumber: monthToHandle);
+                
+                billsForTaxMonth();StatusChosen.isHidden = true;titleLbl = "\(monthMMM!)-\(yearToHandle)";self.title = titleLbl
+                
+                ;// StatusChosen.isHidden = false
+            } else if taxBillsToHandle == true {
+                taxBillsApproach = "cancelled Invoices allocated to their cancelation date to meet tax purposes.";filterDecided = 7 ;monther(monthNumber: monthToHandle);
+                
+                billsForTaxMonth();StatusChosen.isHidden = true;titleLbl = "\(monthMMM!)-\(yearToHandle)";self.title = titleLbl}
+                
+            else {fetchHandler();StatusChosen.isHidden = false}
+            
+            print (billItems.count)
+            billerConnect.reloadData()
         }//view did appear end
 
         func tableView(_ billerConnect: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -458,7 +467,8 @@ class biller: UIViewController, UITableViewDelegate,UITableViewDataSource, MFMai
         if  billItem.fBillStatus!  == "Paid" { cell.cellBtnExt.layer.borderColor =  blueColor.cgColor; cell.approvalImage.image = paidImage;cell.l1.alpha = 1;cell.l3.alpha = 1;cell.l4.alpha = 1;cell.l6.alpha = 1;cell.approvalImage.alpha = 1}
         if billItem.fBillStatus! ==  "Cancelled" { cell.cellBtnExt.layer.borderColor =  blueColor.cgColor; cell.approvalImage.image = canceledImage;cell.l1.alpha = 0.5;cell.l3.alpha = 0.5;cell.l4.alpha = 0.5;cell.l6.alpha = 0.5;cell.approvalImage.alpha = 0.5}
 
-        if taxBillsToHandle == false || reportMode  == true{ cell.cellBtnExt.isEnabled = true} else {cell.cellBtnExt.isEnabled=false}
+            if taxBillsToHandle == true || reportMode  == true{ cell.cellBtnExt.isEnabled = false} else {
+                cell.cellBtnExt.isEnabled = true}
         cell.cellBtnExt.tag = indexPath.row
 
         cell.cellBtnExt.removeTarget(self, action:#selector(self.approvalClicked), for: UIControlEvents.touchDown)

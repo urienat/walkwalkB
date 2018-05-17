@@ -29,7 +29,7 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
     static var provider = "normal"
     var fbNname = ""
     var fbLastName = ""
-    var fbEmail = ""
+    var fbEmail :String?
     static var userFromGoole : GIDGoogleUser?
     
     // Define identifier
@@ -70,7 +70,9 @@ class LoginFile: UIViewController, UITextFieldDelegate,FBSDKLoginButtonDelegate,
         return}
 
         if let result = result as? [String:Any]{
-        self.fbEmail = (result["email"] as! String)
+            
+        if self.fbEmail != nil {
+                self.fbEmail = (result["email"] as! String)} else { self.fbEmail = ""} //added to avoid crash in line 65
         self.fbNname = (result["first_name"] as! String)
         self.fbLastName = (result["last_name"] as! String)
         }//end of if let
