@@ -36,6 +36,7 @@ class employersStruct: NSObject{
     var fParent: String?
     var fAddress: String?
     var fmail: String?
+     var fSesQty : String?
 
 }
 
