@@ -149,7 +149,7 @@ import Foundation
         print (eventCounter, String (eventCounter),self.employerID)
 
             
-        self.dbRefEmployers.child(self.employerID).updateChildValues(["fSesQty":String(self.eventCounter)], withCompletionBlock: { (error) in})
+        self.dbRefEmployers.child(self.employerID).updateChildValues(["fSesQty":String(records.count)], withCompletionBlock: { (error) in})
 
 
         if self.Employerrate == 0.0 { noRateInfo.isHidden = false} else {noRateInfo.isHidden = true}
