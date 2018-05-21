@@ -14,7 +14,8 @@ class employerCellTableViewCell: UITableViewCell {
     @IBOutlet weak var dogImage: UIImageView!
     @IBOutlet weak var employerFirst: UILabel!
     @IBOutlet weak var lastDocument: UILabel!
-
+    @IBOutlet weak var sesQty: UILabel!
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
     }

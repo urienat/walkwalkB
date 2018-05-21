@@ -45,6 +45,8 @@
         
         self.employerItem = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
 
+            
+            
         if String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String! != "" {self.lastDocumentItem = String(describing: snapshot.childSnapshot(forPath: "fLast").value!) as String!} //else {self.lastDocumentItem = ""}
         self.dogItem = String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String!
            
@@ -56,8 +58,13 @@
             self.profileImageUrl = "https://firebasestorage.googleapis.com/v0/b/persession-45987.appspot.com/o/perSessionImage.jpg?alt=media&token=078c12de-f291-43a6-82d4-f68ac83cd9c9"
                 
             }
+            
+            
+            if snapshot.value as? String == nil {
+            self.sesQtyTemp = "0"
+            } else {self.sesQtyTemp = (snapshot.childSnapshot(forPath: "fSesQty").value as! String)}
 
-            let employerToAdd:employerStruct = employerStruct( accountName:"\(self.dogItem) \(self.employerItem)" , employerRef: self.employerIdArray2[iIndex] as! String, activeAccount: (snapshot.childSnapshot(forPath: "fActive").value as! Bool), lastDocAccount: self.lastDocumentItem, accountImageUrl:self.profileImageUrl )
+            let employerToAdd:employerStruct = employerStruct( accountName:"\(self.dogItem) \(self.employerItem)" , employerRef: self.employerIdArray2[iIndex] as! String, activeAccount: (snapshot.childSnapshot(forPath: "fActive").value as! Bool), lastDocAccount: self.lastDocumentItem, accountImageUrl:self.profileImageUrl,sesQty: self.sesQtyTemp! )
             self.employerForList.append(employerToAdd)
 
 

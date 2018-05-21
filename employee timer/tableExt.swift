@@ -69,13 +69,18 @@ extension(ViewController){
 
         if filteredEmployerForList[indexPath.row].accountName != "Add new dog" {
         cell2.backgroundColor = UIColor.clear; cell2.employerFirst.isHidden = false;
+        cell2.sesQty?.text = filteredEmployerForList[indexPath.row].sesQty
         
         cell2.employerFirst?.text = filteredEmployerForList[indexPath.row].accountName
         if filteredEmployerForList[indexPath.row].activeAccount == false {
         cell2.employerFirst.alpha = 0.5;cell2.lastDocument.alpha = 0.5;cell2.lastDocument?.text = "Not Active!"; cell2.employerFirst?.text =  "\(filteredEmployerForList[indexPath.row].accountName)"}
         else{ cell2.employerFirst.alpha = 1;cell2.lastDocument.alpha = 1;cell2.employerFirst?.text =  "\(filteredEmployerForList[indexPath.row].accountName)";cell2.lastDocument?.text = "\(filteredEmployerForList [indexPath.row].lastDocAccount)" }
         }//end of if
+            
 
+        cell2.sesQty.clipsToBounds = true
+        cell2.sesQty.layer.cornerRadius = 8
+            
         cell2.dogImage.clipsToBounds = true
         cell2.dogImage.layer.cornerRadius = CGFloat(25)
         cell2.dogImage.contentMode = .scaleAspectFill
