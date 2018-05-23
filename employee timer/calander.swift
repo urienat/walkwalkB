@@ -334,7 +334,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
             self.dbRefEmployee.child(employeeId).child("fEmployeeRecords").updateChildValues([recordRefence.key:Int(-((self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)!)])
             self.dbRefEmployer.child(self.employerId).child("fEmployerRecords").updateChildValues([recordRefence.key:Int(-((self.mydateFormat5.date(from: calInFB))?.timeIntervalSince1970)!)])
-
+            self.dbRefEmployer.child(self.employerId).updateChildValues(["fSesQty":"+"], withCompletionBlock: { (error) in})
             }//end of save
     
         func findEmployerId(){
