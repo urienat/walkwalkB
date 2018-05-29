@@ -277,8 +277,14 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         self.accountLastName = String(describing: snapshot.childSnapshot(forPath: "fEmployer").value!) as String!
         self.accountParnet = String(describing: snapshot.childSnapshot(forPath: "fParent").value!) as String!
             
-            self.sesQtyRead = String(describing: snapshot.childSnapshot(forPath: "fSesQty").value!) as String!
-        })
+            if  (snapshot.childSnapshot(forPath: "fSesQty").value as? String) == nil{
+                print("1")
+                self.sesQtyRead = "1"
+            } else {
+                print ("regular")
+                self.sesQtyRead = String(describing: snapshot.childSnapshot(forPath: "fSesQty").value!) as String!
+                if Int (self.sesQtyRead!)! < 0 {self.sesQtyRead = "0" }
+            }        })
   
         self.thinking.color = self.blueColor
         self.thinking.isHidden = false
