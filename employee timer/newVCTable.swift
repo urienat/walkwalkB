@@ -285,7 +285,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
                 self.sesQtyRead = String(describing: snapshot.childSnapshot(forPath: "fSesQty").value!) as String!
                 if self.sesQtyRead! != "+" {
                     if Int (self.sesQtyRead!)! < 0 {self.sesQtyRead = "0" }}
-            }
+            
                 
                 
             }        })

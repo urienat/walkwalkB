@@ -23,6 +23,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     let dbRefEmployer = FIRDatabase.database().reference().child("fEmployers")
     let dbRefEmployee = FIRDatabase.database().reference().child("fEmployees")
     
+    var notPop:Bool = false
+    
     let mydateFormat5 = DateFormatter()
     let mydateFormat6 = DateFormatter()
     let mydateFormat9 = DateFormatter()
@@ -222,9 +224,9 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         if let error = error {
         print (error.code)
             if error.code == 403 {
-        showAlert(title: "Error", message: error.localizedDescription)
+        showAlert(title: "Error 403", message: error.localizedDescription)
         } else {
-        showAlert(title: "Error", message: error.localizedDescription) }
+        showAlert(title: "Error 17", message: error.localizedDescription) }
         return
         }
         eventCounter = 0
@@ -320,7 +322,8 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 
             let query2 = GTLRCalendarQuery_EventsPatch.query(withObject: self.updater , calendarId: "primary", eventId:id1!)
             service.executeQuery(query2) { (ticket: GTLRServiceTicket, Any, error) in
-            if let error = error {self.showAlert(title: "Error", message: error.localizedDescription)
+                if let error = error {self.showAlert(title: "Error : Please Import again", message: error.localizedDescription)
+            self.notPop = true
             return
             }//end of if error
             }//end of execute
@@ -402,7 +405,12 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         }//end of ggc
     
     func pop(alert: UIAlertAction!){
+        if notPop == false {
+        ViewController.refreshImport = true
     self.navigationController!.popViewController(animated: true)
+            
+        }
+        notPop = false
     }
     
                     //apple
