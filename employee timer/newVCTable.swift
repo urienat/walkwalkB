@@ -306,7 +306,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         btn4.layer.cornerRadius = 10//paymentView.frame.height / 2.0
         btn4.layer.masksToBounds = true
         btn4.layer.borderWidth = 0.5
-        btn4.layer.borderColor = blueColor.cgColor
+        btn4.layer.borderColor = redColor.cgColor
         btn4.layoutIfNeeded()
         btn4.addTarget(self, action:#selector(sendBill), for: UIControlEvents.touchDown)
         billSender.customView = btn4
