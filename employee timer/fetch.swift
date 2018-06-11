@@ -147,9 +147,12 @@ import Foundation
         else {self.toolbar1.isHidden = false;self.billSender.isEnabled = true;self.billPay.isEnabled = true;self.eventsLbl.text = "\(String(self.eventCounter)) due Walks";self.noSign.isHidden = true}
             
         print (eventCounter, String (eventCounter),self.employerID)
-
             
+            
+            if biller == false {
+        if self.sesQtyRead! == "+" {self.sesQtyRead = String(records.count) }
         self.dbRefEmployers.child(self.employerID).updateChildValues(["fSesQty":String(records.count)], withCompletionBlock: { (error) in})
+            }
 
 
         if self.Employerrate == 0.0 { noRateInfo.isHidden = false} else {noRateInfo.isHidden = true}
