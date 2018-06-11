@@ -356,11 +356,19 @@
 
         }// end of viewdidload//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-       
+            override func viewWillAppear(_ animated: Bool) {
+                
+                print ("fff",ViewController.refreshImport )
+                if ViewController.refreshImport == true {
+                     print ("fetched once more")
+                    ViewController.refreshImport = false
+                     self.fetchEmployers()
+                }
+            }
         override func viewDidAppear(_ animated: Bool) {
         
             
-        if ViewController.refresh == true ||  employerToS ==  "Add Account" {
+        if ViewController.refresh == true ||  employerToS ==  "Add Account"  {
         chooseEmployer.sendActions(for: .touchUpInside)
         ViewController.refresh = false
         }
@@ -368,11 +376,8 @@
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(0)) {
         if ViewController.sessionPusher == true {ViewController.sessionPusher = false;
         self.recordsClicked()}
-            if ViewController.refreshImport == true {ViewController.refreshImport = false;
-                print ("fetched once more")
-                
-                
-                self.fetchEmployers()}
+        
+      
             
         if ViewController.billsPusher == true {ViewController.billsPusher = false;
         biller.rowMemory = 0

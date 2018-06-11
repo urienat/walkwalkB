@@ -627,7 +627,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 self.calanderImage.alpha = 0.8
 
                 self.ImportAnimation(alpha: 0.5)
-
+                ViewController.refreshImport = true
             self.spesific = false
                 self.thinking.startAnimating()
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0){
