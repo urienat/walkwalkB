@@ -299,16 +299,29 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
             
          
         btn4.setImage(billDocument , for: .normal)
-        btn4.setTitle("You Owe Me", for: .normal)
+        btn4.setTitle("You Owe Me \n(Invoice)", for: .normal)
+        btn4.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping;
         btn4.setTitleColor(redColor, for: .normal)
         btn4.frame = CGRect(x: 0, y: 0, width: 140, height: 30)
+        btn4.layer.cornerRadius = 10//paymentView.frame.height / 2.0
+        btn4.layer.masksToBounds = true
+        btn4.layer.borderWidth = 0.5
+        btn4.layer.borderColor = blueColor.cgColor
+        btn4.layoutIfNeeded()
         btn4.addTarget(self, action:#selector(sendBill), for: UIControlEvents.touchDown)
         billSender.customView = btn4
             
         btn5.setImage(paidImage , for: .normal)
-        btn5.setTitle(" PayDay", for: .normal)
+        btn5.setTitle(" PayDay\nw/reciept)", for: .normal)
+        btn5.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping;
         btn5.setTitleColor(blueColor, for: .normal)
         btn5.frame = CGRect(x: 0, y: 0, width: 130, height: 30)
+        btn5.frame = CGRect(x: 0, y: 0, width: 140, height: 30)
+        btn5.layer.cornerRadius = 10//paymentView.frame.height / 2.0
+        btn5.layer.masksToBounds = true
+        btn5.layer.borderWidth = 0.5
+        btn5.layer.borderColor = blueColor.cgColor
+        btn5.layoutIfNeeded()
         btn5.addTarget(self, action:#selector(billPayProcess), for: UIControlEvents.touchDown)
         billPay.customView = btn5
             

@@ -4132,7 +4132,7 @@
         <image name="camera" width="25" height="25"/>
         <image name="cameraImage" width="50" height="50"/>
         <image name="cancelled" width="50" height="50"/>
-        <image name="editIcon" width="346" height="346"/>
+        <image name="editIcon" width="100" height="100"/>
         <image name="emptyV" width="42" height="52"/>
         <image name="file" width="50" height="50"/>
         <image name="import" width="50" height="50"/>
