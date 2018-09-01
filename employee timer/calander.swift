@@ -350,7 +350,7 @@ class calander: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         self.employerArray2 = Array(self.employerArray.keys) // for Dictionary
         
            
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0){//used to be 2
         for eachEmployer in 0...(self.employerArray2.count-1){
             print ("eachEmployer\(eachEmployer)")
 

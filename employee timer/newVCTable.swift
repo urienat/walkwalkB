@@ -312,7 +312,7 @@ class newVCTable: UIViewController ,UITableViewDelegate, UITableViewDataSource, 
         billSender.customView = btn4
             
         btn5.setImage(paidImage , for: .normal)
-        btn5.setTitle(" PayDay\nw/reciept)", for: .normal)
+        btn5.setTitle(" PayDay\nw/receipt)", for: .normal)
         btn5.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping;
         btn5.setTitleColor(blueColor, for: .normal)
         btn5.frame = CGRect(x: 0, y: 0, width: 130, height: 30)
