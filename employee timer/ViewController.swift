@@ -255,8 +255,10 @@
         let currentUser = FIRAuth.auth()?.currentUser
             
         if currentUser != nil {
-        self.employeeIDToS = (currentUser!.uid)
-        self.dbRefEmployee.queryOrderedByKey().queryEqual(toValue: currentUser?.uid).observeSingleEvent(of: .childAdded, with: { (snapshot) in
+        self.employeeIDToS = (currentUser!.uid)//"WMqPXl5NbZdu5uuzhB0nJLOcbpM2"//
+        print (employeeIDToS)
+            
+        self.dbRefEmployee.queryOrderedByKey().queryEqual(toValue: self.employeeIDToS).observeSingleEvent(of: .childAdded, with: { (snapshot) in
         ViewController.fixedCurrency = String(describing: snapshot.childSnapshot(forPath: "fCurrency").value!) as String
         ViewController.fixedName =  String(describing: snapshot.childSnapshot(forPath: "fName").value!) as String
         ViewController.fixedLastName =  String(describing: snapshot.childSnapshot(forPath: "fLastName").value!) as String
